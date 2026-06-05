@@ -4,25 +4,25 @@
 
 ## What is it?
 
-Docker packages an app with its dependencies into one bundle. Think of it like a shipping container for code — instead of "works on my machine" excuses, you ship the whole environment and it runs anywhere. It's similar to virtual machines but lighter because containers share the host OS kernel.
+Docker bundles an app plus its dependencies into a single package. Kinda like a VM but way lighter — containers share the host's OS kernel instead of running a full OS.
 
 ## What does it do?
 
-You write a `Dockerfile` listing your app's base image, dependencies, and startup command. Then `docker build` creates an image, and `docker run` spins up a container from that image. Images are tagged and pulled from registries like Docker Hub.
+I write a `Dockerfile` to define my app's base image and deps, then `docker build` creates an image, and `docker run` starts a container from it. Images get tagged and stored in registries like Docker Hub.
 
 ## Why does it exist?
 
-Before Docker, I wasted hours fighting environment mismatches — wrong library versions, missing system packages. VMs fixed this but started slow and ate RAM. Containers boot in seconds and share the host kernel, so I can run multiple ones without bloat.
+Before Docker I kept hitting "works on my machine" bugs — wrong lib versions, missing system packages. VMs fixed it but were too slow and heavy. Docker starts containers in seconds.
 
 ## Key terminology
 
 - **Image** — Read-only snapshot. `docker pull nginx` downloads one.
 - **Container** — A running image. `docker run nginx` starts it.
-- **Dockerfile** — Instructions to build an image. `FROM python:3.11` picks the base.
-- **Layer** — A cached build step. `RUN pip install -r requirements.txt` becomes one.
-- **Registry** — Storage for images. `docker push myuser/app` uploads yours.
-- **Volume** — Persistent storage. `docker volume create mydata` keeps data safe.
-- **Port mapping** — Host-to-container ports. `docker run -p 8080:80 nginx`.
+- **Dockerfile** — Build recipe. `FROM python:3.11` picks the base.
+- **Layer** — Cached build step. Only rebuilds what changed.
+- **Registry** — Image storage. Docker Hub is the default.
+- **Volume** — Persists data after a container stops.
+- **Port mapping** — Host-to-container port bridge (`-p 8080:80`).
 
 ## A tiny example
 
@@ -31,8 +31,8 @@ docker pull hello-world
 docker run hello-world
 ```
 
-This pulls a tiny test image and runs it — you'll see a hello message.
+Pulls a tiny test image and prints a hello message.
 
 ## What I'll cover next
 
-I'll install Docker and run my first real container, then explore `docker ps` and write a Dockerfile for a simple app.
+Install Docker, run a real container, mess with `docker ps`, and write a simple Dockerfile.
