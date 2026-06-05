@@ -3,6 +3,8 @@
 ## Docker
 
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
+- Install + run container script: [`Docker/scripts/install-and-run-container.sh`](../Docker/scripts/install-and-run-container.sh)
+- CLI exploration notes: [`Docker/notes/2026-06-05-explore-docker-cli.md`](../Docker/notes/2026-06-05-explore-docker-cli.md)
 
 ## Git
 
