@@ -11,6 +11,11 @@
 
 ## 2026-06-05
 
+- Added Docker install + run container script (`Docker/scripts/install-and-run-container.sh`)
+- Added Docker CLI exploration notes (`Docker/notes/2026-06-05-explore-docker-cli.md`)
+
+## 2026-06-05
+
 - Added Docker primer (`Docker/notes/0000-primer-docker.md`)
 
 ## 2026-06-04
