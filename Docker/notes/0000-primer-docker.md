@@ -4,15 +4,15 @@
 
 ## What is it?
 
-Docker bundles an app plus its dependencies into a single package. Kinda like a VM but way lighter — containers share the host's OS kernel instead of running a full OS.
+Docker wraps an app and its dependencies into a single bundle. Think of it like a shipping container for code — instead of "works on my machine" excuses, you ship the whole environment and it runs anywhere. It's like a virtual machine but lighter, since containers share the host OS kernel.
 
 ## What does it do?
 
-I write a `Dockerfile` to define my app's base image and deps, then `docker build` creates an image, and `docker run` starts a container from it. Images get tagged and stored in registries like Docker Hub.
+You write a `Dockerfile` listing your app's base image, dependencies, and startup command. Then `docker build` creates an image, and `docker run` spins up a container. Images get tagged and pulled from registries like Docker Hub.
 
 ## Why does it exist?
 
-Before Docker I kept hitting "works on my machine" bugs — wrong lib versions, missing system packages. VMs fixed it but were too slow and heavy. Docker starts containers in seconds.
+Before Docker, I wasted hours fighting environment mismatches — wrong library versions, missing system packages. VMs worked but started slow and ate RAM. Containers boot in seconds and share the host kernel, so I can run multiple ones without bloat.
 
 ## Key terminology
 
