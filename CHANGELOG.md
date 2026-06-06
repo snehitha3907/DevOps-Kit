@@ -2,6 +2,9 @@
 
 ## 2026-06-06
 
+- Added Terraform CLI exploration notes (`Terraform/notes/2026-06-06-exploring-terraform-cli.md`)
+- Added Ansible install + first ad-hoc script (`Ansible/scripts/install-and-first-adhoc.sh`)
+- Added Ansible CLI exploration notes (`Ansible/notes/2026-06-06-exploring-ansible-cli.md`)
 - Added Ansible primer (`Ansible/notes/0000-primer-ansible.md`)
 - Added GitHub primer (`GitHub/notes/0000-primer-github.md`)
 - Added Terraform install + init script (`Terraform/scripts/install-and-init.sh`)
