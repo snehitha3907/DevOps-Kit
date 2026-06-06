@@ -3,8 +3,8 @@
 ## Docker
 
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
-- Install + run container script: [`Docker/scripts/install-and-run-container.sh`](../Docker/scripts/install-and-run-container.sh)
-- CLI exploration notes: [`Docker/notes/2026-06-05-explore-docker-cli.md`](../Docker/notes/2026-06-05-explore-docker-cli.md)
+- Install + first container script: [`Docker/scripts/install-and-run-first-container.sh`](../Docker/scripts/install-and-run-first-container.sh)
+- CLI exploration notes: [`Docker/notes/2026-06-06-exploring-docker-cli.md`](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 
 ## Git
 
@@ -13,3 +13,13 @@
 - First commit snippet: [`Git/snippets/first-commit.sh`](../Git/snippets/first-commit.sh)
 - Install + first commit script: [`Git/scripts/install-and-first-commit.sh`](../Git/scripts/install-and-first-commit.sh)
 - CLI exploration notes: [`Git/notes/2026-06-04-explore-git-cli.md`](../Git/notes/2026-06-04-explore-git-cli.md)
+
+## Kubernetes
+
+- Primer: [`Kubernetes/notes/0000-primer-kubernetes.md`](../Kubernetes/notes/0000-primer-kubernetes.md)
+- Install kind + first cluster script: [`Kubernetes/scripts/install-kind-and-first-cluster.sh`](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
+- kubectl exploration notes: [`Kubernetes/notes/2026-06-06-exploring-kubectl.md`](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
+
+## Terraform
+
+- Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
