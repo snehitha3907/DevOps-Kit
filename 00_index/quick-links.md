@@ -1,5 +1,9 @@
 # Quick Links
 
+## Ansible
+
+- Primer: [`Ansible/notes/0000-primer-ansible.md`](../Ansible/notes/0000-primer-ansible.md)
+
 ## Docker
 
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
@@ -14,6 +18,14 @@
 - Install + first commit script: [`Git/scripts/install-and-first-commit.sh`](../Git/scripts/install-and-first-commit.sh)
 - CLI exploration notes: [`Git/notes/2026-06-04-explore-git-cli.md`](../Git/notes/2026-06-04-explore-git-cli.md)
 
+## GitHub
+
+- Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
+
 ## Kubernetes
 
 - Primer: [`Kubernetes/notes/0000-primer-kubernetes.md`](../Kubernetes/notes/0000-primer-kubernetes.md)
+
+## Terraform
+
+- Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
