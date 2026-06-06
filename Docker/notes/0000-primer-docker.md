@@ -18,11 +18,11 @@ Before Docker, I wasted hours fighting environment mismatches — wrong library 
 
 - **Image** — Read-only snapshot. `docker pull nginx` downloads one.
 - **Container** — A running image. `docker run nginx` starts it.
-- **Dockerfile** — Instructions to build an image. `FROM python:3.11` picks the base.
-- **Layer** — A cached build step. `RUN pip install -r requirements.txt` becomes one.
-- **Registry** — Storage for images. `docker push myuser/app` uploads yours.
-- **Volume** — Persistent storage. `docker volume create mydata` keeps data safe.
-- **Port mapping** — Host-to-container ports. `docker run -p 8080:80 nginx`.
+- **Dockerfile** — Build recipe. `FROM python:3.11` picks the base.
+- **Layer** — Cached build step. Only rebuilds what changed.
+- **Registry** — Image storage. Docker Hub is the default.
+- **Volume** — Persists data after a container stops.
+- **Port mapping** — Host-to-container port bridge (`-p 8080:80`).
 
 ## A tiny example
 
@@ -31,8 +31,8 @@ docker pull hello-world
 docker run hello-world
 ```
 
-This pulls a tiny test image and runs it — you'll see a hello message.
+Pulls a tiny test image and prints a hello message.
 
 ## What I'll cover next
 
-I'll install Docker and run my first real container, then explore `docker ps` and write a Dockerfile for a simple app.
+Install Docker, run a real container, mess with `docker ps`, and write a simple Dockerfile.

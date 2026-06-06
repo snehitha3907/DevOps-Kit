@@ -1,5 +1,7 @@
 # Quick Links
 
+## I need to...
+
 ## Ansible
 
 - Primer: [`Ansible/notes/0000-primer-ansible.md`](../Ansible/notes/0000-primer-ansible.md)
@@ -25,7 +27,10 @@
 ## Kubernetes
 
 - Primer: [`Kubernetes/notes/0000-primer-kubernetes.md`](../Kubernetes/notes/0000-primer-kubernetes.md)
+- Install kind + first cluster script: [`Kubernetes/scripts/install-kind-and-first-cluster.sh`](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
+- kubectl exploration notes: [`Kubernetes/notes/2026-06-06-exploring-kubectl.md`](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
 
 ## Terraform
 
 - Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
+- Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)

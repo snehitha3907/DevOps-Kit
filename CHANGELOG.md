@@ -8,6 +8,14 @@
 - Added Docker install + first container script (`Docker/scripts/install-and-run-first-container.sh`)
 - Added Docker CLI exploration notes (`Docker/notes/2026-06-06-exploring-docker-cli.md`)
 - Added Kubernetes primer (`Kubernetes/notes/0000-primer-kubernetes.md`)
+- Added kind install + first cluster script (`Kubernetes/scripts/install-kind-and-first-cluster.sh`)
+- Added kubectl exploration notes (`Kubernetes/notes/2026-06-06-exploring-kubectl.md`)
+- Added Terraform primer (`Terraform/notes/0000-primer-terraform.md`)
+
+## 2026-06-05
+
+- Added Docker install + run container script (`Docker/scripts/install-and-run-container.sh`)
+- Added Docker CLI exploration notes (`Docker/notes/2026-06-05-explore-docker-cli.md`)
 
 ## 2026-06-05
 
