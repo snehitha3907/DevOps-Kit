@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-06
+
+- Added Docker install + first container script (`Docker/scripts/install-and-run-first-container.sh`)
+- Added Docker CLI exploration notes (`Docker/notes/2026-06-06-exploring-docker-cli.md`)
+- Added Kubernetes primer (`Kubernetes/notes/0000-primer-kubernetes.md`)
+
 ## 2026-06-05
 
 - Added Docker primer (`Docker/notes/0000-primer-docker.md`)
