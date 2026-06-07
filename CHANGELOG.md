@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-06-07
+
+- Added Git branching tutorial notes (`Git/notes/2026-06-07-git-branching-tutorial.md`)
+- Added minimal branching workflow script (`Git/scripts/minimal-branching-workflow.sh`)
+
 ## 2026-06-06
 
 - Added Terraform CLI exploration notes (`Terraform/notes/2026-06-06-exploring-terraform-cli.md`)
