@@ -13,6 +13,7 @@
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
 - Install + first container script: [`Docker/scripts/install-and-run-first-container.sh`](../Docker/scripts/install-and-run-first-container.sh)
 - CLI exploration notes: [`Docker/notes/2026-06-06-exploring-docker-cli.md`](../Docker/notes/2026-06-06-exploring-docker-cli.md)
+- First Dockerfile: [`Docker/dockerfiles/first-docker-image.Dockerfile`](../Docker/dockerfiles/first-docker-image.Dockerfile)
 
 ## Git
 
@@ -27,6 +28,8 @@
 ## GitHub
 
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
+- Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
+- Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
 
 ## Kubernetes
 
