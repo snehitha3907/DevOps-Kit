@@ -9,10 +9,13 @@
 - CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
 
 ## Docker
-
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
 - Install + first container script: [`Docker/scripts/install-and-run-first-container.sh`](../Docker/scripts/install-and-run-first-container.sh)
 - CLI exploration notes: [`Docker/notes/2026-06-06-exploring-docker-cli.md`](../Docker/notes/2026-06-06-exploring-docker-cli.md)
+- Docker Compose quickstart notes: [`Docker/notes/2026-06-07-docker-compose-quickstart.md`](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
+
+## Docker configs
+- Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
 
 ## Git
 

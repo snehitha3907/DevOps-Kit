@@ -2,6 +2,8 @@
 
 ## 2026-06-07
 
+- Added Docker Compose quickstart notes (`Docker/notes/2026-06-07-docker-compose-quickstart.md`)
+- Added multi-service app Docker Compose config (`Docker/configs/multi-service-app.yaml`)
 - Added Git branching tutorial notes (`Git/notes/2026-06-07-git-branching-tutorial.md`)
 - Added minimal branching workflow script (`Git/scripts/minimal-branching-workflow.sh`)
 

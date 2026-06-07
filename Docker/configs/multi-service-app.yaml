@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    depends_on:
+      - cache
+    environment:
+      - NGINX_HOST=localhost
+
+  cache:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
