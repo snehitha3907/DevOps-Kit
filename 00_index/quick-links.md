@@ -5,6 +5,8 @@
 ## Ansible
 
 - Primer: [`Ansible/notes/0000-primer-ansible.md`](../Ansible/notes/0000-primer-ansible.md)
+- Install + first ad-hoc script: [`Ansible/scripts/install-and-first-adhoc.sh`](../Ansible/scripts/install-and-first-adhoc.sh)
+- CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
 
 ## Docker
 
@@ -34,3 +36,4 @@
 
 - Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
 - Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
+- CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
