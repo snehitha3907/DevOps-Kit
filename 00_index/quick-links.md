@@ -2,46 +2,35 @@
 
 ## I need to...
 
-## Ansible
+### Learn about a tool
+- [Ansible primer](../Ansible/notes/0000-primer-ansible.md)
+- [Docker primer](../Docker/notes/0000-primer-docker.md)
+- [Git primer](../Git/notes/0000-primer-git.md)
+- [GitHub primer](../GitHub/notes/0000-primer-github.md)
+- [Kubernetes primer](../Kubernetes/notes/0000-primer-kubernetes.md)
+- [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
 
-- Primer: [`Ansible/notes/0000-primer-ansible.md`](../Ansible/notes/0000-primer-ansible.md)
-- Install + first ad-hoc script: [`Ansible/scripts/install-and-first-adhoc.sh`](../Ansible/scripts/install-and-first-adhoc.sh)
-- CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
+### Install a tool and run something
+- [Install Ansible and run first ad-hoc](../Ansible/scripts/install-and-first-adhoc.sh)
+- [Install Docker and run first container](../Docker/scripts/install-and-run-first-container.sh)
+- [Install Git and make first commit](../Git/scripts/install-and-first-commit.sh)
+- [Install kind and create first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
+- [Install Terraform and run first init/plan/apply](../Terraform/scripts/install-and-init.sh)
 
-## Docker
-- Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
-- Install + first container script: [`Docker/scripts/install-and-run-first-container.sh`](../Docker/scripts/install-and-run-first-container.sh)
-- CLI exploration notes: [`Docker/notes/2026-06-06-exploring-docker-cli.md`](../Docker/notes/2026-06-06-exploring-docker-cli.md)
-- First Dockerfile: [`Docker/dockerfiles/first-docker-image.Dockerfile`](../Docker/dockerfiles/first-docker-image.Dockerfile)
-- Docker Compose quickstart notes: [`Docker/notes/2026-06-07-docker-compose-quickstart.md`](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
+### Explore a tool's CLI
+- [Ansible CLI exploration](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
+- [Docker CLI exploration (day 1)](../Docker/notes/2026-06-05-explore-docker-cli.md)
+- [Docker CLI exploration (day 2)](../Docker/notes/2026-06-06-exploring-docker-cli.md)
+- [Git CLI exploration](../Git/notes/2026-06-04-explore-git-cli.md)
+- [Git branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
+- [GitHub web UI and gh CLI](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
+- [kubectl exploration](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
+- [Terraform CLI exploration](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
 
-## Docker configs
-- Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
-
-## Git
-
-- Primer: [`Git/notes/0000-primer-git.md`](../Git/notes/0000-primer-git.md)
-- Install notes: [`Git/notes/2026-06-04-install-git.md`](../Git/notes/2026-06-04-install-git.md)
-- First commit snippet: [`Git/snippets/first-commit.sh`](../Git/snippets/first-commit.sh)
-- Install + first commit script: [`Git/scripts/install-and-first-commit.sh`](../Git/scripts/install-and-first-commit.sh)
-- CLI exploration notes: [`Git/notes/2026-06-04-explore-git-cli.md`](../Git/notes/2026-06-04-explore-git-cli.md)
-- Branching tutorial notes: [`Git/notes/2026-06-07-git-branching-tutorial.md`](../Git/notes/2026-06-07-git-branching-tutorial.md)
-- Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
-
-## GitHub
-
-- Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
-- Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
-- Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
-
-## Kubernetes
-
-- Primer: [`Kubernetes/notes/0000-primer-kubernetes.md`](../Kubernetes/notes/0000-primer-kubernetes.md)
-- Install kind + first cluster script: [`Kubernetes/scripts/install-kind-and-first-cluster.sh`](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
-- kubectl exploration notes: [`Kubernetes/notes/2026-06-06-exploring-kubectl.md`](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
-
-## Terraform
-
-- Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
-- Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
-- CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
+### Work with a specific feature
+- [Docker Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
+- [Docker multi-service app config](../Docker/configs/multi-service-app.yaml)
+- [Docker first image Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile)
+- [Git branching workflow script](../Git/scripts/minimal-branching-workflow.sh)
+- [Git first-commit snippet](../Git/snippets/first-commit.sh)
+- [GitHub auth and profile setup](../GitHub/scripts/auth-and-profile.sh)

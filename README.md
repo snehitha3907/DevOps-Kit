@@ -1,81 +1,39 @@
 # DevOps-Kit
-> A working engineer's reference for Docker, Git, and Kubernetes — notes, scripts, and snippets.
+> A working engineer's reference for Docker, Git, GitHub, Kubernetes, Terraform, and Ansible — notes, scripts, configs, and snippets.
 
 ## What's in here
 
-```
-DevOps-Kit/
-├── Ansible/
-│   └── notes/
-│       └── 0000-primer-ansible.md
-├── CHANGELOG.md
-├── Docker/
-│   ├── notes/
-│   │   ├── 0000-primer-docker.md
-│   │   └── 2026-06-06-exploring-docker-cli.md
-│   └── scripts/
-│       └── install-and-run-first-container.sh
-├── Git/
-│   ├── notes/
-│   │   ├── 0000-primer-git.md
-│   │   ├── 2026-06-04-install-git.md
-│   │   └── 2026-06-04-explore-git-cli.md
-│   ├── scripts/
-│   │   └── install-and-first-commit.sh
-│   └── snippets/
-│       └── first-commit.sh
-├── GitHub/
-│   └── notes/
-│       └── 0000-primer-github.md
-├── Kubernetes/
-│   └── notes/
-│       └── 0000-primer-kubernetes.md
-├── Terraform/
-│   └── scripts/
-│       └── install-and-init.sh
-└── 00_index/
-    └── quick-links.md
-```
-
-A collection of first-contact notes, setup scripts, and reference snippets for tools a DevOps engineer reaches for daily. Each tool directory follows a consistent layout: a primer, CLI exploration notes, and executable scripts to get from zero to running.
+A collection of first-contact notes, setup scripts, and reference material for tools a DevOps engineer reaches for daily. Each tool directory follows a consistent layout: a primer, CLI exploration notes, executable scripts, and supplementary content (snippets, configs, Dockerfiles). Covers six tool families across 32 files.
 
 ## Coverage
 
-| Tool       | Notes | Scripts | Snippets |
-|------------|-------|---------|----------|
-| Ansible    | 1     | —       | —        |
-| Docker     | 1     | 1       | —        |
-| Git        | 3     | 1       | 1        |
-| GitHub     | 1     | —       | —        |
-| Kubernetes | 2     | 1       | —        |
-| Terraform  | 1     | 1       | —        |
+| Tool       | Notes | Scripts | Snippets | Configs | Dockerfiles |
+|------------|-------|---------|----------|---------|-------------|
+| Ansible    | 2     | 1       | —        | —       | —           |
+| Docker     | 4     | 2       | —        | 1       | 1           |
+| Git        | 4     | 2       | 1        | —       | —           |
+| GitHub     | 2     | 1       | —        | —       | —           |
+| Kubernetes | 2     | 1       | —        | —       | —           |
+| Terraform  | 2     | 1       | —        | —       | —           |
 
 ## Quick links
 
-- [Ansible primer](Ansible/notes/0000-primer-ansible.md) — Foundational Ansible concepts: control node, inventory, playbooks, modules.
-- [Docker primer](Docker/notes/0000-primer-docker.md) — Foundational Docker concepts: images, containers, Dockerfile, volumes.
-- [Git primer](Git/notes/0000-primer-git.md) — Core Git concepts: commits, branches, remotes, staging.
-- [Git install notes](Git/notes/2026-06-04-install-git.md) — Installing Git on common platforms.
-- [Git CLI exploration](Git/notes/2026-06-04-explore-git-cli.md) — Hands-on walkthrough of Git commands.
-- [Git install script](Git/scripts/install-and-first-commit.sh) — Script to install Git and make the first commit.
-- [Git first-commit snippet](Git/snippets/first-commit.sh) — Minimal shell snippet for initialising a repo and committing.
-- [GitHub primer](GitHub/notes/0000-primer-github.md) — Core GitHub concepts: repos, PRs, issues, forks.
-- [Kubernetes primer](Kubernetes/notes/0000-primer-kubernetes.md) — Foundational Kubernetes concepts: pods, deployments, services.
-- [Kubernetes install + first cluster script](Kubernetes/scripts/install-kind-and-first-cluster.sh) — Script to install kind and create your first cluster.
-- [Kubernetes kubectl exploration notes](Kubernetes/notes/2026-06-06-exploring-kubectl.md) — Hands-on walkthrough of kubectl commands.
-- [Terraform primer](Terraform/notes/0000-primer-terraform.md) — Core Terraform concepts: providers, state, plan, apply.
-- [Terraform install + init script](Terraform/scripts/install-and-init.sh) — Script to install Terraform and run your first init/plan/apply.
+- [Docker: multi-service app config](Docker/configs/multi-service-app.yaml) — Docker Compose config for a multi-service application.
+- [Docker: compose quickstart](Docker/notes/2026-06-07-docker-compose-quickstart.md) — Notes on getting started with Docker Compose.
+- [Docker: first image Dockerfile](Docker/dockerfiles/first-docker-image.Dockerfile) — Minimal Dockerfile that builds and runs a first image.
+- [GitHub: web UI and CLI notes](GitHub/notes/2026-06-07-explore-github-web-and-cli.md) — Walkthrough of GitHub's web UI and gh CLI.
+- [GitHub: auth and profile script](GitHub/scripts/auth-and-profile.sh) — Script to authenticate with gh CLI and configure profile basics.
 
 ## Layout
 
-- **Ansible/** — Primer notes.
-- **Docker/** — Primer and CLI notes.
-- **Git/** — Primer, install notes, CLI exploration, install script, and commit snippet.
-- **GitHub/** — Primer notes.
-- **Kubernetes/** — Primer notes and install script.
-- **Terraform/** — Primer notes and install script.
+- **Ansible/** — Primer, CLI notes, and ad-hoc script.
+- **Docker/** — Primer, CLI notes, compose quickstart, install scripts, multi-service config, and Dockerfile.
+- **Git/** — Primer, install notes, CLI exploration, branching tutorial, install script, branching workflow, and commit snippet.
+- **GitHub/** — Primer, web/CLI notes, auth script, and issue interaction script.
+- **Kubernetes/** — Primer, kubectl notes, interactive tutorial, and kind install script.
+- **Terraform/** — Primer, CLI notes, and install/init script.
 - **00_index/** — Navigation index files (topics, quick-links, glossary).
 - **CHANGELOG.md** — Kit-level change log.
 
 ---
-_Last updated: 2026-06-06_
+_Last updated: 2026-06-08_
