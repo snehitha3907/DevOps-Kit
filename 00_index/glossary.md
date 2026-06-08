@@ -23,3 +23,10 @@
 - **Diff** — A view showing what changed between two commits or between working files and the last commit.
 - **Remote** — A URL pointing to another copy of the repository, typically hosted remotely.
 - **HEAD** — A pointer to the commit currently checked out.
+
+## GitHub
+
+- **Repository** — A project container with code, issues, pull requests, and wiki.
+- **Pull Request (PR)** — A proposed change that can be reviewed and merged.
+- **Issue** — A discussion thread for bugs, features, or tasks.
+- **Fork** — A personal copy of a repository for contributing changes.

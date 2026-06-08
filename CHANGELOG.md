@@ -4,6 +4,7 @@
 
 - Added Kubernetes interactive tutorial walkthrough notes (`Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md`)
 - Added GitHub CLI first issue comment script (`GitHub/scripts/tried-commenting-on-first-issue.sh`)
+- Added docker run vs compose docs (`Docker/docs/docker-run-vs-compose.md`)
 
 ## 2026-06-07
 
