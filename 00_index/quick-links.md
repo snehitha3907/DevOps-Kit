@@ -33,12 +33,14 @@
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
 - Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
 - Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
+- Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
 
 ## Kubernetes
 
 - Primer: [`Kubernetes/notes/0000-primer-kubernetes.md`](../Kubernetes/notes/0000-primer-kubernetes.md)
 - Install kind + first cluster script: [`Kubernetes/scripts/install-kind-and-first-cluster.sh`](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - kubectl exploration notes: [`Kubernetes/notes/2026-06-06-exploring-kubectl.md`](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
+- Interactive tutorial walkthrough: [`Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md`](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
 
 ## Terraform
 
