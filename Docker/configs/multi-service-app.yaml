@@ -1,0 +1,16 @@
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:alpine
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

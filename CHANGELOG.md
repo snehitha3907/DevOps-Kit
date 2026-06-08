@@ -36,3 +36,8 @@
 - Added Git first-commit snippet (`Git/snippets/first-commit.sh`)
 - Added Git install + first-commit script (`Git/scripts/install-and-first-commit.sh`)
 - Added Git CLI exploration notes (`Git/notes/2026-06-04-explore-git-cli.md`)
+
+## 2026-06-08
+
+- Added Docker Compose quickstart notes (`Docker/notes/2026-06-08-docker-compose-quickstart.md`)
+- Added multi-service Docker Compose config (`Docker/configs/multi-service-app.yaml`)
