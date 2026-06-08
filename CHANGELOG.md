@@ -6,6 +6,9 @@
 - Added multi-service app Docker Compose config (`Docker/configs/multi-service-app.yaml`)
 - Added Git branching tutorial notes (`Git/notes/2026-06-07-git-branching-tutorial.md`)
 - Added minimal branching workflow script (`Git/scripts/minimal-branching-workflow.sh`)
+- Added first Dockerfile (`Docker/dockerfiles/first-docker-image.Dockerfile`)
+- Added GitHub auth + profile script (`GitHub/scripts/auth-and-profile.sh`)
+- Added GitHub web UI + CLI exploration notes (`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`)
 
 ## 2026-06-06
 
