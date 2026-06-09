@@ -26,46 +26,7 @@
 
 ## GitHub
 
-- **Pull request** — Proposed changes you want merged into a target branch; opens a discussion and runs CI checks.
-- **Issue** — A ticket for bugs, features, or tasks, tracked in the repo's issue tracker.
-- **Fork** — A personal copy of someone else's repository, used for contributing upstream changes.
-
-## Kubernetes
-
-- **Pod** — The smallest deployable unit in Kubernetes; typically wraps a single container.
-- **Node** — A worker machine in the cluster that runs pods.
-- **Deployment** — A resource that manages desired replica counts and rolling updates for pods.
-- **Service** — A stable network endpoint that routes traffic to a set of pods.
-- **kubectl** — The Kubernetes CLI used to interact with the cluster.
-- **Cluster** — The full set of nodes plus the control plane that orchestrates them.
-- **YAML manifest** — A declarative configuration file applied with `kubectl apply -f`.
-
-## Ansible
-
-- **Control node** — The machine running Ansible where playbooks are authored and executed.
-- **Managed node** — A remote server managed by Ansible via SSH.
-- **Inventory** — A file listing managed nodes and their groups (INI or YAML format).
-- **Playbook** — A YAML file describing tasks to run on managed hosts.
-- **Module** — A reusable action unit (e.g., `apt`, `copy`, `service`) that Ansible executes.
-- **Task** — A single step in a playbook that calls one module.
-- **Role** — A packaged collection of playbooks, variables, files, and templates for reuse.
-- **Idempotent** — A property where running the same operation multiple times produces the same result.
-
-## Terraform
-
-- **Provider** — A plugin that connects Terraform to a platform (e.g., AWS, Azure, GCP).
-- **Resource** — A infrastructure component declared in `.tf` files (e.g., `aws_instance`).
-- **State** — A snapshot of real infrastructure stored in `terraform.tfstate`.
-- **Plan** — A diff showing what Terraform will create, change, or destroy before applying.
-- **Apply** — The command that executes the planned changes against the infrastructure.
-- **Destroy** — The command that tears down all resources managed by Terraform.
-- **Module** — A reusable group of related resources encapsulated in a directory.
-- **Variable** — An input value that keeps Terraform configurations flexible and parameterised.
-- **Output** — A value exposed after apply (e.g., an IP address) via `output` blocks.
-- **Backend** — The storage backend for Terraform state (local, S3, Terraform Cloud, etc.).
-
-## Docker Compose
-
-- **Compose file** — A YAML file (`docker-compose.yml`) defining multi-container applications.
-- **Service** — A container definition within a Compose file (e.g., `web`, `redis`).
-- **`depends_on`** — A Compose key that orders service startup; does not wait for readiness.
+- **Repository** — A project container with code, issues, pull requests, and wiki.
+- **Pull Request (PR)** — A proposed change that can be reviewed and merged.
+- **Issue** — A discussion thread for bugs, features, or tasks.
+- **Fork** — A personal copy of a repository for contributing changes.
