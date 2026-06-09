@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-09
+
+- Added Kubernetes stateless app manifest (`Kubernetes/manifests/stateless-app.yaml`)
+- Added Kubernetes pod lifecycle script (`Kubernetes/scripts/pod-lifecycle.sh`)
+- Added Terraform local file config (`Terraform/configs/local-file.tf`)
+
 ## 2026-06-08
 
 - Added Kubernetes interactive tutorial walkthrough notes (`Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md`)

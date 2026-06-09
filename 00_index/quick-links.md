@@ -42,9 +42,15 @@
 - Install kind + first cluster script: [`Kubernetes/scripts/install-kind-and-first-cluster.sh`](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - kubectl exploration notes: [`Kubernetes/notes/2026-06-06-exploring-kubectl.md`](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
 - Interactive tutorial walkthrough: [`Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md`](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
+- Stateless app manifest: [`Kubernetes/manifests/stateless-app.yaml`](../Kubernetes/manifests/stateless-app.yaml)
+- Pod lifecycle script: [`Kubernetes/scripts/pod-lifecycle.sh`](../Kubernetes/scripts/pod-lifecycle.sh)
 
 ## Terraform
 
 - Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
 - Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
 - CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
+
+## Terraform configs
+
+- Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
