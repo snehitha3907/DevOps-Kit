@@ -1,5 +1,11 @@
 # Topics
 
+## Ansible
+
+- [note] [Ansible/notes/0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md) — Primer covering control node, inventory, playbooks, and modules.
+- [note] [Ansible/notes/2026-06-06-exploring-ansible-cli.md](../Ansible/notes/2026-06-06-exploring-ansible-cli.md) — Walkthrough of basic Ansible CLI commands and ad-hoc usage.
+- [script] [Ansible/scripts/install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh) — Script to install Ansible and run a first ad-hoc command.
+
 ## Docker
 
 - [note] [Docker/notes/0000-primer-docker.md](../Docker/notes/0000-primer-docker.md) — Primer covering images, containers, Dockerfile, layers, volumes, and registries.

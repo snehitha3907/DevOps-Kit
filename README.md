@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working engineer's reference for Docker, Git, and Kubernetes — notes, scripts, and snippets.
+> A working engineer's reference for Docker, Git, GitHub, Kubernetes, Terraform, and Ansible — notes, scripts, configs, and snippets.
 
 ## What's in here
 
