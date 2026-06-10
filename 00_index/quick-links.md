@@ -28,6 +28,7 @@
 - CLI exploration notes: [`Git/notes/2026-06-04-explore-git-cli.md`](../Git/notes/2026-06-04-explore-git-cli.md)
 - Branching tutorial notes: [`Git/notes/2026-06-07-git-branching-tutorial.md`](../Git/notes/2026-06-07-git-branching-tutorial.md)
 - Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
+- Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 
 ## GitHub
 
@@ -35,6 +36,7 @@
 - Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
 - Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
 - Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
+- Platform features (wiki, projects, insights): [`GitHub/notes/2026-06-10-github-platform-features.md`](../GitHub/notes/2026-06-10-github-platform-features.md)
 
 ## Kubernetes
 
