@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-06-10
+
+- Added Git merge conflict practice script (`Git/scripts/2026-06-10-merge-conflict-practice.sh`)
+- Added GitHub platform features notes — wiki, projects, insights (`GitHub/notes/2026-06-10-github-platform-features.md`)
+
 ## 2026-06-09
 
 - Added Kubernetes stateless app manifest (`Kubernetes/manifests/stateless-app.yaml`)
