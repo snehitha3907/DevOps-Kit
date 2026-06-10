@@ -4,6 +4,8 @@
 
 - Added Git merge conflict practice script (`Git/scripts/2026-06-10-merge-conflict-practice.sh`)
 - Added GitHub platform features notes — wiki, projects, insights (`GitHub/notes/2026-06-10-github-platform-features.md`)
+- Added Terraform getting-started tutorial notes — Docker provider walkthrough (`Terraform/notes/2026-06-10-terraform-getting-started.md`)
+- Added GitHub issue templates and labels config (`GitHub/configs/issue-templates-and-labels.yaml`)
 
 ## 2026-06-09
 
