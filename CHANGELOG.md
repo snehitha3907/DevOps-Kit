@@ -4,6 +4,9 @@
 
 - Added Git merge conflict practice script (`Git/scripts/2026-06-10-merge-conflict-practice.sh`)
 - Added GitHub platform features notes — wiki, projects, insights (`GitHub/notes/2026-06-10-github-platform-features.md`)
+- Added GitHub repos, issues, and PRs first-look notes (`GitHub/notes/2026-06-10-repos-issues-and-prs.md`)
+- Added GitHub auth + profile exploration script (`GitHub/scripts/2026-06-10-auth-and-explore-profile.sh`)
+- Added Docker build-and-run-first Dockerfile (`Docker/dockerfiles/build-and-run-first.Dockerfile`)
 
 ## 2026-06-09
 
