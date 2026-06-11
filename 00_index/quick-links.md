@@ -36,10 +36,10 @@
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
 - Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
 - Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
-- Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
-- Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
 - Platform features (wiki, projects, insights): [`GitHub/notes/2026-06-10-github-platform-features.md`](../GitHub/notes/2026-06-10-github-platform-features.md)
 - Repos, issues, and PRs exploration notes: [`GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md`](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md)
+- Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
+- Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
 
 ## Kubernetes
 
@@ -59,3 +59,7 @@
 ## Terraform configs
 
 - Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
+
+## Terraform manifests
+
+- Simple EC2 app: [`Terraform/manifests/simple-ec2-app.tf`](../Terraform/manifests/simple-ec2-app.tf)
