@@ -7,6 +7,8 @@
 - Primer: [`Ansible/notes/0000-primer-ansible.md`](../Ansible/notes/0000-primer-ansible.md)
 - Install + first ad-hoc script: [`Ansible/scripts/install-and-first-adhoc.sh`](../Ansible/scripts/install-and-first-adhoc.sh)
 - CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
+- First playbook script: [`Ansible/scripts/run-first-playbook.sh`](../Ansible/scripts/run-first-playbook.sh)
+- Getting started notes: [`Ansible/notes/2026-06-11-ansible-getting-started.md`](../Ansible/notes/2026-06-11-ansible-getting-started.md)
 
 ## Docker
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
