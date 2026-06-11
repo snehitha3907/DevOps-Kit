@@ -2,6 +2,8 @@
 
 ## 2026-06-11
 
+- Added Ansible first playbook script (`Ansible/scripts/run-first-playbook.sh`)
+- Added Ansible getting started notes (`Ansible/notes/2026-06-11-ansible-getting-started.md`)
 - Added Terraform EC2 + security group manifest (`Terraform/manifests/simple-ec2-app.tf`)
 
 ## 2026-06-10
