@@ -23,13 +23,17 @@
 - [note] [Git/notes/2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md) — Following the official branching tutorial.
 - [script] [Git/scripts/install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh) — Script to install Git and create a first commit.
 - [script] [Git/scripts/minimal-branching-workflow.sh](../Git/scripts/minimal-branching-workflow.sh) — Standalone script demonstrating branch/create/merge/rebase.
+- [script] [Git/scripts/2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh) — Script for practicing merge conflicts.
 - [snippet] [Git/snippets/first-commit.sh](../Git/snippets/first-commit.sh) — Standalone shell snippet to init a repo and commit.
 
 ## GitHub
 
 - [note] [GitHub/notes/0000-primer-github.md](../GitHub/notes/0000-primer-github.md) — Primer covering repos, PRs, issues, forks.
 - [note] [GitHub/notes/2026-06-07-explore-github-web-and-cli.md](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md) — Walkthrough of gh CLI commands for repos, issues, PRs.
+- [note] [GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md) — Exploration of repos, issues, and PRs via GitHub API.
+- [note] [GitHub/notes/2026-06-10-github-platform-features.md](../GitHub/notes/2026-06-10-github-platform-features.md) — GitHub platform features: wiki, projects, insights.
 - [script] [GitHub/scripts/auth-and-profile.sh](../GitHub/scripts/auth-and-profile.sh) — Script to authenticate and view profile info.
+- [script] [GitHub/scripts/tried-auth-and-profile.sh](../GitHub/scripts/tried-auth-and-profile.sh) — Script attempting GitHub authentication.
 - [script] [GitHub/scripts/tried-commenting-on-first-issue.sh](../GitHub/scripts/tried-commenting-on-first-issue.sh) — Script to comment on issues.
 
 ## Kubernetes
@@ -38,9 +42,13 @@
 - [note] [Kubernetes/notes/2026-06-06-exploring-kubectl.md](../Kubernetes/notes/2026-06-06-exploring-kubectl.md) — Walkthrough of kubectl commands.
 - [note] [Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md) — Notes from the k8s.io interactive tutorial.
 - [script] [Kubernetes/scripts/install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh) — Script to install kind and create first cluster.
+- [script] [Kubernetes/scripts/pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh) — Script managing pod lifecycle operations.
+- [manifest] [Kubernetes/manifests/stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml) — Deployment and Service manifest for a stateless app.
 
 ## Terraform
 
 - [note] [Terraform/notes/0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md) — Primer covering providers, state, plan, apply.
 - [note] [Terraform/notes/2026-06-06-exploring-terraform-cli.md](../Terraform/notes/2026-06-06-exploring-terraform-cli.md) — Walkthrough of init/plan/apply commands.
 - [script] [Terraform/scripts/install-and-init.sh](../Terraform/scripts/install-and-init.sh) — Script to install Terraform and run init/plan.
+- [config] [Terraform/configs/local-file.tf](../Terraform/configs/local-file.tf) — Example Terraform configuration for local file resource.
+- [manifest] [Terraform/manifests/simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf) — EC2 instance with security group manifest for AWS.

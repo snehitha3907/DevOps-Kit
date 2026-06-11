@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-11
+
+- Added Terraform EC2 + security group manifest (`Terraform/manifests/simple-ec2-app.tf`)
+
 ## 2026-06-10
 
 - Added Git merge conflict practice script (`Git/scripts/2026-06-10-merge-conflict-practice.sh`)
