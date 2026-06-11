@@ -7,6 +7,8 @@
 - Added first Docker image build Dockerfile (`Docker/dockerfiles/tried-building-first-image.Dockerfile`)
 - Added GitHub auth + profile exploration script (`GitHub/scripts/tried-auth-and-profile.sh`)
 - Added GitHub repos, issues, and PRs exploration notes (`GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md`)
+- Added Terraform getting-started tutorial notes — Docker provider walkthrough (`Terraform/notes/2026-06-10-terraform-getting-started.md`)
+- Added GitHub issue templates and labels config (`GitHub/configs/issue-templates-and-labels.yaml`)
 
 ## 2026-06-09
 

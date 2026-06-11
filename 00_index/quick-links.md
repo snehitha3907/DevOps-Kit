@@ -55,7 +55,12 @@
 - Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
 - Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
 - CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
+- Getting-started tutorial notes: [`Terraform/notes/2026-06-10-terraform-getting-started.md`](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 
 ## Terraform configs
 
 - Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
+
+## GitHub configs
+
+- Issue templates and labels: [`GitHub/configs/issue-templates-and-labels.yaml`](../GitHub/configs/issue-templates-and-labels.yaml)
