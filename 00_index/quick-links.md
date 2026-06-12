@@ -42,6 +42,7 @@
 - Repos, issues, and PRs exploration notes: [`GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md`](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md)
 - Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
 - Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
+- Following the GitHub CLI quickstart notes: [`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
 
 ## Kubernetes
 
