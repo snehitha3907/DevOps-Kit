@@ -10,8 +10,6 @@
 
 ## 2026-06-11
 
-- Added GitHub issues API snippet (`GitHub/snippets/github-issues-api.py`)
-- Added Ansible nginx playbook snippet (`Ansible/snippets/nginx-playbook.yaml`)
 - Added reusable S3 Terraform module with variables and outputs (`Terraform/configs/reusable-s3-module/`)
 - Added GitHub list-repos REST API snippet (`GitHub/snippets/list-repos-with-python.py`)
 - Added Ansible first playbook script (`Ansible/scripts/run-first-playbook.sh`)
