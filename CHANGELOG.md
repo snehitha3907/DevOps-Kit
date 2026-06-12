@@ -2,12 +2,16 @@
 
 ## 2026-06-12
 
+- Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
 - Added Docker compose multi-service stack script (`Docker/scripts/2026-06-12-compose-multi-service.sh`)
 - Added GitHub create repo and open PR script (`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`)
+- Added GitHub issues API snippet (`GitHub/snippets/github-issues-api.py`)
+- Added Ansible nginx playbook snippet (`Ansible/snippets/nginx-playbook.yaml`)
 
 ## 2026-06-11
 
-- Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
+- Added GitHub issues API snippet (`GitHub/snippets/github-issues-api.py`)
+- Added Ansible nginx playbook snippet (`Ansible/snippets/nginx-playbook.yaml`)
 - Added reusable S3 Terraform module with variables and outputs (`Terraform/configs/reusable-s3-module/`)
 - Added GitHub list-repos REST API snippet (`GitHub/snippets/list-repos-with-python.py`)
 - Added Ansible first playbook script (`Ansible/scripts/run-first-playbook.sh`)
