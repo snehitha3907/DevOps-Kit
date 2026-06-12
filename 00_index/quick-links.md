@@ -62,6 +62,7 @@
 ## Terraform configs
 
 - Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
+- Reusable S3 module with variables and outputs: [`Terraform/configs/reusable-s3-module/main.tf`](../Terraform/configs/reusable-s3-module/main.tf)
 
 ## Terraform manifests
 
