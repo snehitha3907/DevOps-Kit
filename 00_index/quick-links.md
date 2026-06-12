@@ -61,7 +61,10 @@
 
 ## Terraform
 
+
+
 - Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
+- Bootstrap structured project with plan/apply/destroy: [`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
 - CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
 - Getting-started tutorial notes: [`Terraform/notes/2026-06-10-terraform-getting-started.md`](../Terraform/notes/2026-06-10-terraform-getting-started.md)
@@ -69,6 +72,7 @@
 ## Terraform configs
 
 - Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
+- Local provider with variables and outputs: [`Terraform/configs/2026-06-12-tried-local-with-vars.tf`](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
 - Reusable S3 module with variables and outputs: [`Terraform/configs/reusable-s3-module/main.tf`](../Terraform/configs/reusable-s3-module/main.tf)
 
 ## Terraform manifests
