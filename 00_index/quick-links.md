@@ -9,6 +9,7 @@
 - CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
 - First playbook script: [`Ansible/scripts/run-first-playbook.sh`](../Ansible/scripts/run-first-playbook.sh)
 - Getting started notes: [`Ansible/notes/2026-06-11-ansible-getting-started.md`](../Ansible/notes/2026-06-11-ansible-getting-started.md)
+- Nginx playbook snippet: [`Ansible/snippets/nginx-playbook.yaml`](../Ansible/snippets/nginx-playbook.yaml)
 
 ## Docker
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
@@ -36,6 +37,7 @@
 ## GitHub
 
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
+- GitHub issues API snippet: [`GitHub/snippets/github-issues-api.py`](../GitHub/snippets/github-issues-api.py)
 - Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
 - Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
 - Platform features (wiki, projects, insights): [`GitHub/notes/2026-06-10-github-platform-features.md`](../GitHub/notes/2026-06-10-github-platform-features.md)
