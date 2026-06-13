@@ -38,6 +38,9 @@ DevOps-Kit/
 │       ├── 2026-06-12-compose-multi-service.sh
 │       ├── install-and-run-container.sh
 │       └── install-and-run-first-container.sh
+├── General/
+│   └── docs/
+│       └── 2026-06-13-rework-undocumented-files.md
 ├── Git/
 │   ├── notes/
 │   │   ├── 0000-primer-git.md
@@ -110,6 +113,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 |------------|-------|---------|----------|------|-----------|---------|
 | Ansible    | 3     | 2       | 1        | —    | —         | 1       |
 | Docker     | 4     | 3       | —        | 1    | 1         | 1       |
+| General    | —     | —       | —        | 1    | —         | —       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
 | GitHub     | 5     | 4       | 2        | —    | —         | 1       |
 | Kubernetes | 3     | 2       | —        | —    | 1         | —       |
@@ -170,6 +174,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - **Docker/** — Primer, CLI notes, configs, dockerfiles, docs, scripts, and compose multi-service script.
 - **Git/** — Primer, install notes, CLI exploration, install script, commit snippet, branching workflow, and merge conflict practice.
 - **GitHub/** — Primer notes, configs, scripts for CLI and web UI, and Python snippets.
+- **General/** — Project-level cleanup notes and rework checks.
 - **Kubernetes/** — Primer notes, kubectl exploration, tutorial notes, install script, manifests, and pod lifecycle scripts.
 - **Terraform/** — Primer notes, getting-started notes, install script, configs, reusable module, and manifests.
 - **00_index/** — Navigation index files (topics, quick-links, glossary).

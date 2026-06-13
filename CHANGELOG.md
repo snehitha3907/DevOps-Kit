@@ -5,6 +5,7 @@
 - Added Docker web app and database compose manifest (`Docker/manifests/2026-06-13-web-db-compose.yaml`)
 - Added Ansible playbook troubleshooting notes (`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`)
 - Added Docker and Python setup Ansible config (`Ansible/configs/docker-python-setup.yaml`)
+- Added General rework note for already-documented files (`General/docs/2026-06-13-rework-undocumented-files.md`)
 
 ## 2026-06-12
 
