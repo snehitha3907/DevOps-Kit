@@ -9,7 +9,12 @@
 - CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
 - First playbook script: [`Ansible/scripts/run-first-playbook.sh`](../Ansible/scripts/run-first-playbook.sh)
 - Getting started notes: [`Ansible/notes/2026-06-11-ansible-getting-started.md`](../Ansible/notes/2026-06-11-ansible-getting-started.md)
+- Playbook troubleshooting notes: [`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - Nginx playbook snippet: [`Ansible/snippets/nginx-playbook.yaml`](../Ansible/snippets/nginx-playbook.yaml)
+
+## Ansible configs
+
+- Docker and Python setup playbook: [`Ansible/configs/docker-python-setup.yaml`](../Ansible/configs/docker-python-setup.yaml)
 
 ## Docker
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)

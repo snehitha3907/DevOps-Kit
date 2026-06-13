@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-06-13
+
+- Added Ansible playbook troubleshooting notes (`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`)
+- Added Docker and Python setup Ansible config (`Ansible/configs/docker-python-setup.yaml`)
+
 ## 2026-06-12
 
 - Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
