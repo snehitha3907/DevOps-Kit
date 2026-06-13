@@ -27,6 +27,8 @@ DevOps-Kit/
 │   ├── dockerfiles/
 │   │   ├── first-docker-image.Dockerfile
 │   │   └── tried-building-first-image.Dockerfile
+│   ├── manifests/
+│   │   └── 2026-06-13-web-db-compose.yaml
 │   ├── notes/
 │   │   ├── 0000-primer-docker.md
 │   │   ├── 2026-06-05-explore-docker-cli.md
@@ -107,7 +109,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 | Tool       | Notes | Scripts | Snippets | Docs | Manifests | Configs |
 |------------|-------|---------|----------|------|-----------|---------|
 | Ansible    | 3     | 2       | 1        | —    | —         | 1       |
-| Docker     | 4     | 3       | —        | 1    | —         | 1       |
+| Docker     | 4     | 3       | —        | 1    | 1         | 1       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
 | GitHub     | 5     | 4       | 2        | —    | —         | 1       |
 | Kubernetes | 3     | 2       | —        | —    | 1         | —       |
@@ -127,6 +129,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - [Docker CLI exploration (alt)](Docker/notes/2026-06-05-explore-docker-cli.md) — Alternate notes on Docker commands.
 - [Docker Compose quickstart](Docker/notes/2026-06-07-docker-compose-quickstart.md) — Notes on compose syntax and gotchas.
 - [Docker Compose multi-service script](Docker/scripts/2026-06-12-compose-multi-service.sh) — Script for bringing up a multi-service compose stack.
+- [Docker web and database manifest](Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for an nginx web service with PostgreSQL.
 - [docker run vs compose](Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use each approach.
 - [Git primer](Git/notes/0000-primer-git.md) — Core Git concepts: commits, branches, remotes, staging.
 - [Git install notes](Git/notes/2026-06-04-install-git.md) — Installing Git on common platforms.

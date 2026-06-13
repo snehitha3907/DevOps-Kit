@@ -31,6 +31,9 @@
 ## Docker configs
 - Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
 
+## Docker manifests
+- Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
+
 ## Git
 
 - Primer: [`Git/notes/0000-primer-git.md`](../Git/notes/0000-primer-git.md)
