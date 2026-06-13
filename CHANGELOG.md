@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-06-13
+
+- Added Ansible playbook troubleshooting notes (`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`)
+- Added Docker and Python setup Ansible config (`Ansible/configs/docker-python-setup.yaml`)
+
 ## 2026-06-12
 
 - Added Terraform bootstrap project script with variables and outputs (`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`)
