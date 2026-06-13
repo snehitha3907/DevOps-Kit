@@ -79,6 +79,7 @@ DevOps-Kit/
 │       └── pod-lifecycle.sh
 ├── Terraform/
 │   ├── configs/
+│   │   ├── 2026-06-12-tried-local-with-vars.tf
 │   │   ├── local-file.tf
 │   │   └── reusable-s3-module/
 │   │       ├── README.md
@@ -94,8 +95,9 @@ DevOps-Kit/
 │   │   ├── 0000-primer-terraform.md
 │   │   ├── 2026-06-06-exploring-terraform-cli.md
 │   │   └── 2026-06-10-terraform-getting-started.md
-│   └── scripts/
-│       └── install-and-init.sh
+│   ├── scripts/
+│   │   ├── 2026-06-12-bootstrap-terraform-project.sh
+│   │   └── install-and-init.sh
 └── 00_index/
     ├── glossary.md
     ├── quick-links.md
@@ -108,12 +110,12 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 
 | Tool       | Notes | Scripts | Snippets | Docs | Manifests | Configs |
 |------------|-------|---------|----------|------|-----------|---------|
-| Ansible    | 3     | 2       | 1        | —    | —         | 1       |
+| Ansible    | 4     | 2       | 1        | —    | —         | 1       |
 | Docker     | 4     | 3       | —        | 1    | 1         | 1       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
 | GitHub     | 5     | 4       | 2        | —    | —         | 1       |
 | Kubernetes | 3     | 2       | —        | —    | 1         | —       |
-| Terraform  | 3     | 1       | —        | —    | 1         | 4       |
+| Terraform  | 3     | 2       | —        | —    | 1         | 5       |
 
 ## Quick links
 
@@ -171,7 +173,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - **Git/** — Primer, install notes, CLI exploration, install script, commit snippet, branching workflow, and merge conflict practice.
 - **GitHub/** — Primer notes, configs, scripts for CLI and web UI, and Python snippets.
 - **Kubernetes/** — Primer notes, kubectl exploration, tutorial notes, install script, manifests, and pod lifecycle scripts.
-- **Terraform/** — Primer notes, getting-started notes, install script, configs, reusable module, and manifests.
+- **Terraform/** — Primer notes, getting-started notes, install and bootstrap scripts, configs, reusable module, and manifests.
 - **00_index/** — Navigation index files (topics, quick-links, glossary).
 - **CHANGELOG.md** — Kit-level change log.
 

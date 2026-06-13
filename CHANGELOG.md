@@ -5,6 +5,8 @@
 - Added Docker web app and database compose manifest (`Docker/manifests/2026-06-13-web-db-compose.yaml`)
 - Added Ansible playbook troubleshooting notes (`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`)
 - Added Docker and Python setup Ansible config (`Ansible/configs/docker-python-setup.yaml`)
+- Fixed README tree: added missing Terraform config and script entries, updated coverage table counts (`README.md`)
+- Added GitHub quickstart CLI + web UI walkthrough notes (`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`)
 
 ## 2026-06-12
 
