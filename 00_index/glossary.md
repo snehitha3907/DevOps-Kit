@@ -30,3 +30,40 @@
 - **Pull Request (PR)** — A proposed change that can be reviewed and merged.
 - **Issue** — A discussion thread for bugs, features, or tasks.
 - **Fork** — A personal copy of a repository for contributing changes.
+- **Branch** — Independent line of development; `main` is the default.
+- **Remote** — The GitHub URL your local repo connects to, usually called "origin".
+- **Merge** — Combining changes from one branch into another.
+
+## Ansible
+
+- **Control node** — The machine where Ansible is installed and playbooks are executed.
+- **Managed node** — A server managed by Ansible via SSH.
+- **Inventory** — A file listing managed nodes and their connection details.
+- **Playbook** — A YAML file describing tasks to run on hosts.
+- **Module** — A reusable action unit (e.g. `apt`, `copy`, `service`).
+- **Task** — A single step in a playbook that calls one module.
+- **Role** — A packaged collection of playbooks, variables, and templates.
+- **Idempotent** — Running the same playbook twice yields the same result as running it once.
+
+## Kubernetes
+
+- **Pod** — The smallest deployable unit, typically one container.
+- **Node** — A worker machine in the cluster.
+- **Deployment** — A resource that manages desired replica counts and rolling updates.
+- **Service** — A stable network endpoint that routes traffic to pods.
+- **kubectl** — The Kubernetes CLI.
+- **Cluster** — All nodes plus the control plane.
+- **YAML manifest** — A declarative configuration file applied with `kubectl apply`.
+
+## Terraform
+
+- **Provider** — A plugin for a cloud or service platform (e.g. AWS, Azure).
+- **Resource** — A declared infrastructure component to create or manage.
+- **State** — A snapshot of real-world infrastructure stored in `terraform.tfstate`.
+- **Plan** — A diff showing what will be created, changed, or destroyed.
+- **Apply** — Executes the plan and makes the necessary API calls.
+- **Destroy** — Tears down all managed resources.
+- **Module** — A reusable group of resource definitions.
+- **Variable** — An input value that keeps configurations flexible.
+- **Output** — An exposed value from a resource (e.g. a public IP).
+- **Backend** — The storage location for state (local, S3, Terraform Cloud).

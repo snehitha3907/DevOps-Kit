@@ -2,91 +2,84 @@
 
 ## I need to...
 
-## Ansible
+### Learn Ansible basics
+- [Primer](../Ansible/notes/0000-primer-ansible.md)
+- [Install + first ad-hoc script](../Ansible/scripts/install-and-first-adhoc.sh)
+- [CLI exploration notes](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
+- [First playbook script](../Ansible/scripts/run-first-playbook.sh)
+- [Getting started notes](../Ansible/notes/2026-06-11-ansible-getting-started.md)
 
-- Primer: [`Ansible/notes/0000-primer-ansible.md`](../Ansible/notes/0000-primer-ansible.md)
-- Install + first ad-hoc script: [`Ansible/scripts/install-and-first-adhoc.sh`](../Ansible/scripts/install-and-first-adhoc.sh)
-- CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
-- First playbook script: [`Ansible/scripts/run-first-playbook.sh`](../Ansible/scripts/run-first-playbook.sh)
-- Getting started notes: [`Ansible/notes/2026-06-11-ansible-getting-started.md`](../Ansible/notes/2026-06-11-ansible-getting-started.md)
-- Playbook troubleshooting notes: [`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
-- Nginx playbook snippet: [`Ansible/snippets/nginx-playbook.yaml`](../Ansible/snippets/nginx-playbook.yaml)
+### Troubleshoot Ansible
+- [Playbook troubleshooting](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
+- [Nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
+- [Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
 
-## Ansible configs
+### Learn Docker basics
+- [Primer](../Docker/notes/0000-primer-docker.md)
+- [Install + first container script](../Docker/scripts/install-and-run-first-container.sh)
+- [CLI exploration notes](../Docker/notes/2026-06-06-exploring-docker-cli.md)
+- [First Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile)
+- [Docker Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
 
-- Docker and Python setup playbook: [`Ansible/configs/docker-python-setup.yaml`](../Ansible/configs/docker-python-setup.yaml)
+### Use Docker in practice
+- [Docker run vs compose docs](../Docker/docs/docker-run-vs-compose.md)
+- [Compose multi-service script](../Docker/scripts/2026-06-12-compose-multi-service.sh)
+- [Multi-service app config](../Docker/configs/multi-service-app.yaml)
+- [Web + database compose manifest](../Docker/manifests/2026-06-13-web-db-compose.yaml)
+- [Install and run nginx container](../Docker/scripts/install-and-run-container.sh)
 
-## Docker
-- Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
-- Install + first container script: [`Docker/scripts/install-and-run-first-container.sh`](../Docker/scripts/install-and-run-first-container.sh)
-- CLI exploration notes: [`Docker/notes/2026-06-06-exploring-docker-cli.md`](../Docker/notes/2026-06-06-exploring-docker-cli.md)
-- First Dockerfile: [`Docker/dockerfiles/first-docker-image.Dockerfile`](../Docker/dockerfiles/first-docker-image.Dockerfile)
-- Build first image Dockerfile: [`Docker/dockerfiles/tried-building-first-image.Dockerfile`](../Docker/dockerfiles/tried-building-first-image.Dockerfile)
-- Docker Compose quickstart notes: [`Docker/notes/2026-06-07-docker-compose-quickstart.md`](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
-- docker run vs compose docs: [`Docker/docs/docker-run-vs-compose.md`](../Docker/docs/docker-run-vs-compose.md)
+### Learn Git basics
+- [Primer](../Git/notes/0000-primer-git.md)
+- [Install notes](../Git/notes/2026-06-04-install-git.md)
+- [First commit snippet](../Git/snippets/first-commit.sh)
+- [Install + first commit script](../Git/scripts/install-and-first-commit.sh)
+- [CLI exploration notes](../Git/notes/2026-06-04-explore-git-cli.md)
 
-## Docker scripts
-- Compose multi-service stack: [`Docker/scripts/2026-06-12-compose-multi-service.sh`](../Docker/scripts/2026-06-12-compose-multi-service.sh)
+### Get productive with Git
+- [Branching tutorial notes](../Git/notes/2026-06-07-git-branching-tutorial.md)
+- [Minimal branching workflow script](../Git/scripts/minimal-branching-workflow.sh)
+- [Merge conflict practice script](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 
-## Docker configs
-- Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
+### Learn GitHub basics
+- [Primer](../GitHub/notes/0000-primer-github.md)
+- [Web UI + CLI exploration](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
+- [CLI quickstart follow-up](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
 
-## Docker manifests
-- Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
+### Manage GitHub projects
+- [Repos, issues, PRs exploration](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md)
+- [Platform features (wiki, projects, insights)](../GitHub/notes/2026-06-10-github-platform-features.md)
+- [Issue templates and labels config](../GitHub/configs/issue-templates-and-labels.yaml)
+- [Auth + profile script](../GitHub/scripts/auth-and-profile.sh)
+- [Auth attempt script](../GitHub/scripts/tried-auth-and-profile.sh)
 
-## Git
+### Automate with GitHub
+- [Create repo and open PR script](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
+- [Comment on first issue script](../GitHub/scripts/tried-commenting-on-first-issue.sh)
+- [Issues API Python snippet](../GitHub/snippets/github-issues-api.py)
+- [List repos Python snippet](../GitHub/snippets/list-repos-with-python.py)
 
-- Primer: [`Git/notes/0000-primer-git.md`](../Git/notes/0000-primer-git.md)
-- Install notes: [`Git/notes/2026-06-04-install-git.md`](../Git/notes/2026-06-04-install-git.md)
-- First commit snippet: [`Git/snippets/first-commit.sh`](../Git/snippets/first-commit.sh)
-- Install + first commit script: [`Git/scripts/install-and-first-commit.sh`](../Git/scripts/install-and-first-commit.sh)
-- CLI exploration notes: [`Git/notes/2026-06-04-explore-git-cli.md`](../Git/notes/2026-06-04-explore-git-cli.md)
-- Branching tutorial notes: [`Git/notes/2026-06-07-git-branching-tutorial.md`](../Git/notes/2026-06-07-git-branching-tutorial.md)
-- Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
-- Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
+### Learn Kubernetes basics
+- [Primer](../Kubernetes/notes/0000-primer-kubernetes.md)
+- [Install kind + first cluster script](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
+- [kubectl exploration notes](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
 
-## GitHub
+### Deploy on Kubernetes
+- [Interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
+- [Stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
+- [Pod lifecycle script](../Kubernetes/scripts/pod-lifecycle.sh)
 
-- Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
-- GitHub issues API snippet: [`GitHub/snippets/github-issues-api.py`](../GitHub/snippets/github-issues-api.py)
-- Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
-- Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
-- Platform features (wiki, projects, insights): [`GitHub/notes/2026-06-10-github-platform-features.md`](../GitHub/notes/2026-06-10-github-platform-features.md)
-- Repos, issues, and PRs exploration notes: [`GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md`](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md)
-- Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
-- Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
-- Following the GitHub CLI quickstart notes: [`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
-- Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
+### Learn Terraform basics
+- [Primer](../Terraform/notes/0000-primer-terraform.md)
+- [Install + init script](../Terraform/scripts/install-and-init.sh)
+- [CLI exploration notes](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
+- [Getting started tutorial notes](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 
-## Kubernetes
-
-- Primer: [`Kubernetes/notes/0000-primer-kubernetes.md`](../Kubernetes/notes/0000-primer-kubernetes.md)
-- Install kind + first cluster script: [`Kubernetes/scripts/install-kind-and-first-cluster.sh`](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
-- kubectl exploration notes: [`Kubernetes/notes/2026-06-06-exploring-kubectl.md`](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
-- Interactive tutorial walkthrough: [`Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md`](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
-- Stateless app manifest: [`Kubernetes/manifests/stateless-app.yaml`](../Kubernetes/manifests/stateless-app.yaml)
-- Pod lifecycle script: [`Kubernetes/scripts/pod-lifecycle.sh`](../Kubernetes/scripts/pod-lifecycle.sh)
-
-## Terraform
-
-
-
-- Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
-- Bootstrap structured project with plan/apply/destroy: [`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
-- Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
-- CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
-- Getting-started tutorial notes: [`Terraform/notes/2026-06-10-terraform-getting-started.md`](../Terraform/notes/2026-06-10-terraform-getting-started.md)
-
-## Terraform configs
-
-- Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
-- Local provider with variables and outputs: [`Terraform/configs/2026-06-12-tried-local-with-vars.tf`](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
-- Reusable S3 module with variables and outputs: [`Terraform/configs/reusable-s3-module/main.tf`](../Terraform/configs/reusable-s3-module/main.tf)
-
-## Terraform manifests
-
-- Simple EC2 app: [`Terraform/manifests/simple-ec2-app.tf`](../Terraform/manifests/simple-ec2-app.tf)
-
-## GitHub configs
-
-- Issue templates and labels: [`GitHub/configs/issue-templates-and-labels.yaml`](../GitHub/configs/issue-templates-and-labels.yaml)
+### Write Terraform configs
+- [Local file example](../Terraform/configs/local-file.tf)
+- [Local provider with variables](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
+- [Reusable S3 module main](../Terraform/configs/reusable-s3-module/main.tf)
+- [Reusable S3 module outputs](../Terraform/configs/reusable-s3-module/outputs.tf)
+- [Reusable S3 module variables](../Terraform/configs/reusable-s3-module/variables.tf)
+- [Bootstrap project script](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
+- [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
+- [S3 module basic example](../Terraform/configs/reusable-s3-module/examples/basic/main.tf)
