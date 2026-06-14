@@ -24,6 +24,7 @@
 
 ## 2026-06-11
 
+- Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
 - Added reusable S3 Terraform module with variables and outputs (`Terraform/configs/reusable-s3-module/`)
 - Added GitHub list-repos REST API snippet (`GitHub/snippets/list-repos-with-python.py`)
 - Added Ansible first playbook script (`Ansible/scripts/run-first-playbook.sh`)
