@@ -26,6 +26,11 @@
 - [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
 - [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
 
+## General
+
+- [docs] [General/docs/2026-06-13-rework-undocumented-files.md](../General/docs/2026-06-13-rework-undocumented-files.md) — Rework note confirming the gen-001 files were already documented.
+- [docs] [General/docs/2026-06-14-rework-gen002-already-documented.md](../General/docs/2026-06-14-rework-gen002-already-documented.md) — Rework note confirming the gen-002 files were already documented.
+
 ## Git
 
 - [note] [Git/notes/0000-primer-git.md](../Git/notes/0000-primer-git.md) — Primer covering repos, commits, staging, branches, remotes, and merging.
