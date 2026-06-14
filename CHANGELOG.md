@@ -1,12 +1,44 @@
 # Changelog
 
+## 2026-06-14
+
+- Added General rework note for gen-002 already-documented files (`General/docs/2026-06-14-rework-gen002-already-documented.md`)
+- Added following the official GitHub quickstart (CLI + web UI) notes (`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`)
+
+## 2026-06-13
+
+- Added Docker web app and database compose manifest (`Docker/manifests/2026-06-13-web-db-compose.yaml`)
+- Added Ansible playbook troubleshooting notes (`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`)
+- Added Docker and Python setup Ansible config (`Ansible/configs/docker-python-setup.yaml`)
+- Added General rework note for already-documented files (`General/docs/2026-06-13-rework-undocumented-files.md`)
+
+## 2026-06-12
+
+- Added Terraform bootstrap project script with variables and outputs (`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`)
+- Added Terraform local provider config with variables and outputs (`Terraform/configs/2026-06-12-tried-local-with-vars.tf`)
+- Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
+- Added Docker compose multi-service stack script (`Docker/scripts/2026-06-12-compose-multi-service.sh`)
+- Added GitHub create repo and open PR script (`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`)
+- Added GitHub issues API snippet (`GitHub/snippets/github-issues-api.py`)
+- Added Ansible nginx playbook snippet (`Ansible/snippets/nginx-playbook.yaml`)
+
+## 2026-06-11
+
+- Added reusable S3 Terraform module with variables and outputs (`Terraform/configs/reusable-s3-module/`)
+- Added GitHub list-repos REST API snippet (`GitHub/snippets/list-repos-with-python.py`)
+- Added Ansible first playbook script (`Ansible/scripts/run-first-playbook.sh`)
+- Added Ansible getting started notes (`Ansible/notes/2026-06-11-ansible-getting-started.md`)
+- Added Terraform EC2 + security group manifest (`Terraform/manifests/simple-ec2-app.tf`)
+
 ## 2026-06-10
 
 - Added Git merge conflict practice script (`Git/scripts/2026-06-10-merge-conflict-practice.sh`)
 - Added GitHub platform features notes — wiki, projects, insights (`GitHub/notes/2026-06-10-github-platform-features.md`)
-- Added GitHub repos, issues, and PRs first-look notes (`GitHub/notes/2026-06-10-repos-issues-and-prs.md`)
-- Added GitHub auth + profile exploration script (`GitHub/scripts/2026-06-10-auth-and-explore-profile.sh`)
-- Added Docker build-and-run-first Dockerfile (`Docker/dockerfiles/build-and-run-first.Dockerfile`)
+- Added first Docker image build Dockerfile (`Docker/dockerfiles/tried-building-first-image.Dockerfile`)
+- Added GitHub auth + profile exploration script (`GitHub/scripts/tried-auth-and-profile.sh`)
+- Added GitHub repos, issues, and PRs exploration notes (`GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md`)
+- Added Terraform getting-started tutorial notes — Docker provider walkthrough (`Terraform/notes/2026-06-10-terraform-getting-started.md`)
+- Added GitHub issue templates and labels config (`GitHub/configs/issue-templates-and-labels.yaml`)
 
 ## 2026-06-09
 
