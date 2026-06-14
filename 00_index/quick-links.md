@@ -34,6 +34,10 @@
 ## Docker manifests
 - Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 
+## General
+
+- Rework check for already-documented files: [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
+
 ## Git
 
 - Primer: [`Git/notes/0000-primer-git.md`](../Git/notes/0000-primer-git.md)

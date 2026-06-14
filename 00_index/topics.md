@@ -22,6 +22,10 @@
 - [script] [Docker/scripts/install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh) — Script to install Docker and run first container.
 - [manifest] [Docker/manifests/docker-compose-web-db.yaml](../Docker/manifests/docker-compose-web-db.yaml) — docker-compose manifest for web + database services.
 
+## General
+
+- [docs] [General/docs/2026-06-13-rework-undocumented-files.md](../General/docs/2026-06-13-rework-undocumented-files.md) — Rework note confirming the gen-001 files were already documented.
+
 ## Git
 
 - [note] [Git/notes/0000-primer-git.md](../Git/notes/0000-primer-git.md) — Primer covering repos, commits, staging, branches, remotes, and merging.
