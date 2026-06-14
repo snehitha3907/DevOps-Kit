@@ -3,6 +3,7 @@
 ## 2026-06-14
 
 - Added General rework note for gen-002 already-documented files (`General/docs/2026-06-14-rework-gen002-already-documented.md`)
+- Added following the official GitHub quickstart (CLI + web UI) notes (`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`)
 
 ## 2026-06-13
 
