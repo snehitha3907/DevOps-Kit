@@ -20,7 +20,11 @@
 - [script] [Docker/scripts/2026-06-12-compose-multi-service.sh](../Docker/scripts/2026-06-12-compose-multi-service.sh) — Script for bringing up a multi-service compose stack.
 - [script] [Docker/scripts/install-and-run-container.sh](../Docker/scripts/install-and-run-container.sh) — Script to install and run nginx.
 - [script] [Docker/scripts/install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh) — Script to install Docker and run first container.
-- [manifest] [Docker/manifests/docker-compose-web-db.yaml](../Docker/manifests/docker-compose-web-db.yaml) — docker-compose manifest for web + database services.
+- [dockerfile] [Docker/dockerfiles/first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile) — First Dockerfile for building a custom image.
+- [dockerfile] [Docker/dockerfiles/tried-building-first-image.Dockerfile](../Docker/dockerfiles/tried-building-first-image.Dockerfile) — Attempted Dockerfile for building a custom image.
+- [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
+- [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
+- [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
 
 ## General
 
@@ -51,6 +55,7 @@
 - [script] [GitHub/scripts/2026-06-12-create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh) — Script to create a repository and open a pull request.
 - [snippet] [GitHub/snippets/github-issues-api.py](../GitHub/snippets/github-issues-api.py) — Python snippet for working with GitHub issues via the API.
 - [snippet] [GitHub/snippets/list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py) — Python snippet for listing repositories.
+- [config] [GitHub/configs/issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml) — Repository issue templates and labels configuration.
 
 ## Kubernetes
 
@@ -67,6 +72,12 @@
 - [note] [Terraform/notes/2026-06-06-exploring-terraform-cli.md](../Terraform/notes/2026-06-06-exploring-terraform-cli.md) — Walkthrough of init/plan/apply commands.
 - [note] [Terraform/notes/2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md) — Follow-up notes for the first Terraform workflow.
 - [script] [Terraform/scripts/install-and-init.sh](../Terraform/scripts/install-and-init.sh) — Script to install Terraform and run init/plan.
+- [script] [Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh) — Script to bootstrap a structured Terraform project.
+- [config] [Terraform/configs/2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — Local provider configuration with variables and outputs.
 - [config] [Terraform/configs/local-file.tf](../Terraform/configs/local-file.tf) — Example Terraform configuration for local file resource.
-- [config] [Terraform/configs/reusable-s3-module/main.tf](../Terraform/configs/reusable-s3-module/main.tf) — Reusable S3 module configuration.
+- [module] [Terraform/configs/reusable-s3-module/README.md](../Terraform/configs/reusable-s3-module/README.md) — Documentation for the reusable S3 module.
+- [module] [Terraform/configs/reusable-s3-module/main.tf](../Terraform/configs/reusable-s3-module/main.tf) — Reusable S3 module main configuration.
+- [module] [Terraform/configs/reusable-s3-module/outputs.tf](../Terraform/configs/reusable-s3-module/outputs.tf) — Reusable S3 module outputs.
+- [module] [Terraform/configs/reusable-s3-module/variables.tf](../Terraform/configs/reusable-s3-module/variables.tf) — Reusable S3 module variables.
+- [example] [Terraform/configs/reusable-s3-module/examples/basic/main.tf](../Terraform/configs/reusable-s3-module/examples/basic/main.tf) — Basic usage example for the S3 module.
 - [manifest] [Terraform/manifests/simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf) — EC2 instance with security group manifest for AWS.
