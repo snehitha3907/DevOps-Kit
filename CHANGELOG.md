@@ -4,6 +4,7 @@
 
 - Added Nginx web server Ansible config with idempotency checks (`Ansible/configs/nginx-webserver.yaml`)
 - Added General rework note for gen-002 already-documented files (`General/docs/2026-06-14-rework-gen002-already-documented.md`)
+- Added following the official GitHub quickstart (CLI + web UI) notes (`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`)
 
 ## 2026-06-13
 
@@ -24,6 +25,7 @@
 
 ## 2026-06-11
 
+- Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
 - Added reusable S3 Terraform module with variables and outputs (`Terraform/configs/reusable-s3-module/`)
 - Added GitHub list-repos REST API snippet (`GitHub/snippets/list-repos-with-python.py`)
 - Added Ansible first playbook script (`Ansible/scripts/run-first-playbook.sh`)
