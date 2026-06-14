@@ -11,7 +11,8 @@
 DevOps-Kit/
 ├── Ansible/
 │   ├── configs/
-│   │   └── docker-python-setup.yaml
+│   │   ├── docker-python-setup.yaml
+│   │   └── nginx-webserver.yaml
 │   ├── notes/
 │   │   ├── 0000-primer-ansible.md
 │   │   ├── 2026-06-06-exploring-ansible-cli.md
