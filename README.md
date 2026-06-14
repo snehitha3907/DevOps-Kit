@@ -40,7 +40,8 @@ DevOps-Kit/
 │       └── install-and-run-first-container.sh
 ├── General/
 │   └── docs/
-│       └── 2026-06-13-rework-undocumented-files.md
+│       ├── 2026-06-13-rework-undocumented-files.md
+│       └── 2026-06-14-rework-gen002-already-documented.md
 ├── Git/
 │   ├── notes/
 │   │   ├── 0000-primer-git.md
@@ -113,7 +114,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 |------------|-------|---------|----------|------|-----------|---------|
 | Ansible    | 3     | 2       | 1        | —    | —         | 1       |
 | Docker     | 4     | 3       | —        | 1    | 1         | 1       |
-| General    | —     | —       | —        | 1    | —         | —       |
+| General    | —     | —       | —        | 2    | —         | —       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
 | GitHub     | 5     | 4       | 2        | —    | —         | 1       |
 | Kubernetes | 3     | 2       | —        | —    | 1         | —       |
@@ -181,4 +182,4 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - **CHANGELOG.md** — Kit-level change log.
 
 ---
-_Last updated: 2026-06-13_
+_Last updated: 2026-06-14_
