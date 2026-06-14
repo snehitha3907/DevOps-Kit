@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working engineer's reference for Docker, Git, GitHub, Kubernetes, Terraform, and Ansible — notes, scripts, configs, and snippets.
+> A working engineer's DevOps reference — notes, scripts, configs, and snippets for the tools you reach for daily.
 
 ## What\'s in here
 
@@ -27,6 +27,8 @@ DevOps-Kit/
 │   ├── dockerfiles/
 │   │   ├── first-docker-image.Dockerfile
 │   │   └── tried-building-first-image.Dockerfile
+│   ├── manifests/
+│   │   └── 2026-06-13-web-db-compose.yaml
 │   ├── notes/
 │   │   ├── 0000-primer-docker.md
 │   │   ├── 2026-06-05-explore-docker-cli.md
@@ -36,6 +38,10 @@ DevOps-Kit/
 │       ├── 2026-06-12-compose-multi-service.sh
 │       ├── install-and-run-container.sh
 │       └── install-and-run-first-container.sh
+├── General/
+│   └── docs/
+│       ├── 2026-06-13-rework-undocumented-files.md
+│       └── 2026-06-14-rework-gen002-already-documented.md
 ├── Git/
 │   ├── notes/
 │   │   ├── 0000-primer-git.md
@@ -100,14 +106,15 @@ DevOps-Kit/
     └── topics.md
 ```
 
-A collection of first-contact notes, setup scripts, and reference snippets for tools a DevOps engineer reaches for daily. Each tool directory follows a consistent layout: a primer, CLI exploration notes, and executable scripts to get from zero to running.
+First-contact notes, setup scripts, and configs for six tool families a DevOps engineer reaches for every day: Docker, Git, GitHub, Kubernetes, Terraform, and Ansible. Each tool directory follows the same layout — a primer, CLI exploration notes, executable scripts, and any configs or manifests picked up along the way. The kit is meant to be cloned and used as a quick-touch reference, not a tutorial site.
 
 ## Coverage
 
 | Tool       | Notes | Scripts | Snippets | Docs | Manifests | Configs |
 |------------|-------|---------|----------|------|-----------|---------|
 | Ansible    | 3     | 2       | 1        | —    | —         | 1       |
-| Docker     | 4     | 3       | —        | 1    | —         | 1       |
+| Docker     | 4     | 3       | —        | 1    | 1         | 1       |
+| General    | —     | —       | —        | 2    | —         | —       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
 | GitHub     | 5     | 4       | 2        | —    | —         | 1       |
 | Kubernetes | 3     | 2       | —        | —    | 1         | —       |
@@ -127,6 +134,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - [Docker CLI exploration (alt)](Docker/notes/2026-06-05-explore-docker-cli.md) — Alternate notes on Docker commands.
 - [Docker Compose quickstart](Docker/notes/2026-06-07-docker-compose-quickstart.md) — Notes on compose syntax and gotchas.
 - [Docker Compose multi-service script](Docker/scripts/2026-06-12-compose-multi-service.sh) — Script for bringing up a multi-service compose stack.
+- [Docker web and database manifest](Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for an nginx web service with PostgreSQL.
 - [docker run vs compose](Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use each approach.
 - [Git primer](Git/notes/0000-primer-git.md) — Core Git concepts: commits, branches, remotes, staging.
 - [Git install notes](Git/notes/2026-06-04-install-git.md) — Installing Git on common platforms.
@@ -167,10 +175,15 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - **Docker/** — Primer, CLI notes, configs, dockerfiles, docs, scripts, and compose multi-service script.
 - **Git/** — Primer, install notes, CLI exploration, install script, commit snippet, branching workflow, and merge conflict practice.
 - **GitHub/** — Primer notes, configs, scripts for CLI and web UI, and Python snippets.
+- **General/** — Project-level cleanup notes and rework checks.
 - **Kubernetes/** — Primer notes, kubectl exploration, tutorial notes, install script, manifests, and pod lifecycle scripts.
 - **Terraform/** — Primer notes, getting-started notes, install script, configs, reusable module, and manifests.
 - **00_index/** — Navigation index files (topics, quick-links, glossary).
 - **CHANGELOG.md** — Kit-level change log.
 
+## Status
+
+Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker and Git; GitHub and Terraform are filling in.
+
 ---
-_Last updated: 2026-06-13_
+_Last updated: 2026-06-14_

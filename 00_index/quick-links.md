@@ -31,6 +31,14 @@
 ## Docker configs
 - Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
 
+## Docker manifests
+- Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
+
+## General
+
+- Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
+- Rework check for already-documented files (gen-002): [`General/docs/2026-06-14-rework-gen002-already-documented.md`](../General/docs/2026-06-14-rework-gen002-already-documented.md)
+
 ## Git
 
 - Primer: [`Git/notes/0000-primer-git.md`](../Git/notes/0000-primer-git.md)
@@ -53,6 +61,7 @@
 - Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
 - Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
 - Following the GitHub CLI quickstart notes: [`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
+- Following the official quickstart (CLI + web UI) notes: [`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md)
 - Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 
 ## Kubernetes
