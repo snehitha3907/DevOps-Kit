@@ -1,0 +1,68 @@
+---
+- name: Provision Nginx web server with idempotency checks
+  hosts: webservers
+  become: true
+
+  vars:
+    nginx_packages:
+      - nginx
+    nginx_service: nginx
+    nginx_document_root: /var/www/html
+    nginx_index_path: /var/www/html/index.html
+    nginx_index_content: |
+      <!doctype html>
+      <html>
+      <head><title>Ansible Nginx</title></head>
+      <body><h1>Provisioned by Ansible</h1></body>
+      </html>
+
+  tasks:
+    - name: Install Nginx package
+      ansible.builtin.apt:
+        name: "{{ nginx_packages }}"
+        state: present
+        update_cache: true
+
+    - name: Ensure Nginx service is running and enabled
+      ansible.builtin.systemd:
+        name: "{{ nginx_service }}"
+        state: started
+        enabled: true
+
+    - name: Ensure document root exists
+      ansible.builtin.file:
+        path: "{{ nginx_document_root }}"
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Deploy default Nginx page
+      ansible.builtin.copy:
+        dest: "{{ nginx_index_path }}"
+        content: "{{ nginx_index_content }}"
+        owner: root
+        group: root
+        mode: "0644"
+      notify: Reload Nginx
+
+    - name: Check Nginx is listening on port 80
+      ansible.builtin.wait_for:
+        port: 80
+        timeout: 30
+      changed_when: false
+
+    - name: Gather service facts
+      ansible.builtin.service_facts:
+
+    - name: Verify Nginx service state
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.services[nginx_service].state == 'running'
+          - ansible_facts.services[nginx_service].status == 'enabled'
+
+  handlers:
+    - name: Reload Nginx
+      ansible.builtin.systemd:
+        name: "{{ nginx_service }}"
+        state: reloaded

@@ -15,6 +15,7 @@
 ## Ansible configs
 
 - Docker and Python setup playbook: [`Ansible/configs/docker-python-setup.yaml`](../Ansible/configs/docker-python-setup.yaml)
+- Nginx web server provisioning playbook: [`Ansible/configs/nginx-webserver.yaml`](../Ansible/configs/nginx-webserver.yaml)
 
 ## Docker
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)

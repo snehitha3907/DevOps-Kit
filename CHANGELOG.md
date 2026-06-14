@@ -2,6 +2,7 @@
 
 ## 2026-06-14
 
+- Added Nginx web server Ansible config with idempotency checks (`Ansible/configs/nginx-webserver.yaml`)
 - Added General rework note for gen-002 already-documented files (`General/docs/2026-06-14-rework-gen002-already-documented.md`)
 
 ## 2026-06-13

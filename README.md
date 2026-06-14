@@ -7,7 +7,8 @@
 DevOps-Kit/
 ├── Ansible/
 │   ├── configs/
-│   │   └── docker-python-setup.yaml
+│   │   ├── docker-python-setup.yaml
+│   │   └── nginx-webserver.yaml
 │   ├── notes/
 │   │   ├── 0000-primer-ansible.md
 │   │   ├── 2026-06-06-exploring-ansible-cli.md
@@ -112,7 +113,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 
 | Tool       | Notes | Scripts | Snippets | Docs | Manifests | Configs |
 |------------|-------|---------|----------|------|-----------|---------|
-| Ansible    | 3     | 2       | 1        | —    | —         | 1       |
+| Ansible    | 3     | 2       | 1        | —    | —         | 2       |
 | Docker     | 4     | 3       | —        | 1    | 1         | 1       |
 | General    | —     | —       | —        | 2    | —         | —       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
@@ -127,6 +128,7 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - [Ansible getting started](Ansible/notes/2026-06-11-ansible-getting-started.md) — Notes for moving from first ad-hoc commands to a first playbook.
 - [Ansible first ad-hoc script](Ansible/scripts/install-and-first-adhoc.sh) — Script to install Ansible and run the first ad-hoc command.
 - [Ansible first playbook script](Ansible/scripts/run-first-playbook.sh) — Script to run a first playbook against inventory.
+- [Ansible Nginx web server config](Ansible/configs/nginx-webserver.yaml) — Idempotent playbook for installing, starting, and verifying Nginx.
 - [Ansible nginx playbook snippet](Ansible/snippets/nginx-playbook.yaml) — Minimal nginx deployment playbook snippet.
 - [Ansible troubleshooting notes](Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md) — SSH, pipx, and permission issues encountered.
 - [Docker primer](Docker/notes/0000-primer-docker.md) — Foundational Docker concepts: images, containers, Dockerfile, volumes.
