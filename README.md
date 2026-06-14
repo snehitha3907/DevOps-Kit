@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working engineer's reference for Docker, Git, GitHub, Kubernetes, Terraform, and Ansible — notes, scripts, configs, and snippets.
+> A working engineer's DevOps reference — notes, scripts, configs, and snippets for the tools you reach for daily.
 
 ## What\'s in here
 
@@ -106,7 +106,7 @@ DevOps-Kit/
     └── topics.md
 ```
 
-A collection of first-contact notes, setup scripts, and reference snippets for tools a DevOps engineer reaches for daily. Each tool directory follows a consistent layout: a primer, CLI exploration notes, and executable scripts to get from zero to running.
+First-contact notes, setup scripts, and configs for six tool families a DevOps engineer reaches for every day: Docker, Git, GitHub, Kubernetes, Terraform, and Ansible. Each tool directory follows the same layout — a primer, CLI exploration notes, executable scripts, and any configs or manifests picked up along the way. The kit is meant to be cloned and used as a quick-touch reference, not a tutorial site.
 
 ## Coverage
 
@@ -180,6 +180,10 @@ A collection of first-contact notes, setup scripts, and reference snippets for t
 - **Terraform/** — Primer notes, getting-started notes, install script, configs, reusable module, and manifests.
 - **00_index/** — Navigation index files (topics, quick-links, glossary).
 - **CHANGELOG.md** — Kit-level change log.
+
+## Status
+
+Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker and Git; GitHub and Terraform are filling in.
 
 ---
 _Last updated: 2026-06-14_
