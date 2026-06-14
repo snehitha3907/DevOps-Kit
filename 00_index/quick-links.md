@@ -9,6 +9,12 @@
 - CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
 - First playbook script: [`Ansible/scripts/run-first-playbook.sh`](../Ansible/scripts/run-first-playbook.sh)
 - Getting started notes: [`Ansible/notes/2026-06-11-ansible-getting-started.md`](../Ansible/notes/2026-06-11-ansible-getting-started.md)
+- Playbook troubleshooting notes: [`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
+- Nginx playbook snippet: [`Ansible/snippets/nginx-playbook.yaml`](../Ansible/snippets/nginx-playbook.yaml)
+
+## Ansible configs
+
+- Docker and Python setup playbook: [`Ansible/configs/docker-python-setup.yaml`](../Ansible/configs/docker-python-setup.yaml)
 
 ## Docker
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
@@ -19,8 +25,19 @@
 - Docker Compose quickstart notes: [`Docker/notes/2026-06-07-docker-compose-quickstart.md`](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
 - docker run vs compose docs: [`Docker/docs/docker-run-vs-compose.md`](../Docker/docs/docker-run-vs-compose.md)
 
+## Docker scripts
+- Compose multi-service stack: [`Docker/scripts/2026-06-12-compose-multi-service.sh`](../Docker/scripts/2026-06-12-compose-multi-service.sh)
+
 ## Docker configs
 - Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
+
+## Docker manifests
+- Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
+
+## General
+
+- Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
+- Rework check for already-documented files (gen-002): [`General/docs/2026-06-14-rework-gen002-already-documented.md`](../General/docs/2026-06-14-rework-gen002-already-documented.md)
 
 ## Git
 
@@ -36,6 +53,7 @@
 ## GitHub
 
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
+- GitHub issues API snippet: [`GitHub/snippets/github-issues-api.py`](../GitHub/snippets/github-issues-api.py)
 - Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
 - Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
 - Platform features (wiki, projects, insights): [`GitHub/notes/2026-06-10-github-platform-features.md`](../GitHub/notes/2026-06-10-github-platform-features.md)
@@ -43,6 +61,8 @@
 - Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
 - Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
 - Following the GitHub CLI quickstart notes: [`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
+- Following the official quickstart (CLI + web UI) notes: [`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md)
+- Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 
 ## Kubernetes
 
@@ -55,7 +75,10 @@
 
 ## Terraform
 
+
+
 - Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
+- Bootstrap structured project with plan/apply/destroy: [`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
 - CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
 - Getting-started tutorial notes: [`Terraform/notes/2026-06-10-terraform-getting-started.md`](../Terraform/notes/2026-06-10-terraform-getting-started.md)
@@ -63,6 +86,7 @@
 ## Terraform configs
 
 - Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
+- Local provider with variables and outputs: [`Terraform/configs/2026-06-12-tried-local-with-vars.tf`](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
 - Reusable S3 module with variables and outputs: [`Terraform/configs/reusable-s3-module/main.tf`](../Terraform/configs/reusable-s3-module/main.tf)
 
 ## Terraform manifests

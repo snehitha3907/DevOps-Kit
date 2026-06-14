@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-06-14
+
+- Added General rework note for gen-002 already-documented files (`General/docs/2026-06-14-rework-gen002-already-documented.md`)
+- Added following the official GitHub quickstart (CLI + web UI) notes (`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`)
+
+## 2026-06-13
+
+- Added Docker web app and database compose manifest (`Docker/manifests/2026-06-13-web-db-compose.yaml`)
+- Added Ansible playbook troubleshooting notes (`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`)
+- Added Docker and Python setup Ansible config (`Ansible/configs/docker-python-setup.yaml`)
+- Added General rework note for already-documented files (`General/docs/2026-06-13-rework-undocumented-files.md`)
+
+## 2026-06-12
+
+- Added Terraform bootstrap project script with variables and outputs (`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`)
+- Added Terraform local provider config with variables and outputs (`Terraform/configs/2026-06-12-tried-local-with-vars.tf`)
+- Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
+- Added Docker compose multi-service stack script (`Docker/scripts/2026-06-12-compose-multi-service.sh`)
+- Added GitHub create repo and open PR script (`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`)
+- Added GitHub issues API snippet (`GitHub/snippets/github-issues-api.py`)
+- Added Ansible nginx playbook snippet (`Ansible/snippets/nginx-playbook.yaml`)
+
 ## 2026-06-11
 
 - Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)

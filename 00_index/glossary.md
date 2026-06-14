@@ -1,5 +1,13 @@
 # Glossary
 
+## Ansible
+
+- **Control node** — The machine where Ansible is installed and from which commands and playbooks are run.
+- **Inventory** — A file listing managed hosts and their groupings.
+- **Playbook** — A YAML file defining a set of tasks to run on managed hosts.
+- **Module** — A reusable unit of work Ansible executes (e.g., `apt`, `copy`, `service`).
+- **Ad-hoc command** — A one-off Ansible command run directly without a playbook.
+
 ## Docker
 
 - **Image** — A read-only snapshot of a filesystem used as a template for creating containers.
@@ -9,6 +17,7 @@
 - **Registry** — A storage and distribution system for Docker images (e.g., Docker Hub).
 - **Volume** — Persistent storage that survives container restarts.
 - **Port mapping** — A Docker networking feature mapping a host port to a container port.
+- **Compose** — A tool for defining and running multi-container applications using a YAML file.
 
 ## Git
 
@@ -23,6 +32,7 @@
 - **Diff** — A view showing what changed between two commits or between working files and the last commit.
 - **Remote** — A URL pointing to another copy of the repository, typically hosted remotely.
 - **HEAD** — A pointer to the commit currently checked out.
+- **Rebase** — Rewriting commit history by applying commits from one branch onto another.
 
 ## GitHub
 
@@ -30,3 +40,23 @@
 - **Pull Request (PR)** — A proposed change that can be reviewed and merged.
 - **Issue** — A discussion thread for bugs, features, or tasks.
 - **Fork** — A personal copy of a repository for contributing changes.
+- **Wiki** — A built-in documentation space for a repository.
+- **Projects** — A kanban-style project management board for tracking work.
+- **Insights** — Analytics and metrics for a repository, including traffic, contributors, and dependency graph.
+
+## Kubernetes
+
+- **Pod** — The smallest deployable unit in Kubernetes; one or more containers sharing storage and network.
+- **Deployment** — A controller that manages a set of identical pods, handling scaling and rolling updates.
+- **Service** — A stable network endpoint for accessing a set of pods.
+- **Manifest** — A YAML or JSON file defining a Kubernetes resource.
+- **kubectl** — The Kubernetes CLI tool for interacting with clusters.
+- **kind** — A tool for running local Kubernetes clusters using Docker containers as nodes.
+
+## Terraform
+
+- **Provider** — A plugin that lets Terraform manage a specific infrastructure platform (e.g., AWS, local).
+- **State** — A file that maps real-world resources to your Terraform configuration.
+- **Plan** — A dry-run that shows what changes Terraform will make.
+- **Apply** — The command that executes the changes shown in a plan.
+- **Resource** — A declarative description of an infrastructure component (e.g., `local_file`).

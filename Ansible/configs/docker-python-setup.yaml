@@ -1,0 +1,46 @@
+---
+- name: Configure Docker and Python on multiple hosts
+  hosts: all
+  become: yes
+  vars:
+    docker_users:
+      - "{{ ansible_user }}"
+    python_packages:
+      - python3-pip
+      - python3-venv
+      - python3-dev
+
+  tasks:
+    - name: Install Docker
+      apt:
+        name:
+          - docker.io
+          - docker-compose-plugin
+        state: present
+        update_cache: yes
+
+    - name: Ensure Docker service is running
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install Python packages
+      apt:
+        name: "{{ python_packages }}"
+        state: present
+
+    - name: Add users to docker group
+      user:
+        name: "{{ item }}"
+        groups: docker
+        append: yes
+      loop: "{{ docker_users }}"
+
+    - name: Verify Docker installation
+      command: docker --version
+      register: docker_version
+
+    - name: Show Docker version
+      debug:
+        msg: "Docker installed: {{ docker_version.stdout }}"
