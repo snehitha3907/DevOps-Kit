@@ -87,6 +87,7 @@ DevOps-Kit/
 │       └── pod-lifecycle.sh
 ├── Terraform/
 │   ├── configs/
+│   │   ├── 2026-06-12-tried-local-with-vars.tf
 │   │   ├── local-file.tf
 │   │   └── reusable-s3-module/
 │   │       ├── README.md
@@ -102,8 +103,9 @@ DevOps-Kit/
 │   │   ├── 0000-primer-terraform.md
 │   │   ├── 2026-06-06-exploring-terraform-cli.md
 │   │   └── 2026-06-10-terraform-getting-started.md
-│   └── scripts/
-│       └── install-and-init.sh
+│   ├── scripts/
+│   │   ├── 2026-06-12-bootstrap-terraform-project.sh
+│   │   └── install-and-init.sh
 └── 00_index/
     ├── glossary.md
     ├── quick-links.md
@@ -116,13 +118,13 @@ First-contact notes, setup scripts, and configs for six tool families a DevOps e
 
 | Tool       | Notes | Scripts | Snippets | Docs | Manifests | Configs |
 |------------|-------|---------|----------|------|-----------|---------|
-| Ansible    | 3     | 2       | 1        | —    | —         | 1       |
+| Ansible    | 4     | 2       | 1        | —    | —         | 1       |
 | Docker     | 4     | 3       | —        | 1    | 1         | 1       |
 | General    | —     | —       | —        | 2    | —         | —       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
 | GitHub     | 5     | 4       | 2        | —    | —         | 1       |
 | Kubernetes | 3     | 2       | —        | —    | 1         | —       |
-| Terraform  | 3     | 1       | —        | —    | 1         | 4       |
+| Terraform  | 3     | 2       | —        | —    | 1         | 5       |
 
 ## Quick links
 
