@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-14
+
+- Added General rework note for gen-002 already-documented files (`General/docs/2026-06-14-rework-gen002-already-documented.md`)
+
 ## 2026-06-13
 
 - Added Docker web app and database compose manifest (`Docker/manifests/2026-06-13-web-db-compose.yaml`)

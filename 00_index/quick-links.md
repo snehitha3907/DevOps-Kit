@@ -36,7 +36,8 @@
 
 ## General
 
-- Rework check for already-documented files: [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
+- Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
+- Rework check for already-documented files (gen-002): [`General/docs/2026-06-14-rework-gen002-already-documented.md`](../General/docs/2026-06-14-rework-gen002-already-documented.md)
 
 ## Git
 
