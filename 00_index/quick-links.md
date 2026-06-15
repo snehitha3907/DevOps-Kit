@@ -11,6 +11,7 @@
 - Getting started notes: [`Ansible/notes/2026-06-11-ansible-getting-started.md`](../Ansible/notes/2026-06-11-ansible-getting-started.md)
 - Playbook troubleshooting notes: [`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - Nginx playbook snippet: [`Ansible/snippets/nginx-playbook.yaml`](../Ansible/snippets/nginx-playbook.yaml)
+- Ansible-lint workflow docs: [`Ansible/docs/2026-06-15-wiring-ansible-lint.md`](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 
 ## Ansible configs
 
@@ -39,6 +40,7 @@
 
 - Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
 - Rework check for already-documented files (gen-002): [`General/docs/2026-06-14-rework-gen002-already-documented.md`](../General/docs/2026-06-14-rework-gen002-already-documented.md)
+- Rework check for already-documented files (gen-003): [`General/docs/2026-06-15-rework-gen003-already-documented.md`](../General/docs/2026-06-15-rework-gen003-already-documented.md)
 
 ## Git
 

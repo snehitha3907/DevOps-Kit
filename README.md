@@ -119,7 +119,7 @@ First-contact notes, setup scripts, and configs for six tool families a DevOps e
 
 | Tool       | Notes | Scripts | Snippets | Docs | Manifests | Configs |
 |------------|-------|---------|----------|------|-----------|---------|
-| Ansible    | 4     | 2       | 1        | —    | —         | 1       |
+| Ansible    | 4     | 2       | 1        | 1    | —         | 2       |
 | Docker     | 4     | 3       | —        | 1    | 1         | 1       |
 | General    | —     | —       | —        | 2    | —         | —       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
@@ -152,4 +152,4 @@ First-contact notes, setup scripts, and configs for six tool families a DevOps e
 Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker and Git; GitHub and Terraform are filling in.
 
 ---
-_Last updated: 2026-06-14_
+_Last updated: 2026-06-15_

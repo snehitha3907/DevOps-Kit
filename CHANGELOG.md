@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-06-15
+
+- Added Ansible-lint workflow docs (`Ansible/docs/2026-06-15-wiring-ansible-lint.md`)
+- Added General rework note for gen-003 already-documented files (`General/docs/2026-06-15-rework-gen003-already-documented.md`)
+
 ## 2026-06-14
 
 - Added Nginx web server Ansible config with idempotency checks (`Ansible/configs/nginx-webserver.yaml`)
