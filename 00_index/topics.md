@@ -10,6 +10,7 @@
 - [script] [Ansible/scripts/run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh) — Script to run a first playbook against inventory.
 - [snippet] [Ansible/snippets/nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml) — Minimal nginx deployment playbook snippet.
 - [config] [Ansible/configs/docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml) — Playbook to configure Docker and Python on multiple hosts.
+- [doc] [Ansible/docs/2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md) — Integrating ansible-lint into the playbook workflow.
 
 ## Docker
 
@@ -30,6 +31,7 @@
 
 - [docs] [General/docs/2026-06-13-rework-undocumented-files.md](../General/docs/2026-06-13-rework-undocumented-files.md) — Rework note confirming the gen-001 files were already documented.
 - [docs] [General/docs/2026-06-14-rework-gen002-already-documented.md](../General/docs/2026-06-14-rework-gen002-already-documented.md) — Rework note confirming the gen-002 files were already documented.
+- [docs] [General/docs/2026-06-15-rework-gen003-already-documented.md](../General/docs/2026-06-15-rework-gen003-already-documented.md) — Rework note confirming the gen-003 files were already documented.
 
 ## Git
 
