@@ -5,6 +5,7 @@
 - Added Ansible variable precedence comparison notebook (`Ansible/notebooks/ansible-variable-precedence.ipynb`)
 - Added Ansible-lint workflow docs (`Ansible/docs/2026-06-15-wiring-ansible-lint.md`)
 - Added General rework note for gen-003 already-documented files (`General/docs/2026-06-15-rework-gen003-already-documented.md`)
+- Added Hello World guide and GitHub flow notes (gh-014 rework) (`GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md`)
 
 ## 2026-06-14
 
