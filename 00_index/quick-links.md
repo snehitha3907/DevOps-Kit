@@ -13,6 +13,10 @@
 - Nginx playbook snippet: [`Ansible/snippets/nginx-playbook.yaml`](../Ansible/snippets/nginx-playbook.yaml)
 - Ansible-lint workflow docs: [`Ansible/docs/2026-06-15-wiring-ansible-lint.md`](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 
+## Ansible notebooks
+
+- Variable precedence comparison: [`Ansible/notebooks/ansible-variable-precedence.ipynb`](../Ansible/notebooks/ansible-variable-precedence.ipynb)
+
 ## Ansible configs
 
 - Docker and Python setup playbook: [`Ansible/configs/docker-python-setup.yaml`](../Ansible/configs/docker-python-setup.yaml)
