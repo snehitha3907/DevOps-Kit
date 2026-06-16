@@ -69,6 +69,7 @@
 - Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
 - Following the GitHub CLI quickstart notes: [`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
 - Following the official quickstart (CLI + web UI) notes: [`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md)
+- Hello World guide and GitHub flow notes: [`GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md`](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
 - Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 
 ## Kubernetes
