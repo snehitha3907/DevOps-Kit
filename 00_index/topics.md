@@ -10,6 +10,7 @@
 - [script] [Ansible/scripts/run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh) — Script to run a first playbook against inventory.
 - [snippet] [Ansible/snippets/nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml) — Minimal nginx deployment playbook snippet.
 - [config] [Ansible/configs/docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml) — Playbook to configure Docker and Python on multiple hosts.
+- [notebook] [Ansible/notebooks/ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb) — Jupyter notebook comparing group_vars, host_vars, playbook vars, and roles.
 - [doc] [Ansible/docs/2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md) — Integrating ansible-lint into the playbook workflow.
 
 - [notebook] [Ansible/notebooks/ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb) — Jupyter notebook comparing Ansible variable precedence rules.
@@ -26,6 +27,7 @@
 - [dockerfile] [Docker/dockerfiles/build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile) — Dockerfile to build and run a simple container image.
 - [dockerfile] [Docker/dockerfiles/first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile) — First Dockerfile for building a custom image.
 - [dockerfile] [Docker/dockerfiles/tried-building-first-image.Dockerfile](../Docker/dockerfiles/tried-building-first-image.Dockerfile) — Attempted Dockerfile for building a custom image.
+- [dockerfile] [Docker/dockerfiles/build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile) — Minimal Dockerfile for building and running a first container.
 - [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
 - [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
 - [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
@@ -42,6 +44,7 @@
 - [note] [Git/notes/2026-06-04-install-git.md](../Git/notes/2026-06-04-install-git.md) — Installation instructions for Git on Windows, macOS, and Linux.
 - [note] [Git/notes/2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md) — Walkthrough of common Git commands from init through log.
 - [note] [Git/notes/2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md) — Following the official branching tutorial.
+- [script] [Git/scripts/squash-wip-commits.sh](../Git/scripts/squash-wip-commits.sh) — Automate interactive rebase to squash WIP commits before PR.
 - [script] [Git/scripts/install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh) — Script to install Git and create a first commit.
 - [script] [Git/scripts/minimal-branching-workflow.sh](../Git/scripts/minimal-branching-workflow.sh) — Standalone script demonstrating branch/create/merge/rebase.
 - [script] [Git/scripts/2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh) — Script for practicing merge conflicts.
@@ -54,6 +57,7 @@
 - [note] [GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md) — Exploration of repos, issues, and PRs via GitHub API.
 - [note] [GitHub/notes/2026-06-10-repos-issues-and-prs.md](../GitHub/notes/2026-06-10-repos-issues-and-prs.md) — Notes on repository, issue, and PR management through the GitHub interface.
 - [note] [GitHub/notes/2026-06-10-github-platform-features.md](../GitHub/notes/2026-06-10-github-platform-features.md) — GitHub platform features: wiki, projects, insights.
+- [note] [GitHub/notes/2026-06-10-repos-issues-and-prs.md](../GitHub/notes/2026-06-10-repos-issues-and-prs.md) — Notes on managing repos, issues, and PRs via gh.
 - [note] [GitHub/notes/2026-06-11-following-github-cli-quickstart.md](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md) — Follow-up notes from the GitHub CLI quickstart.
 - [note] [GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md) — Notes from the official GitHub quickstart using both CLI and web UI.
 - [note] [GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md) — Walkthrough of GitHub's Hello World guide and the GitHub flow.
