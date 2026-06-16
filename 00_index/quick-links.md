@@ -60,6 +60,11 @@
 - Branching tutorial notes: [`Git/notes/2026-06-07-git-branching-tutorial.md`](../Git/notes/2026-06-07-git-branching-tutorial.md)
 - Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
 - Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
+- Conventional commit hook: [`Git/scripts/commit-msg-conventional-commit.sh`](../Git/scripts/commit-msg-conventional-commit.sh)
+
+## Git docs
+
+- Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-feature-development.md`](../Git/docs/git-worktrees-parallel-feature-development.md)
 
 ## GitHub
 
