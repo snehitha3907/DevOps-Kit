@@ -41,6 +41,9 @@
 ## Docker manifests
 - Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 
+## Docker dockerfiles
+- Build and run first container: [`Docker/dockerfiles/build-and-run-first.Dockerfile`](../Docker/dockerfiles/build-and-run-first.Dockerfile)
+
 ## General
 
 - Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
@@ -88,8 +91,6 @@
 - ConfigMap + Secret mounted Pod manifest: [`Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml`](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 
 ## Terraform
-
-
 
 - Install + init script: [`Terraform/scripts/install-and-init.sh`](../Terraform/scripts/install-and-init.sh)
 - Bootstrap structured project with plan/apply/destroy: [`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
