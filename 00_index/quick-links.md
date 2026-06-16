@@ -34,6 +34,7 @@
 
 ## Docker scripts
 - Compose multi-service stack: [`Docker/scripts/2026-06-12-compose-multi-service.sh`](../Docker/scripts/2026-06-12-compose-multi-service.sh)
+- Container health-check and dangling resource cleanup: [`Docker/scripts/docker-health-check-and-cleanup.sh`](../Docker/scripts/docker-health-check-and-cleanup.sh)
 
 ## Docker configs
 - Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
