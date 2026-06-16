@@ -73,8 +73,7 @@
 - Following the GitHub CLI quickstart notes: [`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
 - Following the official quickstart (CLI + web UI) notes: [`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md)
 - Hello World guide and GitHub flow notes: [`GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md`](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
-- Repos, issues, and PRs management: [`GitHub/notes/2026-06-10-repos-issues-and-prs.md`](../GitHub/notes/2026-06-10-repos-issues-and-prs.md)
-- Auth + profile exploration: [`GitHub/scripts/2026-06-10-auth-and-explore-profile.sh`](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh)
+- Web UI exploration (profile, repos, issues): [`GitHub/notes/2026-06-15-explore-github-web-ui.md`](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
 - Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 
 ## Kubernetes
