@@ -7,6 +7,7 @@
 - **Playbook** — A YAML file defining a set of tasks to run on managed hosts.
 - **Module** — A reusable unit of work Ansible executes (e.g., `apt`, `copy`, `service`).
 - **Ad-hoc command** — A one-off Ansible command run directly without a playbook.
+- **ansible-lint** — A linting tool that checks Ansible playbooks for syntax errors, best-practice violations, and idempotency risks.
 
 ## Docker
 
@@ -18,6 +19,7 @@
 - **Volume** — Persistent storage that survives container restarts.
 - **Port mapping** — A Docker networking feature mapping a host port to a container port.
 - **Compose** — A tool for defining and running multi-container applications using a YAML file.
+- **Build context** — The directory path passed to `docker build` that the Docker daemon uses as the source for copying files during image creation.
 
 ## Git
 
@@ -43,6 +45,7 @@
 - **Wiki** — A built-in documentation space for a repository.
 - **Projects** — A kanban-style project management board for tracking work.
 - **Insights** — Analytics and metrics for a repository, including traffic, contributors, and dependency graph.
+- **GitHub flow** — A lightweight branching workflow where feature branches are created from `main`, changes are committed, a pull request is opened, and the branch is merged and deleted after review.
 
 ## Kubernetes
 
@@ -52,6 +55,12 @@
 - **Manifest** — A YAML or JSON file defining a Kubernetes resource.
 - **kubectl** — The Kubernetes CLI tool for interacting with clusters.
 - **kind** — A tool for running local Kubernetes clusters using Docker containers as nodes.
+- **Minikube** — A tool that runs a single-node Kubernetes cluster locally for development and testing.
+- **NodePort** — A Kubernetes Service type that exposes the service on a static port on each node's IP address.
+- **ReplicaSet** — A Kubernetes controller that ensures a specified number of pod replicas are running at any given time.
+- **Rolling update** — A deployment strategy that gradually replaces old pod instances with new ones, minimizing downtime.
+- **ConfigMap** — A Kubernetes resource for storing non-sensitive configuration data as key-value pairs that can be consumed by pods.
+- **Secret** — A Kubernetes resource for storing sensitive data such as passwords or API keys, encoded as base64.
 
 ## Terraform
 
