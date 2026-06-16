@@ -13,6 +13,10 @@ DevOps-Kit/
 │   ├── configs/
 │   │   ├── docker-python-setup.yaml
 │   │   └── nginx-webserver.yaml
+│   ├── docs/
+│   │   └── 2026-06-15-wiring-ansible-lint.md
+│   ├── notebooks/
+│   │   └── ansible-variable-precedence.ipynb
 │   ├── notes/
 │   │   ├── 0000-primer-ansible.md
 │   │   ├── 2026-06-06-exploring-ansible-cli.md
@@ -30,6 +34,7 @@ DevOps-Kit/
 │   ├── docs/
 │   │   └── docker-run-vs-compose.md
 │   ├── dockerfiles/
+│   │   ├── build-and-run-first.Dockerfile
 │   │   ├── first-docker-image.Dockerfile
 │   │   └── tried-building-first-image.Dockerfile
 │   ├── manifests/
@@ -46,7 +51,8 @@ DevOps-Kit/
 ├── General/
 │   └── docs/
 │       ├── 2026-06-13-rework-undocumented-files.md
-│       └── 2026-06-14-rework-gen002-already-documented.md
+│       ├── 2026-06-14-rework-gen002-already-documented.md
+│       └── 2026-06-15-rework-gen003-already-documented.md
 ├── Git/
 │   ├── notes/
 │   │   ├── 0000-primer-git.md
@@ -67,8 +73,13 @@ DevOps-Kit/
 │   │   ├── 2026-06-07-explore-github-web-and-cli.md
 │   │   ├── 2026-06-10-exploring-github-repos-issues-prs.md
 │   │   ├── 2026-06-10-github-platform-features.md
-│   │   └── 2026-06-11-following-github-cli-quickstart.md
+│   │   ├── 2026-06-10-repos-issues-and-prs.md
+│   │   ├── 2026-06-11-following-github-cli-quickstart.md
+│   │   ├── 2026-06-13-github-quickstart-cli-and-web.md
+│   │   ├── 2026-06-15-hello-world-guide-and-github-flow.md
+│   │   └── 2026-06-15-explore-github-web-ui.md
 │   ├── scripts/
+│   │   ├── 2026-06-10-auth-and-explore-profile.sh
 │   │   ├── 2026-06-12-create-repo-and-pr.sh
 │   │   ├── auth-and-profile.sh
 │   │   ├── tried-auth-and-profile.sh
@@ -78,11 +89,13 @@ DevOps-Kit/
 │       └── list-repos-with-python.py
 ├── Kubernetes/
 │   ├── manifests/
+│   │   ├── 2026-06-15-configmap-secret-mounted-pod.yaml
 │   │   └── stateless-app.yaml
 │   ├── notes/
 │   │   ├── 0000-primer-kubernetes.md
 │   │   ├── 2026-06-06-exploring-kubectl.md
-│   │   └── 2026-06-08-kubernetes-interactive-tutorial.md
+│   │   ├── 2026-06-08-kubernetes-interactive-tutorial.md
+│   │   └── 2026-06-15-following-kubernetes-basics-tutorial.md
 │   └── scripts/
 │       ├── install-kind-and-first-cluster.sh
 │       └── pod-lifecycle.sh
@@ -121,10 +134,10 @@ First-contact notes, setup scripts, and configs for six tool families a DevOps e
 |------------|-------|---------|----------|------|-----------|---------|
 | Ansible    | 4     | 2       | 1        | 1    | —         | 2       |
 | Docker     | 4     | 3       | —        | 1    | 1         | 1       |
-| General    | —     | —       | —        | 2    | —         | —       |
+| General    | —     | —       | —        | 3    | —         | —       |
 | Git        | 4     | 3       | 1        | —    | —         | —       |
-| GitHub     | 5     | 4       | 2        | —    | —         | 1       |
-| Kubernetes | 3     | 2       | —        | —    | 1         | —       |
+| GitHub     | 9     | 5       | 2        | —    | —         | 1       |
+| Kubernetes | 4     | 2       | —        | —    | 2         | —       |
 | Terraform  | 3     | 2       | —        | —    | 1         | 5       |
 
 ## Quick links
@@ -152,4 +165,4 @@ First-contact notes, setup scripts, and configs for six tool families a DevOps e
 Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker and Git; GitHub and Terraform are filling in.
 
 ---
-_Last updated: 2026-06-15_
+_Last updated: 2026-06-16_

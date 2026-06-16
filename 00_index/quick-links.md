@@ -28,6 +28,7 @@
 - CLI exploration notes: [`Docker/notes/2026-06-06-exploring-docker-cli.md`](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - First Dockerfile: [`Docker/dockerfiles/first-docker-image.Dockerfile`](../Docker/dockerfiles/first-docker-image.Dockerfile)
 - Build first image Dockerfile: [`Docker/dockerfiles/tried-building-first-image.Dockerfile`](../Docker/dockerfiles/tried-building-first-image.Dockerfile)
+- Build and run first Dockerfile: [`Docker/dockerfiles/build-and-run-first.Dockerfile`](../Docker/dockerfiles/build-and-run-first.Dockerfile)
 - Docker Compose quickstart notes: [`Docker/notes/2026-06-07-docker-compose-quickstart.md`](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
 - docker run vs compose docs: [`Docker/docs/docker-run-vs-compose.md`](../Docker/docs/docker-run-vs-compose.md)
 
@@ -65,8 +66,10 @@
 - Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
 - Platform features (wiki, projects, insights): [`GitHub/notes/2026-06-10-github-platform-features.md`](../GitHub/notes/2026-06-10-github-platform-features.md)
 - Repos, issues, and PRs exploration notes: [`GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md`](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md)
+- Repos, issues, and PRs notes: [`GitHub/notes/2026-06-10-repos-issues-and-prs.md`](../GitHub/notes/2026-06-10-repos-issues-and-prs.md)
 - Comment on first issue script: [`GitHub/scripts/tried-commenting-on-first-issue.sh`](../GitHub/scripts/tried-commenting-on-first-issue.sh)
 - Auth + profile exploration script: [`GitHub/scripts/tried-auth-and-profile.sh`](../GitHub/scripts/tried-auth-and-profile.sh)
+- Auth and explore profile script: [`GitHub/scripts/2026-06-10-auth-and-explore-profile.sh`](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh)
 - Following the GitHub CLI quickstart notes: [`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md)
 - Following the official quickstart (CLI + web UI) notes: [`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md)
 - Hello World guide and GitHub flow notes: [`GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md`](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
