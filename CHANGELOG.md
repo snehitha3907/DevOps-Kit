@@ -2,6 +2,8 @@
 
 ## 2026-06-16
 
+- Added Git worktrees docs for parallel feature development (git-002) (`Git/docs/git-worktrees-parallel-development.md`)
+- Added conventional commits git hook script (git-001) (`Git/scripts/conventional-commits-hook.sh`)
 - Reworked GitHub web UI exploration notes with L1 scratchy voice (gh-013) (`GitHub/notes/2026-06-15-explore-github-web-ui.md`)
 - Updated README tree and Coverage table with 10 previously undocumented files (audit-007) (`General/docs/2026-06-16-audit-007-undocumented-files.md`)
 - Added interactive rebase automation script for squashing WIP commits before PR (git-003) (`Git/scripts/squash-wip-commits.sh`)

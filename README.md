@@ -18,7 +18,7 @@ First-contact notes, setup scripts, configs, and manifests for six tool families
 | Ansible | 4 | 2 | 1 | — | 1 | 1 | — | 2 |
 | Docker | 4 | 3 | — | 3 | 1 | — | 1 | 1 |
 | General | — | — | — | — | 3 | — | — | — |
-| Git | 4 | 3 | 1 | — | — | — | — | — |
+| Git | 4 | 4 | 1 | — | 1 | — | — | — |
 | GitHub | 8 | 5 | 2 | — | — | — | — | 1 |
 | Kubernetes | 4 | 2 | — | — | — | — | 2 | — |
 | Terraform | 3 | 2 | — | — | — | — | 1 | 7 |
@@ -35,7 +35,7 @@ First-contact notes, setup scripts, configs, and manifests for six tool families
 
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, and a variable precedence notebook.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, and scripts.
-- **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, and a commit snippet.
+- **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, a commit snippet, and docs for worktrees.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, and Python API snippets.
 - **General/** — Project-level cleanup and rework documentation.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.

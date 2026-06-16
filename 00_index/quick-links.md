@@ -61,6 +61,12 @@
 - Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
 - Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 
+## Git docs
+- Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-development.md`](../Git/docs/git-worktrees-parallel-development.md)
+
+## Git scripts
+- Conventional commits hook: [`Git/scripts/conventional-commits-hook.sh`](../Git/scripts/conventional-commits-hook.sh)
+
 ## GitHub
 
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
