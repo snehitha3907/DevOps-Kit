@@ -80,6 +80,8 @@
 - Interactive tutorial walkthrough: [`Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md`](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
 - Stateless app manifest: [`Kubernetes/manifests/stateless-app.yaml`](../Kubernetes/manifests/stateless-app.yaml)
 - Pod lifecycle script: [`Kubernetes/scripts/pod-lifecycle.sh`](../Kubernetes/scripts/pod-lifecycle.sh)
+- Kubernetes Basics tutorial notes: [`Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md`](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
+- ConfigMap + Secret mounted Pod manifest: [`Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml`](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 
 ## Terraform
 
