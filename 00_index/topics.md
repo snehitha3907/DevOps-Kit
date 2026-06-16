@@ -12,6 +12,8 @@
 - [config] [Ansible/configs/docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml) — Playbook to configure Docker and Python on multiple hosts.
 - [doc] [Ansible/docs/2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md) — Integrating ansible-lint into the playbook workflow.
 
+- [notebook] [Ansible/notebooks/ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb) — Jupyter notebook comparing Ansible variable precedence rules.
+
 ## Docker
 
 - [note] [Docker/notes/0000-primer-docker.md](../Docker/notes/0000-primer-docker.md) — Primer covering images, containers, Dockerfile, layers, volumes, and registries.
@@ -21,6 +23,7 @@
 - [script] [Docker/scripts/2026-06-12-compose-multi-service.sh](../Docker/scripts/2026-06-12-compose-multi-service.sh) — Script for bringing up a multi-service compose stack.
 - [script] [Docker/scripts/install-and-run-container.sh](../Docker/scripts/install-and-run-container.sh) — Script to install and run nginx.
 - [script] [Docker/scripts/install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh) — Script to install Docker and run first container.
+- [dockerfile] [Docker/dockerfiles/build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile) — Dockerfile to build and run a simple container image.
 - [dockerfile] [Docker/dockerfiles/first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile) — First Dockerfile for building a custom image.
 - [dockerfile] [Docker/dockerfiles/tried-building-first-image.Dockerfile](../Docker/dockerfiles/tried-building-first-image.Dockerfile) — Attempted Dockerfile for building a custom image.
 - [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
@@ -49,8 +52,12 @@
 - [note] [GitHub/notes/0000-primer-github.md](../GitHub/notes/0000-primer-github.md) — Primer covering repos, PRs, issues, forks.
 - [note] [GitHub/notes/2026-06-07-explore-github-web-and-cli.md](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md) — Walkthrough of gh CLI commands for repos, issues, PRs.
 - [note] [GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md) — Exploration of repos, issues, and PRs via GitHub API.
+- [note] [GitHub/notes/2026-06-10-repos-issues-and-prs.md](../GitHub/notes/2026-06-10-repos-issues-and-prs.md) — Notes on repository, issue, and PR management through the GitHub interface.
 - [note] [GitHub/notes/2026-06-10-github-platform-features.md](../GitHub/notes/2026-06-10-github-platform-features.md) — GitHub platform features: wiki, projects, insights.
 - [note] [GitHub/notes/2026-06-11-following-github-cli-quickstart.md](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md) — Follow-up notes from the GitHub CLI quickstart.
+- [note] [GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md) — Notes from the official GitHub quickstart using both CLI and web UI.
+- [note] [GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md) — Walkthrough of GitHub's Hello World guide and the GitHub flow.
+- [script] [GitHub/scripts/2026-06-10-auth-and-explore-profile.sh](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh) — Script for GitHub authentication and profile exploration.
 - [script] [GitHub/scripts/auth-and-profile.sh](../GitHub/scripts/auth-and-profile.sh) — Script to authenticate and view profile info.
 - [script] [GitHub/scripts/tried-auth-and-profile.sh](../GitHub/scripts/tried-auth-and-profile.sh) — Script attempting GitHub authentication.
 - [script] [GitHub/scripts/tried-commenting-on-first-issue.sh](../GitHub/scripts/tried-commenting-on-first-issue.sh) — Script to comment on issues.
@@ -64,8 +71,10 @@
 - [note] [Kubernetes/notes/0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md) — Primer covering pods, deployments, services.
 - [note] [Kubernetes/notes/2026-06-06-exploring-kubectl.md](../Kubernetes/notes/2026-06-06-exploring-kubectl.md) — Walkthrough of kubectl commands.
 - [note] [Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md) — Notes from the k8s.io interactive tutorial.
+- [note] [Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md) — Notes from the official Kubernetes Basics interactive tutorial.
 - [script] [Kubernetes/scripts/install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh) — Script to install kind and create first cluster.
 - [script] [Kubernetes/scripts/pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh) — Script managing pod lifecycle operations.
+- [manifest] [Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml) — Pod manifest with ConfigMap and Secret volume mounts.
 - [manifest] [Kubernetes/manifests/stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml) — Deployment and Service manifest for a stateless app.
 
 ## Terraform
