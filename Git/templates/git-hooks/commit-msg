@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# commit-msg hook — validate commit message format
+#
+# Accepts conventional commits plus optional footer references:
+#   type(scope): description
+#   type(scope)!: description  (breaking change)
+#
+#   type: feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert
+#   scope: optional alphanumeric + hyphens
+#   footer: BREAKING CHANGE|Closes|Fixes|Refs #<num>
+#
+# Install: ln -sf ../../templates/git-hooks/commit-msg .git/hooks/commit-msg
+
+set -euo pipefail
+
+INPUT="$1"
+
+if [ ! -f "$INPUT" ]; then
+  echo "error: commit message file not found: $INPUT" >&2
+  exit 1
+fi
+
+MSG=$(head -1 "$INPUT")
+
+# skip non-standard commits
+if echo "$MSG" | grep -qE '^(Merge |fixup! |squash! |WIP|wip)'; then
+  exit 0
+fi
+
+# enforce 72-char subject line
+SUBJECT_LEN=${#MSG}
+if [ "$SUBJECT_LEN" -gt 72 ]; then
+  echo "error: commit subject line is $SUBJECT_LEN characters (max 72)" >&2
+  exit 1
+fi
+
+# validate conventional commit format
+TYPE='feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert'
+PATTERN="^($TYPE)(\([a-zA-Z0-9._/-]+\))?!?: [A-Z].+$"
+
+if ! echo "$MSG" | grep -qE "$PATTERN"; then
+  echo "error: commit message does not match conventional commit format" >&2
+  echo "" >&2
+  echo "  expected: type(scope): Description" >&2
+  echo "  types:    $TYPE" >&2
+  echo "  example:  feat(api): Add rate limiting middleware" >&2
+  exit 1
+fi
+
+# validate footer references if present
+while IFS= read -r line; do
+  if echo "$line" | grep -qE '^(BREAKING CHANGE|Closes|Fixes|Refs)'; then
+    if ! echo "$line" | grep -qE ':\s+.+'; then
+      echo "error: footer '$line' is missing a value" >&2
+      exit 1
+    fi
+  fi
+done < <(tail -n +3 "$INPUT")
