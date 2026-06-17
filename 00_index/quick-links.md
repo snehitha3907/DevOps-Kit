@@ -65,6 +65,7 @@
 ## Git docs
 
 - Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-feature-development.md`](../Git/docs/git-worktrees-parallel-feature-development.md)
+- Git workflows comparison (feature branch vs GitFlow vs trunk-based): [`Git/docs/git-workflows-comparison.md`](../Git/docs/git-workflows-comparison.md)
 
 ## GitHub
 

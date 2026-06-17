@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-17
+
+- Added Git workflows comparison doc (git-001) (`Git/docs/git-workflows-comparison.md`)
+
 ## 2026-06-16
 
 - Reworked GitHub web UI exploration notes with L1 scratchy voice (gh-013) (`GitHub/notes/2026-06-15-explore-github-web-ui.md`)
