@@ -3,6 +3,7 @@
 ## 2026-06-17
 
 - Added Git workflows comparison doc (git-001) (`Git/docs/git-workflows-comparison.md`)
+- Added batch git operations across multiple repos script (git-002) (`Git/scripts/batch-git-ops.sh`)
 
 ## 2026-06-16
 
