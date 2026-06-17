@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-17
+
+- Added Git workflows comparison doc (git-001) (`Git/docs/git-workflows-comparison.md`)
+
 ## 2026-06-16
 
 - Added Docker container health-check and dangling resource cleanup script (doc-013) (`Docker/scripts/docker-health-check-and-cleanup.sh`)
