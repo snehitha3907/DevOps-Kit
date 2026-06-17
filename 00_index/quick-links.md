@@ -62,6 +62,7 @@
 - Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
 - Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - Conventional commit hook: [`Git/scripts/commit-msg-conventional-commit.sh`](../Git/scripts/commit-msg-conventional-commit.sh)
+- Batch git operations across multiple repos: [`Git/scripts/batch-git-ops.sh`](../Git/scripts/batch-git-ops.sh)
 
 ## Git docs
 
