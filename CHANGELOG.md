@@ -1,12 +1,23 @@
 # Changelog
 
+## 2026-06-18
+
+- Added changelog generator from conventional commits script (git-004) (`Git/scripts/changelog-from-conventional-commits.py`)
+
+## 2026-06-17
+
+- Added Git hooks project scaffold template (git-003) (`Git/templates/git-hooks/`)
+- Added Git workflows comparison doc (git-001) (`Git/docs/git-workflows-comparison.md`)
+- Added batch git operations across multiple repos script (git-002) (`Git/scripts/batch-git-ops.sh`)
+
 ## 2026-06-16
 
-- Added Git worktrees docs for parallel feature development (git-002) (`Git/docs/git-worktrees-parallel-development.md`)
-- Added conventional commits git hook script (git-001) (`Git/scripts/conventional-commits-hook.sh`)
+- Added Docker container health-check and dangling resource cleanup script (doc-013) (`Docker/scripts/docker-health-check-and-cleanup.sh`)
 - Reworked GitHub web UI exploration notes with L1 scratchy voice (gh-013) (`GitHub/notes/2026-06-15-explore-github-web-ui.md`)
 - Updated README tree and Coverage table with 10 previously undocumented files (audit-007) (`General/docs/2026-06-16-audit-007-undocumented-files.md`)
 - Added interactive rebase automation script for squashing WIP commits before PR (git-003) (`Git/scripts/squash-wip-commits.sh`)
+- Added git worktrees docs for parallel feature development (git-002) (`Git/docs/git-worktrees-parallel-feature-development.md`)
+- Added conventional commit message hook script (git-001) (`Git/scripts/commit-msg-conventional-commit.sh`)
 
 ## 2026-06-15
 

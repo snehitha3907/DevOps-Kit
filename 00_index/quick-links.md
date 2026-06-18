@@ -34,6 +34,7 @@
 
 ## Docker scripts
 - Compose multi-service stack: [`Docker/scripts/2026-06-12-compose-multi-service.sh`](../Docker/scripts/2026-06-12-compose-multi-service.sh)
+- Container health-check and dangling resource cleanup: [`Docker/scripts/docker-health-check-and-cleanup.sh`](../Docker/scripts/docker-health-check-and-cleanup.sh)
 
 ## Docker configs
 - Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
@@ -60,6 +61,21 @@
 - Branching tutorial notes: [`Git/notes/2026-06-07-git-branching-tutorial.md`](../Git/notes/2026-06-07-git-branching-tutorial.md)
 - Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
 - Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
+- Conventional commit hook: [`Git/scripts/commit-msg-conventional-commit.sh`](../Git/scripts/commit-msg-conventional-commit.sh)
+- Batch git operations across multiple repos: [`Git/scripts/batch-git-ops.sh`](../Git/scripts/batch-git-ops.sh)
+- Changelog generator from conventional commits: [`Git/scripts/changelog-from-conventional-commits.py`](../Git/scripts/changelog-from-conventional-commits.py)
+
+## Git docs
+
+- Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-feature-development.md`](../Git/docs/git-worktrees-parallel-feature-development.md)
+- Git workflows comparison (feature branch vs GitFlow vs trunk-based): [`Git/docs/git-workflows-comparison.md`](../Git/docs/git-workflows-comparison.md)
+
+## Git templates
+
+- Git hooks project scaffold: [`Git/templates/git-hooks/`](../Git/templates/git-hooks/)
+  - pre-commit: [`Git/templates/git-hooks/pre-commit`](../Git/templates/git-hooks/pre-commit)
+  - commit-msg: [`Git/templates/git-hooks/commit-msg`](../Git/templates/git-hooks/commit-msg)
+  - post-checkout: [`Git/templates/git-hooks/post-checkout`](../Git/templates/git-hooks/post-checkout)
 
 ## Git docs
 - Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-development.md`](../Git/docs/git-worktrees-parallel-development.md)

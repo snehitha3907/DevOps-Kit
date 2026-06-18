@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# pre-commit hook — check for common issues before allowing a commit
+#
+# Checks:
+#   - Trailing whitespace
+#   - Unresolved merge conflict markers
+#   - Files larger than 1 MB (staged additions)
+#   - Debug statements (TODO, FIXME, debugger) in staged files
+#
+# Install: ln -sf ../../templates/git-hooks/pre-commit .git/hooks/pre-commit
+#   (or copy the file and make it executable)
+
+set -euo pipefail
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+error() {
+  echo -e "${RED}error:${NC} $*" >&2
+}
+
+check_trailing_whitespace() {
+  local found=0
+  while IFS= read -r file; do
+    if grep -Hn '[[:space:]]$' "$file" >&2 2>/dev/null; then
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_merge_markers() {
+  local found=0
+  while IFS= read -r file; do
+    if grep -HnE '^(<<<<<<< |=======$|>>>>>>> )' "$file" >&2 2>/dev/null; then
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_large_files() {
+  local ok=0
+  while IFS= read -r file; do
+    local size
+    size=$(git diff --cached -- "$file" | wc -c)
+    if [ "$size" -gt 1048576 ]; then
+      error "staged changes in $file exceed 1 MB ($(( size / 1024 )) KB)"
+      ok=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=A)
+  return "$ok"
+}
+
+check_debug_statements() {
+  local pattern='\b(TODO|FIXME|XXX|debugger|console\.log)\b'
+  local skip_ext='\.md$|\.txt$|\.json$|\.yaml$|\.yml$'
+  local found=0
+  while IFS= read -r file; do
+    if echo "$file" | grep -qE "$skip_ext"; then
+      continue
+    fi
+    if git diff --cached "$file" | grep '^+' | grep -qE "$pattern"; then
+      error "debug statement detected in staged changes: $file"
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+errors=0
+
+check_trailing_whitespace || errors=1
+check_merge_markers || errors=1
+check_large_files || errors=1
+check_debug_statements || errors=1
+
+exit "$errors"
