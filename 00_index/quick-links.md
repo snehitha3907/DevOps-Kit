@@ -23,6 +23,7 @@
 - Nginx web server provisioning playbook: [`Ansible/configs/nginx-webserver.yaml`](../Ansible/configs/nginx-webserver.yaml)
 
 ## Docker
+
 - Primer: [`Docker/notes/0000-primer-docker.md`](../Docker/notes/0000-primer-docker.md)
 - Install + first container script: [`Docker/scripts/install-and-run-first-container.sh`](../Docker/scripts/install-and-run-first-container.sh)
 - CLI exploration notes: [`Docker/notes/2026-06-06-exploring-docker-cli.md`](../Docker/notes/2026-06-06-exploring-docker-cli.md)
@@ -33,19 +34,23 @@
 - docker run vs compose docs: [`Docker/docs/docker-run-vs-compose.md`](../Docker/docs/docker-run-vs-compose.md)
 
 ## Docker scripts
+
 - Compose multi-service stack: [`Docker/scripts/2026-06-12-compose-multi-service.sh`](../Docker/scripts/2026-06-12-compose-multi-service.sh)
 - Container health-check and dangling resource cleanup: [`Docker/scripts/docker-health-check-and-cleanup.sh`](../Docker/scripts/docker-health-check-and-cleanup.sh)
 
 ## Docker configs
+
 - Multi-service app: [`Docker/configs/multi-service-app.yaml`](../Docker/configs/multi-service-app.yaml)
 
 ## Docker manifests
+
 - Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 
 ## Docker notebooks
 - Comparing networking drivers (bridge, host, overlay, macvlan): [`Docker/notebooks/comparing-docker-networking-drivers.ipynb`](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 
 ## Docker dockerfiles
+
 - Build and run first container: [`Docker/dockerfiles/build-and-run-first.Dockerfile`](../Docker/dockerfiles/build-and-run-first.Dockerfile)
 
 ## General
@@ -53,6 +58,7 @@
 - Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
 - Rework check for already-documented files (gen-002): [`General/docs/2026-06-14-rework-gen002-already-documented.md`](../General/docs/2026-06-14-rework-gen002-already-documented.md)
 - Rework check for already-documented files (gen-003): [`General/docs/2026-06-15-rework-gen003-already-documented.md`](../General/docs/2026-06-15-rework-gen003-already-documented.md)
+- Audit of undocumented files (gen-007): [`General/docs/2026-06-16-audit-007-undocumented-files.md`](../General/docs/2026-06-16-audit-007-undocumented-files.md)
 
 ## Git
 
@@ -64,7 +70,7 @@
 - Branching tutorial notes: [`Git/notes/2026-06-07-git-branching-tutorial.md`](../Git/notes/2026-06-07-git-branching-tutorial.md)
 - Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
 - Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
-- Conventional commit hook: [`Git/scripts/commit-msg-conventional-commit.sh`](../Git/scripts/commit-msg-conventional-commit.sh)
+- Conventional commit hook script: [`Git/scripts/commit-msg-conventional-commit.sh`](../Git/scripts/commit-msg-conventional-commit.sh)
 - Batch git operations across multiple repos: [`Git/scripts/batch-git-ops.sh`](../Git/scripts/batch-git-ops.sh)
 - Changelog generator from conventional commits: [`Git/scripts/changelog-from-conventional-commits.py`](../Git/scripts/changelog-from-conventional-commits.py)
 
