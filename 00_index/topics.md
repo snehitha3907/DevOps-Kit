@@ -10,10 +10,9 @@
 - [script] [Ansible/scripts/run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh) — Script to run a first playbook against inventory.
 - [snippet] [Ansible/snippets/nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml) — Minimal nginx deployment playbook snippet.
 - [config] [Ansible/configs/docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml) — Playbook to configure Docker and Python on multiple hosts.
+- [config] [Ansible/configs/nginx-webserver.yaml](../Ansible/configs/nginx-webserver.yaml) — Playbook to provision nginx on web servers.
 - [notebook] [Ansible/notebooks/ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb) — Jupyter notebook comparing group_vars, host_vars, playbook vars, and roles.
 - [doc] [Ansible/docs/2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md) — Integrating ansible-lint into the playbook workflow.
-
-- [notebook] [Ansible/notebooks/ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb) — Jupyter notebook comparing Ansible variable precedence rules.
 
 ## Docker
 
@@ -22,21 +21,22 @@
 - [note] [Docker/notes/2026-06-06-exploring-docker-cli.md](../Docker/notes/2026-06-06-exploring-docker-cli.md) — Hands-on walkthrough of running containers.
 - [note] [Docker/notes/2026-06-07-docker-compose-quickstart.md](../Docker/notes/2026-06-07-docker-compose-quickstart.md) — Notes on docker compose syntax and gotchas.
 - [script] [Docker/scripts/2026-06-12-compose-multi-service.sh](../Docker/scripts/2026-06-12-compose-multi-service.sh) — Script for bringing up a multi-service compose stack.
-- [script] [Docker/scripts/install-and-run-container.sh](../Docker/scripts/install-and-run-container.sh) — Script to install and run nginx.
+- [script] [Docker/scripts/docker-health-check-and-cleanup.sh](../Docker/scripts/docker-health-check-and-cleanup.sh) — Container health check and dangling resource cleanup.
+- [script] [Docker/scripts/install-and-run-container.sh](../Docker/scripts/install-and-run-container.sh) — Script to install Docker and run nginx.
 - [script] [Docker/scripts/install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh) — Script to install Docker and run first container.
-- [dockerfile] [Docker/dockerfiles/build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile) — Dockerfile to build and run a simple container image.
+- [dockerfile] [Docker/dockerfiles/build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile) — Minimal Dockerfile for building and running a first container.
 - [dockerfile] [Docker/dockerfiles/first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile) — First Dockerfile for building a custom image.
 - [dockerfile] [Docker/dockerfiles/tried-building-first-image.Dockerfile](../Docker/dockerfiles/tried-building-first-image.Dockerfile) — Attempted Dockerfile for building a custom image.
-- [dockerfile] [Docker/dockerfiles/build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile) — Minimal Dockerfile for building and running a first container.
 - [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
 - [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
 - [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
 
 ## General
 
-- [docs] [General/docs/2026-06-13-rework-undocumented-files.md](../General/docs/2026-06-13-rework-undocumented-files.md) — Rework note confirming the gen-001 files were already documented.
-- [docs] [General/docs/2026-06-14-rework-gen002-already-documented.md](../General/docs/2026-06-14-rework-gen002-already-documented.md) — Rework note confirming the gen-002 files were already documented.
-- [docs] [General/docs/2026-06-15-rework-gen003-already-documented.md](../General/docs/2026-06-15-rework-gen003-already-documented.md) — Rework note confirming the gen-003 files were already documented.
+- [doc] [General/docs/2026-06-13-rework-undocumented-files.md](../General/docs/2026-06-13-rework-undocumented-files.md) — Rework note confirming the gen-001 files were already documented.
+- [doc] [General/docs/2026-06-14-rework-gen002-already-documented.md](../General/docs/2026-06-14-rework-gen002-already-documented.md) — Rework note confirming the gen-002 files were already documented.
+- [doc] [General/docs/2026-06-15-rework-gen003-already-documented.md](../General/docs/2026-06-15-rework-gen003-already-documented.md) — Rework note confirming the gen-003 files were already documented.
+- [doc] [General/docs/2026-06-16-audit-007-undocumented-files.md](../General/docs/2026-06-16-audit-007-undocumented-files.md) — Audit of undocumented files for gen-007.
 
 ## Git
 
@@ -44,23 +44,31 @@
 - [note] [Git/notes/2026-06-04-install-git.md](../Git/notes/2026-06-04-install-git.md) — Installation instructions for Git on Windows, macOS, and Linux.
 - [note] [Git/notes/2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md) — Walkthrough of common Git commands from init through log.
 - [note] [Git/notes/2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md) — Following the official branching tutorial.
-- [script] [Git/scripts/squash-wip-commits.sh](../Git/scripts/squash-wip-commits.sh) — Automate interactive rebase to squash WIP commits before PR.
 - [script] [Git/scripts/install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh) — Script to install Git and create a first commit.
 - [script] [Git/scripts/minimal-branching-workflow.sh](../Git/scripts/minimal-branching-workflow.sh) — Standalone script demonstrating branch/create/merge/rebase.
 - [script] [Git/scripts/2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh) — Script for practicing merge conflicts.
+- [script] [Git/scripts/squash-wip-commits.sh](../Git/scripts/squash-wip-commits.sh) — Automate interactive rebase to squash WIP commits before PR.
+- [script] [Git/scripts/commit-msg-conventional-commit.sh](../Git/scripts/commit-msg-conventional-commit.sh) — Script to enforce conventional commit message format.
+- [script] [Git/scripts/batch-git-ops.sh](../Git/scripts/batch-git-ops.sh) — Run git commands across multiple repositories.
+- [script] [Git/scripts/changelog-from-conventional-commits.py](../Git/scripts/changelog-from-conventional-commits.py) — Python script to generate changelog from conventional commits.
 - [snippet] [Git/snippets/first-commit.sh](../Git/snippets/first-commit.sh) — Standalone shell snippet to init a repo and commit.
+- [doc] [Git/docs/git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md) — Comparison of feature branch, GitFlow, and trunk-based workflows.
+- [doc] [Git/docs/git-worktrees-parallel-feature-development.md](../Git/docs/git-worktrees-parallel-feature-development.md) — Using git worktrees for parallel feature development.
+- [template] [Git/templates/git-hooks/pre-commit](../Git/templates/git-hooks/pre-commit) — Pre-commit hook template.
+- [template] [Git/templates/git-hooks/commit-msg](../Git/templates/git-hooks/commit-msg) — Commit message hook template.
+- [template] [Git/templates/git-hooks/post-checkout](../Git/templates/git-hooks/post-checkout) — Post-checkout hook template.
 
 ## GitHub
 
 - [note] [GitHub/notes/0000-primer-github.md](../GitHub/notes/0000-primer-github.md) — Primer covering repos, PRs, issues, forks.
 - [note] [GitHub/notes/2026-06-07-explore-github-web-and-cli.md](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md) — Walkthrough of gh CLI commands for repos, issues, PRs.
 - [note] [GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md](../GitHub/notes/2026-06-10-exploring-github-repos-issues-prs.md) — Exploration of repos, issues, and PRs via GitHub API.
-- [note] [GitHub/notes/2026-06-10-repos-issues-and-prs.md](../GitHub/notes/2026-06-10-repos-issues-and-prs.md) — Notes on repository, issue, and PR management through the GitHub interface.
-- [note] [GitHub/notes/2026-06-10-github-platform-features.md](../GitHub/notes/2026-06-10-github-platform-features.md) — GitHub platform features: wiki, projects, insights.
 - [note] [GitHub/notes/2026-06-10-repos-issues-and-prs.md](../GitHub/notes/2026-06-10-repos-issues-and-prs.md) — Notes on managing repos, issues, and PRs via gh.
+- [note] [GitHub/notes/2026-06-10-github-platform-features.md](../GitHub/notes/2026-06-10-github-platform-features.md) — GitHub platform features: wiki, projects, insights.
 - [note] [GitHub/notes/2026-06-11-following-github-cli-quickstart.md](../GitHub/notes/2026-06-11-following-github-cli-quickstart.md) — Follow-up notes from the GitHub CLI quickstart.
 - [note] [GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md) — Notes from the official GitHub quickstart using both CLI and web UI.
 - [note] [GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md) — Walkthrough of GitHub's Hello World guide and the GitHub flow.
+- [note] [GitHub/notes/2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md) — Web UI exploration covering profile, repos, issues.
 - [script] [GitHub/scripts/2026-06-10-auth-and-explore-profile.sh](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh) — Script for GitHub authentication and profile exploration.
 - [script] [GitHub/scripts/auth-and-profile.sh](../GitHub/scripts/auth-and-profile.sh) — Script to authenticate and view profile info.
 - [script] [GitHub/scripts/tried-auth-and-profile.sh](../GitHub/scripts/tried-auth-and-profile.sh) — Script attempting GitHub authentication.

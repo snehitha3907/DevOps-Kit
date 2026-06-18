@@ -35,6 +35,12 @@
 - **Remote** — A URL pointing to another copy of the repository, typically hosted remotely.
 - **HEAD** — A pointer to the commit currently checked out.
 - **Rebase** — Rewriting commit history by applying commits from one branch onto another.
+- **Git worktree** — A mechanism that allows multiple working directories to be associated with a single repository, enabling parallel work on different branches without stashing or switching.
+- **Hook** — A script Git executes before or after a specific event (e.g., pre-commit, commit-msg, post-checkout).
+- **Pre-commit hook** — A Git hook that runs before a commit is finalised, used to check for issues like trailing whitespace, conflict markers, or debug statements.
+- **Commit-msg hook** — A Git hook that validates the format of a commit message, often enforcing conventional commit standards.
+- **Post-checkout hook** — A Git hook that runs after a branch switch, used to maintain hooks, suggest cleanup, or display context.
+- **Conventional commit** — A commit message format that follows a structured prefix (`feat:`, `fix:`, `chore:`, etc.) enabling automated changelog generation and semantic versioning.
 
 ## GitHub
 
