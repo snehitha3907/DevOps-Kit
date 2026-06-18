@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# post-checkout hook — maintain hooks and display context after branch switch
+#
+# Actions:
+#   - Re-apply hooks symlink (survives branch switches that replace .git/hooks/)
+#   - Suggest pruning merged branches when switching away from a feature branch
+#   - Display current branch and recent commits for orientation
+#
+# Install: ln -sf ../../templates/git-hooks/post-checkout .git/hooks/post-checkout
+
+set -euo pipefail
+
+# shellcheck disable=SC2034
+PREV_HEAD="$1"
+# shellcheck disable=SC2034
+NEW_HEAD="$2"
+BRANCH_SWITCH="$3"  # 1 if branch changed, 0 if only HEAD moved
+
+# only run on actual branch switches
+[ "$BRANCH_SWITCH" != "1" ] && exit 0
+
+HOOKS_DIR=$(git rev-parse --git-path hooks)
+TEMPLATE_DIR=$(git rev-parse --show-toplevel)/templates/git-hooks
+
+# restore hooks symlink if the checkout replaced .git/hooks/
+if [ -d "$HOOKS_DIR" ] && [ -d "$TEMPLATE_DIR" ]; then
+  for hook in pre-commit commit-msg post-checkout; do
+    target="$TEMPLATE_DIR/$hook"
+    link="$HOOKS_DIR/$hook"
+    if [ -f "$target" ] && [ ! -L "$link" ]; then
+      ln -sf "$target" "$link"
+      echo "info: restored hooks symlink: $hook" >&2
+    fi
+  done
+fi
+
+BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "detached HEAD")
+echo "now on branch: $BRANCH" >&2
+
+if [ "$BRANCH" != "master" ] && [ "$BRANCH" != "main" ]; then
+  PARENT=$(git merge-base HEAD master 2>/dev/null || git merge-base HEAD main 2>/dev/null || true)
+  if [ -n "$PARENT" ]; then
+    COUNT=$(git rev-list --count HEAD "^$PARENT" 2>/dev/null || echo "?")
+    echo "  commits ahead of base: $COUNT" >&2
+  fi
+fi
+
+DELETED_BRANCH=$(git branch -v | grep ': gone\]' | head -3 || true)
+if [ -n "$DELETED_BRANCH" ]; then
+  echo "  hint: merged branches detected — run 'git branch --merged | grep -v \"\\*\\|master\\|main\" | xargs git branch -d'" >&2
+fi

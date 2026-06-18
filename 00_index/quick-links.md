@@ -69,6 +69,13 @@
 - Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-feature-development.md`](../Git/docs/git-worktrees-parallel-feature-development.md)
 - Git workflows comparison (feature branch vs GitFlow vs trunk-based): [`Git/docs/git-workflows-comparison.md`](../Git/docs/git-workflows-comparison.md)
 
+## Git templates
+
+- Git hooks project scaffold: [`Git/templates/git-hooks/`](../Git/templates/git-hooks/)
+  - pre-commit: [`Git/templates/git-hooks/pre-commit`](../Git/templates/git-hooks/pre-commit)
+  - commit-msg: [`Git/templates/git-hooks/commit-msg`](../Git/templates/git-hooks/commit-msg)
+  - post-checkout: [`Git/templates/git-hooks/post-checkout`](../Git/templates/git-hooks/post-checkout)
+
 ## GitHub
 
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
