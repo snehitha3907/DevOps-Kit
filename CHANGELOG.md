@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-18
+
+- Added changelog generator from conventional commits script (git-004) (`Git/scripts/changelog-from-conventional-commits.py`)
+
 ## 2026-06-17
 
 - Added Git hooks project scaffold template (git-003) (`Git/templates/git-hooks/`)
