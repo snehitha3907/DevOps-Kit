@@ -42,6 +42,9 @@
 ## Docker manifests
 - Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 
+## Docker notebooks
+- Comparing networking drivers (bridge, host, overlay, macvlan): [`Docker/notebooks/comparing-docker-networking-drivers.ipynb`](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
+
 ## Docker dockerfiles
 - Build and run first container: [`Docker/dockerfiles/build-and-run-first.Dockerfile`](../Docker/dockerfiles/build-and-run-first.Dockerfile)
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-18
+
+- Added Docker networking drivers comparison notebook (doc-014) (`Docker/notebooks/comparing-docker-networking-drivers.ipynb`)
+
 ## 2026-06-17
 
 - Added Git hooks project scaffold template (git-003) (`Git/templates/git-hooks/`)
