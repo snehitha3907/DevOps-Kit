@@ -77,6 +77,12 @@
   - commit-msg: [`Git/templates/git-hooks/commit-msg`](../Git/templates/git-hooks/commit-msg)
   - post-checkout: [`Git/templates/git-hooks/post-checkout`](../Git/templates/git-hooks/post-checkout)
 
+## Git docs
+- Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-development.md`](../Git/docs/git-worktrees-parallel-development.md)
+
+## Git scripts
+- Conventional commits hook: [`Git/scripts/conventional-commits-hook.sh`](../Git/scripts/conventional-commits-hook.sh)
+
 ## GitHub
 
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
