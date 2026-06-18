@@ -2,7 +2,7 @@
 
 ## 2026-06-18
 
-- Added Docker networking drivers comparison notebook (doc-014) (`Docker/notebooks/comparing-docker-networking-drivers.ipynb`)
+- Added changelog generator from conventional commits script (git-004) (`Git/scripts/changelog-from-conventional-commits.py`)
 
 ## 2026-06-17
 
