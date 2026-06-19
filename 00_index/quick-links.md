@@ -5,6 +5,7 @@
 ## Ansible
 
 - Primer: [`Ansible/notes/0000-primer-ansible.md`](../Ansible/notes/0000-primer-ansible.md)
+- Primer check (already exists): [`Ansible/notes/2026-06-19-primer-already-exists.md`](../Ansible/notes/2026-06-19-primer-already-exists.md)
 - Install + first ad-hoc script: [`Ansible/scripts/install-and-first-adhoc.sh`](../Ansible/scripts/install-and-first-adhoc.sh)
 - CLI exploration notes: [`Ansible/notes/2026-06-06-exploring-ansible-cli.md`](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
 - First playbook script: [`Ansible/scripts/run-first-playbook.sh`](../Ansible/scripts/run-first-playbook.sh)
@@ -95,6 +96,7 @@
 ## GitHub
 
 - Primer: [`GitHub/notes/0000-primer-github.md`](../GitHub/notes/0000-primer-github.md)
+- Primer check (already exists): [`GitHub/notes/2026-06-19-primer-already-exists.md`](../GitHub/notes/2026-06-19-primer-already-exists.md)
 - GitHub issues API snippet: [`GitHub/snippets/github-issues-api.py`](../GitHub/snippets/github-issues-api.py)
 - Auth + profile script: [`GitHub/scripts/auth-and-profile.sh`](../GitHub/scripts/auth-and-profile.sh)
 - Web UI + CLI exploration notes: [`GitHub/notes/2026-06-07-explore-github-web-and-cli.md`](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
