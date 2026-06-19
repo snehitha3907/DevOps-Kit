@@ -59,7 +59,8 @@
 - Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
 - Rework check for already-documented files (gen-002): [`General/docs/2026-06-14-rework-gen002-already-documented.md`](../General/docs/2026-06-14-rework-gen002-already-documented.md)
 - Rework check for already-documented files (gen-003): [`General/docs/2026-06-15-rework-gen003-already-documented.md`](../General/docs/2026-06-15-rework-gen003-already-documented.md)
-- Audit of undocumented files (gen-007): [`General/docs/2026-06-16-audit-007-undocumented-files.md`](../General/docs/2026-06-16-audit-007-undocumented-files.md)
+- Audit of undocumented files (audit-007): [`General/docs/2026-06-16-audit-007-undocumented-files.md`](../General/docs/2026-06-16-audit-007-undocumented-files.md)
+- README Layout update for Ansible/docs, Docker/docs, Docker/notebooks (gen-007): [`General/docs/2026-06-19-update-readme-layout-ansible-docker.md`](../General/docs/2026-06-19-update-readme-layout-ansible-docker.md)
 
 ## Git
 

@@ -16,7 +16,7 @@ First-contact notes, setup scripts, configs, and manifests for six tool families
 | Tool | Notes | Scripts | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Configs | Templates |
 |------|-------|---------|----------|-------------|------|-----------|-----------|---------|-----------|
 | Ansible | 4 | 2 | 1 | — | 1 | 1 | — | 2 | — |
-| Docker | 4 | 4 | — | 3 | 1 | — | 1 | 1 | — |
+| Docker | 4 | 4 | — | 3 | 1 | 1 | 1 | 1 | — |
 | General | — | — | — | — | 4 | — | — | — | — |
 | Git | 4 | 7 | 1 | — | 2 | — | — | — | 3 |
 | GitHub | 9 | 5 | 2 | — | — | — | — | 1 | — |
@@ -33,8 +33,8 @@ First-contact notes, setup scripts, configs, and manifests for six tool families
 
 ## Layout
 
-- **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, and a variable precedence notebook.
-- **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, and scripts.
+- **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
+- **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, and Python API snippets.
 - **General/** — Project-level cleanup and rework documentation.
@@ -48,4 +48,4 @@ First-contact notes, setup scripts, configs, and manifests for six tool families
 Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker, Git, and GitHub; Kubernetes and Terraform are filling in. Ansible has stabilised at L3 with playbook troubleshooting notes and an ansible-lint workflow integrated. Git templates and changelog automation have been added.
 
 ---
-_Last updated: 2026-06-18_
+_Last updated: 2026-06-19_
