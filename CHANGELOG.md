@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-06-19
+
+- Flagged GitHub primer already exists (gh-001) (`GitHub/notes/2026-06-19-primer-already-exists.md`)
+- Flagged Ansible primer already exists (ans-001) (`Ansible/notes/2026-06-19-primer-already-exists.md`)
+
 ## 2026-06-18
 
 - Added changelog generator from conventional commits script (git-004) (`Git/scripts/changelog-from-conventional-commits.py`)
