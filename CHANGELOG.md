@@ -4,6 +4,7 @@
 
 - Flagged GitHub primer already exists (gh-001) (`GitHub/notes/2026-06-19-primer-already-exists.md`)
 - Flagged Ansible primer already exists (ans-001) (`Ansible/notes/2026-06-19-primer-already-exists.md`)
+- Updated README Layout and Coverage table to document Ansible/docs/, Docker/docs/, Docker/notebooks/ (gen-007) (`General/docs/2026-06-19-update-readme-layout-ansible-docker.md`)
 
 ## 2026-06-18
 
