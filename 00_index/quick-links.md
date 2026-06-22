@@ -145,3 +145,15 @@
 ## GitHub configs
 
 - Issue templates and labels: [`GitHub/configs/issue-templates-and-labels.yaml`](../GitHub/configs/issue-templates-and-labels.yaml)
+
+## GitLab CI/CD
+
+- Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+
+## GitLab CI/CD scripts
+
+- Install Runner and register for a project: [`GitLab CI/scripts/2026-06-22-install-runner-and-register.sh`](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
+
+## GitLab CI/CD configs
+
+- First pipeline: [`GitLab CI/configs/2026-06-22-first-pipeline.yaml`](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
