@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-22
+
+- Added GitLab CI/CD primer (gl-001) (`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`)
+- Added GitLab Runner install and register script (gl-002) (`GitLab CI/scripts/2026-06-22-install-runner-and-register.sh`)
+- Added first .gitlab-ci.yml pipeline config (gl-003) (`GitLab CI/configs/2026-06-22-first-pipeline.yaml`)
+
 ## 2026-06-19
 
 - Flagged GitHub primer already exists (gh-001) (`GitHub/notes/2026-06-19-primer-already-exists.md`)

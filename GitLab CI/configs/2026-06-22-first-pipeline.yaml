@@ -1,0 +1,23 @@
+# My first .gitlab-ci.yml — build a Go project and run tests
+# Pushed this to a GitLab repo and watched it run in the UI
+
+stages:
+  - build
+  - test
+
+build-job:
+  stage: build
+  image: golang:1.22
+  script:
+    - go build -o myapp .
+  artifacts:
+    paths:
+      - myapp
+
+test-job:
+  stage: test
+  image: golang:1.22
+  script:
+    - go test ./...
+  needs:
+    - build-job
