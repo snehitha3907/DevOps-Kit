@@ -157,3 +157,11 @@
 ## GitLab CI/CD configs
 
 - First pipeline: [`GitLab CI/configs/2026-06-22-first-pipeline.yaml`](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
+
+## GitHub Actions notes
+
+- Following the official GitHub Actions quickstart: [`GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md`](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
+
+## Foundational Concepts
+
+- CI/CD Concepts primer: [`docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md`](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)

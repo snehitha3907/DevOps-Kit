@@ -9,17 +9,20 @@
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for six tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, Kubernetes, and Terraform. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit is meant to be cloned and used as a quick-touch reference, not a tutorial site.
+First-contact notes, setup scripts, configs, and manifests for eight tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/`. It's meant to be cloned and used as a quick-touch reference, not a tutorial site.
 
 ## Coverage
 
 | Tool | Notes | Scripts | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Configs | Templates |
 |------|-------|---------|----------|-------------|------|-----------|-----------|---------|-----------|
 | Ansible | 4 | 2 | 1 | — | 1 | 1 | — | 2 | — |
+| Concepts | 1 | — | — | — | — | — | — | — | — |
 | Docker | 4 | 4 | — | 3 | 1 | 1 | 1 | 1 | — |
-| General | — | — | — | — | 4 | — | — | — | — |
+| General | — | — | — | — | 5 | — | — | — | — |
 | Git | 4 | 7 | 1 | — | 2 | — | — | — | 3 |
 | GitHub | 9 | 5 | 2 | — | — | — | — | 1 | — |
+| GitHub Actions | 1 | — | — | — | — | — | — | — | — |
+| GitLab CI | 1 | 1 | — | — | — | — | — | 1 | — |
 | Kubernetes | 4 | 2 | — | — | — | — | 2 | — | — |
 | Terraform | 3 | 2 | — | — | — | — | 1 | 7 | — |
 
@@ -35,7 +38,10 @@ First-contact notes, setup scripts, configs, and manifests for six tool families
 
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
+- **docs/concepts/** — Foundational concept primers (CI/CD, version control, IaC, etc.).
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
+- **GitHub Actions/** — Primer and quickstart notes for GitHub Actions workflows.
+- **GitLab CI/** — Primer notes, install and register runner scripts, and pipeline configs.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, and Python API snippets.
 - **General/** — Project-level cleanup and rework documentation.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
@@ -45,7 +51,7 @@ First-contact notes, setup scripts, configs, and manifests for six tool families
 
 ## Status
 
-Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker, Git, and GitHub; Kubernetes and Terraform are filling in. Ansible has stabilised at L3 with playbook troubleshooting notes and an ansible-lint workflow integrated. Git templates and changelog automation have been added.
+Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker, Git, and GitHub; Kubernetes and Terraform are filling in. Ansible has stabilised at L3 with playbook troubleshooting notes and an ansible-lint workflow integrated. Git templates and changelog automation have been added. Foundational concept primers under `docs/concepts/` have started with CI/CD. GitHub Actions coverage has begun with quickstart notes.
 
 ---
-_Last updated: 2026-06-19_
+_Last updated: 2026-06-23_
