@@ -162,6 +162,10 @@
 
 - Following the official GitHub Actions quickstart: [`GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md`](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
 
+## GitHub Actions configs
+
+- First CI workflow with env vars and secrets: [`GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml`](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+
 ## Foundational Concepts
 
 - CI/CD Concepts primer: [`docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md`](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)

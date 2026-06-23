@@ -4,6 +4,7 @@
 
 - Added following GitHub Actions quickstart notes (ga-004) (`GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md`)
 - Added CI/CD Concepts primer (con-005) (`docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md`)
+- Added first CI workflow with env vars and secrets (ga-005) (`GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml`)
 
 ## 2026-06-22
 
