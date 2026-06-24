@@ -2,6 +2,8 @@
 
 ## 2026-06-24
 
+- Added multi-stage Go HTTP server Dockerfile (doc-010) (`Docker/dockerfiles/multi-stage-go-http-server.Dockerfile`)
+- Added run-first-local-pipeline script (gl-005) (`GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh`)
 - Added following the providers tutorial notes (tf-010) (`Terraform/notes/2026-06-24-following-provider-tutorial.md`)
 - Added following the GitLab CI/CD quickstart notes (gl-004) (`GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md`)
 
