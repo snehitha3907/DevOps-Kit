@@ -120,6 +120,7 @@
 - Primer: [`Terraform/notes/0000-primer-terraform.md`](../Terraform/notes/0000-primer-terraform.md)
 - CLI exploration notes: [`Terraform/notes/2026-06-06-exploring-terraform-cli.md`](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
 - Getting-started tutorial notes: [`Terraform/notes/2026-06-10-terraform-getting-started.md`](../Terraform/notes/2026-06-10-terraform-getting-started.md)
+- Following the providers tutorial: [`Terraform/notes/2026-06-24-following-provider-tutorial.md`](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
 
 ## Terraform configs
 
@@ -133,7 +134,8 @@
 
 ## GitLab CI/CD
 
-- Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
+- Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- Following the quickstart: [`GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md`](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
 
 ## GitLab CI/CD scripts
 

@@ -4,74 +4,102 @@
 
 ## Stage 1: Foundations
 
-Start here — no prerequisites required.
+These concepts have no prerequisites — start here if you're new to the domain. Each primer exists on disk.
 
-- **Version Control Concepts** — Understand why we track changes, how commits work, and the difference between centralized and distributed systems. ⏳
-- **Linux & System Administration** — Basic command-line fluency, file permissions, processes, and package management. ⏳
-- **Scripting & Automation (Bash/Python)** — Automate repetitive tasks with shell scripts and Python. ⏳
-- **Git** — Install, configure, and make your first commit. Work with branches, remotes, and merges. [Primer](../Git/notes/0000-primer-git.md) · [Install notes](../Git/notes/2026-06-04-install-git.md) · [CLI exploration](../Git/notes/2026-06-04-explore-git-cli.md)
+- **Version Control Concepts** — Understand what version control is, why teams use it, and the basic commit/push/pull cycle. Unlocks: Git, GitHub, GitLab CI.
+- **Linux & System Administration** — Basic command-line fluency, package managers, file permissions, processes, and services. Unlocks: Docker, Kubernetes, Ansible, Terraform.
+- **Scripting & Automation (Bash/Python)** — Writing shell scripts and simple Python programs to automate repetitive tasks. Unlocks: Terraform, Ansible, GitLab CI, Docker.
+- **Networking Fundamentals** — IP addresses, ports, DNS, HTTP, and basic network troubleshooting. Unlocks: Docker, Kubernetes.
+- **Containerization Concepts** — What containers are, how they differ from VMs, and why they matter. Unlocks: Docker, Kubernetes.
+- **Infrastructure as Code Concepts** — Managing infrastructure through declarative configuration files. Unlocks: Terraform, Ansible.
+- **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. Unlocks: GitLab CI.
 
 ## Stage 2: Core Tools
 
-Once you're comfortable with Git and the command line, add these.
+These tools are unlocked from the start and form the day-to-day toolkit for any DevOps engineer.
 
-- **Docker** — Build images, run containers, manage volumes and networks, and use Docker Compose. [Primer](../Docker/notes/0000-primer-docker.md) · [Install & run](../Docker/scripts/install-and-run-first-container.sh) · [CLI notes](../Docker/notes/2026-06-06-exploring-docker-cli.md) · [Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
-- **GitHub** — Repos, issues, pull requests, and the GitHub flow. [Primer](../GitHub/notes/0000-primer-github.md) · [CLI & web exploration](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md) · [GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
-- **Infrastructure as Code Concepts** — Declarative vs imperative, state management, and idempotency. ⏳
-- **CI/CD Concepts** — Pipelines, stages, jobs, and the CI/CD workflow. [Primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+- **[Git](Git/notes/0000-primer-git.md)** — The foundation of version control. Start with the primer, work through CLI exploration, branching, merging, and hooks.
+- **[GitHub](GitHub/notes/0000-primer-github.md)** — The most popular Git hosting platform. Learn repos, issues, PRs, the GitHub flow, and the `gh` CLI.
+- **[Docker](Docker/notes/0000-primer-docker.md)** — Containerisation fundamentals. Start with the primer, build images, run containers, and learn Compose for multi-service apps.
+- **[Ansible](Ansible/notes/0000-primer-ansible.md)** — Agentless automation for configuration management and provisioning. Primer, ad-hoc commands, playbooks, and troubleshooting.
+- **[Kubernetes](Kubernetes/notes/0000-primer-kubernetes.md)** — Container orchestration at scale. Primer, `kubectl` exploration, manifests, and pod lifecycle management.
+- **[Terraform](Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules.
 
 ## Stage 3: Building Skills
 
-Deepen your knowledge and start managing real infrastructure.
+Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 tools.
 
-- **Ansible** — Write playbooks, manage inventories, and automate server configuration. [Primer](../Ansible/notes/0000-primer-ansible.md) · [Getting started](../Ansible/notes/2026-06-11-ansible-getting-started.md) · [Playbook troubleshooting](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md) · [Variable precedence notebook](../Ansible/notebooks/ansible-variable-precedence.ipynb)
-- **Kubernetes** — Pods, deployments, services, ConfigMaps, and Secrets. [Primer](../Kubernetes/notes/0000-primer-kubernetes.md) · [kubectl exploration](../Kubernetes/notes/2026-06-06-exploring-kubectl.md) · [Install kind](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
-- **Terraform** — Providers, state, plan, apply. Manage infrastructure declaratively. [Primer](../Terraform/notes/0000-primer-terraform.md) · [CLI exploration](../Terraform/notes/2026-06-06-exploring-terraform-cli.md) · [Bootstrap project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
-- **GitLab CI** — Write pipelines, register runners, and automate testing. [Primer](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md) · [First pipeline](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
-- **Containerization Concepts** — Images, layers, registries, and orchestration fundamentals. ⏳
+- **Git branching strategies** — Feature branches, GitFlow, trunk-based development, and when to use each. [Comparison doc](Git/docs/git-workflows-comparison.md)
+- **Git worktrees** — Working on multiple branches simultaneously without stashing. [Worktrees doc](Git/docs/git-worktrees-parallel-feature-development.md)
+- **Docker Compose** — Defining and running multi-container applications. [Quickstart notes](Docker/notes/2026-06-07-docker-compose-quickstart.md), [multi-service manifest](Docker/manifests/2026-06-13-web-db-compose.yaml)
+- **Docker networking** — Understanding bridge, host, overlay, and macvlan drivers. [Notebook](Docker/notebooks/comparing-docker-networking-drivers.ipynb)
+- **Ansible playbook troubleshooting** — SSH, pipx, and permission issues. [Troubleshooting notes](Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
+- **Ansible linting** — Integrating ansible-lint into your workflow. [Lint guide](Ansible/docs/2026-06-15-wiring-ansible-lint.md)
+- **Ansible variable precedence** — Understanding how group_vars, host_vars, and playbook vars interact. [Notebook](Ansible/notebooks/ansible-variable-precedence.ipynb)
+- **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](GitLab%20CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
 
 ## Stage 4: Advanced Tools
 
-These tools depend on foundational knowledge from earlier stages.
+Tools that depend on foundational concepts at L2 or core tools at L2+.
 
-- **GitHub Actions** — Build CI/CD workflows with actions, secrets, and matrix builds. [Quickstart notes](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md) · [First workflow](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
-- **Helm** — Package Kubernetes applications as reusable charts. ⏳
-- **ArgoCD** — GitOps-style continuous delivery for Kubernetes. ⏳
-- **Prometheus** — Monitor infrastructure and applications with metrics and alerts. ⏳
-- **Trivy** — Scan containers and infrastructure for vulnerabilities. ⏳
+- **GitHub Actions** ⏳ — CI/CD integrated with GitHub. Depends on Git L2 + Docker L2. Content coming.
+- **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
+- **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
+- **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
+- **Trivy** ⏳ — Container vulnerability scanner. Depends on Docker L2. Content coming.
 
 ## Stage 5: Mastery
 
-Expert-level tools and concepts.
+Advanced concepts and expert-level tool content.
 
-- **Networking Fundamentals** — DNS, HTTP, load balancers, and network policies. ⏳
-- **Monitoring & Observability Concepts** — Metrics, logs, traces, and alerting. ⏳
-- **Grafana** — Dashboards and visualizations for monitoring data. ⏳ (locked until Prometheus L2)
-- **Pulumi** — Infrastructure as code using general-purpose programming languages. ⏳ (locked until Terraform L3)
-- **HashiCorp Vault** — Secrets management and encryption. ⏳
+- **GitLab CI/CD** — Advanced pipeline patterns, multi-project pipelines, and custom runners.
+- **Terraform modules and workspaces** — Building reusable modules and managing multiple environments.
+- **Kubernetes production patterns** — Ingress controllers, service meshes, autoscaling, and security policies.
+- **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
+- **HashiCorp Vault** ⏳ — Secrets management and access control. Depends on Docker L2 + K8s L3.
 
 ## Progression Map
 
 ```mermaid
 graph TD
-    Foundations["Foundations<br/>Linux · Scripting · Version Control"]
-    Foundations --> Git["Git"]
-    Git --> GitHub["GitHub"]
-    Git --> GitLabCI["GitLab CI/CD"]
-    Foundations --> Docker["Docker"]
-    Docker --> K8s["Kubernetes"]
-    Docker --> GH_Act["GitHub Actions"]
-    K8s --> GH_Act
-    K8s --> Helm["Helm ⏳"]
-    K8s --> ArgoCD["ArgoCD ⏳"]
-    Docker --> Trivy["Trivy ⏳"]
-    Foundations --> IaC["IaC Concepts"]
-    IaC --> Terraform["Terraform"]
-    IaC --> Ansible["Ansible"]
-    Docker --> Prometheus["Prometheus ⏳"]
-    K8s --> Prometheus
-    Prometheus --> Grafana["Grafana ⏳"]
-    Terraform --> Pulumi["Pulumi ⏳"]
-```
+    VC[Version Control Concepts] --> Git
+    VC --> GitHub
+    VC --> GitLabCI
 
-*Tools marked ⏳ have no content yet. Links are added as content is created.*
+    Linux[Linux & SysAdmin] --> Docker
+    Linux --> K8s
+    Linux --> Ansible
+    Linux --> Terraform
+
+    Scripting[Scripting & Automation] --> Ansible
+    Scripting --> Terraform
+    Scripting --> GitLabCI
+    Scripting --> Docker
+
+    Network[Networking Fundamentals] --> Docker
+    Network --> K8s
+
+    Containers[Containerization Concepts] --> Docker
+    Containers --> K8s
+
+    IaC[Infrastructure as Code] --> Terraform
+    IaC --> Ansible
+
+    CI[CI/CD Concepts] --> GitLabCI
+
+    Git --> GitHub
+    Git --> GitLabCI
+    Docker --> K8s
+    Docker --> GitLabCI
+    K8s --> Helm
+    K8s --> ArgoCD
+    K8s --> Prometheus
+    Git --> ArgoCD
+    Terraform --> Pulumi
+
+    classDef hasContent fill:#e6f3ff,stroke:#4a90d9
+    classDef noContent fill:#fff3e0,stroke:#f5a623
+
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI hasContent
+    class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
+```
