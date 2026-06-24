@@ -48,19 +48,8 @@
 - Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 
 ## Docker notebooks
+
 - Comparing networking drivers (bridge, host, overlay, macvlan): [`Docker/notebooks/comparing-docker-networking-drivers.ipynb`](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
-
-## Docker dockerfiles
-
-- Build and run first container: [`Docker/dockerfiles/build-and-run-first.Dockerfile`](../Docker/dockerfiles/build-and-run-first.Dockerfile)
-
-## General
-
-- Rework check for already-documented files (gen-001): [`General/docs/2026-06-13-rework-undocumented-files.md`](../General/docs/2026-06-13-rework-undocumented-files.md)
-- Rework check for already-documented files (gen-002): [`General/docs/2026-06-14-rework-gen002-already-documented.md`](../General/docs/2026-06-14-rework-gen002-already-documented.md)
-- Rework check for already-documented files (gen-003): [`General/docs/2026-06-15-rework-gen003-already-documented.md`](../General/docs/2026-06-15-rework-gen003-already-documented.md)
-- Audit of undocumented files (audit-007): [`General/docs/2026-06-16-audit-007-undocumented-files.md`](../General/docs/2026-06-16-audit-007-undocumented-files.md)
-- README Layout update for Ansible/docs, Docker/docs, Docker/notebooks (gen-007): [`General/docs/2026-06-19-update-readme-layout-ansible-docker.md`](../General/docs/2026-06-19-update-readme-layout-ansible-docker.md)
 
 ## Git
 
@@ -73,11 +62,13 @@
 - Minimal branching workflow: [`Git/scripts/minimal-branching-workflow.sh`](../Git/scripts/minimal-branching-workflow.sh)
 - Merge conflict practice: [`Git/scripts/2026-06-10-merge-conflict-practice.sh`](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - Conventional commit hook script: [`Git/scripts/commit-msg-conventional-commit.sh`](../Git/scripts/commit-msg-conventional-commit.sh)
+- Install conventional commits hook: [`Git/scripts/conventional-commits-hook.sh`](../Git/scripts/conventional-commits-hook.sh)
 - Batch git operations across multiple repos: [`Git/scripts/batch-git-ops.sh`](../Git/scripts/batch-git-ops.sh)
 - Changelog generator from conventional commits: [`Git/scripts/changelog-from-conventional-commits.py`](../Git/scripts/changelog-from-conventional-commits.py)
 
 ## Git docs
 
+- Git worktrees for parallel development: [`Git/docs/git-worktrees-parallel-development.md`](../Git/docs/git-worktrees-parallel-development.md)
 - Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-feature-development.md`](../Git/docs/git-worktrees-parallel-feature-development.md)
 - Git workflows comparison (feature branch vs GitFlow vs trunk-based): [`Git/docs/git-workflows-comparison.md`](../Git/docs/git-workflows-comparison.md)
 
@@ -87,12 +78,6 @@
   - pre-commit: [`Git/templates/git-hooks/pre-commit`](../Git/templates/git-hooks/pre-commit)
   - commit-msg: [`Git/templates/git-hooks/commit-msg`](../Git/templates/git-hooks/commit-msg)
   - post-checkout: [`Git/templates/git-hooks/post-checkout`](../Git/templates/git-hooks/post-checkout)
-
-## Git docs
-- Git worktrees for parallel feature development: [`Git/docs/git-worktrees-parallel-development.md`](../Git/docs/git-worktrees-parallel-development.md)
-
-## Git scripts
-- Conventional commits hook: [`Git/scripts/conventional-commits-hook.sh`](../Git/scripts/conventional-commits-hook.sh)
 
 ## GitHub
 
@@ -112,6 +97,10 @@
 - Hello World guide and GitHub flow notes: [`GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md`](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
 - Web UI exploration (profile, repos, issues): [`GitHub/notes/2026-06-15-explore-github-web-ui.md`](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
 - Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
+
+## GitHub configs
+
+- Issue templates and labels: [`GitHub/configs/issue-templates-and-labels.yaml`](../GitHub/configs/issue-templates-and-labels.yaml)
 
 ## Kubernetes
 
@@ -142,21 +131,17 @@
 
 - Simple EC2 app: [`Terraform/manifests/simple-ec2-app.tf`](../Terraform/manifests/simple-ec2-app.tf)
 
-## GitHub configs
-
-- Issue templates and labels: [`GitHub/configs/issue-templates-and-labels.yaml`](../GitHub/configs/issue-templates-and-labels.yaml)
-
 ## GitLab CI/CD
 
-- Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
 
 ## GitLab CI/CD scripts
 
-- Install Runner and register for a project: [`GitLab CI/scripts/2026-06-22-install-runner-and-register.sh`](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
+- Install Runner and register for a project: [`GitLab CI/scripts/2026-06-22-install-runner-and-register.sh`](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
 
 ## GitLab CI/CD configs
 
-- First pipeline: [`GitLab CI/configs/2026-06-22-first-pipeline.yaml`](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
+- First pipeline: [`GitLab CI/configs/2026-06-22-first-pipeline.yaml`](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
 
 ## GitHub Actions notes
 

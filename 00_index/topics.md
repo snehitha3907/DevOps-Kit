@@ -6,6 +6,7 @@
 - [note] [Ansible/notes/2026-06-06-exploring-ansible-cli.md](../Ansible/notes/2026-06-06-exploring-ansible-cli.md) — Walkthrough of basic Ansible CLI commands and ad-hoc usage.
 - [note] [Ansible/notes/2026-06-11-ansible-getting-started.md](../Ansible/notes/2026-06-11-ansible-getting-started.md) — Notes for moving from first ad-hoc commands to a first playbook.
 - [note] [Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md) — SSH, pipx, and permission issues encountered.
+- [note] [Ansible/notes/2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md) — Confirmation that the Ansible primer already existed.
 - [script] [Ansible/scripts/install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh) — Script to install Ansible and run a first ad-hoc command.
 - [script] [Ansible/scripts/run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh) — Script to run a first playbook against inventory.
 - [snippet] [Ansible/snippets/nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml) — Minimal nginx deployment playbook snippet.
@@ -30,13 +31,7 @@
 - [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
 - [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
 - [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
-
-## General
-
-- [doc] [General/docs/2026-06-13-rework-undocumented-files.md](../General/docs/2026-06-13-rework-undocumented-files.md) — Rework note confirming the gen-001 files were already documented.
-- [doc] [General/docs/2026-06-14-rework-gen002-already-documented.md](../General/docs/2026-06-14-rework-gen002-already-documented.md) — Rework note confirming the gen-002 files were already documented.
-- [doc] [General/docs/2026-06-15-rework-gen003-already-documented.md](../General/docs/2026-06-15-rework-gen003-already-documented.md) — Rework note confirming the gen-003 files were already documented.
-- [doc] [General/docs/2026-06-16-audit-007-undocumented-files.md](../General/docs/2026-06-16-audit-007-undocumented-files.md) — Audit of undocumented files for gen-007.
+- [notebook] [Docker/notebooks/comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb) — Jupyter notebook comparing bridge, host, overlay, and macvlan networking drivers.
 
 ## Git
 
@@ -49,10 +44,12 @@
 - [script] [Git/scripts/2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh) — Script for practicing merge conflicts.
 - [script] [Git/scripts/squash-wip-commits.sh](../Git/scripts/squash-wip-commits.sh) — Automate interactive rebase to squash WIP commits before PR.
 - [script] [Git/scripts/commit-msg-conventional-commit.sh](../Git/scripts/commit-msg-conventional-commit.sh) — Script to enforce conventional commit message format.
+- [script] [Git/scripts/conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh) — Script to install a conventional commit hook.
 - [script] [Git/scripts/batch-git-ops.sh](../Git/scripts/batch-git-ops.sh) — Run git commands across multiple repositories.
 - [script] [Git/scripts/changelog-from-conventional-commits.py](../Git/scripts/changelog-from-conventional-commits.py) — Python script to generate changelog from conventional commits.
 - [snippet] [Git/snippets/first-commit.sh](../Git/snippets/first-commit.sh) — Standalone shell snippet to init a repo and commit.
 - [doc] [Git/docs/git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md) — Comparison of feature branch, GitFlow, and trunk-based workflows.
+- [doc] [Git/docs/git-worktrees-parallel-development.md](../Git/docs/git-worktrees-parallel-development.md) — Using git worktrees for parallel development (keeping clean main).
 - [doc] [Git/docs/git-worktrees-parallel-feature-development.md](../Git/docs/git-worktrees-parallel-feature-development.md) — Using git worktrees for parallel feature development.
 - [template] [Git/templates/git-hooks/pre-commit](../Git/templates/git-hooks/pre-commit) — Pre-commit hook template.
 - [template] [Git/templates/git-hooks/commit-msg](../Git/templates/git-hooks/commit-msg) — Commit message hook template.
@@ -69,6 +66,7 @@
 - [note] [GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md) — Notes from the official GitHub quickstart using both CLI and web UI.
 - [note] [GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md) — Walkthrough of GitHub's Hello World guide and the GitHub flow.
 - [note] [GitHub/notes/2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md) — Web UI exploration covering profile, repos, issues.
+- [note] [GitHub/notes/2026-06-19-primer-already-exists.md](../GitHub/notes/2026-06-19-primer-already-exists.md) — Confirmation that the GitHub primer already existed.
 - [script] [GitHub/scripts/2026-06-10-auth-and-explore-profile.sh](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh) — Script for GitHub authentication and profile exploration.
 - [script] [GitHub/scripts/auth-and-profile.sh](../GitHub/scripts/auth-and-profile.sh) — Script to authenticate and view profile info.
 - [script] [GitHub/scripts/tried-auth-and-profile.sh](../GitHub/scripts/tried-auth-and-profile.sh) — Script attempting GitHub authentication.
@@ -77,6 +75,21 @@
 - [snippet] [GitHub/snippets/github-issues-api.py](../GitHub/snippets/github-issues-api.py) — Python snippet for working with GitHub issues via the API.
 - [snippet] [GitHub/snippets/list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py) — Python snippet for listing repositories.
 - [config] [GitHub/configs/issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml) — Repository issue templates and labels configuration.
+
+## Concepts
+
+- [note] [docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — CI/CD Concepts primer: pipelines, stages, jobs, and the CI/CD workflow.
+
+## GitHub Actions
+
+- [note] [GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md) — Following the official GitHub Actions quickstart: what worked and what tripped me up.
+- [config] [GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml) — First CI workflow with environment variables and secrets.
+
+## GitLab CI
+
+- [note] [GitLab CI/notes/0000-primer-gitlab-ci-cd.md](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md) — Primer covering GitLab CI/CD pipelines, runners, stages, jobs.
+- [script] [GitLab CI/scripts/2026-06-22-install-runner-and-register.sh](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh) — Script to install the GitLab Runner and register it for a project.
+- [config] [GitLab CI/configs/2026-06-22-first-pipeline.yaml](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml) — Templates and workflow examples for CI/CD pipelines.
 
 ## Kubernetes
 
@@ -88,14 +101,6 @@
 - [script] [Kubernetes/scripts/pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh) — Script managing pod lifecycle operations.
 - [manifest] [Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml) — Pod manifest with ConfigMap and Secret volume mounts.
 - [manifest] [Kubernetes/manifests/stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml) — Deployment and Service manifest for a stateless app.
-
-## Concepts
-
-- [note] [docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — CI/CD Concepts primer: pipelines, stages, jobs, and the CI/CD workflow.
-
-## GitHub Actions
-
-- [note] [GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md) — Following the official GitHub Actions quickstart: what worked and what tripped me up.
 
 ## Terraform
 
