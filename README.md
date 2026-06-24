@@ -5,26 +5,26 @@
 ![Files](https://img.shields.io/badge/files-93-blue)
 ![Python](https://img.shields.io/badge/python-3776AB?logo=python&logoColor=white)
 ![Shell](https://img.shields.io/badge/shell-4EAA25?logo=gnu-bash&logoColor=white)
+![Python](https://img.shields.io/badge/python-3776AB?logo=python&logoColor=white)
 ![Terraform](https://img.shields.io/badge/terraform-7B42BC?logo=terraform&logoColor=white)
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for eight tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/`. It's meant to be cloned and used as a quick-touch reference, not a tutorial site.
+First-contact notes, setup scripts, configs, and manifests for nine tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` and a reusable S3 module for Terraform. It's meant to be cloned and used as a quick-touch reference, not a tutorial site.
 
 ## Coverage
 
-| Tool | Notes | Scripts | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Configs | Templates |
-|------|-------|---------|----------|-------------|------|-----------|-----------|---------|-----------|
-| Ansible | 4 | 2 | 1 | — | 1 | 1 | — | 2 | — |
+| Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates |
+|------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|
+| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — |
 | Concepts | 1 | — | — | — | — | — | — | — | — |
-| Docker | 4 | 4 | — | 3 | 1 | 1 | 1 | 1 | — |
-| General | — | — | — | — | 5 | — | — | — | — |
-| Git | 4 | 7 | 1 | — | 2 | — | — | — | 3 |
-| GitHub | 9 | 5 | 2 | — | — | — | — | 1 | — |
-| GitHub Actions | 1 | — | — | — | — | — | — | — | — |
-| GitLab CI | 1 | 1 | — | — | — | — | — | 1 | — |
-| Kubernetes | 4 | 2 | — | — | — | — | 2 | — | — |
-| Terraform | 3 | 2 | — | — | — | — | 1 | 7 | — |
+| Docker | 4 | 4 | 1 | — | 3 | 1 | 1 | 1 | — |
+| Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 |
+| GitHub | 10 | 5 | 1 | 2 | — | — | — | — | — |
+| GitHub Actions | 1 | — | 1 | — | — | — | — | — | — |
+| GitLab CI | 1 | 1 | 1 | — | — | — | — | — | — |
+| Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — |
+| Terraform | 3 | 2 | 7 | — | — | — | — | 1 | — |
 
 ## Quick links
 
@@ -40,7 +40,7 @@ First-contact notes, setup scripts, configs, and manifests for eight tool famili
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **docs/concepts/** — Foundational concept primers (CI/CD, version control, IaC, etc.).
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
-- **GitHub Actions/** — Primer and quickstart notes for GitHub Actions workflows.
+- **GitHub Actions/** — Primer and quickstart notes, workflow configs for GitHub Actions.
 - **GitLab CI/** — Primer notes, install and register runner scripts, and pipeline configs.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, and Python API snippets.
 - **GitLab CI/** — Primer notes, pipeline config, and runner setup script.
@@ -51,7 +51,7 @@ First-contact notes, setup scripts, configs, and manifests for eight tool famili
 
 ## Status
 
-Currently working through L1 first-contact notes for the remaining tool families. Coverage is strongest on Docker, Git, and GitHub; Kubernetes and Terraform are filling in. Ansible has stabilised at L3 with playbook troubleshooting notes and an ansible-lint workflow integrated. Git templates and changelog automation have been added. Foundational concept primers under `docs/concepts/` have started with CI/CD. GitHub Actions coverage has begun with quickstart notes.
+Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Foundational concept primers under `docs/concepts/` have started with CI/CD. Working through L1 first-contact notes for remaining tool families.
 
 ---
 _Last updated: 2026-06-23_

@@ -93,14 +93,6 @@
 - [manifest] [Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml) — Pod manifest with ConfigMap and Secret volume mounts.
 - [manifest] [Kubernetes/manifests/stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml) — Deployment and Service manifest for a stateless app.
 
-## Concepts
-
-- [note] [docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — CI/CD Concepts primer: pipelines, stages, jobs, and the CI/CD workflow.
-
-## GitHub Actions
-
-- [note] [GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md) — Following the official GitHub Actions quickstart: what worked and what tripped me up.
-
 ## Terraform
 
 - [note] [Terraform/notes/0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md) — Primer covering providers, state, plan, apply.

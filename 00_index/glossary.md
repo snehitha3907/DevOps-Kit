@@ -85,3 +85,26 @@
 - **Plan** — A dry-run that shows what changes Terraform will make.
 - **Apply** — The command that executes the changes shown in a plan.
 - **Resource** — A declarative description of an infrastructure component (e.g., `local_file`).
+- **Module** — A self-contained package of Terraform configurations that manages a group of related resources.
+- **Output** — A value exposed by a Terraform module or root configuration after apply.
+
+## GitHub Actions
+
+- **Workflow** — An automated process defined in YAML that runs one or more jobs when triggered.
+- **Job** — A set of steps executed on the same runner.
+- **Step** — An individual task within a job, such as running a script or using an action.
+- **Action** — A reusable unit of automation that can be shared across workflows.
+- **Runner** — A server that listens for workflow jobs and executes them.
+
+## GitLab CI/CD
+
+- **Pipeline** — A collection of jobs split into stages, defined in `.gitlab-ci.yml`.
+- **Stage** — A logical grouping of jobs that run in parallel within the same stage.
+- **Runner** — An agent that picks up and executes CI/CD jobs.
+- **Job** — A single unit of work defined in a pipeline, specified by a job name in the config.
+
+## CI/CD Concepts
+
+- **Continuous Integration (CI)** — The practice of automatically building and testing every code change.
+- **Continuous Deployment (CD)** — The practice of automatically deploying every change that passes CI.
+- **Continuous Delivery** — An extension of CI where every change is deployable but may require manual approval to deploy.
