@@ -2,7 +2,7 @@
 > A working engineer's DevOps reference — notes, scripts, configs, and snippets for the tools you reach for daily.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
-![Files](https://img.shields.io/badge/files-89-blue)
+![Files](https://img.shields.io/badge/files-93-blue)
 ![Python](https://img.shields.io/badge/python-3776AB?logo=python&logoColor=white)
 ![Shell](https://img.shields.io/badge/shell-4EAA25?logo=gnu-bash&logoColor=white)
 ![Terraform](https://img.shields.io/badge/terraform-7B42BC?logo=terraform&logoColor=white)
@@ -30,9 +30,9 @@ First-contact notes, setup scripts, configs, and manifests for eight tool famili
 
 - [Changelog from conventional commits](Git/scripts/changelog-from-conventional-commits.py) — Python script that parses conventional commit messages into a changelog.
 - [Git hooks project scaffold](Git/templates/git-hooks/) — pre-commit, commit-msg, and post-checkout hook templates.
-- [Batch git operations](Git/scripts/batch-git-ops.sh) — Script for running git commands across multiple repos.
-- [Ansible variable precedence notebook](Ansible/notebooks/ansible-variable-precedence.ipynb) — Jupyter notebook comparing variable precedence rules.
-- [Wiring ansible-lint](Ansible/docs/2026-06-15-wiring-ansible-lint.md) — Integrating ansible-lint into the playbook workflow.
+- [GitLab CI primer](GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md) — Introduction to pipelines, runners, stages, jobs, and the `.gitlab-ci.yml` format.
+- [GitLab CI first pipeline config](GitLab%20CI/configs/2026-06-22-first-pipeline.yaml) — Minimal `.gitlab-ci.yml` with a build and test stage.
+- [GitLab CI runner setup script](GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh) — Script to install, configure, and register a GitLab Runner.
 
 ## Layout
 
@@ -43,10 +43,10 @@ First-contact notes, setup scripts, configs, and manifests for eight tool famili
 - **GitHub Actions/** — Primer and quickstart notes for GitHub Actions workflows.
 - **GitLab CI/** — Primer notes, install and register runner scripts, and pipeline configs.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, and Python API snippets.
-- **General/** — Project-level cleanup and rework documentation.
+- **GitLab CI/** — Primer notes, pipeline config, and runner setup script.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
 - **Terraform/** — Primer notes, install and bootstrap scripts, configs, a reusable S3 module, and manifests.
-- **00_index/** — Navigation index files (topics, quick-links, glossary).
+- **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 - **CHANGELOG.md** — Kit-level change log.
 
 ## Status

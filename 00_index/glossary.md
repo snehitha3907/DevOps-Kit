@@ -53,6 +53,16 @@
 - **Insights** — Analytics and metrics for a repository, including traffic, contributors, and dependency graph.
 - **GitHub flow** — A lightweight branching workflow where feature branches are created from `main`, changes are committed, a pull request is opened, and the branch is merged and deleted after review.
 
+## GitLab CI
+
+- **Pipeline** — A collection of jobs split into stages (e.g., build → test → deploy) defined in `.gitlab-ci.yml`.
+- **Job** — A single unit of work in a pipeline, with a script, image, and optional rules.
+- **Stage** — A group of jobs that run in parallel within the same pipeline stage.
+- **Runner** — A process that executes GitLab CI jobs; can be shared (GitLab-provided) or self-hosted.
+- **`.gitlab-ci.yml`** — The YAML file at the root of a repository that defines the pipeline configuration.
+- **Artifact** — Files produced by a job (e.g., binary, test report) passed to later stages or downloadable from the UI.
+- **CI/CD variable** — A key-value pair used for secrets, API tokens, and configuration in GitLab CI/CD.
+
 ## Kubernetes
 
 - **Pod** — The smallest deployable unit in Kubernetes; one or more containers sharing storage and network.
