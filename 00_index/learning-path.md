@@ -12,7 +12,7 @@ These concepts have no prerequisites — start here if you're new to the domain.
 - **Networking Fundamentals** — IP addresses, ports, DNS, HTTP, and basic network troubleshooting. Unlocks: Docker, Kubernetes.
 - **Containerization Concepts** — What containers are, how they differ from VMs, and why they matter. Unlocks: Docker, Kubernetes.
 - **Infrastructure as Code Concepts** — Managing infrastructure through declarative configuration files. Unlocks: Terraform, Ansible.
-- **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. Unlocks: GitLab CI.
+- **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. Unlocks: GitLab CI, GitHub Actions.
 
 ## Stage 2: Core Tools
 
@@ -42,7 +42,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 
 Tools that depend on foundational concepts at L2 or core tools at L2+.
 
-- **GitHub Actions** ⏳ — CI/CD integrated with GitHub. Depends on Git L2 + Docker L2. Content coming.
+- **GitHub Actions** — CI/CD integrated with GitHub. [Quickstart notes](GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow config](GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
 - **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
 - **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
@@ -86,11 +86,14 @@ graph TD
     IaC --> Ansible
 
     CI[CI/CD Concepts] --> GitLabCI
+    CI[CI/CD Concepts] --> GitHubActions
 
     Git --> GitHub
     Git --> GitLabCI
+    Git --> GitHubActions
     Docker --> K8s
     Docker --> GitLabCI
+    Docker --> GitHubActions
     K8s --> Helm
     K8s --> ArgoCD
     K8s --> Prometheus
@@ -100,6 +103,6 @@ graph TD
     classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions hasContent
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```

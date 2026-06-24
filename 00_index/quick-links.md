@@ -135,8 +135,8 @@
 
 ## GitLab CI/CD
 
-- Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
-- Following the quickstart: [`GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md`](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
+- Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
+- Following the quickstart: [`GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md`](../GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
 
 ## GitLab CI/CD scripts
 
