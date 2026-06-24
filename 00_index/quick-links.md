@@ -33,6 +33,7 @@
 - Build and run first Dockerfile: [`Docker/dockerfiles/build-and-run-first.Dockerfile`](../Docker/dockerfiles/build-and-run-first.Dockerfile)
 - Docker Compose quickstart notes: [`Docker/notes/2026-06-07-docker-compose-quickstart.md`](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
 - docker run vs compose docs: [`Docker/docs/docker-run-vs-compose.md`](../Docker/docs/docker-run-vs-compose.md)
+- Multi-stage Go HTTP server: [`Docker/dockerfiles/multi-stage-go-http-server.Dockerfile`](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 
 ## Docker scripts
 
@@ -140,6 +141,7 @@
 ## GitLab CI/CD scripts
 
 - Install Runner and register for a project: [`GitLab CI/scripts/2026-06-22-install-runner-and-register.sh`](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
+- Run first local pipeline: [`GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh`](../GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 
 ## GitLab CI/CD configs
 
