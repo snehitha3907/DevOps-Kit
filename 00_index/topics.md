@@ -28,6 +28,7 @@
 - [dockerfile] [Docker/dockerfiles/build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile) — Minimal Dockerfile for building and running a first container.
 - [dockerfile] [Docker/dockerfiles/first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile) — First Dockerfile for building a custom image.
 - [dockerfile] [Docker/dockerfiles/tried-building-first-image.Dockerfile](../Docker/dockerfiles/tried-building-first-image.Dockerfile) — Attempted Dockerfile for building a custom image.
+- [dockerfile] [Docker/dockerfiles/multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile) — Multi-stage build for a Go HTTP server.
 - [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
 - [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
 - [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
@@ -76,11 +77,18 @@
 - [snippet] [GitHub/snippets/list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py) — Python snippet for listing repositories.
 - [config] [GitHub/configs/issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml) — Repository issue templates and labels configuration.
 
+## GitHub Actions
+
+- [note] [GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md) — Notes on GitHub Actions workflow setup, triggers, and runner environment observations.
+- [config] [GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml) — CI workflow with environment variables and secrets for GitHub Actions.
+
 ## GitLab CI
 
 - [note] [GitLab CI/notes/0000-primer-gitlab-ci-cd.md](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md) — Primer covering pipelines, runners, stages, jobs, and the `.gitlab-ci.yml` format.
 - [script] [GitLab CI/scripts/2026-06-22-install-runner-and-register.sh](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh) — Script to install, configure, and register a GitLab Runner.
 - [config] [GitLab CI/configs/2026-06-22-first-pipeline.yaml](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml) — Minimal `.gitlab-ci.yml` with build and test stages.
+- [script] [GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh](../GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh) — Script to run a GitLab pipeline locally using the CLI.
+- [note] [GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md](../GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md) — Notes following the GitLab CI quickstart guide with pipeline stages.
 
 ## Kubernetes
 
@@ -98,6 +106,7 @@
 - [note] [Terraform/notes/0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md) — Primer covering providers, state, plan, apply.
 - [note] [Terraform/notes/2026-06-06-exploring-terraform-cli.md](../Terraform/notes/2026-06-06-exploring-terraform-cli.md) — Walkthrough of init/plan/apply commands.
 - [note] [Terraform/notes/2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md) — Follow-up notes for the first Terraform workflow.
+- [note] [Terraform/notes/2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md) — Notes following the Terraform providers tutorial.
 - [script] [Terraform/scripts/install-and-init.sh](../Terraform/scripts/install-and-init.sh) — Script to install Terraform and run init/plan.
 - [script] [Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh) — Script to bootstrap a structured Terraform project.
 - [config] [Terraform/configs/2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — Local provider configuration with variables and outputs.
