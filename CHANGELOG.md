@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-25
+
+- Added Trivy CLI exploration notes (trv-004) (`Trivy/notes/2026-06-25-exploring-trivy-cli.md`)
+
 ## 2026-06-24
 
 - Added multi-stage Go HTTP server Dockerfile (doc-010) (`Docker/dockerfiles/multi-stage-go-http-server.Dockerfile`)

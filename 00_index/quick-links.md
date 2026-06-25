@@ -138,6 +138,10 @@
 - Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
 - Following the quickstart: [`GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md`](../GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
 
+## Trivy notes
+
+- Trivy CLI exploration (scan targets, output format, filtering): [`Trivy/notes/2026-06-25-exploring-trivy-cli.md`](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
+
 ## GitLab CI/CD scripts
 
 - Install Runner and register for a project: [`GitLab CI/scripts/2026-06-22-install-runner-and-register.sh`](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
