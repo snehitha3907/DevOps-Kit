@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working engineer's DevOps reference — notes, scripts, configs, and snippets for the tools you reach for daily.
+> A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
 ![Files](https://img.shields.io/badge/files-103-blue)
@@ -9,7 +9,7 @@
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for nine tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` and a reusable S3 module for Terraform. It's meant to be cloned and used as a quick-touch reference, not a tutorial site.
+First-contact notes, setup scripts, configs, and manifests for eight tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes a foundational CI/CD concepts primer under `docs/concepts/` and a reusable S3 module for Terraform. It's meant to be cloned and used as a quick-touch reference, not a tutorial site.
 
 ## Coverage
 
@@ -27,8 +27,8 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Quick links
 
-- [Multi-stage Go HTTP server Dockerfile](Docker/dockerfiles/multi-stage-go-http-server.Dockerfile) — Multi-stage build for a Go HTTP server with optimized production image.
-- [GitLab CI quickstart notes](GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md) — Notes following the GitLab CI quickstart guide.
+- [Multi-stage Go HTTP server Dockerfile](Docker/dockerfiles/multi-stage-go-http-server.Dockerfile) — Multi-stage build for a Go HTTP server with an optimised production image.
+- [GitLab CI quickstart notes](GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md) — Notes following the GitLab CI quickstart guide with pipeline stages.
 - [Run first local pipeline script](GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh) — Script to run a GitLab pipeline locally using the CLI.
 - [Changelog from conventional commits](Git/scripts/changelog-from-conventional-commits.py) — Python script that parses conventional commit messages into a changelog.
 - [Git hooks project scaffold](Git/templates/git-hooks/) — pre-commit, commit-msg, and post-checkout hook templates.
@@ -37,9 +37,9 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
-- **docs/concepts/** — Foundational concept primers (CI/CD, version control, IaC, etc.).
+- **docs/concepts/** — Foundational concept primers (CI/CD currently).
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
-- **GitHub Actions/** — Primer and quickstart notes, workflow configs for GitHub Actions.
+- **GitHub Actions/** — Quickstart notes and a first CI workflow config with environment variables and secrets.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, and Python API snippets.
 - **GitLab CI/** — Primer notes, install and register runner scripts, and pipeline configs.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
@@ -49,7 +49,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Foundational concept primers under `docs/concepts/` have started with CI/CD. Working through L1 first-contact notes for remaining tool families.
+Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
-_Last updated: 2026-06-25_
+_Last updated: 2026-06-26_

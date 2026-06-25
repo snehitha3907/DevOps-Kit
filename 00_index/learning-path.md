@@ -106,3 +106,5 @@ graph TD
     class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions hasContent
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```
+
+_Last updated: 2026-06-26_
