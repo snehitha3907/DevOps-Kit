@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform.
+> A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, Terraform, and Trivy.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
 ![Files](https://img.shields.io/badge/files-103-blue)
@@ -9,7 +9,7 @@
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for eight tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, and Terraform. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes a foundational CI/CD concepts primer under `docs/concepts/` and a reusable S3 module for Terraform. It's meant to be cloned and used as a quick-touch reference, not a tutorial site.
+First-contact notes, setup scripts, configs, and manifests for nine tool families a DevOps engineer reaches for every day: Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, Terraform, and Trivy. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes a foundational CI/CD concepts primer under `docs/concepts/` and a reusable S3 module for Terraform. It's meant to be cloned and used as a quick-touch reference, not a tutorial site.
 
 ## Coverage
 
@@ -24,6 +24,7 @@ First-contact notes, setup scripts, configs, and manifests for eight tool famili
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — |
 | Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — |
 | Terraform | 4 | 2 | 7 | — | — | — | — | 1 | — |
+| Trivy | 1 | — | — | — | — | — | — | — | — |
 
 ## Quick links
 
@@ -44,12 +45,13 @@ First-contact notes, setup scripts, configs, and manifests for eight tool famili
 - **GitLab CI/** — Primer notes, install and register runner scripts, and pipeline configs.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
 - **Terraform/** — Primer notes, install and bootstrap scripts, configs, a reusable S3 module, and manifests.
+- **Trivy/** — CLI exploration notes for vulnerability scanning.
 - **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 - **CHANGELOG.md** — Kit-level change log.
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
+Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration notes have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
 _Last updated: 2026-06-26_

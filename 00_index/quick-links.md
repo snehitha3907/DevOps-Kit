@@ -142,6 +142,10 @@
 
 - Trivy CLI exploration (scan targets, output format, filtering): [`Trivy/notes/2026-06-25-exploring-trivy-cli.md`](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 
+## Trivy scripts
+
+- Scan container image and parse JSON results: [`Trivy/scripts/2026-06-26-scanned-first-container-image.sh`](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+
 ## GitLab CI/CD scripts
 
 - Install Runner and register for a project: [`GitLab CI/scripts/2026-06-22-install-runner-and-register.sh`](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
