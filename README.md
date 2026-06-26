@@ -45,7 +45,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 - **GitLab CI/** — Primer notes, install and register runner scripts, and pipeline configs.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
 - **Terraform/** — Primer notes, install and bootstrap scripts, configs, a reusable S3 module, and manifests.
-- **Trivy/** — CLI exploration notes for vulnerability scanning.
+- **Trivy/** — CLI exploration notes and scripts for container image vulnerability scanning.
 - **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 - **CHANGELOG.md** — Kit-level change log.
 
