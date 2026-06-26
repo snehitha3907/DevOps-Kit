@@ -29,6 +29,8 @@
 - [dockerfile] [Docker/dockerfiles/first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile) — First Dockerfile for building a custom image.
 - [dockerfile] [Docker/dockerfiles/tried-building-first-image.Dockerfile](../Docker/dockerfiles/tried-building-first-image.Dockerfile) — Attempted Dockerfile for building a custom image.
 - [dockerfile] [Docker/dockerfiles/multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile) — Multi-stage build for a Go HTTP server.
+- [source] [Docker/dockerfiles/multi-stage-go-http-server/go.mod](../Docker/dockerfiles/multi-stage-go-http-server/go.mod) — Go module definition for the multi-stage build example.
+- [source] [Docker/dockerfiles/multi-stage-go-http-server/main.go](../Docker/dockerfiles/multi-stage-go-http-server/main.go) — Go HTTP server source used in the multi-stage Dockerfile.
 - [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
 - [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
 - [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
@@ -117,3 +119,7 @@
 - [module] [Terraform/configs/reusable-s3-module/variables.tf](../Terraform/configs/reusable-s3-module/variables.tf) — Reusable S3 module variables.
 - [example] [Terraform/configs/reusable-s3-module/examples/basic/main.tf](../Terraform/configs/reusable-s3-module/examples/basic/main.tf) — Basic usage example for the S3 module.
 - [manifest] [Terraform/manifests/simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf) — EC2 instance with security group manifest for AWS.
+
+## Concepts
+
+- [doc] [docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — Primer covering CI/CD terminology, pipeline stages, and a concrete GitHub Actions example.
