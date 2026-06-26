@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-26
+
+- Added Trivy container image scan with JSON parsing script (trv-005) (`Trivy/scripts/2026-06-26-scanned-first-container-image.sh`)
+
 ## 2026-06-25
 
 - Added Trivy CLI exploration notes (trv-004) (`Trivy/notes/2026-06-25-exploring-trivy-cli.md`)
