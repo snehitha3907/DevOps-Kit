@@ -3,6 +3,7 @@
 ## 2026-06-26
 
 - Added Trivy container image scan with JSON parsing script (trv-005) (`Trivy/scripts/2026-06-26-scanned-first-container-image.sh`)
+- Added Docker build --mount vs COPY for dependency caching docs (doc-011) (`Docker/docs/docker-build-mount-vs-copy-caching.md`)
 
 ## 2026-06-25
 
