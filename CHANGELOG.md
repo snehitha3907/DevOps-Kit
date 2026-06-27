@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-27
+
+- Reworked Docker build --mount vs COPY docs with L3 transitional voice (doc-011 rework) (`Docker/docs/docker-build-mount-vs-copy-caching.md`)
+
 ## 2026-06-26
 
 - Added Trivy container image scan with JSON parsing script (trv-005) (`Trivy/scripts/2026-06-26-scanned-first-container-image.sh`)
