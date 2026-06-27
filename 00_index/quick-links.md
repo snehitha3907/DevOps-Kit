@@ -32,6 +32,7 @@
 - Build first image Dockerfile: [`Docker/dockerfiles/tried-building-first-image.Dockerfile`](../Docker/dockerfiles/tried-building-first-image.Dockerfile)
 - Build and run first Dockerfile: [`Docker/dockerfiles/build-and-run-first.Dockerfile`](../Docker/dockerfiles/build-and-run-first.Dockerfile)
 - Docker Compose quickstart notes: [`Docker/notes/2026-06-07-docker-compose-quickstart.md`](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
+- Docker build --mount vs COPY for dependency caching docs: [`Docker/docs/docker-build-mount-vs-copy-caching.md`](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - docker run vs compose docs: [`Docker/docs/docker-run-vs-compose.md`](../Docker/docs/docker-run-vs-compose.md)
 - Multi-stage Go HTTP server: [`Docker/dockerfiles/multi-stage-go-http-server.Dockerfile`](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 
