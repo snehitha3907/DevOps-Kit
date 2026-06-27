@@ -20,6 +20,9 @@
 - **Port mapping** — A Docker networking feature mapping a host port to a container port.
 - **Compose** — A tool for defining and running multi-container applications using a YAML file.
 - **Build context** — The directory path passed to `docker build` that the Docker daemon uses as the source for copying files during image creation.
+- **BuildKit** — Docker's modern build backend that enables faster, more efficient image builds with features like cache mounts and parallel execution.
+- **--mount** — A BuildKit-specific `RUN` instruction modifier that mounts cache, secret, or SSH resources into a Docker build step.
+- **docker buildx** — Docker's CLI plugin for extended build capabilities, including BuildKit, multi-platform images, and advanced caching strategies.
 
 ## Git
 
@@ -100,8 +103,18 @@
 
 - **Pipeline** — A collection of jobs split into stages, defined in `.gitlab-ci.yml`.
 - **Stage** — A logical grouping of jobs that run in parallel within the same stage.
-- **Runner** — An agent that picks up and executes CI/CD jobs.
+- **Runner** — A process that picks up and executes CI/CD jobs.
 - **Job** — A single unit of work defined in a pipeline, specified by a job name in the config.
+
+## Trivy
+
+- **trivy image** — A Trivy subcommand that scans a container image for vulnerabilities, misconfigurations, and secrets.
+- **trivy fs** (filesystem) — A Trivy subcommand that scans a local directory for vulnerabilities in application dependencies and IaC misconfigurations.
+- **trivy repo** (repository) — A Trivy subcommand that scans a remote Git repository for vulnerabilities.
+- **trivy config** — A Trivy subcommand that scans Infrastructure as Code files (Terraform, Docker, Kubernetes) for security misconfigurations.
+- **SBOM** — Software Bill of Materials; a structured inventory of all software components in an image or filesystem, used with `trivy sbom`.
+- **severity** — A vulnerability impact classification (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN) used to filter and prioritise scan results.
+- **vulnerability database** — Trivy's local cache of known CVEs and other vulnerability data, updated automatically or via `trivy image --download-db-only`.
 
 ## CI/CD Concepts
 

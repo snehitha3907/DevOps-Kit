@@ -120,6 +120,11 @@
 - [example] [Terraform/configs/reusable-s3-module/examples/basic/main.tf](../Terraform/configs/reusable-s3-module/examples/basic/main.tf) — Basic usage example for the S3 module.
 - [manifest] [Terraform/manifests/simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf) — EC2 instance with security group manifest for AWS.
 
+## Trivy
+
+- [note] [Trivy/notes/2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md) — Notes on Trivy CLI scan targets, output format, and severity filtering.
+- [script] [Trivy/scripts/2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh) — Script to scan a container image with Trivy and parse JSON output.
+
 ## Concepts
 
 - [doc] [docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — Primer covering CI/CD terminology, pipeline stages, and a concrete GitHub Actions example.

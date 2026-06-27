@@ -21,7 +21,7 @@ These tools are unlocked from the start and form the day-to-day toolkit for any 
 - **[Git](Git/notes/0000-primer-git.md)** — The foundation of version control. Start with the primer, work through CLI exploration, branching, merging, and hooks.
 - **[GitHub](GitHub/notes/0000-primer-github.md)** — The most popular Git hosting platform. Learn repos, issues, PRs, the GitHub flow, and the `gh` CLI.
 - **[Docker](Docker/notes/0000-primer-docker.md)** — Containerisation fundamentals. Start with the primer, build images, run containers, and learn Compose for multi-service apps.
-- **[Ansible](Ansible/notes/0000-primer-ansible.md)** — Agentless automation for configuration management and provisioning. Primer, ad-hoc commands, playbooks, and troubleshooting.
+- **[Ansible](Ansible/notes/0000-primer-ansible.md)** — Automation for configuration management and provisioning — no target-side software required. Start with the primer, ad-hoc commands, playbooks, and troubleshooting.
 - **[Kubernetes](Kubernetes/notes/0000-primer-kubernetes.md)** — Container orchestration at scale. Primer, `kubectl` exploration, manifests, and pod lifecycle management.
 - **[Terraform](Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules.
 
@@ -46,7 +46,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
 - **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
 - **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
-- **Trivy** ⏳ — Container vulnerability scanner. Depends on Docker L2. Content coming.
+- **Trivy** — Container vulnerability scanner. [CLI notes](Trivy/notes/2026-06-25-exploring-trivy-cli.md), [scan script](Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 
 ## Stage 5: Mastery
 
@@ -103,8 +103,8 @@ graph TD
     classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions,Trivy hasContent
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-06-26_
+_Last updated: 2026-06-27_
