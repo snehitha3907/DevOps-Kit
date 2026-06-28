@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-28
+
+- Added lifecycle rules to reusable S3 module (tf-012) — expiration, transition, noncurrent version handling, multipart upload cleanup (`Terraform/configs/reusable-s3-module/`)
+
 ## 2026-06-26
 
 - Added Trivy container image scan with JSON parsing script (trv-005) (`Trivy/scripts/2026-06-26-scanned-first-container-image.sh`)
