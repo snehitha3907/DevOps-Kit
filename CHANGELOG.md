@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-28
+
+- Added lifecycle rules to reusable S3 module (tf-012) — expiration, transition, noncurrent version handling, multipart upload cleanup (`Terraform/configs/reusable-s3-module/`)
+
 ## 2026-06-27
 
 - Reworked Docker build --mount vs COPY docs with L3 transitional voice (doc-011 rework) (`Docker/docs/docker-build-mount-vs-copy-caching.md`)

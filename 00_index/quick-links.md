@@ -128,7 +128,7 @@
 
 - Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
 - Local provider with variables and outputs: [`Terraform/configs/2026-06-12-tried-local-with-vars.tf`](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
-- Reusable S3 module with variables and outputs: [`Terraform/configs/reusable-s3-module/main.tf`](../Terraform/configs/reusable-s3-module/main.tf)
+- Reusable S3 module with versioning, encryption, public access blocks, and lifecycle rules: [`Terraform/configs/reusable-s3-module/`](../Terraform/configs/reusable-s3-module/)
 
 ## Terraform manifests
 
