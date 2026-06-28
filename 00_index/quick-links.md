@@ -101,6 +101,10 @@
 - Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 - Provision repo with GitHub API (create, protect, add collaborator): [`GitHub/scripts/provision-repo-with-api.py`](../GitHub/scripts/provision-repo-with-api.py)
 
+## GitHub docs
+
+- Deploy keys vs fine-grained PATs for CI/CD access: [`GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md`](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
+
 ## GitHub configs
 
 - Issue templates and labels: [`GitHub/configs/issue-templates-and-labels.yaml`](../GitHub/configs/issue-templates-and-labels.yaml)
