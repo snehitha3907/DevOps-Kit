@@ -99,6 +99,7 @@
 - Hello World guide and GitHub flow notes: [`GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md`](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
 - Web UI exploration (profile, repos, issues): [`GitHub/notes/2026-06-15-explore-github-web-ui.md`](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
 - Create repo and open PR: [`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
+- Provision repo with GitHub API (create, protect, add collaborator): [`GitHub/scripts/provision-repo-with-api.py`](../GitHub/scripts/provision-repo-with-api.py)
 
 ## GitHub configs
 
