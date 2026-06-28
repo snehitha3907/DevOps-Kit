@@ -14,6 +14,11 @@ output "bucket_domain_name" {
 }
 
 output "random_suffix" {
-  description = "The suffix used for auto-generated names (useful for naming sidecars)."
+  description = "Suffix used for auto-generated names."
   value       = random_id.suffix.hex
+}
+
+output "lifecycle_rule_ids" {
+  description = "IDs of the configured lifecycle rules."
+  value       = [for r in aws_s3_bucket_lifecycle_configuration.this.rule : r.id]
 }
