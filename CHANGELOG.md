@@ -2,6 +2,7 @@
 
 ## 2026-06-29
 
+- Added Terraform workspaces + remote state locking with S3 and DynamoDB docs (tf-013) (`Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md`)
 - Added Go HTTP server + Redis docker-compose manifest with health checks and custom networks (doc-012) (`Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml`)
 
 ## 2026-06-28
