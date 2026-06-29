@@ -108,13 +108,12 @@
 
 ## Trivy
 
-- **trivy image** — A Trivy subcommand that scans a container image for vulnerabilities, misconfigurations, and secrets.
-- **trivy fs** (filesystem) — A Trivy subcommand that scans a local directory for vulnerabilities in application dependencies and IaC misconfigurations.
-- **trivy repo** (repository) — A Trivy subcommand that scans a remote Git repository for vulnerabilities.
-- **trivy config** — A Trivy subcommand that scans Infrastructure as Code files (Terraform, Docker, Kubernetes) for security misconfigurations.
-- **SBOM** — Software Bill of Materials; a structured inventory of all software components in an image or filesystem, used with `trivy sbom`.
-- **severity** — A vulnerability impact classification (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN) used to filter and prioritise scan results.
-- **vulnerability database** — Trivy's local cache of known CVEs and other vulnerability data, updated automatically or via `trivy image --download-db-only`.
+- **Vulnerability scanner** — A tool that identifies security vulnerabilities in software dependencies and container images.
+- **Image scanning** — The process of inspecting a container image for known vulnerabilities in the base OS packages and application dependencies.
+- **SARIF** — Static Analysis Results Interchange Format, a standard JSON-based format for sharing analysis results.
+- **CVSS** — Common Vulnerability Scoring System, a framework for rating the severity of security vulnerabilities.
+- **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
+- **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
 
 ## CI/CD Concepts
 

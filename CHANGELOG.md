@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-06-28
+
+- Added lifecycle rules to reusable S3 module (tf-012) — expiration, transition, noncurrent version handling, multipart upload cleanup (`Terraform/configs/reusable-s3-module/`)
+- Added repo provisioning script with branch protection and collaborator management (gh-010) (`GitHub/scripts/provision-repo-with-api.py`)
+## 2026-06-27
+
+- Reworked Docker build --mount vs COPY docs with L3 transitional voice (doc-011 rework) (`Docker/docs/docker-build-mount-vs-copy-caching.md`)
+
 ## 2026-06-26
 
 - Added Trivy container image scan with JSON parsing script (trv-005) (`Trivy/scripts/2026-06-26-scanned-first-container-image.sh`)

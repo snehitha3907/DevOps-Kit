@@ -122,8 +122,7 @@
 
 ## Trivy
 
-- [note] [Trivy/notes/2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md) — Notes on Trivy CLI scan targets, output format, and severity filtering.
-- [script] [Trivy/scripts/2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh) — Script to scan a container image with Trivy and parse JSON output.
+- [note] [Trivy/notes/2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md) — CLI exploration covering scan targets, output formats, and filtering.
 
 ## Concepts
 

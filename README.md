@@ -2,7 +2,7 @@
 > A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, Terraform, and Trivy.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
-![Files](https://img.shields.io/badge/files-106-blue)
+![Files](https://img.shields.io/badge/files-104-blue)
 ![Python](https://img.shields.io/badge/python-3776AB?logo=python&logoColor=white)
 ![Shell](https://img.shields.io/badge/shell-4EAA25?logo=gnu-bash&logoColor=white)
 ![Terraform](https://img.shields.io/badge/terraform-7B42BC?logo=terraform&logoColor=white)
@@ -17,7 +17,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|
 | Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — |
 | Concepts | 1 | — | — | — | — | — | — | — | — |
-| Docker | 4 | 4 | 1 | — | 4 | 2 | 1 | 1 | — |
+| Docker | 4 | 4 | 1 | — | 6 | 1 | 1 | 1 | — |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 |
 | GitHub | 10 | 5 | 1 | 2 | — | — | — | — | — |
 | GitHub Actions | 1 | — | 1 | — | — | — | — | — | — |
@@ -28,11 +28,10 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Quick links
 
-- [Docker build --mount vs COPY caching doc](Docker/docs/docker-build-mount-vs-copy-caching.md) — Comparing BuildKit --mount and COPY for dependency caching in multi-stage builds.
-- [Trivy container image scanning script](Trivy/scripts/2026-06-26-scanned-first-container-image.sh) — Scan container image with Trivy and parse JSON output with jq.
-- [Trivy CLI exploration notes](Trivy/notes/2026-06-25-exploring-trivy-cli.md) — Notes on Trivy scan targets, output format, and severity filtering.
-- [Multi-stage Go HTTP server Dockerfile](Docker/dockerfiles/multi-stage-go-http-server.Dockerfile) — Multi-stage build for a Go HTTP server with optimised production image.
-- [GitLab CI local pipeline runner script](GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh) — Script to run a GitLab pipeline locally using the CLI.
+- [Multi-stage Go HTTP server](Docker/dockerfiles/multi-stage-go-http-server.Dockerfile) — Multi-stage build for a Go HTTP server with an optimised production image.
+- [GitLab CI quickstart notes](GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md) — Notes following the GitLab CI quickstart guide with pipeline stages.
+- [Run first local GitLab pipeline](GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh) — Script to run a GitLab pipeline locally using the CLI.
+- [Changelog from conventional commits](Git/scripts/changelog-from-conventional-commits.py) — Python script that parses conventional commit messages into a changelog.
 
 ## Layout
 
