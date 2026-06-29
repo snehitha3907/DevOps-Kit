@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-29
+
+- Added Go HTTP server + Redis docker-compose manifest with health checks and custom networks (doc-012) (`Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml`)
+
 ## 2026-06-28
 
 - Added lifecycle rules to reusable S3 module (tf-012) — expiration, transition, noncurrent version handling, multipart upload cleanup (`Terraform/configs/reusable-s3-module/`)
