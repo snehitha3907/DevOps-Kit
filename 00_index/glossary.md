@@ -103,6 +103,15 @@
 - **Runner** — An agent that picks up and executes CI/CD jobs.
 - **Job** — A single unit of work defined in a pipeline, specified by a job name in the config.
 
+## Trivy
+
+- **Vulnerability scanner** — A tool that identifies security vulnerabilities in software dependencies and container images.
+- **Image scanning** — The process of inspecting a container image for known vulnerabilities in the base OS packages and application dependencies.
+- **SARIF** — Static Analysis Results Interchange Format, a standard JSON-based format for sharing analysis results.
+- **CVSS** — Common Vulnerability Scoring System, a framework for rating the severity of security vulnerabilities.
+- **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
+- **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
+
 ## CI/CD Concepts
 
 - **Continuous Integration (CI)** — The practice of automatically building and testing every code change.
