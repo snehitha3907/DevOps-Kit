@@ -48,6 +48,7 @@
 ## Docker manifests
 
 - Web app + database compose: [`Docker/manifests/2026-06-13-web-db-compose.yaml`](../Docker/manifests/2026-06-13-web-db-compose.yaml)
+- Go HTTP server + Redis with health checks and networks: [`Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml`](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 
 ## Docker notebooks
 
