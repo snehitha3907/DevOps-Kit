@@ -20,6 +20,9 @@
 - **Port mapping** — A Docker networking feature mapping a host port to a container port.
 - **Compose** — A tool for defining and running multi-container applications using a YAML file.
 - **Build context** — The directory path passed to `docker build` that the Docker daemon uses as the source for copying files during image creation.
+- **BuildKit** — Docker's modern build backend that enables faster, more efficient image builds with features like cache mounts and parallel execution.
+- **--mount** — A BuildKit-specific `RUN` instruction modifier that mounts cache, secret, or SSH resources into a Docker build step.
+- **docker buildx** — Docker's CLI plugin for extended build capabilities, including BuildKit, multi-platform images, and advanced caching strategies.
 
 ## Git
 
@@ -100,7 +103,7 @@
 
 - **Pipeline** — A collection of jobs split into stages, defined in `.gitlab-ci.yml`.
 - **Stage** — A logical grouping of jobs that run in parallel within the same stage.
-- **Runner** — An agent that picks up and executes CI/CD jobs.
+- **Runner** — A process that picks up and executes CI/CD jobs.
 - **Job** — A single unit of work defined in a pipeline, specified by a job name in the config.
 
 ## Trivy

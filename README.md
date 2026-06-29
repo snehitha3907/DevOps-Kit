@@ -41,7 +41,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
 - **GitHub Actions/** — Quickstart notes and a first CI workflow config with environment variables and secrets.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, and Python API snippets.
-- **GitLab CI/** — Primer notes, install and register runner scripts, and pipeline configs.
+- **GitLab CI/** — Primer notes, install and register runner scripts, pipeline configs, quickstart follow-ups, and local pipeline runner.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
 - **Terraform/** — Primer notes, install and bootstrap scripts, configs, a reusable S3 module, and manifests.
 - **Trivy/** — CLI exploration notes and scripts for container image vulnerability scanning.
@@ -50,7 +50,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration notes have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
+Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
-_Last updated: 2026-06-26_
+_Last updated: 2026-06-27_
