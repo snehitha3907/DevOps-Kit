@@ -4,6 +4,7 @@
 
 - Added lifecycle rules to reusable S3 module (tf-012) — expiration, transition, noncurrent version handling, multipart upload cleanup (`Terraform/configs/reusable-s3-module/`)
 - Added repo provisioning script with branch protection and collaborator management (gh-010) (`GitHub/scripts/provision-repo-with-api.py`)
+- Added deploy keys vs fine-grained PATs for CI/CD access docs (gh-011) (`GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md`)
 ## 2026-06-27
 
 - Reworked Docker build --mount vs COPY docs with L3 transitional voice (doc-011 rework) (`Docker/docs/docker-build-mount-vs-copy-caching.md`)
