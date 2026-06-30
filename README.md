@@ -2,7 +2,7 @@
 > A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, Terraform, and Trivy.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
-![Files](https://img.shields.io/badge/files-104-blue)
+![Files](https://img.shields.io/badge/files-109-blue)
 ![Python](https://img.shields.io/badge/python-3776AB?logo=python&logoColor=white)
 ![Shell](https://img.shields.io/badge/shell-4EAA25?logo=gnu-bash&logoColor=white)
 ![Terraform](https://img.shields.io/badge/terraform-7B42BC?logo=terraform&logoColor=white)
@@ -17,21 +17,22 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|
 | Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — |
 | Concepts | 1 | — | — | — | — | — | — | — | — |
-| Docker | 4 | 4 | 1 | — | 6 | 1 | 1 | 1 | — |
+| Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 |
-| GitHub | 10 | 5 | 1 | 2 | — | — | — | — | — |
+| GitHub | 10 | 6 | 1 | 2 | — | 1 | — | — | — |
 | GitHub Actions | 1 | — | 1 | — | — | — | — | — | — |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — |
 | Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — |
 | Terraform | 4 | 2 | 7 | — | — | — | — | 1 | — |
-| Trivy | 1 | — | — | — | — | — | — | — | — |
+| Trivy | 1 | 1 | — | — | — | — | — | — | — |
 
 ## Quick links
 
-- [Multi-stage Go HTTP server](Docker/dockerfiles/multi-stage-go-http-server.Dockerfile) — Multi-stage build for a Go HTTP server with an optimised production image.
-- [GitLab CI quickstart notes](GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md) — Notes following the GitLab CI quickstart guide with pipeline stages.
-- [Run first local GitLab pipeline](GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh) — Script to run a GitLab pipeline locally using the CLI.
-- [Changelog from conventional commits](Git/scripts/changelog-from-conventional-commits.py) — Python script that parses conventional commit messages into a changelog.
+- [Go Redis compose with health checks](Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml) — Compose file with health checks and custom networks for Go and Redis services.
+- [Deploy keys vs PATs for CI/CD](GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md) — Guide comparing deploy keys and fine-grained PATs for CI/CD authentication.
+- [Provision repo with GitHub API](GitHub/scripts/provision-repo-with-api.py) — Python script to create, protect, and configure repositories via the GitHub API.
+- [Docker build mount vs copy caching](Docker/docs/docker-build-mount-vs-copy-caching.md) — Decision guide for BuildKit caching strategies in Docker builds.
+- [Scan container image with Trivy](Trivy/scripts/2026-06-26-scanned-first-container-image.sh) — Script to scan a container image and parse JSON results.
 
 ## Layout
 
@@ -53,4 +54,4 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 Coverage is strongest on Docker, Git, and GitHub. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. Terraform now has a reusable S3 module. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
-_Last updated: 2026-06-27_
+_Last updated: 2026-06-29_
