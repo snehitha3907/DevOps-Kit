@@ -32,7 +32,9 @@
 - [source] [Docker/dockerfiles/multi-stage-go-http-server/go.mod](../Docker/dockerfiles/multi-stage-go-http-server/go.mod) — Go module definition for the multi-stage build example.
 - [source] [Docker/dockerfiles/multi-stage-go-http-server/main.go](../Docker/dockerfiles/multi-stage-go-http-server/main.go) — Go HTTP server source used in the multi-stage Dockerfile.
 - [doc] [Docker/docs/docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md) — Decision guide for when to use docker run vs compose.
+- [doc] [Docker/docs/docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md) — Comparison of BuildKit mount vs COPY caching strategies for dependency management.
 - [manifest] [Docker/manifests/2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml) — Compose manifest for nginx web service with PostgreSQL.
+- [manifest] [Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml) — Compose manifest for Go HTTP server with Redis and health checks.
 - [config] [Docker/configs/multi-service-app.yaml](../Docker/configs/multi-service-app.yaml) — Multi-service application configuration.
 - [notebook] [Docker/notebooks/comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb) — Jupyter notebook comparing bridge, host, overlay, and macvlan drivers.
 
@@ -75,9 +77,11 @@
 - [script] [GitHub/scripts/tried-auth-and-profile.sh](../GitHub/scripts/tried-auth-and-profile.sh) — Script attempting GitHub authentication.
 - [script] [GitHub/scripts/tried-commenting-on-first-issue.sh](../GitHub/scripts/tried-commenting-on-first-issue.sh) — Script to comment on issues.
 - [script] [GitHub/scripts/2026-06-12-create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh) — Script to create a repository and open a pull request.
+- [script] [GitHub/scripts/provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py) — Python script to provision a repository with branch protection and collaborators via the GitHub API.
 - [snippet] [GitHub/snippets/github-issues-api.py](../GitHub/snippets/github-issues-api.py) — Python snippet for working with GitHub issues via the API.
 - [snippet] [GitHub/snippets/list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py) — Python snippet for listing repositories.
 - [config] [GitHub/configs/issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml) — Repository issue templates and labels configuration.
+- [doc] [GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md) — Notes on configuring deploy keys and fine-grained PATs for CI/CD access.
 
 ## GitHub Actions
 
@@ -123,6 +127,7 @@
 ## Trivy
 
 - [note] [Trivy/notes/2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md) — CLI exploration covering scan targets, output formats, and filtering.
+- [script] [Trivy/scripts/2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh) — Script to scan a container image and parse JSON results.
 
 ## Concepts
 
