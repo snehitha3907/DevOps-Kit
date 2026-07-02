@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-02
+
+- Added Terraform notebook comparing for_each vs count for conditional resource creation (tf-014) (`Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb`)
+
 ## 2026-06-29
 
 - Added Terraform workspaces + remote state locking with S3 and DynamoDB docs (tf-013) (`Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md`)

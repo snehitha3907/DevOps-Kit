@@ -144,6 +144,10 @@
 
 - Simple EC2 app: [`Terraform/manifests/simple-ec2-app.tf`](../Terraform/manifests/simple-ec2-app.tf)
 
+## Terraform notebooks
+
+- Comparing for_each vs count for conditional resource creation: [`Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb`](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
+
 ## GitLab CI/CD
 
 - Primer: [`GitLab CI/notes/0000-primer-gitlab-ci-cd.md`](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
