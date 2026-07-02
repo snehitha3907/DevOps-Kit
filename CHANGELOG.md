@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-01
+
+- Added Terraform workspaces and remote state locking with S3 + DynamoDB docs (tf-013) (`Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md`)
+
 ## 2026-06-29
 
 - Added Terraform workspaces + remote state locking with S3 and DynamoDB docs (tf-013) (`Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md`)

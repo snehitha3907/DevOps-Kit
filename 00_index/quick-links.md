@@ -140,6 +140,10 @@
 - Local provider with variables and outputs: [`Terraform/configs/2026-06-12-tried-local-with-vars.tf`](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
 - Reusable S3 module with versioning, encryption, public access blocks, and lifecycle rules: [`Terraform/configs/reusable-s3-module/`](../Terraform/configs/reusable-s3-module/)
 
+## Terraform docs
+
+- Terraform workspaces and remote state locking with S3 + DynamoDB: [`Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md`](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md)
+
 ## Terraform manifests
 
 - Simple EC2 app: [`Terraform/manifests/simple-ec2-app.tf`](../Terraform/manifests/simple-ec2-app.tf)
