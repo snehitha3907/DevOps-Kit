@@ -11,6 +11,7 @@
 
 ## Docker
 
+- **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.
 - **Image** — A read-only snapshot of a filesystem used as a template for creating containers.
 - **Container** — A running instance of an image; encapsulates an app and its dependencies in an isolated environment.
 - **Dockerfile** — A text file containing instructions to build a Docker image.
@@ -47,6 +48,9 @@
 
 ## GitHub
 
+- **Deploy key** — An SSH public key registered on a single GitHub repository, granting read-only or read-write access for unattended operations like CI cloning.
+- **Fine-grained PAT** — A personal access token scoped to specific repositories and granular permissions, used for HTTPS-based authentication and API access in CI/CD pipelines.
+- **Machine user** — A GitHub account used exclusively for automation tasks, not tied to an individual team member, ensuring CI tokens remain valid regardless of personnel changes.
 - **Repository** — A project container with code, issues, pull requests, and wiki.
 - **Pull Request (PR)** — A proposed change that can be reviewed and merged.
 - **Issue** — A discussion thread for bugs, features, or tasks.
@@ -83,6 +87,7 @@
 
 ## Terraform
 
+- **Backend** — A configuration that defines how Terraform stores and loads state (e.g., local, S3, AzureRM).
 - **Provider** — A plugin that lets Terraform manage a specific infrastructure platform (e.g., AWS, local).
 - **State** — A file that maps real-world resources to your Terraform configuration.
 - **Plan** — A dry-run that shows what changes Terraform will make.
@@ -90,6 +95,8 @@
 - **Resource** — A declarative description of an infrastructure component (e.g., `local_file`).
 - **Module** — A self-contained package of Terraform configurations that manages a group of related resources.
 - **Output** — A value exposed by a Terraform module or root configuration after apply.
+- **State locking** — A mechanism (often using DynamoDB) that prevents concurrent Terraform operations from modifying the same state file simultaneously.
+- **Workspace** — A separate state instance within a single Terraform configuration, typically used to manage multiple environments like dev, staging, and prod.
 
 ## GitHub Actions
 

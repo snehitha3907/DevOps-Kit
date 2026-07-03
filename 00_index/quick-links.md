@@ -130,10 +130,6 @@
 - Getting-started tutorial notes: [`Terraform/notes/2026-06-10-terraform-getting-started.md`](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - Following the providers tutorial: [`Terraform/notes/2026-06-24-following-provider-tutorial.md`](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
 
-## Terraform docs
-
-- Workspaces + remote state locking with S3 and DynamoDB: [`Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md`](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
-
 ## Terraform configs
 
 - Local file example: [`Terraform/configs/local-file.tf`](../Terraform/configs/local-file.tf)
@@ -142,7 +138,7 @@
 
 ## Terraform docs
 
-- Terraform workspaces and remote state locking with S3 + DynamoDB: [`Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md`](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md)
+- Workspaces + remote state locking with S3 and DynamoDB: [`Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md`](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 
 ## Terraform manifests
 

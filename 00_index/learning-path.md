@@ -31,19 +31,22 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 
 - **Git branching strategies** — Feature branches, GitFlow, trunk-based development, and when to use each. [Comparison doc](../Git/docs/git-workflows-comparison.md)
 - **Git worktrees** — Working on multiple branches simultaneously without stashing. [Worktrees doc](../Git/docs/git-worktrees-parallel-feature-development.md)
-- **Docker Compose** — Defining and running multi-container applications. [Quickstart notes](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [multi-service manifest](../Docker/manifests/2026-06-13-web-db-compose.yaml)
+- **Docker Compose** — Defining and running multi-container applications. [Quickstart notes](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [multi-service manifest](../Docker/manifests/2026-06-13-web-db-compose.yaml), [Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - **Docker networking** — Understanding bridge, host, overlay, and macvlan drivers. [Notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **Ansible playbook troubleshooting** — SSH, pipx, and permission issues. [Troubleshooting notes](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - **Ansible linting** — Integrating ansible-lint into your workflow. [Lint guide](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **Ansible variable precedence** — Understanding how group_vars, host_vars, and playbook vars interact. [Notebook](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 - **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
-- **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
+- **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+- **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
+- **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 
 ## Stage 4: Advanced Tools
 
 Tools that depend on foundational concepts at L2 or core tools at L2+.
 
 - **GitHub Actions** — CI/CD integrated with GitHub. [Quickstart notes](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow config](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+- **GitHub auth for CI/CD** — Deploy keys vs fine-grained PATs for pipeline access to GitHub. [Comparison doc](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
 - **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
 - **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
@@ -53,7 +56,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 Advanced concepts and expert-level tool content.
 
 - **GitLab CI/CD** — Advanced pipeline patterns, multi-project pipelines, and custom runners.
-- **Terraform modules and workspaces** — Building reusable modules and managing multiple environments.
+- **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/)
 - **Kubernetes production patterns** — Ingress controllers, service meshes, autoscaling, and security policies.
 - **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
 - **HashiCorp Vault** ⏳ — Secrets management and access control. Depends on Docker L2 + K8s L3.
@@ -86,7 +89,7 @@ graph TD
     IaC --> Ansible
 
     CI[CI/CD Concepts] --> GitLabCI
-    CI[CI/CD Concepts] --> GitHubActions
+    CI --> GitHubActions
 
     Git --> GitHub
     Git --> GitLabCI
@@ -108,4 +111,4 @@ graph TD
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-06-27_
+_Last updated: 2026-07-02_
