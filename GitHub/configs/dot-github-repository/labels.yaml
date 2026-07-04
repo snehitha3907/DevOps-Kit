@@ -1,0 +1,33 @@
+# last_verified: 2026-07-04 · GitHub n/a
+# Label definitions for .github repository — format compatible with label-sync tools
+
+- name: bug
+  color: d73a4a
+  description: Something isn't working
+- name: enhancement
+  color: a2eeef
+  description: New feature or request
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to documentation
+- name: good first issue
+  color: 7057ff
+  description: Good for newcomers
+- name: help wanted
+  color: 008672
+  description: Extra attention needed
+- name: question
+  color: d876e3
+  description: Further information is requested
+- name: triage
+  color: fbca04
+  description: Needs triage by maintainers
+- name: wontfix
+  color: ffffff
+  description: This will not be worked on
+- name: duplicate
+  color: cfd3d7
+  description: This issue or pull request already exists
+- name: invalid
+  color: e4e669
+  description: This doesn't seem right

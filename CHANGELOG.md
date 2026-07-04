@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-04
+
+- Added GitHub issue forms and label automation configs for .github repository (gh-012) (`GitHub/configs/dot-github-repository/`)
+
 ## 2026-07-01
 
 - Added Terraform workspaces and remote state locking with S3 + DynamoDB docs (tf-013) (`Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md`)
