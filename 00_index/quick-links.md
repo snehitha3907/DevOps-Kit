@@ -109,6 +109,11 @@
 ## GitHub configs
 
 - Issue templates and labels: [`GitHub/configs/issue-templates-and-labels.yaml`](../GitHub/configs/issue-templates-and-labels.yaml)
+- .github repository (issue forms, labels, config): [`GitHub/configs/dot-github-repository/`](../GitHub/configs/dot-github-repository/)
+  - Bug report form: [`GitHub/configs/dot-github-repository/issue-forms/bug-report.yaml`](../GitHub/configs/dot-github-repository/issue-forms/bug-report.yaml)
+  - Feature request form: [`GitHub/configs/dot-github-repository/issue-forms/feature-request.yaml`](../GitHub/configs/dot-github-repository/issue-forms/feature-request.yaml)
+  - Label definitions: [`GitHub/configs/dot-github-repository/labels.yaml`](../GitHub/configs/dot-github-repository/labels.yaml)
+  - General issue config: [`GitHub/configs/dot-github-repository/config.yml`](../GitHub/configs/dot-github-repository/config.yml)
 
 ## Kubernetes
 
