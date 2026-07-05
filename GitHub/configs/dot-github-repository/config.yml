@@ -1,0 +1,11 @@
+# last_verified: 2026-07-04 · GitHub n/a
+# General issue configuration for .github repository
+
+blank_issues_enabled: false
+contact_links:
+  - name: Community Support
+    url: https://github.com/org/discussions
+    about: Please ask and answer questions here
+  - name: Security Policy
+    url: https://github.com/org/security/policy
+    about: Report security vulnerabilities here
