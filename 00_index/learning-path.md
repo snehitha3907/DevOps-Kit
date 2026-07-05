@@ -47,6 +47,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 
 - **GitHub Actions** — CI/CD integrated with GitHub. [Quickstart notes](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow config](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - **GitHub auth for CI/CD** — Deploy keys vs fine-grained PATs for pipeline access to GitHub. [Comparison doc](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
+- **GitHub issue forms and labels** — Configuring `.github` repository with issue forms (bug reports, feature requests) and label definitions. [Config files](../GitHub/configs/dot-github-repository/)
 - **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
 - **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
 - **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
@@ -111,4 +112,4 @@ graph TD
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-07-02_
+_Last updated: 2026-07-05_
