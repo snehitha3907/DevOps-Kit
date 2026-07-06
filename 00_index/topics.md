@@ -34,7 +34,7 @@
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 - _…and 3 more under `Git/` — browse the folder._
 
-## GitHub  ·  20 files
+## GitHub  ·  24 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (10): most recent → [2026-06-19-primer-already-exists.md](../GitHub/notes/2026-06-19-primer-already-exists.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
