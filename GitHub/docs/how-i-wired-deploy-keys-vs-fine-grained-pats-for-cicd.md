@@ -1,3 +1,8 @@
+---
+last_verified: 2026-07-06
+tool_version: n/a
+---
+
 # How I wired GitHub deploy keys vs fine-grained PATs for CI/CD access
 
 ## Purpose
@@ -129,7 +134,3 @@ To confirm either setup works end-to-end in CI:
 2. Check that `git fetch` / `git push` succeeds (for write operations).
 3. For PATs, call `curl https://api.github.com/repos/owner/repo -H "Authorization: token $PAT"` and verify 200.
 
-## References
-
-- [GitHub docs: Deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys)
-- [GitHub docs: Fine-grained PATs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
