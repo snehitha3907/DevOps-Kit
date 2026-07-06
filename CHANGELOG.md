@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-06
+
+- Fixed gh-011 docs artifact: added YAML front-matter, removed non-backed citation URLs (`GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md`)
+
 ## 2026-07-04
 
 - Added GitHub issue forms and label automation configs for .github repository (gh-012) (`GitHub/configs/dot-github-repository/`)
