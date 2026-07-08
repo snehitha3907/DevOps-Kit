@@ -1,0 +1,49 @@
+# last_verified: 2026-07-08 · actions/stale
+# Label automation — automatically marks and closes stale issues and PRs
+
+# Days without activity before marking as stale
+daysUntilStale: 60
+# Days after stale label before closing
+daysUntilClose: 14
+
+# Labels to apply
+staleLabel: stale
+exemptLabels:
+  - pinned
+  - security
+  - enhancement
+  - help wanted
+
+# Issue settings
+onlyLabels: []
+exemptIssueMilestones: true
+exemptAssignees: false
+staleIssueMessage: >
+  This issue has been automatically marked as stale because it has not had
+  recent activity. It will be closed in 14 days if no further activity occurs.
+  Thank you for your contributions.
+closeIssueMessage: >
+  This issue has been automatically closed due to inactivity.
+  Please feel free to reopen if the issue is still relevant.
+
+# PR settings
+stalePRMessage: >
+  This pull request has been automatically marked as stale because it has not
+  had recent activity. It will be closed in 14 days if no further activity
+  occurs. If you're still working on this, please leave a comment.
+closePRMessage: >
+  This pull request has been automatically closed due to inactivity.
+  You may reopen it if you intend to continue the work.
+
+# Labels applied by the action
+labelsToAddWhenStale:
+  - stale
+labelsToRemoveWhenStale:
+  - triage
+
+# Schedule — runs daily at 1:00 UTC
+# The workflow that consumes this config:
+#   uses: actions/stale@v9
+#   with:
+#     repo-token: ${{ secrets.GITHUB_TOKEN }}
+#     configuration-path: .github/stale.yml

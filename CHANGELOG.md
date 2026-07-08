@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-08
+
+- Added stale issue/PR automation config for .github repository (gh-012) (`GitHub/configs/dot-github-repository/stale.yml`)
+
 ## 2026-07-06
 
 - Fixed gh-011 docs artifact: added YAML front-matter, removed non-backed citation URLs (`GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md`)
@@ -10,7 +14,7 @@
 
 ## 2026-07-01
 
-- Added Terraform workspaces and remote state locking with S3 + DynamoDB docs (tf-013) (`Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md`)
+- Added Terraform workspaces and remote state locking with S3 + DynamoDB docs (tf-013) (`Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md`)
 
 ## 2026-07-02
 
