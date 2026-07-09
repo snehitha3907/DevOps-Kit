@@ -34,12 +34,12 @@
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 - _…and 3 more under `Git/` — browse the folder._
 
-## GitHub  ·  24 files
+## GitHub  ·  25 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (10): most recent → [2026-06-19-primer-already-exists.md](../GitHub/notes/2026-06-19-primer-already-exists.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
 - **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
-- **configs** (5): [dot-github-repository/](../GitHub/configs/dot-github-repository/), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
+- **configs** (6): [dot-github-repository/](../GitHub/configs/dot-github-repository/), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
 - **snippets** (2): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py)
 - **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - _…and 1 more under `GitHub/` — browse the folder._

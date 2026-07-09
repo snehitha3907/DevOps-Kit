@@ -18,18 +18,17 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Quick links
 
+- [Stale issue/PR automation config](GitHub/configs/dot-github-repository/stale.yml) — Auto-marks and closes stale issues and PRs for the `.github` repository.
 - [GitHub issue forms and labels](GitHub/configs/dot-github-repository/) — `.github` repository setup with issue forms (bug-report, feature-request) and label definitions.
 - [Terraform for_each vs count notebook](Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb) — Jupyter notebook comparing `for_each` and `count` for conditional resource creation.
 - [Terraform workspaces and remote state locking](Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md) — Guide to Terraform workspaces and remote state with S3 and DynamoDB.
 - [Go + Redis compose with health checks](Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml) — Docker Compose manifest for a Go HTTP server with Redis and health checks.
-- [Deploy keys vs fine-grained PATs for CI/CD](GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md) — Comparison of GitHub deploy keys and fine-grained PATs for CI/CD access.
 
 ## Layout
 
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **docs/concepts/** — Foundational concept primers (CI/CD currently).
-- **.github/** — Repository-level GitHub workflows and automation (currently `workflows/lint.yml`). Kept at the repo root because GitHub only runs workflows from `.github/workflows/`.
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
 - **GitHub Actions/** — Quickstart notes and a first CI workflow config with environment variables and secrets.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, docs, and Python API snippets.
@@ -45,9 +44,9 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|
 | Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — |
-| Docker | 4 | 4 | 1 | — | 4 | 2 | 1 | 2 | — |
+| Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 |
-| GitHub | 10 | 6 | 5 | 2 | — | 1 | — | — | — |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — |
 | GitHub Actions | 1 | — | 1 | — | — | — | — | — | — |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — |
 | Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — |
@@ -57,7 +56,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform now includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms and label automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
+Coverage is strongest on Docker, Git, and GitHub. Terraform now includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
-_Last updated: 2026-07-07_
+_Last updated: 2026-07-09_
