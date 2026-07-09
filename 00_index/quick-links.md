@@ -65,6 +65,7 @@
 - [GitHub issues API snippet](../GitHub/snippets/github-issues-api.py)
 - [Issue templates and labels config](../GitHub/configs/issue-templates-and-labels.yaml)
 - [Issue forms and labels (.github repo)](../GitHub/configs/dot-github-repository/)
+- [Stale issue/PR automation (.github repo)](../GitHub/configs/dot-github-repository/stale.yml)
 - [Deploy keys vs PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 
 ### Work with Kubernetes
