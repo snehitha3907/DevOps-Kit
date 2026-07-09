@@ -41,18 +41,18 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Coverage
 
-| Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates |
-|------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|
-| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — |
-| Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — |
-| Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — |
-| GitHub Actions | 1 | — | 1 | — | — | — | — | — | — |
-| GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — |
-| Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — |
-| Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — |
-| Trivy | 1 | 1 | — | — | — | — | — | — | — |
-| Concepts | 1 | — | — | — | — | — | — | — | — |
+| Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
+|------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
+| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | — |
+| Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
+| Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
+| GitHub Actions | 1 | — | 1 | — | — | — | — | — | — | — |
+| GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
+| Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — | — |
+| Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
+| Trivy | 1 | 1 | — | — | — | — | — | — | — | — |
+| Concepts | 1 | — | — | — | — | — | — | — | — | — |
 
 ## Status
 

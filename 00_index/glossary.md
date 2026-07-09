@@ -62,6 +62,7 @@
 - **Issue form** — A structured YAML template for GitHub issues that provides input fields, dropdowns, checkboxes, and validations, defined under `.github/ISSUE_TEMPLATE/` or `.github/issue-forms/`.
 - **Blank issues** — A repository setting that controls whether users can open issues without selecting a template; disabling it enforces template use.
 - **Contact link** — A link shown in the new-issue interface that directs users to external resources such as community discussions or security policies.
+- **Stale workflow** — A scheduled automation (often `.github/stale.yml` or an Actions workflow) that labels and closes issues and PRs after a period of inactivity.
 
 ## GitLab CI
 
