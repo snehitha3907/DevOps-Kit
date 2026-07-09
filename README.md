@@ -19,10 +19,10 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 ## Quick links
 
 - [Stale issue/PR automation config](GitHub/configs/dot-github-repository/stale.yml) — Auto-marks and closes stale issues and PRs for the `.github` repository.
-- [GitHub issue forms and labels](GitHub/configs/dot-github-repository/) — `.github` repository setup with issue forms (bug-report, feature-request) and label definitions.
-- [Terraform for_each vs count notebook](Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb) — Jupyter notebook comparing `for_each` and `count` for conditional resource creation.
-- [Terraform workspaces and remote state locking](Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md) — Guide to Terraform workspaces and remote state with S3 and DynamoDB.
-- [Go + Redis compose with health checks](Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml) — Docker Compose manifest for a Go HTTP server with Redis and health checks.
+- [GitHub repository config](GitHub/configs/dot-github-repository/config.yml) — `.github` repository settings that tune issue and discussion behaviour.
+- [Bug report issue form](GitHub/configs/dot-github-repository/issue-forms/bug-report.yaml) — Structured YAML form for filing bug reports.
+- [Feature request issue form](GitHub/configs/dot-github-repository/issue-forms/feature-request.yaml) — Structured YAML form for proposing new features.
+- [Issue label definitions](GitHub/configs/dot-github-repository/labels.yaml) — Centralised label set applied across the repository.
 
 ## Layout
 
