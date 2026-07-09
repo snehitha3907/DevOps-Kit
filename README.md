@@ -29,6 +29,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **docs/concepts/** — Foundational concept primers (CI/CD currently).
+- **.github/** — Repository-level GitHub workflows and automation (currently `workflows/lint.yml`). Kept at the repo root because GitHub only runs workflows from `.github/workflows/`.
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
 - **GitHub Actions/** — Quickstart notes and a first CI workflow config with environment variables and secrets.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, docs, and Python API snippets.
@@ -59,4 +60,4 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 Coverage is strongest on Docker, Git, and GitHub. Terraform now includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms and label automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
-_Last updated: 2026-07-06_
+_Last updated: 2026-07-07_
