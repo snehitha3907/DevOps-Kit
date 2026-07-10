@@ -101,6 +101,8 @@
 - **Output** — A value exposed by a Terraform module or root configuration after apply.
 - **State locking** — A mechanism (often using DynamoDB) that prevents concurrent Terraform operations from modifying the same state file simultaneously.
 - **Workspace** — A separate state instance within a single Terraform configuration, typically used to manage multiple environments like dev, staging, and prod.
+- **for_each** — A meta-argument that creates multiple resource instances from a map or set of strings; preferred over `count` when resources are non-identical.
+- **count** — A meta-argument that creates a given number of identical resource instances; uses `count.index` to differentiate each instance.
 
 ## GitHub Actions
 
