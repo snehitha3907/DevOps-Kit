@@ -41,6 +41,9 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Coverage
 
+<details>
+<summary>Coverage table</summary>
+
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
 | Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | — |
@@ -53,6 +56,8 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
 | Trivy | 1 | 1 | — | — | — | — | — | — | — | — |
 | Concepts | 1 | — | — | — | — | — | — | — | — | — |
+
+</details>
 
 ## Status
 
