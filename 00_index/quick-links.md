@@ -83,3 +83,6 @@
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+
+### Audit trail
+- [Removed dead General/docs references](../docs/2026-07-11-removed-dead-general-references.md)

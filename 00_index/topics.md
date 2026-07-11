@@ -88,3 +88,7 @@
 ## Foundational Concepts  ·  1 file
 
 - **docs** (1): [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+
+## Meta  ·  1 file
+
+- **docs** (1): [removed-dead-general-references.md](../docs/2026-07-11-removed-dead-general-references.md)
