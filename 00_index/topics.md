@@ -6,6 +6,7 @@
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
 - **notes** (5): most recent → [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md), [2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
+- _…and 3 more under `Ansible/notes/` — browse the folder._
 - **scripts** (2): [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh)
 - **configs** (2): [docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml), [nginx-webserver.yaml](../Ansible/configs/nginx-webserver.yaml)
 - **snippets** (1): [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
@@ -16,20 +17,24 @@
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (4): most recent → [2026-06-07-docker-compose-quickstart.md](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [2026-06-06-exploring-docker-cli.md](../Docker/notes/2026-06-06-exploring-docker-cli.md)
-- **scripts** (4): [install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh), [docker-health-check-and-cleanup.sh](../Docker/scripts/docker-health-check-and-cleanup.sh), [2026-06-12-compose-multi-service.sh](../Docker/scripts/2026-06-12-compose-multi-service.sh)
-- **dockerfiles** (6): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile), [build-and-run-first.Dockerfile](../Docker/dockerfiles/build-and-run-first.Dockerfile), [tried-building-first-image.Dockerfile](../Docker/dockerfiles/tried-building-first-image.Dockerfile)
+- _…and 2 more under `Docker/notes/` — browse the folder._
+- **scripts** (4): [install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh), [docker-health-check-and-cleanup.sh](../Docker/scripts/docker-health-check-and-cleanup.sh)
+- _…and 2 more under `Docker/scripts/` — browse the folder._
+- **dockerfiles** (6): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 4 more under `Docker/dockerfiles/` — browse the folder._
 - **docs** (2): [docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md), [docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - **manifests** (2): [2026-06-28-go-redis-compose-healthchecks.yaml](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml), [2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 - **notebooks** (1): [comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **configs** (1): [multi-service-app.yaml](../Docker/configs/multi-service-app.yaml)
-- _…and 2 more under `Docker/` — browse the folder._
 
 ## Git  ·  19 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **notes** (4): most recent → [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
-- **scripts** (8): [minimal-branching-workflow.sh](../Git/scripts/minimal-branching-workflow.sh), [squash-wip-commits.sh](../Git/scripts/squash-wip-commits.sh), [2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh)
-- **docs** (3): [git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md), [git-worktrees-parallel-development.md](../Git/docs/git-worktrees-parallel-development.md)
+- _…and 2 more under `Git/notes/` — browse the folder._
+- **scripts** (8): [install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh), [minimal-branching-workflow.sh](../Git/scripts/minimal-branching-workflow.sh), [commit-msg-conventional-commit.sh](../Git/scripts/commit-msg-conventional-commit.sh)
+- _…and 5 more under `Git/scripts/` — browse the folder._
+- **docs** (3): [git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md), [git-worktrees-parallel-development.md](../Git/docs/git-worktrees-parallel-development.md), [git-worktrees-parallel-feature-development.md](../Git/docs/git-worktrees-parallel-feature-development.md)
 - **templates** (3): [pre-commit](../Git/templates/git-hooks/pre-commit), [commit-msg](../Git/templates/git-hooks/commit-msg), [post-checkout](../Git/templates/git-hooks/post-checkout)
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 
@@ -37,7 +42,9 @@
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (10): most recent → [2026-06-19-primer-already-exists.md](../GitHub/notes/2026-06-19-primer-already-exists.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
-- **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh), [auth-and-profile.sh](../GitHub/scripts/auth-and-profile.sh), [2026-06-10-auth-and-explore-profile.sh](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh)
+- _…and 8 more under `GitHub/notes/` — browse the folder._
+- **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
+- _…and 4 more under `GitHub/scripts/` — browse the folder._
 - **configs** (6): [dot-github-repository/](../GitHub/configs/dot-github-repository/), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
 - **snippets** (2): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py)
 - **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
@@ -58,6 +65,7 @@
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **notes** (4): most recent → [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md), [2026-06-08-kubernetes-interactive-tutorial.md](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
+- _…and 2 more under `Kubernetes/notes/` — browse the folder._
 - **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
 - **manifests** (2): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 
@@ -65,6 +73,7 @@
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **notes** (4): most recent → [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
+- _…and 2 more under `Terraform/notes/` — browse the folder._
 - **configs** (7): [reusable-s3-module/](../Terraform/configs/reusable-s3-module/), [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
 - **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - **docs** (2): [terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md), [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md)
