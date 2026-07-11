@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-11
+
+- Added GitHub Actions primer (ga-001) (`GitHub Actions/notes/0000-primer-github-actions.md`)
+- Added gh Actions extension install and run listing script (ga-002) (`GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh`)
+- Added first CI workflow that prints "Hello from Actions" on push (ga-003) (`GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml`)
+
 ## 2026-07-08
 
 - Added stale issue/PR automation config for .github repository (gh-012) (`GitHub/configs/dot-github-repository/stale.yml`)

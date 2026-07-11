@@ -50,7 +50,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
-| GitHub Actions | 1 | — | 1 | — | — | — | — | — | — | — |
+| GitHub Actions | 2 | 1 | 2 | — | — | — | — | — | — | — |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — | — |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
@@ -61,7 +61,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform now includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
+Coverage is strongest on Docker, Git, and GitHub. Terraform now includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions now has a primer, quickstart notes, install script, and pipeline configs. GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
-_Last updated: 2026-07-10_
+_Last updated: 2026-07-11_
