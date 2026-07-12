@@ -5,6 +5,7 @@
 - Added GitHub Actions primer (ga-001) (`GitHub Actions/notes/0000-primer-github-actions.md`)
 - Added gh Actions extension install and run listing script (ga-002) (`GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh`)
 - Added first CI workflow that prints "Hello from Actions" on push (ga-003) (`GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml`)
+- Removed dead CHANGELOG references to `General/docs/*.md` files removed as pipeline noise (audit-008) (`docs/2026-07-11-removed-dead-general-references.md`)
 
 ## 2026-07-08
 
@@ -72,7 +73,6 @@
 
 - Flagged GitHub primer already exists (gh-001) (`GitHub/notes/2026-06-19-primer-already-exists.md`)
 - Flagged Ansible primer already exists (ans-001) (`Ansible/notes/2026-06-19-primer-already-exists.md`)
-- Updated README Layout and Coverage table to document Ansible/docs/, Docker/docs/, Docker/notebooks/ (gen-007) (`General/docs/2026-06-19-update-readme-layout-ansible-docker.md`)
 
 ## 2026-06-18
 
@@ -88,7 +88,6 @@
 
 - Added Docker container health-check and dangling resource cleanup script (doc-013) (`Docker/scripts/docker-health-check-and-cleanup.sh`)
 - Reworked GitHub web UI exploration notes with L1 scratchy voice (gh-013) (`GitHub/notes/2026-06-15-explore-github-web-ui.md`)
-- Updated README tree and Coverage table with 10 previously undocumented files (audit-007) (`General/docs/2026-06-16-audit-007-undocumented-files.md`)
 - Added interactive rebase automation script for squashing WIP commits before PR (git-003) (`Git/scripts/squash-wip-commits.sh`)
 - Added git worktrees docs for parallel feature development (git-002) (`Git/docs/git-worktrees-parallel-feature-development.md`)
 - Added conventional commit message hook script (git-001) (`Git/scripts/commit-msg-conventional-commit.sh`)
@@ -97,7 +96,6 @@
 
 - Added Ansible variable precedence comparison notebook (`Ansible/notebooks/ansible-variable-precedence.ipynb`)
 - Added Ansible-lint workflow docs (`Ansible/docs/2026-06-15-wiring-ansible-lint.md`)
-- Added General rework note for gen-003 already-documented files (`General/docs/2026-06-15-rework-gen003-already-documented.md`)
 - Added Hello World guide and GitHub flow notes (gh-014 rework) (`GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md`)
 - Added following Kubernetes Basics tutorial notes (`Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md`)
 - Added ConfigMap and Secret mounted Pod manifest (`Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml`)
@@ -105,7 +103,6 @@
 ## 2026-06-14
 
 - Added Nginx web server Ansible config with idempotency checks (`Ansible/configs/nginx-webserver.yaml`)
-- Added General rework note for gen-002 already-documented files (`General/docs/2026-06-14-rework-gen002-already-documented.md`)
 - Added following the official GitHub quickstart (CLI + web UI) notes (`GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md`)
 
 ## 2026-06-13
@@ -113,7 +110,6 @@
 - Added Docker web app and database compose manifest (`Docker/manifests/2026-06-13-web-db-compose.yaml`)
 - Added Ansible playbook troubleshooting notes (`Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md`)
 - Added Docker and Python setup Ansible config (`Ansible/configs/docker-python-setup.yaml`)
-- Added General rework note for already-documented files (`General/docs/2026-06-13-rework-undocumented-files.md`)
 
 ## 2026-06-12
 

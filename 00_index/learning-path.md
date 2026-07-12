@@ -12,7 +12,7 @@ These concepts have no prerequisites — start here if you're new to the domain.
 - **Networking Fundamentals** — IP addresses, ports, DNS, HTTP, and basic network troubleshooting. Unlocks: Docker, Kubernetes.
 - **Containerization Concepts** — What containers are, how they differ from VMs, and why they matter. Unlocks: Docker, Kubernetes.
 - **Infrastructure as Code Concepts** — Managing infrastructure through declarative configuration files. Unlocks: Terraform, Ansible.
-- **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. Unlocks: GitLab CI, GitHub Actions.
+- **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. [Primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) Unlocks: GitLab CI, GitHub Actions.
 
 ## Stage 2: Core Tools
 
@@ -113,4 +113,4 @@ graph TD
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-07-10_
+_Last updated: 2026-07-11_
