@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-12
+
+- Added Linux & System Administration concept primer (con-001) (`docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md`)
+- Added Networking Fundamentals concept primer (con-002) (`docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md`)
+- Added Scripting & Automation (Bash/Python) concept primer (con-003) (`docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md`)
+
 ## 2026-07-11
 
 - Added GitHub Actions primer (ga-001) (`GitHub Actions/notes/0000-primer-github-actions.md`)
