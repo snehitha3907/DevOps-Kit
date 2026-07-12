@@ -8,6 +8,9 @@
 - Added Trivy quick primer (trv-001) (`Trivy/notes/0000-primer-trivy.md`)
 - Added Trivy install and filesystem scan script (trv-002) (`Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh`)
 - Added Python wrapper that runs Trivy and parses JSON output (trv-003) (`Trivy/snippets/2026-07-12-trivy-python-wrapper.py`)
+- Added AWS CLI quick primer (aws-001) (`AWS/notes/0000-primer-aws.md`)
+- Added AWS CLI v2 install and configure script (aws-002) (`AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh`)
+- Added minimal AWS config with named profiles (aws-003) (`AWS/configs/2026-07-12-minimal-aws-config.ini`)
 
 ## 2026-07-11
 
