@@ -7,9 +7,9 @@
 These concepts have no prerequisites — start here if you're new to the domain. Each primer exists on disk.
 
 - **Version Control Concepts** — Understand what version control is, why teams use it, and the basic commit/push/pull cycle. Unlocks: Git, GitHub, GitLab CI.
-- **Linux & System Administration** — Basic command-line fluency, package managers, file permissions, processes, and services. Unlocks: Docker, Kubernetes, Ansible, Terraform.
-- **Scripting & Automation (Bash/Python)** — Writing shell scripts and simple Python programs to automate repetitive tasks. Unlocks: Terraform, Ansible, GitLab CI, Docker.
-- **Networking Fundamentals** — IP addresses, ports, DNS, HTTP, and basic network troubleshooting. Unlocks: Docker, Kubernetes.
+- **Linux & System Administration** — Basic command-line fluency, package managers, file permissions, processes, and services. [Primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md) Unlocks: Docker, Kubernetes, Ansible, Terraform.
+- **Scripting & Automation (Bash/Python)** — Writing shell scripts and simple Python programs to automate repetitive tasks. [Primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) Unlocks: Terraform, Ansible, GitLab CI, Docker.
+- **Networking Fundamentals** — IP addresses, ports, DNS, HTTP, and basic network troubleshooting. [Primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md) Unlocks: Docker, Kubernetes.
 - **Containerization Concepts** — What containers are, how they differ from VMs, and why they matter. Unlocks: Docker, Kubernetes.
 - **Infrastructure as Code Concepts** — Managing infrastructure through declarative configuration files. Unlocks: Terraform, Ansible.
 - **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. [Primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) Unlocks: GitLab CI, GitHub Actions.
@@ -45,7 +45,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 
 Tools that depend on foundational concepts at L2 or core tools at L2+.
 
-- **GitHub Actions** — CI/CD integrated with GitHub. [Quickstart notes](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow config](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+- **GitHub Actions** — CI/CD integrated with GitHub. [Primer](../GitHub%20Actions/notes/0000-primer-github-actions.md), [quickstart notes](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow with env/secrets](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml), [hello workflow](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - **GitHub auth for CI/CD** — Deploy keys vs fine-grained PATs for pipeline access to GitHub. [Comparison doc](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - **GitHub issue forms and labels** — Configuring `.github` repository with issue forms (bug reports, feature requests) and label definitions. [Config files](../GitHub/configs/dot-github-repository/)
 - **GitHub stale issue/PR automation** — Auto-marking and closing stale issues and PRs for the `.github` repository. [Automation config](../GitHub/configs/dot-github-repository/stale.yml)
@@ -113,4 +113,4 @@ graph TD
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-07-11_
+_Last updated: 2026-07-13_
