@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-12
+
+- Added Trivy quick primer (trv-001) (`Trivy/notes/0000-primer-trivy.md`)
+- Added Trivy install and filesystem scan script (trv-002) (`Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh`)
+- Added Python wrapper that runs Trivy and parses JSON output (trv-003) (`Trivy/snippets/2026-07-12-trivy-python-wrapper.py`)
+
 ## 2026-07-11
 
 - Added GitHub Actions primer (ga-001) (`GitHub Actions/notes/0000-primer-github-actions.md`)
