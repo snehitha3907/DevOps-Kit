@@ -1,7 +1,19 @@
 # Changelog
 
+## 2026-07-12
+
+- Added Linux & System Administration concept primer (con-001) (`docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md`)
+- Added Networking Fundamentals concept primer (con-002) (`docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md`)
+- Added Scripting & Automation (Bash/Python) concept primer (con-003) (`docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md`)
+- Added Trivy quick primer (trv-001) (`Trivy/notes/0000-primer-trivy.md`)
+- Added Trivy install and filesystem scan script (trv-002) (`Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh`)
+- Added Python wrapper that runs Trivy and parses JSON output (trv-003) (`Trivy/snippets/2026-07-12-trivy-python-wrapper.py`)
+
 ## 2026-07-11
 
+- Added GitHub Actions primer (ga-001) (`GitHub Actions/notes/0000-primer-github-actions.md`)
+- Added gh Actions extension install and run listing script (ga-002) (`GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh`)
+- Added first CI workflow that prints "Hello from Actions" on push (ga-003) (`GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml`)
 - Removed dead CHANGELOG references to `General/docs/*.md` files removed as pipeline noise (audit-008) (`docs/2026-07-11-removed-dead-general-references.md`)
 
 ## 2026-07-08
@@ -111,7 +123,7 @@
 ## 2026-06-12
 
 - Added Terraform bootstrap project script with variables and outputs (`Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh`)
-- Added Terraform local provider config with variables and outputs (`Terraform/configs/2026-06-12-tried-local-with-vars.tf`)
+- Added Terraform local provider config with variables and outputs (`Terraform/configs/reusable-s3-module/`)
 - Added following GitHub CLI quickstart notes (`GitHub/notes/2026-06-11-following-github-cli-quickstart.md`)
 - Added Docker compose multi-service stack script (`Docker/scripts/2026-06-12-compose-multi-service.sh`)
 - Added GitHub create repo and open PR script (`GitHub/scripts/2026-06-12-create-repo-and-pr.sh`)

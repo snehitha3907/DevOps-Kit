@@ -7,6 +7,7 @@
 - [Docker primer](../Docker/notes/0000-primer-docker.md)
 - [Git primer](../Git/notes/0000-primer-git.md)
 - [GitHub primer](../GitHub/notes/0000-primer-github.md)
+- [GitHub Actions primer](../GitHub%20Actions/notes/0000-primer-github-actions.md)
 - [Kubernetes primer](../Kubernetes/notes/0000-primer-kubernetes.md)
 - [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
 - [GitLab CI/CD primer](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
@@ -19,6 +20,7 @@
 - [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
 - [Install GitLab Runner + register](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
+- [Install gh Actions extension + list runs](../GitHub%20Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 
 ### Explore CLI
 - [Ansible CLI walkthrough](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
@@ -32,7 +34,8 @@
 ### Write a playbook / pipeline / config
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
-- [GitHub Actions CI workflow](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+- [GitHub Actions CI workflow with env/secrets](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+- [GitHub Actions hello workflow](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
 - [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/)

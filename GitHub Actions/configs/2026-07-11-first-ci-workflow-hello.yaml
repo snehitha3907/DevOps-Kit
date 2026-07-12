@@ -1,0 +1,10 @@
+# last_verified: 2026-07-11 · GitHub Actions (SaaS)
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Say hello
+        run: echo "Hello from Actions"

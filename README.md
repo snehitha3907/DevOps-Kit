@@ -18,17 +18,17 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Quick links
 
-- [Removed dead General/docs references](docs/2026-07-11-removed-dead-general-references.md) — Audit trail for scrubbing stale CHANGELOG entries that pointed to removed pipeline-noise files.
 - [Stale issue/PR automation config](GitHub/configs/dot-github-repository/stale.yml) — Auto-marks and closes stale issues and PRs for the `.github` repository.
 - [GitHub repository config](GitHub/configs/dot-github-repository/config.yml) — `.github` repository settings that tune issue and discussion behaviour.
 - [Bug report issue form](GitHub/configs/dot-github-repository/issue-forms/bug-report.yaml) — Structured YAML form for filing bug reports.
 - [Feature request issue form](GitHub/configs/dot-github-repository/issue-forms/feature-request.yaml) — Structured YAML form for proposing new features.
+- [Issue label definitions](GitHub/configs/dot-github-repository/labels.yaml) — Centralised label set applied across the repository.
 
 ## Layout
 
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
-- **docs/** — Meta docs and foundational concept primers (CI/CD currently).
+- **docs/concepts/** — Foundational concept primers (CI/CD currently).
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
 - **GitHub Actions/** — Quickstart notes and a first CI workflow config with environment variables and secrets.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, docs, and Python API snippets.
@@ -50,7 +50,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
-| GitHub Actions | 1 | — | 1 | — | — | — | — | — | — | — |
+| GitHub Actions | 2 | 1 | 2 | — | — | — | — | — | — | — |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — | — |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
@@ -61,7 +61,7 @@ First-contact notes, setup scripts, configs, and manifests for nine tool familie
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform now includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions and GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. A recent audit removed stale CHANGELOG references to deleted General/docs files. Working through L1 first-contact notes for remaining tool families.
+Coverage is strongest on Docker, Git, and GitHub. Terraform now includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions now has a primer, quickstart notes, install script, and pipeline configs. GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy CLI exploration and container scanning scripts have been added. The CI/CD concepts primer has been added under `docs/concepts/`. Working through L1 first-contact notes for remaining tool families.
 
 ---
-_Last updated: 2026-07-12_
+_Last updated: 2026-07-11_
