@@ -49,10 +49,12 @@
 - **snippets** (2): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py)
 - **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 
-## GitHub Actions  ·  2 files
+## GitHub Actions  ·  5 files
 
-- **notes** (1): [2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
-- **configs** (1): [2026-06-23-first-ci-workflow-with-env-and-secrets.yaml](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+- **primer:** [0000-primer-github-actions.md](../GitHub%20Actions/notes/0000-primer-github-actions.md)
+- **notes** (2): most recent → [2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
+- **scripts** (1): [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub%20Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- **configs** (2): [2026-06-23-first-ci-workflow-with-env-and-secrets.yaml](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 
 ## GitLab CI  ·  5 files
 
@@ -75,16 +77,22 @@
 - **notes** (4): most recent → [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
 - **configs** (7): [reusable-s3-module/](../Terraform/configs/reusable-s3-module/), [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
+- _…and 4 more under `Terraform/configs/` — browse the folder._
 - **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - **docs** (2): [terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md), [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md)
 - **notebooks** (1): [2026-07-02-comparing-for-each-vs-count.ipynb](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (1): [simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf)
 
-## Trivy  ·  2 files
+## Trivy  ·  5 files
 
-- **notes** (1): [2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
-- **scripts** (1): [2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+- **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
+- **notes** (2): most recent → [2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
+- **scripts** (2): [install-trivy-and-scan-filesystem.sh](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+- **snippets** (1): [trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 
-## Foundational Concepts  ·  1 file
+## Foundational Concepts  ·  4 files
 
-- **docs** (1): [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+- **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+- **Linux & System Administration:** [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
+- **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
+- **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)

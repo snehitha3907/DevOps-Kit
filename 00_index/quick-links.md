@@ -11,7 +11,11 @@
 - [Kubernetes primer](../Kubernetes/notes/0000-primer-kubernetes.md)
 - [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
 - [GitLab CI/CD primer](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
+- [Trivy primer](../Trivy/notes/0000-primer-trivy.md)
 - [CI/CD Concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+- [Linux & System Administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
+- [Networking Fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
+- [Scripting & Automation (Bash/Python) primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
@@ -21,6 +25,7 @@
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
 - [Install GitLab Runner + register](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
 - [Install gh Actions extension + list runs](../GitHub%20Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
 
 ### Explore CLI
 - [Ansible CLI walkthrough](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
@@ -38,7 +43,7 @@
 - [GitHub Actions hello workflow](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
-- [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/)
+- [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/README.md)
 - [Docker Compose multi-service app](../Docker/configs/multi-service-app.yaml)
 - [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
@@ -86,3 +91,4 @@
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+- [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
