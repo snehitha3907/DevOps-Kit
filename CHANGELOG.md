@@ -5,6 +5,9 @@
 - Flagged GitHub Actions primer already exists (ga-001) (`GitHub Actions/notes/2026-07-13-primer-already-exists.md`)
 - Added gh Actions extension install and workflow listing script (ga-002) (`GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh`)
 - Added first CI workflow that prints "Hello from Actions" on push (ga-003) (`GitHub Actions/configs/2026-07-13-hello-workflow.yaml`)
+- Flagged AWS primer already exists (aws-001) (`AWS/notes/2026-07-13-primer-already-exists.md`)
+- Added AWS CLI v2 install and configure script (aws-002) (`AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh`)
+- Added minimal AWS config with named profiles (aws-003) (`AWS/configs/2026-07-13-minimal-aws-config.ini`)
 
 ## 2026-07-12
 
