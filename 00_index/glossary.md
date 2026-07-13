@@ -128,6 +128,18 @@
 - **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
 - **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
 
+## AWS
+
+- **AWS CLI** — The official command-line interface for managing Amazon Web Services, installed via `awscli` or the bundled installer.
+- **Named profile** — A named set of credentials and region settings stored in `~/.aws/config` and `~/.aws/credentials` used by the AWS CLI.
+- **Config file** — A file at `~/.aws/config` that defines profiles, regions, output formats, and other AWS CLI settings.
+
+## Azure
+
+- **Azure CLI** — The cross-platform command-line tool for managing Azure resources, installed via the Microsoft package feed or installer script.
+- **Resource group** — A logical container in Azure that holds related resources (VMs, databases, networking) for management and billing.
+- **Azure region** — A geographical area containing Azure data centres; resources are deployed to a specific region (e.g., `eastus`, `westeurope`).
+
 ## CI/CD Concepts
 
 - **Continuous Integration (CI)** — The practice of automatically building and testing every code change.

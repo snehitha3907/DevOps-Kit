@@ -4,6 +4,8 @@
 
 ### Set up and explore a tool
 - [Ansible primer](../Ansible/notes/0000-primer-ansible.md)
+- [AWS primer](../AWS/notes/0000-primer-aws.md)
+- [Azure primer](../Azure/notes/0000-primer-azure.md)
 - [Docker primer](../Docker/notes/0000-primer-docker.md)
 - [Git primer](../Git/notes/0000-primer-git.md)
 - [GitHub primer](../GitHub/notes/0000-primer-github.md)
@@ -19,6 +21,8 @@
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
+- [Install AWS CLI v2 and configure](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh)
+- [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
 - [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
@@ -39,6 +43,7 @@
 ### Write a playbook / pipeline / config
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
+- [AWS minimal config profiles](../AWS/configs/2026-07-12-minimal-aws-config.ini)
 - [GitHub Actions CI workflow with env/secrets](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
@@ -87,6 +92,14 @@
 - [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
+
+### Work with cloud CLI
+- [AWS primer](../AWS/notes/0000-primer-aws.md)
+- [AWS CLI install and configure](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh)
+- [AWS config profiles](../AWS/configs/2026-07-12-minimal-aws-config.ini)
+- [Azure primer](../Azure/notes/0000-primer-azure.md)
+- [Azure CLI install and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
+- [Azure resource group snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)

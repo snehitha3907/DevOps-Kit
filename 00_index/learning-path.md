@@ -24,6 +24,8 @@ These tools are unlocked from the start and form the day-to-day toolkit for any 
 - **[Ansible](../Ansible/notes/0000-primer-ansible.md)** — Agentless automation for configuration management and provisioning. Primer, ad-hoc commands, playbooks, and troubleshooting.
 - **[Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md)** — Container orchestration at scale. Primer, `kubectl` exploration, manifests, and pod lifecycle management.
 - **[Terraform](../Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules.
+- **[AWS](../AWS/notes/0000-primer-aws.md)** — Amazon Web Services cloud CLI. Primer, install and configure scripts, and named profile setup.
+- **[Azure](../Azure/notes/0000-primer-azure.md)** — Microsoft Azure cloud CLI. Primer, install and login script, and resource group management.
 
 ## Stage 3: Building Skills
 
@@ -40,6 +42,8 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
+- **AWS CLI** — Managing Amazon Web Services from the command line. [Primer](../AWS/notes/0000-primer-aws.md), [install and configure](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh), [named profiles](../AWS/configs/2026-07-12-minimal-aws-config.ini)
+- **Azure CLI** — Managing Microsoft Azure resources from the command line. [Primer](../Azure/notes/0000-primer-azure.md), [install and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh), [resource group snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ## Stage 4: Advanced Tools
 
@@ -109,8 +113,8 @@ graph TD
     classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions,Trivy hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions,Trivy,AWS,Azure hasContent
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-07-13_
+_Last updated: 2026-07-14_
