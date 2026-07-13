@@ -2,6 +2,9 @@
 
 ## 2026-07-13
 
+- Added Azure CLI quick primer (az-001) (`Azure/notes/0000-primer-azure.md`)
+- Added Azure CLI install and login script (az-002) (`Azure/scripts/2026-07-13-install-azure-cli-and-login.sh`)
+- Added Azure CLI resource group and region snippet (az-003) (`Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh`)
 - Flagged GitHub Actions primer already exists (ga-001) (`GitHub Actions/notes/2026-07-13-primer-already-exists.md`)
 - Added gh Actions extension install and workflow listing script (ga-002) (`GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh`)
 - Added first CI workflow that prints "Hello from Actions" on push (ga-003) (`GitHub Actions/configs/2026-07-13-hello-workflow.yaml`)
