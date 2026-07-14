@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-14
+
+- Added Google Cloud SDK quick primer (gcp-001) (`GCP/notes/0000-primer-gcp.md`)
+- Added gcloud CLI install and ADC configuration script (gcp-002) (`GCP/scripts/2026-07-14-install-gcloud-cli-and-configure-adc.sh`)
+- Added GCE instances and GCS buckets listing snippet (gcp-003) (`GCP/snippets/2026-07-14-list-gce-instances-and-gcs-buckets.sh`)
+
 ## 2026-07-13
 
 - Added Azure CLI quick primer (az-001) (`Azure/notes/0000-primer-azure.md`)
