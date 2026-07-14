@@ -6,12 +6,9 @@
 
 These concepts have no prerequisites — start here if you're new to the domain. Each primer exists on disk.
 
-- **Version Control Concepts** — Understand what version control is, why teams use it, and the basic commit/push/pull cycle. Unlocks: Git, GitHub, GitLab CI.
-- **Linux & System Administration** — Basic command-line fluency, package managers, file permissions, processes, and services. [Primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md) Unlocks: Docker, Kubernetes, Ansible, Terraform.
-- **Scripting & Automation (Bash/Python)** — Writing shell scripts and simple Python programs to automate repetitive tasks. [Primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) Unlocks: Terraform, Ansible, GitLab CI, Docker.
+- **Linux & System Administration** — Basic command-line fluency, package managers, file permissions, processes, and services. [Primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md) Unlocks: Docker, Kubernetes, Ansible, Terraform, AWS, Azure.
+- **Scripting & Automation (Bash/Python)** — Writing shell scripts and simple Python programs to automate repetitive tasks. [Primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) Unlocks: Terraform, Ansible, GitLab CI, Docker, Trivy.
 - **Networking Fundamentals** — IP addresses, ports, DNS, HTTP, and basic network troubleshooting. [Primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md) Unlocks: Docker, Kubernetes.
-- **Containerization Concepts** — What containers are, how they differ from VMs, and why they matter. Unlocks: Docker, Kubernetes.
-- **Infrastructure as Code Concepts** — Managing infrastructure through declarative configuration files. Unlocks: Terraform, Ansible.
 - **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. [Primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) Unlocks: GitLab CI, GitHub Actions.
 
 ## Stage 2: Core Tools
@@ -24,8 +21,6 @@ These tools are unlocked from the start and form the day-to-day toolkit for any 
 - **[Ansible](../Ansible/notes/0000-primer-ansible.md)** — Agentless automation for configuration management and provisioning. Primer, ad-hoc commands, playbooks, and troubleshooting.
 - **[Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md)** — Container orchestration at scale. Primer, `kubectl` exploration, manifests, and pod lifecycle management.
 - **[Terraform](../Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules.
-- **[AWS](../AWS/notes/0000-primer-aws.md)** — Amazon Web Services cloud CLI. Primer, install and configure scripts, and named profile setup.
-- **[Azure](../Azure/notes/0000-primer-azure.md)** — Microsoft Azure cloud CLI. Primer, install and login script, and resource group management.
 
 ## Stage 3: Building Skills
 
@@ -42,8 +37,6 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
-- **AWS CLI** — Managing Amazon Web Services from the command line. [Primer](../AWS/notes/0000-primer-aws.md), [install and configure](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh), [named profiles](../AWS/configs/2026-07-12-minimal-aws-config.ini)
-- **Azure CLI** — Managing Microsoft Azure resources from the command line. [Primer](../Azure/notes/0000-primer-azure.md), [install and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh), [resource group snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ## Stage 4: Advanced Tools
 
@@ -53,6 +46,8 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **GitHub auth for CI/CD** — Deploy keys vs fine-grained PATs for pipeline access to GitHub. [Comparison doc](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - **GitHub issue forms and labels** — Configuring `.github` repository with issue forms (bug reports, feature requests) and label definitions. [Config files](../GitHub/configs/dot-github-repository/)
 - **GitHub stale issue/PR automation** — Auto-marking and closing stale issues and PRs for the `.github` repository. [Automation config](../GitHub/configs/dot-github-repository/stale.yml)
+- **AWS CLI** — Installing and configuring the AWS CLI v2 with named profiles for multi-account workflows. [Install script](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh), [config reference](../AWS/configs/2026-07-13-minimal-aws-config.ini)
+- **Azure CLI** — Cross-platform CLI for managing Azure resources, subscriptions, and resource groups. [Install script](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
 - **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
 - **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
@@ -79,20 +74,17 @@ graph TD
     Linux --> K8s
     Linux --> Ansible
     Linux --> Terraform
+    Linux --> AWS
+    Linux --> Azure
 
     Scripting[Scripting & Automation] --> Ansible
     Scripting --> Terraform
     Scripting --> GitLabCI
     Scripting --> Docker
+    Scripting --> Trivy
 
     Network[Networking Fundamentals] --> Docker
     Network --> K8s
-
-    Containers[Containerization Concepts] --> Docker
-    Containers --> K8s
-
-    IaC[Infrastructure as Code] --> Terraform
-    IaC --> Ansible
 
     CI[CI/CD Concepts] --> GitLabCI
     CI --> GitHubActions
@@ -100,13 +92,16 @@ graph TD
     Git --> GitHub
     Git --> GitLabCI
     Git --> GitHubActions
+
     Docker --> K8s
     Docker --> GitLabCI
     Docker --> GitHubActions
     Docker --> Trivy
+
     K8s --> Helm
     K8s --> ArgoCD
     K8s --> Prometheus
+
     Git --> ArgoCD
     Terraform --> Pulumi
 
@@ -115,6 +110,6 @@ graph TD
 
     class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions,Trivy,AWS,Azure hasContent
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
-```
+    ```
 
-_Last updated: 2026-07-14_
+_Last updated: 2026-07-15_

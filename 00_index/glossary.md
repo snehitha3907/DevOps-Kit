@@ -9,6 +9,22 @@
 - **Ad-hoc command** — A one-off Ansible command run directly without a playbook.
 - **ansible-lint** — A linting tool that checks Ansible playbooks for syntax errors, best-practice violations, and idempotency risks.
 
+## AWS
+
+- **Region** — A geographic area containing multiple isolated availability zones where AWS services are hosted.
+- **Availability Zone (AZ)** — An isolated location within a region, providing fault tolerance and high availability.
+- **Named profile** — A credential configuration stored in the AWS CLI `config` and `credentials` files that lets you switch between accounts or roles without re-entering keys.
+- **AWS CLI** — The official command-line interface for interacting with AWS services, supporting both v1 and v2.
+- **CloudFormation** — AWS's native IaC service that provisions and manages resources using JSON or YAML templates.
+
+## Azure
+
+- **Resource group** — A logical container that holds related Azure resources for an application or solution, enabling lifecycle management as a group.
+- **Azure CLI** — The official cross-platform command-line tool for managing Azure resources and subscriptions.
+- **Region** — A geographic location containing one or more datacentres where Azure services are deployed.
+- **Subscription** — A billing and access-control boundary in Azure that defines how resources are paid for and who can manage them.
+- **ARM template** — A JSON-based IaC template used to declaratively define Azure resources and their dependencies.
+
 ## Docker
 
 - **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.
@@ -127,18 +143,6 @@
 - **CVSS** — Common Vulnerability Scoring System, a framework for rating the severity of security vulnerabilities.
 - **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
 - **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
-
-## AWS
-
-- **AWS CLI** — The official command-line interface for managing Amazon Web Services, installed via `awscli` or the bundled installer.
-- **Named profile** — A named set of credentials and region settings stored in `~/.aws/config` and `~/.aws/credentials` used by the AWS CLI.
-- **Config file** — A file at `~/.aws/config` that defines profiles, regions, output formats, and other AWS CLI settings.
-
-## Azure
-
-- **Azure CLI** — The cross-platform command-line tool for managing Azure resources, installed via the Microsoft package feed or installer script.
-- **Resource group** — A logical container in Azure that holds related resources (VMs, databases, networking) for management and billing.
-- **Azure region** — A geographical area containing Azure data centres; resources are deployed to a specific region (e.g., `eastus`, `westeurope`).
 
 ## CI/CD Concepts
 

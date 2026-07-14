@@ -16,13 +16,14 @@
 ## AWS  ·  6 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
-- **notes** (2): most recent → [2026-07-13-primer-already-exists.md](../AWS/notes/2026-07-13-primer-already-exists.md)
-- **scripts** (2): [2026-07-12-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh), [2026-07-13-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
-- **configs** (2): [2026-07-12-minimal-aws-config.ini](../AWS/configs/2026-07-12-minimal-aws-config.ini), [2026-07-13-minimal-aws-config.ini](../AWS/configs/2026-07-13-minimal-aws-config.ini)
+- **notes** (2): most recent → [2026-07-13-primer-already-exists.md](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
+- **scripts** (2): [2026-07-13-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh), [2026-07-12-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh)
+- **configs** (2): [2026-07-13-minimal-aws-config.ini](../AWS/configs/2026-07-13-minimal-aws-config.ini), [2026-07-12-minimal-aws-config.ini](../AWS/configs/2026-07-12-minimal-aws-config.ini)
 
 ## Azure  ·  3 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
+- **notes** (1): [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
 - **scripts** (1): [2026-07-13-install-azure-cli-and-login.sh](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (1): [2026-07-13-create-resource-group-and-list-regions.sh](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
@@ -66,15 +67,16 @@
 
 - **primer:** [0000-primer-github-actions.md](../GitHub%20Actions/notes/0000-primer-github-actions.md)
 - **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub%20Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
+- _…and 1 more under `GitHub Actions/notes/` — browse the folder._
 - **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub%20Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub%20Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
-- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub%20Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml), [2026-06-23-first-ci-workflow-with-env-and-secrets.yaml](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub%20Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 
 ## GitLab CI  ·  5 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
 - **notes** (2): most recent → [2026-06-24-following-gitlab-ci-quickstart.md](../GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
 - **scripts** (2): [install-runner-and-register.sh](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh), [run-first-local-pipeline.sh](../GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh)
-- **configs** (1): [first-pipeline.yaml](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
+- **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
 
 ## Kubernetes  ·  8 files
 
@@ -82,7 +84,7 @@
 - **notes** (4): most recent → [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md), [2026-06-08-kubernetes-interactive-tutorial.md](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
 - _…and 2 more under `Kubernetes/notes/` — browse the folder._
 - **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
-- **manifests** (2): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
+- **manifests** (2): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 
 ## Terraform  ·  17 files
 

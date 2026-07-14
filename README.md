@@ -14,29 +14,29 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for eleven tool families a DevOps engineer reaches for every day. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, Linux & system administration, networking fundamentals, and scripting & automation), a reusable S3 module for Terraform, and Jupyter notebooks for digging deeper into specific topics.
+First-contact notes, setup scripts, configs, and manifests for ten tool families a DevOps engineer reaches for every day. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, Linux & system administration, networking fundamentals, and scripting & automation), a reusable S3 module for Terraform, and Jupyter notebooks for digging deeper into specific topics.
 
 ## Quick links
 
-- [Azure primer](Azure/notes/0000-primer-azure.md) — First-contact notes for Azure CLI.
-- [Azure CLI install script](Azure/scripts/2026-07-13-install-azure-cli-and-login.sh) — Install Azure CLI and authenticate.
-- [Azure resource group snippet](Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh) — Create resource groups and list regions.
-- [AWS config profile](AWS/configs/2026-07-13-minimal-aws-config.ini) — Minimal AWS CLI config with named profiles.
-- [AWS primer flag note](AWS/notes/2026-07-13-primer-already-exists.md) — Noting the AWS primer already exists.
+- [Azure primer](Azure/notes/0000-primer-azure.md) — First-contact notes for the Azure CLI, resource groups, and regions.
+- [AWS primer](AWS/notes/0000-primer-aws.md) — First-contact notes for the AWS CLI and named profiles.
+- [GitHub Actions hello workflow](GitHub%20Actions/configs/2026-07-13-hello-workflow.yaml) — Minimal CI workflow that prints a message on push.
+- [Trivy Python wrapper snippet](Trivy/snippets/2026-07-12-trivy-python-wrapper.py) — Runs Trivy and parses JSON output for automation.
+- [Terraform for_each vs count notebook](Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb) — Compares conditional resource creation strategies.
 
 ## Layout
 
-- **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, an nginx snippet, linting docs, and a variable precedence notebook.
-- **AWS/** — CLI primer, install and configure scripts, and config profiles.
-- **Azure/** — CLI primer, install and login script, and a resource group snippet.
-- **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
+- **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
+- **AWS/** — Primer notes, CLI install scripts, and minimal configs with named profiles.
+- **Azure/** — Primer notes, CLI install and login script, and resource group snippet.
 - **docs/concepts/** — Foundational concept primers (CI/CD, Linux & system administration, networking fundamentals, scripting & automation).
-- **Git/** — Primer, install notes, CLI exploration, branching and merge scripts, commit snippets, hook templates, and docs.
-- **GitHub/** — Primer notes, CLI and web UI scripts, repo configs, docs, and Python API snippets.
-- **GitHub Actions/** — Primer, quickstart notes, install scripts, and CI workflow configs.
-- **GitLab CI/** — Primer, quickstart notes, runner install script, and pipeline configs.
-- **Kubernetes/** — Primer, kubectl exploration, install script, manifests, and pod lifecycle scripts.
-- **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
+- **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
+- **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
+- **GitHub/** — Primer notes, CLI and web UI scripts, configs, docs, and Python API snippets.
+- **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
+- **GitLab CI/** — Primer notes, install and register runner scripts, pipeline configs, quickstart follow-ups, and local pipeline runner.
+- **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
+- **Terraform/** — Primer notes, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — CLI exploration notes, container scanning scripts, and a Python wrapper snippet.
 - **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 - **CHANGELOG.md** — Kit-level change log.
@@ -48,7 +48,7 @@ First-contact notes, setup scripts, configs, and manifests for eleven tool famil
 
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | — |
+| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | 2026-06-15 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
@@ -65,7 +65,7 @@ First-contact notes, setup scripts, configs, and manifests for eleven tool famil
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions now has a primer, quickstart notes, install scripts, and pipeline configs. GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. AWS has been added with CLI primer, install script, and config profiles. Azure has been added with CLI primer, install script, and resource group snippet. Foundational concept primers have been added under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
+Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions now has a primer, quickstart notes, install script, and multiple pipeline configs. GitLab CI coverage has begun with quickstart notes and pipeline configs. AWS and Azure tooling has been added with CLI install scripts, named-profile configs, and resource management snippets. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. Foundational concept primers have been added under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
 
 ---
-_Last updated: 2026-07-14_
+_Last updated: 2026-07-15_
