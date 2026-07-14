@@ -17,7 +17,7 @@ It lets you create, inspect, update, and delete GCP resources from a terminal �
 
 ## Why does it exist?
 
-Before the SDK, you had to use the GCP Console web UI for everything — fine for one-off tasks, terrible for repeatability. The SDK gives a consistent command surface that works the same on Linux, macOS, and Windows. DevOps engineers use it daily for provisioning infra, debugging production issues, and wrapping Terraform or Ansible workflows with GCP-specific steps.
+Before the SDK, you had to use the GCP Console web UI for everything — fine for one-off tasks, terrible for repeatability. The SDK gives a consistent command surface that works the same on Linux, macOS, and Windows. DevOps engineers use it daily for provisioning infra, troubleshooting issues in live environments, and wrapping Terraform or Ansible workflows with GCP-specific steps.
 
 ## Key terminology
 
