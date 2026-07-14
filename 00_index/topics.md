@@ -13,6 +13,19 @@
 - **docs** (1): [wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 
+## AWS  ·  6 files
+
+- **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
+- **notes** (2): most recent → [2026-07-13-primer-already-exists.md](../AWS/notes/2026-07-13-primer-already-exists.md)
+- **scripts** (2): [2026-07-12-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh), [2026-07-13-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
+- **configs** (2): [2026-07-12-minimal-aws-config.ini](../AWS/configs/2026-07-12-minimal-aws-config.ini), [2026-07-13-minimal-aws-config.ini](../AWS/configs/2026-07-13-minimal-aws-config.ini)
+
+## Azure  ·  3 files
+
+- **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
+- **scripts** (1): [2026-07-13-install-azure-cli-and-login.sh](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
+- **snippets** (1): [2026-07-13-create-resource-group-and-list-regions.sh](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
+
 ## Docker  ·  20 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
@@ -49,12 +62,12 @@
 - **snippets** (2): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py)
 - **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 
-## GitHub Actions  ·  5 files
+## GitHub Actions  ·  8 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub%20Actions/notes/0000-primer-github-actions.md)
-- **notes** (2): most recent → [2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
-- **scripts** (1): [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub%20Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
-- **configs** (2): [2026-06-23-first-ci-workflow-with-env-and-secrets.yaml](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
+- **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub%20Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
+- **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub%20Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub%20Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub%20Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml), [2026-06-23-first-ci-workflow-with-env-and-secrets.yaml](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 
 ## GitLab CI  ·  5 files
 
