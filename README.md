@@ -1,8 +1,7 @@
 # DevOps-Kit
-> A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, AWS, Azure, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, Terraform, and Trivy.
+> A working DevOps engineer's quick-reference — notes, scripts, configs, and manifests for Ansible, AWS, Azure, Docker, Git, GitHub, GitHub Actions, GitLab CI, Kubernetes, Terraform, and Trivy.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
-![Languages](https://img.shields.io/github/languages/count/snehitha3907/DevOps-Kit)
 ![Top language](https://img.shields.io/github/languages/top/snehitha3907/DevOps-Kit)
 ![Repo size](https://img.shields.io/github/repo-size/snehitha3907/DevOps-Kit)
 
@@ -14,15 +13,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for ten tool families a DevOps engineer reaches for every day. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, Linux & system administration, networking fundamentals, and scripting & automation), a reusable S3 module for Terraform, and Jupyter notebooks for digging deeper into specific topics.
+First-contact notes, setup scripts, configs, and manifests for the tool families a DevOps engineer reaches for daily. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, Linux & system administration, networking fundamentals, and scripting & automation), a reusable S3 module for Terraform, and Jupyter notebooks for digging deeper into specific topics.
 
 ## Quick links
 
-- [Azure primer](Azure/notes/0000-primer-azure.md) — First-contact notes for the Azure CLI, resource groups, and regions.
-- [AWS primer](AWS/notes/0000-primer-aws.md) — First-contact notes for the AWS CLI and named profiles.
+- [Azure CLI install and login](Azure/scripts/2026-07-13-install-azure-cli-and-login.sh) — Install the Azure CLI, authenticate interactively or with a service principal, and list subscriptions.
+- [AWS CLI install and configure](AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh) — Install AWS CLI v2, configure named profiles, and verify with a quick STS call.
+- [Azure resource group and regions snippet](Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh) — Create a resource group and list available Azure regions.
+- [AWS minimal config with named profiles](AWS/configs/2026-07-13-minimal-aws-config.ini) — Shared credentials and config files for switching between AWS accounts.
 - [GitHub Actions hello workflow](GitHub%20Actions/configs/2026-07-13-hello-workflow.yaml) — Minimal CI workflow that prints a message on push.
-- [Trivy Python wrapper snippet](Trivy/snippets/2026-07-12-trivy-python-wrapper.py) — Runs Trivy and parses JSON output for automation.
-- [Terraform for_each vs count notebook](Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb) — Compares conditional resource creation strategies.
 
 ## Layout
 
@@ -68,4 +67,4 @@ First-contact notes, setup scripts, configs, and manifests for ten tool families
 Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions now has a primer, quickstart notes, install script, and multiple pipeline configs. GitLab CI coverage has begun with quickstart notes and pipeline configs. AWS and Azure tooling has been added with CLI install scripts, named-profile configs, and resource management snippets. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. Foundational concept primers have been added under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
 
 ---
-_Last updated: 2026-07-15_
+_Last updated: 2026-07-16_
