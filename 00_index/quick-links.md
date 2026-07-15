@@ -21,7 +21,7 @@
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
-- [Install AWS CLI v2 and configure](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh)
+- [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
 - [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
@@ -39,11 +39,11 @@
 - [Terraform CLI walkthrough](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [GitHub CLI (gh) walkthrough](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
+- [Azure CLI resource group and region snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ### Write a playbook / pipeline / config
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
-- [AWS minimal config profiles](../AWS/configs/2026-07-12-minimal-aws-config.ini)
 - [GitHub Actions CI workflow with env/secrets](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
@@ -52,6 +52,7 @@
 - [Docker Compose multi-service app](../Docker/configs/multi-service-app.yaml)
 - [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
+- [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -92,14 +93,6 @@
 - [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
-
-### Work with cloud CLI
-- [AWS primer](../AWS/notes/0000-primer-aws.md)
-- [AWS CLI install and configure](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh)
-- [AWS config profiles](../AWS/configs/2026-07-12-minimal-aws-config.ini)
-- [Azure primer](../Azure/notes/0000-primer-azure.md)
-- [Azure CLI install and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
-- [Azure resource group snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
