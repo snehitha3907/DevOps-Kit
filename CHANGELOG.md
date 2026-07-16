@@ -7,6 +7,11 @@
 - Added gcloud CLI install and ADC configuration script (gcp-002) (`GCP/scripts/2026-07-14-install-gcloud-cli-and-configure-adc.sh`)
 - Added GCE instances and GCS buckets listing snippet (gcp-003) (`GCP/snippets/2026-07-14-list-gce-instances-and-gcs-buckets.sh`)
 
+## 2026-07-16
+
+- Added GCP gcloud CLI install and application-default credentials script (gcp-002) (`GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh`)
+- Added GCP gcloud CLI list Compute Engine instances and GCS buckets snippet (gcp-003) (`GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh`)
+
 ## 2026-07-13
 
 - Added Azure CLI quick primer (az-001) (`Azure/notes/0000-primer-azure.md`)
