@@ -16,6 +16,11 @@
 - **Named profile** — A credential configuration stored in the AWS CLI `config` and `credentials` files that lets you switch between accounts or roles without re-entering keys.
 - **AWS CLI** — The official command-line interface for interacting with AWS services, supporting both v1 and v2.
 - **CloudFormation** — AWS's native IaC service that provisions and manages resources using JSON or YAML templates.
+- **`--output`** — Controls how results are printed: `json` (default), `text`, `table`, or `yaml`.
+- **`--dry-run`** — A flag on some commands that checks whether you *could* perform the action without actually doing it.
+- **`aws sts get-caller-identity`** — The "who am I?" command. It prints the account number, ARN, and user ID the current credentials resolve to.
+- **`~/.aws/config`** — The INI-style file that holds profile settings (region, output format). Distinct from `~/.aws/credentials` which holds the secret keys.
+- **`~/.aws/credentials`** — The file that stores access key pairs. Sensitive — should never be committed to git.
 
 ## Azure
 
@@ -24,6 +29,10 @@
 - **Region** — A geographic location containing one or more datacentres where Azure services are deployed.
 - **Subscription** — A billing and access-control boundary in Azure that defines how resources are paid for and who can manage them.
 - **ARM template** — A JSON-based IaC template used to declaratively define Azure resources and their dependencies.
+- **`--output` / `-o`** — Controls output format: `json` (default), `table`, `tsv`, `yaml`.
+- **`--query`** — JMESPath filter to pick specific fields from JSON output.
+- **Service principal** — A non-human identity for automation, used instead of a user account in CI/CD.
+- **ARM (Azure Resource Manager)** — The underlying REST API that `az` wraps. Every CLI command maps to an ARM API call.
 
 ## Docker
 
@@ -48,6 +57,13 @@
 - **Project** — The top-level container in GCP that groups resources, billing, permissions, and APIs for a given workload.
 - **Compute Engine** — GCP's infrastructure-as-a-service offering for running virtual machine instances.
 - **Cloud Storage (GCS)** — GCP's object storage service, organised into buckets that hold files and blobs.
+- **`bq`** — CLI tool for BigQuery.
+- **Zone / Region** — Where resources live. Zones are sub-divisions of regions.
+- **`gcloud config`** — Persistent settings for the CLI (project, region, zone, account).
+- **Service account** — A non-human identity for automation. Used instead of a user account in pipelines.
+- **Application Default Credentials (ADC)** — A strategy that `gcloud` and GCP client libraries use to find credentials automatically.
+- **`--format`** — Controls output: `json`, `yaml`, `table`, `text`, `csv`, `list`.
+- **`--filter`** — Server-side filtering of results.
 
 ## Git
 
