@@ -33,7 +33,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Ansible playbook troubleshooting** — SSH, pipx, and permission issues. [Troubleshooting notes](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - **Ansible linting** — Integrating ansible-lint into your workflow. [Lint guide](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **Ansible variable precedence** — Understanding how group_vars, host_vars, and playbook vars interact. [Notebook](../Ansible/notebooks/ansible-variable-precedence.ipynb)
-- **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh)
+- **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
@@ -42,7 +42,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 
 Tools that depend on foundational concepts at L2 or core tools at L2+.
 
-- **GitHub Actions** — CI/CD integrated with GitHub. [Primer](../GitHub%20Actions/notes/0000-primer-github-actions.md), [quickstart notes](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow with env/secrets](../GitHub%20Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml), [hello workflow](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
+- **GitHub Actions** — CI/CD integrated with GitHub. [Primer](../GitHub Actions/notes/0000-primer-github-actions.md), [quickstart notes](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml), [hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - **GitHub auth for CI/CD** — Deploy keys vs fine-grained PATs for pipeline access to GitHub. [Comparison doc](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - **GitHub issue forms and labels** — Configuring `.github` repository with issue forms (bug reports, feature requests) and label definitions. [Config files](../GitHub/configs/dot-github-repository/)
 - **GitHub stale issue/PR automation** — Auto-marking and closing stale issues and PRs for the `.github` repository. [Automation config](../GitHub/configs/dot-github-repository/stale.yml)

@@ -72,18 +72,18 @@
 
 ## GitHub Actions  ·  8 files
 
-- **primer:** [0000-primer-github-actions.md](../GitHub%20Actions/notes/0000-primer-github-actions.md)
-- **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub%20Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub%20Actions/notes/2026-06-23-following-github-actions-quickstart.md)
+- **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
+- **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md)
 - _…and 1 more under `GitHub Actions/notes/` — browse the folder._
-- **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub%20Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub%20Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
-- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub%20Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub%20Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
+- **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 
 ## GitLab CI  ·  5 files
 
-- **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab%20CI/notes/0000-primer-gitlab-ci-cd.md)
-- **notes** (2): most recent → [2026-06-24-following-gitlab-ci-quickstart.md](../GitLab%20CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
-- **scripts** (2): [install-runner-and-register.sh](../GitLab%20CI/scripts/2026-06-22-install-runner-and-register.sh), [run-first-local-pipeline.sh](../GitLab%20CI/scripts/2026-06-24-run-first-local-pipeline.sh)
-- **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab%20CI/configs/2026-06-22-first-pipeline.yaml)
+- **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- **notes** (2): most recent → [2026-06-24-following-gitlab-ci-quickstart.md](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
+- **scripts** (2): [install-runner-and-register.sh](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run-first-local-pipeline.sh](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
+- **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
 ## Kubernetes  ·  8 files
 
