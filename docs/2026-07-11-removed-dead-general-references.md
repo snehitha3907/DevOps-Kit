@@ -5,7 +5,7 @@ tool_version: n/a
 
 # audit-008 — Removed dead CHANGELOG references to General/docs/ files
 
-Spotted five lines in the CHANGELOG that pointed to `.md` files under `General/docs/`. That directory was scrubbed as pipeline noise a few cycles ago, so the references were stale — clicking the path would lead nowhere.
+Spotted five lines in the CHANGELOG that pointed to `.md` files under `General/docs/`. That directory was removed a few cycles ago, so the references were stale — clicking the path would lead nowhere.
 
 I removed these five entries:
 

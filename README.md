@@ -18,22 +18,22 @@ First-contact notes, setup scripts, configs, and manifests for eleven tool famil
 
 ## Quick links
 
-- [Stale issue/PR automation config](GitHub/configs/dot-github-repository/stale.yml) — Auto-marks and closes stale issues and PRs for the `.github` repository.
-- [GitHub repository config](GitHub/configs/dot-github-repository/config.yml) — `.github` repository settings that tune issue and discussion behaviour.
-- [Bug report issue form](GitHub/configs/dot-github-repository/issue-forms/bug-report.yaml) — Structured YAML form for filing bug reports.
-- [Feature request issue form](GitHub/configs/dot-github-repository/issue-forms/feature-request.yaml) — Structured YAML form for proposing new features.
-- [Issue label definitions](GitHub/configs/dot-github-repository/labels.yaml) — Centralised label set applied across the repository.
+- [Azure primer](Azure/notes/0000-primer-azure.md) — First-contact notes for the Azure CLI, resource groups, and regions.
+- [AWS primer](AWS/notes/0000-primer-aws.md) — First-contact notes for the AWS CLI and named profiles.
+- [GitHub Actions hello workflow](GitHub%20Actions/configs/2026-07-13-hello-workflow.yaml) — Minimal CI workflow that prints a message on push.
+- [Trivy Python wrapper snippet](Trivy/snippets/2026-07-12-trivy-python-wrapper.py) — Runs Trivy and parses JSON output for automation.
+- [Terraform for_each vs count notebook](Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb) — Compares conditional resource creation strategies.
 
 ## Layout
 
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
 - **AWS/** — Primer notes, CLI install and configure scripts, and minimal config files with named profiles.
 - **Azure/** — Primer notes, CLI install and login scripts, and resource group creation snippets.
-- **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **docs/concepts/** — Foundational concept primers (CI/CD, Linux & system administration, networking fundamentals, scripting & automation).
+- **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
-- **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
 - **GitHub/** — Primer notes, CLI and web UI scripts, configs, docs, and Python API snippets.
+- **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
 - **GitLab CI/** — Primer notes, install and register runner scripts, pipeline configs, quickstart follow-ups, and local pipeline runner.
 - **Kubernetes/** — Primer notes, kubectl exploration, install script, manifests, and pod lifecycle scripts.
 - **Terraform/** — Primer notes, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
@@ -48,13 +48,13 @@ First-contact notes, setup scripts, configs, and manifests for eleven tool famil
 
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | — |
+| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | 2026-06-15 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
-| GitHub Actions | 2 | 1 | 2 | — | — | — | — | — | — | 2026-07-11 |
+| GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — | — |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |

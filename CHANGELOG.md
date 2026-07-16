@@ -41,7 +41,7 @@
 - Added GitHub Actions primer (ga-001) (`GitHub Actions/notes/0000-primer-github-actions.md`)
 - Added gh Actions extension install and run listing script (ga-002) (`GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh`)
 - Added first CI workflow that prints "Hello from Actions" on push (ga-003) (`GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml`)
-- Removed dead CHANGELOG references to `General/docs/*.md` files removed as pipeline noise (audit-008) (`docs/2026-07-11-removed-dead-general-references.md`)
+- Removed dead CHANGELOG references to `General/docs/*.md` files that no longer exist (audit-008) (`docs/2026-07-11-removed-dead-general-references.md`)
 
 ## 2026-07-08
 

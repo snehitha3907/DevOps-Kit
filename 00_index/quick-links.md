@@ -4,6 +4,8 @@
 
 ### Set up and explore a tool
 - [Ansible primer](../Ansible/notes/0000-primer-ansible.md)
+- [AWS primer](../AWS/notes/0000-primer-aws.md)
+- [Azure primer](../Azure/notes/0000-primer-azure.md)
 - [Docker primer](../Docker/notes/0000-primer-docker.md)
 - [Git primer](../Git/notes/0000-primer-git.md)
 - [GitHub primer](../GitHub/notes/0000-primer-github.md)
@@ -19,6 +21,8 @@
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
+- [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
+- [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
 - [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
@@ -35,6 +39,7 @@
 - [Terraform CLI walkthrough](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [GitHub CLI (gh) walkthrough](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
+- [Azure CLI resource group and region snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ### Write a playbook / pipeline / config
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
@@ -47,6 +52,7 @@
 - [Docker Compose multi-service app](../Docker/configs/multi-service-app.yaml)
 - [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
+- [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
