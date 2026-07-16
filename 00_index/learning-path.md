@@ -48,6 +48,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **GitHub stale issue/PR automation** — Auto-marking and closing stale issues and PRs for the `.github` repository. [Automation config](../GitHub/configs/dot-github-repository/stale.yml)
 - **AWS CLI** — Installing and configuring the AWS CLI v2 with named profiles for multi-account workflows. [Install script](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh), [config reference](../AWS/configs/2026-07-13-minimal-aws-config.ini)
 - **Azure CLI** — Cross-platform CLI for managing Azure resources, subscriptions, and resource groups. [Install script](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
+- **GCP (gcloud CLI)** — The Google Cloud SDK for managing GCP resources from the terminal. [Primer](../GCP/notes/0000-primer-gcp.md), [install and configure script](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh), [Compute/GCS listing snippet](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
 - **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
 - **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
@@ -76,6 +77,7 @@ graph TD
     Linux --> Terraform
     Linux --> AWS
     Linux --> Azure
+    Linux --> GCP
 
     Scripting[Scripting & Automation] --> Ansible
     Scripting --> Terraform
@@ -108,8 +110,8 @@ graph TD
     classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions,Trivy,AWS,Azure hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GithubActions,Trivy,AWS,Azure,GCP hasContent
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
     ```
 
-_Last updated: 2026-07-15_
+_Last updated: 2026-07-16_

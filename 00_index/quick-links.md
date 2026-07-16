@@ -7,6 +7,7 @@
 - [AWS primer](../AWS/notes/0000-primer-aws.md)
 - [Azure primer](../Azure/notes/0000-primer-azure.md)
 - [Docker primer](../Docker/notes/0000-primer-docker.md)
+- [GCP primer](../GCP/notes/0000-primer-gcp.md)
 - [Git primer](../Git/notes/0000-primer-git.md)
 - [GitHub primer](../GitHub/notes/0000-primer-github.md)
 - [GitHub Actions primer](../GitHub%20Actions/notes/0000-primer-github-actions.md)
@@ -24,6 +25,7 @@
 - [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
 - [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
+- [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
 - [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
 - [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
@@ -40,6 +42,7 @@
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [GitHub CLI (gh) walkthrough](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
 - [Azure CLI resource group and region snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
+- [GCP list Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
 ### Write a playbook / pipeline / config
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
@@ -93,6 +96,11 @@
 - [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
+
+### Work with GCP
+- [GCP primer](../GCP/notes/0000-primer-gcp.md)
+- [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
+- [List Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)

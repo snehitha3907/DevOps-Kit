@@ -41,6 +41,13 @@
 - **notebooks** (1): [comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **configs** (1): [multi-service-app.yaml](../Docker/configs/multi-service-app.yaml)
 
+## GCP  ·  3 files
+
+- **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
+- **notes** (1): [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
+- **scripts** (1): [2026-07-16-install-gcloud-cli-and-configure-creds.sh](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
+- **snippets** (1): [2026-07-16-list-compute-and-gcs-with-gcloud.sh](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
+
 ## Git  ·  19 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)

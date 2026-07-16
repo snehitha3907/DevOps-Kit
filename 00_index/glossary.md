@@ -27,8 +27,7 @@
 
 ## Docker
 
-- **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.
-- **Image** — A read-only snapshot of a filesystem used as a template for creating containers.
+- **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.- **Image** — A read-only snapshot of a filesystem used as a template for creating containers.
 - **Container** — A running instance of an image; encapsulates an app and its dependencies in an isolated environment.
 - **Dockerfile** — A text file containing instructions to build a Docker image.
 - **Layer** — A cached build step in a Docker image that enables incremental builds.
@@ -40,6 +39,15 @@
 - **BuildKit** — Docker's modern build backend that enables faster, more efficient image builds with features like cache mounts and parallel execution.
 - **--mount** — A BuildKit-specific `RUN` instruction modifier that mounts cache, secret, or SSH resources into a Docker build step.
 - **docker buildx** — Docker's CLI plugin for extended build capabilities, including BuildKit, multi-platform images, and advanced caching strategies.
+
+## GCP
+
+- **Google Cloud SDK** — Google's set of command-line tools for managing GCP resources, bundling `gcloud`, `gsutil`, and `bq`.
+- **gcloud** — The primary CLI for creating, inspecting, and managing Google Cloud resources such as VMs, networks, and IAM policies.
+- **gsutil** — A command-line tool for interacting with Cloud Storage buckets and objects.
+- **Project** — The top-level container in GCP that groups resources, billing, permissions, and APIs for a given workload.
+- **Compute Engine** — GCP's infrastructure-as-a-service offering for running virtual machine instances.
+- **Cloud Storage (GCS)** — GCP's object storage service, organised into buckets that hold files and blobs.
 
 ## Git
 
