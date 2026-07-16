@@ -14,7 +14,7 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for ten tool families a DevOps engineer reaches for every day. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, Linux & system administration, networking fundamentals, and scripting & automation), a reusable S3 module for Terraform, and Jupyter notebooks for digging deeper into specific topics.
+First-contact notes, setup scripts, configs, and manifests for eleven tool families a DevOps engineer reaches for every day. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and any manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, Linux & system administration, networking fundamentals, and scripting & automation), a reusable S3 module for Terraform, and Jupyter notebooks for digging deeper into specific topics.
 
 ## Quick links
 
@@ -27,8 +27,8 @@ First-contact notes, setup scripts, configs, and manifests for ten tool families
 ## Layout
 
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
-- **AWS/** — Primer notes, CLI install scripts, and minimal configs with named profiles.
-- **Azure/** — Primer notes, CLI install and login script, and resource group snippet.
+- **AWS/** — Primer notes, CLI install and configure scripts, and minimal config files with named profiles.
+- **Azure/** — Primer notes, CLI install and login scripts, and resource group creation snippets.
 - **docs/concepts/** — Foundational concept primers (CI/CD, Linux & system administration, networking fundamentals, scripting & automation).
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **Git/** — Primer, install notes, CLI exploration, scripts for branching and merge conflicts, commit snippets, hook templates, and docs.
@@ -65,7 +65,7 @@ First-contact notes, setup scripts, configs, and manifests for ten tool families
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions now has a primer, quickstart notes, install script, and multiple pipeline configs. GitLab CI coverage has begun with quickstart notes and pipeline configs. AWS and Azure tooling has been added with CLI install scripts, named-profile configs, and resource management snippets. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. Foundational concept primers have been added under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
+Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs have been added. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions now has a primer, quickstart notes, install script, and pipeline configs. GitLab CI coverage has begun with quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. AWS and Azure now have primer notes, CLI scripts, and config snippets. Foundational concept primers have been added under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
 
 ---
-_Last updated: 2026-07-15_
+_Last updated: 2026-07-14_
