@@ -29,6 +29,7 @@ First-contact notes, setup scripts, configs, and manifests for twelve tool famil
 - **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
 - **AWS/** — Primer notes, CLI install and configure scripts, and minimal config files with named profiles.
 - **Azure/** — Primer notes, CLI install and login scripts, and resource group creation snippets.
+- **docs/** — Kit-level operational notes and audit records.
 - **docs/concepts/** — Foundational concept primers (CI/CD, Linux & system administration, networking fundamentals, scripting & automation).
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **GCP/** — Primer notes, gcloud CLI install and configure script, and a Compute/GCS listing snippet.

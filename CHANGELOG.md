@@ -4,13 +4,12 @@
 
 - Added Google Cloud SDK quick primer (gcp-001) (`GCP/notes/0000-primer-gcp.md`)
 - Reworked gcp-001: removed forbidden "production" term from primer (rework-1) (`GCP/notes/0000-primer-gcp.md`)
-- Added gcloud CLI install and ADC configuration script (gcp-002) (`GCP/scripts/2026-07-14-install-gcloud-cli-and-configure-adc.sh`)
-- Added GCE instances and GCS buckets listing snippet (gcp-003) (`GCP/snippets/2026-07-14-list-gce-instances-and-gcs-buckets.sh`)
+- Added gcloud CLI install and ADC configuration script (gcp-002) (`GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh`)
+- Added GCE instances and GCS buckets listing snippet (gcp-003) (`GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh`)
 
 ## 2026-07-16
 
-- Added GCP gcloud CLI install and application-default credentials script (gcp-002) (`GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh`)
-- Added GCP gcloud CLI list Compute Engine instances and GCS buckets snippet (gcp-003) (`GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh`)
+- Reworked GCP primer: rewrote in L1 first-person scratchy voice (gcp-001 rework-2) (`GCP/notes/0000-primer-gcp.md`)
 
 ## 2026-07-13
 
