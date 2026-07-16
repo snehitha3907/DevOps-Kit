@@ -34,8 +34,8 @@
 - _…and 2 more under `Docker/notes/` — browse the folder._
 - **scripts** (4): [install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh), [docker-health-check-and-cleanup.sh](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
-- **dockerfiles** (6): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
-- _…and 4 more under `Docker/dockerfiles/` — browse the folder._
+- **dockerfiles** (4): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 2 more under `Docker/dockerfiles/` — browse the folder._
 - **docs** (2): [docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md), [docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - **manifests** (2): [2026-06-28-go-redis-compose-healthchecks.yaml](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml), [2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 - **notebooks** (1): [comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
