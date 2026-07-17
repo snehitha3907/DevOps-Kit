@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-17
+
+- Reworked GCP primer: rewrote in personal learner voice with experiential framing (gcp-001 rework-3) (`GCP/notes/0000-primer-gcp.md`)
+
 ## 2026-07-14
 
 - Added Google Cloud SDK quick primer (gcp-001) (`GCP/notes/0000-primer-gcp.md`)
