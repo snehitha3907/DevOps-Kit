@@ -54,9 +54,9 @@ First-contact notes, setup scripts, configs, and manifests for twelve tool famil
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 4 | 4 | 1 | — | 4 | 2 | 1 | 2 | — | — |
-| GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-14 |
+| GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-16 |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-08 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
 | GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Kubernetes | 4 | 2 | — | — | — | — | — | 2 | — | — |
@@ -71,4 +71,4 @@ First-contact notes, setup scripts, configs, and manifests for twelve tool famil
 Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised at L3 with playbook troubleshooting and ansible-lint integrated. GitHub Actions has a primer, quickstart notes, install script, and pipeline configs; GitLab CI has quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are now represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. Foundational concept primers sit under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
 
 ---
-_Last updated: 2026-07-16_
+_Last updated: 2026-07-17_
