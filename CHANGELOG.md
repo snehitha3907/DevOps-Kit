@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-18
+
+- Added OpenTofu quick primer (ot-001) (`OpenTofu/notes/0000-primer-opentofu.md`)
+- Added OpenTofu install and verify script (ot-002) (`OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh`)
+- Added minimal OpenTofu local-provider config with variables and outputs (ot-003) (`OpenTofu/configs/2026-07-18-minimal-local-config.tf`)
+
 ## 2026-07-17
 
 - Reworked GCP primer: rewrote in personal learner voice with experiential framing (gcp-001 rework-3) (`GCP/notes/0000-primer-gcp.md`)
