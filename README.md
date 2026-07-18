@@ -53,7 +53,7 @@ First-contact notes, setup scripts, configs, and manifests for twelve tool famil
 | Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | — |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
-| Docker | 4 | 4 | 1 | — | 4 | 2 | 1 | 2 | — | — |
+| Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-16 |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
