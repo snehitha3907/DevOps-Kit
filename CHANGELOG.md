@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-18
+
+- Added Linux filesystem permissions and process management practice script (con-011) (`docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh`)
+- Added Linux process and file permission patterns in DevOps notes (con-012) (`docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md`)
+- Added network connectivity and port testing practice script with curl and netcat (con-013) (`docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh`)
+
 ## 2026-07-17
 
 - Reworked GCP primer: rewrote in personal learner voice with experiential framing (gcp-001 rework-3) (`GCP/notes/0000-primer-gcp.md`)
