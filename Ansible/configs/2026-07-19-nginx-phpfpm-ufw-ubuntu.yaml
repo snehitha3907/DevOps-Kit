@@ -1,0 +1,115 @@
+# last_verified: 2026-07-19 · Ansible (version-independent)
+---
+- name: Provision Nginx, PHP-FPM, and UFW on Ubuntu
+  hosts: webservers
+  become: true
+  gather_facts: true
+
+  vars:
+    php_version: "8.3"
+    nginx_document_root: /var/www/html
+    ufw_allowed_ports:
+      - "22/tcp"
+      - "80/tcp"
+      - "443/tcp"
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Install Nginx, PHP-FPM, and required packages
+      ansible.builtin.apt:
+        name:
+          - nginx
+          - "php{{ php_version }}-fpm"
+          - "php{{ php_version }}-cli"
+        state: present
+
+    - name: Ensure PHP-FPM service is running and enabled
+      ansible.builtin.systemd:
+        name: "php{{ php_version }}-fpm"
+        state: started
+        enabled: true
+
+    - name: Ensure Nginx service is running and enabled
+      ansible.builtin.systemd:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Ensure document root exists
+      ansible.builtin.file:
+        path: "{{ nginx_document_root }}"
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Deploy a PHP info test page
+      ansible.builtin.copy:
+        dest: "{{ nginx_document_root }}/info.php"
+        content: |
+          <?php
+          phpinfo();
+        owner: root
+        group: root
+        mode: "0644"
+      notify: Reload Nginx
+
+    - name: Configure Nginx to pass PHP requests to PHP-FPM
+      ansible.builtin.template:
+        src: nginx-default.conf.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: "0644"
+      notify: Reload Nginx
+
+    - name: Enable UFW
+      community.general.ufw:
+        state: enabled
+        policy: deny
+
+    - name: Allow configured inbound ports through UFW
+      community.general.ufw:
+        rule: allow
+        port: "{{ item | regex_replace('/tcp', '') }}"
+        proto: tcp
+      loop: "{{ ufw_allowed_ports }}"
+
+    - name: Verify Nginx is listening on port 80
+      ansible.builtin.wait_for:
+        port: 80
+        timeout: 30
+      changed_when: false
+
+    - name: Verify UFW is active
+      ansible.builtin.command: ufw status verbose
+      register: ufw_status
+      changed_when: false
+
+    - name: Assert UFW reports Status: active
+      ansible.builtin.assert:
+        that:
+          - "'Status: active' in ufw_status.stdout"
+        fail_msg: "UFW did not report an active status after configuration."
+
+  handlers:
+    - name: Reload Nginx
+      ansible.builtin.systemd:
+        name: nginx
+        state: reloaded
+
+# Companion template referenced above — create it next to this playbook:
+#   templates/nginx-default.conf.j2
+# server {
+#   listen 80 default_server;
+#   root {{ nginx_document_root }};
+#   index index.php index.html;
+#   location ~ \.php$ {
+#     include snippets/fastcgi-php.conf;
+#     fastcgi_pass unix:/run/php/php{{ php_version }}-fpm.sock;
+#   }
+# }
