@@ -168,6 +168,18 @@
 - **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
 - **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
 
+## OpenTofu
+
+- **Provider** — A plugin that lets OpenTofu manage a specific infrastructure platform (e.g., AWS, local).
+- **State** — A snapshot of real-world infrastructure stored in `terraform.tfstate` that OpenTofu uses to track what it manages.
+- **Plan** — A dry-run diff showing what resources will be created, changed, or destroyed.
+- **Apply** — The command that executes the planned infrastructure changes.
+- **Module** — A self-contained package of `.tf` configurations that manages a group of related resources.
+- **Variable** — An input value that keeps configurations flexible across environments.
+- **Output** — A value exposed by a module or root configuration after apply.
+- **Backend** — The configuration that defines where state is stored (local by default, or remote for teams).
+- **`tofu`** — The OpenTofu CLI binary, the drop-in replacement for `terraform`.
+
 ## CI/CD Concepts
 
 - **Continuous Integration (CI)** — The practice of automatically building and testing every code change.

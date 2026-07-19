@@ -34,8 +34,8 @@
 - _…and 2 more under `Docker/notes/` — browse the folder._
 - **scripts** (4): [install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh), [docker-health-check-and-cleanup.sh](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
-- **dockerfiles** (4): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
-- _…and 2 more under `Docker/dockerfiles/` — browse the folder._
+- **dockerfiles** (6): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 4 more under `Docker/dockerfiles/` — browse the folder._
 - **docs** (2): [docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md), [docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - **manifests** (2): [2026-06-28-go-redis-compose-healthchecks.yaml](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml), [2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 - **notebooks** (1): [comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
@@ -93,6 +93,12 @@
 - **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
 - **manifests** (2): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 
+## OpenTofu  ·  3 files
+
+- **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
+- **scripts** (1): [install-opentofu-and-verify.sh](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
+- **configs** (1): [minimal-local-config.tf](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
+
 ## Terraform  ·  17 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
@@ -112,9 +118,9 @@
 - **scripts** (2): [install-trivy-and-scan-filesystem.sh](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **snippets** (1): [trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 
-## Foundational Concepts  ·  4 files
+## Foundational Concepts  ·  7 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
-- **Linux & System Administration:** [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
-- **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
+- **Linux & System Administration:** [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md), [process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md), [filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+- **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md), [netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
