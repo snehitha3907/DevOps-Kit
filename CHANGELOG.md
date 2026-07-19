@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-19
+
+- Verified README coverage for Ansible/docs/ and General/docs/ target files (audit-004) (`docs/2026-07-19-audit-004-check.md`)
+
 ## 2026-07-18
 
 - Added OpenTofu quick primer (ot-001) (`OpenTofu/notes/0000-primer-opentofu.md`)
