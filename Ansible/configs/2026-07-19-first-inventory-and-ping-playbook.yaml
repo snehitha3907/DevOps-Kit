@@ -1,0 +1,16 @@
+# last_verified: 2026-07-19 · Ansible 2.18
+# My first inventory and ping playbook
+# Run it from inside a Python venv that has ansible installed:
+#   ansible-playbook -i inventory.ini 2026-07-19-first-inventory-and-ping-playbook.yaml
+#
+# The inventory.ini file alongside this playbook:
+#   [local]
+#   control-node ansible_connection=local
+
+- name: Ping all local hosts
+  hosts: local
+  gather_facts: no
+
+  tasks:
+    - name: Test reachability
+      ping:
