@@ -1,0 +1,23 @@
+# last_verified: 2026-07-19 · Ansible (version-independent)
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root {{ nginx_document_root }};
+    index index.php index.html index.htm;
+
+    server_name _;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php{{ php_version }}-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}

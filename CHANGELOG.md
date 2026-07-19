@@ -2,6 +2,7 @@
 
 ## 2026-07-19
 
+- Added Ansible playbook to provision Nginx, PHP-FPM, and UFW on Ubuntu (ans-012) (`Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml`, `Ansible/templates/nginx-default.conf.j2`)
 - Verified README coverage for Ansible/docs/ and General/docs/ target files (audit-004) (`docs/2026-07-19-audit-004-check.md`)
 - Added Ansible install and module exploration script (ans-007) (`Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh`)
 - Added first inventory and ping playbook config (ans-008) (`Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml`)
