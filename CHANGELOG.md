@@ -3,6 +3,9 @@
 ## 2026-07-19
 
 - Verified README coverage for Ansible/docs/ and General/docs/ target files (audit-004) (`docs/2026-07-19-audit-004-check.md`)
+- Added Ansible install and module exploration script (ans-007) (`Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh`)
+- Added first inventory and ping playbook config (ans-008) (`Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml`)
+- Added kubectl version and first Pod from manifest notes (k8s-006) (`Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md`)
 
 ## 2026-07-18
 
