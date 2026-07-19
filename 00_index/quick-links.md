@@ -23,6 +23,7 @@
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
+- [Install Ansible + explore modules](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh)
 - [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
 - [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
@@ -59,6 +60,7 @@
 - [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
+- [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -93,6 +95,7 @@
 - [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
 - [ConfigMap + Secret mounted pod manifest](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
+- [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 
 ### Work with Terraform
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
