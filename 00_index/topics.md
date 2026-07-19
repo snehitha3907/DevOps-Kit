@@ -2,13 +2,13 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  12 files
+## Ansible  ·  14 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
 - **notes** (5): most recent → [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md), [2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - _…and 3 more under `Ansible/notes/` — browse the folder._
-- **scripts** (2): [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh)
-- **configs** (2): [docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml), [nginx-webserver.yaml](../Ansible/configs/nginx-webserver.yaml)
+- **scripts** (3): [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh), [install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh)
+- **configs** (3): [docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml), [nginx-webserver.yaml](../Ansible/configs/nginx-webserver.yaml), [inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
 - **snippets** (1): [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
 - **docs** (1): [wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
@@ -85,11 +85,11 @@
 - **scripts** (2): [install-runner-and-register.sh](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run-first-local-pipeline.sh](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Kubernetes  ·  8 files
+## Kubernetes  ·  9 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
-- **notes** (4): most recent → [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md), [2026-06-08-kubernetes-interactive-tutorial.md](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
-- _…and 2 more under `Kubernetes/notes/` — browse the folder._
+- **notes** (5): most recent → [2026-07-19-first-kubectl-version-and-pod-from-manifest.md](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
+- _…and 3 more under `Kubernetes/notes/` — browse the folder._
 - **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
 - **manifests** (2): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 
