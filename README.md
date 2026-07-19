@@ -51,7 +51,7 @@ First-contact notes, setup scripts, configs, and manifests for thirteen tool fam
 
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 5 | 2 | 2 | 1 | — | 1 | 1 | — | — | — |
+| Ansible | 5 | 3 | 2 | 1 | — | 1 | 1 | — | — | — |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
