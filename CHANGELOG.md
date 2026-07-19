@@ -5,6 +5,9 @@
 - Added OpenTofu quick primer (ot-001) (`OpenTofu/notes/0000-primer-opentofu.md`)
 - Added OpenTofu install and verify script (ot-002) (`OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh`)
 - Added minimal OpenTofu local-provider config with variables and outputs (ot-003) (`OpenTofu/configs/2026-07-18-minimal-local-config.tf`)
+- Added Linux filesystem permissions and process management practice script (con-011) (`docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh`)
+- Added Linux process and file permission patterns in DevOps notes (con-012) (`docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md`)
+- Added network connectivity and port testing practice script with curl and netcat (con-013) (`docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh`)
 
 ## 2026-07-17
 
