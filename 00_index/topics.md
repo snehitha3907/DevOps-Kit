@@ -2,16 +2,17 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  14 files
+## Ansible  ·  17 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
 - **notes** (5): most recent → [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md), [2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - _…and 3 more under `Ansible/notes/` — browse the folder._
-- **scripts** (3): [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh), [install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh)
-- **configs** (3): [docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml), [nginx-webserver.yaml](../Ansible/configs/nginx-webserver.yaml), [inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
+- **scripts** (4): [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh), [install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [scan-ansible-antipatterns.py](../Ansible/scripts/scan-ansible-antipatterns.py)
+- **configs** (4): [docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml), [nginx-webserver.yaml](../Ansible/configs/nginx-webserver.yaml), [first-inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml), [nginx-phpfpm-ufw-ubuntu.yaml](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
 - **snippets** (1): [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
 - **docs** (1): [wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
+- **templates** (1): [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 
 ## AWS  ·  6 files
 
@@ -34,8 +35,8 @@
 - _…and 2 more under `Docker/notes/` — browse the folder._
 - **scripts** (4): [install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh), [docker-health-check-and-cleanup.sh](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
-- **dockerfiles** (6): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
-- _…and 4 more under `Docker/dockerfiles/` — browse the folder._
+- **dockerfiles** (4): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 2 more under `Docker/dockerfiles/` — browse the folder._
 - **docs** (2): [docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md), [docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - **manifests** (2): [2026-06-28-go-redis-compose-healthchecks.yaml](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml), [2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 - **notebooks** (1): [comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
@@ -66,7 +67,7 @@
 - _…and 8 more under `GitHub/notes/` — browse the folder._
 - **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 - _…and 4 more under `GitHub/scripts/` — browse the folder._
-- **configs** (6): [dot-github-repository/](../GitHub/configs/dot-github-repository/), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
+- **configs** (1): [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml) — plus the `dot-github-repository/` folder (issue forms, labels, stale rules)
 - **snippets** (2): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py)
 - **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 
@@ -76,7 +77,7 @@
 - **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md)
 - _…and 1 more under `GitHub Actions/notes/` — browse the folder._
 - **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
-- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
+- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml), [first-ci-workflow-with-env-and-secrets.yaml](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 
 ## GitLab CI  ·  5 files
 
@@ -104,8 +105,7 @@
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **notes** (4): most recent → [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
-- **configs** (7): [reusable-s3-module/](../Terraform/configs/reusable-s3-module/), [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf)
-- _…and 4 more under `Terraform/configs/` — browse the folder._
+- **configs** (2): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the `reusable-s3-module/` folder
 - **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - **docs** (2): [terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md), [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md)
 - **notebooks** (1): [2026-07-02-comparing-for-each-vs-count.ipynb](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)

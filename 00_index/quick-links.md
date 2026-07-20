@@ -50,6 +50,9 @@
 ### Write a playbook / pipeline / config
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
+- [Ansible nginx/PHP-FPM/UFW playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
+- [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
+- [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)

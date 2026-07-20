@@ -18,15 +18,15 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Ansible primer](Ansible/notes/0000-primer-ansible.md) — First-contact notes for Ansible configuration management and automation.
-- [Kubernetes primer](Kubernetes/notes/0000-primer-kubernetes.md) — First-contact notes for Kubernetes container orchestration.
-- [OpenTofu primer](OpenTofu/notes/0000-primer-opentofu.md) — First-contact notes for OpenTofu, the open-source Terraform fork.
 - [Ansible inventory and ping playbook](Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml) — Initial Ansible inventory with a ping test playbook.
-- [Install Ansible and explore modules](Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh) — Installs Ansible and explores modules.
+- [Ansible nginx/PHP-FPM/UFW playbook](Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml) — Hardened Ubuntu web-server playbook with nginx, PHP-FPM, and UFW.
+- [Scan Ansible for antipatterns](Ansible/scripts/scan-ansible-antipatterns.py) — Lint-style script that flags common Ansible antipatterns.
+- [First kubectl version and pod from manifest](Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md) — First kubectl version check and a pod created from a manifest.
+- [Ansible readme-verified note](docs/2026-07-19-ansible-notebooks-readme-verified.md) — Kit note recording verification of the Ansible notebook.
 
 ## Layout
 
-- **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.
+- **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, docs, and a variable precedence notebook.
 - **AWS/** — Primer, CLI install and configure scripts, and minimal config files with named profiles.
 - **Azure/** — Primer, CLI install and login scripts, and resource group creation snippets.
 - **docs/** — Kit-level operational notes and audit records.
@@ -50,26 +50,26 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 5 | 3 | 3 | 1 | — | 1 | 1 | — | — | 2026-07-19 |
+| Ansible | 5 | 4 | 4 | 1 | — | 1 | 1 | — | 1 | 2026-07-19 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
-| Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
+| Docker | 4 | 4 | 1 | — | 4 | 2 | 1 | 2 | — | — |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
 | Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
+| GitHub | 10 | 6 | 1 | 2 | — | 1 | — | — | — | 2026-07-06 |
 | GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Kubernetes | 5 | 2 | — | — | — | — | — | 2 | — | 2026-07-19 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
-| Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
+| Terraform | 4 | 2 | 2 | — | — | 2 | 1 | 1 | — | — |
 | Trivy | 2 | 2 | — | 1 | — | — | — | — | — | 2026-07-12 |
-| Concepts | 4 | 2 | — | — | — | 1 | — | — | — | 2026-07-18 |
+| Concepts | 4 | 3 | — | — | — | — | — | — | — | 2026-07-18 |
 
 </details>
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, and a variable precedence notebook. GitHub Actions has a primer, quickstart notes, install script, and pipeline configs; GitLab CI has quickstart notes, runner registration scripts, and local pipeline execution. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu joins the lineup with a primer, install script, and minimal config. Foundational concept primers sit under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
+Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, and an nginx/PHP-FPM/UFW hardening playbook. GitHub Actions has a primer, quickstart notes, install script, and pipeline configs; GitLab CI has quickstart notes, runner registration scripts, and local pipeline execution. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu joins the lineup with a primer, install script, and minimal config. Foundational concept primers sit under `docs/concepts/` for CI/CD, Linux & system administration, networking fundamentals, and scripting & automation.
 
 ---
-_Last updated: 2026-07-19_
+_Last updated: 2026-07-20_
