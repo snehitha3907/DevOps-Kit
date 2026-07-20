@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-20
+
+- Added Version Control Concepts quick primer (con-004) (`docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md`)
+- Added Infrastructure as Code Concepts quick primer (con-006) (`docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md`)
+- Added Containerization Concepts quick primer (con-007) (`docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md`)
+
 ## 2026-07-19
 
 - Added Python script to scan Ansible playbooks for antipatterns (command/shell overuse, missing become, unquoted vars) (ans-013) (`Ansible/scripts/scan-ansible-antipatterns.py`)
