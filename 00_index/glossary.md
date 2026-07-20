@@ -8,6 +8,8 @@
 - **Module** — A reusable unit of work Ansible executes (e.g., `apt`, `copy`, `service`).
 - **Ad-hoc command** — A one-off Ansible command run directly without a playbook.
 - **ansible-lint** — A linting tool that checks Ansible playbooks for syntax errors, best-practice violations, and idempotency risks.
+- **Jinja2 template** — A templated file (often with the `.j2` extension) rendered by Ansible using the `template` module to produce config files on managed hosts.
+- **Idempotency** — The property that running a task repeatedly produces the same end state, so Ansible can safely re-apply a playbook without unintended side effects.
 
 ## AWS
 

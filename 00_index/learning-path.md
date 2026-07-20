@@ -31,6 +31,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Docker Compose** — Defining and running multi-container applications. [Quickstart notes](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [multi-service manifest](../Docker/manifests/2026-06-13-web-db-compose.yaml), [Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - **Docker networking** — Understanding bridge, host, overlay, and macvlan drivers. [Notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **Ansible playbook troubleshooting** — SSH, pipx, and permission issues. [Troubleshooting notes](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
+- **Ansible hardening playbook** — nginx, PHP-FPM, and UFW on Ubuntu from a single playbook. [Playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
 - **Ansible linting** — Integrating ansible-lint into your workflow. [Lint guide](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **Ansible variable precedence** — Understanding how group_vars, host_vars, and playbook vars interact. [Notebook](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 - **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
@@ -117,4 +118,4 @@ graph TD
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
     ```
 
-_Last updated: 2026-07-19_
+_Last updated: 2026-07-20_
