@@ -26,6 +26,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Layout
 
+- **CHANGELOG.md** — Version history and release notes for the kit.
 - **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, docs, and a variable precedence notebook.
 - **AWS/** — Primer, CLI install and configure scripts, and minimal config files with named profiles.
 - **Azure/** — Primer, CLI install and login scripts, and resource group creation snippets.
