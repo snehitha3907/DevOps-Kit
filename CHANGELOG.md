@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-07-21
+
+- Added Kubernetes Deployment + Service manifest with probes, limits, and rolling update (k8s-007) (`Kubernetes/manifests/deployment-service-with-probes-limits.yaml`)
+- Added Monitoring & Observability Concepts quick primer (con-008) (`docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md`)
+
 ## 2026-07-20
 
 - Added Version Control Concepts quick primer (con-004) (`docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md`)
