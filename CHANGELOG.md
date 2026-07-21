@@ -4,6 +4,7 @@
 
 - Added Kubernetes Deployment + Service manifest with probes, limits, and rolling update (k8s-007) (`Kubernetes/manifests/deployment-service-with-probes-limits.yaml`)
 - Added Monitoring & Observability Concepts quick primer (con-008) (`docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md`)
+- Added undocumented Kubernetes files to README Quick links and corrected Coverage table manifest count (audit-006) (`docs/2026-07-21-kubernetes-readme-tree-update.md`)
 
 ## 2026-07-20
 
