@@ -36,9 +36,23 @@
 - **Service principal** — A non-human identity for automation, used instead of a user account in CI/CD.
 - **ARM (Azure Resource Manager)** — The underlying REST API that `az` wraps. Every CLI command maps to an ARM API call.
 
+## Containerization Concepts
+
+- **Image** — A read-only template containing an application and its dependencies. Example: `nginx:1.25` is an official image with the Nginx web server and everything it needs.
+- **Container** — A running instance of an image. Example: `docker run -d -p 80:80 nginx:1.25` starts one container from that image.
+- **Dockerfile** — A text file that defines how to build an image, layer by layer. Example: `FROM python:3.12`, `COPY requirements.txt`, `RUN pip install`, `COPY .`, `CMD ["python", "app.py"]`.
+- **Layer** — A read-only filesystem delta in an image. Each instruction in a Dockerfile creates a new layer. Example: the `COPY` layer holds my app code; the `RUN pip install` layer holds installed packages.
+- **Volume** — A persistent storage location that survives container restarts and deletions. Example: a PostgreSQL container mounts a volume so database files aren't lost when the container exits.
+- **Network** — An isolated communication channel between containers. Example: a `frontend` network lets my web container talk to my API container on `api:5000` without exposing the API to the host.
+- **Registry** — A storage and distribution system for images. Example: Docker Hub, AWS ECR, or a private registry I run inside the cluster.
+- **Multi-stage build** — A Dockerfile that uses multiple `FROM` lines to produce a smaller final image by copying only artifacts from a builder stage. Example: compile a Go binary in a `golang:1.22` stage, then copy just the binary into a `scratch` or `alpine` stage.
+- **Base image** — The starting point for building an image. Example: `python:3.12-slim` is a small base with Python pre-installed; `alpine` is even smaller but less compatible.
+- **Entrypoint** — The default command or executable that runs when a container starts. Example: `ENTRYPOINT ["python"]` with `CMD ["app.py"]` means the container runs `python app.py`.
+
 ## Docker
 
-- **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.- **Image** — A read-only snapshot of a filesystem used as a template for creating containers.
+- **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.
+- **Image** — A read-only snapshot of a filesystem used as a template for creating containers.
 - **Container** — A running instance of an image; encapsulates an app and its dependencies in an isolated environment.
 - **Dockerfile** — A text file containing instructions to build a Docker image.
 - **Layer** — A cached build step in a Docker image that enables incremental builds.
@@ -87,6 +101,8 @@
 - **Commit-msg hook** — A Git hook that validates the format of a commit message, often enforcing conventional commit standards.
 - **Post-checkout hook** — A Git hook that runs after a branch switch, used to maintain hooks, suggest cleanup, or display context.
 - **Conventional commit** — A commit message format that follows a structured prefix (`feat:`, `fix:`, `chore:`, etc.) enabling automated changelog generation and semantic versioning.
+- **Pull Request** — A review request to merge one branch into another, with a diff and discussion.
+- **.gitignore** — A file that tells Git which files or directories to skip. Example: ignoring `.terraform/` and `*.tfvars` so secrets and generated files aren't committed.
 
 ## GitHub
 
@@ -106,7 +122,15 @@
 - **Contact link** — A link shown in the new-issue interface that directs users to external resources such as community discussions or security policies.
 - **Stale workflow** — A scheduled automation (often `.github/stale.yml` or an Actions workflow) that labels and closes issues and PRs after a period of inactivity.
 
-## GitLab CI
+## GitHub Actions
+
+- **Workflow** — An automated process defined in YAML that runs one or more jobs when triggered.
+- **Job** — A set of steps executed on the same runner.
+- **Step** — An individual task within a job, such as running a script or using an action.
+- **Action** — A reusable unit of automation that can be shared across workflows.
+- **Runner** — A server that listens for workflow jobs and executes them.
+
+## GitLab CI/CD
 
 - **Pipeline** — A collection of jobs split into stages (e.g., build → test → deploy) defined in `.gitlab-ci.yml`.
 - **Job** — A single unit of work in a pipeline, with a script, image, and optional rules.
@@ -115,6 +139,19 @@
 - **`.gitlab-ci.yml`** — The YAML file at the root of a repository that defines the pipeline configuration.
 - **Artifact** — Files produced by a job (e.g., binary, test report) passed to later stages or downloadable from the UI.
 - **CI/CD variable** — A key-value pair used for secrets, API tokens, and configuration in GitLab CI/CD.
+
+## Infrastructure as Code Concepts
+
+- **Declarative** — Describing the desired end state without listing the steps to get there. Example: "I want three nginx servers running" instead of "install nginx, start service, wait for port 80."
+- **Imperative** — Listing explicit commands to execute in order. Example: a bash script that runs `apt install`, `systemctl start`, and `ufw allow` one after another.
+- **State file** — A record of what infrastructure currently exists and its configuration. Example: `terraform.tfstate` tracks every AWS instance, security group, and S3 bucket Terraform has created.
+- **Provider** — A plugin that understands how to create and manage resources in a specific platform. Example: the `aws` provider in Terraform knows how to create EC2 instances, S3 buckets, and RDS databases.
+- **Resource** — A single piece of infrastructure defined in code. Example: an `aws_instance` resource or an `ansible.builtin.apt` task.
+- **Module** — A reusable, self-contained bundle of IaC code that can be shared and composed. Example: a Terraform module for S3 buckets with versioning and encryption that I can drop into multiple projects.
+- **Workspace** — An isolated instance of state for the same configuration. Example: Terraform workspaces `dev`, `staging`, and `prod` let me run identical code against separate state files.
+- **Drift detection** — Comparing actual infrastructure against the declared state to find unmanaged changes. Example: noticing that someone manually resized an EC2 instance outside of Terraform.
+- **Plan** — A preview of what changes IaC will make before applying them. Example: `terraform plan` shows "1 to add, 0 to change, 0 to destroy" so I can verify the impact.
+- **Apply** — Executing the planned changes to make real infrastructure match the code. Example: `terraform apply` creates the resources the plan described.
 
 ## Kubernetes
 
@@ -131,6 +168,18 @@
 - **ConfigMap** — A Kubernetes resource for storing non-sensitive configuration data as key-value pairs that can be consumed by pods.
 - **Secret** — A Kubernetes resource for storing sensitive data such as passwords or API keys, encoded as base64.
 
+## OpenTofu
+
+- **Provider** — A plugin that lets OpenTofu manage a specific infrastructure platform (e.g., AWS, local).
+- **State** — A snapshot of real-world infrastructure stored in `terraform.tfstate` that OpenTofu uses to track what it manages.
+- **Plan** — A dry-run diff showing what resources will be created, changed, or destroyed.
+- **Apply** — The command that executes the planned infrastructure changes.
+- **Module** — A self-contained package of `.tf` configurations that manages a group of related resources.
+- **Variable** — An input value that keeps configurations flexible across environments.
+- **Output** — A value exposed by a module or root configuration after apply.
+- **Backend** — The configuration that defines where state is stored (local by default, or remote for teams).
+- **`tofu`** — The OpenTofu CLI binary, the drop-in replacement for `terraform`.
+
 ## Terraform
 
 - **Backend** — A configuration that defines how Terraform stores and loads state (e.g., local, S3, AzureRM).
@@ -146,21 +195,6 @@
 - **for_each** — A meta-argument that creates multiple resource instances from a map or set of strings; preferred over `count` when resources are non-identical.
 - **count** — A meta-argument that creates a given number of identical resource instances; uses `count.index` to differentiate each instance.
 
-## GitHub Actions
-
-- **Workflow** — An automated process defined in YAML that runs one or more jobs when triggered.
-- **Job** — A set of steps executed on the same runner.
-- **Step** — An individual task within a job, such as running a script or using an action.
-- **Action** — A reusable unit of automation that can be shared across workflows.
-- **Runner** — A server that listens for workflow jobs and executes them.
-
-## GitLab CI/CD
-
-- **Pipeline** — A collection of jobs split into stages, defined in `.gitlab-ci.yml`.
-- **Stage** — A logical grouping of jobs that run in parallel within the same stage.
-- **Runner** — A process that picks up and executes CI/CD jobs.
-- **Job** — A single unit of work defined in a pipeline, specified by a job name in the config.
-
 ## Trivy
 
 - **Vulnerability scanner** — A tool that identifies security vulnerabilities in software dependencies and container images.
@@ -170,20 +204,21 @@
 - **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
 - **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
 
-## OpenTofu
-
-- **Provider** — A plugin that lets OpenTofu manage a specific infrastructure platform (e.g., AWS, local).
-- **State** — A snapshot of real-world infrastructure stored in `terraform.tfstate` that OpenTofu uses to track what it manages.
-- **Plan** — A dry-run diff showing what resources will be created, changed, or destroyed.
-- **Apply** — The command that executes the planned infrastructure changes.
-- **Module** — A self-contained package of `.tf` configurations that manages a group of related resources.
-- **Variable** — An input value that keeps configurations flexible across environments.
-- **Output** — A value exposed by a module or root configuration after apply.
-- **Backend** — The configuration that defines where state is stored (local by default, or remote for teams).
-- **`tofu`** — The OpenTofu CLI binary, the drop-in replacement for `terraform`.
-
 ## CI/CD Concepts
 
 - **Continuous Integration (CI)** — The practice of automatically building and testing every code change.
 - **Continuous Deployment (CD)** — The practice of automatically deploying every change that passes CI.
 - **Continuous Delivery** — An extension of CI where every change is deployable but may require manual approval to deploy.
+
+## Version Control Concepts
+
+- **Repository** — A folder tracked by version control that contains the project and its full history.
+- **Commit** — A snapshot of changes at a point in time, with a message explaining why the change was made.
+- **Branch** — A parallel line of development that lets me work on changes without disturbing the main line.
+- **Merge** — Combining changes from one branch into another.
+- **Pull Request** — A review request to merge one branch into another, with a diff and discussion.
+- **Clone** — Copying a remote repository to my local machine so I can work on it.
+- **Remote** — A version of the repository hosted on a server (like GitHub) that I can push to and pull from.
+- **.gitignore** — A file that tells Git which files or directories to skip.
+- **Conflict** — When two branches change the same line of code and Git can't auto-merge them.
+- **HEAD** — A pointer to the current commit I'm looking at, usually the tip of the current branch.

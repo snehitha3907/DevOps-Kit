@@ -17,9 +17,12 @@
 - [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
 - [Trivy primer](../Trivy/notes/0000-primer-trivy.md)
 - [CI/CD Concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+- [Containerization Concepts primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
+- [Infrastructure as Code Concepts primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
 - [Linux & System Administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
 - [Networking Fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 - [Scripting & Automation (Bash/Python) primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
+- [Version Control Concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
@@ -63,7 +66,6 @@
 - [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
-- [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)

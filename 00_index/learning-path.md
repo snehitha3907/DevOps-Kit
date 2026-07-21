@@ -10,6 +10,9 @@ These concepts have no prerequisites — start here if you're new to the domain.
 - **Scripting & Automation (Bash/Python)** — Writing shell scripts and simple Python programs to automate repetitive tasks. [Primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) Unlocks: Terraform, Ansible, GitLab CI, Docker, Trivy.
 - **Networking Fundamentals** — IP addresses, ports, DNS, HTTP, and basic network troubleshooting. [Primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md) · [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh) Unlocks: Docker, Kubernetes.
 - **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. [Primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) Unlocks: GitLab CI, GitHub Actions.
+- **Containerization Concepts** — Packaging applications with their runtime into portable units. [Primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md) Unlocks: Docker, Kubernetes.
+- **Infrastructure as Code Concepts** — Managing infrastructure through machine-readable definition files instead of manual processes. [Primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md) Unlocks: Terraform, Ansible, AWS, Azure, GCP.
+- **Version Control Concepts** — Tracking changes to files over time with commits, branches, and pull requests. [Primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md) Unlocks: Git, GitHub.
 
 ## Stage 2: Core Tools
 
@@ -60,7 +63,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 Advanced concepts and expert-level tool content.
 
 - **GitLab CI/CD** — Advanced pipeline patterns, multi-project pipelines, and custom runners.
-- **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/)
+- **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/README.md)
 - **Kubernetes production patterns** — Ingress controllers, service meshes, autoscaling, and security policies.
 - **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
 - **HashiCorp Vault** ⏳ — Secrets management and access control. Depends on Docker L2 + K8s L3.
@@ -93,6 +96,15 @@ graph TD
     CI[CI/CD Concepts] --> GitLabCI
     CI --> GitHubActions
 
+    Container[Containerization Concepts] --> Docker
+    Container --> K8s
+
+    IaC[Infrastructure as Code] --> Terraform
+    IaC --> Ansible
+    IaC --> AWS
+    IaC --> Azure
+    IaC --> GCP
+
     Git --> GitHub
     Git --> GitLabCI
     Git --> GitHubActions
@@ -118,4 +130,4 @@ graph TD
     class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
     ```
 
-_Last updated: 2026-07-20_
+_Last updated: 2026-07-21_
