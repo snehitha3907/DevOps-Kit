@@ -22,7 +22,13 @@
 - [Linux & System Administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
 - [Networking Fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 - [Scripting & Automation (Bash/Python) primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
-- [Version Control Concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+ - [Version Control Concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+ - [Monitoring & Observability Concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
+
+### Set up Linux and networking fundamentals
+ - [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
+ - [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+ - [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
@@ -96,11 +102,12 @@
 - [Deploy keys vs PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 
 ### Work with Kubernetes
-- [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
-- [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
-- [ConfigMap + Secret mounted pod manifest](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
-- [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
-- [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+ - [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
+ - [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
+ - [ConfigMap + Secret mounted pod manifest](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
+ - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
+ - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
+ - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 
 ### Work with Terraform
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
