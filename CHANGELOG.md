@@ -4,6 +4,8 @@
 
 - Added Kubernetes ingress path-based routing docs (k8s-008) (`Kubernetes/docs/ingress-path-based-routing.md`)
 - Added Kubernetes pod troubleshooting shell function snippet (k8s-009) (`Kubernetes/snippets/pod-troubleshoot-shell.sh`)
+- Passed ([x]) k8s-008 — Kubernetes: docs — How I wired Kubernetes ingress to expose multiple services with path-based routing · Level: L3 · 2026-07-22
+- Passed ([x]) k8s-009 — Kubernetes: snippet — Pod troubleshooting shell function: logs, describe, exec, port-forward in one call · Level: L3 · 2026-07-22
 
 ## 2026-07-21
 
