@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-07-22
+
+- Added Kubernetes ingress path-based routing docs (k8s-008) (`Kubernetes/docs/ingress-path-based-routing.md`)
+- Added Kubernetes pod troubleshooting shell function snippet (k8s-009) (`Kubernetes/snippets/pod-troubleshoot-shell.sh`)
+
 ## 2026-07-21
 
 - Added Kubernetes Deployment + Service manifest with probes, limits, and rolling update (k8s-007) (`Kubernetes/manifests/deployment-service-with-probes-limits.yaml`)
