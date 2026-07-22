@@ -204,6 +204,16 @@
 - **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
 - **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
 
+## Monitoring & Observability
+
+- **Metric** — A numeric measurement collected over time, like `http_requests_total` or `process_cpu_seconds`. Metrics are cheap to store and fast to query, which makes them perfect for dashboards and alerts.
+- **Log** — A timestamped text record of an event, usually structured as JSON with fields like `level`, `service`, and `message`. Logs tell the story of what happened in detail.
+- **Trace** — A record of a single request's path through multiple services, showing each hop's duration and metadata. Distributed tracing lets me see where time was lost across service boundaries.
+- **Dashboard** — A visual panel that graphs metrics and logs for at-a-glance system health. A good dashboard answers "is everything okay?" in under ten seconds.
+- **Alert** — A notification triggered when a metric crosses a threshold or a condition is met. Good alerts are actionable and low-noise; bad alerts train on-call engineers to ignore them.
+- **Service Level Indicator (SLI)** — A specific measurable attribute of a service, such as request latency or availability percentage. SLIs are the raw numbers behind service level agreements.
+- **Service Level Objective (SLO)** — A target value for an SLI, like "99.9% of requests return in under 200ms". SLOs give teams a shared language for reliability instead of vague "make it faster" goals.
+
 ## CI/CD Concepts
 
 - **Continuous Integration (CI)** — The practice of automatically building and testing every code change.
