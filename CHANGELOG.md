@@ -2,6 +2,7 @@
 
 ## 2026-07-22
 
+- Verified Helm/ already documented in README Layout and Coverage table (hlm-006) (`Helm/docs/2026-07-22-helm-added-to-readme.md`)
 - Reworked hlm-001: removed forbidden Rollback references and trimmed primer to ≤300 words (`Helm/notes/0000-primer-helm.md`)
 - Added Helm quick primer (hlm-001) (`Helm/notes/0000-primer-helm.md`)
 - Added Kubernetes ingress path-based routing docs (k8s-008) (`Kubernetes/docs/ingress-path-based-routing.md`)
