@@ -2,6 +2,7 @@
 
 ## 2026-07-22
 
+- Added Helm quick primer (hlm-001) (`Helm/notes/0000-primer-helm.md`)
 - Added Kubernetes ingress path-based routing docs (k8s-008) (`Kubernetes/docs/ingress-path-based-routing.md`)
 - Added Kubernetes pod troubleshooting shell function snippet (k8s-009) (`Kubernetes/snippets/pod-troubleshoot-shell.sh`)
 - Passed ([x]) k8s-008 — Kubernetes: docs — How I wired Kubernetes ingress to expose multiple services with path-based routing · Level: L3 · 2026-07-22
