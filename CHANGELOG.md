@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-23
+
+- Added Helm install and CLI exploration script (hlm-002) (`Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh`)
+- Added first Helm chart inspection config (hlm-003) (`Helm/configs/2026-07-23-first-helm-chart-inspection.yaml`)
+- Added ArgoCD quick primer (arg-001) (`ArgoCD/notes/0000-primer-argocd.md`)
+
 ## 2026-07-22
 
 - Reworked hlm-001: removed forbidden Rollback references and trimmed primer to ≤300 words (`Helm/notes/0000-primer-helm.md`)
