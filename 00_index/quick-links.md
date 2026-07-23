@@ -4,6 +4,7 @@
 
 ### Set up and explore a tool
 - [Ansible primer](../Ansible/notes/0000-primer-ansible.md)
+- [ArgoCD primer](../ArgoCD/notes/0000-primer-argocd.md)
 - [AWS primer](../AWS/notes/0000-primer-aws.md)
 - [Azure primer](../Azure/notes/0000-primer-azure.md)
 - [Docker primer](../Docker/notes/0000-primer-docker.md)
@@ -12,6 +13,7 @@
 - [GitHub primer](../GitHub/notes/0000-primer-github.md)
 - [GitHub Actions primer](../GitHub Actions/notes/0000-primer-github-actions.md)
 - [GitLab CI/CD primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- [Helm primer](../Helm/notes/0000-primer-helm.md)
 - [Kubernetes primer](../Kubernetes/notes/0000-primer-kubernetes.md)
 - [OpenTofu primer](../OpenTofu/notes/0000-primer-opentofu.md)
 - [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
@@ -22,13 +24,13 @@
 - [Linux & System Administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
 - [Networking Fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 - [Scripting & Automation (Bash/Python) primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
- - [Version Control Concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
- - [Monitoring & Observability Concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
+- [Version Control Concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+- [Monitoring & Observability Concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 
 ### Set up Linux and networking fundamentals
- - [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
- - [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
- - [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
+- [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
+- [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+- [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
@@ -38,6 +40,7 @@
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
 - [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
+- [Install Helm + explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - [Install OpenTofu + verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
@@ -52,6 +55,7 @@
 - [Kubectl walkthrough](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
 - [Terraform CLI walkthrough](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
+- [Helm CLI exploration](../Helm/notes/0000-primer-helm.md)
 - [GitHub CLI (gh) walkthrough](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
 - [Azure CLI resource group and region snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 - [GCP list Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
@@ -65,6 +69,7 @@
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
+- [Helm chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - [OpenTofu minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
 - [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/README.md)
@@ -102,12 +107,14 @@
 - [Deploy keys vs PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 
 ### Work with Kubernetes
- - [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
- - [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
- - [ConfigMap + Secret mounted pod manifest](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
- - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
- - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
- - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+- [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
+- [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
+- [ConfigMap + Secret mounted pod manifest](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
+- [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
+- [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
+- [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+- [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
+- [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 
 ### Work with Terraform
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)

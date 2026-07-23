@@ -12,8 +12,8 @@ These concepts have no prerequisites — start here if you're new to the domain.
 - **CI/CD Concepts** — The build-test-deploy pipeline, why automation matters, and how it fits into a team workflow. [Primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) Unlocks: GitLab CI, GitHub Actions.
 - **Containerization Concepts** — Packaging applications with their runtime into portable units. [Primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md) Unlocks: Docker, Kubernetes.
 - **Infrastructure as Code Concepts** — Managing infrastructure through machine-readable definition files instead of manual processes. [Primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md) Unlocks: Terraform, Ansible, AWS, Azure, GCP.
- - **Version Control Concepts** — Tracking changes to files over time with commits, branches, and pull requests. [Primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md) Unlocks: Git, GitHub.
- - **Monitoring & Observability** — Metrics, logs, traces, SLIs, SLOs, and alerting for understanding production system behaviour. [Primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) Unlocks: Prometheus, Grafana.
+- **Version Control Concepts** — Tracking changes to files over time with commits, branches, and pull requests. [Primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md) Unlocks: Git, GitHub.
+- **Monitoring & Observability** — Metrics, logs, traces, SLIs, SLOs, and alerting for understanding production system behaviour. [Primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) Unlocks: Prometheus, Grafana.
 
 ## Stage 2: Core Tools
 
@@ -38,6 +38,8 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Ansible hardening playbook** — nginx, PHP-FPM, and UFW on Ubuntu from a single playbook. [Playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
 - **Ansible linting** — Integrating ansible-lint into your workflow. [Lint guide](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **Ansible variable precedence** — Understanding how group_vars, host_vars, and playbook vars interact. [Notebook](../Ansible/notebooks/ansible-variable-precedence.ipynb)
+- **Kubernetes Ingress** — Configuring path-based routing and TLS. [Ingress guide](../Kubernetes/docs/ingress-path-based-routing.md)
+- **Kubernetes pod troubleshooting** — Debugging network and filesystem issues from inside a pod. [Snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
@@ -55,8 +57,8 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Azure CLI** — Cross-platform CLI for managing Azure resources, subscriptions, and resource groups. [Install script](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **GCP (gcloud CLI)** — The Google Cloud SDK for managing GCP resources from the terminal. [Primer](../GCP/notes/0000-primer-gcp.md), [install and configure script](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh), [Compute/GCS listing snippet](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **OpenTofu** — The open-source Terraform fork. Start here if you want a community-governed IaC tool. [Primer](../OpenTofu/notes/0000-primer-opentofu.md), [install and verify script](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh), [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
-- **Helm** ⏳ — Kubernetes package manager. Depends on K8s L2 + Docker L2. Content coming.
-- **ArgoCD** ⏳ — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. Content coming.
+- **Helm** — Kubernetes package manager. Depends on K8s L2 + Docker L2. [Primer](../Helm/notes/0000-primer-helm.md), [install script](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh), [chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- **ArgoCD** — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. [Primer](../ArgoCD/notes/0000-primer-argocd.md)
 - **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
 
 ## Stage 5: Mastery
@@ -66,6 +68,7 @@ Advanced concepts and expert-level tool content.
 - **GitLab CI/CD** — Advanced pipeline patterns, multi-project pipelines, and custom runners.
 - **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/README.md)
 - **Kubernetes production patterns** — Ingress controllers, service meshes, autoscaling, and security policies.
+- **Helm chart authoring** — Creating and publishing your own charts.
 - **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
 - **HashiCorp Vault** ⏳ — Secrets management and access control. Depends on Docker L2 + K8s L3.
 
@@ -109,26 +112,26 @@ graph TD
     Git --> GitHub
     Git --> GitLabCI
     Git --> GitHubActions
+    Git --> ArgoCD
 
     Docker --> K8s
     Docker --> GitLabCI
     Docker --> GitHubActions
     Docker --> Trivy
-
-    Terraform --> OpenTofu
+    Docker --> Helm
 
     K8s --> Helm
     K8s --> ArgoCD
     K8s --> Prometheus
 
-    Git --> ArgoCD
+    Terraform --> OpenTofu
     Terraform --> Pulumi
 
     classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu hasContent
-    class Helm,ArgoCD,Prometheus,Pulumi,Vault noContent
-    ```
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD hasContent
+    class Prometheus,Pulumi,Vault noContent
+```
 
-_Last updated: 2026-07-22_
+_Last updated: 2026-07-23_

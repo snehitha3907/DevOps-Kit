@@ -14,6 +14,10 @@
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 - **templates** (1): [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 
+## ArgoCD  ·  1 file
+
+- **primer:** [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
+
 ## AWS  ·  6 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
@@ -35,8 +39,8 @@
 - _…and 2 more under `Docker/notes/` — browse the folder._
 - **scripts** (4): [install-and-run-first-container.sh](../Docker/scripts/install-and-run-first-container.sh), [docker-health-check-and-cleanup.sh](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
-- **dockerfiles** (4): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
-- _…and 2 more under `Docker/dockerfiles/` — browse the folder._
+- **dockerfiles** (5): [first-docker-image.Dockerfile](../Docker/dockerfiles/first-docker-image.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 3 more under `Docker/dockerfiles/` — browse the folder._
 - **docs** (2): [docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md), [docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - **manifests** (2): [2026-06-28-go-redis-compose-healthchecks.yaml](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml), [2026-06-13-web-db-compose.yaml](../Docker/manifests/2026-06-13-web-db-compose.yaml)
 - **notebooks** (1): [comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
@@ -56,7 +60,7 @@
 - _…and 2 more under `Git/notes/` — browse the folder._
 - **scripts** (8): [install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh), [minimal-branching-workflow.sh](../Git/scripts/minimal-branching-workflow.sh), [commit-msg-conventional-commit.sh](../Git/scripts/commit-msg-conventional-commit.sh)
 - _…and 5 more under `Git/scripts/` — browse the folder._
-- **docs** (3): [git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md), [git-worktrees-parallel-development.md](../Git/docs/git-worktrees-parallel-development.md), [git-worktrees-parallel-feature-development.md](../Git/docs/git-worktrees-parallel-feature-development.md)
+- **docs** (3): [git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md), [git-worktrees-parallel-development.md](../Git/docs/git-worktrees-parallel-feature-development.md), [git-worktrees-parallel-feature-development.md](../Git/docs/git-worktrees-parallel-feature-development.md)
 - **templates** (3): [pre-commit](../Git/templates/git-hooks/pre-commit), [commit-msg](../Git/templates/git-hooks/commit-msg), [post-checkout](../Git/templates/git-hooks/post-checkout)
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 
@@ -86,13 +90,22 @@
 - **scripts** (2): [install-runner-and-register.sh](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run-first-local-pipeline.sh](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Kubernetes  ·  9 files
+## Helm  ·  4 files
+
+- **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
+- **scripts** (1): [install-helm-and-explore-cli.sh](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
+- **configs** (1): [first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- **docs** (1): [2026-07-22-helm-added-to-readme.md](../Helm/docs/2026-07-22-helm-added-to-readme.md)
+
+## Kubernetes  ·  12 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **notes** (5): most recent → [2026-07-19-first-kubectl-version-and-pod-from-manifest.md](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - _…and 3 more under `Kubernetes/notes/` — browse the folder._
 - **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
- - **manifests** (3): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml), [deployment-service-with-probes-limits.yaml](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
+- **manifests** (3): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml), [deployment-service-with-probes-limits.yaml](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
+- **snippets** (1): [pod-troubleshoot-shell.sh](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
+- **docs** (1): [ingress-path-based-routing.md](../Kubernetes/docs/ingress-path-based-routing.md)
 
 ## OpenTofu  ·  3 files
 
@@ -105,7 +118,7 @@
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **notes** (4): most recent → [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
-- **configs** (2): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the `reusable-s3-module/` folder
+- **configs** (7): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the `reusable-s3-module/` folder (5 files)
 - **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - **docs** (2): [terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md), [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md)
 - **notebooks** (1): [2026-07-02-comparing-for-each-vs-count.ipynb](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)

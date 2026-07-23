@@ -49,6 +49,15 @@
 - **Base image** — The starting point for building an image. Example: `python:3.12-slim` is a small base with Python pre-installed; `alpine` is even smaller but less compatible.
 - **Entrypoint** — The default command or executable that runs when a container starts. Example: `ENTRYPOINT ["python"]` with `CMD ["app.py"]` means the container runs `python app.py`.
 
+## ArgoCD
+
+- **Application** — A set of Kubernetes resources that ArgoCD manages from a single Git path, defined as a custom resource.
+- **GitOps** — Using Git as the single source of truth for cluster state; changes are made via commits and PRs, and ArgoCD syncs automatically.
+- **Sync** — The operation that makes the cluster match the manifests in the Git repo.
+- **Sync status** — The current state of an Application relative to its Git source: `Synced`, `OutOfSync`, or an error condition.
+- **Health** — The operational state of an Application's resources: `Healthy`, `Degraded`, `Progressing`, or `Missing`.
+- **App of Apps** — A pattern where one Application deploys other Applications, enabling whole-cluster management from a single Git repository.
+
 ## Docker
 
 - **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.
@@ -80,6 +89,14 @@
 - **Application Default Credentials (ADC)** — A strategy that `gcloud` and GCP client libraries use to find credentials automatically.
 - **`--format`** — Controls output: `json`, `yaml`, `table`, `text`, `csv`, `list`.
 - **`--filter`** — Server-side filtering of results.
+
+## Helm
+
+- **Chart** — A packaged collection of Kubernetes templates and metadata, analogous to an `apt` or `brew` package.
+- **Release** — A running instance of a chart. Multiple releases of the same chart can coexist (e.g., `myapp-staging` and `myapp-prod`).
+- **values.yaml** — The default configuration file for a chart, containing key-value pairs that templates consume.
+- **Repository** — A hosted collection of charts, such as the Bitnami repository or an OCI registry.
+- **Template** — A Kubernetes manifest written with Go templating placeholders that Helm renders at install or upgrade time.
 
 ## Git
 
@@ -167,6 +184,8 @@
 - **Rolling update** — A deployment strategy that gradually replaces old pod instances with new ones, minimizing downtime.
 - **ConfigMap** — A Kubernetes resource for storing non-sensitive configuration data as key-value pairs that can be consumed by pods.
 - **Secret** — A Kubernetes resource for storing sensitive data such as passwords or API keys, encoded as base64.
+- **Ingress** — A Kubernetes API object that manages external access to services, typically via HTTP/HTTPS routing rules based on hostnames and paths.
+- **Ingress Controller** — A pod (e.g., nginx-ingress, Traefik) that implements the Ingress rules and handles actual traffic routing into the cluster.
 
 ## OpenTofu
 
