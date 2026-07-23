@@ -42,6 +42,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Helm/** — Primer, install and explore CLI script, and a chart inspection walkthrough.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and a troubleshooting snippet.
 - **OpenTofu/** — Primer, install script, and minimal config for the open-source Terraform alternative.
+- **Prometheus/** — Primer notes for the monitoring and alerting toolkit.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — CLI exploration notes, container scanning scripts, and a Python wrapper snippet.
 - **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
@@ -73,7 +74,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for\_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, and an nginx/PHP-FPM/UFW hardening playbook. Helm joins the lineup with a primer, install script, and chart inspection walkthrough; ArgoCD has a primer. Kubernetes added ingress docs and a pod troubleshooting snippet. GitHub Actions and GitLab CI each have quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu has a primer, install script, and minimal config. Foundational concept primers sit under `docs/concepts/` for CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, and scripting & automation.
+Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for\_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, and an nginx/PHP-FPM/UFW hardening playbook. Helm joins the lineup with a primer, install script, and chart inspection walkthrough; ArgoCD has a primer. Kubernetes added ingress docs and a pod troubleshooting snippet. GitHub Actions and GitLab CI each have quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu has a primer, install script, and minimal config. Prometheus has a primer note. Foundational concept primers sit under `docs/concepts/` for CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, and scripting & automation.
 
 ---
 _Last updated: 2026-07-23_

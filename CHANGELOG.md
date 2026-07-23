@@ -2,6 +2,7 @@
 
 ## 2026-07-23
 
+- Verified README Coverage table already reflects Git scripts (8), Git Docs (3), GitHub notes (10), docs/ Layout (audit-007 rework) (`docs/2026-07-23-audit-007-readme-coverage-verified.md`)
 - Added Helm install and CLI exploration script (hlm-002) (`Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh`)
 - Added first Helm chart inspection config (hlm-003) (`Helm/configs/2026-07-23-first-helm-chart-inspection.yaml`)
 - Added ArgoCD quick primer (arg-001) (`ArgoCD/notes/0000-primer-argocd.md`)

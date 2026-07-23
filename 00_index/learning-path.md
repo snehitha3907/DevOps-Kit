@@ -59,7 +59,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **OpenTofu** — The open-source Terraform fork. Start here if you want a community-governed IaC tool. [Primer](../OpenTofu/notes/0000-primer-opentofu.md), [install and verify script](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh), [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
 - **Helm** — Kubernetes package manager. Depends on K8s L2 + Docker L2. [Primer](../Helm/notes/0000-primer-helm.md), [install script](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh), [chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - **ArgoCD** — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. [Primer](../ArgoCD/notes/0000-primer-argocd.md)
-- **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
+- **Prometheus** — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. [Primer](../Prometheus/notes/0000-primer-prometheus.md)
 
 ## Stage 5: Mastery
 
