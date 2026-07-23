@@ -5,6 +5,9 @@
 - Added Helm install and CLI exploration script (hlm-002) (`Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh`)
 - Added first Helm chart inspection config (hlm-003) (`Helm/configs/2026-07-23-first-helm-chart-inspection.yaml`)
 - Added ArgoCD quick primer (arg-001) (`ArgoCD/notes/0000-primer-argocd.md`)
+- Added ArgoCD install and web UI access script (arg-002) (`ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh`)
+- Added first ArgoCD Application manifest config (arg-003) (`ArgoCD/configs/2026-07-23-first-application-manifest.yaml`)
+- Added Prometheus quick primer (pro-001) (`Prometheus/notes/0000-primer-prometheus.md`)
 
 ## 2026-07-22
 
