@@ -2,12 +2,15 @@
 
 ## 2026-07-23
 
-- Added Helm install and CLI exploration script (hlm-002) (`Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh`)
-- Added first Helm chart inspection config (hlm-003) (`Helm/configs/2026-07-23-first-helm-chart-inspection.yaml`)
-- Added ArgoCD quick primer (arg-001) (`ArgoCD/notes/0000-primer-argocd.md`)
-- Added ArgoCD install and web UI access script (arg-002) (`ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh`)
-- Added first ArgoCD Application manifest config (arg-003) (`ArgoCD/configs/2026-07-23-first-application-manifest.yaml`)
+- Added Prometheus install and verify /metrics endpoint script (pro-002) (`Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh`)
+- Added minimal Prometheus scrape config (pro-003) (`Prometheus/configs/2026-07-23-minimal-scrape-config.yml`)
 - Added Prometheus quick primer (pro-001) (`Prometheus/notes/0000-primer-prometheus.md`)
+- Corrected README Coverage table counts and added Prometheus scripts/configs entries (audit-007)
+- Passed ([x]) pro-002 — Prometheus: script — Install Prometheus and verify the /metrics endpoint responds · Level: L1 · 2026-07-23
+- Passed ([x]) pro-003 — Prometheus: config — Write a minimal prometheus.yml scrape config and start Prometheus · Level: L1 · 2026-07-23
+- Passed ([x]) arg-002 — ArgoCD: script — Install ArgoCD on kind/minikube and access the web UI · Level: L1 · 2026-07-23
+- Passed ([x]) arg-003 — ArgoCD: config — Create my first Application manifest and sync it via the ArgoCD UI · Level: L1 · 2026-07-23
+- Passed ([x]) pro-001 — Prometheus: notes — What is Prometheus? — quick primer · Level: L1 · 2026-07-23
 
 ## 2026-07-22
 

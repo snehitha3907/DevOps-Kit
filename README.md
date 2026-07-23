@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, ArgoCD, AWS, Azure, Docker, GCP, Git, GitHub, GitHub Actions, GitLab CI, Helm, Kubernetes, OpenTofu, Terraform, and Trivy.
+> A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, ArgoCD, AWS, Azure, Docker, GCP, Git, GitHub, GitHub Actions, GitLab CI, Helm, Kubernetes, OpenTofu, Prometheus, Terraform, and Trivy.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
 ![Languages](https://img.shields.io/github/languages/count/snehitha3907/DevOps-Kit)
@@ -10,7 +10,7 @@
 
 ## Who this is for
 
-A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for fifteen tool families and seven foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
+A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for sixteen tool families and seven foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
 
 ## What's in here
 
@@ -23,6 +23,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - [ArgoCD primer](ArgoCD/notes/0000-primer-argocd.md) — First-contact notes for GitOps deployment on Kubernetes.
 - [Ingress path-based routing](Kubernetes/docs/ingress-path-based-routing.md) — Configuring Kubernetes Ingress for path-based routing and TLS termination.
 - [Pod troubleshooting shell](Kubernetes/snippets/pod-troubleshoot-shell.sh) — Quick-access shell into a pod for debugging network and filesystem issues.
+- [Prometheus primer](Prometheus/notes/0000-primer-prometheus.md) — First-contact notes for the metrics collection and alerting system.
 
 ## Layout
 
@@ -42,6 +43,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Helm/** — Primer, install and explore CLI script, and a chart inspection walkthrough.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and a troubleshooting snippet.
 - **OpenTofu/** — Primer, install script, and minimal config for the open-source Terraform alternative.
+ - **Prometheus/** — Prometheus primer with first-contact notes for metrics collection and alerting; install and verify script; minimal scrape config.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — CLI exploration notes, container scanning scripts, and a Python wrapper snippet.
 - **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
@@ -66,6 +68,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | Helm | 1 | 1 | 1 | — | — | 1 | — | — | — | 2026-07-22 |
 | Kubernetes | 5 | 2 | — | 1 | — | 1 | — | 3 | — | 2026-07-19 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
+| Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
 | Trivy | 2 | 2 | — | 1 | — | — | — | — | — | — |
 
@@ -73,7 +76,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for\_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, and an nginx/PHP-FPM/UFW hardening playbook. Helm joins the lineup with a primer, install script, and chart inspection walkthrough; ArgoCD has a primer. Kubernetes added ingress docs and a pod troubleshooting snippet. GitHub Actions and GitLab CI each have quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu has a primer, install script, and minimal config. Foundational concept primers sit under `docs/concepts/` for CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, and scripting & automation.
+Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for\_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, and an nginx/PHP-FPM/UFW hardening playbook. Helm joins the lineup with a primer, install script, and chart inspection walkthrough; ArgoCD has a primer. Kubernetes added ingress docs and a pod troubleshooting snippet. GitHub Actions and GitLab CI each have quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu has a primer, install script, and minimal config. Prometheus has a first-contact primer, an install-and-verify script, and a minimal scrape config. Foundational concept primers sit under `docs/concepts/` for CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, and scripting & automation.
 
 ---
 _Last updated: 2026-07-23_
