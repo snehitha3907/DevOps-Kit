@@ -57,9 +57,9 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Azure CLI** — Cross-platform CLI for managing Azure resources, subscriptions, and resource groups. [Install script](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **GCP (gcloud CLI)** — The Google Cloud SDK for managing GCP resources from the terminal. [Primer](../GCP/notes/0000-primer-gcp.md), [install and configure script](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh), [Compute/GCS listing snippet](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **OpenTofu** — The open-source Terraform fork. Start here if you want a community-governed IaC tool. [Primer](../OpenTofu/notes/0000-primer-opentofu.md), [install and verify script](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh), [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
-- **Helm** — Kubernetes package manager. Depends on K8s L2 + Docker L2. [Primer](../Helm/notes/0000-primer-helm.md), [install script](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh), [chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
-- **ArgoCD** — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. [Primer](../ArgoCD/notes/0000-primer-argocd.md)
-- **Prometheus** ⏳ — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. Content coming.
+- **Helm** — Kubernetes package manager. Depends on K8s L2 + Docker L2. [Primer](../Helm/notes/0000-primer-helm.md), [install script](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh), [chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml), [docs](../Helm/docs/2026-07-22-helm-added-to-readme.md)
+- **ArgoCD** — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. [Primer](../ArgoCD/notes/0000-primer-argocd.md), [install script](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh), [first Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
+- **Prometheus** — Monitoring and alerting toolkit. Depends on Docker L2 + K8s L2. [Primer](../Prometheus/notes/0000-primer-prometheus.md), [install and verify script](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
 ## Stage 5: Mastery
 
@@ -130,8 +130,8 @@ graph TD
     classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD hasContent
-    class Prometheus,Pulumi,Vault noContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus hasContent
+    class Pulumi,Vault noContent
 ```
 
 _Last updated: 2026-07-23_

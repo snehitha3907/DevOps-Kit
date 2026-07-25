@@ -1,0 +1,16 @@
+# last_verified: 2026-07-25 · Ansible n/a
+---
+collections:
+  - name: community.docker
+    version: "3.9.0"
+  - name: community.general
+    version: "7.1.0"
+  - name: ansible.posix
+    version: "1.5.4"
+
+docker_lifecycle_playbook:
+  container_image: "nginx:alpine"
+  container_name: "ansible-nginx"
+  host_port: 8080
+  container_port: 80
+  restart_policy: always

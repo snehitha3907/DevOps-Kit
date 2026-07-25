@@ -47,6 +47,7 @@
 - [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - [Install gh Actions extension + list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
+- [Install ArgoCD and access UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 
 ### Explore CLI
 - [Ansible CLI walkthrough](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
@@ -65,6 +66,8 @@
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
 - [Ansible nginx/PHP-FPM/UFW playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
 - [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
+- [Ansible collection requirements](../Ansible/configs/collection-requirements.yml)
+- [Ansible Docker lifecycle playbook](../Ansible/configs/docker-lifecycle-playbook.yml)
 - [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
@@ -77,6 +80,8 @@
 - [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
+- [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
+- [Minimal Prometheus scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -131,3 +136,13 @@
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
+
+### Monitor with Prometheus
+- [Prometheus primer](../Prometheus/notes/0000-primer-prometheus.md)
+- [Install Prometheus and verify /metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
+- [Minimal Prometheus scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
+
+### Work with ArgoCD
+- [ArgoCD primer](../ArgoCD/notes/0000-primer-argocd.md)
+- [Install ArgoCD and access UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
+- [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
