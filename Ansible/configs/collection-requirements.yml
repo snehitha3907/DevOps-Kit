@@ -1,0 +1,9 @@
+# last_verified: 2026-07-25 · Ansible n/a
+---
+collections:
+  # Docker management: container lifecycle, image management, compose
+  - name: community.docker
+  # System utilities: UFW, filesystem, package management helpers
+  - name: community.general
+  # POSIX compliance: cron, mount, sysctl, at, authorized_key
+  - name: ansible.posix

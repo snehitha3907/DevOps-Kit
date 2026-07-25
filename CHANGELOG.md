@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-25
+
+- Added Ansible collection requirements file and Docker lifecycle management playbook (ans-015) (`Ansible/configs/collection-requirements.yml`, `Ansible/configs/docker-lifecycle-playbook.yml`)
+
 ## 2026-07-23
 
 - Added Prometheus install and verify /metrics endpoint script (pro-002) (`Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh`)

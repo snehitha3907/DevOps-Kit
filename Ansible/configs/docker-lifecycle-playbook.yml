@@ -1,0 +1,108 @@
+# last_verified: 2026-07-25 · Ansible n/a
+---
+- name: Docker container lifecycle management
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    container_image: "nginx:alpine"
+    container_name: "ansible-nginx"
+    host_port: 8080
+    container_port: 80
+
+  tasks:
+    - name: Ensure community.docker collection is available
+      ansible.builtin.command:
+        cmd: ansible-galaxy collection list community.docker
+      register: collection_check
+      changed_when: false
+      failed_when: false
+
+    - name: Install community.docker collection if missing
+      ansible.builtin.command:
+        cmd: ansible-galaxy collection install community.docker
+      when: collection_check.rc != 0
+
+    - name: Pull the target image
+      community.docker.docker_image:
+        name: "{{ container_image }}"
+        source: pull
+        state: present
+
+    - name: Clean up any existing container with the same name
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: absent
+      ignore_errors: true
+
+    - name: Create and start the container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ container_image }}"
+        state: started
+        restart_policy: always
+        ports:
+          - "{{ host_port }}:{{ container_port }}"
+      register: container_create
+
+    - name: Show container creation result
+      ansible.builtin.debug:
+        var: container_create.container.State
+
+    - name: Verify container is running via Docker CLI
+      ansible.builtin.command:
+        cmd: docker ps --filter name={{ container_name }} --format {% raw %}{{.Status}}{% endraw %}
+      register: ps_output
+      changed_when: false
+
+    - name: Assert container status includes "Up"
+      ansible.builtin.assert:
+        that:
+          - "'Up' in ps_output.stdout"
+        fail_msg: "Container {{ container_name }} did not start — status: {{ ps_output.stdout }}"
+        success_msg: "Container {{ container_name }} is running: {{ ps_output.stdout }}"
+
+    - name: Verify HTTP response on the mapped port
+      ansible.builtin.uri:
+        url: "http://localhost:{{ host_port }}"
+        status_code: 200
+      register: http_check
+      retries: 5
+      delay: 2
+      until: http_check.status == 200
+
+- name: Teardown — stop and remove container
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    container_name: "ansible-nginx"
+
+  tasks:
+    - name: Stop the container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: stopped
+      register: stop_result
+      ignore_errors: true
+
+    - name: Remove the container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: absent
+      when: stop_result is succeeded
+
+    - name: Confirm container removal
+      ansible.builtin.command:
+        cmd: docker ps --all --filter name={{ container_name }} --format {% raw %}{{.Names}}{% endraw %}
+      register: confirm_removal
+      changed_when: false
+
+    - name: Assert container no longer exists
+      ansible.builtin.assert:
+        that:
+          - confirm_removal.stdout == ""
+        fail_msg: "Container {{ container_name }} was not removed correctly."
+        success_msg: "Container {{ container_name }} removed successfully."
