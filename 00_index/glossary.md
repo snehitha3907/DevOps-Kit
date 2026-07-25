@@ -223,6 +223,17 @@
 - **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
 - **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
 
+## Prometheus
+
+- **Metric** — A named measurement with labels, collected over time from a target endpoint. Example: `http_requests_total{method="GET",status="200"}`.
+- **Label** — A key-value dimension attached to a metric that lets Prometheus filter and aggregate results. Example: `job="nginx"`, `instance="localhost:9090"`.
+- **Scrape** — The pull-based operation where Prometheus fetches metrics from a configured target at a regular interval.
+- **Target** — An HTTP endpoint that exposes a /metrics page and is listed in a `scrape_configs` block. Example: `localhost:9090/metrics`.
+- **PromQL** — Prometheus's query language for selecting, aggregating, and computing on time-series data. Example: `rate(http_requests_total[5m])`.
+- **Alertmanager** — A component that receives alerts from Prometheus, deduplicates them, groups by labels, and routes them to email, Slack, or pager integrations.
+- **Exporter** — A small server that translates third-party metrics into the Prometheus format. Example: Node Exporter turns Linux kernel and hardware metrics into /metrics output.
+- **ServiceMonitor** — A Kubernetes Custom Resource Definition (CRD) used by the Prometheus Operator to declaratively select which pods to scrape.
+
 ## Monitoring & Observability
 
 - **Metric** — A numeric measurement collected over time, like `http_requests_total` or `process_cpu_seconds`. Metrics are cheap to store and fast to query, which makes them perfect for dashboards and alerts.
