@@ -2,6 +2,7 @@
 
 ## 2026-07-25
 
+- Added Docker-based Ansible control node Dockerfile with version-pinned ansible-core and collections (ans-016) (`Ansible/dockerfiles/ansible-control-node.Dockerfile`)
 - Added Ansible collection requirements file and Docker lifecycle management playbook (ans-015) (`Ansible/configs/collection-requirements.yml`, `Ansible/configs/docker-lifecycle-playbook.yml`)
 
 ## 2026-07-23
