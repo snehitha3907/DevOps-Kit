@@ -2,7 +2,7 @@
 
 ## 2026-07-27
 
-- Verified Helm/ folder is already in DevOps-Kit README Layout and Coverage table (hlm-006)
+- Fixed ans-015 config(yaml) artifact: removed YAML front-matter from `Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`, replaced with comment-based front-matter per config artifact standards
 
 ## 2026-07-25
 

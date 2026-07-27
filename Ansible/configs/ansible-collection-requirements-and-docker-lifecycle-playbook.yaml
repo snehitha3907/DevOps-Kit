@@ -1,5 +1,4 @@
-# last_verified: 2026-07-25 · Ansible n/a
----
+# last_verified: 2026-07-27 · Ansible n/a
 collections:
   - name: community.docker
     version: "3.9.0"
