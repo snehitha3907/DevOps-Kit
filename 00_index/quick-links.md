@@ -16,16 +16,17 @@
 - [Helm primer](../Helm/notes/0000-primer-helm.md)
 - [Kubernetes primer](../Kubernetes/notes/0000-primer-kubernetes.md)
 - [OpenTofu primer](../OpenTofu/notes/0000-primer-opentofu.md)
+- [Prometheus primer](../Prometheus/notes/0000-primer-prometheus.md)
 - [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
 - [Trivy primer](../Trivy/notes/0000-primer-trivy.md)
 - [CI/CD Concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
 - [Containerization Concepts primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
 - [Infrastructure as Code Concepts primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
 - [Linux & System Administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
+- [Monitoring & Observability Concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 - [Networking Fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 - [Scripting & Automation (Bash/Python) primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 - [Version Control Concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
-- [Monitoring & Observability Concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 
 ### Set up Linux and networking fundamentals
 - [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
@@ -43,11 +44,11 @@
 - [Install Helm + explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - [Install OpenTofu + verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
+- [Install Prometheus + verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
 - [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - [Install gh Actions extension + list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
-- [Install ArgoCD and access UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 
 ### Explore CLI
 - [Ansible CLI walkthrough](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
@@ -62,26 +63,25 @@
 - [GCP list Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
 ### Write a playbook / pipeline / config
+- [Ansible collection requirements and Docker lifecycle playbook](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
 - [Ansible nginx/PHP-FPM/UFW playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
 - [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
-- [Ansible collection requirements](../Ansible/configs/collection-requirements.yml)
-- [Ansible Docker lifecycle playbook](../Ansible/configs/docker-lifecycle-playbook.yml)
 - [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [Helm chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - [OpenTofu minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
+- [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
 - [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/README.md)
 - [Docker Compose multi-service app](../Docker/configs/multi-service-app.yaml)
 - [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
+- [ArgoCD first application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
-- [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
-- [Minimal Prometheus scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -136,13 +136,3 @@
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
-
-### Monitor with Prometheus
-- [Prometheus primer](../Prometheus/notes/0000-primer-prometheus.md)
-- [Install Prometheus and verify /metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
-- [Minimal Prometheus scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
-
-### Work with ArgoCD
-- [ArgoCD primer](../ArgoCD/notes/0000-primer-argocd.md)
-- [Install ArgoCD and access UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
-- [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
