@@ -2,7 +2,7 @@
 
 ## 2026-07-27
 
-- Verified Helm/ folder is already in DevOps-Kit README Layout and Coverage table (hlm-006)
+- Added Ansible over Terraform local-exec for post-provisioning tasks docs (ans-017) (`Ansible/docs/ansible-over-terraform-local-exec.md`)
 
 ## 2026-07-25
 
