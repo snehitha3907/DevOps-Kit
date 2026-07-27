@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-27
+
+- Verified Helm/ folder is already in DevOps-Kit README Layout and Coverage table (hlm-006)
+
 ## 2026-07-25
 
 - Added Ansible collection requirements file and Docker lifecycle management playbook (ans-015) (`Ansible/configs/collection-requirements.yml`, `Ansible/configs/docker-lifecycle-playbook.yml`)

@@ -14,7 +14,7 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for the tools a DevOps engineer reaches for every day. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, and scripting & automation), a reusable S3 module for Terraform, and Jupyter notebooks for deeper dives into specific topics.
+First-contact notes, setup scripts, configs, and manifests for the tools a DevOps engineer reaches for every day. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. The kit also includes foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control), a reusable S3 module for Terraform, and Jupyter notebooks for deeper dives into specific topics.
 
 ## Quick links
 
@@ -32,7 +32,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **AWS/** — Primer, CLI install and configure scripts, and minimal config files with named profiles.
 - **Azure/** — Primer, CLI install and login scripts, and resource group creation snippets.
 - **docs/** — Kit-level operational notes and audit records.
-- **docs/concepts/** — Foundational concept primers (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation) with hands-on scripts.
+- **docs/concepts/** — Foundational concept primers (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, version control) with hands-on scripts.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **GCP/** — Primer, gcloud CLI install and configure script, and a Compute/GCS listing snippet.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge conflict scripts, commit snippets, hook templates, and docs.
@@ -64,7 +64,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-08 |
 | GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | — |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 1 | 1 | 1 | — | — | 2 | — | — | — | 2026-07-25 |
+| Helm | 1 | 1 | 1 | — | — | 3 | — | — | — | 2026-07-25 |
 | Kubernetes | 5 | 2 | — | 1 | — | 1 | — | 3 | — | 2026-07-22 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
@@ -75,7 +75,8 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for\_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, and an nginx/PHP-FPM/UFW hardening playbook. Helm joins the lineup with a primer, install script, chart inspection walkthrough, and docs. ArgoCD has a primer and a first application manifest. Kubernetes added ingress docs and a pod troubleshooting snippet. GitHub Actions and GitLab CI each have quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu has a primer, install script, and minimal config. Prometheus has a first-contact primer, an install-and-verify script, and a minimal scrape config. Foundational concept primers sit under `docs/concepts/` for CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, and scripting & automation.
+Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, collection requirements, and a Docker lifecycle playbook. Helm joins the lineup with a primer, install script, three docs, and a chart inspection config; ArgoCD has a primer, install script, and first Application manifest. Kubernetes added ingress docs and a pod troubleshooting snippet. GitHub Actions and GitLab CI each have quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu has a primer, install script, and minimal config. Prometheus has a first-contact primer, an install-and-verify script, and a minimal scrape config. Foundational concept primers sit under `docs/concepts/` for CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control.
 
 ---
-_Last updated: 2026-07-25_
+
+_Last updated: 2026-07-27_
