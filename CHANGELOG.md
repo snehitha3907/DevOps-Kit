@@ -3,6 +3,7 @@
 ## 2026-07-27
 
 - Fixed ans-015 config(yaml) artifact: removed YAML front-matter from `Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`, replaced with comment-based front-matter per config artifact standards
+- Added Ansible over Terraform local-exec for post-provisioning tasks docs (ans-017) (`Ansible/docs/ansible-over-terraform-local-exec.md`)
 
 ## 2026-07-25
 
