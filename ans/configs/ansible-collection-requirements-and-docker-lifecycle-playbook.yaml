@@ -1,0 +1,40 @@
+# last_verified: 2026-07-28 · Ansible n/a
+---
+# Ansible collection requirements for Docker lifecycle management.
+# Version-pinned for reproducible playbook execution.
+
+collections:
+  - name: community.docker
+    version: "3.9.0"
+  - name: community.general
+    version: "7.1.0"
+  - name: ansible.posix
+    version: "1.5.4"
+
+# Docker lifecycle playbook configuration.
+# Defines container image, port mapping, restart policy, and health-check behavior.
+
+docker_lifecycle_playbook:
+  container_image: "nginx:alpine"
+  container_name: "ansible-nginx"
+  host_port: 8080
+  container_port: 80
+  restart_policy: always
+  state: started
+
+  environment:
+    TZ: UTC
+
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+
+  networks:
+    - name: ansible-br0
+      driver: bridge
+
+  healthcheck:
+    test: ["CMD", "curl", "-f", "http://localhost:80"]
+    interval: 30s
+    timeout: 10s
+    retries: 3
+    start_period: 10s

@@ -1,6 +1,8 @@
 # Changelog
 
-## 2026-07-27
+## 2026-07-28
+
+- Reworked ans-015 config(yaml) artifact: expanded Ansible collection requirements and Docker lifecycle playbook configuration with version-pinned collections, environment variables, volumes, networks, and health check settings (`ans/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`)
 
 - Fixed ans-015 config(yaml) artifact: removed YAML front-matter from `Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`, replaced with comment-based front-matter per config artifact standards
 - Added Ansible over Terraform local-exec for post-provisioning tasks docs (ans-017) (`Ansible/docs/ansible-over-terraform-local-exec.md`)
@@ -292,5 +294,4 @@
 - Added Git first-commit snippet (`Git/snippets/first-commit.sh`)
 - Added Git install + first-commit script (`Git/scripts/install-and-first-commit.sh`)
 - Added Git CLI exploration notes (`Git/notes/2026-06-04-explore-git-cli.md`)
-- Added Helm README verification note ()
-- Added Helm README verification note (hlm/docs/2026-07-25-helm-readme-already-documented.md)
+- Added Helm README verification note (Helm/docs/2026-07-25-helm-readme-already-documented.md)
