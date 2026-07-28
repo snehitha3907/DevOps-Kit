@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# pre-rebase hook — prevent rebasing protected branches
+#
+# Blocks interactive rebase on main/master branches to avoid
+# rewriting shared history. Allows rebasing feature branches.
+#
+# Install: ln -sf ../../templates/git-hooks/pre-rebase .git/hooks/pre-rebase
+#   (or copy the file and make it executable)
+
+set -euo pipefail
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+error() {
+  echo -e "${RED}error:${NC} $*" >&2
+}
+
+UPSTREAM="$1"
+BRANCH="$(git symbolic-ref --short HEAD 2>/dev/null || echo '')"
+
+PROTECTED_BRANCHES="main master"
+
+for protected in $PROTECTED_BRANCHES; do
+  if [ "$BRANCH" = "$protected" ]; then
+    error "rebasing $protected is not allowed — create a feature branch instead"
+    echo "  use: git checkout -b feature/your-branch-name" >&2
+    exit 1
+  fi
+done
+
+if [ -n "$UPSTREAM" ]; then
+  MERGE_BASE="$(git merge-base "$UPSTREAM" HEAD 2>/dev/null || echo '')"
+  if [ -n "$MERGE_BASE" ] && [ "$MERGE_BASE" = "$UPSTREAM" ]; then
+    echo "branch is already up to date with upstream — nothing to rebase" >&2
+    exit 1
+  fi
+fi
+
+exit 0

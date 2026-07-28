@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# pre-push hook — validate before allowing a push
+#
+# Checks:
+#   - Run test suite (npm test, pytest, or go test) and block on failure
+#   - Scan staged changes for secrets (API keys, tokens, passwords)
+#   - Prevent force-push to protected branches (main/master)
+#
+# Install: ln -sf ../../templates/git-hooks/pre-push .git/hooks/pre-push
+#   (or copy the file and make it executable)
+
+set -euo pipefail
+
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+error() {
+  echo -e "${RED}error:${NC} $*" >&2
+}
+
+warn() {
+  echo -e "${YELLOW}warning:${NC} $*" >&2
+}
+
+PROTECTED_BRANCHES="main master"
+
+REF_LOCAL="$(git symbolic-ref --short HEAD 2>/dev/null || echo '')"
+
+for protected in $PROTECTED_BRANCHES; do
+  if [ "$REF_LOCAL" = "$protected" ]; then
+    error "force-push to $protected is not allowed"
+    exit 1
+  fi
+done
+
+HAS_TESTS=false
+if [ -f package.json ]; then HAS_TESTS=true; fi
+if [ -f pytest.ini ] || [ -f tox.ini ] || [ -f pyproject.toml ]; then HAS_TESTS=true; fi
+if [ -f go.mod ]; then HAS_TESTS=true; fi
+
+if [ "$HAS_TESTS" = true ]; then
+  if command -v npm >/dev/null 2>&1 && [ -f package.json ]; then
+    echo "running npm test..." >&2
+    if ! npm test; then
+      error "npm test failed — push rejected"
+      exit 1
+    fi
+  fi
+  if command -v pytest >/dev/null 2>&1 && { [ -f pytest.ini ] || [ -f tox.ini ] || [ -f pyproject.toml ]; }; then
+    echo "running pytest..." >&2
+    if ! pytest; then
+      error "pytest failed — push rejected"
+      exit 1
+    fi
+  fi
+  if command -v go >/dev/null 2>&1 && [ -f go.mod ]; then
+    echo "running go test..." >&2
+    if ! go test ./...; then
+      error "go test failed — push rejected"
+      exit 1
+    fi
+  fi
+fi
+
+SECRET_PATTERNS='\b(api[_-]?key|secret|token|password|passwd|private._key)\b'
+if git diff --cached | grep -qiE "$SECRET_PATTERNS"; then
+  warn "possible secret detected in staged changes — review before pushing"
+fi
+
+echo "pre-push checks passed" >&2

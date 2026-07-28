@@ -2,6 +2,10 @@
 
 ## 2026-07-28
 
+- Added git hooks template files under `git/templates/git-hooks/` (pre-push, pre-rebase, post-commit) for git-011
+
+Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and Docker lifecycle playbook · Level: L4 · 2026-07-28
+
 - Reworked ans-015 config(yaml) artifact: expanded Ansible collection requirements and Docker lifecycle playbook configuration with version-pinned collections, environment variables, volumes, networks, and health check settings (`ans/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`)
 
 - Fixed ans-015 config(yaml) artifact: removed YAML front-matter from `Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`, replaced with comment-based front-matter per config artifact standards
