@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# post-commit hook — log commit metadata and suggest follow-up actions
+#
+# After each commit, displays branch info, commit hash, and
+# reminds the developer of recommended next steps (push, PR creation).
+#
+# Install: ln -sf ../../templates/git-hooks/post-commit .git/hooks/post-commit
+#   (or copy the file and make it executable)
+
+set -euo pipefail
+
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+COMMIT_HASH="$(git rev-parse --short HEAD)"
+BRANCH="$(git symbolic-ref --short HEAD 2>/dev/null || echo 'detached HEAD')"
+REMOTE_URL="$(git remote get-url origin 2>/dev/null || echo '')"
+
+echo "" >&2
+echo -e "${GREEN}committed: $COMMIT_HASH on $BRANCH${NC}" >&2
+
+if [ -n "$REMOTE_URL" ]; then
+  echo "  remote: $REMOTE_URL" >&2
+  echo "  next:   git push origin $BRANCH" >&2
+
+  if git log --oneline -1 | grep -qE '^(feat|fix|docs|style|refactor|perf|test|chore|ci|build)\['; then
+    echo "  PR:     gh pr create --fill --base main --head $BRANCH" >&2
+  fi
+fi
+
+echo "" >&2
