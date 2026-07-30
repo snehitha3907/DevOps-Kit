@@ -96,7 +96,7 @@
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **scripts** (1): [install-helm-and-explore-cli.sh](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - **configs** (1): [first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
-- **docs** (2): [2026-07-22-helm-added-to-readme.md](../Helm/docs/2026-07-22-helm-added-to-readme.md), [2026-07-25-add-helm-to-readme-layout-and-coverage.md](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md)
+- **docs** (3): [2026-07-22-helm-added-to-readme.md](../Helm/docs/2026-07-22-helm-added-to-readme.md), [2026-07-25-add-helm-to-readme-layout-and-coverage.md](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [2026-07-25-helm-readme-already-documented.md](../Helm/docs/2026-07-25-helm-readme-already-documented.md)
 
 ## Kubernetes  ·  12 files
 
