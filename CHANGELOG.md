@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-30
+
+- Updated git-012 docs front-matter `last_verified` date to 2026-07-30
+
 ## 2026-07-28
 
 - Added git hooks template files under `git/templates/git-hooks/` (pre-push, pre-rebase, post-commit) for git-011
