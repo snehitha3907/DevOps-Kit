@@ -2,6 +2,7 @@
 
 ## 2026-07-30
 
+- Added Docker-based Ansible control node Dockerfile with version-pinned ansible-core and collections (ans-016) (`ans/dockerfiles/ansible-control-node.Dockerfile`)
 - Updated git-012 docs front-matter `last_verified` date to 2026-07-30
 
 ## 2026-07-28
