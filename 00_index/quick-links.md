@@ -2,7 +2,29 @@
 
 ## I need to...
 
-### Set up and explore a tool
+### Set up Linux and networking fundamentals
+- [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
+- [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+- [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
+
+### Install a tool
+- [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
+- [Install Ansible + explore modules](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh)
+- [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
+- [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
+- [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
+- [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
+- [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
+- [Install Helm + explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
+- [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
+- [Install OpenTofu + verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
+- [Install Prometheus + verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
+- [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
+- [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
+- [Install gh Actions extension + list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
+
+### Explore CLI and primer concepts
 - [Ansible primer](../Ansible/notes/0000-primer-ansible.md)
 - [ArgoCD primer](../ArgoCD/notes/0000-primer-argocd.md)
 - [AWS primer](../AWS/notes/0000-primer-aws.md)
@@ -27,40 +49,6 @@
 - [Networking Fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 - [Scripting & Automation (Bash/Python) primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 - [Version Control Concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
-
-### Set up Linux and networking fundamentals
-- [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
-- [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
-- [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
-
-### Install a tool
-- [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
-- [Install Ansible + explore modules](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh)
-- [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
-- [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
-- [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
-- [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
-- [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
-- [Install Helm + explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
-- [Install kind + create first K8s cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
-- [Install OpenTofu + verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
-- [Install Prometheus + verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
-- [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
-- [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
-- [Install gh Actions extension + list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
-- [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
-
-### Explore CLI
-- [Ansible CLI walkthrough](../Ansible/notes/2026-06-06-exploring-ansible-cli.md)
-- [Docker CLI walkthrough](../Docker/notes/2026-06-06-exploring-docker-cli.md)
-- [Git CLI walkthrough](../Git/notes/2026-06-04-explore-git-cli.md)
-- [Kubectl walkthrough](../Kubernetes/notes/2026-06-06-exploring-kubectl.md)
-- [Terraform CLI walkthrough](../Terraform/notes/2026-06-06-exploring-terraform-cli.md)
-- [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
-- [Helm CLI exploration](../Helm/notes/0000-primer-helm.md)
-- [GitHub CLI (gh) walkthrough](../GitHub/notes/2026-06-07-explore-github-web-and-cli.md)
-- [Azure CLI resource group and region snippet](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
-- [GCP list Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
 ### Write a playbook / pipeline / config
 - [Ansible collection requirements and Docker lifecycle playbook](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)

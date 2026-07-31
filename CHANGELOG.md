@@ -2,18 +2,18 @@
 
 ## 2026-07-30
 
-- Added Docker-based Ansible control node Dockerfile with version-pinned ansible-core and collections (ans-016) (`ans/dockerfiles/ansible-control-node.Dockerfile`)
+- Added Docker-based Ansible control node Dockerfile with version-pinned ansible-core and collections (ans-016) (`Ansible/dockerfiles/ansible-control-node.Dockerfile`)
 - Updated git-012 docs front-matter `last_verified` date to 2026-07-30
 
 ## 2026-07-28
 
-- Added git hooks template files under `git/templates/git-hooks/` (pre-push, pre-rebase, post-commit) for git-011
+- Added git hooks template files under `Git/templates/git-hooks/` (pre-push, pre-rebase, post-commit) for git-011
 
-- Added git worktrees docs for parallel feature development setup, workflow, and gotchas (git-012) (`git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md`)
+- Added git worktrees docs for parallel feature development setup, workflow, and gotchas (git-012) (`Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md`)
 
 Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and Docker lifecycle playbook · Level: L4 · 2026-07-28
 
-- Reworked ans-015 config(yaml) artifact: expanded Ansible collection requirements and Docker lifecycle playbook configuration with version-pinned collections, environment variables, volumes, networks, and health check settings (`ans/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`)
+- Reworked ans-015 config(yaml) artifact: expanded Ansible collection requirements and Docker lifecycle playbook configuration with version-pinned collections, environment variables, volumes, networks, and health check settings (`Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`)
 
 - Fixed ans-015 config(yaml) artifact: removed YAML front-matter from `Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml`, replaced with comment-based front-matter per config artifact standards
 - Added Ansible over Terraform local-exec for post-provisioning tasks docs (ans-017) (`Ansible/docs/ansible-over-terraform-local-exec.md`)
