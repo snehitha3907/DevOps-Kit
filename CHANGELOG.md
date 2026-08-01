@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-01
+
+- Added Git notebook comparing merge commit, rebase, squash, and cherry-pick strategies across branch topologies (git-007) (`git/notebooks/comparing-git-merge-strategies.ipynb`)
+
 ## 2026-07-30
 
 - Added Docker-based Ansible control node Dockerfile with version-pinned ansible-core and collections (ans-016) (`Ansible/dockerfiles/ansible-control-node.Dockerfile`)
