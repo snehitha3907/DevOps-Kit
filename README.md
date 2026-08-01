@@ -18,20 +18,20 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Ansible collection requirements and Docker lifecycle playbook](Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml) — Declares community.docker, community.general, and ansible.posix collections, plus a playbook scaffold for a Docker container lifecycle.
-- [Helm chart inspection walkthrough](Helm/configs/2026-07-23-first-helm-chart-inspection.yaml) — Inspecting a published Helm chart's values, templates, and structure.
-- [Prometheus primer](Prometheus/notes/0000-primer-prometheus.md) — First-contact notes for the metrics collection and alerting system.
-- [Prometheus install and verify metrics script](Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh) — Install Prometheus, start the server, and verify metrics are being collected.
-- [ArgoCD first application manifest](ArgoCD/configs/2026-07-23-first-application-manifest.yaml) — First ArgoCD Application manifest for deploying a project from Git.
+- [Ansible control-node Dockerfile](Ansible/dockerfiles/ansible-control-node.Dockerfile) — First Dockerfile for building an Ansible control node image.
+- [Git worktrees gotchas guide](Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md) — Git worktrees setup gotchas and workflow considerations.
+- [Git post-commit hook template](Git/templates/git-hooks/post-commit) — Git hook template triggered after a commit completes.
+- [Git pre-push hook template](Git/templates/git-hooks/pre-push) — Git hook template that runs before pushing to a remote.
+- [Git pre-rebase hook template](Git/templates/git-hooks/pre-rebase) — Git hook template that runs before a rebase.
 
 ## Layout
 
-- **CHANGELOG.md** — Version history and release notes for the kit.
+- **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 - **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, docs, and a variable precedence notebook.
 - **ArgoCD/** — Primer and first application manifest for GitOps deployment on Kubernetes.
 - **AWS/** — Primer, CLI install and configure scripts, and minimal config files with named profiles.
 - **Azure/** — Primer, CLI install and login scripts, and resource group creation snippets.
-- **docs/** — Kit-level operational notes and audit records.
+- **docs/** — Kit-level operational notes, audit records, and foundational concept primers.
 - **docs/concepts/** — Foundational concept primers (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, version control) with hands-on scripts.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **GCP/** — Primer, gcloud CLI install and configure script, and a Compute/GCS listing snippet.
@@ -42,10 +42,9 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and a troubleshooting snippet.
 - **OpenTofu/** — Primer, install script, and minimal config for the open-source Terraform alternative.
--  **Prometheus/** — Prometheus primer with first-contact notes for metrics collection and alerting; install and verify script; minimal scrape config.
+- **Prometheus/** — Prometheus primer with first-contact notes for metrics collection and alerting; install and verify script; minimal scrape config.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — CLI exploration notes, container scanning scripts, and a Python wrapper snippet.
-- **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 
 ## Coverage
 
@@ -54,15 +53,15 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 5 | 4 | 7 | 1 | — | 1 | 1 | — | 1 | 2026-07-25 |
+| Ansible | 5 | 4 | 7 | 1 | 1 | 2 | 1 | — | 1 | 2026-07-27 |
 | ArgoCD | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
-| Git | 4 | 8 | — | 1 | — | 3 | — | — | 3 | — |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-08 |
-| GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | — |
+| Git | 4 | 8 | — | 1 | — | 4 | — | — | 6 | 2026-07-30 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
+| GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 1 | 1 | 1 | — | — | 3 | — | — | — | 2026-07-25 |
 | Kubernetes | 5 | 2 | — | 1 | — | 1 | — | 3 | — | 2026-07-22 |
@@ -75,8 +74,8 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub. Terraform includes a reusable S3 module, workspaces docs, and a for_each vs count comparison notebook. GitHub issue forms, label automation, and stale issue/PR automation configs are in place. Ansible has stabilised with playbook troubleshooting, ansible-lint integration, a variable precedence notebook, collection requirements, and a Docker lifecycle playbook. ArgoCD and Prometheus have joined with first-contact primers, install scripts, and initial manifests or scrape configs. Helm has a primer, install script, three docs, and a chart inspection config. Kubernetes added ingress docs and a pod troubleshooting snippet. GitHub Actions and GitLab CI each have quickstart notes and pipeline configs. Trivy has a primer, container scanning scripts, and a Python wrapper snippet. The three major clouds are represented at first-contact level — AWS, Azure, and GCP each have primer notes, CLI install scripts, and config or listing snippets. OpenTofu has a primer, install script, and minimal config. Foundational concept primers sit under `docs/concepts/` for CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform. ArgoCD, OpenTofu, and Prometheus are at first-contact level. Helm has a primer, install script, and three docs. The three major clouds sit at introduction level. Foundational concept primers under `docs/concepts/` cover the full breadcrumb from Linux basics to monitoring.
 
 ---
 
-_Last updated: 2026-07-27_
+_Last updated: 2026-07-31_
