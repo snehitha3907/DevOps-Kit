@@ -64,7 +64,7 @@
 - _…and 3 more under `Git/templates/` — browse the folder._
 - **notes** (4): most recent → [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
 - _…and 2 more under `Git/notes/` — browse the folder._
-- **docs** (4): [git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md), [git-worktrees-parallel-development.md](../Git/docs/git-worktrees-parallel-development.md), [git-worktrees-parallel-feature-development.md](../Git/docs/git-worktrees-parallel-feature-development.md)
+- **docs** (4): most recent → [git-worktrees-parallel-feature-development-setup-workflow-gotchas.md](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md), [git-worktrees-parallel-feature-development.md](../Git/docs/git-worktrees-parallel-feature-development.md), [git-workflows-comparison.md](../Git/docs/git-workflows-comparison.md)
 - _…and 1 more under `Git/docs/` — browse the folder._
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 

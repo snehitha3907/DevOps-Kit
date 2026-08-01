@@ -52,6 +52,7 @@
 
 ### Write a playbook / pipeline / config
 - [Ansible collection requirements and Docker lifecycle playbook](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
+- [Ansible over Terraform local-exec for post-provisioning tasks](../Ansible/docs/ansible-over-terraform-local-exec.md)
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
 - [Ansible nginx/PHP-FPM/UFW playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
@@ -79,6 +80,10 @@
 - [Squash WIP commits](../Git/scripts/squash-wip-commits.sh)
 - [Git workflows comparison](../Git/docs/git-workflows-comparison.md)
 - [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
+- [Git worktrees setup gotchas guide](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- [Git post-commit hook template](../Git/templates/git-hooks/post-commit)
+- [Git pre-push hook template](../Git/templates/git-hooks/pre-push)
+- [Git pre-rebase hook template](../Git/templates/git-hooks/pre-rebase)
 
 ### Work with Docker
 - [Docker Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)

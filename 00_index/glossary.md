@@ -113,10 +113,13 @@
 - **HEAD** — A pointer to the commit currently checked out.
 - **Rebase** — Rewriting commit history by applying commits from one branch onto another.
 - **Git worktree** — A mechanism that allows multiple working directories to be associated with a single repository, enabling parallel work on different branches without stashing or switching.
-- **Hook** — A script Git executes before or after a specific event (e.g., pre-commit, commit-msg, post-checkout).
+- **Hook** — A script Git executes before or after a specific event (e.g., pre-commit, commit-msg, post-checkout, post-commit, pre-push, pre-rebase).
 - **Pre-commit hook** — A Git hook that runs before a commit is finalised, used to check for issues like trailing whitespace, conflict markers, or debug statements.
 - **Commit-msg hook** — A Git hook that validates the format of a commit message, often enforcing conventional commit standards.
 - **Post-checkout hook** — A Git hook that runs after a branch switch, used to maintain hooks, suggest cleanup, or display context.
+- **Post-commit hook** — A Git hook that runs after a commit is created, often used to log commit metadata, notify a team channel, or suggest follow-up actions like pushing.
+- **Pre-push hook** — A Git hook that runs before a push is sent to the remote, used to run final checks such as tests, lint, or secret scanning.
+- **Pre-rebase hook** — A Git hook that runs before a rebase begins, commonly used to block history rewrites on protected branches.
 - **Conventional commit** — A commit message format that follows a structured prefix (`feat:`, `fix:`, `chore:`, etc.) enabling automated changelog generation and semantic versioning.
 - **Pull Request** — A review request to merge one branch into another, with a diff and discussion.
 - **.gitignore** — A file that tells Git which files or directories to skip. Example: ignoring `.terraform/` and `*.tfvars` so secrets and generated files aren't committed.
@@ -213,6 +216,9 @@
 - **Workspace** — A separate state instance within a single Terraform configuration, typically used to manage multiple environments like dev, staging, and prod.
 - **for_each** — A meta-argument that creates multiple resource instances from a map or set of strings; preferred over `count` when resources are non-identical.
 - **count** — A meta-argument that creates a given number of identical resource instances; uses `count.index` to differentiate each instance.
+- **Provisioner** — A Terraform block attached to a resource that runs a command or script at a point in the resource lifecycle (create, update, or destroy). Prefer a managed resource or provider when one exists; provisioners are a last resort for actions no resource type supports.
+- **local-exec provisioner** — A Terraform provisioner that runs a command on the local machine where `terraform apply` executes (not on the target resource). Commonly used to invoke a configuration-management tool like Ansible after a resource is created.
+- **Tainted** — A Terraform resource state flag marking a previously-created resource for destruction and recreation on the next apply, set automatically after a partial failure or via `terraform taint`, so Terraform replaces it cleanly instead of attempting in-place changes.
 
 ## Trivy
 
