@@ -1,0 +1,21 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "github",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
+      "changelog-sections": [
+        {"type": "feat", "section": "Features"},
+        {"type": "fix", "section": "Bug Fixes"},
+        {"type": "docs", "section": "Documentation"},
+        {"type": "refactor", "section": "Refactoring"},
+        {"type": "perf", "section": "Performance Improvements"},
+        {"type": "test", "section": "Tests"},
+        {"type": "chore", "section": "Miscellaneous Chores"}
+      ]
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+INPUT="$1"
+
+if [ ! -f "$INPUT" ]; then
+  echo "error: commit message file not found: $INPUT" >&2
+  exit 1
+fi
+
+MSG=$(head -1 "$INPUT")
+
+if echo "$MSG" | grep -qE '^(Merge |fixup! |squash! |WIP|wip)'; then
+  exit 0
+fi
+
+SUBJECT_LEN=${#MSG}
+if [ "$SUBJECT_LEN" -gt 72 ]; then
+  echo "error: commit subject line is $SUBJECT_LEN characters (max 72)" >&2
+  exit 1
+fi
+
+TYPE='feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert'
+PATTERN="^($TYPE)(\([a-zA-Z0-9._/-]+\))?!?: [A-Z].+$"
+
+if ! echo "$MSG" | grep -qE "$PATTERN"; then
+  echo "error: commit message does not match conventional commit format" >&2
+  echo "" >&2
+  echo "  expected: type(scope): Description" >&2
+  echo "  types:    $TYPE" >&2
+  echo "  example:  feat(api): Add rate limiting middleware" >&2
+  exit 1
+fi
+
+while IFS= read -r line; do
+  if echo "$line" | grep -qE '^(BREAKING CHANGE|Closes|Fixes|Refs)'; then
+    if ! echo "$line" | grep -qE ':\s+.+'; then
+      echo "error: footer '$line' is missing a value" >&2
+      exit 1
+    fi
+  fi
+done < <(tail -n +3 "$INPUT")

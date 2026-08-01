@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-01
+
+- Added Git repository scaffold template with conventional commits, hooks, and release-please automation (git-008) (`Git/templates/git-repository-skeleton/`)
+
 ## 2026-07-30
 
 - Added Docker-based Ansible control node Dockerfile with version-pinned ansible-core and collections (ans-016) (`Ansible/dockerfiles/ansible-control-node.Dockerfile`)
