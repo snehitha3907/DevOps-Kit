@@ -10,7 +10,7 @@
 
 ## Who this is for
 
-A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for sixteen tool families and seven foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
+A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for sixteen tool families and eight foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
 
 ## What's in here
 
@@ -18,11 +18,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Ansible control-node Dockerfile](Ansible/dockerfiles/ansible-control-node.Dockerfile) — First Dockerfile for building an Ansible control node image.
-- [Git worktrees gotchas guide](Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md) — Git worktrees setup gotchas and workflow considerations.
-- [Git post-commit hook template](Git/templates/git-hooks/post-commit) — Git hook template triggered after a commit completes.
-- [Git pre-push hook template](Git/templates/git-hooks/pre-push) — Git hook template that runs before pushing to a remote.
-- [Git pre-rebase hook template](Git/templates/git-hooks/pre-rebase) — Git hook template that runs before a rebase.
+- [Ansible over Terraform local-exec](Ansible/docs/ansible-over-terraform-local-exec.md) — Invokes an Ansible playbook from a Terraform local-exec provisioner for post-provisioning configuration.
+- [Git worktrees gotchas guide](Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md) — Setup gotchas and workflow considerations for parallel feature development with git worktrees.
+- [Git post-commit hook template](Git/templates/git-hooks/post-commit) — Logs commit metadata and suggests follow-up actions after each commit.
+- [Git pre-push hook template](Git/templates/git-hooks/pre-push) — Validates tests and scans for staged changes for secrets before allowing a push.
+- [Git pre-rebase hook template](Git/templates/git-hooks/pre-rebase) — Blocks rebasing of protected branches to prevent rewriting shared history.
 
 ## Layout
 
@@ -60,7 +60,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
 | Git | 4 | 8 | — | 1 | — | 4 | — | — | 6 | 2026-07-30 |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-08 |
 | GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 1 | 1 | 1 | — | — | 3 | — | — | — | 2026-07-25 |
@@ -74,8 +74,8 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform. ArgoCD, OpenTofu, and Prometheus are at first-contact level. Helm has a primer, install script, and three docs. The three major clouds sit at introduction level. Foundational concept primers under `docs/concepts/` cover the full breadcrumb from Linux basics to monitoring.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform. ArgoCD, OpenTofu, and Prometheus are at first-contact level. Helm has a primer, install script, and three docs. The three major clouds sit at introduction level. Ansible adds an over-Terraform local-exec pattern for post-provisioning configuration, and Git now carries client-side hook templates (post-commit, pre-push, pre-rebase) alongside a worktrees gotchas guide. Foundational concept primers under `docs/concepts/` cover the full breadcrumb from Linux basics to monitoring.
 
 ---
 
-_Last updated: 2026-07-31_
+_Last updated: 2026-08-01_
