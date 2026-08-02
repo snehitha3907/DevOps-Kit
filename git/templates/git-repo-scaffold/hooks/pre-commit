@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# last_verified: 2026-08-02 · git n/a
+# Pre-commit hook — validate staged files before allowing a commit
+#
+# Checks:
+#   - Trailing whitespace in staged files
+#   - Unresolved merge conflict markers
+#   - Files larger than 1 MB (staged additions)
+
+set -euo pipefail
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+error() {
+  echo -e "${RED}error:${NC} $*" >&2
+}
+
+check_trailing_whitespace() {
+  local found=0
+  while IFS= read -r file; do
+    if grep -Hn '[[:space:]]$' "$file" >&2 2>/dev/null; then
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_merge_markers() {
+  local found=0
+  while IFS= read -r file; do
+    if grep -HnE '^(<<<<<<< |=======$|>>>>>>> )' "$file" >&2 2>/dev/null; then
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_large_files() {
+  local ok=0
+  while IFS= read -r file; do
+    local size
+    size=$(git diff --cached -- "$file" | wc -c)
+    if [ "$size" -gt 1048576 ]; then
+      error "staged changes in $file exceed 1 MB ($(( size / 1024 )) KB)"
+      ok=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=A)
+  return "$ok"
+}
+
+errors=0
+
+check_trailing_whitespace || errors=1
+check_merge_markers || errors=1
+check_large_files || errors=1
+
+exit "$errors"
