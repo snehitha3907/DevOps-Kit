@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-03
+
+- Added docs on automating git bisect with scripted regression tests for CI and local development (git-009) (`git/docs/automating-git-bisect-with-scripted-regression-tests.md`)
+
 ## 2026-08-02
 
 - Added Git repository scaffold template with conventional commits, hooks, and release-please automation (git-008) (`git/templates/git-repo-scaffold/`)
