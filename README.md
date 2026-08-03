@@ -18,11 +18,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
+- [Git merge strategies notebook](git/notebooks/comparing-git-merge-strategies.ipynb) — Compares merge commit, rebase, squash, and cherry-pick across feature, release, and hotfix topologies.
 - [Ansible over Terraform local-exec](Ansible/docs/ansible-over-terraform-local-exec.md) — Invokes an Ansible playbook from a Terraform local-exec provisioner for post-provisioning configuration.
 - [Git worktrees gotchas guide](Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md) — Setup gotchas and workflow considerations for parallel feature development with git worktrees.
 - [Git post-commit hook template](Git/templates/git-hooks/post-commit) — Logs commit metadata and suggests follow-up actions after each commit.
 - [Git pre-push hook template](Git/templates/git-hooks/pre-push) — Validates tests and scans for staged changes for secrets before allowing a push.
-- [Git pre-rebase hook template](Git/templates/git-hooks/pre-rebase) — Blocks rebasing of protected branches to prevent rewriting shared history.
 
 ## Layout
 
@@ -60,7 +60,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
 | Git | 4 | 8 | — | 1 | — | 4 | — | — | 6 | 2026-07-30 |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-08 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
 | GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 1 | 1 | 1 | — | — | 3 | — | — | — | 2026-07-25 |

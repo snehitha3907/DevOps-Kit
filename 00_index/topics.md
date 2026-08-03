@@ -152,3 +152,7 @@
 - **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md), [netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+
+## git  ·  1 file
+
+- **notebooks** (1): [comparing-git-merge-strategies.ipynb](../git/notebooks/comparing-git-merge-strategies.ipynb)

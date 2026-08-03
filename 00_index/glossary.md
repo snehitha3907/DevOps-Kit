@@ -108,10 +108,12 @@
 - **Push** — Sending local commits to a remote repository.
 - **Pull** — Fetching and integrating changes from a remote repository.
 - **Merge** — Combining changes from one branch into another.
+- **Merge commit** — A commit created by a merge that ties together the histories of two branches, preserving full branch context.
 - **Diff** — A view showing what changed between two commits or between working files and the last commit.
 - **Remote** — A URL pointing to another copy of the repository, typically hosted remotely.
 - **HEAD** — A pointer to the commit currently checked out.
 - **Rebase** — Rewriting commit history by applying commits from one branch onto another.
+- **Cherry-pick** — Applying the changes introduced by a specific commit to the current branch without merging the full branch history.
 - **Git worktree** — A mechanism that allows multiple working directories to be associated with a single repository, enabling parallel work on different branches without stashing or switching.
 - **Hook** — A script Git executes before or after a specific event (e.g., pre-commit, commit-msg, post-checkout, post-commit, pre-push, pre-rebase).
 - **Pre-commit hook** — A Git hook that runs before a commit is finalised, used to check for issues like trailing whitespace, conflict markers, or debug statements.
