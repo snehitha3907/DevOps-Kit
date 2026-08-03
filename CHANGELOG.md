@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-08-03
+
+- Added docs on automating git bisect with scripted regression tests for CI and local development (git-009) (`git/docs/automating-git-bisect-with-scripted-regression-tests.md`)
+
+## 2026-08-02
+
+- Added Git repository scaffold template with conventional commits, hooks, and release-please automation (git-008) (`git/templates/git-repo-scaffold/`)
+
+## 2026-08-01
+
+- Added Git repository scaffold template with conventional commits, hooks, and release-please automation (git-008) (`Git/templates/git-repository-skeleton/`)
+- Added Git notebook comparing merge commit, rebase, squash, and cherry-pick strategies across branch topologies (git-007) (`Git/notebooks/comparing-git-merge-strategies.ipynb`)
 ## 2026-08-01
 
 - Added Git notebook comparing merge commit, rebase, squash, and cherry-pick strategies across branch topologies (git-007) (`git/notebooks/comparing-git-merge-strategies.ipynb`)
