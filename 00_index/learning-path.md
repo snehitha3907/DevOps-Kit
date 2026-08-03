@@ -19,7 +19,7 @@ These concepts have no prerequisites — start here if you're new to the domain.
 
 These tools are unlocked from the start and form the day-to-day toolkit for any DevOps engineer.
 
-- **[Git](../Git/notes/0000-primer-git.md)** — The foundation of version control. Start with the primer, work through CLI exploration, branching, merging, and hooks.
+- **[Git](../Git/notes/0000-primer-git.md)** — The foundation of version control. Start with the primer, work through CLI exploration, branching, merging, and hooks ([hook templates](../Git/templates/git-hooks/)).
 - **[GitHub](../GitHub/notes/0000-primer-github.md)** — The most popular Git hosting platform. Learn repos, issues, PRs, the GitHub flow, and the `gh` CLI.
 - **[Docker](../Docker/notes/0000-primer-docker.md)** — Containerisation fundamentals. Start with the primer, build images, run containers, and learn Compose for multi-service apps.
 - **[Ansible](../Ansible/notes/0000-primer-ansible.md)** — Agentless automation for configuration management and provisioning. Primer, ad-hoc commands, playbooks, and troubleshooting.
@@ -31,13 +31,15 @@ These tools are unlocked from the start and form the day-to-day toolkit for any 
 Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 tools.
 
 - **Git branching strategies** — Feature branches, GitFlow, trunk-based development, and when to use each. [Comparison doc](../Git/docs/git-workflows-comparison.md)
-- **Git worktrees** — Working on multiple branches simultaneously without stashing. [Worktrees doc](../Git/docs/git-worktrees-parallel-feature-development.md)
+- **Git worktrees** — Working on multiple branches simultaneously without stashing. [Worktrees doc](../Git/docs/git-worktrees-parallel-feature-development.md), [setup gotchas guide](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- **Git merge strategies** — Comparing merge commit, rebase, squash, and cherry-pick across branch topologies. [Notebook](../git/notebooks/comparing-git-merge-strategies.ipynb)
 - **Docker Compose** — Defining and running multi-container applications. [Quickstart notes](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [multi-service manifest](../Docker/manifests/2026-06-13-web-db-compose.yaml), [Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
 - **Docker networking** — Understanding bridge, host, overlay, and macvlan drivers. [Notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **Ansible playbook troubleshooting** — SSH, pipx, and permission issues. [Troubleshooting notes](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - **Ansible hardening playbook** — nginx, PHP-FPM, and UFW on Ubuntu from a single playbook. [Playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
 - **Ansible linting** — Integrating ansible-lint into your workflow. [Lint guide](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **Ansible variable precedence** — Understanding how group_vars, host_vars, and playbook vars interact. [Notebook](../Ansible/notebooks/ansible-variable-precedence.ipynb)
+- **Ansible over Terraform local-exec** — Invoking an Ansible playbook from a Terraform local-exec provisioner for post-provisioning configuration. [Guide](../Ansible/docs/ansible-over-terraform-local-exec.md)
 - **Kubernetes Ingress** — Configuring path-based routing and TLS. [Ingress guide](../Kubernetes/docs/ingress-path-based-routing.md)
 - **Kubernetes pod troubleshooting** — Debugging network and filesystem issues from inside a pod. [Snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
@@ -65,10 +67,10 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 
 Advanced concepts and expert-level tool content.
 
-- **GitLab CI/CD** — Advanced pipeline patterns, multi-project pipelines, and custom runners.
+- **GitLab CI/CD** ⏳ — Advanced pipeline patterns, multi-project pipelines, and custom runners.
 - **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/README.md)
-- **Kubernetes production patterns** — Ingress controllers, service meshes, autoscaling, and security policies.
-- **Helm chart authoring** — Creating and publishing your own charts.
+- **Kubernetes production patterns** ⏳ — Ingress controllers, service meshes, autoscaling, and security policies.
+- **Helm chart authoring** ⏳ — Creating and publishing your own charts.
 - **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
 - **HashiCorp Vault** ⏳ — Secrets management and access control. Depends on Docker L2 + K8s L3.
 
@@ -134,4 +136,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-07-31_
+_Last updated: 2026-08-01_
