@@ -84,6 +84,7 @@
 - [Git post-commit hook template](../Git/templates/git-hooks/post-commit)
 - [Git pre-push hook template](../Git/templates/git-hooks/pre-push)
 - [Git pre-rebase hook template](../Git/templates/git-hooks/pre-rebase)
+- [Git merge strategies notebook](../git/notebooks/comparing-git-merge-strategies.ipynb)
 
 ### Work with Docker
 - [Docker Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
