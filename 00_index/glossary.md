@@ -104,6 +104,7 @@
 - **Commit** — A snapshot of files at a point in time, identified by a unique hash.
 - **Stage (index)** — An intermediate area where changes are prepared before committing.
 - **Branch** — A separate line of development; the default branch is named `main`.
+- **git bisect** — A git builtin that binary-searches commit history to find the exact commit that introduced a regression; answered manually with good/bad markers or automated with `git bisect run <test-script>`, which marks each checked-out revision good (exit 0) or bad (non-zero exit).
 - **Clone** — Copying a remote repository to the local machine.
 - **Push** — Sending local commits to a remote repository.
 - **Pull** — Fetching and integrating changes from a remote repository.
@@ -143,6 +144,7 @@
 - **Blank issues** — A repository setting that controls whether users can open issues without selecting a template; disabling it enforces template use.
 - **Contact link** — A link shown in the new-issue interface that directs users to external resources such as community discussions or security policies.
 - **Stale workflow** — A scheduled automation (often `.github/stale.yml` or an Actions workflow) that labels and closes issues and PRs after a period of inactivity.
+- **release-please** — A GitHub tool that automates versioning, changelog generation, and release creation from conventional commits; commonly wired in via a `.github/workflows/release-please.yml` file.
 
 ## GitHub Actions
 
