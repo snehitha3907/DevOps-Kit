@@ -1,12 +1,12 @@
 ---
-last_verified: 2026-08-02
+last_verified: 2026-08-04
 tool_version: n/a
 sources: []
 ---
 
 # Git Repository Scaffold
 
-> A reusable skeleton for initializing new Git repository projects with conventional commits, pre-commit hooks, and release-please automation.
+A reusable skeleton for initializing new Git repository projects with conventional commits, pre-commit hooks, and release-please automation.
 
 ## Purpose
 
