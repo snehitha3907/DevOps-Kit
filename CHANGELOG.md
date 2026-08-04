@@ -2,6 +2,7 @@
 
 ## 2026-08-04
 
+- Documented `git/` folder in README Layout and Coverage table, noting the merge-strategies notebook and scaffold template (git-013) (`git/docs/2026-08-04-git-folder-readme-coverage.md`)
 - Reworked git-008 template: corrected directory case to `git/` (lowercase) to match `git-` prefix convention, removed unverifiable claims (Git version 2.28, release-please-action@v4, @commitlint/config-conventional, release-please schema URL) not backed by research.md (`git/templates/git-repo-scaffold/`)
 
 ## 2026-08-03
