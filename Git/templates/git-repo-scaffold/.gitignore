@@ -1,0 +1,40 @@
+# last_verified: 2026-08-02 · git n/a
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
+*.o
+*.so
+*.dylib
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
