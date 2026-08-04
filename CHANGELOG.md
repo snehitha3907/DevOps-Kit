@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-04
+
+- Reworked git-008 template: corrected directory case to `git/` (lowercase) to match `git-` prefix convention, removed unverifiable claims (Git version 2.28, release-please-action@v4, @commitlint/config-conventional, release-please schema URL) not backed by research.md (`git/templates/git-repo-scaffold/`)
+
 ## 2026-08-03
 
 - Added docs on automating git bisect with scripted regression tests for CI and local development (git-009) (`git/docs/automating-git-bisect-with-scripted-regression-tests.md`)

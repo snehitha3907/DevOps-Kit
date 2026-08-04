@@ -1,12 +1,12 @@
 ---
-last_verified: 2026-08-04
+last_verified: 2026-08-02
 tool_version: n/a
 sources: []
 ---
 
 # Contributing
 
-Guidelines for contributing to this repository. All contributions follow the conventional commits specification.
+> Guidelines for contributing to this repository. All contributions follow the conventional commits specification.
 
 ## Purpose
 

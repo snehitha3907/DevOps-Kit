@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# last_verified: 2026-08-04 · git n/a
+# last_verified: 2026-08-02 · git n/a
 # Pre-commit hook — validate staged files before allowing a commit
 #
 # Checks:
