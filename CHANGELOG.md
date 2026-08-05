@@ -3,6 +3,7 @@
 ## 2026-08-05
 
 - Added Go microservice project scaffold template with multi-stage Dockerfile, Makefile, .dockerignore, go.mod, main.go, and README (doc-015) (`Docker/templates/go-microservice/`)
+- Added production-ready Go HTTP server Dockerfile with non-root user, HEALTHCHECK, and layer caching (doc-016) (`Docker/dockerfiles/production-ready-go-http-server.Dockerfile`)
 
 ## 2026-08-04
 
