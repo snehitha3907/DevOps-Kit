@@ -2,6 +2,7 @@
 
 ## 2026-08-04
 
+Passed ([x]) k8s-010 — Kubernetes: notebook — Comparing Kubernetes workload types: Deployments, StatefulSets, DaemonSets, and Jobs · Level: L3 · 2026-08-04
 Passed ([x]) gh-017 — GitHub: notebook — Comparing GitHub API approaches: REST vs GraphQL vs CLI for release automation · Level: L3 · 2026-08-05
 - Added notebook comparing GitHub API approaches for release automation: REST, GraphQL, and CLI methods (gh-017) (`GitHub/notebooks/comparing-api-approaches-release-automation.ipynb`)
 Passed ([x]) con-009 — CI/CD Concepts: script — Practice: Build a simulated CI/CD pipeline with Bash — build, test, deploy stages · Level: L2 · 2026-08-04
