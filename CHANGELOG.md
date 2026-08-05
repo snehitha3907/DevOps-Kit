@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-05
+
+- Added Go microservice project scaffold template with multi-stage Dockerfile, Makefile, .dockerignore, go.mod, main.go, and README (doc-015) (`Docker/templates/go-microservice/`)
+
 ## 2026-08-04
 
 Passed ([x]) k8s-010 — Kubernetes: notebook — Comparing Kubernetes workload types: Deployments, StatefulSets, DaemonSets, and Jobs · Level: L3 · 2026-08-04
@@ -9,7 +13,7 @@ Passed ([x]) con-009 — CI/CD Concepts: script — Practice: Build a simulated 
 - Added CI/CD common patterns bash snippet demonstrating artifact promotion, rollback triggers, and deployment gates (con-010) (`docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh`)
 - Documented `git/` folder in README Layout and Coverage table, noting the merge-strategies notebook and scaffold template (git-013) (`git/docs/2026-08-04-git-folder-readme-coverage.md`)
 - Reworked git-008 template: corrected directory case to `git/` (lowercase) to match `git-` prefix convention, removed unverifiable claims (Git version 2.28, release-please-action@v4, @commitlint/config-conventional, release-please schema URL) not backed by research.md (`git/templates/git-repo-scaffold/`)
-- Added notebook comparing Kubernetes workload types: Deployments, StatefulSets, DaemonSets, and Jobs (k8s-010) (`k8s/notebooks/comparing-kubernetes-workload-types.ipynb`)
+- Added notebook comparing Kubernetes workload types: Deployments, StatefulSets, DaemonSets, and Jobs (k8s-010) (`Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb`)
 - Added simulated CI/CD pipeline script with build, test, and deploy stages (con-009) (`docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh`)
 - Added multi-stage Go Docker build script with layer caching and .dockerignore (doc-021) (`Docker/scripts/multi-stage-go-dockerfile.sh`)
 - Added Python image layer analyzer for Docker optimization (doc-022) (`Docker/snippets/analyze-image-layers.py`)

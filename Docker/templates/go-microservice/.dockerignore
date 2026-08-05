@@ -1,0 +1,13 @@
+# last_verified: 2026-08-05 · Docker n/a
+
+.git
+.gitignore
+.env
+*.md
+Dockerfile
+Makefile
+.dockerignore
+vendor/
+bin/
+*.test
+*.spec
