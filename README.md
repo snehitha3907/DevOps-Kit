@@ -1,7 +1,8 @@
 # DevOps-Kit
-> A working engineer's DevOps reference — notes, scripts, configs, and manifests for Ansible, ArgoCD, AWS, Azure, Docker, GCP, Git, GitHub, GitHub Actions, GitLab CI, Helm, Kubernetes, OpenTofu, Prometheus, Terraform, and Trivy.
+> A working engineer's DevOps reference for Docker, Kubernetes, Terraform, Ansible, Git, and 12 more tools.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
+![License](https://img.shields.io/github/license/snehitha3907/DevOps-Kit)
 ![Top language](https://img.shields.io/github/languages/top/snehitha3907/DevOps-Kit)
 ![Languages](https://img.shields.io/github/languages/count/snehitha3907/DevOps-Kit)
 ![Repo size](https://img.shields.io/github/repo-size/snehitha3907/DevOps-Kit)
@@ -18,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Automate git bisect with a scripted regression test](git/docs/automating-git-bisect-with-scripted-regression-tests.md) — Flags the exact commit that broke a build by scripting git bisect with a passing/failing test command.
-- [Git merge strategies notebook](Git/notebooks/comparing-git-merge-strategies.ipynb) — Compares merge-commit, rebase, squash, and cherry-pick across feature, release, and hotfix branch topologies.
-- [Repository scaffold template](Git/templates/git-repository-skeleton/README.md) — Starter repository wiring conventional-commit linting, pinned client-side hooks, and release-please automation.
-- [Release-please workflow in the scaffold](Git/templates/git-repository-skeleton/.github/workflows/release-please.yml) — Drop-in CI workflow for automated versioning and changelog in a scaffolded repository.
-- [git-repo-scaffold template](git/templates/git-repo-scaffold/README.md) — A second scaffold variant (a `hooks/` folder plus a release-please manifest) for standing up new Git repositories.
+- [Multi-stage Go Docker build script](Docker/scripts/multi-stage-go-dockerfile.sh) — Builds a multi-stage Go HTTP server Dockerfile with separate builder and runtime stages.
+- [Image layer analyzer](Docker/snippets/analyze-image-layers.py) — Inspects a Docker image manifest and prints a readable breakdown of each layer's size and command.
+- [CI/CD common patterns snippet](docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh) — Reference snippet for common CI/CD pipeline patterns and conventions.
+- [Simulated CI/CD pipeline script](docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh) — Walk-through script that simulates a full CI/CD pipeline locally.
+- [Comparing Kubernetes workload types notebook](Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb) — Compares Pods, Deployments, StatefulSets, DaemonSets, and Jobs with interactive examples.
 
 ## Layout
 
@@ -34,6 +35,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **GCP/** — Primer, gcloud CLI install and configure script, and a Compute/GCS listing snippet.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
+- **git/** — Companion lowercase directory with git-bisect notes and a second repo-scaffold template (9 files), detailed in [topics.md](00_index/topics.md).
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs, and Python API snippets.
 - **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and local pipeline runner.
@@ -56,14 +58,14 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | ArgoCD | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
-| Docker | 4 | 4 | 1 | — | 6 | 2 | 1 | 2 | — | — |
+| Docker | 4 | 5 | 1 | 2 | 6 | 2 | 1 | 2 | — | — |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
-| Git | 4 | 8 | — | 1 | — | 4 | 1 | — | 14 | 2026-08-01 |
+| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-01 |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-08 |
 | GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 1 | 1 | 1 | — | — | 3 | — | — | — | 2026-07-25 |
-| Kubernetes | 5 | 2 | — | 1 | — | 1 | — | 3 | — | 2026-07-22 |
+| Kubernetes | 5 | 2 | — | 1 | — | 1 | 1 | 3 | — | 2026-08-04 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
@@ -75,8 +77,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform. ArgoCD, OpenTofu, and Prometheus are at first-contact level. Helm has a primer, install script, and three docs. The three major clouds sit at introduction level. Ansible adds an over-Terraform local-exec pattern for post-provisioning configuration. Git now ships client-side hook templates alongside two repository-scaffold starters (conventional commits, pinned hooks, release-please), a worktrees gotchas guide, and an automated git-bisect walkthrough for CI. Foundational concept primers under `docs/concepts/` cover the full breadcrumb from Linux basics to monitoring.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform. ArgoCD, OpenTofu, and Prometheus are at first-contact level. Helm has a primer, install script, and three docs. The three major clouds sit at introduction level. Ansible adds an over-Terraform local-exec pattern for post-provisioning configuration. Git now ships client-side hook templates alongside two repository-scaffold starters (conventional commits, pinned hooks, release-please), a worktrees gotchas guide, and an automated git-bisect walkthrough for CI. Foundational concept primers under `docs/concepts/` cover the full breadcrumb from Linux basics to monitoring. Two new CI/CD concept scripts were added in the latest cycle.
 
 ---
-
-_Last updated: 2026-08-04_
+_Last updated: 2026-08-05_

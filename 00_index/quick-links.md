@@ -79,7 +79,7 @@
 - [Conventional commit hook](../Git/scripts/commit-msg-conventional-commit.sh)
 - [Squash WIP commits](../Git/scripts/squash-wip-commits.sh)
 - [Git workflows comparison](../Git/docs/git-workflows-comparison.md)
-- [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
+- [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-development.md)
 - [Git worktrees setup gotchas guide](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
 - [Automate git bisect with a regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md)
 - [Repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
@@ -99,6 +99,8 @@
 - [Docker networking drivers notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - [Container health check + cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - [Compose multi-service stack script](../Docker/scripts/2026-06-12-compose-multi-service.sh)
+- [Multi-stage Go Docker build script](../Docker/scripts/multi-stage-go-dockerfile.sh)
+- [Image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 
 ### Work with GitHub
 - [GitHub flow + Hello World guide](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
@@ -119,6 +121,7 @@
 - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
+- [Comparing Kubernetes workload types notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 
 ### Work with Terraform
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
@@ -135,3 +138,7 @@
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
+
+### CI/CD concepts
+- [Simulated CI/CD pipeline script](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
+- [CI/CD common patterns snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
