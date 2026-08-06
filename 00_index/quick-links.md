@@ -121,7 +121,6 @@
 - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
-- [Comparing Kubernetes workload types notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 
 ### Work with Terraform
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)

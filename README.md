@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Multi-stage Go Docker build script](Docker/scripts/multi-stage-go-dockerfile.sh) — Builds a multi-stage Go HTTP server Dockerfile with separate builder and runtime stages.
-- [Image layer analyzer](Docker/snippets/analyze-image-layers.py) — Inspects a Docker image manifest and prints a readable breakdown of each layer's size and command.
-- [CI/CD common patterns snippet](docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh) — Reference snippet for common CI/CD pipeline patterns and conventions.
-- [Simulated CI/CD pipeline script](docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh) — Walk-through script that simulates a full CI/CD pipeline locally.
-- [Comparing Kubernetes workload types notebook](Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb) — Compares Pods, Deployments, StatefulSets, DaemonSets, and Jobs with interactive examples.
+- [Go + Redis + Prometheus Compose stack](Docker/manifests/go-redis-prometheus-compose.yaml) — Compose manifest for a multi-service stack with health checks, resource limits, and Prometheus scraping.
+- [Multi-service Dockerfile for Go + Redis + Prometheus](Docker/manifests/Dockerfile) — Production-oriented Dockerfile for the Go HTTP server, Redis, and Prometheus stack.
+- [Prometheus scrape config for Docker Compose stack](Docker/manifests/prometheus.yml) — Minimal Prometheus configuration targeting the Docker Compose services.
+- [Production-ready Go HTTP server Dockerfile](Docker/dockerfiles/production-ready-go-http-server.Dockerfile) — Non-root user, HEALTHCHECK, and layer caching for a Go HTTP server.
+- [Go microservice project scaffold README](Docker/templates/go-microservice/README.md) — Starter template with multi-stage Dockerfile, Makefile, go.mod, and main.go.
 
 ## Layout
 
@@ -35,7 +35,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, and a networking drivers notebook.
 - **GCP/** — Primer, gcloud CLI install and configure script, and a Compute/GCS listing snippet.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
-- **git/** — Companion lowercase directory with git-bisect notes and a second repo-scaffold template (9 files), detailed in [topics.md](00_index/topics.md).
+- **git/** — Companion lowercase directory with git-bisect notes and a second repo-scaffold template (10 files), detailed in [topics.md](00_index/topics.md).
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs, and Python API snippets.
 - **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and local pipeline runner.
@@ -58,26 +58,26 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | ArgoCD | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
-| Docker | 4 | 5 | 1 | 2 | 6 | 2 | 1 | 2 | — | 2026-08-05 |
+| Docker | 4 | 5 | 1 | 1 | 7 | 2 | 1 | 5 | 6 | 2026-08-05 |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
 | Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | — | — | — | 2026-07-06 |
-| GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | — |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-06 |
+| GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 1 | 1 | 1 | — | — | 3 | — | — | — | 2026-07-25 |
-| Kubernetes | 5 | 2 | — | 1 | — | 1 | 1 | 3 | — | 2026-08-04 |
+| Kubernetes | 5 | 2 | — | 1 | — | 1 | — | 3 | — | 2026-07-22 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
 | Trivy | 2 | 2 | — | 1 | — | — | — | — | — | 2026-07-12 |
 
-*The `Git` row covers the `Git/` directory. A companion lowercase `git/` directory with git-bisect notes and a second repo-scaffold template (9 files) is detailed in [topics.md](00_index/topics.md).*
+*The `Git` row covers the `Git/` directory. A companion lowercase `git/` directory with git-bisect notes and a second repo-scaffold template (10 files) is detailed in [topics.md](00_index/topics.md).*
 
 </details>
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform. ArgoCD, OpenTofu, and Prometheus are at first-contact level. Helm has a primer, install script, and three docs. The three major clouds sit at introduction level. Ansible adds an over-Terraform local-exec pattern for post-provisioning configuration. Git now ships client-side hook templates alongside two repository-scaffold starters (conventional commits, pinned hooks, release-please), a worktrees gotchas guide, and an automated git-bisect walkthrough for CI. Foundational concept primers under `docs/concepts/` cover the full breadcrumb from Linux basics to monitoring. Two new CI/CD concept scripts were added in the latest cycle.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform. ArgoCD, OpenTofu, and Prometheus are at first-contact level. Helm has a primer, install script, and three docs. The three major clouds sit at introduction level. Ansible adds an over-Terraform local-exec pattern for post-provisioning configuration. Git now ships client-side hook templates alongside two repository-scaffold starters (conventional commits, pinned hooks, release-please), a worktrees gotchas guide, and an automated git-bisect walkthrough for CI. Foundational concept primers under `docs/concepts/` cover the full breadcrumb from Linux basics to monitoring. Docker gained a production-ready Go HTTP server image, a multi-service Compose stack with Prometheus, and a Go microservice scaffold template in the latest cycle.
 
 ---
-_Last updated: 2026-08-05_
+_Last updated: 2026-08-06_

@@ -259,6 +259,9 @@
 - **Continuous Integration (CI)** — The practice of automatically building and testing every code change.
 - **Continuous Deployment (CD)** — The practice of automatically deploying every change that passes CI.
 - **Continuous Delivery** — An extension of CI where every change is deployable but may require manual approval to deploy.
+- **Artifact promotion** — The practice of passing a build artifact through successive environments (e.g., dev → staging → prod) after it passes validation at each stage.
+- **Deployment gate** — A manual or automated checkpoint in a pipeline that must be passed before an artifact can proceed to the next environment.
+- **Rollback trigger** — An automated or manual action that reverts a deployment to a previous known-good state when a health check, alert, or error threshold is breached.
 
 ## Version Control Concepts
 
