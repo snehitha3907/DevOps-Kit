@@ -6,6 +6,8 @@
 - [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
 - [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
 - [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
+- [Linux & system administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
+- [Networking fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
@@ -58,6 +60,7 @@
 - [Ansible nginx/PHP-FPM/UFW playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
 - [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
 - [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
+- [Git repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
@@ -66,10 +69,9 @@
 - [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
 - [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/README.md)
-- [Docker Compose multi-service app](../Docker/configs/multi-service-app.yaml)
-- [Docker Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml)
-- [Kubernetes stateless app manifest](../Kubernetes/manifests/stateless-app.yaml)
-- [ArgoCD first application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
+- [Docker Compose multi-service app config](../Docker/configs/multi-service-app.yaml)
+- [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
+- [Prometheus scrape config (manifest)](../Docker/manifests/prometheus.yml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
 
 ### Work with Git
@@ -79,23 +81,21 @@
 - [Conventional commit hook](../Git/scripts/commit-msg-conventional-commit.sh)
 - [Squash WIP commits](../Git/scripts/squash-wip-commits.sh)
 - [Git workflows comparison](../Git/docs/git-workflows-comparison.md)
-- [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-development.md)
+- [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
 - [Git worktrees setup gotchas guide](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
 - [Automate git bisect with a regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md)
 - [Repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
-- [Release-please workflow in the scaffold](../Git/templates/git-repository-skeleton/.github/workflows/release-please.yml)
 - [Git client-side hook templates](../Git/templates/git-hooks/)
 - [Git repository skeleton scaffold](../Git/templates/git-repository-skeleton/)
-- [Git post-commit hook template](../Git/templates/git-hooks/post-commit)
-- [Git pre-push hook template](../Git/templates/git-hooks/pre-push)
-- [Git pre-rebase hook template](../Git/templates/git-hooks/pre-rebase)
 - [Git merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
 ### Work with Docker
 - [Docker Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
 - [Multi-stage Go HTTP server Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- [Production-ready Go HTTP server Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile)
 - [Build mount vs COPY caching comparison](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - [docker run vs compose decision guide](../Docker/docs/docker-run-vs-compose.md)
+- [Go microservice project scaffold](../Docker/templates/go-microservice/README.md)
 - [Docker networking drivers notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - [Container health check + cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - [Compose multi-service stack script](../Docker/scripts/2026-06-12-compose-multi-service.sh)
@@ -141,3 +141,4 @@
 ### CI/CD concepts
 - [Simulated CI/CD pipeline script](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
 - [CI/CD common patterns snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
+- [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)

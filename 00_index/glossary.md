@@ -259,6 +259,10 @@
 - **Continuous Integration (CI)** — The practice of automatically building and testing every code change.
 - **Continuous Deployment (CD)** — The practice of automatically deploying every change that passes CI.
 - **Continuous Delivery** — An extension of CI where every change is deployable but may require manual approval to deploy.
+- **Trigger** — An event that starts a pipeline run, such as pushing to a branch, opening a PR, or a scheduled time.
+- **Environment** — A named deployment target like `staging` or `production` that pipelines promote artifacts through, often with approval gates.
+- **Secret** — A sensitive value (API key, password, token) the pipeline needs but must never print to logs; stored in the CI/CD platform's secrets manager.
+- **Matrix build** — Running the same job with multiple configurations (OS, language versions) in parallel to test all combinations.
 - **Artifact promotion** — The practice of passing a build artifact through successive environments (e.g., dev → staging → prod) after it passes validation at each stage.
 - **Deployment gate** — A manual or automated checkpoint in a pipeline that must be passed before an artifact can proceed to the next environment.
 - **Rollback trigger** — An automated or manual action that reverts a deployment to a previous known-good state when a health check, alert, or error threshold is breached.
