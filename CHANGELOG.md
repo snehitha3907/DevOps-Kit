@@ -5,6 +5,9 @@
 - Added GitHub Actions quickstart trip-up docs (ga-007) (`GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md`)
 - Added GitHub Actions matrix Node.js CI workflow config (ga-008) (`GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml`)
 - Added Helm quickstart trip-up notes (hlm-004) (`Helm/notes/2026-08-07-helm-quickstart-tripups.md`)
+- Added Networking Fundamentals troubleshooting notes (con-014) (`docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md`)
+- Added Bash scripting exercises script (con-015) (`docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh`)
+- Added Python log parsing and filtering snippet (con-016) (`docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py`)
 
 ## 2026-08-05
 
