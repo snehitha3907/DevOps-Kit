@@ -11,7 +11,7 @@
 
 ## Who this is for
 
-A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for seventeen tool families and eight foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
+A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for sixteen tool families and eight foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
 
 ## What's in here
 
@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [GitHub Actions matrix workflow](GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml) — Matrix build with `node-version` and `os` axes.
-- [GitHub Actions quickstart tripups](GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md) — Notes on common pitfalls following the GitHub Actions quickstart.
-- [Helm quickstart tripups](Helm/notes/2026-08-07-helm-quickstart-tripups.md) — First-day notes covering Helm install and CLI exploration pitfalls.
-- [Go + Redis + Prometheus Compose stack](Docker/manifests/go-redis-prometheus-compose.yaml) — Compose stack wiring an app, Redis, and Prometheus with health checks and resource limits.
-- [Prometheus scrape config](Docker/manifests/prometheus.yml) — Minimal scrape config collecting Prometheus's own metrics endpoint.
+- [Network troubleshooting patterns](docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md) — Notes on diagnosing common network issues in Linux environments.
+- [Bash scripting exercises](docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh) — Hands-on exercises for shell scripting and automation.
+- [Log parsing and filtering](docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py) — Python snippet for parsing and filtering structured log files.
+- [Matrix node workflow](GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml) — GitHub Actions matrix build config for testing across multiple node versions.
+- [GitHub Actions quickstart tripups](GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md) — Notes on common pitfalls when getting started with GitHub Actions.
 
 ## Layout
 
@@ -37,15 +37,16 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
 - **git/** — Companion lowercase directory with git-bisect notes and a repo-scaffold template (10 files), detailed in [topics.md](00_index/topics.md).
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs, and Python API snippets.
-- **GitHub Actions/** — Quickstart notes, docs, and CI workflow configs with environment variables and secrets.
+- **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and local pipeline runner.
-- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, docs, and quickstart notes.
+- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and a troubleshooting snippet.
 - **OpenTofu/** — Primer, install script, and minimal config for the open-source Terraform alternative.
 - **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — CLI exploration notes, container scanning scripts, and a Python wrapper snippet.
 - **docs/** — Kit-level operational notes and foundational concept primers.
+- **CHANGELOG.md** — Chronological record of additions, reworks, and audit fixes.
 
 ## Coverage
 
@@ -60,7 +61,8 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 4 | 5 | 1 | 1 | 7 | 2 | 1 | 5 | 6 | 2026-08-05 |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
-| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
+| Git | 4 | 8 | — | 1 | — | 6 | 1 | — | 21 | 2026-08-03 |
+| git | — | — | — | — | — | 3 | 1 | — | 7 | 2026-08-04 |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-06 |
 | GitHub Actions | 3 | 2 | 4 | — | — | 1 | — | — | — | 2026-08-07 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
@@ -70,7 +72,6 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
 | Trivy | 2 | 2 | — | 1 | — | — | — | — | — | 2026-07-12 |
-| git | — | — | — | — | — | 2 | 1 | — | 7 | 2026-08-04 |
 
 *Rows follow the on-disk tool directories. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit.*
 
@@ -78,7 +79,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added a production-ready Go HTTP server Dockerfile, a reusable Go microservice project scaffold, and a Go + Redis + Prometheus Compose stack with health checks and resource limits.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added network troubleshooting patterns, bash scripting exercises, a log parsing Python snippet, a GitHub Actions matrix node workflow, and notes on GitHub Actions quickstart tripups.
 
 ---
 _Last updated: 2026-08-07_
