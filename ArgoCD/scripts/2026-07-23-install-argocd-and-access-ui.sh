@@ -7,5 +7,5 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 # Wait for pods then port-forward the UI
 kubectl wait --for=condition=Ready pods --all -n argocd --timeout=120s
 kubectl port-forward svc/argocd-server -n argocd 8080:443 &
-# Grab the auto-generated admin password
+# Get the initial admin password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
