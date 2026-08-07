@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-07
+
+- Added GitHub Actions quickstart trip-up docs (ga-007) (`GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md`)
+- Added GitHub Actions matrix Node.js CI workflow config (ga-008) (`GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml`)
+- Added Helm quickstart trip-up notes (hlm-004) (`Helm/notes/2026-08-07-helm-quickstart-tripups.md`)
+
 ## 2026-08-05
 
 - Added Go microservice project scaffold template with multi-stage Dockerfile, Makefile, .dockerignore, go.mod, main.go, and README (doc-015) (`Docker/templates/go-microservice/`)
