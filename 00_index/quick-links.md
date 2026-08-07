@@ -61,6 +61,7 @@
 - [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
 - [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
 - [Git repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
+- [GitHub Actions matrix workflow with node-version/os axes](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)

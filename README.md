@@ -11,7 +11,7 @@
 
 ## Who this is for
 
-A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for sixteen tool families and eight foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
+A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for seventeen tool families and eight foundational concept areas. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
 
 ## What's in here
 
@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Production-ready Go HTTP server Dockerfile](Docker/dockerfiles/production-ready-go-http-server.Dockerfile) — Multi-stage build with non-root user, healthcheck, and cached dependency layers.
-- [Go microservice project scaffold](Docker/templates/go-microservice/README.md) — Boilerplate scaffold for a Go HTTP microservice with multi-stage Dockerfile and Makefile.
+- [GitHub Actions matrix workflow](GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml) — Matrix build with `node-version` and `os` axes.
+- [GitHub Actions quickstart tripups](GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md) — Notes on common pitfalls following the GitHub Actions quickstart.
+- [Helm quickstart tripups](Helm/notes/2026-08-07-helm-quickstart-tripups.md) — First-day notes covering Helm install and CLI exploration pitfalls.
 - [Go + Redis + Prometheus Compose stack](Docker/manifests/go-redis-prometheus-compose.yaml) — Compose stack wiring an app, Redis, and Prometheus with health checks and resource limits.
 - [Prometheus scrape config](Docker/manifests/prometheus.yml) — Minimal scrape config collecting Prometheus's own metrics endpoint.
-- [Simple Go server Dockerfile](Docker/manifests/Dockerfile) — Minimal single-stage Go HTTP server image, used as the app service in the Compose stack.
 
 ## Layout
 
@@ -37,9 +37,9 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
 - **git/** — Companion lowercase directory with git-bisect notes and a repo-scaffold template (10 files), detailed in [topics.md](00_index/topics.md).
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs, and Python API snippets.
-- **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
+- **GitHub Actions/** — Quickstart notes, docs, and CI workflow configs with environment variables and secrets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and local pipeline runner.
-- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, and docs.
+- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, docs, and quickstart notes.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and a troubleshooting snippet.
 - **OpenTofu/** — Primer, install script, and minimal config for the open-source Terraform alternative.
 - **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
@@ -58,13 +58,13 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | ArgoCD | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
-| Docker | 4 | 5 | 1 | 1 | 7 | 2 | 1 | 5 | 6 | 2026-08-06 |
+| Docker | 4 | 5 | 1 | 1 | 7 | 2 | 1 | 5 | 6 | 2026-08-05 |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
 | Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-06 |
-| GitHub Actions | 3 | 2 | 3 | — | — | — | — | — | — | 2026-07-13 |
+| GitHub Actions | 3 | 2 | 4 | — | — | 1 | — | — | — | 2026-08-07 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 1 | 1 | 1 | — | — | 3 | — | — | — | 2026-07-25 |
+| Helm | 2 | 1 | 1 | — | — | 3 | — | — | — | 2026-08-07 |
 | Kubernetes | 5 | 2 | — | 1 | — | 1 | — | 3 | — | 2026-07-22 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
@@ -81,4 +81,4 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added a production-ready Go HTTP server Dockerfile, a reusable Go microservice project scaffold, and a Go + Redis + Prometheus Compose stack with health checks and resource limits.
 
 ---
-_Last updated: 2026-08-06_
+_Last updated: 2026-08-07_

@@ -86,14 +86,15 @@
 - **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - **notebooks** (1): [comparing-api-approaches-release-automation.ipynb](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
-## GitHub Actions  ·  8 files
+## GitHub Actions  ·  10 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
+- **configs** (4): most recent → [2026-08-07-matrix-node-workflow.yaml](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [2026-07-13-hello-workflow.yaml](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml)
+- _…and 2 more under `GitHub Actions/configs/` — browse the folder._
 - **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md)
 - _1 more under `GitHub Actions/notes/` — browse the folder._
-- **configs** (3): [2026-07-13-hello-workflow.yaml](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
-- _1 more under `GitHub Actions/configs/` — browse the folder._
 - **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- **docs** (1): [2026-08-07-github-actions-quickstart-tripups.md](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md)
 
 ## GitLab CI  ·  5 files
 
@@ -102,13 +103,14 @@
 - **scripts** (2): [2026-06-22-install-runner-and-register.sh](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [2026-06-24-run-first-local-pipeline.sh](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  6 files
+## Helm  ·  7 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
-- **docs** (3): [2026-07-25-add-helm-to-readme-layout-and-coverage.md](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [2026-07-25-helm-readme-already-documented.md](../Helm/docs/2026-07-25-helm-readme-already-documented.md)
+- **docs** (3): most recent → [2026-07-25-add-helm-to-readme-layout-and-coverage.md](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [2026-07-25-helm-readme-already-documented.md](../Helm/docs/2026-07-25-helm-readme-already-documented.md)
 - _1 more under `Helm/docs/` — browse the folder._
 - **scripts** (1): [2026-07-23-install-helm-and-explore-cli.sh](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - **configs** (1): [2026-07-23-first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- **notes** (1): [2026-08-07-helm-quickstart-tripups.md](../Helm/notes/2026-08-07-helm-quickstart-tripups.md)
 
 ## Kubernetes  ·  12 files
 

@@ -56,7 +56,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 
 Tools that depend on foundational concepts at L2 or core tools at L2+.
 
-- **GitHub Actions** — CI/CD integrated with GitHub. [Primer](../GitHub Actions/notes/0000-primer-github-actions.md), [quickstart notes](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml), [hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
+- **GitHub Actions** — CI/CD integrated with GitHub. [Primer](../GitHub Actions/notes/0000-primer-github-actions.md), [quickstart notes](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [quickstart tripups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md), [workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml), [hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - **GitHub auth for CI/CD** — Deploy keys vs fine-grained PATs for pipeline access to GitHub. [Comparison doc](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - **GitHub issue forms and labels** — Configuring `.github` repository with issue forms (bug reports, feature requests) and label definitions. [Config files](../GitHub/configs/dot-github-repository/)
 - **GitHub stale issue/PR automation** — Auto-marking and closing stale issues and PRs for the `.github` repository. [Automation config](../GitHub/configs/dot-github-repository/stale.yml)
@@ -64,7 +64,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Azure CLI** — Cross-platform CLI for managing Azure resources, subscriptions, and resource groups. [Install script](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **GCP (gcloud CLI)** — The Google Cloud SDK for managing GCP resources from the terminal. [Primer](../GCP/notes/0000-primer-gcp.md), [install and configure script](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh), [Compute/GCS listing snippet](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **OpenTofu** — The open-source Terraform fork. Start here if you want a community-governed IaC tool. [Primer](../OpenTofu/notes/0000-primer-opentofu.md), [install and verify script](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh), [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
-- **Helm** — Kubernetes package manager. Depends on K8s L2 + Docker L2. [Primer](../Helm/notes/0000-primer-helm.md), [install script](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh), [chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- **Helm** — Kubernetes package manager. Depends on K8s L2 + Docker L2. [Primer](../Helm/notes/0000-primer-helm.md), [install script](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh), [chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml), [quickstart tripups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md)
 - **ArgoCD** — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. [Primer](../ArgoCD/notes/0000-primer-argocd.md), [first application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
 - **Prometheus** — Metrics collection and alerting. Depends on Docker L2 + K8s L2. [Primer](../Prometheus/notes/0000-primer-prometheus.md), [install and verify script](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
@@ -72,7 +72,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 
 Advanced concepts and expert-level tool content.
 
-- **GitLab CI/CD** ⏳ — Advanced pipeline patterns, multi-project pipelines, and custom runners.
+- **GitLab CI/CD** — Pipelines, runners, stages, and jobs. [Primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/README.md)
 - **Kubernetes production patterns** ⏳ — Ingress controllers, service meshes, autoscaling, and security policies.
 - **Helm chart authoring** ⏳ — Creating and publishing your own charts.
@@ -141,4 +141,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-08-06_
+_Last updated: 2026-08-07_
