@@ -8,6 +8,10 @@
 - Added Networking Fundamentals troubleshooting notes (con-014) (`docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md`)
 - Added Bash scripting exercises script (con-015) (`docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh`)
 - Added Python log parsing and filtering snippet (con-016) (`docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py`)
+- Created placeholder notebook for Kubernetes workload types comparison (k8s-017) (`Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb`)
+- Created placeholder regression-test.sh companion script for git bisect automation (git-017) (`Git/scripts/regression-test.sh`)
+- Added systemd timers with journald log shipping docs for audit-ready DevOps workflows (con-041) (`docs/concepts/linux-system-administration/docs/systemd-timers-journald-shipping.md`)
+- Added systemd-managed watchdog script that restarts failed services and escalates to journald CRITICAL alerts (con-042) (`docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh`)
 
 ## 2026-08-05
 
