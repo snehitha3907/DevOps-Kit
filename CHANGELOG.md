@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-08
+
+- Added scripted TCP/TLS health probes and latency checks using curl, openssl, and nc (con-044) (`docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh`)
+- Added Python retry, backoff, and structured-logging helper snippet (con-045) (`docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py`)
+
 ## 2026-08-07
 
 - Added GitHub Actions quickstart trip-up docs (ga-007) (`GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md`)
