@@ -8,6 +8,7 @@
 - Added Python snippet that parses git log into a structured changelog from conventional commits (con-048) (`docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py`)
 - Added parallelized, cached CI stage runner bash snippet with failure reporting (con-050) (`docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh`)
 - Added docs comparing Terraform and Ansible division of responsibility in a provision-then-configure model (con-051) (`docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md`)
+- Added notebook comparing declarative vs imperative IaC on a local Docker sandbox (con-052) (`docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb`)
 
 ## 2026-08-07
 
