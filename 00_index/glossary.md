@@ -193,6 +193,9 @@
 - **Secret** — A Kubernetes resource for storing sensitive data such as passwords or API keys, encoded as base64.
 - **Ingress** — A Kubernetes API object that manages external access to services, typically via HTTP/HTTPS routing rules based on hostnames and paths.
 - **Ingress Controller** — A pod (e.g., nginx-ingress, Traefik) that implements the Ingress rules and handles actual traffic routing into the cluster.
+- **ClusterIP** — The default Kubernetes Service type that exposes the service on an internal cluster IP, making it reachable only from within the cluster.
+- **NetworkPolicy** — A Kubernetes resource that controls traffic flow between pods and namespaces; when no policy exists, all pods can communicate freely.
+- **CNI plugin** — A Container Network Interface plugin (e.g., kindnet, Calico) that implements pod-to-pod networking and routing in a Kubernetes cluster.
 
 ## OpenTofu
 
