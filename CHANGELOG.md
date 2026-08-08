@@ -4,6 +4,8 @@
 
 - Added scripted TCP/TLS health probes and latency checks using curl, openssl, and nc (con-044) (`docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh`)
 - Added Python retry, backoff, and structured-logging helper snippet (con-045) (`docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py`)
+- Added Git feature-branch workflow sandbox script demonstrating rebase, merge, and tag (con-047) (`docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh`)
+- Added Python snippet that parses git log into a structured changelog from conventional commits (con-048) (`docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py`)
 
 ## 2026-08-07
 
