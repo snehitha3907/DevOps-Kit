@@ -6,6 +6,8 @@
 - Added Python retry, backoff, and structured-logging helper snippet (con-045) (`docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py`)
 - Added Git feature-branch workflow sandbox script demonstrating rebase, merge, and tag (con-047) (`docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh`)
 - Added Python snippet that parses git log into a structured changelog from conventional commits (con-048) (`docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py`)
+- Added parallelized, cached CI stage runner bash snippet with failure reporting (con-050) (`docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh`)
+- Added docs comparing Terraform and Ansible division of responsibility in a provision-then-configure model (con-051) (`docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md`)
 
 ## 2026-08-07
 
