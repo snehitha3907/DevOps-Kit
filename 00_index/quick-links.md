@@ -5,8 +5,12 @@
 ### Set up Linux and networking fundamentals
 - [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
 - [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+- [Systemd timers and journald shipping](../docs/concepts/linux-system-administration/docs/systemd-timers-journald-shipping.md)
+- [Systemd health-check and log alerting](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh)
+- [Systemd watchdog restart and page](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh)
 - [Network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
 - [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
+- [TCP/TLS health probes script](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh)
 - [Linux & system administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
 - [Networking fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 
@@ -121,6 +125,7 @@
 - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
 - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+- [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 
@@ -143,4 +148,30 @@
 ### CI/CD concepts
 - [Simulated CI/CD pipeline script](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
 - [CI/CD common patterns snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
+- [Parallelized CI stage runner snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+
+### Containerization concepts
+- [Smaller images, base caching, runtimes](../docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md)
+- [Inspect image layers with Python](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py)
+- [Containerization concepts primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
+
+### Infrastructure as code concepts
+- [Terraform and Ansible division of responsibility](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md)
+- [Declarative vs imperative IaC notebook](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb)
+- [Infrastructure as Code concepts primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
+
+### Monitoring and observability
+- [Combining metrics, logs, and traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
+- [Monitoring & Observability concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
+
+### Scripting and automation
+- [Bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh)
+- [Log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
+- [Retry, backoff, and logging patterns](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
+- [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
+
+### Version control concepts
+- [Git feature-branch rebase, merge, and tag script](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
+- [Conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
+- [Version Control concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)

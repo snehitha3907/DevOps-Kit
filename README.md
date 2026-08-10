@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Network troubleshooting patterns](docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md) — Notes on diagnosing common network issues in Linux environments.
-- [Bash scripting exercises](docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh) — Hands-on exercises for shell scripting and automation.
-- [Log parsing and filtering](docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py) — Python snippet for parsing and filtering structured log files.
-- [Matrix node workflow](GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml) — GitHub Actions matrix build config for testing across multiple node versions.
-- [GitHub Actions quickstart tripups](GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md) — Notes on common pitfalls when getting started with GitHub Actions.
+- [Kubernetes workload-type comparisons](Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb) — Interactive notebook comparing Pods, Deployments, StatefulSets, DaemonSets, and Jobs.
+- [CI/CD artifact promotion and rollbacks](docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md) — Docs on artifact promotion gates, environment-based rollbacks, and deployment pipelines.
+- [Systemd health-check and log alerting](docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh) — Script for systemd-managed services with health checks and journald alerting.
+- [DNS, TLS, and load-balancing visualization](docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb) — Notebook visualizing DNS resolution, TLS handshakes, and load-balanced routing.
+- [CI/CD artifact promotion gates and rollbacks](docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md) — Notes on combining CI/CD concepts with artifact promotion and environment-based rollbacks.
 
 ## Layout
 
@@ -61,13 +61,12 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 4 | 5 | 1 | 1 | 7 | 2 | 1 | 5 | 6 | 2026-08-05 |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
-| Git | 4 | 8 | — | 1 | — | 6 | 1 | — | 21 | 2026-08-03 |
-| git | — | — | — | — | — | 3 | 1 | — | 7 | 2026-08-04 |
+| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-06 |
 | GitHub Actions | 3 | 2 | 4 | — | — | 1 | — | — | — | 2026-08-07 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | — | — | 3 | — | — | — | 2026-08-07 |
-| Kubernetes | 5 | 2 | — | 1 | — | 1 | — | 3 | — | 2026-07-22 |
+| Kubernetes | 5 | 2 | — | 1 | — | 1 | 1 | 3 | — | 2026-07-22 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
@@ -79,7 +78,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added network troubleshooting patterns, bash scripting exercises, a log parsing Python snippet, a GitHub Actions matrix node workflow, and notes on GitHub Actions quickstart tripups.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added Kubernetes workload-type comparisons, CI/CD artifact promotion and rollback docs, systemd health-check and alerting scripts, and networking visualization notebooks.
 
 ---
-_Last updated: 2026-08-07_
+_Last updated: 2026-08-10_

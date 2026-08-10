@@ -270,6 +270,20 @@
 - **Deployment gate** — A manual or automated checkpoint in a pipeline that must be passed before an artifact can proceed to the next environment.
 - **Rollback trigger** — An automated or manual action that reverts a deployment to a previous known-good state when a health check, alert, or error threshold is breached.
 
+## Linux & System Administration
+
+- **systemd** — A system and service manager for Linux that provides a standardised way to manage services, timers, and system state.
+- **systemd timer** — A unit file that schedules recurring jobs, serving as a cron replacement with better logging and dependency management.
+- **systemd service** — A unit file that defines a long-running or one-shot process managed by systemd, with options for restart policies and resource control.
+- **journald** — The systemd logging daemon that collects and stores log data from the kernel, services, and system processes.
+- **journal-remote** — A systemd-journald remote collection daemon that receives and stores journal entries from remote hosts over HTTP.
+- **journal-upload** — A systemd-journald client that uploads journal entries to a remote server running journal-remote.
+- **StandardOutput=journal** — A systemd service directive that routes the service's stdout directly to the journald log stream.
+- **StandardError=journal** — A systemd service directive that routes the service's stderr directly to the journald log stream.
+- **Oneshot** — A systemd service Type that runs a short-lived task to completion and then exits, as opposed to a long-running daemon.
+- **Wants=** — A systemd unit directive that expresses a loose dependency, starting the target unit when this unit starts but not failing if it cannot.
+- **After=** — A systemd unit directive that orders startup, ensuring the specified unit is fully started before this unit begins.
+
 ## Version Control Concepts
 
 - **Repository** — A folder tracked by version control that contains the project and its full history.

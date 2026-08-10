@@ -59,17 +59,17 @@
 - **scripts** (1): [2026-07-16-install-gcloud-cli-and-configure-creds.sh](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
 - **snippets** (1): [2026-07-16-list-compute-and-gcs-with-gcloud.sh](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
-## Git  ·  41 files
+## Git  ·  40 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
-- **scripts** (8): [2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh), [install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh)
-- _…and 5 more under `Git/scripts/` — browse the folder._
 - **templates** (21): [pre-commit](../Git/templates/git-hooks/pre-commit), [commit-msg](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
 - _…and 18 more under `Git/templates/` — browse the folder (includes the repository-skeleton scaffold)._
+- **scripts** (8): [2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh), [install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh)
+- _…and 5 more under `Git/scripts/` — browse the folder._
+- **docs** (5): most recent → [automating-git-bisect-with-scripted-regression-tests.md](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-worktrees-parallel-feature-development-setup-workflow-gotchas.md](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 3 more under `Git/docs/` — browse the folder._
 - **notes** (4): most recent → [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
 - _…and 2 more under `Git/notes/` — browse the folder._
-- **docs** (6): most recent → [automating-git-bisect-with-scripted-regression-tests.md](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-worktrees-parallel-feature-development-setup-workflow-gotchas.md](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 4 more under `Git/docs/` — browse the folder._
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
@@ -112,7 +112,7 @@
 - **scripts** (1): [2026-07-23-install-helm-and-explore-cli.sh](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - **configs** (1): [2026-07-23-first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 
-## Kubernetes  ·  12 files
+## Kubernetes  ·  13 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **notes** (5): most recent → [2026-07-19-first-kubectl-version-and-pod-from-manifest.md](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
@@ -120,6 +120,7 @@
 - **manifests** (3): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [deployment-service-with-probes-limits.yaml](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 - **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
 - **docs** (1): [ingress-path-based-routing.md](../Kubernetes/docs/ingress-path-based-routing.md)
+- **notebooks** (1): [comparing-kubernetes-workload-types.ipynb](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - **snippets** (1): [pod-troubleshoot-shell.sh](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 
 ## OpenTofu  ·  3 files
@@ -153,7 +154,7 @@
 - **scripts** (2): [2026-07-12-install-trivy-and-scan-filesystem.sh](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **snippets** (1): [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 
-## git  ·  11 files
+## git  ·  10 files
 
 A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template). Prefer `Git/` for the main toolkit.
 
@@ -162,18 +163,31 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a
 - **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
 - _…and 4 more under `git/templates/` — browse the folder._
 
-## Foundational Concepts  ·  14 files
+## Foundational Concepts  ·  36 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
-  - **scripts** (1): [simulated-cicd-pipeline.sh](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
+  - **scripts** (2): [simulated-cicd-pipeline.sh](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh), [parallelized-ci-stage-runner.sh](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
   - **snippets** (1): [cicd-common-patterns.sh](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
+  - **docs** (1): [artifact-promotion-environment-rollbacks.md](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md)
 - **Containerization Concepts:** [0000-primer-containerization-concepts.md](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
+  - **docs** (1): [smaller-images-base-caching-runtimes.md](../docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md)
+  - **snippets** (1): [inspect-image-layers.py](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py)
 - **Infrastructure as Code Concepts:** [0000-primer-infrastructure-as-code-concepts.md](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
-- **Linux & System Administration** (3): [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md), [process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md), [filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+  - **docs** (1): [terraform-ansible-division-of-responsibility.md](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md)
+  - **notebooks** (1): [declarative-vs-imperative-iac.ipynb](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb)
+- **Linux & System Administration** (5): [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md), [process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md), [filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+  - **docs** (1): [systemd-timers-journald-shipping.md](../docs/concepts/linux-system-administration/docs/systemd-timers-journald-shipping.md)
+  - **scripts** (2): [systemd-health-check-log-alerting.sh](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh), [systemd-watchdog-restart-and-page.sh](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh)
 - **Monitoring & Observability:** [0000-primer-monitoring-observability-concepts.md](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
-- **Networking Fundamentals** (3): [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md), [netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh), [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
-- **Scripting & Automation (Bash/Python)** (3): [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
+  - **docs** (1): [combining-metrics-logs-traces-observability.md](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
+- **Networking Fundamentals** (4): [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md), [netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh), [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
+  - **notebooks** (1): [dns-tls-load-balancing-visualization.ipynb](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
+  - **scripts** (1): [tcp-tls-health-probes.sh](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh)
+- **Scripting & Automation (Bash/Python)** (4): [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
+  - **snippets** (1): [retry-backoff-logging.py](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+  - **scripts** (1): [git-feature-branch-rebase-merge-tag.sh](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
+  - **snippets** (1): [conventional-changelog-from-git-log.py](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
 
 ## docs (kit notes)  ·  4 files
 
