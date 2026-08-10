@@ -3,6 +3,8 @@
 ## 2026-08-10
 
 - Added docs combining CI/CD with artifact promotion gates and environment-based rollbacks (con-049) (`docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md`)
+- Added docs on combining CI/CD concepts with artifact promotion and environment-based rollbacks (con-059) (`docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md`)
+- Added systemd-managed service with health check and log alerting script (con-060) (`docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh`)
 
 ## 2026-08-09
 
