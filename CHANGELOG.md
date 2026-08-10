@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-09
+
+- Added docs on combining metrics, logs, and traces into a single service observability story, with trace_id correlation and sampling/cardinality gotchas (con-055) (`docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md`)
+
 ## 2026-08-08
 
 - Added scripted TCP/TLS health probes and latency checks using curl, openssl, and nc (con-044) (`docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh`)
