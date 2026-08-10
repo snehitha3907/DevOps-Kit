@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-10
+
+- Added docs combining CI/CD with artifact promotion gates and environment-based rollbacks (con-049) (`docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md`)
+
 ## 2026-08-09
 
 - Added docs on combining metrics, logs, and traces into a single service observability story, with trace_id correlation and sampling/cardinality gotchas (con-055) (`docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md`)
