@@ -5,6 +5,7 @@
 - Added docs combining CI/CD with artifact promotion gates and environment-based rollbacks (con-049) (`docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md`)
 - Added docs on combining CI/CD concepts with artifact promotion and environment-based rollbacks (con-059) (`docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md`)
 - Added systemd-managed service with health check and log alerting script (con-060) (`docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh`)
+- Added notebook tracing a request through DNS resolution, TLS handshake, and load-balanced routing for a service (con-043) (`docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb`)
 
 ## 2026-08-09
 
