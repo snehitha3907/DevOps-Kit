@@ -13,6 +13,8 @@
 - Added parallelized, cached CI stage runner bash snippet with failure reporting (con-050) (`docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh`)
 - Added docs comparing Terraform and Ansible division of responsibility in a provision-then-configure model (con-051) (`docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md`)
 - Added notebook comparing declarative vs imperative IaC on a local Docker sandbox (con-052) (`docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb`)
+- Added docs on combining base-image selection, layer caching, and minimal runtimes for smaller images (con-053) (`docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md`)
+- Added Python snippet to inspect Docker image layers and report size by instruction (con-054) (`docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py`)
 
 ## 2026-08-07
 
