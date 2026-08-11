@@ -2,7 +2,9 @@
 
 ## 2026-08-11
 
-Passed ([x]) con-057 — Linux & System Administration: notebook — Pattern: Linux system performance analysis combining /proc, cgroups, and systemd-cgtop · Level: L3 · 2026-08-11
+- Added notes on the official Git branching tutorial and what tripped me up (git-010) (`git/notes/2026-08-11-git-branching-tutorial.md`)
+- Added notebook exercising Bash/Python glue patterns: parsing, looping, error handling (con-046) (`docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb`)
+- Passed ([x]) con-057 — Linux & System Administration: notebook — Pattern: Linux system performance analysis combining /proc, cgroups, and systemd-cgtop · Level: L3 · 2026-08-11
 - Added notebook exercising metrics/logs/traces mental model by scraping a local service's /metrics endpoint with trace_id correlation (con-056) (`docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb`)
 - Added notebook for Linux system performance analysis combining /proc, cgroups, and systemd-cgtop (con-057) (`docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb`)
 
