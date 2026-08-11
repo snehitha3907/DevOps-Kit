@@ -8,9 +8,11 @@
 - [Systemd timers and journald shipping](../docs/concepts/linux-system-administration/docs/systemd-timers-journald-shipping.md)
 - [Systemd health-check and log alerting](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh)
 - [Systemd watchdog restart and page](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh)
+- [Linux system performance analysis notebook](../docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb)
 - [Network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
 - [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
 - [TCP/TLS health probes script](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh)
+- [DNS, TLS, and load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
 - [Linux & system administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
 - [Networking fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 
@@ -147,6 +149,7 @@
 
 ### CI/CD concepts
 - [Simulated CI/CD pipeline script](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
+- [CI/CD artifact promotion and rollback script](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
 - [CI/CD common patterns snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
 - [Parallelized CI stage runner snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
@@ -163,7 +166,7 @@
 
 ### Monitoring and observability
 - [Combining metrics, logs, and traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
-- [Scraping endpoint three-pillars notebook](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
+- [Scraping endpoint three pillars notebook](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
 - [Monitoring & Observability concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 
 ### Scripting and automation

@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working engineer's DevOps reference for Docker, Kubernetes, Terraform, Ansible, Git, and the cloud-native toolchain.
+> A working DevOps engineer's quick-reference for Docker, Kubernetes, Terraform, Ansible, Git, and the cloud-native toolchain.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
 ![License](https://img.shields.io/github/license/snehitha3907/DevOps-Kit)
@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Scraping endpoint three-pillars notebook](docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb) — Interactive notebook exercising the metrics/logs/traces mental model by scraping a local /metrics endpoint with trace_id correlation.
+- [CI/CD pipeline artifact promotion and rollback script](docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh) — Script simulating artifact promotion, environment gates, and automated rollback in a CI/CD pipeline.
+- [Linux system performance analysis notebook](docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb) — Notebook analyzing Linux system performance using system metrics and process data.
+- [Scraping endpoint three pillars notebook](docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb) — Notebook demonstrating the three pillars of observability (metrics, logs, traces) via a scraping endpoint.
 - [Kubernetes workload-type comparisons](Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb) — Interactive notebook comparing Pods, Deployments, StatefulSets, DaemonSets, and Jobs.
 - [CI/CD artifact promotion and rollbacks](docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md) — Docs on artifact promotion gates, environment-based rollbacks, and deployment pipelines.
-- [Systemd health-check and log alerting](docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh) — Script for systemd-managed services with health checks and journald alerting.
-- [DNS, TLS, and load-balancing visualization](docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb) — Notebook visualizing DNS resolution, TLS handshakes, and load-balanced routing.
 
 ## Layout
 
@@ -59,10 +59,10 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 | ArgoCD | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
-| Docker | 4 | 5 | 1 | 1 | 7 | 2 | 1 | 5 | 6 | 2026-08-06 |
+| Docker | 4 | 5 | 1 | 1 | 7 | 2 | 1 | 5 | 6 | 2026-08-05 |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
 | Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-08-05 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-06 |
 | GitHub Actions | 3 | 2 | 4 | — | — | 1 | — | — | — | 2026-08-07 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | — | — | 3 | — | — | — | 2026-08-07 |
@@ -78,7 +78,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added Kubernetes workload-type comparisons, CI/CD artifact promotion and rollback docs, systemd health-check and alerting scripts, networking visualization notebooks, and a metrics/logs/traces scraping notebook.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added Kubernetes workload-type comparisons, CI/CD artifact promotion and rollback docs, systemd health-check and alerting scripts, and networking visualization notebooks.
 
 ---
 _Last updated: 2026-08-11_
