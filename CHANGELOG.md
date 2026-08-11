@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-11
+
+- Added notebook for Linux system performance analysis combining /proc, cgroups, and systemd-cgtop (con-057) (`docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb`)
+
 ## 2026-08-10
 
 - Added docs combining CI/CD with artifact promotion gates and environment-based rollbacks (con-049) (`docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md`)
