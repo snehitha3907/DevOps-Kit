@@ -166,7 +166,7 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a
 ## Foundational Concepts  ·  36 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
-  - **scripts** (2): [simulated-cicd-pipeline.sh](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh), [parallelized-ci-stage-runner.sh](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
+  - **scripts** (2): [simulated-cicd-pipeline.sh](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh), [artifact-promotion-rollback.sh](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
   - **snippets** (1): [cicd-common-patterns.sh](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
   - **docs** (1): [artifact-promotion-environment-rollbacks.md](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md)
 - **Containerization Concepts:** [0000-primer-containerization-concepts.md](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
