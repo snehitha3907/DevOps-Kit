@@ -381,3 +381,8 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added Git install + first-commit script (`Git/scripts/install-and-first-commit.sh`)
 - Added Git CLI exploration notes (`Git/notes/2026-06-04-explore-git-cli.md`)
 - Added Helm README verification note (Helm/docs/2026-07-25-helm-readme-already-documented.md)
+
+## 2026-08-11
+
+- Added Docker health check patterns docs (`Docker/docs/docker-health-check-patterns.md`)
+- Added Helm nginx chart with custom values snippet (`Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh`)
