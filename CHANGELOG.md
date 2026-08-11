@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-11
+
+- Added notebook exercising metrics/logs/traces mental model by scraping a local service's /metrics endpoint with trace_id correlation (con-056) (`docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb`)
+
 ## 2026-08-10
 
 - Added docs combining CI/CD with artifact promotion gates and environment-based rollbacks (con-049) (`docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md`)
