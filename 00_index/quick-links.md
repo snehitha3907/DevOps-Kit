@@ -163,6 +163,7 @@
 
 ### Monitoring and observability
 - [Combining metrics, logs, and traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
+- [Scraping endpoint three-pillars notebook](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
 - [Monitoring & Observability concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 
 ### Scripting and automation
