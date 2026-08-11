@@ -13,7 +13,7 @@ These concepts have no prerequisites — start here if you're new to the domain.
 - **Containerization Concepts** — Packaging applications with their runtime into portable units. [Primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md) Unlocks: Docker, Kubernetes.
 - **Infrastructure as Code Concepts** — Managing infrastructure through machine-readable definition files instead of manual processes. [Primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md) Unlocks: Terraform, Ansible, AWS, Azure, GCP.
 - **Version Control Concepts** — Tracking changes to files over time with commits, branches, and pull requests. [Primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md) Unlocks: Git, GitHub.
-- **Monitoring & Observability** — Metrics, logs, traces, SLIs, SLOs, and alerting for understanding production system behaviour. [Primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) Unlocks: Prometheus, Grafana.
+- **Monitoring & Observability Concepts** — Metrics, logs, traces, SLIs, SLOs, and alerting for understanding production system behaviour. [Primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) Unlocks: Prometheus, Grafana.
 
 ## Stage 2: Core Tools
 
@@ -51,6 +51,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
+- **Monitoring & observability three-pillars notebook** — Exercise the metrics/logs/traces mental model by scraping a local /metrics endpoint with trace_id correlation. [Notebook](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
 
 ## Stage 4: Advanced Tools
 
@@ -141,4 +142,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-08-10_
+_Last updated: 2026-08-11_
