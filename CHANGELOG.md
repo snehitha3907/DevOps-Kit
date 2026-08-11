@@ -5,6 +5,8 @@
 Passed ([x]) con-057 — Linux & System Administration: notebook — Pattern: Linux system performance analysis combining /proc, cgroups, and systemd-cgtop · Level: L3 · 2026-08-11
 - Added notebook exercising metrics/logs/traces mental model by scraping a local service's /metrics endpoint with trace_id correlation (con-056) (`docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb`)
 - Added notebook for Linux system performance analysis combining /proc, cgroups, and systemd-cgtop (con-057) (`docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb`)
+- Added declarative guestbook ApplicationSet manifest using a list generator (arg-005) (`ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml`)
+- Added ArgoCD quickstart follow-along notes (arg-004) (`ArgoCD/notes/2026-08-11-argocd-quickstart.md`)
 
 ## 2026-08-10
 
