@@ -1,0 +1,40 @@
+# last_verified: 2026-08-11
+# Declarative ApplicationSet for the guestbook example — I wanted to see how one
+# template fans out Application resources instead of writing each by hand.
+#
+# Notes from following the docs:
+# - ApplicationSet CRDs are big enough to blow past the client-side 262KB annotation
+#   limit, so the cluster install uses `kubectl apply --server-side --force-conflicts`.
+# - The list generator below is the simplest generator: one element per destination.
+# - selfHeal reverts manual cluster edits back to Git; I keep prune conservative and
+#   let ArgoCD's allowEmpty default guard the "generator returns zero" footgun.
+# Never use the `stable` install manifest URL — pin the install to a release tag.
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: dev
+            namespace: guestbook
+          - cluster: staging
+            namespace: guestbook
+  template:
+    metadata:
+      name: guestbook-{{cluster}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/argoproj/argocd-example-apps.git
+        targetRevision: HEAD
+        path: guestbook
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: false
