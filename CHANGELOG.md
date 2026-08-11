@@ -3,6 +3,7 @@
 ## 2026-08-11
 
 - Added notebook exercising metrics/logs/traces mental model by scraping a local service's /metrics endpoint with trace_id correlation (con-056) (`docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb`)
+- Added notebook for Linux system performance analysis combining /proc, cgroups, and systemd-cgtop (con-057) (`docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb`)
 
 ## 2026-08-10
 
