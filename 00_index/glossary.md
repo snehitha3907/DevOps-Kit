@@ -57,10 +57,20 @@
 - **Sync status** — The current state of an Application relative to its Git source: `Synced`, `OutOfSync`, or an error condition.
 - **Health** — The operational state of an Application's resources: `Healthy`, `Degraded`, `Progressing`, or `Missing`.
 - **App of Apps** — A pattern where one Application deploys other Applications, enabling whole-cluster management from a single Git repository.
+- **ApplicationSet** — A custom resource that generates Application definitions from a set of generators (list, git, cluster, etc.), so one template fans out deployments across multiple clusters or namespaces instead of writing each Application by hand.
+- **List generator** — The simplest ApplicationSet generator: it iterates over a hardcoded list of elements (e.g. `cluster` + `namespace` pairs), templating each into a separate Application.
+- **Server-side apply** — A `kubectl apply --server-side --force-conflicts` install strategy that pushes manifests to the API server directly; needed for ArgoCD's ApplicationSet CRD, which is large enough to exceed the client-side annotation size limit.
+- **`selfHeal`** — An ArgoCD sync option that automatically reverts manual cluster changes (e.g. `kubectl edit`) back to the state declared in Git.
+- **`prune`** — An ArgoCD sync option that deletes cluster resources once they disappear from Git; pair it with the `allowEmpty: false` default so a generator returning zero resources cannot wipe everything.
+- **`allowEmpty`** — An ArgoCD ApplicationSet safety default that refuses to render a template when a generator returns no elements, guarding against accidental mass deletion on a broken generator.
 
 ## Docker
 
 - **Health check** — A Docker Compose directive that tests container readiness (e.g., via HTTP endpoint) before dependent services are started.
+- **HEALTHCHECK** — A Dockerfile instruction that defines how Docker probes whether a running container is still healthy (`starting`, `healthy`, or `unhealthy`); `HEALTHCHECK NONE` disables an inherited check from the base image.
+- **`--start-period`** — A HEALTHCHECK grace period after container start during which failures do not count against retries, giving slow-starting apps time to become ready before the container is marked unhealthy.
+- **HTTP probe** — A HEALTHCHECK style using `curl -f` (or similar) against an HTTP endpoint; only 2xx/3xx responses count as healthy.
+- **TCP probe** — A HEALTHCHECK style using `nc -z host port` (or a bash `/dev/tcp` test) to confirm a port accepts connections; it validates socket readiness, not application-level logic.
 - **Image** — A read-only snapshot of a filesystem used as a template for creating containers.
 - **Container** — A running instance of an image; encapsulates an app and its dependencies in an isolated environment.
 - **Dockerfile** — A text file containing instructions to build a Docker image.
@@ -116,6 +126,7 @@
 - **Rebase** — Rewriting commit history by applying commits from one branch onto another.
 - **Cherry-pick** — Applying the changes introduced by a specific commit to the current branch without merging the full branch history.
 - **Git worktree** — A mechanism that allows multiple working directories to be associated with a single repository, enabling parallel work on different branches without stashing or switching.
+- **Detached HEAD** — The state where `HEAD` points directly at a commit instead of a branch, which happens after `git checkout <commit-hash>`; commits made in this state belong to no branch and can be lost until a branch is pointed at them.
 - **Hook** — A script Git executes before or after a specific event (e.g., pre-commit, commit-msg, post-checkout, post-commit, pre-push, pre-rebase).
 - **Pre-commit hook** — A Git hook that runs before a commit is finalised, used to check for issues like trailing whitespace, conflict markers, or debug statements.
 - **Commit-msg hook** — A Git hook that validates the format of a commit message, often enforcing conventional commit standards.

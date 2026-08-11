@@ -17,10 +17,11 @@
 - **templates** (1): [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 - **dockerfiles** (1): [ansible-control-node.Dockerfile](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
 
-## ArgoCD  ·  3 files
+## ArgoCD  ·  5 files
 
 - **primer:** [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
-- **configs** (1): [2026-07-23-first-application-manifest.yaml](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
+- **notes** (2): most recent → [2026-08-11-argocd-quickstart.md](../ArgoCD/notes/2026-08-11-argocd-quickstart.md), [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
+- **configs** (2): [2026-08-11-guestbook-applicationset.yaml](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml), [2026-07-23-first-application-manifest.yaml](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
 - **scripts** (1): [2026-07-23-install-argocd-and-access-ui.sh](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 
 ## AWS  ·  6 files
@@ -36,7 +37,7 @@
 - **scripts** (1): [2026-07-13-install-azure-cli-and-login.sh](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (1): [2026-07-13-create-resource-group-and-list-regions.sh](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
-## Docker  ·  32 files
+## Docker  ·  33 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **dockerfiles** (7): most recent → [production-ready-go-http-server.Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
@@ -48,7 +49,7 @@
 - _…and 2 more under `Docker/scripts/` — browse the folder._
 - **notes** (4): [2026-06-07-docker-compose-quickstart.md](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [2026-06-06-exploring-docker-cli.md](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - _…and 2 more under `Docker/notes/` — browse the folder._
-- **docs** (2): [docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md), [docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md)
+- **docs** (3): [docker-health-check-patterns.md](../Docker/docs/docker-health-check-patterns.md), [docker-run-vs-compose.md](../Docker/docs/docker-run-vs-compose.md), [docker-build-mount-vs-copy-caching.md](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - **notebooks** (1): [comparing-docker-networking-drivers.ipynb](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **snippets** (1): [analyze-image-layers.py](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service-app.yaml](../Docker/configs/multi-service-app.yaml)
@@ -103,7 +104,7 @@
 - **scripts** (2): [2026-06-22-install-runner-and-register.sh](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [2026-06-24-run-first-local-pipeline.sh](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  7 files
+## Helm  ·  8 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **notes** (2): most recent → [2026-08-07-helm-quickstart-tripups.md](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
@@ -111,6 +112,7 @@
 - _1 more under `Helm/docs/` — browse the folder._
 - **scripts** (1): [2026-07-23-install-helm-and-explore-cli.sh](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - **configs** (1): [2026-07-23-first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- **snippets** (1): [2026-08-11-nginx-helm-chart-custom-values.sh](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
 ## Kubernetes  ·  13 files
 
@@ -154,11 +156,12 @@
 - **scripts** (2): [2026-07-12-install-trivy-and-scan-filesystem.sh](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **snippets** (1): [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 
-## git  ·  10 files
+## git  ·  11 files
 
 A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template). Prefer `Git/` for the main toolkit.
 
-- **docs** (3): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
+- **notes** (1): [2026-08-11-git-branching-tutorial.md](../git/notes/2026-08-11-git-branching-tutorial.md)
+- **docs** (2): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
 - **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
 - _…and 4 more under `git/templates/` — browse the folder._
@@ -183,7 +186,8 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a
 - **Networking Fundamentals** (4): [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md), [netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh), [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
   - **notebooks** (1): [dns-tls-load-balancing-visualization.ipynb](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
   - **scripts** (1): [tcp-tls-health-probes.sh](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh)
-- **Scripting & Automation (Bash/Python)** (4): [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
+- **Scripting & Automation (Bash/Python)** (5): [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
+  - **notebooks** (1): [bash-python-glue-patterns.ipynb](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
   - **snippets** (1): [retry-backoff-logging.py](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
   - **scripts** (1): [git-feature-branch-rebase-merge-tag.sh](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
