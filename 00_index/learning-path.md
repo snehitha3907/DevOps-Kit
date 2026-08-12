@@ -51,7 +51,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Kubernetes pod troubleshooting** — Debugging network and filesystem issues from inside a pod. [Snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **CI/CD pipeline patterns** — Artifact promotion, rollback triggers, and deployment gates. [Artifact promotion and rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md) · [Simulated pipeline](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh) · [artifact promotion rollback script](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh) · [common patterns](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh) · [parallelized CI stage runner](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - **GitLab CI** — Pipelines, runners, stages, and jobs. [Primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
-- **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+- **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh), [config reference](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 
@@ -144,4 +144,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-08-11_
+_Last updated: 2026-08-12_
