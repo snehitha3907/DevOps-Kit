@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-12
+
+- Added Ansible handlers and templates tutorial trip-up notes (ans-018) (`Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md`)
+- Added Kubernetes tutorial trip-up notes (k8s-011) (`Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md`)
+- Added Terraform state management tutorial trip-up notes (tf-015) (`Terraform/notes/2026-08-12-terraform-state-management-tutorial.md`)
+
 ## 2026-08-11
 
 - Added notes on the official Git branching tutorial and what tripped me up (git-010) (`git/notes/2026-08-11-git-branching-tutorial.md`)
