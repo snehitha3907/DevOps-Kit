@@ -1,5 +1,10 @@
 # last_verified: 2026-08-12 · Docker n/a
-"""Build, run, then clean down a Docker container and its image."""
+"""Build, run, then clean down a Docker container and its image.
+
+Following the Get Started tutorial, I kept leaving stale containers behind,
+so I scripted the build -> run -> cleanup loop. The explicit image tag keeps
+the image from showing up as an anonymous <none> entry in `docker images`.
+"""
 
 import subprocess
 import sys
