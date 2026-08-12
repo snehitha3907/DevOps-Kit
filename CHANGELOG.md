@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-12
+
+- Added notes on the official Docker Get Started tutorial and what tripped me up (doc-019) (`doc/notes/2026-08-12-docker-tutorial-tripups.md`)
+- Added Python script that builds, runs, then cleans down a Docker container and image (doc-020) (`doc/snippets/2026-08-12-build-run-and-cleanup.py`)
+- Added Trivy config with severity filters and scan policies (trv-008) (`trv/configs/2026-08-12-trivy-config.yaml`)
+
 ## 2026-08-11
 
 - Added notes on the official Git branching tutorial and what tripped me up (git-010) (`git/notes/2026-08-11-git-branching-tutorial.md`)
