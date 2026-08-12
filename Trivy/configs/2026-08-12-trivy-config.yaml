@@ -1,0 +1,17 @@
+# last_verified: 2026-08-12 · Trivy n/a
+# Trivy config — I only want to be stopped by the findings I care about,
+# and I don't want the scanner tripping over vendored code that isn't mine.
+severity: CRITICAL,HIGH
+ignore-unfixed: true
+
+scan:
+  skip-dirs:
+    - ./vendor
+    - ./node_modules
+  skip-files:
+    - go.sum
+    - package-lock.json
+
+vulnerability:
+  ignore-status:
+    - unknown
