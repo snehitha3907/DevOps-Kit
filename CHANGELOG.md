@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-12
+
+- Reworked doc-019 to canonical dir: notes on the official Docker Get Started tutorial and what tripped me up (`Docker/notes/2026-08-12-docker-tutorial-tripups.md`)
+- Reworked doc-020 to canonical dir: Python script that builds, runs, then cleans down a Docker container and image (`Docker/snippets/2026-08-12-build-run-and-cleanup.py`)
+- Reworked trv-008 to canonical dir: Trivy config with severity filters and scan policies (`Trivy/configs/2026-08-12-trivy-config.yaml`)
+
 ## 2026-08-11
 
 - Added notes on the official Git branching tutorial and what tripped me up (git-010) (`git/notes/2026-08-11-git-branching-tutorial.md`)
