@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [Docker Get Started tutorial tripups](Docker/notes/2026-08-12-docker-tutorial-tripups.md) — Notes on what tripped me up during Docker's official Get Started tutorial.
-- [Build, run, and cleanup Docker container script](Docker/snippets/2026-08-12-build-run-and-cleanup.py) — Python script that builds, runs, and tears down a Docker container to avoid stale images.
-- [Trivy config with severity filtering](Trivy/configs/2026-08-12-trivy-config.yaml) — Trivy config focusing on CRITICAL/HIGH findings while skipping vendor directories.
-- [Scraping endpoint three pillars notebook](docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb) — Notebook demonstrating the three pillars of observability (metrics, logs, traces) via a scraping endpoint.
-- [Kubernetes workload-type comparisons](Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb) — Interactive notebook comparing Pods, Deployments, StatefulSets, DaemonSets, and Jobs.
+- [AWS list EC2 and S3 snippet](AWS/snippets/2026-08-12-list-ec2-and-s3.sh) — Quick script to list EC2 instances and S3 buckets with gcloud.
+- [Ansible lint playbook snippet](Ansible/snippets/2026-08-12-lint-ansible-playbook.py) — Python wrapper that lints an Ansible playbook and reports failures.
+- [Kubernetes deployment + service with probes config](Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml) — Deployment and Service manifest for a Go app with liveness and readiness probes.
+- [Ansible handlers and templates tutorial](Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md) — Notes on using Ansible handlers and Jinja2 templates from the official tutorial.
+- [Kubernetes tutorial tripups](Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md) — Notes on what tripped me up during Kubernetes interactive tutorials.
 
 ## Layout
 
@@ -55,22 +55,22 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 5 | 4 | 7 | 1 | 1 | 2 | 1 | — | 1 | 2026-07-27 |
+| Ansible | 6 | 4 | 7 | 2 | 1 | 2 | 1 | — | 1 | 2026-08-12 |
 | ArgoCD | 2 | 1 | 2 | — | — | — | — | — | — | 2026-08-11 |
-| AWS | 2 | 2 | 2 | — | — | — | — | — | — | 2026-07-13 |
+| AWS | 2 | 2 | 2 | 1 | — | — | — | — | — | 2026-07-13 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-12 |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
 | Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-08-05 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-06 |
 | GitHub Actions | 3 | 2 | 4 | — | — | 1 | — | — | — | 2026-08-07 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-11 |
-| Kubernetes | 5 | 2 | — | 1 | — | 1 | 1 | 3 | — | 2026-07-22 |
+| Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-07 |
+| Kubernetes | 6 | 2 | 1 | 1 | — | 1 | 1 | 3 | — | 2026-08-12 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
-| Terraform | 4 | 2 | 7 | — | — | 2 | 1 | 1 | — | — |
-| Trivy | 2 | 2 | 1 | 1 | — | — | — | — | — | 2026-08-12 |
+| Terraform | 5 | 2 | 7 | — | — | 2 | 1 | 1 | — | 2026-08-12 |
+| Trivy | 2 | 2 | 1 | 1 | — | — | — | — | — | 2026-07-12 |
 
 *Rows follow the on-disk tool directories. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit.*
 
@@ -78,7 +78,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added Docker tutorial tripups, a build-run-cleanup script, and a Trivy config with severity filtering.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added Ansible handlers and templates notes, a lint playbook snippet, an AWS EC2/S3 listing snippet, Kubernetes deployment and service probes config, and Kubernetes tutorial tripups.
 
 ---
-_Last updated: 2026-08-12_
+_Last updated: 2026-08-13_

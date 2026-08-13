@@ -2,17 +2,17 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  22 files
+## Ansible  ·  24 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
+- **notes** (6): most recent → [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md), [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md), [2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
+- _…and 3 more under `Ansible/notes/` — browse the folder._
 - **configs** (7): most recent → [2026-07-19-first-inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml), [2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml), [ansible-collection-requirements-and-docker-lifecycle-playbook.yaml](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
 - _…and 4 more under `Ansible/configs/` — browse the folder._
-- **notes** (5): most recent → [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md), [2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
-- _…and 3 more under `Ansible/notes/` — browse the folder._
 - **scripts** (4): [2026-07-19-install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh)
 - _1 more under `Ansible/scripts/` — browse the folder._
 - **docs** (2): [ansible-over-terraform-local-exec.md](../Ansible/docs/ansible-over-terraform-local-exec.md), [2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
-- **snippets** (1): [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
+- **snippets** (2): [2026-08-12-lint-ansible-playbook.py](../Ansible/snippets/2026-08-12-lint-ansible-playbook.py), [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 - **templates** (1): [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 - **dockerfiles** (1): [ansible-control-node.Dockerfile](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
@@ -24,12 +24,13 @@
 - **configs** (2): [2026-07-23-first-application-manifest.yaml](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml), [2026-08-11-guestbook-applicationset.yaml](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
 - **scripts** (1): [2026-07-23-install-argocd-and-access-ui.sh](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 
-## AWS  ·  6 files
+## AWS  ·  7 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 - **notes** (2): [2026-07-13-primer-already-exists.md](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 - **scripts** (2): [2026-07-13-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh), [2026-07-12-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh)
 - **configs** (2): [2026-07-13-minimal-aws-config.ini](../AWS/configs/2026-07-13-minimal-aws-config.ini), [2026-07-12-minimal-aws-config.ini](../AWS/configs/2026-07-12-minimal-aws-config.ini)
+- **snippets** (1): [2026-08-12-list-ec2-and-s3.sh](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 
 ## Azure  ·  3 files
 
@@ -92,8 +93,8 @@
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
 - **configs** (4): most recent → [2026-08-07-matrix-node-workflow.yaml](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [2026-07-13-hello-workflow.yaml](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - _…and 1 more under `GitHub Actions/configs/` — browse the folder._
-- **notes** (4): most recent → [2026-07-13-primer-already-exists.md](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md)
-- _…and 2 more under `GitHub Actions/notes/` — browse the folder._
+- **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md)
+- _…and 1 more under `GitHub Actions/notes/` — browse the folder._
 - **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - **docs** (1): [2026-08-07-github-actions-quickstart-tripups.md](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md)
 
@@ -113,13 +114,14 @@
 - **configs** (1): [2026-07-23-first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - **snippets** (1): [2026-08-11-nginx-helm-chart-custom-values.sh](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
-## Kubernetes  ·  13 files
+## Kubernetes  ·  15 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
-- **notes** (5): most recent → [2026-07-19-first-kubectl-version-and-pod-from-manifest.md](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
+- **notes** (6): most recent → [2026-08-12-kubernetes-tutorial-what-tripped-me-up.md](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [2026-07-19-first-kubectl-version-and-pod-from-manifest.md](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - _…and 3 more under `Kubernetes/notes/` — browse the folder._
 - **manifests** (3): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [deployment-service-with-probes-limits.yaml](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 - **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
+- **configs** (1): [2026-08-12-deployment-service-go-app-with-probes.yaml](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 - **docs** (1): [ingress-path-based-routing.md](../Kubernetes/docs/ingress-path-based-routing.md)
 - **notebooks** (1): [comparing-kubernetes-workload-types.ipynb](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - **snippets** (1): [pod-troubleshoot-shell.sh](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
@@ -136,12 +138,12 @@
 - **scripts** (1): [2026-07-23-install-prometheus-and-verify-metrics.sh](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **configs** (1): [2026-07-23-minimal-scrape-config.yml](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
-## Terraform  ·  17 files
+## Terraform  ·  18 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable-s3-module/](../Terraform/configs/reusable-s3-module/) folder (5 files)
 - _…and 1 more under `Terraform/configs/` — browse the folder._
-- **notes** (4): most recent → [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
+- **notes** (5): most recent → [2026-08-12-terraform-state-management-tutorial.md](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
 - **docs** (2): [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [2026-06-29-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
@@ -156,16 +158,17 @@
 - **configs** (1): [2026-08-12-trivy-config.yaml](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - **snippets** (1): [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 
-## git  ·  10 files
+## git  ·  11 files
 
 A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template). Prefer `Git/` for the main toolkit.
 
 - **docs** (3): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
+- **notes** (1): [git-branching-tutorial](../git/notes/2026-08-11-git-branching-tutorial.md)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
 - **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
 - _…and 4 more under `git/templates/` — browse the folder._
 
-## Foundational Concepts  ·  36 files
+## Foundational Concepts  ·  40 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
   - **scripts** (2): [simulated-cicd-pipeline.sh](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh), [artifact-promotion-rollback.sh](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
