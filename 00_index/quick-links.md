@@ -81,10 +81,10 @@
 - [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
 - [Prometheus scrape config (manifest)](../Docker/manifests/prometheus.yml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
+- [Trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
-- [Git branching tutorial notes](../git/notes/2026-08-11-git-branching-tutorial.md)
 - [Minimal branching workflow script](../Git/scripts/minimal-branching-workflow.sh)
 - [Merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - [Conventional commit hook](../Git/scripts/commit-msg-conventional-commit.sh)
@@ -99,10 +99,11 @@
 - [Git merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
 ### Work with Docker
+- [Docker Get Started tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md)
+- [Build, run, and cleanup Docker container script](../Docker/snippets/2026-08-12-build-run-and-cleanup.py)
 - [Docker Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
 - [Multi-stage Go HTTP server Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 - [Production-ready Go HTTP server Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile)
-- [Docker health check patterns](../Docker/docs/docker-health-check-patterns.md)
 - [Build mount vs COPY caching comparison](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - [docker run vs compose decision guide](../Docker/docs/docker-run-vs-compose.md)
 - [Go microservice project scaffold](../Docker/templates/go-microservice/README.md)
@@ -132,17 +133,6 @@
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
-
-### Work with ArgoCD
-- [ArgoCD quickstart notes](../ArgoCD/notes/2026-08-11-argocd-quickstart.md)
-- [Guestbook ApplicationSet manifest](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
-- [First Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
-- [Install ArgoCD + access the UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
-
-### Work with Helm
-- [Helm custom-values install snippet](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
-- [Helm quickstart trip-ups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md)
-- [First chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 
 ### Work with Terraform
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
@@ -184,9 +174,9 @@
 
 ### Scripting and automation
 - [Bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh)
-- [Bash/Python glue patterns notebook](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - [Log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
 - [Retry, backoff, and logging patterns](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
+- [Bash/Python glue patterns notebook](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 
 ### Version control concepts
