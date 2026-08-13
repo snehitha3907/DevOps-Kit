@@ -8,6 +8,8 @@
 - Reworked doc-019 to canonical dir: notes on the official Docker Get Started tutorial and what tripped me up (`Docker/notes/2026-08-12-docker-tutorial-tripups.md`)
 - Reworked doc-020 to canonical dir: Python script that builds, runs, then cleans down a Docker container and image (`Docker/snippets/2026-08-12-build-run-and-cleanup.py`)
 - Reworked trv-008 to canonical dir: Trivy config with severity filters and scan policies (`Trivy/configs/2026-08-12-trivy-config.yaml`)
+- Added Kubernetes Deployment and Service manifest for a Go app with liveness and readiness probes (k8s-012) (`Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml`)
+- Added Python snippet wrapping ansible-lint to lint playbooks and check best practices (ans-019) (`Ansible/snippets/2026-08-12-lint-ansible-playbook.py`)
 
 ## 2026-08-11
 
