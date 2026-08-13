@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-13
+
+- Added AWS CLI v2 install and application-default credentials configuration script (aws-008) (`AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh`)
+
 ## 2026-08-12
 
 - Added AWS EC2 and S3 listing snippet (aws-009) (`AWS/snippets/2026-08-12-list-ec2-and-s3.sh`)
