@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-14
+
+- Added AWS CLI quickstart walkthrough script with trip-up notes (aws-004) (`AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh`)
+- Reworked aws-004: AWS CLI quickstart walkthrough script documenting what tripped me up (`AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh`)
+
 ## 2026-08-13
 
 - Added AWS CLI v2 install and application-default credentials configuration script (aws-008) (`AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh`)
