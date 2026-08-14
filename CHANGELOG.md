@@ -3,6 +3,7 @@
 ## 2026-08-14
 
 - Added AWS CLI quickstart walkthrough script with trip-up notes (aws-004) (`AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh`)
+- Reworked aws-004: AWS CLI quickstart walkthrough script documenting what tripped me up (`AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh`)
 
 ## 2026-08-13
 

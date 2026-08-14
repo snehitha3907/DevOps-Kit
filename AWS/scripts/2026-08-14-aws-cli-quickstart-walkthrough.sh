@@ -1,13 +1,18 @@
 #!/bin/bash
-# last_verified: 2026-08-14 · AWS CLI v2
+# last_verified: 2026-08-14 · AWS CLI
 
-# AWS CLI quickstart walkthrough. First trip-up: aws configure is interactive,
-# so I set the keys non-interactively to keep this script running unattended.
-aws configure set aws_access_key_id AKIAIOSFODNN7EXAMPLE
-aws configure set aws_secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-aws configure set default.region us-east-1
-# Second trip-up: I ran commands before verifying auth and got NoCredential.
-# sts get-caller-identity is the quickstart's "did auth actually work" check.
+# I followed the AWS CLI quickstart. Here's what tripped me up.
+
+# 1. `aws sts get-caller-identity` is the recommended sanity check, but it
+#    only works after `aws configure` has real credentials. I ran it first
+#    with the example keys from the docs and got a cryptic auth error.
+# 2. `aws s3 ls` returns empty output when no buckets exist — not an error.
+#    Easy to misread as "broken" when you're new to the CLI.
+# 3. `aws s3 mb` needs a globally unique bucket name. `my-first-bucket`
+#    usually fails because it's already taken. Appending a timestamp works
+#    around that for a quick experiment.
+
 aws sts get-caller-identity
-# Third trip-up: long output opens in a pager and hangs. --no-cli-pager avoids it.
-aws ec2 describe-regions --no-cli-pager --query 'Regions[].RegionName' --output text
+aws s3 ls
+aws s3 mb "s3://my-first-bucket-$(date +%s)"
+aws s3 ls
