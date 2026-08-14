@@ -20,6 +20,7 @@
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
 - [Install Ansible + explore modules](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh)
 - [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
+- [Install AWS CLI v2 app-default credentials](../AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh)
 - [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
