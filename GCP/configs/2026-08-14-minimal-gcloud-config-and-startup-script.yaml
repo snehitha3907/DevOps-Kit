@@ -1,0 +1,15 @@
+# last_verified: 2026-08-14 · GCP SDK (gcloud CLI)
+# gcp-006: minimal gcloud config export, then a startup-script metadata block.
+properties:
+  core:
+    account: me@example.com
+    project: my-demo-project
+    region: us-central1
+    zone: us-central1-a
+---
+metadata:
+  items:
+    - key: startup-script
+      value: |
+        #!/bin/bash
+        apt-get update && apt-get install -y nginx
