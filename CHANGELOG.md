@@ -413,3 +413,8 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 
 - Added Docker health check patterns docs (`Docker/docs/docker-health-check-patterns.md`)
 - Added Helm nginx chart with custom values snippet (`Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh`)
+
+## 2026-08-15
+
+- Added AWS S3 static website deployment script (aws-005) (`AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh`)
+- Added GitHub Actions workflow_dispatch trigger and poll snippet (ga-006) (`GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py`)
