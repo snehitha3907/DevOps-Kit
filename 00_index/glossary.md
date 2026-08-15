@@ -23,6 +23,7 @@
 - **`aws sts get-caller-identity`** — The "who am I?" command. It prints the account number, ARN, and user ID the current credentials resolve to.
 - **`~/.aws/config`** — The INI-style file that holds profile settings (region, output format). Distinct from `~/.aws/credentials` which holds the secret keys.
 - **`~/.aws/credentials`** — The file that stores access key pairs. Sensitive — should never be committed to git.
+- **Static website hosting** — An S3 bucket mode that serves a directory as a public website: you point the bucket at an `index.html` and enable public-read, and S3 exposes a `<bucket>.s3-website-<region>.amazonaws.com` endpoint. The index document is mandatory — the endpoint returns 200 only when it exists.
 
 ## Azure
 
@@ -99,6 +100,7 @@
 - **`gcloud config`** — Persistent settings for the CLI (project, region, zone, account).
 - **Service account** — A non-human identity for automation. Used instead of a user account in pipelines.
 - **Application Default Credentials (ADC)** — A strategy that `gcloud` and GCP client libraries use to find credentials automatically.
+- **startup-script** — A Compute Engine metadata key whose value is a shell script that runs automatically on the first boot of an instance (e.g. `apt-get update && apt-get install -y nginx`); a quick way to install software or bootstrap a machine without a config-management tool.
 - **`--format`** — Controls output: `json`, `yaml`, `table`, `text`, `csv`, `list`.
 - **`--filter`** — Server-side filtering of results.
 
@@ -161,6 +163,7 @@
 - **Contact link** — A link shown in the new-issue interface that directs users to external resources such as community discussions or security policies.
 - **Stale workflow** — A scheduled automation (often `.github/stale.yml` or an Actions workflow) that labels and closes issues and PRs after a period of inactivity.
 - **release-please** — A GitHub tool that automates versioning, changelog generation, and release creation from conventional commits; commonly wired in via a `.github/workflows/release-please.yml` file.
+- **workflow run** — An instantiation of a workflow that has been triggered; each run has an ID, a status (`queued`, `in_progress`, `completed`), and a conclusion (`success`, `failure`), queryable via the Actions API's `GET /repos/{owner}/{repo}/actions/workflows/{workflow}/runs`.
 
 ## GitHub Actions
 
@@ -169,6 +172,7 @@
 - **Step** — An individual task within a job, such as running a script or using an action.
 - **Action** — A reusable unit of automation that can be shared across workflows.
 - **Runner** — A server that listens for workflow jobs and executes them.
+- **workflow_dispatch** — An event that lets you trigger a workflow run manually, either from the GitHub web UI or via the REST API (`POST /repos/{owner}/{repo}/actions/workflows/{workflow}/dispatches`); useful for on-demand or scheduled-on-request runs from a script.
 
 ## GitLab CI/CD
 
@@ -212,6 +216,9 @@
 - **ClusterIP** — The default Kubernetes Service type that exposes the service on an internal cluster IP, making it reachable only from within the cluster.
 - **NetworkPolicy** — A Kubernetes resource that controls traffic flow between pods and namespaces; when no policy exists, all pods can communicate freely.
 - **CNI plugin** — A Container Network Interface plugin (e.g., kindnet, Calico) that implements pod-to-pod networking and routing in a Kubernetes cluster.
+- **Liveness probe** — A periodic container check (HTTP GET, TCP, or command) that determines whether the container is still alive; if it fails, kubelet kills and restarts the container.
+- **Readiness probe** — A periodic container check that determines whether the container is ready to serve traffic; if it fails, the pod is removed from Service endpoints until it passes again.
+- **Startup probe** — A container check that gates whether the liveness and readiness probes begin running; useful for slow-starting applications so kubelet does not kill them during boot.
 - **Context** — A cluster+user+namespace tuple stored in the kubeconfig; `kubectl` uses the current context to decide which cluster to send requests to.
 - **ImagePullBackOff** — A pod image-pull error state where Kubernetes cannot download the container image, usually due to a wrong image name or missing registry credentials.
 - **ContainerCreating** — A pod phase indicating the container runtime is pulling the image or setting up the filesystem; distinct from `ImagePullBackOff`, which means the pull itself failed.
@@ -254,6 +261,9 @@
 - **CVSS** — Common Vulnerability Scoring System, a framework for rating the severity of security vulnerabilities.
 - **Severity filtering** — The ability to filter scan results by severity level (CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN).
 - **SBOM** — Software Bill of Materials, a list of all components and dependencies in a piece of software.
+- **`--exit-code`** — A Trivy flag that makes a scan return a non-zero exit code when vulnerabilities are found (e.g. `--exit-code 1`); needed to turn a scan into a failing CI gate, since Trivy exits 0 by default even with issues.
+- **`trivy fs`** — Scans a local filesystem/directory for vulnerabilities in lockfiles and dependency manifests; returns "No vulnerable packages found" when there is nothing to resolve (e.g. no lockfiles present).
+- **`trivy repo`** — Scans a Git repository's dependencies for known vulnerabilities by cloning it before analysis.
 
 ## Prometheus
 
