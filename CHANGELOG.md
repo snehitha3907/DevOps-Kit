@@ -4,6 +4,8 @@
 
 - Added AWS CLI quickstart walkthrough script with trip-up notes (aws-004) (`AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh`)
 - Reworked aws-004: AWS CLI quickstart walkthrough script documenting what tripped me up (`AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh`)
+- Added minimal gcloud config export and startup-script metadata block (gcp-006) (`GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml`)
+- Added Trivy quickstart trip-up notes (trv-006) (`Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md`)
 
 ## 2026-08-13
 
