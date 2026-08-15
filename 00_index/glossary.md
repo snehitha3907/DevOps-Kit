@@ -63,6 +63,8 @@
 - **`selfHeal`** — An ArgoCD sync option that automatically reverts manual cluster changes (e.g. `kubectl edit`) back to the state declared in Git.
 - **`prune`** — An ArgoCD sync option that deletes cluster resources once they disappear from Git; pair it with the `allowEmpty: false` default so a generator returning zero resources cannot wipe everything.
 - **`allowEmpty`** — An ArgoCD ApplicationSet safety default that refuses to render a template when a generator returns no elements, guarding against accidental mass deletion on a broken generator.
+- **`OutOfSync`** — The state where an Application's live cluster state does not match what is declared in Git; ArgoCD surfaces this so you know a sync is needed.
+- **`Synced`** — The state where an Application's live cluster state matches the Git source exactly.
 
 ## Docker
 
@@ -107,6 +109,9 @@
 - **values.yaml** — The default configuration file for a chart, containing key-value pairs that templates consume.
 - **Repository** — A hosted collection of charts, such as the Bitnami repository or an OCI registry.
 - **Template** — A Kubernetes manifest written with Go templating placeholders that Helm renders at install or upgrade time.
+- **Release revision** — An incrementing number tracking each change to a Helm release; viewable with `helm history`.
+- **`helm uninstall`** — The command that removes a release and its resources from the cluster.
+- **`helm repo update`** — The command that refreshes the local chart index from remote repositories so `helm search` and `helm upgrade` see newer chart versions.
 
 ## Git
 
@@ -207,6 +212,9 @@
 - **ClusterIP** — The default Kubernetes Service type that exposes the service on an internal cluster IP, making it reachable only from within the cluster.
 - **NetworkPolicy** — A Kubernetes resource that controls traffic flow between pods and namespaces; when no policy exists, all pods can communicate freely.
 - **CNI plugin** — A Container Network Interface plugin (e.g., kindnet, Calico) that implements pod-to-pod networking and routing in a Kubernetes cluster.
+- **Context** — A cluster+user+namespace tuple stored in the kubeconfig; `kubectl` uses the current context to decide which cluster to send requests to.
+- **ImagePullBackOff** — A pod image-pull error state where Kubernetes cannot download the container image, usually due to a wrong image name or missing registry credentials.
+- **ContainerCreating** — A pod phase indicating the container runtime is pulling the image or setting up the filesystem; distinct from `ImagePullBackOff`, which means the pull itself failed.
 
 ## OpenTofu
 

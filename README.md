@@ -2,7 +2,6 @@
 > A working DevOps engineer's quick-reference for Docker, Kubernetes, Terraform, Ansible, Git, and the cloud-native toolchain.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
-![License](https://img.shields.io/github/license/snehitha3907/DevOps-Kit)
 ![Top language](https://img.shields.io/github/languages/top/snehitha3907/DevOps-Kit)
 ![Languages](https://img.shields.io/github/languages/count/snehitha3907/DevOps-Kit)
 ![Repo size](https://img.shields.io/github/repo-size/snehitha3907/DevOps-Kit)
@@ -19,11 +18,11 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Quick links
 
-- [AWS list EC2 and S3 snippet](AWS/snippets/2026-08-12-list-ec2-and-s3.sh) — Quick script to list EC2 instances and S3 buckets with gcloud.
+- [AWS CLI quickstart walkthrough](AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh) — Notes on what tripped me up during the AWS CLI quickstart.
+- [AWS app-default credentials script](AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh) — Installs AWS CLI v2 and sets application-default credentials.
+- [AWS list EC2 and S3 snippet](AWS/snippets/2026-08-12-list-ec2-and-s3.sh) — Quick script to list EC2 instances and S3 buckets with the AWS CLI.
 - [Ansible lint playbook snippet](Ansible/snippets/2026-08-12-lint-ansible-playbook.py) — Python wrapper that lints an Ansible playbook and reports failures.
 - [Kubernetes deployment + service with probes config](Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml) — Deployment and Service manifest for a Go app with liveness and readiness probes.
-- [Ansible handlers and templates tutorial](Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md) — Notes on using Ansible handlers and Jinja2 templates from the official tutorial.
-- [Kubernetes tutorial tripups](Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md) — Notes on what tripped me up during Kubernetes interactive tutorials.
 
 ## Layout
 
@@ -35,7 +34,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, a networking drivers notebook, and a reusable Go microservice scaffold.
 - **GCP/** — Primer, gcloud CLI install and configure script, and a Compute/GCS listing snippet.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
-- **git/** — Companion lowercase directory with git-bisect notes and a repo-scaffold template (10 files), detailed in [topics.md](00_index/topics.md).
+- **git/** — Companion lowercase directory with git-bisect notes and a repo-scaffold template (11 files), detailed in [topics.md](00_index/topics.md).
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs, and Python API snippets.
 - **GitHub Actions/** — Quickstart notes and CI workflow configs with environment variables and secrets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and local pipeline runner.
@@ -57,7 +56,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
 | Ansible | 6 | 4 | 7 | 2 | 1 | 2 | 1 | — | 1 | 2026-08-12 |
 | ArgoCD | 2 | 1 | 2 | — | — | — | — | — | — | 2026-08-11 |
-| AWS | 2 | 2 | 2 | 1 | — | — | — | — | — | 2026-07-13 |
+| AWS | 2 | 4 | 2 | 1 | — | — | — | — | — | 2026-08-14 |
 | Azure | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-13 |
 | Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-12 |
 | GCP | 1 | 1 | — | 1 | — | — | — | — | — | 2026-07-17 |
@@ -78,7 +77,7 @@ First-contact notes, setup scripts, configs, and manifests for the tools a DevOp
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest cycle added Ansible handlers and templates notes, a lint playbook snippet, an AWS EC2/S3 listing snippet, Kubernetes deployment and service probes config, and Kubernetes tutorial tripups.
+Latest additions: AWS quickstart walkthrough and app-default credentials script, Ansible lint snippet, Kubernetes probes config, and tutorial trip-up notes across Docker, Terraform, Helm, and ArgoCD.
 
 ---
-_Last updated: 2026-08-13_
+_Last updated: 2026-08-14_

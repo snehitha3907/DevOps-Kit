@@ -24,11 +24,12 @@
 - **configs** (2): [2026-07-23-first-application-manifest.yaml](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml), [2026-08-11-guestbook-applicationset.yaml](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
 - **scripts** (1): [2026-07-23-install-argocd-and-access-ui.sh](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 
-## AWS  ·  7 files
+## AWS  ·  9 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 - **notes** (2): [2026-07-13-primer-already-exists.md](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
-- **scripts** (2): [2026-07-13-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh), [2026-07-12-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-12-install-aws-cli-v2-and-configure.sh)
+- **scripts** (4): most recent → [2026-08-14-aws-cli-quickstart-walkthrough.sh](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh), [2026-08-13-install-aws-cli-v2-and-configure-app-default.sh](../AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh), [2026-07-13-install-aws-cli-v2-and-configure.sh](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
+- _…and 1 more under `AWS/scripts/` — browse the folder._
 - **configs** (2): [2026-07-13-minimal-aws-config.ini](../AWS/configs/2026-07-13-minimal-aws-config.ini), [2026-07-12-minimal-aws-config.ini](../AWS/configs/2026-07-12-minimal-aws-config.ini)
 - **snippets** (1): [2026-08-12-list-ec2-and-s3.sh](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 
