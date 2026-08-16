@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-16
+
+- Added AWS EC2 instance list and tag snippet (aws-006) (`AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh`)
+- Added Azure CLI quickstart trip-up notes (az-004) (`Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md`)
+
 ## 2026-08-14
 
 - Added AWS CLI quickstart walkthrough script with trip-up notes (aws-004) (`AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh`)
