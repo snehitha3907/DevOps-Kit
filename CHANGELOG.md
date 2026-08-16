@@ -414,6 +414,10 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added Docker health check patterns docs (`Docker/docs/docker-health-check-patterns.md`)
 - Added Helm nginx chart with custom values snippet (`Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh`)
 
+## 2026-08-16
+
+- Added Python snippet to scan a container image with Trivy and fail on CRITICAL CVEs (trv-007) (`Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py`)
+
 ## 2026-08-15
 
 - Added AWS S3 static website deployment script (aws-005) (`AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh`)
