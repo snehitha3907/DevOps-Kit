@@ -7,9 +7,9 @@
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
 - **notes** (6): most recent → [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md), [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md), [2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
 - _…and 3 more under `Ansible/notes/` — browse the folder._
-- **configs** (7): most recent → [2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml), [docker-python-setup.yaml](../Ansible/configs/docker-python-setup.yaml), [nginx-webserver.yaml](../Ansible/configs/nginx-webserver.yaml)
+- **configs** (7): most recent → [2026-07-19-first-inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml), [2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml), [ansible-collection-requirements-and-docker-lifecycle-playbook.yaml](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
 - _…and 4 more under `Ansible/configs/` — browse the folder._
-- **scripts** (4): [scan-ansible-antipatterns.py](../Ansible/scripts/scan-ansible-antipatterns.py), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh), [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh)
+- **scripts** (4): [2026-07-19-install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh)
 - _1 more under `Ansible/scripts/` — browse the folder._
 - **docs** (2): [ansible-over-terraform-local-exec.md](../Ansible/docs/ansible-over-terraform-local-exec.md), [2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **snippets** (2): [2026-08-12-lint-ansible-playbook.py](../Ansible/snippets/2026-08-12-lint-ansible-playbook.py), [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
@@ -21,7 +21,7 @@
 
 - **primer:** [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
 - **notes** (2): most recent → [2026-08-11-argocd-quickstart.md](../ArgoCD/notes/2026-08-11-argocd-quickstart.md)
-- **configs** (2): [2026-08-11-guestbook-applicationset.yaml](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml), [2026-07-23-first-application-manifest.yaml](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
+- **configs** (2): [2026-07-23-first-application-manifest.yaml](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml), [2026-08-11-guestbook-applicationset.yaml](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
 - **scripts** (1): [2026-07-23-install-argocd-and-access-ui.sh](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 
 ## AWS  ·  11 files
@@ -29,14 +29,15 @@
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 - **scripts** (5): most recent → [2026-08-15-deploy-static-website-to-s3.sh](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh), [2026-08-14-aws-cli-quickstart-walkthrough.sh](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh), [2026-08-13-install-aws-cli-v2-and-configure-app-default.sh](../AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh)
 - _…and 2 more under `AWS/scripts/` — browse the folder._
-- **snippets** (2): [2026-08-16-list-and-tag-ec2-instances.sh](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [2026-08-12-list-ec2-and-s3.sh](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **configs** (2): [2026-07-13-minimal-aws-config.ini](../AWS/configs/2026-07-13-minimal-aws-config.ini), [2026-07-12-minimal-aws-config.ini](../AWS/configs/2026-07-12-minimal-aws-config.ini)
+- **snippets** (2): most recent → [2026-08-16-list-and-tag-ec2-instances.sh](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [2026-08-12-list-ec2-and-s3.sh](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
+- **notes** (2): [2026-07-13-primer-already-exists.md](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 
-## Azure  ·  4 files
+## Azure  ·  5 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
-- **notes** (2): most recent → [2026-08-16-azure-cli-quickstart-trip-ups.md](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
-- **scripts** (1): [2026-07-13-install-azure-cli-and-login.sh](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
+- **notes** (2): most recent → [2026-08-16-azure-cli-quickstart-trip-ups.md](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md), [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
+- **scripts** (2): most recent → [2026-08-17-provision-resource-group-and-storage-account.sh](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [2026-07-13-install-azure-cli-and-login.sh](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (1): [2026-07-13-create-resource-group-and-list-regions.sh](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ## Docker  ·  35 files
@@ -60,33 +61,33 @@
 
 - **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 - **scripts** (1): [2026-07-16-install-gcloud-cli-and-configure-creds.sh](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
-- **configs** (1): [2026-08-14-minimal-gcloud-config-and-startup-script.yaml](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 - **snippets** (1): [2026-07-16-list-compute-and-gcs-with-gcloud.sh](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
+- **configs** (1): [2026-08-14-minimal-gcloud-config-and-startup-script.yaml](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 
 ## Git  ·  40 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
-- **templates** (21): most recent → [release-please.yml](../Git/templates/git-repository-skeleton/.github/workflows/release-please.yml), [release-please-config.json](../Git/templates/git-repo-scaffold/release-please-config.json), [pre-rebase](../Git/templates/git-hooks/pre-rebase)
+- **templates** (21): [pre-commit](../Git/templates/git-hooks/pre-commit), [commit-msg](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
 - _…and 18 more under `Git/templates/` — browse the folder (includes the repository-skeleton scaffold)._
-- **scripts** (8): [changelog-from-conventional-commits.py](../Git/scripts/changelog-from-conventional-commits.py), [minimal-branching-workflow.sh](../Git/scripts/minimal-branching-workflow.sh), [squash-wip-commits.sh](../Git/scripts/squash-wip-commits.sh)
+- **scripts** (8): [2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh), [install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh)
 - _…and 5 more under `Git/scripts/` — browse the folder._
 - **docs** (5): most recent → [automating-git-bisect-with-scripted-regression-tests.md](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-worktrees-parallel-feature-development-setup-workflow-gotchas.md](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
 - _…and 3 more under `Git/docs/` — browse the folder._
-- **notes** (4): most recent → [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-install-git.md](../Git/notes/2026-06-04-install-git.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
-- _…and 1 more under `Git/notes/` — browse the folder._
+- **notes** (4): most recent → [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
+- _…and 2 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
 ## GitHub  ·  26 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
-- **notes** (10): most recent → [2026-06-19-primer-already-exists.md](../GitHub/notes/2026-06-19-primer-already-exists.md), [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
-- _…and 7 more under `GitHub/notes/` — browse the folder._
-- **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [2026-06-12-create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh), [2026-06-10-auth-and-explore-profile.sh](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh)
-- _…and 3 more under `GitHub/scripts/` — browse the folder._
-- **configs** (6): most recent → [stale.yml](../GitHub/configs/dot-github-repository/stale.yml), [labels.yaml](../GitHub/configs/dot-github-repository/labels.yaml), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
-- _…and 3 more under `GitHub/configs/` — browse the folder._
-- **snippets** (2): [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py), [github-issues-api.py](../GitHub/snippets/github-issues-api.py)
+- **notes** (10): most recent → [2026-06-19-primer-already-exists.md](../GitHub/notes/2026-06-19-primer-already-exists.md), [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
+- _…and 8 more under `GitHub/notes/` — browse the folder._
+- **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [2026-06-12-create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
+- _…and 4 more under `GitHub/scripts/` — browse the folder._
+- **configs** (6): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
+- _…and 4 more under `GitHub/configs/` — browse the folder._
+- **snippets** (2): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py)
 - **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - **notebooks** (1): [comparing-api-approaches-release-automation.ipynb](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
@@ -95,27 +96,27 @@
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
 - **configs** (4): most recent → [2026-08-07-matrix-node-workflow.yaml](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [2026-07-13-hello-workflow.yaml](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [2026-07-11-first-ci-workflow-hello.yaml](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - _…and 1 more under `GitHub Actions/configs/` — browse the folder._
-- **notes** (3): most recent → [2026-06-23-following-github-actions-quickstart.md](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [2026-07-13-primer-already-exists.md](../GitHub Actions/notes/2026-07-13-primer-already-exists.md)
-- _1 more under `GitHub Actions/notes/` — browse the folder._
+- **notes** (3): most recent → [2026-07-13-primer-already-exists.md](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [2026-06-23-following-github-actions-quickstart.md](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md)
+- _…and 1 more under `GitHub Actions/notes/` — browse the folder._
 - **scripts** (2): [2026-07-13-install-gh-actions-extension.sh](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [2026-07-11-install-gh-extension-and-list-runs.sh](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
-- **snippets** (1): [2026-08-15-trigger-workflow-dispatch-poll-status.py](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 - **docs** (1): [2026-08-07-github-actions-quickstart-tripups.md](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md)
+- **snippets** (1): [2026-08-15-trigger-workflow-dispatch-poll-status.py](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ## GitLab CI  ·  5 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
-- **notes** (2): most recent → [2026-06-24-following-gitlab-ci-quickstart.md](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md)
+- **notes** (2): [2026-06-24-following-gitlab-ci-quickstart.md](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **scripts** (2): [2026-06-22-install-runner-and-register.sh](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [2026-06-24-run-first-local-pipeline.sh](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
 ## Helm  ·  8 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
-- **notes** (2): most recent → [2026-08-07-helm-quickstart-tripups.md](../Helm/notes/2026-08-07-helm-quickstart-tripups.md)
+- **docs** (3): [2026-07-25-add-helm-to-readme-layout-and-coverage.md](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [2026-07-25-helm-readme-already-documented.md](../Helm/docs/2026-07-25-helm-readme-already-documented.md), [2026-07-22-helm-added-to-readme.md](../Helm/docs/2026-07-22-helm-added-to-readme.md)
+- **notes** (2): most recent → [2026-08-07-helm-quickstart-tripups.md](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **scripts** (1): [2026-07-23-install-helm-and-explore-cli.sh](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - **configs** (1): [2026-07-23-first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - **snippets** (1): [2026-08-11-nginx-helm-chart-custom-values.sh](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
-- **docs** (3): [2026-07-25-add-helm-to-readme-layout-and-coverage.md](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [2026-07-25-helm-readme-already-documented.md](../Helm/docs/2026-07-25-helm-readme-already-documented.md), [2026-07-22-helm-added-to-readme.md](../Helm/docs/2026-07-22-helm-added-to-readme.md)
 
 ## Kubernetes  ·  15 files
 
@@ -123,7 +124,7 @@
 - **notes** (6): most recent → [2026-08-12-kubernetes-tutorial-what-tripped-me-up.md](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [2026-07-19-first-kubectl-version-and-pod-from-manifest.md](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [2026-06-15-following-kubernetes-basics-tutorial.md](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - _…and 3 more under `Kubernetes/notes/` — browse the folder._
 - **manifests** (3): [stateless-app.yaml](../Kubernetes/manifests/stateless-app.yaml), [deployment-service-with-probes-limits.yaml](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [2026-06-15-configmap-secret-mounted-pod.yaml](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
-- **scripts** (2): [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh), [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
+- **scripts** (2): [install-kind-and-first-cluster.sh](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod-lifecycle.sh](../Kubernetes/scripts/pod-lifecycle.sh)
 - **configs** (1): [2026-08-12-deployment-service-go-app-with-probes.yaml](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 - **docs** (1): [ingress-path-based-routing.md](../Kubernetes/docs/ingress-path-based-routing.md)
 - **notebooks** (1): [comparing-kubernetes-workload-types.ipynb](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
@@ -144,36 +145,37 @@
 ## Terraform  ·  18 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
-- **configs** (7): most recent → [reusable-s3-module/variables.tf](../Terraform/configs/reusable-s3-module/variables.tf), [reusable-s3-module/outputs.tf](../Terraform/configs/reusable-s3-module/outputs.tf), [reusable-s3-module/main.tf](../Terraform/configs/reusable-s3-module/main.tf)
-- _…and 4 more under `Terraform/configs/` — browse the folder (includes the reusable-s3-module)._
+- **configs** (7): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable-s3-module/](../Terraform/configs/reusable-s3-module/) folder (5 files)
+- _…and 1 more under `Terraform/configs/` — browse the folder._
 - **notes** (5): most recent → [2026-08-12-terraform-state-management-tutorial.md](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
 - **docs** (2): [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [2026-06-29-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
-- **scripts** (2): [2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install-and-init.sh](../Terraform/scripts/install-and-init.sh)
+- **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - **notebooks** (1): [2026-07-02-comparing-for-each-vs-count.ipynb](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (1): [simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf)
 
 ## Trivy  ·  8 files
 
 - **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
-- **notes** (3): most recent → [2026-08-14-trivy-quickstart-trip-ups.md](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md), [2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
+- **notes** (3): most recent → [2026-08-14-trivy-quickstart-trip-ups.md](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md), [2026-06-25-exploring-trivy-cli.md](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
 - **scripts** (2): [2026-07-12-install-trivy-and-scan-filesystem.sh](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [2026-06-26-scanned-first-container-image.sh](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+- **snippets** (2): most recent → [2026-08-16-scan-image-fail-critical-cves.py](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (1): [2026-08-12-trivy-config.yaml](../Trivy/configs/2026-08-12-trivy-config.yaml)
-- **snippets** (2): [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py), [2026-08-16-scan-image-fail-critical-cves.py](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
 
 ## git  ·  11 files
 
 A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template). Prefer `Git/` for the main toolkit.
 
 - **docs** (3): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
-- **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
-- _…and 4 more under `git/templates/` — browse the folder._
 - **notes** (1): [git-branching-tutorial](../git/notes/2026-08-11-git-branching-tutorial.md)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
+- **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
+- _…and 4 more under `git/templates/` — browse the folder._
 
-## Foundational Concepts  ·  40 files
+## Foundational Concepts  ·  36 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+  - **notes** (1): [artifact-promotion-gates-and-rollbacks.md](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
   - **scripts** (2): [simulated-cicd-pipeline.sh](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh), [artifact-promotion-rollback.sh](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
   - **snippets** (2): [cicd-common-patterns.sh](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh), [parallelized-ci-stage-runner.sh](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
   - **docs** (1): [artifact-promotion-environment-rollbacks.md](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md)
@@ -183,15 +185,17 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a
 - **Infrastructure as Code Concepts:** [0000-primer-infrastructure-as-code-concepts.md](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
   - **docs** (1): [terraform-ansible-division-of-responsibility.md](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md)
   - **notebooks** (1): [declarative-vs-imperative-iac.ipynb](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb)
-- **Linux & System Administration** (5): [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md), [process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md), [filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+- **Linux & System Administration** (7): [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md), [process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md), [filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
   - **docs** (1): [systemd-timers-journald-shipping.md](../docs/concepts/linux-system-administration/docs/systemd-timers-journald-shipping.md)
   - **scripts** (2): [systemd-health-check-log-alerting.sh](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh), [systemd-watchdog-restart-and-page.sh](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh)
+  - **notebooks** (1): [linux-system-performance-analysis.ipynb](../docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb)
 - **Monitoring & Observability:** [0000-primer-monitoring-observability-concepts.md](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
   - **docs** (1): [combining-metrics-logs-traces-observability.md](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
-- **Networking Fundamentals** (4): [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md), [netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh), [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
+  - **notebooks** (1): [scraping-endpoint-three-pillars.ipynb](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
+- **Networking Fundamentals** (5): [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md), [netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh), [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
   - **notebooks** (1): [dns-tls-load-balancing-visualization.ipynb](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
   - **scripts** (1): [tcp-tls-health-probes.sh](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh)
-- **Scripting & Automation (Bash/Python)** (4): [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
+- **Scripting & Automation (Bash/Python)** (5): [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
   - **snippets** (1): [retry-backoff-logging.py](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
   - **notebooks** (1): [bash-python-glue-patterns.ipynb](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
