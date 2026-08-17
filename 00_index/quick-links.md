@@ -20,7 +20,7 @@
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
 - [Install Ansible + explore modules](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh)
 - [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
-- [Install AWS CLI v2 with application-default credentials](../AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh)
+- [Install AWS CLI v2 app-default credentials](../AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh)
 - [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Install Docker + run first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
@@ -82,9 +82,7 @@
 - [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
 - [Prometheus scrape config (manifest)](../Docker/manifests/prometheus.yml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
-- [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 - [Trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
-- [Kubernetes Deployment + Service with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -147,16 +145,9 @@
 - [GCP primer](../GCP/notes/0000-primer-gcp.md)
 - [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
 - [List Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
-- [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
-
-### Work with AWS
-- [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
-- [Deploy a static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh)
-- [List EC2 instances and S3 buckets](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
-- [Trivy quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 
