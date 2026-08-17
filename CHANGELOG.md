@@ -2,6 +2,9 @@
 
 ## 2026-08-17
 
+- Added Terraform scaffolding snippet for a reusable S3 bucket module with remote state backend (tf-016) (`Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh`)
+- Added Terraform HCL snippet for a reusable module with for_each and variable validation blocks (tf-018) (`Terraform/snippets/reusable-module-for-each-validation.hcl`)
+
 - Added Azure CLI resource group and storage account provisioning script (az-005) (`Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh`)
 
 ## 2026-08-16
