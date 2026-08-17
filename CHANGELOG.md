@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-17
+
+- Added Azure CLI resource group and storage account provisioning script (az-005) (`Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh`)
+
 ## 2026-08-16
 
 - Added AWS EC2 instance list and tag snippet (aws-006) (`AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh`)
