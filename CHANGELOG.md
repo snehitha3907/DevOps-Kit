@@ -6,6 +6,7 @@
 - Added Terraform HCL snippet for a reusable module with for_each and variable validation blocks (tf-018) (`Terraform/snippets/reusable-module-for-each-validation.hcl`)
 
 - Added Azure CLI resource group and storage account provisioning script (az-005) (`Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh`)
+- Added Terraform output values and dependent module wiring docs (tf-017) (`Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md`)
 
 ## 2026-08-16
 
