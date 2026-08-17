@@ -24,6 +24,7 @@
 - **`~/.aws/config`** — The INI-style file that holds profile settings (region, output format). Distinct from `~/.aws/credentials` which holds the secret keys.
 - **`~/.aws/credentials`** — The file that stores access key pairs. Sensitive — should never be committed to git.
 - **Static website hosting** — An S3 bucket mode that serves a directory as a public website: you point the bucket at an `index.html` and enable public-read, and S3 exposes a `<bucket>.s3-website-<region>.amazonaws.com` endpoint. The index document is mandatory — the endpoint returns 200 only when it exists.
+- **Tagging** — Attaching `Key=Value` metadata to AWS resources (e.g. `Name`, `Environment`) so they are identifiable in lists and cost reports. With the CLI, `aws ec2 create-tags --resources <id> --tags Key=Name,Value=web` writes them, and a `Tags[?...]` clause inside an `--query` expression reads them back alongside `InstanceId` and `State.Name`.
 
 ## Azure
 
@@ -36,6 +37,8 @@
 - **`--query`** — JMESPath filter to pick specific fields from JSON output.
 - **Service principal** — A non-human identity for automation, used instead of a user account in CI/CD.
 - **ARM (Azure Resource Manager)** — The underlying REST API that `az` wraps. Every CLI command maps to an ARM API call.
+- **Storage account** — A service that provides scalable storage for blobs, files, queues, and tables; each account has a globally unique, lowercase-only name, and its SKU (e.g. `Standard_LRS`) fixes redundancy and performance. Created with `az storage account create`.
+- **`az configure`** — The Azure CLI command that sets persistent defaults (location, output format, default group) so you don't repeat `--location` and `--output` on every call.
 
 ## Containerization Concepts
 
@@ -264,6 +267,8 @@
 - **`--exit-code`** — A Trivy flag that makes a scan return a non-zero exit code when vulnerabilities are found (e.g. `--exit-code 1`); needed to turn a scan into a failing CI gate, since Trivy exits 0 by default even with issues.
 - **`trivy fs`** — Scans a local filesystem/directory for vulnerabilities in lockfiles and dependency manifests; returns "No vulnerable packages found" when there is nothing to resolve (e.g. no lockfiles present).
 - **`trivy repo`** — Scans a Git repository's dependencies for known vulnerabilities by cloning it before analysis.
+- **`--severity`** — A Trivy flag that narrows a scan to given levels (e.g. `--severity CRITICAL`), so exit codes and reports can be scoped to the findings you actually care about.
+- **`VulnerabilityID`** — The CVE identifier Trivy assigns to each finding in its JSON report; paired with `PkgName`, `InstalledVersion`, and `FixedVersion` it tells you exactly which package needs upgrading to clear a finding.
 
 ## Prometheus
 
