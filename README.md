@@ -60,15 +60,15 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 | Azure | 2 | 2 | — | 1 | — | — | — | — | — | 2026-08-17 |
 | Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-12 |
 | GCP | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-08-14 |
-| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
+| Git | 4 | 8 | 1 | 1 | — | 6 | 1 | — | 21 | 2026-08-18 |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-08-05 |
 | GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | — |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-11 |
-| Kubernetes | 6 | 2 | 1 | 1 | — | 1 | 1 | 3 | — | 2026-08-12 |
+| Kubernetes | 6 | 2 | 3 | 1 | — | 1 | 1 | 3 | — | 2026-08-18 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
-| Terraform | 5 | 2 | 7 | — | — | 2 | 1 | 1 | — | 2026-08-12 |
+| Terraform | 5 | 2 | 13 | — | — | 2 | 1 | 1 | — | 2026-08-18 |
 | Trivy | 3 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-16 |
 
 *Rows follow the on-disk tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit.*
@@ -80,4 +80,4 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest additions round out the cloud CLIs — an Azure resource-group and storage-account provisioning script, Azure quickstart trip-ups, and an EC2 list-and-tag snippet — plus a Trivy wrapper that fails a build when a scan surfaces a critical CVE.
 
 ---
-_Last updated: 2026-08-17_
+_Last updated: 2026-08-18_
