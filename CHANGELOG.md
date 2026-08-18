@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-18
+
+- Corrected README Coverage table counts against on-disk files (audit-010): Docker Dockerfiles 7→6, Terraform Configs 7→6, Terraform Snippets →2, Terraform Docs →3, Terraform last-verified →2026-08-17. (`README.md`, `audit/docs/2026-08-18-coverage-table-audit.md`)
+
 ## 2026-08-17
 
 - Added Terraform scaffolding snippet for a reusable S3 bucket module with remote state backend (tf-016) (`Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh`)
