@@ -3,9 +3,9 @@ last_verified: 2026-08-18
 tool_version: n/a
 ---
 
-# audit-010 — Recounted the README Coverage table against disk
+# Recounted the README Coverage table against disk
 
-I went through the README Coverage table row by row and compared every figure to actual files on disk, just like the rework note told me to. A previous pass had drifted on a few rows, so I fixed the ones that didn't match.
+I went through the README Coverage table row by row and compared every figure to actual files on disk. A previous pass had drifted on a few rows, so I fixed the ones that didn't match.
 
 ## What I counted
 

@@ -12,4 +12,4 @@ I checked whether `Ansible/notebooks/` and `ansible-variable-precedence.ipynb` a
 
 **Coverage table** (line 54) shows Ansible Notebooks = 1.
 
-Both references are already in place from a prior cycle — no changes needed.
+Both references are already in place — no changes needed.

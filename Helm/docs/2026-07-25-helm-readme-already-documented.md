@@ -6,7 +6,7 @@ sources: []
 
 # Helm/ already in README
 
-I opened the README to add the Helm/ folder and found it's already documented.
+I went to add the Helm/ folder to the README and found it's already documented.
 
 ## What I found
 

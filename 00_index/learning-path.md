@@ -54,6 +54,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Trivy** — Container image vulnerability scanning. [CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [image scan script](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh), [config reference](../Trivy/configs/2026-08-12-trivy-config.yaml), [quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md). To hard-fail a build on CRITICAL CVEs, wrap Trivy in a script that checks exit codes: [critical-CVE fail snippet](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py).
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
+- **Terraform reusable modules** — Building a reusable S3 bucket module with a remote-state backend, plus `for_each` and validation-block patterns so inputs are checked at plan time. [Scaffold script](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl), [module outputs wiring guide](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 
 ## Stage 4: Advanced Tools
 
@@ -77,6 +78,7 @@ Advanced concepts and expert-level tool content.
 
 - **GitLab CI/CD** — Pipelines, runners, stages, and jobs. [Primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [pipeline config](../GitLab CI/configs/2026-06-22-first-pipeline.yaml), [runner setup](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/README.md)
+- **Terraform module outputs** — Wiring a child module's computed values (VPC IDs, endpoints, ARNs) into a parent module, and the plan-time errors that catch mistakes. [Guide](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 - **Kubernetes production patterns** ⏳ — Ingress controllers, service meshes, autoscaling, and security policies.
 - **Helm chart authoring** ⏳ — Creating and publishing your own charts.
 - **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
@@ -144,4 +146,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-08-17_
+_Last updated: 2026-08-18_
