@@ -142,15 +142,16 @@
 - **scripts** (1): [2026-07-23-install-prometheus-and-verify-metrics.sh](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **configs** (1): [2026-07-23-minimal-scrape-config.yml](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
-## Terraform  ·  18 files
+## Terraform  ·  21 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable-s3-module/](../Terraform/configs/reusable-s3-module/) folder (5 files)
 - _…and 1 more under `Terraform/configs/` — browse the folder._
 - **notes** (5): most recent → [2026-08-12-terraform-state-management-tutorial.md](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
-- **docs** (2): [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [2026-06-29-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
+- **docs** (3): [wiring-terraform-outputs-into-dependent-modules.md](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [2026-06-29-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
+- **snippets** (2): most recent → [2026-08-17-scaffold-s3-bucket-module-remote-state.sh](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable-module-for-each-validation.hcl](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - **notebooks** (1): [2026-07-02-comparing-for-each-vs-count.ipynb](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (1): [simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf)
 
@@ -162,11 +163,11 @@
 - **snippets** (2): most recent → [2026-08-16-scan-image-fail-critical-cves.py](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (1): [2026-08-12-trivy-config.yaml](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
-## git  ·  11 files
+## Git (lowercase)  ·  11 files
 
 A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template). Prefer `Git/` for the main toolkit.
 
-- **docs** (3): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
+- **docs** (2): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
 - **notes** (1): [git-branching-tutorial](../git/notes/2026-08-11-git-branching-tutorial.md)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
 - **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)

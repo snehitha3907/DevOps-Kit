@@ -78,6 +78,7 @@
 - [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
 - [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/README.md)
+- [Terraform for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - [Docker Compose multi-service app config](../Docker/configs/multi-service-app.yaml)
 - [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
 - [Prometheus scrape config (manifest)](../Docker/manifests/prometheus.yml)
@@ -85,6 +86,14 @@
 - [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 - [Trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - [Kubernetes Deployment + Service with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
+
+### Work with Terraform
+- [Wire outputs into a dependent module](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
+- [Scaffold a reusable S3 bucket module + remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh)
+- [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
+- [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
+- [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
+- [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -136,12 +145,6 @@
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
-
-### Work with Terraform
-- [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
-- [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
-- [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
-- [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
 
 ### Work with GCP
 - [GCP primer](../GCP/notes/0000-primer-gcp.md)

@@ -5,7 +5,7 @@ tool_version: n/a
 
 # Helm/ folder already in README Layout and Coverage table
 
-I opened the README to add the Helm/ folder and found it's already there. Both the Layout section and the Coverage table already mention Helm. Looks like a prior cycle handled this before the task was generated.
+I went to add the Helm/ folder to the README and found it's already there. Both the Layout section and the Coverage table already mention Helm.
 
 ## What I found
 

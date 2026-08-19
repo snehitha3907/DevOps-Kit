@@ -5,7 +5,7 @@ tool_version: n/a
 
 # git/ folder README coverage
 
-I noticed the README Layout and Coverage table only list `Git/` (capital G) — the old full-content folder — but not `git/` (lowercase), the lean folder created by the git-008 rework. So the git/ folder was invisible in the repo's own navigation.
+I noticed the README Layout and Coverage table only list `Git/` (capital G) — the older full-content folder — but not `git/` (lowercase), the leaner companion folder. So the git/ folder was invisible in the repo's own navigation.
 
 ## What's in git/
 

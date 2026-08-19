@@ -14,15 +14,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics.
+First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. Recent work has centred on Terraform — a reusable S3 bucket module, `for_each` and validation patterns, and wiring module outputs into dependent configurations.
 
 ## Quick links
 
+- [Wire Terraform outputs into a dependent module](Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md) — Pass VPC IDs, subnet IDs, and endpoints from a child module to a parent module, and the plan-time errors to watch for.
+- [Scaffold a reusable S3 bucket module with remote state](Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh) — A script that lays out a versioned, encrypted S3 module plus a remote-state backend.
+- [Reusable module patterns: for_each and validation](Terraform/snippets/reusable-module-for-each-validation.hcl) — An HCL snippet showing `for_each` over resources and variable validation blocks in a reusable module.
 - [Provision an Azure resource group and storage account](Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh) — Create a resource group and a timestamped storage account with the Azure CLI, then verify both.
 - [List and tag EC2 instances](AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh) — Pull instance IDs, states, and zones with `--query`, then tag a running instance with `create-tags`.
-- [Azure CLI quickstart trip-ups](Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md) — What tripped me up following the Azure CLI quickstart: resource-group vs resource location, noisy `az login` output, and storage-account naming rules.
-- [Fail a build on critical CVEs with Trivy](Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py) — A small Python wrapper that scans an image and hard-fails on CRITICAL findings via `--exit-code 1`.
-- [Deploy a static website to S3](AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh) — Publish a local folder as a public static site on S3 with the AWS CLI.
 
 ## Layout
 
@@ -45,6 +45,7 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, a config file, and Python wrappers.
 - **docs/** — Kit-level operational notes and foundational concept primers.
+- **audit/** — Records of maintenance checks that keep the README and index files aligned with what is on disk.
 - **CHANGELOG.md** — Chronological record of additions, reworks, and audit fixes.
 
 ## Coverage
@@ -62,7 +63,7 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 | GCP | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-08-14 |
 | Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
 | GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-08-05 |
-| GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | — |
+| GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-11 |
 | Kubernetes | 6 | 2 | 1 | 1 | — | 1 | 1 | 3 | — | 2026-08-12 |
@@ -77,7 +78,7 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. The latest additions round out the cloud CLIs — an Azure resource-group and storage-account provisioning script, Azure quickstart trip-ups, and an EC2 list-and-tag snippet — plus a Trivy wrapper that fails a build when a scan surfaces a critical CVE.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Terraform has been the recent centre of gravity — a reusable S3 bucket module, `for_each` and validation patterns, and a guide on wiring module outputs into dependent configurations — alongside an Azure resource-group and storage-account provisioning script and an EC2 list-and-tag snippet. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
 
 ---
 _Last updated: 2026-08-18_
