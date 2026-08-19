@@ -14,7 +14,7 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. Recent work has centred on Terraform — a reusable S3 bucket module, `for_each` and validation patterns, and wiring module outputs into dependent configurations.
+First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit. Recent work has centred on Terraform — a reusable S3 bucket module, `for_each` and validation patterns, and wiring module outputs into dependent configurations — alongside an Azure resource-group and storage-account provisioning script and an EC2 list-and-tag snippet.
 
 ## Quick links
 
@@ -44,8 +44,7 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 - **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, a config file, and Python wrappers.
-- **docs/** — Kit-level operational notes and foundational concept primers.
-- **audit/** — Records of maintenance checks that keep the README and index files aligned with what is on disk.
+- **docs/** — Foundational concept primers and kit-level operational notes.
 - **CHANGELOG.md** — Chronological record of additions, reworks, and audit fixes.
 
 ## Coverage
@@ -59,17 +58,17 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 | ArgoCD | 2 | 1 | 2 | — | — | — | — | — | — | 2026-08-11 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 2 | 2 | — | 1 | — | — | — | — | — | 2026-08-17 |
-| Docker | 5 | 5 | 1 | 2 | 6 | 3 | 1 | 5 | 6 | 2026-08-12 |
+| Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-12 |
 | GCP | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-08-14 |
 | Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
-| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-08-05 |
-| GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | 2026-08-15 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-08 |
+| GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | — |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-11 |
 | Kubernetes | 6 | 2 | 1 | 1 | — | 1 | 1 | 3 | — | 2026-08-12 |
 | OpenTofu | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-18 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
-| Terraform | 5 | 2 | 6 | 2 | — | 3 | 1 | 1 | — | 2026-08-17 |
+| Terraform | 5 | 2 | 7 | 2 | — | 3 | 1 | 1 | — | 2026-08-17 |
 | Trivy | 3 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-16 |
 
 *Rows follow the on-disk tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit.*
@@ -81,4 +80,4 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Terraform has been the recent centre of gravity — a reusable S3 bucket module, `for_each` and validation patterns, and a guide on wiring module outputs into dependent configurations — alongside an Azure resource-group and storage-account provisioning script and an EC2 list-and-tag snippet. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
 
 ---
-_Last updated: 2026-08-18_
+_Last updated: 2026-08-19_
