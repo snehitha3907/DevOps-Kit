@@ -256,6 +256,8 @@
 - **Provisioner** — A Terraform block attached to a resource that runs a command or script at a point in the resource lifecycle (create, update, or destroy). Prefer a managed resource or provider when one exists; provisioners are a last resort for actions no resource type supports.
 - **local-exec provisioner** — A Terraform provisioner that runs a command on the local machine where `terraform apply` executes (not on the target resource). Commonly used to invoke a configuration-management tool like Ansible after a resource is created.
 - **Tainted** — A Terraform resource state flag marking a previously-created resource for destruction and recreation on the next apply, set automatically after a partial failure or via `terraform taint`, so Terraform replaces it cleanly instead of attempting in-place changes.
+- **Child module** — A Terraform module invoked from a parent module, exposing computed values through `output` blocks so the parent can consume them without hard-coding resource attributes.
+- **Parent module** — A Terraform module that calls one or more child modules and wires their outputs into its own resources or further child modules.
 
 ## Trivy
 
