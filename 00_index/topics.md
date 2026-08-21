@@ -45,8 +45,8 @@
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (5): most recent → [2026-08-12-docker-tutorial-tripups.md](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [2026-06-07-docker-compose-quickstart.md](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [2026-06-06-exploring-docker-cli.md](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - _…and 2 more under `Docker/notes/` — browse the folder._
-- **dockerfiles** (7): most recent → [production-ready-go-http-server.Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
-- _…and 5 more under `Docker/dockerfiles/` (incl. the `multi-stage-go-http-server/` source subdir) — browse the folder._
+- **dockerfiles** (5): most recent → [production-ready-go-http-server.Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 3 more under `Docker/dockerfiles/` — browse the folder._
 - **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, and `.dockerignore`
 - **manifests** (5): most recent → [go-redis-prometheus-compose.yaml](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus.yml](../Docker/manifests/prometheus.yml), [Dockerfile](../Docker/manifests/Dockerfile)
 - _…and 2 more under `Docker/manifests/` — browse the folder._
@@ -81,8 +81,8 @@
 ## GitHub  ·  26 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
-- **notes** (10): most recent → [2026-06-19-primer-already-exists.md](../GitHub/notes/2026-06-19-primer-already-exists.md), [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
-- _…and 8 more under `GitHub/notes/` — browse the folder._
+- **notes** (9): most recent → [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md), [2026-06-13-github-quickstart-cli-and-web.md](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md)
+- _…and 6 more under `GitHub/notes/` — browse the folder._
 - **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [2026-06-12-create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 - _…and 4 more under `GitHub/scripts/` — browse the folder._
 - **configs** (6): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
@@ -145,7 +145,7 @@
 ## Terraform  ·  21 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
-- **configs** (7): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable-s3-module/](../Terraform/configs/reusable-s3-module/) folder (5 files)
+- **configs** (6): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable-s3-module/](../Terraform/configs/reusable-s3-module/) folder (4 `.tf` files)
 - _…and 1 more under `Terraform/configs/` — browse the folder._
 - **notes** (5): most recent → [2026-08-12-terraform-state-management-tutorial.md](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
