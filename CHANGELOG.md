@@ -1,8 +1,12 @@
 # Changelog
 
+## 2026-08-21
+
+- Added OpenTofu quickstart trip-up notes following the official guide (ot-004) (`OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md`)
+
 ## 2026-08-18
 
-- Corrected README Coverage table counts against on-disk files (audit-010): Docker Dockerfiles 7→6, Terraform Configs 7→6, Terraform Snippets →2, Terraform Docs →3, Terraform last-verified →2026-08-17. (`README.md`, `audit/docs/2026-08-18-coverage-table-audit.md`)
+- Corrected README Coverage table counts against on-disk files (audit-010): Docker Dockerfiles 7→6, Terraform Configs 7→6, Terraform Snippets →2, Terraform Docs →3, Terraform last-verified →2026-08-17. (`README.md`, `docs/audit/2026-08-18-coverage-table-audit.md`)
 
 ## 2026-08-17
 
@@ -439,3 +443,8 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 
 - Added AWS S3 static website deployment script (aws-005) (`AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh`)
 - Added GitHub Actions workflow_dispatch trigger and poll snippet (ga-006) (`GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py`)
+
+## 2026-08-20
+
+- Verified OpenTofu README Layout, Coverage table, and Status entries; updated Layout description to mention installer source and local config contents (audit-011) (`docs/audit/2026-08-20-audit-011-opentofu-readme.md`, `README.md`)
+- Corrected GitHub README Coverage table Notes count from 10 to 9; excluded 3-line placeholder note (audit-009) (`docs/audit/2026-08-20-audit-009-github-readme.md`, `README.md`)

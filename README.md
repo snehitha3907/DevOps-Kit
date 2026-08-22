@@ -40,11 +40,11 @@ First-contact notes, setup scripts, configs, and manifests for seventeen tool fa
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
 - **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, custom-values snippet, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and troubleshooting snippets.
-- **OpenTofu/** — Primer, install script, and minimal config for the open-source Terraform alternative.
+- **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, and minimal local config with variables and outputs for the open-source Terraform alternative.
 - **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, a config file, and Python wrappers.
-- **docs/** — Foundational concept primers and kit-level operational notes.
+- **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
 - **CHANGELOG.md** — Chronological record of additions, reworks, and audit fixes.
 
 ## Coverage
