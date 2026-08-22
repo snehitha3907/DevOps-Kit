@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-21
+
+- Added OpenTofu quickstart trip-up notes following the official guide (ot-004) (`OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md`)
+
 ## 2026-08-18
 
 - Corrected README Coverage table counts against on-disk files (audit-010): Docker Dockerfiles 7→6, Terraform Configs 7→6, Terraform Snippets →2, Terraform Docs →3, Terraform last-verified →2026-08-17. (`README.md`, `docs/audit/2026-08-18-coverage-table-audit.md`)
