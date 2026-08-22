@@ -35,7 +35,7 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 - **GCP/** — Primer, gcloud CLI install and configure script, Compute/GCS listing snippet, and a minimal config with a startup script.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
 - **git/** — Companion lowercase directory mirroring a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); detailed in [topics.md](00_index/topics.md).
-- **GitHub/** — Primer, CLI and web UI scripts, configs, docs, and Python API snippets.
+- **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide), and Python API snippets.
 - **GitHub Actions/** — Quickstart notes, CI workflow configs, and REST API snippets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
 - **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, custom-values snippet, and docs.

@@ -444,3 +444,8 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 
 - Verified OpenTofu README Layout, Coverage table, and Status entries; updated Layout description to mention installer source and local config contents (audit-011) (`docs/audit/2026-08-20-audit-011-opentofu-readme.md`, `README.md`)
 - Corrected GitHub README Coverage table Notes count from 10 to 9; excluded 3-line placeholder note (audit-009) (`docs/audit/2026-08-20-audit-009-github-readme.md`, `README.md`)
+
+## 2026-08-22
+
+- Added Terraform Ansible inventory generation script from state output (tf-025) (`Terraform/scripts/generate-ansible-inventory-from-terraform-state.py`)
+- Added GitHub docs/ README Layout note documenting deploy-keys vs PATs guide (gh-025) (`GitHub/docs/2026-08-22-document-github-docs-in-readme.md`, `README.md`)
