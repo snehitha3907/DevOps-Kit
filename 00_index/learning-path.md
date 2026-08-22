@@ -146,4 +146,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-08-21_
+_Last updated: 2026-08-22_
