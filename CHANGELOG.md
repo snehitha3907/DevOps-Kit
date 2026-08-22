@@ -5,6 +5,8 @@
 - Added OpenTofu quickstart trip-up notes following the official guide (ot-004) (`OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md`)
 - Added Terraform Ansible inventory generation script from state output (tf-025) (`Terraform/scripts/generate-ansible-inventory-from-terraform-state.py`)
 - Added GitHub docs/ README Layout note documenting deploy-keys vs PATs guide (gh-025) (`GitHub/docs/2026-08-22-document-github-docs-in-readme.md`, `README.md`)
+- Added GitHub branch protection and required-review setup guide for CI gating (gh-018) (`GitHub/docs/branch-protection-and-required-reviews-for-ci.md`)
+- Added gh CLI helper that opens a PR and waits for its CI checks to report (gh-015) (`GitHub/snippets/open-pr-and-wait-for-ci.sh`)
 
 ## 2026-08-18
 
