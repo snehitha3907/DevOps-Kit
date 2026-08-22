@@ -211,3 +211,9 @@ Operational and audit notes kept by the kit. Browse the `docs/` folder.
 - [2026-07-19-ansible-notebooks-readme-verified.md](../docs/2026-07-19-ansible-notebooks-readme-verified.md)
 - [2026-07-19-audit-004-check.md](../docs/2026-07-19-audit-004-check.md)
 - [2026-07-11-removed-dead-general-references.md](../docs/2026-07-11-removed-dead-general-references.md)
+
+## audit  ·  1 file
+
+Maintenance checks that keep the README and index files aligned with what is on disk.
+
+- [2026-08-18-coverage-table-audit.md](../audit/docs/2026-08-18-coverage-table-audit.md)
