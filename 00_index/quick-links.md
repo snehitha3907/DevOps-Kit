@@ -86,6 +86,7 @@
 - [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 - [Trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - [Kubernetes Deployment + Service with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
+- [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 
 ### Work with Terraform
 - [Wire outputs into a dependent module](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
@@ -94,6 +95,7 @@
 - [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
+- [Generate Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -134,6 +136,8 @@
 - [Issue forms and labels (.github repo)](../GitHub/configs/dot-github-repository/)
 - [Stale issue/PR automation (.github repo)](../GitHub/configs/dot-github-repository/stale.yml)
 - [Deploy keys vs PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
+- [Branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
+- [Open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
 
 ### Work with Kubernetes
 - [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
