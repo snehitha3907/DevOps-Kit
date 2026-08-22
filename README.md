@@ -14,7 +14,7 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit. Recent work has centred on Terraform — a reusable S3 bucket module, `for_each` and validation patterns, and wiring module outputs into dependent configurations — alongside an Azure resource-group and storage-account provisioning script and an EC2 list-and-tag snippet.
+First-contact notes, setup scripts, configs, and manifests for seventeen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit. Recent work has centred on Terraform — a reusable S3 bucket module, `for_each` and validation patterns, and wiring module outputs into dependent configurations — alongside an Azure resource-group and storage-account provisioning script and an EC2 list-and-tag snippet.
 
 ## Quick links
 
@@ -60,9 +60,9 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 | Azure | 2 | 2 | — | 1 | — | — | — | — | — | 2026-08-17 |
 | Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-12 |
 | GCP | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-08-14 |
-| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
-| GitHub | 9 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-07-08 |
-| GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | — |
+| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-11 |
+| GitHub | 10 | 6 | 6 | 2 | — | 1 | 1 | — | — | 2026-08-05 |
+| GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-11 |
 | Kubernetes | 6 | 2 | 1 | 1 | — | 1 | 1 | 3 | — | 2026-08-12 |
