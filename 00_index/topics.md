@@ -216,4 +216,4 @@ Operational and audit notes kept by the kit. Browse the `docs/` folder.
 
 Maintenance checks that keep the README and index files aligned with what is on disk.
 
-- [2026-08-18-coverage-table-audit.md](../audit/docs/2026-08-18-coverage-table-audit.md)
+- [2026-08-18-coverage-table-audit.md](../docs/audit/2026-08-18-coverage-table-audit.md)

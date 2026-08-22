@@ -455,3 +455,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 
 - Added Terraform Ansible inventory generation script from state output (tf-025) (`Terraform/scripts/generate-ansible-inventory-from-terraform-state.py`)
 - Added GitHub docs/ README Layout note documenting deploy-keys vs PATs guide (gh-025) (`GitHub/docs/2026-08-22-document-github-docs-in-readme.md`, `README.md`)
+- Added minimal PR-checker workflow with path filtering and branch-protection-friendly checks (gh-016) (`GitHub/configs/2026-08-22-pr-checker-workflow.yaml`)

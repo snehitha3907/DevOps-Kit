@@ -1,0 +1,21 @@
+# last_verified: 2026-08-22 · GitHub Actions · n/a
+# I wanted a PR-only workflow that doesn't run on every push to main,
+# and I filtered the paths so docs changes don't trigger it.
+# The job name is what branch protection rules show as a required check.
+
+name: PR checker
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'lib/**'
+    branches:
+      - main
+
+jobs:
+  code-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Paths changed under src/ or lib/ — code-check is the status branch protection watches."
