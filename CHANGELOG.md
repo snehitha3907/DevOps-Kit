@@ -1,7 +1,14 @@
 # Changelog
 
+## 2026-08-23
+
+- Added Ansible ad-hoc commands first-contact journal notes (ans-023) (`Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md`)
+- Added Bash config parsing, jq JSON querying, and retry with backoff script (con-076) (`docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh`)
+
 ## 2026-08-22
 
+- Added GitHub notebooks README Layout note documenting the release-automation notebook (gh-026) (`GitHub/docs/2026-08-22-document-github-notebooks-in-readme.md`, `README.md`)
+- Added Git/docs/ folder README Layout note documenting bisect, worktrees, and workflows docs (git-024) (`git/docs/2026-08-22-document-git-docs-folder-in-readme.md`, `README.md`)
 - Added OpenTofu quickstart trip-up notes following the official guide (ot-004) (`OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md`)
 - Added Terraform Ansible inventory generation script from state output (tf-025) (`Terraform/scripts/generate-ansible-inventory-from-terraform-state.py`)
 - Added GitHub docs/ README Layout note documenting deploy-keys vs PATs guide (gh-025) (`GitHub/docs/2026-08-22-document-github-docs-in-readme.md`, `README.md`)
