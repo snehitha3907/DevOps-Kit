@@ -45,8 +45,8 @@
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (5): most recent → [2026-08-12-docker-tutorial-tripups.md](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [2026-06-07-docker-compose-quickstart.md](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [2026-06-06-exploring-docker-cli.md](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - _…and 2 more under `Docker/notes/` — browse the folder._
-- **dockerfiles** (5): most recent → [production-ready-go-http-server.Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
-- _…and 3 more under `Docker/dockerfiles/` — browse the folder._
+- **dockerfiles** (7): most recent → [production-ready-go-http-server.Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage-go-http-server.Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 5 more under `Docker/dockerfiles/` — browse the folder._
 - **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, and `.dockerignore`
 - **manifests** (5): most recent → [go-redis-prometheus-compose.yaml](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus.yml](../Docker/manifests/prometheus.yml), [Dockerfile](../Docker/manifests/Dockerfile)
 - _…and 2 more under `Docker/manifests/` — browse the folder._
@@ -78,17 +78,17 @@
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  26 files
+## GitHub  ·  30 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
-- **notes** (9): most recent → [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md), [2026-06-13-github-quickstart-cli-and-web.md](../GitHub/notes/2026-06-13-github-quickstart-cli-and-web.md)
-- _…and 6 more under `GitHub/notes/` — browse the folder._
+- **notes** (10): most recent → [2026-08-22-document-github-docs-in-readme.md](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md), [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
+- _…and 7 more under `GitHub/notes/` — browse the folder._
 - **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [2026-06-12-create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 - _…and 4 more under `GitHub/scripts/` — browse the folder._
-- **configs** (6): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
-- _…and 4 more under `GitHub/configs/` — browse the folder._
-- **snippets** (2): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py)
-- **docs** (1): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
+- **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
+- _…and 5 more under `GitHub/configs/` — browse the folder._
+- **snippets** (3): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py), [open-pr-and-wait-for-ci.sh](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
+- **docs** (3): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch-protection-and-required-reviews-for-ci.md](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [2026-08-22-document-github-docs-in-readme.md](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
 - **notebooks** (1): [comparing-api-approaches-release-automation.ipynb](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
 ## GitHub Actions  ·  11 files
@@ -142,15 +142,15 @@
 - **scripts** (1): [2026-07-23-install-prometheus-and-verify-metrics.sh](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **configs** (1): [2026-07-23-minimal-scrape-config.yml](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
-## Terraform  ·  21 files
+## Terraform  ·  22 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
-- **configs** (6): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable-s3-module/](../Terraform/configs/reusable-s3-module/) folder (4 `.tf` files)
-- _…and 1 more under `Terraform/configs/` — browse the folder._
+- **configs** (7): [local-file.tf](../Terraform/configs/local-file.tf), [2026-06-12-tried-local-with-vars.tf](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable-s3-module/](../Terraform/configs/reusable-s3-module/) folder (4 `.tf` files)
+- _…and 2 more under `Terraform/configs/` — browse the folder._
 - **notes** (5): most recent → [2026-08-12-terraform-state-management-tutorial.md](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [2026-06-24-following-provider-tutorial.md](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [2026-06-10-terraform-getting-started.md](../Terraform/notes/2026-06-10-terraform-getting-started.md)
 - _…and 2 more under `Terraform/notes/` — browse the folder._
 - **docs** (3): [wiring-terraform-outputs-into-dependent-modules.md](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [how-i-wired-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [2026-06-29-terraform-workspaces-and-remote-state-locking.md](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
-- **scripts** (2): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
+- **scripts** (3): [install-and-init.sh](../Terraform/scripts/install-and-init.sh), [2026-06-12-bootstrap-terraform-project.sh](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [generate-ansible-inventory-from-terraform-state.py](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 - **snippets** (2): most recent → [2026-08-17-scaffold-s3-bucket-module-remote-state.sh](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable-module-for-each-validation.hcl](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - **notebooks** (1): [2026-07-02-comparing-for-each-vs-count.ipynb](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (1): [simple-ec2-app.tf](../Terraform/manifests/simple-ec2-app.tf)
