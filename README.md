@@ -33,9 +33,9 @@ First-contact notes, setup scripts, configs, and manifests for seventeen tool fa
 - **Azure/** — Primer, CLI install and login scripts, quickstart trip-up notes, and resource group and storage account provisioning snippets.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, a networking drivers notebook, and a reusable Go microservice scaffold.
 - **GCP/** — Primer, gcloud CLI install and configure script, Compute/GCS listing snippet, and a minimal config with a startup script.
-- **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
+- **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs (bisect automation, three worktrees walkthroughs, and workflows comparison), and a merge-strategies notebook.
 - **git/** — Companion lowercase directory mirroring a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); detailed in [topics.md](00_index/topics.md).
-- **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide), and Python API snippets.
+- **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide), notebooks (comparing API approaches for release automation), and Python API snippets.
 - **GitHub Actions/** — Quickstart notes, CI workflow configs, and REST API snippets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
 - **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, custom-values snippet, and docs.
