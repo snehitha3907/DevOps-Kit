@@ -2,11 +2,11 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  24 files
+## Ansible  ·  25 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
-- **notes** (6): most recent → [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md), [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md), [2026-06-13-ansible-playbook-troubleshooting.md](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
-- _…and 3 more under `Ansible/notes/` — browse the folder._
+- **notes** (7): most recent → [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md), [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md)
+- _…and 4 more under `Ansible/notes/` — browse the folder._
 - **configs** (7): most recent → [2026-07-19-first-inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml), [2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml), [ansible-collection-requirements-and-docker-lifecycle-playbook.yaml](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
 - _…and 4 more under `Ansible/configs/` — browse the folder._
 - **scripts** (4): [2026-07-19-install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh)
@@ -71,24 +71,25 @@
 - _…and 18 more under `Git/templates/` — browse the folder (includes the repository-skeleton scaffold)._
 - **scripts** (8): [2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh), [install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh)
 - _…and 5 more under `Git/scripts/` — browse the folder._
-- **docs** (5): most recent → [automating-git-bisect-with-scripted-regression-tests.md](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-worktrees-parallel-feature-development-setup-workflow-gotchas.md](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 3 more under `Git/docs/` — browse the folder._
-- **notes** (4): most recent → [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
-- _…and 2 more under `Git/notes/` — browse the folder._
+- **docs** (5): most recent → [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md), [automating-git-bisect-with-scripted-regression-tests.md](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-worktrees-parallel-feature-development-setup-workflow-gotchas.md](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 2 more under `Git/docs/` — browse the folder._
+- **notes** (4): most recent → [2026-08-11-git-branching-tutorial.md](../git/notes/2026-08-11-git-branching-tutorial.md), [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
+- _…and 1 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  30 files
+## GitHub  ·  31 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
-- **notes** (10): most recent → [2026-08-22-document-github-docs-in-readme.md](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md), [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [2026-06-15-explore-github-web-ui.md](../GitHub/notes/2026-06-15-explore-github-web-ui.md)
+- **notes** (10): most recent → [2026-08-22-document-github-docs-in-readme.md](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md), [2026-08-22-document-github-notebooks-in-readme.md](../GitHub/docs/2026-08-22-document-github-notebooks-in-readme.md), [2026-06-15-hello-world-guide-and-github-flow.md](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md)
 - _…and 7 more under `GitHub/notes/` — browse the folder._
 - **scripts** (6): [provision-repo-with-api.py](../GitHub/scripts/provision-repo-with-api.py), [2026-06-12-create-repo-and-pr.sh](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 - _…and 4 more under `GitHub/scripts/` — browse the folder._
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue-templates-and-labels.yaml](../GitHub/configs/issue-templates-and-labels.yaml)
 - _…and 5 more under `GitHub/configs/` — browse the folder._
 - **snippets** (3): [github-issues-api.py](../GitHub/snippets/github-issues-api.py), [list-repos-with-python.py](../GitHub/snippets/list-repos-with-python.py), [open-pr-and-wait-for-ci.sh](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
-- **docs** (3): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch-protection-and-required-reviews-for-ci.md](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [2026-08-22-document-github-docs-in-readme.md](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
+- **docs** (4): [how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch-protection-and-required-reviews-for-ci.md](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [2026-08-22-document-github-docs-in-readme.md](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
+- _1 more under `GitHub/docs/` — browse the folder._
 - **notebooks** (1): [comparing-api-approaches-release-automation.ipynb](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
 ## GitHub Actions  ·  11 files
@@ -130,11 +131,12 @@
 - **notebooks** (1): [comparing-kubernetes-workload-types.ipynb](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - **snippets** (1): [pod-troubleshoot-shell.sh](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 
-## OpenTofu  ·  3 files
+## OpenTofu  ·  4 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **scripts** (1): [2026-07-18-install-opentofu-and-verify.sh](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - **configs** (1): [2026-07-18-minimal-local-config.tf](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
+- **notes** (1): [2026-08-21-opentofu-quickstart-trip-ups.md](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md)
 
 ## Prometheus  ·  3 files
 
@@ -163,15 +165,15 @@
 - **snippets** (2): most recent → [2026-08-16-scan-image-fail-critical-cves.py](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (1): [2026-08-12-trivy-config.yaml](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
-## Git (lowercase)  ·  11 files
+## Git (lowercase)  ·  12 files
 
 A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template). Prefer `Git/` for the main toolkit.
 
 - **docs** (2): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
 - **notes** (1): [git-branching-tutorial](../git/notes/2026-08-11-git-branching-tutorial.md)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
-- **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
-- _…and 4 more under `git/templates/` — browse the folder._
+- **templates** (8): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
+- _…and 5 more under `git/templates/` — browse the folder._
 
 ## Foundational Concepts  ·  36 files
 
@@ -212,8 +214,10 @@ Operational and audit notes kept by the kit. Browse the `docs/` folder.
 - [2026-07-19-audit-004-check.md](../docs/2026-07-19-audit-004-check.md)
 - [2026-07-11-removed-dead-general-references.md](../docs/2026-07-11-removed-dead-general-references.md)
 
-## audit  ·  1 file
+## audit  ·  2 files
 
 Maintenance checks that keep the README and index files aligned with what is on disk.
 
+- [2026-08-20-audit-011-opentofu-readme.md](../docs/audit/2026-08-20-audit-011-opentofu-readme.md)
+- [2026-08-20-audit-009-github-readme.md](../docs/audit/2026-08-20-audit-009-github-readme.md)
 - [2026-08-18-coverage-table-audit.md](../docs/audit/2026-08-18-coverage-table-audit.md)

@@ -14,15 +14,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for seventeen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit. Recent work has centred on GitHub repository configuration — branch protection rules, required reviews, PR-checker workflows, and a script that opens a PR and polls for CI completion — alongside the Terraform module-outputs wiring guide and an EC2 list-and-tag snippet.
+First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit. Recent work has centred on Ansible ad-hoc command notes, GitHub repository documentation, a PR-checker workflow, and a Bash script for config parsing with jq and retry patterns.
 
 ## Quick links
 
-- [Branch protection and required reviews for CI](GitHub/docs/branch-protection-and-required-reviews-for-ci.md) — How I enforced pull-request-only merges, required approvals, and status-check gates on a GitHub repo.
-- [Open PR and wait for CI](GitHub/snippets/open-pr-and-wait-for-ci.sh) — A script that creates a pull request and polls the Checks API until the CI job finishes.
-- [Generate Ansible inventory from Terraform state](Terraform/scripts/generate-ansible-inventory-from-terraform-state.py) — Reads a Terraform state file and emits an Ansible inventory so you can hand off provisioning to configuration management.
+- [Ansible ad-hoc commands](Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md) — First-contact notes for running Ansible ad-hoc commands for common sysadmin tasks.
+- [Config parsing with jq and retry patterns](docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh) — A Bash script that ties together config parsing, jq filtering, and retry-with-backoff patterns.
+- [Document GitHub docs in README](GitHub/docs/2026-08-22-document-github-docs-in-readme.md) — Notes on documenting the GitHub docs folder in the kit README.
+- [Document git docs folder in README](git/docs/2026-08-22-document-git-docs-folder-in-readme.md) — Notes on documenting the lowercase git docs folder in the kit README.
 - [PR checker workflow](GitHub/configs/2026-08-22-pr-checker-workflow.yaml) — A GitHub Actions workflow that runs on every pull request and reports pass/fail back to the PR checks API.
-- [Wire Terraform outputs into a dependent module](Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md) — Pass VPC IDs, subnet IDs, and endpoints from a child module to a parent module, and the plan-time errors to watch for.
 
 ## Layout
 
@@ -54,14 +54,14 @@ First-contact notes, setup scripts, configs, and manifests for seventeen tool fa
 
 | Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
 |------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 6 | 4 | 7 | 2 | 1 | 2 | 1 | — | 1 | 2026-08-12 |
+| Ansible | 7 | 4 | 7 | 2 | 1 | 2 | 1 | — | 1 | 2026-08-12 |
 | ArgoCD | 2 | 1 | 2 | — | — | — | — | — | — | 2026-08-11 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 2 | 2 | — | 1 | — | — | — | — | — | 2026-08-17 |
-| Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-12 |
-| GCP | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-07-17 |
-| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-03 |
-| GitHub | 10 | 6 | 7 | 3 | — | 3 | 1 | — | — | 2026-08-22 |
+| Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-05 |
+| GCP | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-08-14 |
+| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-02 |
+| GitHub | 10 | 6 | 7 | 3 | — | 4 | 1 | — | — | 2026-08-22 |
 | GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-07 |
@@ -77,7 +77,7 @@ First-contact notes, setup scripts, configs, and manifests for seventeen tool fa
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Recent work has centred on GitHub repository hardening — branch protection rules with required reviews and status-check gates, a PR-checker workflow, and a script that opens a PR and polls for CI completion — alongside the Terraform guide for wiring module outputs into dependent configurations and an EC2 list-and-tag snippet. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Recent work has centred on Ansible ad-hoc command notes, Bash scripting patterns for config parsing with jq, GitHub repository documentation, a PR-checker workflow, and the Terraform guide for wiring module outputs into dependent configurations. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
 
 ---
-_Last updated: 2026-08-22_
+_Last updated: 2026-08-23_
