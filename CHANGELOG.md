@@ -4,6 +4,10 @@
 
 - Added Ansible ad-hoc commands first-contact journal notes (ans-023) (`Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md`)
 - Added Bash config parsing, jq JSON querying, and retry with backoff script (con-076) (`docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh`)
+- Added GCP snippet listing Compute Engine instances and Cloud Storage buckets (gcp-005) (`GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh`)
+- Added Azure snippet creating a resource group and listing regions (az-009) (`Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh`)
+- Added GCP script installing gcloud CLI and configuring application-default credentials (gcp-004) (`GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh`)
+- Added Azure quickstart trip-up notes (az-010) (`Azure/notes/2026-08-23-azure-quickstart-trip-ups.md`)
 
 ## 2026-08-22
 
