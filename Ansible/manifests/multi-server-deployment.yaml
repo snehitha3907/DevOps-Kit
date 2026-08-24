@@ -1,0 +1,23 @@
+# last_verified: 2026-08-24 · Ansible
+---
+# Multi-server deployment playbook
+# Provisions web, database, and load-balancer servers from a single entry point.
+# Usage: ansible-playbook -i inventory/production.ini multi-server-deployment.yaml
+
+- name: Deploy web servers
+  hosts: webservers
+  become: true
+  roles:
+    - webserver
+
+- name: Deploy database servers
+  hosts: dbservers
+  become: true
+  roles:
+    - dbserver
+
+- name: Deploy and configure load balancer
+  hosts: loadbalancers
+  become: true
+  roles:
+    - loadbalancer

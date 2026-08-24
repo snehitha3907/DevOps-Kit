@@ -1,0 +1,39 @@
+# last_verified: 2026-08-24 · Ansible
+---
+- name: Install PostgreSQL
+  ansible.builtin.apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+      - python3-psycopg2
+    state: present
+    update_cache: true
+
+- name: Ensure PostgreSQL is running
+  ansible.builtin.systemd:
+    name: postgresql
+    state: started
+    enabled: true
+
+- name: Create application database
+  community.postgresql.postgresql_db:
+    name: "{{ app_db_name }}"
+    encoding: UTF-8
+  become_user: postgres
+
+- name: Create application database user
+  community.postgresql.postgresql_user:
+    name: "{{ app_db_user }}"
+    password: "{{ app_db_password }}"
+    db: "{{ app_db_name }}"
+    priv: "ALL"
+  become_user: postgres
+
+- name: Apply database schema
+  community.postgresql.postgresql_query:
+    db: "{{ app_db_name }}"
+    login_user: "{{ app_db_user }}"
+    login_password: "{{ app_db_password }}"
+    query: "{{ lookup('file', 'schema.sql') }}"
+  when: schema_file is defined
+  ignore_errors: true

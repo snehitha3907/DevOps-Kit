@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-24
+
+- Added Ansible multi-server deployment manifest with playbook, static inventory, and roles for web/database/load-balancer servers (ans-021) (`Ansible/manifests/multi-server-deployment.yaml`, `Ansible/manifests/inventory/production.ini`, `Ansible/manifests/roles/`)
+
 ## 2026-08-23
 
 - Added Ansible ad-hoc commands first-contact journal notes (ans-023) (`Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md`)
