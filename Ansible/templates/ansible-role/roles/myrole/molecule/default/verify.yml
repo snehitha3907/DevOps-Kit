@@ -1,0 +1,27 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Check service is running
+      ansible.builtin.systemd:
+        name: nginx
+      register: svc_status
+
+    - name: Assert service is active
+      ansible.builtin.assert:
+        that:
+          - svc_status.status.ActiveState == "active"
+        fail_msg: "nginx service is not running"
+
+    - name: Check config file exists
+      ansible.builtin.stat:
+        path: /etc/nginx/app.conf
+      register: cfg
+
+    - name: Assert config file exists
+      ansible.builtin.assert:
+        that:
+          - cfg.stat.exists
+        fail_msg: "Config file was not deployed"
