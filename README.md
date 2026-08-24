@@ -14,15 +14,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit. Recent work has centred on Ansible ad-hoc command notes, GitHub repository documentation, a PR-checker workflow, and a Bash script for config parsing with jq and retry patterns.
+First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit. Recent work has centred on Ansible role scaffold templates, multi-server deployment manifests, Bash scripting patterns for config parsing with jq, GitHub repository documentation, and a PR-checker workflow.
 
 ## Quick links
 
-- [Ansible ad-hoc commands](Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md) — First-contact notes for running Ansible ad-hoc commands for common sysadmin tasks.
+- [Multi-server deployment manifest](Ansible/manifests/multi-server-deployment.yaml) — Ansible manifest for a multi-server deployment with load balancer and database roles.
+- [Ansible role scaffold template](Ansible/templates/ansible-role/roles/myrole/README.md) — Reusable Ansible role scaffold with Molecule testing setup and standard role directory layout.
+- [Group vars and inventory](Ansible/manifests/group_vars/all.yaml) — Shared Ansible variables and production inventory for the multi-server deployment.
 - [Config parsing with jq and retry patterns](docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh) — A Bash script that ties together config parsing, jq filtering, and retry-with-backoff patterns.
 - [Document GitHub docs in README](GitHub/docs/2026-08-22-document-github-docs-in-readme.md) — Notes on documenting the GitHub docs folder in the kit README.
-- [Document git docs folder in README](git/docs/2026-08-22-document-git-docs-folder-in-readme.md) — Notes on documenting the lowercase git docs folder in the kit README.
-- [PR checker workflow](GitHub/configs/2026-08-22-pr-checker-workflow.yaml) — A GitHub Actions workflow that runs on every pull request and reports pass/fail back to the PR checks API.
 
 ## Layout
 
@@ -52,24 +52,24 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 <details>
 <summary>Coverage table</summary>
 
-| Tool | Notes | Scripts | Configs | Snippets | Dockerfiles | Docs | Notebooks | Manifests | Templates | Last verified |
-|------|-------|---------|---------|----------|-------------|------|-----------|-----------|-----------|---------------|
-| Ansible | 7 | 4 | 7 | 2 | 1 | 2 | 1 | — | 1 | 2026-08-12 |
+| Tool | Notes | Scripts | Configs | Snippets | Docs | Notebooks | Manifests | Templates | Dockerfiles | Last verified |
+|------|-------|---------|---------|----------|------|-----------|-----------|-----------|-------------|---------------|
+| Ansible | 7 | 4 | 7 | 2 | 2 | 1 | 8 | 14 | 1 | 2026-08-24 |
 | ArgoCD | 2 | 1 | 2 | — | — | — | — | — | — | 2026-08-11 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
-| Azure | 2 | 2 | — | 1 | — | — | — | — | — | 2026-08-17 |
-| Docker | 5 | 5 | 1 | 2 | 7 | 3 | 1 | 5 | 6 | 2026-08-05 |
-| GCP | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-08-14 |
-| Git | 4 | 8 | — | 1 | — | 5 | 1 | — | 21 | 2026-08-02 |
-| GitHub | 10 | 6 | 7 | 3 | — | 4 | 1 | — | — | 2026-08-22 |
-| GitHub Actions | 3 | 2 | 4 | 1 | — | 1 | — | — | — | 2026-08-15 |
+| Azure | 3 | 2 | — | 2 | — | — | — | — | — | 2026-08-23 |
+| Docker | 5 | 5 | 1 | 2 | 3 | 1 | 5 | 6 | 7 | 2026-08-12 |
+| GCP | 1 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-23 |
+| Git | 4 | 8 | — | 1 | 5 | 1 | — | 21 | — | 2026-08-03 |
+| GitHub | 10 | 6 | 7 | 3 | 4 | 1 | — | — | — | 2026-08-23 |
+| GitHub Actions | 3 | 2 | 4 | 1 | 1 | — | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 2 | 1 | 1 | 1 | — | 3 | — | — | — | 2026-08-07 |
-| Kubernetes | 6 | 2 | 1 | 1 | — | 1 | 1 | 3 | — | 2026-08-12 |
+| Helm | 2 | 1 | 1 | 1 | 3 | — | — | — | — | 2026-08-11 |
+| Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 3 | — | — | 2026-08-12 |
 | OpenTofu | 2 | 1 | 1 | — | — | — | — | — | — | 2026-08-21 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
-| Terraform | 5 | 3 | 7 | 2 | — | 3 | 1 | 1 | — | 2026-08-17 |
-| Trivy | 3 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-14 |
+| Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 1 | — | — | 2026-08-22 |
+| Trivy | 3 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-16 |
 
 *Rows follow the on-disk tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit.*
 
@@ -77,7 +77,7 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Recent work has centred on Ansible ad-hoc command notes, Bash scripting patterns for config parsing with jq, GitHub repository documentation, a PR-checker workflow, and the Terraform guide for wiring module outputs into dependent configurations. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Recent work has centred on Ansible role scaffold templates and multi-server deployment manifests, Bash scripting patterns for config parsing with jq, GitHub repository documentation, and a PR-checker workflow. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
 
 ---
-_Last updated: 2026-08-23_
+_Last updated: 2026-08-24_
