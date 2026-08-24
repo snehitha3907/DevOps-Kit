@@ -1,0 +1,7 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+---
+- name: Converge
+  hosts: all
+  become: true
+  roles:
+    - role: myrole

@@ -1,0 +1,20 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+galaxy_info:
+  role_name: myrole
+  author: your-name
+  description: Scaffold Ansible role with Molecule testing
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+        - noble
+    - name: Debian
+      versions:
+        - bookworm
+  galaxy_tags:
+    - nginx
+    - webserver
+    - scaffold
+dependencies: []

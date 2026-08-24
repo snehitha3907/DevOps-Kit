@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-24
+
+- Added Ansible role scaffold template with Molecule testing (ans-020) (`Ansible/templates/ansible-role/`)
+
 ## 2026-08-23
 
 - Added Ansible ad-hoc commands first-contact journal notes (ans-023) (`Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md`)
