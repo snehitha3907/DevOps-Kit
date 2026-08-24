@@ -1,0 +1,6 @@
+# last_verified: 2026-08-24 · Ansible
+---
+- name: Reload nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: reloaded

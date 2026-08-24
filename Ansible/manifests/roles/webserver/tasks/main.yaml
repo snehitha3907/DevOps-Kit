@@ -1,0 +1,30 @@
+# last_verified: 2026-08-24 · Ansible
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    name:
+      - nginx
+      - python3-pip
+    state: present
+    update_cache: true
+
+- name: Copy nginx site configuration
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+    mode: "0644"
+  notify: Reload nginx
+
+- name: Ensure nginx is running and enabled
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Deploy application files
+  ansible.builtin.copy:
+    src: app/
+    dest: /var/www/app/
+    owner: www-data
+    group: www-data
+    mode: "0755"
