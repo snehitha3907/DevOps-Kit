@@ -1,0 +1,10 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+---
+- name: Apply myrole to web servers
+  hosts: webservers
+  become: true
+  roles:
+    - role: myrole
+      vars:
+        myrole_server_listen_port: 8080
+        myrole_server_name: example.com

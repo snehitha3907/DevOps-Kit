@@ -1,0 +1,11 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+# {{ ansible_managed }}
+server {
+    listen {{ myrole_server_listen_port }};
+    server_name {{ myrole_server_name }};
+
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+}

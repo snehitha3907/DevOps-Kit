@@ -1,0 +1,37 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    name: "{{ myrole_packages }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+  tags: [packages]
+
+- name: Ensure configuration directory exists
+  ansible.builtin.file:
+    path: "{{ myrole_config_dir }}"
+    state: directory
+    owner: "{{ myrole_service_user }}"
+    group: "{{ myrole_service_group }}"
+    mode: "0755"
+  tags: [config]
+
+- name: Deploy configuration from template
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ myrole_config_dir }}/app.conf"
+    owner: "{{ myrole_service_user }}"
+    group: "{{ myrole_service_group }}"
+    mode: "0644"
+    validate: "nginx -t -c %s"
+  notify: Restart myrole service
+  tags: [config]
+
+- name: Ensure service is enabled and running
+  ansible.builtin.systemd:
+    name: "{{ myrole_service_name }}"
+    state: started
+    enabled: true
+  tags: [service]

@@ -1,0 +1,7 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+---
+- name: Restart myrole service
+  ansible.builtin.systemd:
+    name: "{{ myrole_service_name }}"
+    state: restarted
+  listen: Restart myrole service

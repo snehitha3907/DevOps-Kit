@@ -1,0 +1,10 @@
+# last_verified: 2026-08-24 · Ansible 11.4.0
+# Defaults for myrole — override these in inventory or group_vars
+myrole_packages:
+  - nginx
+myrole_service_name: nginx
+myrole_service_user: www-data
+myrole_service_group: www-data
+myrole_config_dir: /etc/nginx
+myrole_server_listen_port: 80
+myrole_server_name: localhost
