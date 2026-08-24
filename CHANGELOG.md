@@ -6,6 +6,8 @@
 - Added Ansible role scaffold template with Molecule testing (ans-020) (`Ansible/templates/ansible-role/`)
 - Added Ansible docs for integrating Ansible with Docker for CI pipeline testing (ans-022) (`Ansible/docs/integrated-ansible-docker-ci-pipeline-testing.md`)
 - Added GCP service account and IAM configuration for automated deployments (gcp-008) (`GCP/configs/service-account-and-iam-config.yaml`)
+- Added GCP script to create a Cloud Storage bucket and set up IAM permissions (gcp-007) (`GCP/scripts/create-gcs-bucket-and-setup-iam.sh`)
+- Added Git automation script for branch management and tag creation (git-014) (`Git/scripts/branch-management-and-tag-creation.sh`)
 
 ## 2026-08-23
 
