@@ -4,6 +4,8 @@
 
 - Added Ansible multi-server deployment manifest with playbook, static inventory, and roles for web/database/load-balancer servers (ans-021) (`Ansible/manifests/multi-server-deployment.yaml`, `Ansible/manifests/inventory/production.ini`, `Ansible/manifests/roles/`)
 - Added Ansible role scaffold template with Molecule testing (ans-020) (`Ansible/templates/ansible-role/`)
+- Added Ansible docs for integrating Ansible with Docker for CI pipeline testing (ans-022) (`Ansible/docs/integrated-ansible-docker-ci-pipeline-testing.md`)
+- Added GCP service account and IAM configuration for automated deployments (gcp-008) (`GCP/configs/service-account-and-iam-config.yaml`)
 
 ## 2026-08-23
 
