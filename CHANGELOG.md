@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-25
+
+- Reworked git-015: removed unverified version pins (pre-commit-hooks, black, ruff) from pre-commit config example, replaced with placeholder versions (`git/docs/wiring-git-hooks-into-pre-commit-workflow.md`)
+
 ## 2026-08-24
 
 - Added Git docs on wiring Git hooks into a pre-commit workflow (git-015) (`git/docs/wiring-git-hooks-into-pre-commit-workflow.md`)

@@ -1,5 +1,5 @@
 ---
-last_verified: 2026-08-24
+last_verified: 2026-08-25
 tool_version: n/a
 sources: []
 ---
@@ -35,24 +35,24 @@ Place this at the repo root. Each entry in the `repos` list points to a hook lib
 ```yaml
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: vX.Y.Z  # Pin to a specific release tag (e.g., v4.6.0)
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
   - repo: https://github.com/psf/black
-    rev: 24.4.2
+    rev: XX.Y.Z  # Pin to a specific release tag (e.g., 24.4.2)
     hooks:
       - id: black
   - repo: https://github.com/charliermarsh/ruff
-    rev: v0.4.4
+    rev: vX.Y.Z  # Pin to a specific release tag (e.g., v0.4.4)
     hooks:
       - id: ruff
         args: [--fix]
 ```
 
-Key decision: pin `rev` to a release tag, not `main`. A floating tag means every `pre-commit autoupdate` silently changes which linter version the team runs — that is how "works on my machine" arguments start.
+Key decision: pin `rev` to a release tag, not `main`. A floating tag means every `pre-commit autoupdate` silently changes which linter version the team runs — that is how "works on my machine" arguments start. The placeholder versions above (vX.Y.Z, XX.Y.Z) are examples; replace them with actual release tags from each project's releases page.
 
 ### 3. Install the hooks into the repo
 
