@@ -15,35 +15,38 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests for sixteen tool families across infrastructure provisioning, configuration management, containers, orchestration, CI/CD, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A few lowercase companion directories (`git/`, `ot/`, `tf/`, `k8s/`) hold newer material alongside their capitalized counterparts — each points back to the main toolkit folder.
 
 ## Quick links
 
-- [Wiring Git hooks into a pre-commit workflow](git/docs/wiring-git-hooks-into-pre-commit-workflow.md) — Setting up a local pre-commit framework with Black, Ruff, and standard hooks.
-- [Create GCS bucket and set up IAM](GCP/scripts/create-gcs-bucket-and-setup-iam.sh) — Script for creating a GCS bucket and configuring IAM bindings.
-- [Branch management and tag creation](Git/scripts/branch-management-and-tag-creation.sh) — Branch listing, tag creation, and cleanup patterns.
-- [Multi-server deployment manifest](Ansible/manifests/multi-server-deployment.yaml) — Ansible manifest for a multi-server deployment with load balancer and database roles.
-- [Config parsing with jq and retry patterns](docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh) — A Bash script that ties together config parsing, jq filtering, and retry-with-backoff patterns.
+- [OpenTofu state management tutorial notes](ot/docs/2026-08-25-state-management-tutorial-notes.md) — What `tofu state list/mv/pull` actually do, why hand-editing state is a trap, and how backend migration really works.
+- [Reusable VPC module manifest](tf/manifests/reusable-vpc-module.hcl) — Single-file Terraform reference module: VPC with public/private subnets across AZs, an IGW, and optional NAT gateways.
+- [Go service Deployment with probes and HPA](k8s/manifests/go-service-deployment-with-probes-hpa.yaml) — Kubernetes Deployment with liveness probe, resource requests/limits, and a CPU-utilization HorizontalPodAutoscaler.
+- [IaC state workflow sandbox](docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh) — Practice the full state lifecycle (init → plan → apply → backup → rollback) against a throwaway project.
+- [Merge conflict and reflog recovery practice](docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh) — Scripted walk-through of the two scariest Git moments: conflicts and lost commits.
 
 ## Layout
 
 - **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 - **AWS/** — Primer, CLI install and configure scripts, EC2 tagging and S3 static-site snippets, and minimal config files with named profiles.
-- **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, docs, and a variable precedence notebook.
+- **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, role scaffold template, docs, and a variable precedence notebook.
 - **ArgoCD/** — Primer, quickstart notes, and first application and ApplicationSet manifests for GitOps deployment on Kubernetes.
 - **Azure/** — Primer, CLI install and login scripts, quickstart trip-up notes, and resource group and storage account provisioning snippets.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, a networking drivers notebook, and a reusable Go microservice scaffold.
-- **GCP/** — Primer, gcloud CLI install and configure scripts, Compute/GCS listing and IAM snippets, and a minimal config with a startup script.
+- **GCP/** — Primer, gcloud CLI install and configure scripts, Compute/GCS listing and IAM snippets, and configs for startup scripts and service accounts.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
-- **git/** — Companion lowercase directory mirroring a subset of `Git/` (bisect notes, a merge-strategies notebook, a second repo-scaffold template, and a pre-commit workflow guide); prefer `Git/` for the main toolkit.
-- **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide, branch protection and required reviews, PR checker workflow), and Python API snippets.
+- **git/** — Companion lowercase directory mirroring a subset of `Git/` (bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold); prefer `Git/` for the main toolkit.
+- **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide, branch protection and required reviews), and Python API snippets.
 - **GitHub Actions/** — Quickstart notes, CI workflow configs, and REST API snippets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
 - **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, custom-values snippet, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and troubleshooting snippets.
-- **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, and minimal local config with variables and outputs for the open-source Terraform alternative.
+- **k8s/** — Companion lowercase directory holding newer Kubernetes manifests; currently a Go-service Deployment with probes plus an HPA. Prefer `Kubernetes/` for the main toolkit.
+- **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, and quickstart trip-ups for the open-source Terraform alternative.
+- **ot/** — Companion lowercase directory holding newer OpenTofu material; currently state-management tutorial notes and a local-backend config. Prefer `OpenTofu/` for the main toolkit.
 - **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
+- **tf/** — Companion lowercase directory holding newer Terraform manifests; currently a reusable VPC module. Prefer `Terraform/` for the main toolkit.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, a config file, and Python wrappers.
 - **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
 - **CHANGELOG.md** — Chronological record of additions, reworks, and audit fixes.
@@ -60,25 +63,25 @@ First-contact notes, setup scripts, configs, and manifests for sixteen tool fami
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 3 | 2 | — | 2 | — | — | — | — | — | 2026-08-23 |
 | Docker | 5 | 5 | 1 | 2 | 3 | 1 | 5 | 6 | 7 | 2026-08-12 |
-| GCP | 1 | 3 | 1 | 2 | — | — | — | — | — | 2026-08-23 |
-| Git | 4 | 8 | — | 1 | 6 | 1 | — | 21 | — | 2026-08-25 |
+| GCP | 1 | 3 | 2 | 2 | — | — | — | — | — | 2026-08-24 |
+| Git | 4 | 9 | — | 1 | 5 | 1 | — | 21 | — | 2026-08-24 |
 | GitHub | 10 | 6 | 7 | 3 | 4 | 1 | — | — | — | 2026-08-23 |
 | GitHub Actions | 3 | 2 | 4 | 1 | 1 | — | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 2 | 1 | 1 | 1 | 3 | — | 4 | — | — | 2026-08-11 |
+| Helm | 2 | 1 | 1 | 1 | 3 | — | 4 | — | — | 2026-08-24 |
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 3 | — | — | 2026-08-12 |
 | OpenTofu | 2 | 1 | 1 | — | — | — | — | — | — | 2026-08-21 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 1 | — | — | 2026-08-22 |
 | Trivy | 3 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-16 |
 
-*Rows follow the on-disk tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase `git/` directory mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template); prefer `Git/` for the main toolkit.*
+*Rows follow the on-disk capitalized tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase companion directories (`git/`, `k8s/`, `ot/`, `tf/`) hold newer material alongside `Git/`, `Kubernetes/`, `OpenTofu/`, and `Terraform/` respectively; prefer the capitalized folders for the main toolkit.*
 
 </details>
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Recent additions include a pre-commit workflow wiring guide, GCS bucket IAM setup, and branch management patterns. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Current focus is IaC state management — OpenTofu state surgery notes, a state-workflow practice script, and a reusable VPC module — plus Kubernetes workload hardening with probes and autoscaling. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
 
 ---
 _Last updated: 2026-08-25_
