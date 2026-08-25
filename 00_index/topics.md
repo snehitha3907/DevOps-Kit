@@ -2,7 +2,7 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  46 files
+## Ansible  ·  48 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
 - **notes** (7): most recent → [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md), [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md)
@@ -15,7 +15,7 @@
 - _…and 7 more under `Ansible/manifests/` — browse the folder._
 - **scripts** (4): [2026-07-19-install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh)
 - _1 more under `Ansible/scripts/` — browse the folder._
-- **docs** (2): [ansible-over-terraform-local-exec.md](../Ansible/docs/ansible-over-terraform-local-exec.md), [2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
+- **docs** (3): [integrated-ansible-docker-ci-pipeline-testing.md](../Ansible/docs/integrated-ansible-docker-ci-pipeline-testing.md), [ansible-over-terraform-local-exec.md](../Ansible/docs/ansible-over-terraform-local-exec.md), [2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **snippets** (2): [2026-08-12-lint-ansible-playbook.py](../Ansible/snippets/2026-08-12-lint-ansible-playbook.py), [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 - **dockerfiles** (1): [ansible-control-node.Dockerfile](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
@@ -36,12 +36,12 @@
 - **snippets** (2): most recent → [2026-08-16-list-and-tag-ec2-instances.sh](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [2026-08-12-list-ec2-and-s3.sh](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [2026-07-13-primer-already-exists.md](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 
-## Azure  ·  5 files
+## Azure  ·  7 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
-- **notes** (2): most recent → [2026-08-16-azure-cli-quickstart-trip-ups.md](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md), [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
+- **notes** (3): most recent → [2026-08-23-azure-quickstart-trip-ups.md](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [2026-08-16-azure-cli-quickstart-trip-ups.md](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md), [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
 - **scripts** (2): most recent → [2026-08-17-provision-resource-group-and-storage-account.sh](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [2026-07-13-install-azure-cli-and-login.sh](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
-- **snippets** (1): [2026-07-13-create-resource-group-and-list-regions.sh](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
+- **snippets** (2): most recent → [2026-08-23-create-resource-group-and-list-regions.sh](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [2026-07-13-create-resource-group-and-list-regions.sh](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ## Docker  ·  35 files
 
@@ -60,22 +60,22 @@
 - **snippets** (2): [2026-08-12-build-run-and-cleanup.py](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [analyze-image-layers.py](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service-app.yaml](../Docker/configs/multi-service-app.yaml)
 
-## GCP  ·  4 files
+## GCP  ·  7 files
 
 - **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
-- **scripts** (1): [2026-07-16-install-gcloud-cli-and-configure-creds.sh](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
-- **snippets** (1): [2026-07-16-list-compute-and-gcs-with-gcloud.sh](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
-- **configs** (1): [2026-08-14-minimal-gcloud-config-and-startup-script.yaml](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
+- **scripts** (3): most recent → [create-gcs-bucket-and-setup-iam.sh](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh), [2026-08-23-install-gcloud-cli-and-configure-creds.sh](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh), [2026-07-16-install-gcloud-cli-and-configure-creds.sh](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
+- **snippets** (2): most recent → [2026-08-23-list-compute-and-gcs-with-gcloud.sh](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [2026-07-16-list-compute-and-gcs-with-gcloud.sh](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
+- **configs** (1): [2026-08-14-minimal-gcloud-config-and-startup-script.yaml](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml), [service-account-and-iam-config.yaml](../GCP/configs/service-account-and-iam-config.yaml)
 
-## Git  ·  40 files
+## Git  ·  41 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (21): [pre-commit](../Git/templates/git-hooks/pre-commit), [commit-msg](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
 - _…and 18 more under `Git/templates/` — browse the folder (includes the repository-skeleton scaffold)._
-- **scripts** (8): [2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh), [install-and-first-commit.sh](../Git/scripts/install-and-first-commit.sh)
-- _…and 5 more under `Git/scripts/` — browse the folder._
-- **docs** (5): most recent → [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md), [automating-git-bisect-with-scripted-regression-tests.md](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-worktrees-parallel-feature-development-setup-workflow-gotchas.md](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 2 more under `Git/docs/` — browse the folder._
+- **scripts** (9): most recent → [branch-management-and-tag-creation.sh](../Git/scripts/branch-management-and-tag-creation.sh), [2026-06-10-merge-conflict-practice.sh](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional-commits-hook.sh](../Git/scripts/conventional-commits-hook.sh)
+- _…and 6 more under `Git/scripts/` — browse the folder._
+- **docs** (6): most recent → [wiring-git-hooks-into-pre-commit-workflow.md](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md), [automating-git-bisect-with-scripted-regression-tests.md](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md)
+- _…and 3 more under `Git/docs/` — browse the folder._
 - **notes** (4): most recent → [2026-08-11-git-branching-tutorial.md](../git/notes/2026-08-11-git-branching-tutorial.md), [2026-06-07-git-branching-tutorial.md](../Git/notes/2026-06-07-git-branching-tutorial.md), [2026-06-04-explore-git-cli.md](../Git/notes/2026-06-04-explore-git-cli.md)
 - _…and 1 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first-commit.sh](../Git/snippets/first-commit.sh)
@@ -113,11 +113,12 @@
 - **scripts** (2): [2026-06-22-install-runner-and-register.sh](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [2026-06-24-run-first-local-pipeline.sh](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [2026-06-22-first-pipeline.yaml](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  8 files
+## Helm  ·  14 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **docs** (3): [2026-07-25-add-helm-to-readme-layout-and-coverage.md](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [2026-07-25-helm-readme-already-documented.md](../Helm/docs/2026-07-25-helm-readme-already-documented.md), [2026-07-22-helm-added-to-readme.md](../Helm/docs/2026-07-22-helm-added-to-readme.md)
 - **notes** (2): most recent → [2026-08-07-helm-quickstart-tripups.md](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
+- **manifests** (4): [redis-chart/Chart.yaml](../Helm/manifests/redis-chart/Chart.yaml), [deployment.yaml](../Helm/manifests/redis-chart/templates/deployment.yaml), [service.yaml](../Helm/manifests/redis-chart/templates/service.yaml), [values.yaml](../Helm/manifests/redis-chart/values.yaml)
 - **scripts** (1): [2026-07-23-install-helm-and-explore-cli.sh](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - **configs** (1): [2026-07-23-first-helm-chart-inspection.yaml](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - **snippets** (1): [2026-08-11-nginx-helm-chart-custom-values.sh](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
@@ -168,11 +169,11 @@
 - **snippets** (2): most recent → [2026-08-16-scan-image-fail-critical-cves.py](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [2026-07-12-trivy-python-wrapper.py](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (1): [2026-08-12-trivy-config.yaml](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
-## Git (lowercase)  ·  12 files
+## Git (lowercase)  ·  13 files
 
-A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, and a second repo-scaffold template). Prefer `Git/` for the main toolkit.
+A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, a merge-strategies notebook, a second repo-scaffold template, and a pre-commit workflow wiring guide). Prefer `Git/` for the main toolkit.
 
-- **docs** (2): [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
+- **docs** (3): [wiring-git-hooks-into-pre-commit-workflow](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [automating-git-bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder-readme-coverage](../git/docs/2026-08-04-git-folder-readme-coverage.md)
 - **notes** (1): [git-branching-tutorial](../git/notes/2026-08-11-git-branching-tutorial.md)
 - **notebooks** (1): [comparing-git-merge-strategies.ipynb](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
 - **templates** (8): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
