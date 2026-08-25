@@ -2,19 +2,22 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  25 files
+## Ansible  ·  46 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
 - **notes** (7): most recent → [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md), [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md)
 - _…and 4 more under `Ansible/notes/` — browse the folder._
 - **configs** (7): most recent → [2026-07-19-first-inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml), [2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml), [ansible-collection-requirements-and-docker-lifecycle-playbook.yaml](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
 - _…and 4 more under `Ansible/configs/` — browse the folder._
+- **templates** (14): [ansible-role scaffold README](../Ansible/templates/ansible-role/roles/myrole/README.md)
+- _…and 13 more under `Ansible/templates/` — browse the folder._
+- **manifests** (8): [multi-server deployment manifest](../Ansible/manifests/multi-server-deployment.yaml)
+- _…and 7 more under `Ansible/manifests/` — browse the folder._
 - **scripts** (4): [2026-07-19-install-ansible-and-explore-modules.sh](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [install-and-first-adhoc.sh](../Ansible/scripts/install-and-first-adhoc.sh), [run-first-playbook.sh](../Ansible/scripts/run-first-playbook.sh)
 - _1 more under `Ansible/scripts/` — browse the folder._
 - **docs** (2): [ansible-over-terraform-local-exec.md](../Ansible/docs/ansible-over-terraform-local-exec.md), [2026-06-15-wiring-ansible-lint.md](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **snippets** (2): [2026-08-12-lint-ansible-playbook.py](../Ansible/snippets/2026-08-12-lint-ansible-playbook.py), [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
-- **templates** (1): [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 - **dockerfiles** (1): [ansible-control-node.Dockerfile](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
 
 ## ArgoCD  ·  5 files
