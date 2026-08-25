@@ -5,6 +5,8 @@
 - Added reusable VPC module manifest with public/private subnets across AZs and optional NAT gateways (tf-019) (`tf/manifests/reusable-vpc-module.hcl`)
 - Added OpenTofu state management tutorial notes: state mv renames, state pull backups, backend switching without tofu migrate (ot-006) (`ot/docs/2026-08-25-state-management-tutorial-notes.md`)
 - Moved the Linux filesystem permissions script and the netcat/curl connectivity script into their concept folders' `scripts/` subfolders and updated the index links to match (audit fix) (`docs/concepts/linux-system-administration/scripts/`, `docs/concepts/networking-fundamentals/scripts/`)
+- Added Kubernetes Deployment and HPA manifest for a Go service with liveness, readiness, and CPU-based autoscaling (k8s-013) (`k8s/manifests/go-service-deployment-with-probes-hpa.yaml`)
+- Added minimal OpenTofu local backend configuration with state path output (ot-005) (`ot/configs/2026-08-25-minimal-local-backend.hcl`)
 - Added IaC state workflow practice script: plan, apply, and rollback with backup (con-077) (`docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh`)
 - Added merge conflict resolution and reflog recovery practice script (con-079) (`docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh`)
 - Added Git docs for wiring Git hooks into a pre-commit workflow with Black and Ruff (git-015) (`git/docs/wiring-git-hooks-into-pre-commit-workflow.md`)

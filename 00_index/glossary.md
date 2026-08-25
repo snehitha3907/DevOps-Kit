@@ -147,6 +147,7 @@
 - **Conventional commit** — A commit message format that follows a structured prefix (`feat:`, `fix:`, `chore:`, etc.) enabling automated changelog generation and semantic versioning.
 - **Pull Request** — A review request to merge one branch into another, with a diff and discussion.
 - **.gitignore** — A file that tells Git which files or directories to skip. Example: ignoring `.terraform/` and `*.tfvars` so secrets and generated files aren't committed.
+- **pre-commit framework** — A language-agnostic Git hook manager that lets you define a `.pre-commit-config.yaml` listing hooks (formatters, linters, custom checks) which run automatically before each `git commit`. Hooks are isolated environments installed per-project, so contributors don't need to install tools globally.
 
 ## GitHub
 
