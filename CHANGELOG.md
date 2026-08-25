@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-25
+
+- Added Git docs for wiring Git hooks into a pre-commit workflow with Black and Ruff (git-015) (`git/docs/wiring-git-hooks-into-pre-commit-workflow.md`)
+
 ## 2026-08-24
 
 - Added Ansible multi-server deployment manifest with playbook, static inventory, and roles for web/database/load-balancer servers (ans-021) (`Ansible/manifests/multi-server-deployment.yaml`, `Ansible/manifests/inventory/production.ini`, `Ansible/manifests/roles/`)
