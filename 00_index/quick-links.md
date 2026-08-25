@@ -100,6 +100,7 @@
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
+- [Branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh)
 - [Minimal branching workflow script](../Git/scripts/minimal-branching-workflow.sh)
 - [Merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - [Conventional commit hook](../Git/scripts/commit-msg-conventional-commit.sh)
@@ -108,6 +109,7 @@
 - [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
 - [Git worktrees setup gotchas guide](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
 - [Automate git bisect with a regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md)
+- [Wiring Git hooks into a pre-commit workflow](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
 - [Repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
 - [Git client-side hook templates](../Git/templates/git-hooks/)
 - [Git repository skeleton scaffold](../Git/templates/git-repository-skeleton/)
@@ -154,6 +156,7 @@
 ### Work with GCP
 - [GCP primer](../GCP/notes/0000-primer-gcp.md)
 - [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
+- [Create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
 - [List Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 
