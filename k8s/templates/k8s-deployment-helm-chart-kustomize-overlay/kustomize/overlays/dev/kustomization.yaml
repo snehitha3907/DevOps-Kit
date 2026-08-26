@@ -1,0 +1,13 @@
+# last_verified: 2026-08-26 · Kubernetes · n/a
+resources:
+  - ../../base
+
+namePrefix: dev-
+
+replicas:
+  - name: web-app
+    count: 1
+
+images:
+  - name: nginx
+    newTag: 1.25-alpine
