@@ -1,0 +1,6 @@
+# last_verified: 2026-08-26 · Kubernetes · n/a
+apiVersion: v2
+name: web-app
+description: A Helm chart for a sample web application
+version: 0.1.0
+appVersion: "1.0.0"

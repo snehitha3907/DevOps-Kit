@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-26
+
+- Added Kubernetes project scaffold template with Helm chart and kustomize overlay for a web app deployment (k8s-014) (`k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/`)
+
 ## 2026-08-25
 
 - Added reusable VPC module manifest with public/private subnets across AZs and optional NAT gateways (tf-019) (`tf/manifests/reusable-vpc-module.hcl`)

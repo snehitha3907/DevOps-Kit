@@ -1,0 +1,4 @@
+# last_verified: 2026-08-26 · Kubernetes · n/a
+resources:
+  - deployment.yaml
+  - service.yaml
