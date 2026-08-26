@@ -123,37 +123,32 @@
 - **configs** (1): [first chart inspection](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
-## Kubernetes  ·  15 files
+## Kubernetes  ·  16 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **notes** (6): most recent → [kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [first kubectl version and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [kubernetes basics tutorial](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - _…and 3 more under `Kubernetes/notes/` — browse the folder._
-- **manifests** (3): [stateless app](../Kubernetes/manifests/stateless-app.yaml), [deployment + service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [configmap/secret-mounted pod](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
+- **manifests** (4): [stateless app](../Kubernetes/manifests/stateless-app.yaml), [deployment + service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
+- _1 more under `Kubernetes/manifests/` — browse the folder._
 - **scripts** (2): [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
 - **configs** (1): [deployment + service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 - **docs** (1): [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - **notebooks** (1): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - **snippets** (1): [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 
-### k8s (companion lowercase dir)  ·  1 file
+### k8s (companion lowercase dir)  ·  10 files
 
 Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the main toolkit.
 
-- **manifests** (1): [Go service Deployment with probes + HPA](../k8s/manifests/go-service-deployment-with-probes-hpa.yaml)
+- **templates** (10): [k8s-deployment-helm-chart-kustomize-overlay](../k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/) — Helm chart and Kustomize overlay scaffold with dev/prod overlays
 
-## OpenTofu  ·  4 files
+## OpenTofu  ·  6 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **notes** (2): most recent → [opentofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md), [0000 primer](../OpenTofu/notes/0000-primer-opentofu.md)
 - **scripts** (1): [install opentofu and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
-- **configs** (1): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
-
-### ot (companion lowercase dir)  ·  2 files
-
-Newer OpenTofu material alongside `OpenTofu/`; prefer `OpenTofu/` for the main toolkit.
-
-- **docs** (1): [state management tutorial notes](../ot/docs/2026-08-25-state-management-tutorial-notes.md) — `tofu state list/mv/pull`, backend migration, workspace habits
-- **configs** (1): [minimal local backend config](../ot/configs/2026-08-25-minimal-local-backend.hcl)
+- **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
+- **docs** (1): [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — `tofu state list/mv/pull`, backend migration, workspace habits
 
 ## Prometheus  ·  3 files
 
@@ -161,7 +156,7 @@ Newer OpenTofu material alongside `OpenTofu/`; prefer `OpenTofu/` for the main t
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **configs** (1): [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
-## Terraform  ·  22 files
+## Terraform  ·  23 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (4 `.tf` files)
@@ -172,13 +167,7 @@ Newer OpenTofu material alongside `OpenTofu/`; prefer `OpenTofu/` for the main t
 - **scripts** (3): [generate ansible inventory from terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py), [bootstrap project scaffold](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install and init](../Terraform/scripts/install-and-init.sh)
 - **snippets** (2): most recent → [scaffold S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable module for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - **notebooks** (1): [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
-- **manifests** (1): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf)
-
-### tf (companion lowercase dir)  ·  1 file
-
-Newer Terraform material alongside `Terraform/`; prefer `Terraform/` for the main toolkit.
-
-- **manifests** (1): [reusable VPC module](../tf/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
+- **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
 
 ## Trivy  ·  8 files
 
