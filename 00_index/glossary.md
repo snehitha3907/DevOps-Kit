@@ -106,6 +106,7 @@
 - **startup-script** — A Compute Engine metadata key whose value is a shell script that runs automatically on the first boot of an instance (e.g. `apt-get update && apt-get install -y nginx`); a quick way to install software or bootstrap a machine without a config-management tool.
 - **`--format`** — Controls output: `json`, `yaml`, `table`, `text`, `csv`, `list`.
 - **`--filter`** — Server-side filtering of results.
+- **IAM policy binding** — Grants a member (user, group, or service account) a role on a specific resource, e.g. `gcloud storage buckets add-iam-policy-binding` to let a service account read one bucket. Scoped bindings are preferable to project-wide roles.
 
 ## Helm
 
@@ -145,6 +146,7 @@
 - **Pre-push hook** — A Git hook that runs before a push is sent to the remote, used to run final checks such as tests, lint, or secret scanning.
 - **Pre-rebase hook** — A Git hook that runs before a rebase begins, commonly used to block history rewrites on protected branches.
 - **Conventional commit** — A commit message format that follows a structured prefix (`feat:`, `fix:`, `chore:`, etc.) enabling automated changelog generation and semantic versioning.
+- **Reflog** — Git's private log of where HEAD has pointed at every step (`git reflog`); the safety net for "lost" commits after a bad rebase or reset, since any entry can be recovered by checking out its hash and branching from it.
 - **Pull Request** — A review request to merge one branch into another, with a diff and discussion.
 - **.gitignore** — A file that tells Git which files or directories to skip. Example: ignoring `.terraform/` and `*.tfvars` so secrets and generated files aren't committed.
 - **pre-commit framework** — A language-agnostic Git hook manager that lets you define a `.pre-commit-config.yaml` listing hooks (formatters, linters, custom checks) which run automatically before each `git commit`. Hooks are isolated environments installed per-project, so contributors don't need to install tools globally.
@@ -226,6 +228,9 @@
 - **Context** — A cluster+user+namespace tuple stored in the kubeconfig; `kubectl` uses the current context to decide which cluster to send requests to.
 - **ImagePullBackOff** — A pod image-pull error state where Kubernetes cannot download the container image, usually due to a wrong image name or missing registry credentials.
 - **ContainerCreating** — A pod phase indicating the container runtime is pulling the image or setting up the filesystem; distinct from `ImagePullBackOff`, which means the pull itself failed.
+- **HorizontalPodAutoscaler (HPA)** — An autoscaling/v2 resource that adjusts a Deployment's replica count between `minReplicas` and `maxReplicas` based on metrics such as CPU utilisation; pairs with resource requests because the utilisation target is computed against them.
+- **Resource request** — The CPU/memory a container is guaranteed (`resources.requests`); the scheduler uses it to place pods, and HPA utilisation percentages are measured against it.
+- **Resource limit** — The CPU/memory ceiling a container may not exceed (`resources.limits`); exceeding a CPU limit throttles the container, exceeding a memory limit gets it OOM-killed.
 
 ## OpenTofu
 
@@ -238,6 +243,12 @@
 - **Output** — A value exposed by a module or root configuration after apply.
 - **Backend** — The configuration that defines where state is stored (local by default, or remote for teams).
 - **`tofu`** — The OpenTofu CLI binary, the drop-in replacement for `terraform`.
+- **`tofu state list`** — Prints every resource address currently tracked in state; the first command to run before any state surgery. Think of it as `ls` for managed infrastructure.
+- **`tofu state mv`** — Rewires a state address to match a renamed resource block in code (e.g. `aws_instance.app` → `aws_instance.web`) so plan doesn't destroy and recreate the real resource.
+- **`tofu state pull`** — Dumps the full state to stdout; redirect it to a backup file before any state operation so a botched change is recoverable.
+- **Workspace (OpenTofu)** — A named, separate copy of state under the same configuration (`workspace new`, `workspace select`). Check `workspace show` before any stateful command so you don't operate on the wrong environment's state.
+- **Backend migration** — Moving state between backends by editing the `backend` block and re-running `init`; the CLI offers to copy existing state to the new location. There is no `tofu migrate` command.
+- **Plaintext secrets in state** — Values marked sensitive in code still land as plain JSON in the state file, so backend storage and read access deserve the same care as credentials.
 
 ## Terraform
 

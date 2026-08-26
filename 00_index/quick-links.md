@@ -3,18 +3,18 @@
 ## I need to...
 
 ### Set up Linux and networking fundamentals
+- [Linux & system administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
+- [Networking fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 - [Process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
-- [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh)
+- [Filesystem permissions and process management script](../docs/concepts/linux-system-administration/scripts/2026-07-18-filesystem-permissions-and-process-management.sh)
 - [Systemd timers and journald shipping](../docs/concepts/linux-system-administration/docs/systemd-timers-journald-shipping.md)
 - [Systemd health-check and log alerting](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh)
 - [Systemd watchdog restart and page](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh)
 - [Linux system performance analysis notebook](../docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb)
 - [Network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
-- [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh)
+- [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
 - [TCP/TLS health probes script](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh)
 - [DNS, TLS, and load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
-- [Linux & system administration primer](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
-- [Networking fundamentals primer](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 
 ### Install a tool
 - [Install Ansible + run first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
@@ -62,7 +62,6 @@
 
 ### Write a playbook / pipeline / config
 - [Ansible collection requirements and Docker lifecycle playbook](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
-- [Ansible over Terraform local-exec for post-provisioning tasks](../Ansible/docs/ansible-over-terraform-local-exec.md)
 - [Ansible nginx playbook snippet](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker + Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
 - [Ansible nginx/PHP-FPM/UFW playbook](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
@@ -75,6 +74,7 @@
 - [GitHub Actions matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [Helm chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- [Helm redis chart manifests](../Helm/manifests/redis-chart/Chart.yaml)
 - [OpenTofu minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
 - [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
@@ -85,6 +85,7 @@
 - [Prometheus scrape config (manifest)](../Docker/manifests/prometheus.yml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
 - [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
+- [GCP service account and IAM config](../GCP/configs/service-account-and-iam-config.yaml)
 - [Trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - [Kubernetes Deployment + Service with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 - [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
@@ -92,27 +93,33 @@
 ### Work with Terraform
 - [Wire outputs into a dependent module](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 - [Scaffold a reusable S3 bucket module + remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh)
+- [Reusable VPC module manifest (companion tf/ dir)](../tf/manifests/reusable-vpc-module.hcl)
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
 - [Generate Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 
+### Work with OpenTofu
+- [OpenTofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md)
+- [State management tutorial notes (companion ot/ dir)](../ot/docs/2026-08-25-state-management-tutorial-notes.md)
+- [Minimal local backend config (companion ot/ dir)](../ot/configs/2026-08-25-minimal-local-backend.hcl)
+
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
-- [Branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh)
 - [Minimal branching workflow script](../Git/scripts/minimal-branching-workflow.sh)
 - [Merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
+- [Merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh)
 - [Conventional commit hook](../Git/scripts/commit-msg-conventional-commit.sh)
 - [Squash WIP commits](../Git/scripts/squash-wip-commits.sh)
+- [Branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh)
 - [Git workflows comparison](../Git/docs/git-workflows-comparison.md)
 - [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
 - [Git worktrees setup gotchas guide](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
 - [Automate git bisect with a regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md)
 - [Wiring Git hooks into a pre-commit workflow](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
-- [Repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
+- [Repository scaffold template](../Git/templates/git-repository-skeleton/)
 - [Git client-side hook templates](../Git/templates/git-hooks/)
-- [Git repository skeleton scaffold](../Git/templates/git-repository-skeleton/)
 - [Git merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
 ### Work with Docker
@@ -141,24 +148,20 @@
 - [Deploy keys vs PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - [Branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
 - [Open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
+- [Trigger a workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ### Work with Kubernetes
 - [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
 - [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
 - [ConfigMap + Secret mounted pod manifest](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
+- [Go service Deployment with probes + HPA (companion k8s/ dir)](../k8s/manifests/go-service-deployment-with-probes-hpa.yaml)
 - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+- [Kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md)
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
-
-### Work with GCP
-- [GCP primer](../GCP/notes/0000-primer-gcp.md)
-- [Install gcloud CLI + configure credentials](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
-- [Create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
-- [List Compute instances and GCS buckets](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
-- [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 
 ### Work with AWS
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
@@ -167,10 +170,17 @@
 - [List and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh)
 
 ### Work with Azure
+- [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md)
 - [Azure CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
 - [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
-- [Create resource group and list regions](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
+- [Create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh)
 - [Provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh)
+
+### Work with GCP
+- [Create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
+- [List Compute instances and GCS buckets](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh)
+- [Install gcloud CLI + configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
+- [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
@@ -180,36 +190,39 @@
 - [Fail a build on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
 
 ### CI/CD concepts
+- [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+- [Artifact promotion, environments, and rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md)
 - [Simulated CI/CD pipeline script](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
 - [CI/CD artifact promotion and rollback script](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
 - [CI/CD common patterns snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
 - [Parallelized CI stage runner snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
-- [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
 
 ### Containerization concepts
+- [Containerization concepts primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
 - [Smaller images, base caching, runtimes](../docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md)
 - [Inspect image layers with Python](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py)
-- [Containerization concepts primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
 
 ### Infrastructure as code concepts
+- [Infrastructure as Code concepts primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
 - [Terraform and Ansible division of responsibility](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md)
 - [Declarative vs imperative IaC notebook](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb)
-- [Infrastructure as Code concepts primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
+- [IaC state workflow sandbox](../docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh)
 
 ### Monitoring and observability
+- [Monitoring & Observability concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 - [Combining metrics, logs, and traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
 - [Scraping endpoint three pillars notebook](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
-- [Monitoring & Observability concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 
 ### Scripting and automation
+- [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 - [Bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh)
 - [Config parsing with jq and retry patterns](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh)
 - [Log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
 - [Retry, backoff, and logging patterns](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
 - [Bash/Python glue patterns notebook](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
-- [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 
 ### Version control concepts
-- [Git feature-branch rebase, merge, and tag script](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
-- [Conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
 - [Version Control concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+- [Git feature-branch rebase, merge, and tag script](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
+- [Merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh)
+- [Conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
