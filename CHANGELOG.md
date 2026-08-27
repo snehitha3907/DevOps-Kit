@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-27
+
+- Added Trivy configuration file with custom severity filters and scan policies (trv-010) (`Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml`)
+
 ## 2026-08-26
 
 - Added Kubernetes project scaffold template with Helm chart and kustomize overlay for a web app deployment (k8s-014) (`k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/`)

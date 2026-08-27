@@ -1,0 +1,35 @@
+# last_verified: 2026-08-27 · Trivy n/a
+# I want CI to fail on anything I'd actually ship, but I also want
+# the config to be explicit about what each scanner does so I don't
+# get surprised by a secret leak showing up in a build that only
+# asked for vulnerability checks.
+# severity: only report CRITICAL and HIGH — MEDIUM/LOW/INFO are noise
+# for my current service image; bump this when I expand scope.
+# scanners: enable vuln, secret, and misconfig. sbom is intentionally
+# off because the CI step that builds the SBOM runs separately.
+# ignore-status: drop "unknown" findings so a missing fix doesn't
+# stall the gate while I wait for upstream.
+severity: CRITICAL,HIGH
+scanners: vuln,secret,misconfig
+vulnerability:
+  severity: CRITICAL,HIGH
+  ignore-status:
+    - unknown
+misconfig:
+  scan:
+    skip-dirs:
+      - ./vendor
+      - ./node_modules
+    skip-files:
+      - go.sum
+      - package-lock.json
+  policy:
+    - bundle: default
+      name: default
+scan:
+  skip-dirs:
+    - ./vendor
+    - ./node_modules
+  skip-files:
+    - go.sum
+    - package-lock.json
