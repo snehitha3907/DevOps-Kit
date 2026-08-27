@@ -93,7 +93,7 @@
 ### Work with Terraform
 - [Wire outputs into a dependent module](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 - [Scaffold a reusable S3 bucket module + remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh)
-- [Reusable VPC module manifest (companion tf/ dir)](../tf/manifests/reusable-vpc-module.hcl)
+- [Reusable VPC module manifest](../Terraform/manifests/reusable-vpc-module.hcl)
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
@@ -102,8 +102,8 @@
 
 ### Work with OpenTofu
 - [OpenTofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md)
-- [State management tutorial notes (companion ot/ dir)](../ot/docs/2026-08-25-state-management-tutorial-notes.md)
-- [Minimal local backend config (companion ot/ dir)](../ot/configs/2026-08-25-minimal-local-backend.hcl)
+- [State management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md)
+- [Minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 
 ### Work with Git
 - [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
@@ -155,7 +155,7 @@
 - [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
 - [ConfigMap + Secret mounted pod manifest](../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml)
 - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
-- [Go service Deployment with probes + HPA (companion k8s/ dir)](../k8s/manifests/go-service-deployment-with-probes-hpa.yaml)
+- [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
 - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 - [Kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md)

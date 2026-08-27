@@ -15,13 +15,13 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A few lowercase companion directories (`git/`, `ot/`, `tf/`, `k8s/`) hold newer material alongside their capitalized counterparts — each points back to the main toolkit folder.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds a bisect notes, branching mechanics tutorial, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit.
 
 ## Quick links
 
-- [OpenTofu state management tutorial notes](ot/docs/2026-08-25-state-management-tutorial-notes.md) — What `tofu state list/mv/pull` actually do, why hand-editing state is a trap, and how backend migration really works.
-- [Reusable VPC module manifest](tf/manifests/reusable-vpc-module.hcl) — Single-file Terraform reference module: VPC with public/private subnets across AZs, an IGW, and optional NAT gateways.
-- [Go service Deployment with probes and HPA](k8s/manifests/go-service-deployment-with-probes-hpa.yaml) — Kubernetes Deployment with liveness probe, resource requests/limits, and a CPU-utilization HorizontalPodAutoscaler.
+- [OpenTofu state management tutorial notes](OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — What `tofu state list/mv/pull` actually do, why hand-editing state is a trap, and how backend migration really works.
+- [Reusable VPC module manifest](Terraform/manifests/reusable-vpc-module.hcl) — Single-file Terraform reference module: VPC with public/private subnets across AZs, an IGW, and optional NAT gateways.
+- [Go service Deployment with probes and HPA](Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml) — Kubernetes Deployment with liveness probe, resource requests/limits, and a CPU-utilization HorizontalPodAutoscaler.
 - [IaC state workflow sandbox](docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh) — Practice the full state lifecycle (init → plan → apply → backup → rollback) against a throwaway project.
 - [Merge conflict and reflog recovery practice](docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh) — Scripted walk-through of the two scariest Git moments: conflicts and lost commits.
 
@@ -41,12 +41,10 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
 - **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, custom-values snippet, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and troubleshooting snippets.
-- **k8s/** — Companion lowercase directory holding newer Kubernetes manifests; currently a Go-service Deployment with probes plus an HPA. Prefer `Kubernetes/` for the main toolkit.
-- **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, and quickstart trip-ups for the open-source Terraform alternative.
-- **ot/** — Companion lowercase directory holding newer OpenTofu material; currently state-management tutorial notes and a local-backend config. Prefer `OpenTofu/` for the main toolkit.
+- **k8s/** — Companion lowercase directory holding a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes, HPA, and dev/prod overlays. Prefer `Kubernetes/` for the main toolkit.
+- **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, state management tutorial notes, and quickstart trip-ups for the open-source Terraform alternative.
 - **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
-- **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, docs, notebooks, and manifests.
-- **tf/** — Companion lowercase directory holding newer Terraform manifests; currently a reusable VPC module. Prefer `Terraform/` for the main toolkit.
+- **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, reusable VPC module, docs, notebooks, and manifests.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, a config file, and Python wrappers.
 - **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
 - **CHANGELOG.md** — Chronological record of additions, reworks, and audit fixes.
@@ -69,13 +67,13 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | GitHub Actions | 3 | 2 | 4 | 1 | 1 | — | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | 3 | — | 4 | — | — | 2026-08-24 |
-| Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 3 | — | — | 2026-08-12 |
-| OpenTofu | 2 | 1 | 1 | — | — | — | — | — | — | 2026-08-21 |
+| Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-26 |
+| OpenTofu | 3 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
-| Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 1 | — | — | 2026-08-22 |
+| Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
 | Trivy | 3 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-16 |
 
-*Rows follow the on-disk capitalized tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase companion directories (`git/`, `k8s/`, `ot/`, `tf/`) hold newer material alongside `Git/`, `Kubernetes/`, `OpenTofu/`, and `Terraform/` respectively; prefer the capitalized folders for the main toolkit.*
+*Rows follow the on-disk capitalized tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase `git/` and `k8s/` companion directories hold supplementary material alongside `Git/` and `Kubernetes/`; prefer the capitalized folders for the main toolkit.*
 
 </details>
 
@@ -84,4 +82,4 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Current focus is IaC state management — OpenTofu state surgery notes, a state-workflow practice script, and a reusable VPC module — plus Kubernetes workload hardening with probes and autoscaling. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
 
 ---
-_Last updated: 2026-08-25_
+_Last updated: 2026-08-26_
