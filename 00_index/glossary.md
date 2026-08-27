@@ -284,6 +284,7 @@
 - **`trivy repo`** — Scans a Git repository's dependencies for known vulnerabilities by cloning it before analysis.
 - **`--severity`** — A Trivy flag that narrows a scan to given levels (e.g. `--severity CRITICAL`), so exit codes and reports can be scoped to the findings you actually care about.
 - **`VulnerabilityID`** — The CVE identifier Trivy assigns to each finding in its JSON report; paired with `PkgName`, `InstalledVersion`, and `FixedVersion` it tells you exactly which package needs upgrading to clear a finding.
+- **Scan policy** — A misconfiguration policy bundle Trivy consults during `misconfig` scanning, referenced in config by a `bundle`/`name` pair (e.g. `bundle: default`); it defines which checks run so a scan fails on the rules you actually care about instead of the whole built-in set.
 
 ## Prometheus
 

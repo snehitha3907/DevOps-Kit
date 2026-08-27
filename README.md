@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 ## Quick links
 
+- [Trivy config with scan policies](Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml) — Newest config: severity gating (CRITICAL/HIGH) plus vuln, secret, and misconfig scanners with a default policy bundle.
+- [Go service Deployment with probes and HPA](Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml) — Kubernetes Deployment with liveness probe, resource requests/limits, and a CPU-utilization HorizontalPodAutoscaler.
+- [OpenTofu minimal local backend config](OpenTofu/configs/2026-08-25-minimal-local-backend.hcl) — Local-state backend wiring for OpenTofu, the drop-in Terraform alternative.
 - [OpenTofu state management tutorial notes](OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — What `tofu state list/mv/pull` actually do, why hand-editing state is a trap, and how backend migration really works.
 - [Reusable VPC module manifest](Terraform/manifests/reusable-vpc-module.hcl) — Single-file Terraform reference module: VPC with public/private subnets across AZs, an IGW, and optional NAT gateways.
-- [Go service Deployment with probes and HPA](Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml) — Kubernetes Deployment with liveness probe, resource requests/limits, and a CPU-utilization HorizontalPodAutoscaler.
-- [IaC state workflow sandbox](docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh) — Practice the full state lifecycle (init → plan → apply → backup → rollback) against a throwaway project.
-- [Merge conflict and reflog recovery practice](docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh) — Scripted walk-through of the two scariest Git moments: conflicts and lost commits.
 
 ## Layout
 
@@ -68,10 +68,10 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | 3 | — | 4 | — | — | 2026-08-24 |
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-26 |
-| OpenTofu | 3 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
+| OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
-| Trivy | 3 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-16 |
+| Trivy | 3 | 2 | 2 | 2 | — | — | — | — | — | 2026-08-27 |
 
 *Rows follow the on-disk capitalized tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase `git/` and `k8s/` companion directories hold supplementary material alongside `Git/` and `Kubernetes/`; prefer the capitalized folders for the main toolkit.*
 
@@ -82,4 +82,4 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Current focus is IaC state management — OpenTofu state surgery notes, a state-workflow practice script, and a reusable VPC module — plus Kubernetes workload hardening with probes and autoscaling. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
 
 ---
-_Last updated: 2026-08-26_
+_Last updated: 2026-08-28_
