@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-29
+
+- Added Bash automation patterns script demonstrating error handling, retries with jitter, structured logging, and cleanup traps (con-064) (`docs/concepts/scripting-automation-bash-python/scripts/bash-automation-patterns-error-handling-retries.sh`)
+
 ## 2026-08-27
 
 - Added Trivy configuration file with custom severity filters and scan policies (trv-010) (`Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml`)
