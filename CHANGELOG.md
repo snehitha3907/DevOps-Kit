@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-29
+
+- Added container health automation script combining bash retry patterns with Docker containerization concepts and YAML report generation (con-064) (`docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh`)
+
 ## 2026-08-27
 
 - Added Trivy configuration file with custom severity filters and scan policies (trv-010) (`Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml`)
