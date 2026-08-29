@@ -1,0 +1,103 @@
+# last_verified: 2026-08-29 · Helm n/a
+# I took the default values.yaml from `helm create` and tuned it for a
+# live deployment. Following the Helm quickstart, here's what
+# worked and where I got stuck — comments are my notes.
+#
+# Gotcha: `helm create` generates a lot of commented defaults; I uncommented
+# only what I needed and left the rest as Helm's defaults.
+
+# I set replicaCount to 3 so a rolling update always has quorum.
+# Started with 1 in the default chart and realized a single pod gives no
+# redundancy — flipping to 3 was the first fix.
+replicaCount: 3
+
+image:
+  # Using nginx as a placeholder — I pin the tag instead of "latest" so
+  # rollbacks are predictable. Helm's default leaves tag empty (uses Chart appVersion).
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: "1.25.5"
+  # Got stuck: imagePullSecrets was empty and I assumed it would use default SA.
+  # It does, but if you pull from a private registry you need to populate this.
+  pullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+# I added explicit resources after the scheduler kept evicting my pod.
+# Without requests, HPA and scheduling are guesswork.
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+# Probes — I pointed liveness/readiness at /healthz because / just returns
+# static content and won't catch app failures. Using named port "http".
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 15
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  failureThreshold: 3
+
+service:
+  type: ClusterIP
+  port: 80
+
+# I kept ingress disabled for now — later I'd enable it with
+# an ALB/NGINX class, but I didn't want to fight cert-manager on day one.
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Autoscaling — disabled here because I want to verify manual replicas first.
+# When I enable it, I need resources.requests set (done above) or HPA won't calculate.
+autoscaling:
+  enabled: false
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# I added podDisruptionBudget thinking Helm would create it — it doesn't
+# unless the chart templates it. Noting here as a reminder to template it later.
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 2
+
+# Node scheduling — left empty but I noted I'd use nodeSelector for
+# prod pools and tolerations for spot vs on-demand.
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# What I'd try next: extract this into a values-prod.yaml overlay and keep
+# values.yaml minimal, then test `helm template . -f values-prod.yaml` and
+# `helm upgrade --install myapp . --values values-prod.yaml` to diff.

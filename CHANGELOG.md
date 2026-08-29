@@ -3,6 +3,9 @@
 ## 2026-08-29
 
 - Added container health automation script combining bash retry patterns with Docker containerization concepts and YAML report generation (con-064) (`docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh`)
+- Added Helm values configuration for a live deployment with tuned resources, probes, and autoscaling (hlm-008) (`Helm/configs/2026-08-29-live-values.yaml`)
+- Added Trivy quickstart follow-along notes covering image vs filesystem scans and trip-ups (trv-009) (`Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md`)
+- Added TCP/TLS health probes with latency statistics and load-balanced endpoint checking combining networking and scripting concepts (con-062) (`docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh`)
 
 ## 2026-08-27
 
