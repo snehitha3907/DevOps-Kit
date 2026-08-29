@@ -15,16 +15,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across seventeen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds a bisect notes, branching mechanics tutorial, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds a bisect notes, branching mechanics tutorial, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA.
 
 ## Quick links
 
-- [Docker container health automation script](docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh) — Bash script that probes a container's health endpoint and restarts it when the check fails, with exponential backoff.
-- [Trivy config with scan policies](Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml) — Newest config: severity gating (CRITICAL/HIGH) plus vuln, secret, and misconfig scanners with a default policy bundle.
-- [Go service Deployment with probes and HPA](Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml) — Kubernetes Deployment with liveness probe, resource requests/limits, and a CPU-utilization HorizontalPodAutoscaler.
-- [OpenTofu minimal local backend config](OpenTofu/configs/2026-08-25-minimal-local-backend.hcl) — Local-state backend wiring for OpenTofu, the drop-in Terraform alternative.
-- [OpenTofu state management tutorial notes](OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — What `tofu state list/mv/pull` actually do, why hand-editing state is a trap, and how backend migration really works.
-- [Reusable VPC module manifest](Terraform/manifests/reusable-vpc-module.hcl) — Single-file Terraform reference module: VPC with public/private subnets across AZs, an IGW, and optional NAT gateways.
+- [Integrating Kubernetes with Prometheus](k8s/docs/integrating-kubernetes-with-prometheus.md) — How to wire Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations.
+- [Branch protection, merge strategies, and release automation](docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md) — Branch protection rules, merge strategies, and release automation patterns that wire version control into CI/CD.
+- [Helm live-values config](Helm/configs/2026-08-29-live-values.yaml) — Live-tuned Helm values for a production-style nginx deployment with probes, resource requests, and HPA.
+- [Trivy quickstart trip-ups](Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md) — Trivy quickstart trip-ups: exit codes, Docker daemon requirements, DB caching, and severity gating for CI.
+- [TCP/TLS health probes with latency](docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh) — Multi-layer TCP/TLS/DNS health probes with latency statistics for load-balanced endpoints.
 
 ## Layout
 
@@ -46,7 +45,7 @@ First-contact notes, setup scripts, configs, and manifests across seventeen tool
 - **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, state management tutorial notes, and quickstart trip-ups for the open-source Terraform alternative.
 - **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, reusable VPC module, docs, notebooks, and manifests.
-- **Trivy/** — Primer, CLI exploration notes, container scanning scripts, a config file, and Python wrappers.
+- **Trivy/** — Primer, CLI exploration notes, container scanning scripts, configs, and Python wrappers.
 - **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
 - **CHANGELOG.md** — Chronological record of additions, reworks, and audit fixes.
 
@@ -67,14 +66,14 @@ First-contact notes, setup scripts, configs, and manifests across seventeen tool
 | GitHub | 10 | 6 | 7 | 3 | 4 | 1 | — | — | — | 2026-08-23 |
 | GitHub Actions | 3 | 2 | 4 | 1 | 1 | — | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 2 | 1 | 1 | 1 | 3 | — | 4 | — | — | 2026-08-24 |
+| Helm | 2 | 1 | 2 | 1 | 3 | — | 4 | — | — | 2026-08-29 |
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-25 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
-| Trivy | 3 | 2 | 2 | 2 | — | — | — | — | — | 2026-08-27 |
+| Trivy | 4 | 2 | 2 | 2 | — | — | — | — | — | 2026-08-29 |
 | git (companion) | 1 | — | — | — | 4 | 1 | — | 7 | — | 2026-08-25 |
-| k8s (companion) | — | — | — | — | — | — | — | 10 | — | 2026-08-26 |
+| k8s (companion) | — | — | — | — | 1 | — | — | 10 | — | 2026-08-29 |
 
 *Rows follow the on-disk capitalized tool directories, plus the lowercase `git/` and `k8s/` companion directories which hold supplementary material. Prefer the capitalized folders for the main toolkit. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts.*
 
@@ -82,7 +81,7 @@ First-contact notes, setup scripts, configs, and manifests across seventeen tool
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is IaC state management and Kubernetes workload hardening — OpenTofu state surgery notes, a state-workflow practice script, and a reusable VPC module, plus a Go service Deployment with probes and autoscaling and a companion Helm/Kustomize scaffold. The Trivy wrapper that fails a build on critical CVEs and the new scan-policies config remain the security entry point.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is Kubernetes workload hardening and Prometheus integration — a Go service Deployment with probes and autoscaling, a companion Helm/Kustomize scaffold, and a new Kubernetes + Prometheus service-discovery guide. The Trivy wrapper that fails a build on critical CVEs and the scan-policies config remain the security entry point.
 
 ---
-_Last updated: 2026-08-29_
+_Last updated: 2026-08-30_
