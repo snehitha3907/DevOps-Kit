@@ -215,6 +215,7 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
   - **notebooks** (1): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
   - **scripts** (2): [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh)
+  - _…and 1 more under `docs/concepts/scripting-automation-bash-python/scripts/` — browse the folder._
   - **snippets** (2): [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py), [retry, backoff, logging](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
   - **notebooks** (1): [bash/python glue patterns](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)

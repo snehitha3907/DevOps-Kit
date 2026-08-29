@@ -162,6 +162,7 @@
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
+- [K8s deployment scaffold with Helm + Kustomize overlays](../k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
 
 ### Work with AWS
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
@@ -218,6 +219,7 @@
 - [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 - [Bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh)
 - [Config parsing with jq and retry patterns](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh)
+- [Docker container health automation script](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)
 - [Log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py)
 - [Retry, backoff, and logging patterns](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
 - [Bash/Python glue patterns notebook](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
