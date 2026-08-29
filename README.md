@@ -15,10 +15,11 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds a bisect notes, branching mechanics tutorial, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit.
+First-contact notes, setup scripts, configs, and manifests across seventeen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds a bisect notes, branching mechanics tutorial, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA.
 
 ## Quick links
 
+- [Docker container health automation script](docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh) — Bash script that probes a container's health endpoint and restarts it when the check fails, with exponential backoff.
 - [Trivy config with scan policies](Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml) — Newest config: severity gating (CRITICAL/HIGH) plus vuln, secret, and misconfig scanners with a default policy bundle.
 - [Go service Deployment with probes and HPA](Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml) — Kubernetes Deployment with liveness probe, resource requests/limits, and a CPU-utilization HorizontalPodAutoscaler.
 - [OpenTofu minimal local backend config](OpenTofu/configs/2026-08-25-minimal-local-backend.hcl) — Local-state backend wiring for OpenTofu, the drop-in Terraform alternative.
@@ -67,19 +68,21 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | GitHub Actions | 3 | 2 | 4 | 1 | 1 | — | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 1 | 1 | 3 | — | 4 | — | — | 2026-08-24 |
-| Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-26 |
+| Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-25 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
 | Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
 | Trivy | 3 | 2 | 2 | 2 | — | — | — | — | — | 2026-08-27 |
+| git (companion) | 1 | — | — | — | 4 | 1 | — | 7 | — | 2026-08-25 |
+| k8s (companion) | — | — | — | — | — | — | — | 10 | — | 2026-08-26 |
 
-*Rows follow the on-disk capitalized tool directories. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts. The lowercase `git/` and `k8s/` companion directories hold supplementary material alongside `Git/` and `Kubernetes/`; prefer the capitalized folders for the main toolkit.*
+*Rows follow the on-disk capitalized tool directories, plus the lowercase `git/` and `k8s/` companion directories which hold supplementary material. Prefer the capitalized folders for the main toolkit. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts.*
 
 </details>
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, and Prometheus. Current focus is IaC state management — OpenTofu state surgery notes, a state-workflow practice script, and a reusable VPC module — plus Kubernetes workload hardening with probes and autoscaling. The Trivy wrapper that fails a build when a scan surfaces a critical CVE remains the security entry point.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is IaC state management and Kubernetes workload hardening — OpenTofu state surgery notes, a state-workflow practice script, and a reusable VPC module, plus a Go service Deployment with probes and autoscaling and a companion Helm/Kustomize scaffold. The Trivy wrapper that fails a build on critical CVEs and the new scan-policies config remain the security entry point.
 
 ---
-_Last updated: 2026-08-28_
+_Last updated: 2026-08-29_

@@ -81,6 +81,7 @@ Advanced concepts and expert-level tool content.
 - **Terraform modules** — Building reusable modules. [S3 module](../Terraform/configs/reusable-s3-module/README.md), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl)
 - **Terraform module outputs** — Wiring a child module's computed values (VPC IDs, endpoints, ARNs) into a parent module, and the plan-time errors that catch mistakes. [Guide](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 - **Kubernetes production patterns** — First real content: a Deployment wired with liveness probes, resource requests/limits, and a CPU-based HorizontalPodAutoscaler. [Go service + HPA manifest](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml) Ingress controllers, service meshes, and security policies are still ⏳.
+- **Kubernetes deployment scaffolds** — Helm chart and Kustomize overlay scaffold for a Deployment with probes, HPA, and dev/prod overlays. [Helm chart](../k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
 - **Helm chart authoring** ⏳ — Creating and publishing your own charts.
 - **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
 - **HashiCorp Vault** ⏳ — Secrets management and access control. Depends on Docker L2 + K8s L3.
@@ -147,4 +148,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-08-26_
+_Last updated: 2026-08-29_
