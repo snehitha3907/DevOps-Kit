@@ -3,6 +3,7 @@
 ## 2026-08-29
 
 - Added container health automation script combining bash retry patterns with Docker containerization concepts and YAML report generation (con-064) (`docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh`)
+- Added docs on wiring version control concepts (branch protection, merge strategies, release tags) into CI/CD pipelines (con-065) (`docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md`)
 
 ## 2026-08-27
 
