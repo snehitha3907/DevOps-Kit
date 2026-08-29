@@ -188,6 +188,7 @@
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - [Fail a build on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
+- [Trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml)
 
 ### CI/CD concepts
 - [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
