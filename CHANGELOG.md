@@ -2,6 +2,7 @@
 
 ## 2026-08-29
 
+- Added Kubernetes docs on integrating Kubernetes with Prometheus for production monitoring (k8s-015) (`k8s/docs/integrating-kubernetes-with-prometheus.md`)
 - Added container health automation script combining bash retry patterns with Docker containerization concepts and YAML report generation (con-064) (`docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh`)
 - Added docs on wiring version control concepts (branch protection, merge strategies, release tags) into CI/CD pipelines (con-065) (`docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md`)
 - Added Helm values configuration for a live deployment with tuned resources, probes, and autoscaling (hlm-008) (`Helm/configs/2026-08-29-live-values.yaml`)
