@@ -76,6 +76,7 @@
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [Helm chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - [Helm live-values config](../Helm/configs/2026-08-29-live-values.yaml)
+- [Helm production-deployment values config](../Helm/configs/2026-08-30-production-deployment-values.yaml)
 - [Helm redis chart manifests](../Helm/manifests/redis-chart/Chart.yaml)
 - [OpenTofu minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
 - [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)

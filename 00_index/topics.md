@@ -113,14 +113,14 @@
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  13 files
+## Helm  ·  14 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates plus [values](../Helm/manifests/redis-chart/values.yaml)
 - **docs** (3): [add helm to README layout and coverage](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [helm readme already documented](../Helm/docs/2026-07-25-helm-readme-already-documented.md), [helm added to readme](../Helm/docs/2026-07-22-helm-added-to-readme.md)
 - **notes** (2): most recent → [helm quickstart tripups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000 primer](../Helm/notes/0000-primer-helm.md)
 - **scripts** (1): [install helm and explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
-- **configs** (2): [first chart inspection](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml), [live values config](../Helm/configs/2026-08-29-live-values.yaml)
+- **configs** (3): most recent → [production-deployment-values.yaml](../Helm/configs/2026-08-30-production-deployment-values.yaml), [live values config](../Helm/configs/2026-08-29-live-values.yaml), [first chart inspection](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
 ## Kubernetes  ·  16 files

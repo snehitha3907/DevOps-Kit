@@ -1,0 +1,137 @@
+# last_verified: 2026-08-30 · Helm n/a
+# I took the default helm create values.yaml and hardened it for a
+# live deployment. Here's what I changed and why — comments
+# are my scratch notes from following the Helm quickstart.
+
+# Replicas: I run 5 so a rolling update keeps quorum.
+# Started with 3, but 5 gives better headroom for node maintenance.
+replicaCount: 5
+
+image:
+  # I pin the tag explicitly instead of leaving it empty.
+  # Helm defaults to Chart.appVersion, which drifts if I forget
+  # to bump it during a release.
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: "1.25"
+  pullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+# Security context — I lock the container down so it can't
+# run as root or write to the filesystem. Default helm create
+# leaves everything commented out, which is fine for dev but
+# not for a hardened release.
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+  seccompProfile:
+    type: RuntimeDefault
+
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+# Resources — I always set requests so the scheduler can place
+# pods and HPA can calculate. Without requests, autoscaling
+# is guesswork.
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi
+
+# Probes — I pointed liveness at /healthz and readiness at /readyz.
+# Using separate endpoints lets me drain traffic before killing
+# a slow-starting pod.
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 20
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  failureThreshold: 3
+
+service:
+  type: ClusterIP
+  port: 80
+
+# Ingress — disabled by default. When I enable it I'd add an
+# NGINX class and TLS cert via cert-manager, but I don't want
+# to fight DNS propagation on day one.
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Autoscaling — enabled with conservative targets. I need
+# resources.requests set above or HPA won't calculate.
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# Pod Disruption Budget — I want at least 2 pods available
+# during node maintenance. Note: the chart must template a
+# PDB object for this to take effect.
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 2
+
+# Node scheduling — I target prod nodes with a selector and
+# tolerate spot interruptions so the scheduler can place pods
+# across both on-demand and spot pools.
+nodeSelector:
+  kubernetes.io/role: prod
+
+tolerations:
+  - key: "spot"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
+
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: nginx
+          topologyKey: kubernetes.io/hostname
+
+# What I'd try next: split this into values-base.yaml and
+# values-prod.yaml overlays, then test with:
+#   helm template . -f values-prod.yaml
+#   helm upgrade --install myapp . -f values-prod.yaml
