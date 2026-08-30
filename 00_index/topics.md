@@ -64,14 +64,14 @@
 
 - **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 - **scripts** (3): most recent → [create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh), [install gcloud CLI + configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh), [install gcloud CLI (earlier pass)](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
-- **snippets** (2): most recent → [list Compute and GCS with gcloud](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [list Compute and GCS (earlier pass)](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **configs** (2): [service account and IAM config](../GCP/configs/service-account-and-iam-config.yaml), [minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
+- **snippets** (2): most recent → [list Compute and GCS with gcloud](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [list Compute and GCS (earlier pass)](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
-## Git  ·  41 files
+## Git  ·  38 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
-- **templates** (21): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
-- _…and 18 more under `Git/templates/` — browse the folder (includes the repository-skeleton scaffold)._
+- **templates** (18): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
+- _…and 15 more under `Git/templates/` — browse the folder (includes the repository-skeleton scaffold)._
 - **scripts** (9): most recent → [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional commits hook](../Git/scripts/conventional-commits-hook.sh)
 - _…and 6 more under `Git/scripts/` — browse the folder._
 - **docs** (5): most recent → [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md), [automating git bisect](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git workflows comparison](../Git/docs/git-workflows-comparison.md)
@@ -91,7 +91,7 @@
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml)
 - _…and 5 more under `GitHub/configs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
-- **docs** (4): [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [PR checker workflow notes](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
+- **docs** (4): [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [PR checker workflow notes](../GitHub/docs/2026-08-22-document-github-notebooks-in-readme.md)
 - _1 more under `GitHub/docs/` — browse the folder._
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
@@ -113,14 +113,14 @@
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  12 files
+## Helm  ·  13 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates plus [values](../Helm/manifests/redis-chart/values.yaml)
 - **docs** (3): [add helm to README layout and coverage](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [helm readme already documented](../Helm/docs/2026-07-25-helm-readme-already-documented.md), [helm added to readme](../Helm/docs/2026-07-22-helm-added-to-readme.md)
 - **notes** (2): most recent → [helm quickstart tripups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000 primer](../Helm/notes/0000-primer-helm.md)
 - **scripts** (1): [install helm and explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
-- **configs** (1): [first chart inspection](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- **configs** (2): [first chart inspection](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml), [live values config](../Helm/configs/2026-08-29-live-values.yaml)
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
 ## Kubernetes  ·  16 files
@@ -136,10 +136,11 @@
 - **notebooks** (1): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - **snippets** (1): [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 
-### k8s (companion lowercase dir)  ·  10 files
+### k8s (companion lowercase dir)  ·  11 files
 
 Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the main toolkit.
 
+- **docs** (1): [integrating kubernetes with prometheus](../k8s/docs/integrating-kubernetes-with-prometheus.md)
 - **templates** (10): [k8s-deployment-helm-chart-kustomize-overlay](../k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/) — Helm chart and Kustomize overlay scaffold with dev/prod overlays
 
 ## OpenTofu  ·  6 files
@@ -169,10 +170,10 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 - **notebooks** (1): [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
 
-## Trivy  ·  9 files
+## Trivy  ·  10 files
 
 - **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
-- **notes** (3): most recent → [trivy quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md), [exploring trivy CLI](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [0000 primer](../Trivy/notes/0000-primer-trivy.md)
+- **notes** (3): [exploring trivy CLI](../Trivy/notes/2026-06-25-exploring-trivy-cli.md), [trivy quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md), [trivy quickstart trip-ups (latest)](../Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md)
 - **scripts** (2): [install trivy and scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **snippets** (2): most recent → [scan image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [trivy python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
@@ -187,7 +188,7 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
 - **templates** (8): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
 - _…and 5 more under `git/templates/` — browse the folder._
 
-## Foundational Concepts  ·  39 files
+## Foundational Concepts  ·  45 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
@@ -211,14 +212,15 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
   - **notebooks** (1): [scraping endpoint, three pillars](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
 - **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
   - **notes** (1): [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
-  - **scripts** (2): [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
+  - **scripts** (3): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
   - **notebooks** (1): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
-  - **scripts** (2): [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh)
+  - **scripts** (3): [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh), [docker container health automation](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)
   - _…and 1 more under `docs/concepts/scripting-automation-bash-python/scripts/` — browse the folder._
-  - **snippets** (2): [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py), [retry, backoff, logging](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
+  - **snippets** (2): [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py), [retry, backoff, and logging](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
   - **notebooks** (1): [bash/python glue patterns](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+  - **docs** (1): [branch protection, merge strategies, release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
   - **scripts** (2): [feature branch rebase/merge/tag practice](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh), [merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh)
   - **snippets** (1): [conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
 

@@ -14,6 +14,7 @@
 - [Network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
 - [Netcat and curl connectivity script](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
 - [TCP/TLS health probes script](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh)
+- [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh)
 - [DNS, TLS, and load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
 
 ### Install a tool
@@ -74,6 +75,7 @@
 - [GitHub Actions matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [Helm chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
+- [Helm live-values config](../Helm/configs/2026-08-29-live-values.yaml)
 - [Helm redis chart manifests](../Helm/manifests/redis-chart/Chart.yaml)
 - [OpenTofu minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
 - [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
@@ -163,6 +165,7 @@
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - [K8s deployment scaffold with Helm + Kustomize overlays](../k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
+- [Integrating Kubernetes with Prometheus](../k8s/docs/integrating-kubernetes-with-prometheus.md)
 
 ### Work with AWS
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
@@ -186,6 +189,7 @@
 ### Scan for vulnerabilities
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Trivy quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md)
+- [Trivy quickstart trip-ups (latest)](../Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - [Fail a build on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
@@ -226,6 +230,7 @@
 
 ### Version control concepts
 - [Version Control concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+- [Branch protection, merge strategies, and release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
 - [Git feature-branch rebase, merge, and tag script](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
 - [Merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh)
 - [Conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
