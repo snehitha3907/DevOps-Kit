@@ -39,7 +39,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide, branch protection and required reviews), and Python API snippets.
 - **GitHub Actions/** — Quickstart notes, CI workflow configs, and REST API snippets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
-- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, custom-values snippet, and docs.
+- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, production-deployment values config, custom-values snippet, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and troubleshooting snippets.
 - **k8s/** — Companion lowercase directory holding a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes, HPA, and dev/prod overlays. Prefer `Kubernetes/` for the main toolkit.
 - **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, state management tutorial notes, and quickstart trip-ups for the open-source Terraform alternative.
@@ -66,7 +66,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | GitHub | 10 | 6 | 7 | 3 | 4 | 1 | — | — | — | 2026-08-23 |
 | GitHub Actions | 3 | 2 | 4 | 1 | 1 | — | — | — | — | 2026-08-15 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 2 | 1 | 2 | 1 | 3 | — | 4 | — | — | 2026-08-29 |
+| Helm | 2 | 1 | 2 | 1 | 3 | — | 4 | — | — | 2026-08-30 |
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-25 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |

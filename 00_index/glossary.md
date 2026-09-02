@@ -231,6 +231,10 @@
 - **HorizontalPodAutoscaler (HPA)** — An autoscaling/v2 resource that adjusts a Deployment's replica count between `minReplicas` and `maxReplicas` based on metrics such as CPU utilisation; pairs with resource requests because the utilisation target is computed against them.
 - **Resource request** — The CPU/memory a container is guaranteed (`resources.requests`); the scheduler uses it to place pods, and HPA utilisation percentages are measured against it.
 - **Resource limit** — The CPU/memory ceiling a container may not exceed (`resources.limits`); exceeding a CPU limit throttles the container, exceeding a memory limit gets it OOM-killed.
+- **ServiceAccount** — An identity for processes running in a pod, used to authenticate to the Kubernetes API and other services.
+- **ClusterRole** — A set of permissions that defines what resources a user or service account can access across the entire cluster.
+- **ClusterRoleBinding** — A rule that grants the permissions in a ClusterRole to a specific user or service account.
+- **Pod Disruption Budget** — A policy that limits the number of pods that can be voluntarily evicted from a Deployment or StatefulSet at once, protecting availability during node maintenance.
 
 ## OpenTofu
 
@@ -296,6 +300,8 @@
 - **Alertmanager** — A component that receives alerts from Prometheus, deduplicates them, groups by labels, and routes them to email, Slack, or pager integrations.
 - **Exporter** — A small server that translates third-party metrics into the Prometheus format. Example: Node Exporter turns Linux kernel and hardware metrics into /metrics output.
 - **ServiceMonitor** — A Kubernetes Custom Resource Definition (CRD) used by the Prometheus Operator to declaratively select which pods to scrape.
+- **PodMonitor** — A Kubernetes CRD used by the Prometheus Operator to select pods for scraping based on label selectors, similar to ServiceMonitor but targeting pods directly.
+- **PrometheusRule** — A Kubernetes CRD used by the Prometheus Operator to define alerting and recording rules as native cluster resources.
 
 ## Monitoring & Observability
 
