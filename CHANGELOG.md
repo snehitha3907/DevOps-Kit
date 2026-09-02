@@ -2,6 +2,7 @@
 
 ## 2026-09-02
 
+- Added automated container image build and push pipeline script combining containerization with CI/CD (con-069) (`docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py`)
 - Fixed container network topology and service discovery notebook to valid Jupyter nbformat 4 JSON with runnable cells and corrected --rm flag (con-068 rework) (`docs/concepts/containerization-concepts/notebooks/container-network-topology-service-discovery.ipynb`)
 - Added container network topology and service discovery notebook combining Docker networking with DNS-based service discovery (con-068) (`docs/concepts/containerization-concepts/notebooks/container-network-topology-service-discovery.ipynb`)
 - Added networking health telemetry notebook combining DNS, TLS, and load-balancer visualization with observability integration (con-063) (`docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb`)
