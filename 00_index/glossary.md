@@ -239,6 +239,7 @@
 - **ServiceAccount** — An identity for processes running in a pod, used to authenticate to the Kubernetes API and other services.
 - **ClusterRole** — A set of permissions that defines what resources a user or service account can access across the entire cluster.
 - **ClusterRoleBinding** — A rule that grants the permissions in a ClusterRole to a specific user or service account.
+- **RBAC** — Role-Based Access Control, the Kubernetes authorization model that grants permissions through Roles and ClusterRoles bound to users or ServiceAccounts; Prometheus needs `get`, `list`, and `watch` on pods, services, endpoints, and nodes.
 - **Pod Disruption Budget** — A policy that limits the number of pods that can be voluntarily evicted from a Deployment or StatefulSet at once, protecting availability during node maintenance.
 
 ## OpenTofu
@@ -296,6 +297,8 @@
 - **Scan policy** — A misconfiguration policy bundle Trivy consults during `misconfig` scanning, referenced in config by a `bundle`/`name` pair (e.g. `bundle: default`); it defines which checks run so a scan fails on the rules you actually care about instead of the whole built-in set.
 - **`trivy image`** — Scans a container image for OS and language vulnerabilities; requires the Docker daemon and downloads a vulnerability DB on first run (cached at `~/.cache/trivy/db`).
 - **DB caching** — Trivy's vulnerability database is fetched once and cached locally; subsequent `trivy image` runs are immediate and re-pulling the image is needed after a Dockerfile base-tag change.
+- **`trivy k8s`** — Scans a Kubernetes cluster for vulnerabilities and misconfigurations across its workloads and node components; the cluster must be reachable from the machine running the scan.
+- **`trivy sbom`** — Generates a Software Bill of Materials for a container image or filesystem, listing every detected package and dependency in CycloneDX or SPDX format.
 
 ## Prometheus
 
@@ -309,6 +312,8 @@
 - **ServiceMonitor** — A Kubernetes Custom Resource Definition (CRD) used by the Prometheus Operator to declaratively select which pods to scrape.
 - **PodMonitor** — A Kubernetes CRD used by the Prometheus Operator to select pods for scraping based on label selectors, similar to ServiceMonitor but targeting pods directly.
 - **PrometheusRule** — A Kubernetes CRD used by the Prometheus Operator to define alerting and recording rules as native cluster resources.
+- **`kubernetes_sd_configs`** — A Prometheus scrape configuration block that discovers scrape targets from the Kubernetes API; the `role` field (pod, service, endpoints, node) controls which objects become targets.
+- **`relabel_configs`** — A Prometheus relabeling configuration applied to discovered targets before scraping; used to filter, rename labels, or drop unwanted targets so only relevant endpoints are scraped.
 
 ## Monitoring & Observability
 
@@ -359,3 +364,6 @@
 - **.gitignore** — A file that tells Git which files or directories to skip.
 - **Conflict** — When two branches change the same line of code and Git can't auto-merge them.
 - **HEAD** — A pointer to the current commit I'm looking at, usually the tip of the current branch.
+- **Branch protection** — Rules applied to a Git branch (commonly `main`) that enforce requirements such as passing CI checks, required reviews, or preventing force pushes before merging.
+- **Merge strategy** — The method Git uses to combine branches: merge commit (preserves full history), rebase (rewrites commits onto a new base), or squash (collapses all commits into one); the choice affects history readability and bisectability.
+- **Release automation** — The practice of turning a Git tag into a deployable artifact through an automated pipeline — typically parsing conventional commits to generate a changelog, bump the version, and publish a release without manual steps.

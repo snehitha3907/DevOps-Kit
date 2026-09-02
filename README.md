@@ -15,15 +15,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds a bisect notes, branching mechanics tutorial, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA.
 
 ## Quick links
 
-- [Helm live release values](Helm/configs/2026-09-02-live-release-values.yaml) — Live-tuned Helm values for a Go HTTP service with probes, resource requests, and HPA.
-- [Trivy quickstart follow-along](Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md) — Trivy quickstart follow-along: image vs filesystem scans, exit-code gating, DB caching, and severity filtering.
-- [Helm production deployment values](Helm/configs/2026-08-30-production-deployment-values.yaml) — Production-hardened Helm values for nginx with 5 replicas, security contexts, resources, and probes.
-- [Integrating Kubernetes with Prometheus](k8s/docs/integrating-kubernetes-with-prometheus.md) — How to wire Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations.
-- [Branch protection, merge strategies, and release automation](docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md) — Branch protection rules, merge strategies, and release automation patterns that wire version control into CI/CD.
+- [Network health telemetry visualization](docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb) — Jupyter notebook visualizing TCP/TLS/DNS health telemetry and latency patterns for load-balanced endpoints.
+- [Helm live-release values](Helm/configs/2026-09-02-live-release-values.yaml) — Live-tuned Helm values for a production-style nginx deployment with probes, resource requests, and HPA.
+- [Trivy quickstart follow-along](Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md) — Following the official Trivy getting-started guide: install, scan an image, scan a filesystem, and make sense of the output.
+- [Helm production-deployment values](Helm/configs/2026-08-30-production-deployment-values.yaml) — Production-deployment Helm values with tuned resource requests and replica counts.
+- [Integrating Kubernetes with Prometheus](k8s/docs/integrating-kubernetes-with-prometheus.md) — Wiring Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations.
 
 ## Layout
 
@@ -39,7 +39,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide, branch protection and required reviews), and Python API snippets.
 - **GitHub Actions/** — Quickstart notes, CI workflow configs, and REST API snippets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
-- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, tuned live and production values configs, custom-values snippet, and docs.
+- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, live-release and production-deployment values configs, custom-values snippet, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and troubleshooting snippets.
 - **k8s/** — Companion lowercase directory holding a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes, HPA, and dev/prod overlays. Prefer `Kubernetes/` for the main toolkit.
 - **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, state management tutorial notes, and quickstart trip-ups for the open-source Terraform alternative.
@@ -81,7 +81,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is Kubernetes workload hardening and Prometheus integration — a Go service Deployment with probes and autoscaling, a companion Helm/Kustomize scaffold, and a new Kubernetes + Prometheus service-discovery guide. Helm now carries tuned live and production values alongside its redis chart, and Trivy's image vs filesystem follow-along rounds out the security scanning lane.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is Kubernetes workload hardening and Prometheus integration — a Go service Deployment with probes and autoscaling, a companion Helm/Kustomize scaffold, a new Kubernetes + Prometheus service-discovery guide, and a network health telemetry visualization notebook. The Trivy wrapper that fails a build on critical CVEs and the scan-policies config remain the security entry point.
 
 ---
 _Last updated: 2026-09-02_
