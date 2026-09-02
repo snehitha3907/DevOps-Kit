@@ -2,6 +2,7 @@
 
 ## 2026-09-02
 
+- Added networking health telemetry notebook combining DNS, TLS, and load-balancer visualization with observability integration (con-063) (`docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb`)
 - Added Helm values configuration for a live release with tuned resources, probes, and autoscaling (hlm-008) (`Helm/configs/2026-09-02-live-release-values.yaml`)
 - Added Trivy quickstart follow-along notes covering image vs filesystem scans and exit-code gating (trv-009) (`Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md`)
 
