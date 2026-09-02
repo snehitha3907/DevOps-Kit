@@ -71,12 +71,12 @@
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (21): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
-- _…and 18 more under `Git/templates/` — browse the folder (includes the repository-skeleton scaffold)._
+- _…and 18 more under `Git/templates/` — browse the folder (includes the repository-skeleton and repo-scaffold scaffolds)._
 - **scripts** (9): most recent → [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional commits hook](../Git/scripts/conventional-commits-hook.sh)
 - _…and 6 more under `Git/scripts/` — browse the folder._
 - **docs** (5): most recent → [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md), [automating git bisect](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git workflows comparison](../Git/docs/git-workflows-comparison.md)
 - _…and 2 more under `Git/docs/` — browse the folder._
-- **notes** (4): most recent → [git branching tutorial (companion copy)](../git/notes/2026-08-11-git-branching-tutorial.md), [git branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md)
+- **notes** (4): most recent → [git branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md), [install git](../Git/notes/2026-06-04-install-git.md)
 - _…and 1 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
@@ -120,7 +120,7 @@
 - **docs** (3): [add helm to README layout and coverage](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [helm readme already documented](../Helm/docs/2026-07-25-helm-readme-already-documented.md), [helm added to readme](../Helm/docs/2026-07-22-helm-added-to-readme.md)
 - **notes** (2): most recent → [helm quickstart tripups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000 primer](../Helm/notes/0000-primer-helm.md)
 - **scripts** (1): [install helm and explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
-- **configs** (4): most recent → [live release values](../Helm/configs/2026-09-02-live-release-values.yaml), [production deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml), [live values config](../Helm/configs/2026-08-29-live-values.yaml)
+- **configs** (4): most recent → [live-release values](../Helm/configs/2026-09-02-live-release-values.yaml), [production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml), [live values config](../Helm/configs/2026-08-29-live-values.yaml)
 - _1 more under `Helm/configs/` — browse the folder._
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
@@ -184,13 +184,14 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 
 A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold). Prefer `Git/` for the main toolkit.
 
-- **docs** (3): [wiring git hooks into a pre-commit workflow](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [automating git bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder readme coverage note](../git/docs/2026-08-04-git-folder-readme-coverage.md)
+- **docs** (4): [wiring git hooks into a pre-commit workflow](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [automating git bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git-folder readme coverage note](../git/docs/2026-08-04-git-folder-readme-coverage.md)
+- _1 more under `git/docs/` — browse the folder._
 - **notes** (1): [git branching tutorial](../git/notes/2026-08-11-git-branching-tutorial.md)
 - **notebooks** (1): [comparing git merge strategies](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
-- **templates** (8): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
+- **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
 - _…and 5 more under `git/templates/` — browse the folder._
 
-## Foundational Concepts  ·  42 files
+## Foundational Concepts  ·  43 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
@@ -215,7 +216,7 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
 - **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
   - **notes** (1): [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
   - **scripts** (3): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
-  - **notebooks** (1): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb)
+  - **notebooks** (2): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb), [network health telemetry visualization](../docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
   - **scripts** (3): [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh), [docker container health automation](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)
   - _…and 1 more under `docs/concepts/scripting-automation-bash-python/scripts/` — browse the folder._
