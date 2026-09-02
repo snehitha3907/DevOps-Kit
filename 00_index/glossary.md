@@ -118,6 +118,11 @@
 - **Release revision** — An incrementing number tracking each change to a Helm release; viewable with `helm history`.
 - **`helm uninstall`** — The command that removes a release and its resources from the cluster.
 - **`helm repo update`** — The command that refreshes the local chart index from remote repositories so `helm search` and `helm upgrade` see newer chart versions.
+- **replicaCount** — The chart value that sets how many pod replicas the Deployment should run; `replicaCount: 2` provides redundancy during rolling updates, while `5` gives headroom for node maintenance.
+- **image.repository / tag / pullPolicy** — Chart values that pin the container image and its pull behaviour; pinning `tag` instead of `latest` makes `helm rollback` deterministic.
+- **serviceAccount** — Chart values that control creation and mounting of the Kubernetes ServiceAccount used by the release's pods.
+- **podSecurityContext / containerSecurityContext** — Chart values that harden the pod and container: `runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation: false`, `capabilities.drop: [ALL]`, and `seccompProfile.type`.
+- **resources.requests / limits** — Chart values that declare CPU/memory guarantees and ceilings; without `requests` the scheduler and HPA have nothing to schedule against.
 
 ## Git
 
@@ -289,6 +294,8 @@
 - **`--severity`** — A Trivy flag that narrows a scan to given levels (e.g. `--severity CRITICAL`), so exit codes and reports can be scoped to the findings you actually care about.
 - **`VulnerabilityID`** — The CVE identifier Trivy assigns to each finding in its JSON report; paired with `PkgName`, `InstalledVersion`, and `FixedVersion` it tells you exactly which package needs upgrading to clear a finding.
 - **Scan policy** — A misconfiguration policy bundle Trivy consults during `misconfig` scanning, referenced in config by a `bundle`/`name` pair (e.g. `bundle: default`); it defines which checks run so a scan fails on the rules you actually care about instead of the whole built-in set.
+- **`trivy image`** — Scans a container image for OS and language vulnerabilities; requires the Docker daemon and downloads a vulnerability DB on first run (cached at `~/.cache/trivy/db`).
+- **DB caching** — Trivy's vulnerability database is fetched once and cached locally; subsequent `trivy image` runs are immediate and re-pulling the image is needed after a Dockerfile base-tag change.
 
 ## Prometheus
 

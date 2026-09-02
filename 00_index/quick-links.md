@@ -77,6 +77,7 @@
 - [Helm chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - [Helm live-values config](../Helm/configs/2026-08-29-live-values.yaml)
 - [Helm production-deployment values config](../Helm/configs/2026-08-30-production-deployment-values.yaml)
+- [Helm live release values](../Helm/configs/2026-09-02-live-release-values.yaml)
 - [Helm redis chart manifests](../Helm/manifests/redis-chart/Chart.yaml)
 - [OpenTofu minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
 - [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
@@ -90,6 +91,7 @@
 - [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
 - [GCP service account and IAM config](../GCP/configs/service-account-and-iam-config.yaml)
 - [Trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
+- [Trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml)
 - [Kubernetes Deployment + Service with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 - [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 
@@ -191,6 +193,7 @@
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Trivy quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md)
 - [Trivy quickstart trip-ups (latest)](../Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md)
+- [Trivy quickstart follow-along](../Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Trivy Python wrapper snippet](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - [Fail a build on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
