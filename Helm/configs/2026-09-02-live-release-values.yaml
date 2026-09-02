@@ -1,0 +1,94 @@
+# last_verified: 2026-09-02 · Helm n/a
+# I started from the default `helm create` values.yaml and tuned it for a
+# live release. Following the quickstart, here's what worked and where I got
+# stuck — comments are my notes.
+
+# I set replicaCount to 2 because the default 1 left me with no redundancy
+# during a rollout. Bumping to 2 let me see the rolling update in action.
+replicaCount: 2
+
+image:
+  # I used a Go http server image so I could test liveness on /livez.
+  # I pinned the tag instead of latest so helm rollback is deterministic.
+  repository: ghcr.io/example/go-http
+  pullPolicy: IfNotPresent
+  tag: "0.4.1"
+  # Gotcha: imagePullSecrets defaults to [] and I assumed it would use the
+  # default service account — it does for public images, but private registry
+  # pulls need an explicit secret here.
+  pullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+# I added requests/limits after my pod was evicted under load.
+# Without requests the scheduler and HPA have nothing to schedule against.
+resources:
+  requests:
+    cpu: 50m
+    memory: 96Mi
+  limits:
+    cpu: 300m
+    memory: 256Mi
+
+# Probes — I pointed liveness at /livez and readiness at /readyz
+# so a stuck app fails liveness but a not-yet-ready pod doesn't get traffic.
+livenessProbe:
+  httpGet:
+    path: /livez
+    port: http
+  initialDelaySeconds: 20
+  periodSeconds: 10
+  timeoutSeconds: 2
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  failureThreshold: 3
+
+service:
+  type: ClusterIP
+  port: 8080
+
+# I left ingress disabled for now — I want to validate the service with
+# port-forward first, then enable an ingress class and host rule later.
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: go-http.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Autoscaling is off in this values file; I want to verify the static
+# replica count before letting HPA scale. Requests above are required for HPA.
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 65
+  targetMemoryUtilizationPercentage: 75
+
+# I kept affinity empty but noted I'd add podAntiAffinity to spread
+# replicas across zones once I have more than two nodes.
+affinity: {}
+nodeSelector: {}
+tolerations: []
+
+# What I'd try next: split this into values.yaml (defaults) and
+# values-live.yaml (this file) and test `helm template . -f values-live.yaml`
+# then `helm upgrade --install demo . --values values-live.yaml --debug`.
