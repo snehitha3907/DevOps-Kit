@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-02
+
+- Added Helm values configuration for a live release with tuned resources, probes, and autoscaling (hlm-008) (`Helm/configs/2026-09-02-live-release-values.yaml`)
+- Added Trivy quickstart follow-along notes covering image vs filesystem scans and exit-code gating (trv-009) (`Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md`)
+
 ## 2026-08-29
 
 - Added Kubernetes docs on integrating Kubernetes with Prometheus for production monitoring (k8s-015) (`k8s/docs/integrating-kubernetes-with-prometheus.md`)
