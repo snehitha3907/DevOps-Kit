@@ -5,6 +5,7 @@
 - Added Terraform install and first plan/apply walkthrough using the local_file resource (tf-026) (`tf/notes/2026-09-03-install-terraform-and-first-local-file.md`)
 - Added automated branch management and merge validation script combining version control with CI/CD patterns (con-075) (`docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh`)
 - Added docs on combining Terraform IaC with Docker containerization — three integration patterns and a responsibility-split table (con-070) (`docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md`)
+- Added docs on combining containerization with security — build-time image scanning and supply-chain signing in the CI build pipeline (con-090) (`docs/concepts/containerization-concepts/docs/image-scanning-and-signing-in-a-build-pipeline.md`)
 
 ## 2026-09-02
 
