@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-03
+
+- Added docs on combining Terraform IaC with Docker containerization — three integration patterns and a responsibility-split table (con-070) (`docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md`)
+
 ## 2026-09-02
 
 - Added automated container image build and push pipeline script combining containerization with CI/CD (con-069) (`docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py`)
