@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-03
+
+- Added automated branch management and merge validation script combining version control with CI/CD patterns (con-075) (`docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh`)
+
 ## 2026-09-02
 
 - Added automated container image build and push pipeline script combining containerization with CI/CD (con-069) (`docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py`)
