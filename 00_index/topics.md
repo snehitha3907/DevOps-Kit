@@ -201,8 +201,10 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
 - **Containerization Concepts:** [0000-primer-containerization-concepts.md](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
   - **docs** (1): [smaller images: base, caching, runtimes](../docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md)
   - **snippets** (1): [inspect image layers](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py)
+  - **scripts** (1): [build and push pipeline](../docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py)
+  - **notebooks** (1): [container network topology and service discovery](../docs/concepts/containerization-concepts/notebooks/container-network-topology-service-discovery.ipynb)
 - **Infrastructure as Code Concepts:** [0000-primer-infrastructure-as-code-concepts.md](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
-  - **docs** (1): [terraform/ansible division of responsibility](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md)
+  - **docs** (2): [terraform/ansible division of responsibility](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md), [terraform and docker integration patterns](../docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md)
   - **notebooks** (1): [declarative vs imperative IaC](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb)
   - **scripts** (1): [IaC state workflow sandbox](../docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh)
 - **Linux & System Administration:** [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
@@ -224,7 +226,7 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
   - **notebooks** (1): [bash/python glue patterns](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
   - **docs** (1): [branch protection, merge strategies, release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
-  - **scripts** (2): [feature branch rebase/merge/tag practice](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh), [merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh)
+  - **scripts** (3): [feature branch rebase/merge/tag practice](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh), [merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh), [branch management and merge validation](../docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh)
   - **snippets** (1): [conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
 
 ## docs (kit notes)  ·  4 files

@@ -126,6 +126,7 @@
 - [Repository scaffold template](../Git/templates/git-repository-skeleton/)
 - [Git client-side hook templates](../Git/templates/git-hooks/)
 - [Git merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
+- [Branch management and merge validation script](../docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh)
 
 ### Work with Docker
 - [Docker Get Started tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md)
@@ -220,10 +221,13 @@
 - [Containerization concepts primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
 - [Smaller images, base caching, runtimes](../docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md)
 - [Inspect image layers with Python](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py)
+- [Build and push pipeline](../docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py)
+- [Container network topology and service discovery notebook](../docs/concepts/containerization-concepts/notebooks/container-network-topology-service-discovery.ipynb)
 
 ### Infrastructure as code concepts
 - [Infrastructure as Code concepts primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
 - [Terraform and Ansible division of responsibility](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md)
+- [Terraform and Docker integration patterns](../docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md)
 - [Declarative vs imperative IaC notebook](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb)
 - [IaC state workflow sandbox](../docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh)
 
@@ -247,3 +251,4 @@
 - [Git feature-branch rebase, merge, and tag script](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
 - [Merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh)
 - [Conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
+- [Branch management and merge validation script](../docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh)
