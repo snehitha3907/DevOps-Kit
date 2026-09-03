@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-03
+
+- Added docs on combining Terraform IaC with Docker containerization — three integration patterns and a responsibility-split table (con-070) (`docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md`)
+
 ## 2026-09-02
 
 - Fixed container network topology and service discovery notebook to valid Jupyter nbformat 4 JSON with runnable cells and corrected --rm flag (con-068 rework) (`docs/concepts/containerization-concepts/notebooks/container-network-topology-service-discovery.ipynb`)
