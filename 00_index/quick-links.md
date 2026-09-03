@@ -32,6 +32,7 @@
 - [Install OpenTofu + verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - [Install Prometheus + verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
+- [Install Terraform and first local file](../tf/notes/2026-09-03-install-terraform-and-first-local-file.md)
 - [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - [Install gh Actions extension + list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
@@ -104,6 +105,7 @@
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
 - [Generate Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
+- [Terraform modules and environment promotion with Git branching](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
 
 ### Work with OpenTofu
 - [OpenTofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md)
@@ -228,6 +230,7 @@
 - [Infrastructure as Code concepts primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
 - [Terraform and Ansible division of responsibility](../docs/concepts/infrastructure-as-code-concepts/docs/2026-08-08-terraform-ansible-division-of-responsibility.md)
 - [Terraform and Docker integration patterns](../docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md)
+- [Terraform modules and environment promotion with Git branching](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
 - [Declarative vs imperative IaC notebook](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb)
 - [IaC state workflow sandbox](../docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh)
 
@@ -248,6 +251,7 @@
 ### Version control concepts
 - [Version Control concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
 - [Branch protection, merge strategies, and release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
+- [Terraform modules and environment promotion with Git branching](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
 - [Git feature-branch rebase, merge, and tag script](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
 - [Merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh)
 - [Conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)

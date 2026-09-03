@@ -15,15 +15,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA. A lowercase `tf/` companion holds first-contact Terraform notes alongside the main `Terraform/` toolkit.
 
 ## Quick links
 
+- [Install Terraform and first local file](tf/notes/2026-09-03-install-terraform-and-first-local-file.md) — First-contact Terraform notes: install the CLI, initialise a local working directory, and run the first plan/apply against a local_file resource.
+- [Terraform modules and environment promotion with Git branching](docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md) — Branching model for versioning and promoting Terraform modules across staging and production without rebuilding or hand-editing state.
 - [Branch management and merge validation script](docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh) — Comprehensive script covering branching, merging, and tag creation for version control workflows.
-- [Terraform and Docker integration patterns](docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md) — Patterns for integrating Terraform infrastructure provisioning with Docker containerization.
-- [Network health telemetry visualization](docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb) — Jupyter notebook visualizing TCP/TLS/DNS health telemetry and latency patterns for load-balanced endpoints.
-- [Helm live-release values](Helm/configs/2026-09-02-live-release-values.yaml) — Live-tuned Helm values for a production-style nginx deployment with probes, resource requests, and HPA.
-- [Trivy quickstart follow-along](Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md) — Following the official Trivy getting-started guide: install, scan an image, scan a filesystem, and make sense of the output.
+- [Terraform and Docker integration patterns](docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md) — Patterns for integrating Terraform infrastructure provisioning with Docker containerization in a real deployment pipeline.
+- [Container build/push pipeline script](docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py) — Python script simulating a container build, tag, and push pipeline for a multi-stage CI workflow.
 
 ## Layout
 
@@ -74,8 +74,9 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | Trivy | 5 | 2 | 2 | 2 | — | — | — | — | — | 2026-09-02 |
 | git (companion) | 1 | — | — | — | 4 | 1 | — | 7 | — | 2026-08-25 |
 | k8s (companion) | — | — | — | — | 1 | — | — | 10 | — | 2026-08-29 |
+| tf (companion) | 1 | — | — | — | — | — | — | — | — | 2026-09-03 |
 
-*Rows follow the on-disk capitalized tool directories, plus the lowercase `git/` and `k8s/` companion directories which hold supplementary material. Prefer the capitalized folders for the main toolkit. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts.*
+*Rows follow the on-disk capitalized tool directories, plus the lowercase `git/`, `k8s/`, and `tf/` companion directories which hold supplementary material. Prefer the capitalized folders for the main toolkit. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts.*
 
 </details>
 
@@ -84,4 +85,4 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is Kubernetes workload hardening and Prometheus integration — a Go service Deployment with probes and autoscaling, a companion Helm/Kustomize scaffold, a new Kubernetes + Prometheus service-discovery guide, and a network health telemetry visualization notebook. The Trivy wrapper that fails a build on critical CVEs and the scan-policies config remain the security entry point.
 
 ---
-_Last updated: 2026-09-03_
+_Last updated: 2026-09-04_
