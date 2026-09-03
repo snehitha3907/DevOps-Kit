@@ -3,6 +3,7 @@
 ## 2026-09-03
 
 - Added automated branch management and merge validation script combining version control with CI/CD patterns (con-075) (`docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh`)
+- Added docs on combining Terraform IaC with Docker containerization — three integration patterns and a responsibility-split table (con-070) (`docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md`)
 
 ## 2026-09-02
 
