@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 ## Quick links
 
+- [Branch management and merge validation script](docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh) — Comprehensive script covering branching, merging, and tag creation for version control workflows.
+- [Terraform and Docker integration patterns](docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md) — Patterns for integrating Terraform infrastructure provisioning with Docker containerization.
 - [Network health telemetry visualization](docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb) — Jupyter notebook visualizing TCP/TLS/DNS health telemetry and latency patterns for load-balanced endpoints.
 - [Helm live-release values](Helm/configs/2026-09-02-live-release-values.yaml) — Live-tuned Helm values for a production-style nginx deployment with probes, resource requests, and HPA.
 - [Trivy quickstart follow-along](Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md) — Following the official Trivy getting-started guide: install, scan an image, scan a filesystem, and make sense of the output.
-- [Helm production-deployment values](Helm/configs/2026-08-30-production-deployment-values.yaml) — Production-deployment Helm values with tuned resource requests and replica counts.
-- [Integrating Kubernetes with Prometheus](k8s/docs/integrating-kubernetes-with-prometheus.md) — Wiring Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations.
 
 ## Layout
 
@@ -84,4 +84,4 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is Kubernetes workload hardening and Prometheus integration — a Go service Deployment with probes and autoscaling, a companion Helm/Kustomize scaffold, a new Kubernetes + Prometheus service-discovery guide, and a network health telemetry visualization notebook. The Trivy wrapper that fails a build on critical CVEs and the scan-policies config remain the security entry point.
 
 ---
-_Last updated: 2026-09-02_
+_Last updated: 2026-09-03_
