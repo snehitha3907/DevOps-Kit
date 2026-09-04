@@ -24,7 +24,7 @@ These tools are unlocked from the start and form the day-to-day toolkit for any 
 - **[Docker](../Docker/notes/0000-primer-docker.md)** — Containerisation fundamentals. Start with the primer, build images, run containers, and learn Compose for multi-service apps.
 - **[Ansible](../Ansible/notes/0000-primer-ansible.md)** — Agentless automation for configuration management and provisioning. Primer, ad-hoc commands, playbooks, and troubleshooting. Start with [ad-hoc command notes](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md) for a quick first win.
 - **[Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md)** — Container orchestration at scale. Primer, `kubectl` exploration, manifests, and pod lifecycle management.
-- **[Terraform](../Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules. A lowercase `tf/` companion holds first-contact notes alongside the main toolkit.
+- **[Terraform](../Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules.
 
 ## Stage 3: Building Skills
 

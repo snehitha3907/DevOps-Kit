@@ -15,15 +15,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA. A lowercase `tf/` companion holds first-contact Terraform notes alongside the main `Terraform/` toolkit.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` (CI/CD, containerization, infrastructure as code, Linux & system administration, monitoring & observability, networking fundamentals, scripting & automation, and version control) ground the tool-specific material, and Jupyter notebooks go deeper on specific topics. A lowercase `git/` companion directory holds bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold template alongside the main `Git/` toolkit. A lowercase `k8s/` companion holds a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes and HPA.
 
 ## Quick links
 
-- [Install Terraform and first local file](tf/notes/2026-09-03-install-terraform-and-first-local-file.md) — First-contact Terraform notes: install the CLI, initialise a local working directory, and run the first plan/apply against a local_file resource.
-- [Terraform modules and environment promotion with Git branching](docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md) — Branching model for versioning and promoting Terraform modules across staging and production without rebuilding or hand-editing state.
+- [Health check automation with JSON output](docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh) — Runs HTTP/TCP/DNS health probes against a list of targets, emits structured JSON, and tracks pass/fail counts.
+- [Image scanning and signing in a build pipeline](docs/concepts/containerization-concepts/docs/image-scanning-and-signing-in-a-build-pipeline.md) — Patterns for wiring container image vulnerability scanning and signature verification into CI/CD.
+- [Terraform and Docker integration patterns](docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md) — Patterns for integrating Terraform infrastructure provisioning with Docker containerization.
+- [Terraform modules and environment promotion](docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md) — Branching model for versioning and promoting Terraform modules across staging and production.
 - [Branch management and merge validation script](docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh) — Comprehensive script covering branching, merging, and tag creation for version control workflows.
-- [Terraform and Docker integration patterns](docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md) — Patterns for integrating Terraform infrastructure provisioning with Docker containerization in a real deployment pipeline.
-- [Container build/push pipeline script](docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py) — Python script simulating a container build, tag, and push pipeline for a multi-stage CI workflow.
 
 ## Layout
 
@@ -70,13 +70,12 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-25 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
-| Terraform | 5 | 3 | 6 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
+| Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
 | Trivy | 5 | 2 | 2 | 2 | — | — | — | — | — | 2026-09-02 |
 | git (companion) | 1 | — | — | — | 4 | 1 | — | 7 | — | 2026-08-25 |
 | k8s (companion) | — | — | — | — | 1 | — | — | 10 | — | 2026-08-29 |
-| tf (companion) | 1 | — | — | — | — | — | — | — | — | 2026-09-03 |
 
-*Rows follow the on-disk capitalized tool directories, plus the lowercase `git/`, `k8s/`, and `tf/` companion directories which hold supplementary material. Prefer the capitalized folders for the main toolkit. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts.*
+*Rows follow the on-disk capitalized tool directories, plus the lowercase `git/` and `k8s/` companion directories which hold supplementary material. Prefer the capitalized folders for the main toolkit. `Last verified` is the most recent `last_verified` stamp found in that tool's docs, configs, and scripts.*
 
 </details>
 
