@@ -24,7 +24,7 @@ These tools are unlocked from the start and form the day-to-day toolkit for any 
 - **[Docker](../Docker/notes/0000-primer-docker.md)** — Containerisation fundamentals. Start with the primer, build images, run containers, and learn Compose for multi-service apps.
 - **[Ansible](../Ansible/notes/0000-primer-ansible.md)** — Agentless automation for configuration management and provisioning. Primer, ad-hoc commands, playbooks, and troubleshooting. Start with [ad-hoc command notes](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md) for a quick first win.
 - **[Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md)** — Container orchestration at scale. Primer, `kubectl` exploration, manifests, and pod lifecycle management.
-- **[Terraform](../Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules.
+- **[Terraform](../Terraform/notes/0000-primer-terraform.md)** — Declarative infrastructure provisioning. Primer, init/plan/apply workflow, configs, and reusable modules. A lowercase `tf/` companion holds first-contact notes alongside the main toolkit.
 
 ## Stage 3: Building Skills
 
@@ -56,6 +56,8 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Terraform workspaces and remote state** — Managing multiple environments with workspaces and locking state with S3 + DynamoDB. [Workspace guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **Terraform `for_each` vs `count`** — Choosing between conditional resource creation strategies. [Notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **Terraform reusable modules** — Building a reusable S3 bucket module with a remote-state backend, plus `for_each` and validation-block patterns so inputs are checked at plan time. [Scaffold script](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl), [module outputs wiring guide](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
+- **Terraform and Docker integration patterns** — Where Terraform stops and Docker starts in a deployment pipeline: registry provisioning, image building, and workload promotion. [Guide](../docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md)
+- **Terraform modules and environment promotion** — Branching model for versioning and promoting Terraform modules across staging and production without rebuilding or hand-editing state. [Guide](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
 - **OpenTofu state management** — What lives in the state file after apply, renaming resources without destroying them (`state mv`), backing up with `state pull`, and why hand-editing state is a trap. [Tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md), [local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl), [state workflow practice script](../docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh)
 
 ## Stage 4: Advanced Tools
@@ -150,4 +152,4 @@ graph TD
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-09-02_
+_Last updated: 2026-09-04_
