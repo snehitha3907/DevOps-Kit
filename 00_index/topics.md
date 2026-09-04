@@ -171,6 +171,12 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 - **notebooks** (1): [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
 
+## tf (companion lowercase dir)  ·  1 files
+
+Newer Terraform material alongside `Terraform/`; prefer `Terraform/` for the main toolkit.
+
+- **notes** (1): [install-terraform-and-first-local-file.md](../tf/notes/2026-09-03-install-terraform-and-first-local-file.md)
+
 ## Trivy  ·  11 files
 
 - **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
