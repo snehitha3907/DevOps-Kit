@@ -2,6 +2,7 @@
 
 ## 2026-09-04
 
+- Added docs on wiring CI/CD gates into a multi-environment deployment workflow combining IaC, containerization, and policy-as-code (con-088) (`docs/concepts/ci-cd-concepts/docs/multi-environment-cicd-gates-workflow.md`)
 - Added notebook comparing Terraform and Ansible for container infrastructure — provisioning vs configuration, side-by-side comparison, and integration patterns (con-071) (`docs/concepts/infrastructure-as-code-concepts/notebooks/terraform-vs-ansible-container-infra.ipynb`)
 - Added config-driven health-check automation script with JSON output combining networking probes with scripting/automation patterns (con-062) (`docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh`)
 - Added sample health-check targets config for the networking automation script (`docs/concepts/networking-fundamentals/scripts/sample-health-check-targets.json`)
