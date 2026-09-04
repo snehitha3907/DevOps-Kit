@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-04
+
+- Added config-driven health-check automation script with JSON output combining networking probes with scripting/automation patterns (con-062) (`docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh`)
+- Added sample health-check targets config for the networking automation script (`docs/concepts/networking-fundamentals/scripts/sample-health-check-targets.json`)
+- Corrected README Coverage table: Terraform Configs 7→6 (doc-031)
+
 ## 2026-09-03
 
 - Added Terraform install and first plan/apply walkthrough using the local_file resource (tf-026) (`tf/notes/2026-09-03-install-terraform-and-first-local-file.md`)

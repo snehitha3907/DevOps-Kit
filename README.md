@@ -70,7 +70,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-25 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
-| Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
+| Terraform | 5 | 3 | 6 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
 | Trivy | 5 | 2 | 2 | 2 | — | — | — | — | — | 2026-09-02 |
 | git (companion) | 1 | — | — | — | 4 | 1 | — | 7 | — | 2026-08-25 |
 | k8s (companion) | — | — | — | — | 1 | — | — | 10 | — | 2026-08-29 |
