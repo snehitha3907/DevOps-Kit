@@ -2,6 +2,7 @@
 
 ## 2026-09-04
 
+- Added notebook comparing Terraform and Ansible for container infrastructure — provisioning vs configuration, side-by-side comparison, and integration patterns (con-071) (`docs/concepts/infrastructure-as-code-concepts/notebooks/terraform-vs-ansible-container-infra.ipynb`)
 - Added config-driven health-check automation script with JSON output combining networking probes with scripting/automation patterns (con-062) (`docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh`)
 - Added sample health-check targets config for the networking automation script (`docs/concepts/networking-fundamentals/scripts/sample-health-check-targets.json`)
 - Corrected README Coverage table: Terraform Configs 7→6 (doc-031)
