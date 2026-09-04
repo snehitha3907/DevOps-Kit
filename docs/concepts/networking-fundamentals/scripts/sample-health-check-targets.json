@@ -1,0 +1,5 @@
+[
+  {"host": "example.com", "port": 443, "scheme": "https", "path": "/"},
+  {"host": "httpbin.org", "port": 443, "scheme": "https", "path": "/status/200"},
+  {"host": "127.0.0.1", "port": 80, "scheme": "http", "path": "/"}
+]
