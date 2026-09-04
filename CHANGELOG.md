@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-04
+
+- Added notebook comparing Terraform and Ansible for container infrastructure — provisioning vs configuration, side-by-side comparison, and integration patterns (con-071) (`docs/concepts/infrastructure-as-code-concepts/notebooks/terraform-vs-ansible-container-infra.ipynb`)
+
 ## 2026-09-03
 
 - Added Terraform install and first plan/apply walkthrough using the local_file resource (tf-026) (`tf/notes/2026-09-03-install-terraform-and-first-local-file.md`)
