@@ -1,8 +1,3 @@
-# last_verified: 2026-09-04 · networking-fundamentals n/a
-
-# Sample health-check targets config for health-check-automation-with-json-output.sh
-# Usage: ./health-check-automation-with-json-output.sh --config sample-health-check-targets.json
-
 [
   {"host": "example.com", "port": 443, "scheme": "https", "path": "/"},
   {"host": "httpbin.org", "port": 443, "scheme": "https", "path": "/status/200"},

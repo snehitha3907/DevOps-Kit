@@ -13,8 +13,6 @@
 # Prometheus blackbox_exporter or Kubernetes liveness probes. This script
 # shows the underlying primitives in a format that plugs into existing tooling.
 
-set -euo pipefail
-
 readonly DEFAULT_TIMEOUT=5
 readonly DEFAULT_RETRIES=2
 readonly DEFAULT_RETRY_DELAY=1
@@ -182,15 +180,6 @@ check_target() {
 # JSON output helpers
 # ---------------------------------------------------------------------------
 
-json_array_append() {
-  local ref="$1" value="$2"
-  if [[ -z "${!ref:-}" ]]; then
-    eval "$ref=\"${value}\""
-  else
-    eval "$ref=\"${!ref},${value}\""
-  fi
-}
-
 # ---------------------------------------------------------------------------
 # Main — read targets from a config file or CLI args, probe each, emit JSON.
 # ---------------------------------------------------------------------------
@@ -254,7 +243,7 @@ emit_json_target() {
   elapsed_ms=$(( (end_time - start_time) / 1000000 ))
 
   local status_str="healthy"
-  $overall_ok || status_str="unhealthy"
+  if ! $overall_ok; then status_str="unhealthy"; fi
 
   printf '    {\n'
   printf '      "target": "%s:%s",\n' "$host" "$port"
@@ -270,7 +259,14 @@ emit_json_target() {
   printf '      "elapsed_ms": %d\n' "$elapsed_ms"
   printf '    }'
 
-  $overall_ok && return 0 || return 1
+  if $overall_ok; then return 0; else return 1; fi
+}
+
+parse_config() {
+  local config_file="$1"
+  # Use grep to extract JSON objects — works for flat objects without nested braces.
+  # Each line in the config file should contain one {"host":..., "port":...} object.
+  grep -o '{[^}]*}' "$config_file" 2>/dev/null
 }
 
 main() {
@@ -322,7 +318,7 @@ main() {
       else
         ((unhealthy++))
       fi
-    done < <(grep -o '{[^}]*}' "$config_file")
+    done < <(parse_config "$config_file")
   elif [[ -n "$single_host" ]]; then
     total=1
     if emit_json_target "$single_host" "$single_port" "$single_scheme" "$single_path"; then
@@ -344,7 +340,7 @@ main() {
   printf '  }\n'
   printf '}\n'
 
-  (( unhealthy == 0 )) && return 0 || return 1
+  if (( unhealthy == 0 )); then return 0; else return 1; fi
 }
 
 main "$@"
