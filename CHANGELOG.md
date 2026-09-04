@@ -6,6 +6,9 @@
 - Added config-driven health-check automation script with JSON output combining networking probes with scripting/automation patterns (con-062) (`docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh`)
 - Added sample health-check targets config for the networking automation script (`docs/concepts/networking-fundamentals/scripts/sample-health-check-targets.json`)
 - Corrected README Coverage table: Terraform Configs 7→6 (doc-031)
+- Added Ansible quickstart trip-ups notes covering pipx PATH issues, connection type confusion, become requirement, and inventory format quirks (ans-028) (`Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md`)
+- Added Terraform CLI exploration snippet demonstrating init, plan, apply, and destroy with the local provider (tf-028) (`Terraform/snippets/2026-09-04-terraform-cli-exploration.sh`)
+- Added Kubernetes kubectl/minikube first-pod notes covering cluster setup, pod networking, and service exposure (k8s-021) (`Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md`)
 
 ## 2026-09-03
 
