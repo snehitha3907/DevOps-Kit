@@ -152,11 +152,13 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 - **docs** (1): [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — `tofu state list/mv/pull`, backend migration, workspace habits
 
-## Prometheus  ·  3 files
+## Prometheus  ·  6 files
 
 - **primer:** [0000-primer-prometheus.md](../Prometheus/notes/0000-primer-prometheus.md)
+- **notes** (2): most recent → [getting started trip-ups](../Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md), [0000 primer](../Prometheus/notes/0000-primer-prometheus.md)
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
-- **configs** (1): [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
+- **configs** (2): [container monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
+- **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
 ## Terraform  ·  24 files
 

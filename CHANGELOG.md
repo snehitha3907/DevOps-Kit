@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-05
+
+- Added Prometheus getting-started trip-up notes covering binary naming, container network reachability, retention defaults, and rate() range quirks (pro-006) (`Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md`)
+- Added Prometheus container-monitoring scrape config with Docker host targets and sensible global defaults (pro-007) (`Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml`)
+- Added PromQL target-health snippet with queries for DOWN targets, missing metrics, and scrape duration p99 (pro-008) (`Prometheus/snippets/2026-09-05-promql-target-health-check.sh`)
+
 ## 2026-09-04
 
 - Added docs on wiring CI/CD gates into a multi-environment deployment workflow combining IaC, containerization, and policy-as-code (con-088) (`docs/concepts/ci-cd-concepts/docs/multi-environment-cicd-gates-workflow.md`)
