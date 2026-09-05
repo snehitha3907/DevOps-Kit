@@ -43,7 +43,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, and troubleshooting snippets.
 - **k8s/** — Companion lowercase directory holding a Helm chart and Kustomize overlay scaffold for a Kubernetes Deployment with probes, HPA, and dev/prod overlays. Prefer `Kubernetes/` for the main toolkit.
 - **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, state management tutorial notes, and quickstart trip-ups for the open-source Terraform alternative.
-- **Prometheus/** — Primer, install and verify script, and a minimal scrape config for metrics collection.
+- **Prometheus/** — Primer, getting-started trip-up notes, install and verify script, a minimal scrape config, a container-monitoring config, and a PromQL target-health snippet.
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, reusable VPC module, docs, notebooks, and manifests.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, configs, and Python wrappers.
 - **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
@@ -69,7 +69,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | Helm | 2 | 1 | 4 | 1 | 3 | — | 4 | — | — | 2026-09-02 |
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 1 | 4 | — | — | 2026-08-25 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
-| Prometheus | 1 | 1 | 1 | — | — | — | — | — | — | 2026-07-23 |
+| Prometheus | 2 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-05 |
 | Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
 | Trivy | 5 | 2 | 2 | 2 | — | — | — | — | — | 2026-09-02 |
 | git (companion) | 1 | — | — | — | 4 | 1 | — | 7 | — | 2026-08-25 |
