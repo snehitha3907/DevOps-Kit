@@ -158,7 +158,7 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **configs** (1): [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
-## Terraform  ·  23 files
+## Terraform  ·  24 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (4 `.tf` files)
@@ -170,12 +170,6 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 - **snippets** (2): most recent → [scaffold S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable module for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - **notebooks** (1): [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
-
-## tf (companion lowercase dir)  ·  1 files
-
-Newer Terraform material alongside `Terraform/`; prefer `Terraform/` for the main toolkit.
-
-- **notes** (1): [install-terraform-and-first-local-file.md](../tf/notes/2026-09-03-install-terraform-and-first-local-file.md)
 
 ## Trivy  ·  11 files
 

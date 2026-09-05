@@ -32,7 +32,6 @@
 - [Install OpenTofu + verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - [Install Prometheus + verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
-- [Install Terraform and first local file](../tf/notes/2026-09-03-install-terraform-and-first-local-file.md)
 - [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - [Install gh Actions extension + list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
