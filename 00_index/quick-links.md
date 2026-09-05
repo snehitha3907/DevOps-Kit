@@ -105,6 +105,7 @@
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
 - [Generate Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 - [Terraform modules and environment promotion with Git branching](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
+- [Terraform CLI exploration](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh)
 
 ### Work with OpenTofu
 - [OpenTofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md)
@@ -166,6 +167,7 @@
 - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 - [Kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md)
+- [Kubectl minikube first pod](../Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md)
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
@@ -213,6 +215,7 @@
 ### CI/CD concepts
 - [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
 - [Artifact promotion, environments, and rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md)
+- [Multi-environment CI/CD gates workflow](../docs/concepts/ci-cd-concepts/docs/multi-environment-cicd-gates-workflow.md)
 - [Simulated CI/CD pipeline script](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
 - [CI/CD artifact promotion and rollback script](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
 - [CI/CD common patterns snippet](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
@@ -240,6 +243,7 @@
 
 ### Scripting and automation
 - [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
+- [Combining scripting with IaC automation patterns](../docs/concepts/scripting-automation-bash-python/docs/combining-scripting-with-iac-automation-patterns.md)
 - [Bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh)
 - [Config parsing with jq and retry patterns](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh)
 - [Docker container health automation script](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)

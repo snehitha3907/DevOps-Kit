@@ -2,11 +2,11 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  47 files
+## Ansible  ·  48 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
-- **notes** (7): most recent → [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md), [2026-06-19-primer-already-exists.md](../Ansible/notes/2026-06-19-primer-already-exists.md)
-- _…and 4 more under `Ansible/notes/` — browse the folder._
+- **notes** (8): most recent → [2026-09-04-ansible-quickstart-trip-ups.md](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
+- _…and 5 more under `Ansible/notes/` — browse the folder._
 - **configs** (7): most recent → [2026-07-19-first-inventory-and-ping-playbook.yaml](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml), [2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml), [ansible-collection-requirements-and-docker-lifecycle-playbook.yaml](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
 - _…and 4 more under `Ansible/configs/` — browse the folder._
 - **templates** (14): [ansible-role scaffold README](../Ansible/templates/ansible-role/roles/myrole/README.md)
@@ -124,11 +124,11 @@
 - _1 more under `Helm/configs/` — browse the folder._
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
-## Kubernetes  ·  16 files
+## Kubernetes  ·  17 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
-- **notes** (6): most recent → [kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [first kubectl version and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md), [kubernetes basics tutorial](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
-- _…and 3 more under `Kubernetes/notes/` — browse the folder._
+- **notes** (7): most recent → [2026-09-04-kubectl-minikube-first-pod.md](../Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md), [kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [first kubectl version and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+- _…and 4 more under `Kubernetes/notes/` — browse the folder._
 - **manifests** (4): [stateless app](../Kubernetes/manifests/stateless-app.yaml), [deployment + service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
 - _1 more under `Kubernetes/manifests/` — browse the folder._
 - **scripts** (2): [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
@@ -158,16 +158,16 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **configs** (1): [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 
-## Terraform  ·  24 files
+## Terraform  ·  25 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (4 `.tf` files)
 - _…and 2 more under `Terraform/configs/` — browse the folder._
-- **notes** (5): most recent → [terraform state management tutorial](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [following the provider tutorial](../Terraform/notes/2026-06-24-following-provider-tutorial.md), [terraform getting started](../Terraform/notes/2026-06-10-terraform-getting-started.md)
-- _…and 2 more under `Terraform/notes/` — browse the folder._
+- **notes** (6): most recent → [2026-09-03-install-terraform-and-first-local-file.md](../Terraform/notes/2026-09-03-install-terraform-and-first-local-file.md), [terraform state management tutorial](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [following the provider tutorial](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
+- _…and 3 more under `Terraform/notes/` — browse the folder._
 - **docs** (3): [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [workspaces and remote state locking (first pass)](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **scripts** (3): [generate ansible inventory from terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py), [bootstrap project scaffold](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install and init](../Terraform/scripts/install-and-init.sh)
-- **snippets** (2): most recent → [scaffold S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable module for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
+- **snippets** (3): most recent → [2026-09-04-terraform-cli-exploration.sh](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh), [scaffold S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable module for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - **notebooks** (1): [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
 
@@ -195,7 +195,7 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
-  - **docs** (1): [artifact promotion, environments, rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md)
+  - **docs** (2): [artifact promotion, environments, rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md), [multi-environment CI/CD gates workflow](../docs/concepts/ci-cd-concepts/docs/multi-environment-cicd-gates-workflow.md)
   - **scripts** (2): [simulated CI/CD pipeline](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh), [artifact promotion + rollback](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
   - **snippets** (2): [common patterns](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh), [parallelized CI stage runner](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - **Containerization Concepts:** [0000-primer-containerization-concepts.md](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
@@ -220,6 +220,7 @@ A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, b
   - **scripts** (3): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
   - **notebooks** (2): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb), [network health telemetry visualization](../docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
+  - **docs** (1): [combining scripting with IaC automation patterns](../docs/concepts/scripting-automation-bash-python/docs/combining-scripting-with-iac-automation-patterns.md)
   - **scripts** (3): [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh), [docker container health automation](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)
   - _…and 1 more under `docs/concepts/scripting-automation-bash-python/scripts/` — browse the folder._
   - **snippets** (2): [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py), [retry, backoff, and logging](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
