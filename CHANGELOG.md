@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-06
+
+- Added Terraform state file parser and validator snippet with structural checks, resource deduplication, and provider breakdown (con-078) (`docs/concepts/infrastructure-as-code-concepts/snippets/2026-09-06-parse-and-validate-terraform-state.py`)
+- Added Docker build-tag-run lifecycle practice script covering image build, version tagging, container verification, layer inspection, and cleanup (con-082) (`docs/concepts/containerization-concepts/scripts/2026-09-06-docker-build-tag-run-lifecycle.sh`)
+
 ## 2026-09-05
 
 - Added Prometheus getting-started trip-up notes covering binary naming, container network reachability, retention defaults, and rate() range quirks (pro-006) (`Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md`)
