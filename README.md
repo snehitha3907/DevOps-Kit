@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 ## Quick links
 
-- [Health check automation with JSON output](docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh) — Runs HTTP/TCP/DNS health probes against a list of targets, emits structured JSON, and tracks pass/fail counts.
-- [Image scanning and signing in a build pipeline](docs/concepts/containerization-concepts/docs/image-scanning-and-signing-in-a-build-pipeline.md) — Patterns for wiring container image vulnerability scanning and signature verification into CI/CD.
-- [Terraform and Docker integration patterns](docs/concepts/infrastructure-as-code-concepts/docs/terraform-docker-integration-patterns.md) — Patterns for integrating Terraform infrastructure provisioning with Docker containerization.
-- [Terraform modules and environment promotion](docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md) — Branching model for versioning and promoting Terraform modules across staging and production.
-- [Branch management and merge validation script](docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh) — Comprehensive script covering branching, merging, and tag creation for version control workflows.
+- [Prometheus container-monitoring scrape config](Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml) — Minimal Prometheus config with Docker host targets and 15s scrape intervals.
+- [Prometheus getting-started trip-ups](Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md) — Binary naming, container reachability, retention defaults, and rate() range quirks.
+- [PromQL target-health check snippet](Prometheus/snippets/2026-09-05-promql-target-health-check.sh) — Queries for DOWN targets, missing metrics, and scrape-duration p99.
+- [Combining scripting with IaC automation patterns](docs/concepts/scripting-automation-bash-python/docs/combining-scripting-with-iac-automation-patterns.md) — Patterns for wiring Terraform provisioning and Ansible configuration into a single repeatable pipeline.
+- [Ansible quickstart trip-ups](Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md) — pipx PATH issues, localhost connection type, become requirements, and inventory format quirks.
 
 ## Layout
 
@@ -56,7 +56,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 | Tool | Notes | Scripts | Configs | Snippets | Docs | Notebooks | Manifests | Templates | Dockerfiles | Last verified |
 |------|-------|---------|---------|----------|------|-----------|-----------|-----------|-------------|---------------|
-| Ansible | 7 | 4 | 7 | 2 | 3 | 1 | 8 | 14 | 1 | 2026-08-24 |
+| Ansible | 8 | 4 | 7 | 2 | 3 | 1 | 8 | 14 | 1 | 2026-09-04 |
 | ArgoCD | 2 | 1 | 2 | — | — | — | — | — | — | 2026-08-11 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 3 | 2 | — | 2 | — | — | — | — | — | 2026-08-23 |
@@ -70,7 +70,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 | Kubernetes | 6 | 2 | 1 | 1 | 1 | 2 | 4 | — | — | 2026-09-07 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 2 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-05 |
-| Terraform | 5 | 3 | 7 | 2 | 3 | 1 | 2 | — | — | 2026-08-25 |
+| Terraform | 6 | 3 | 7 | 3 | 3 | 1 | 2 | — | — | 2026-09-04 |
 | Trivy | 5 | 2 | 2 | 2 | — | — | — | — | — | 2026-09-02 |
 | git (companion) | 1 | — | — | — | 4 | 1 | — | 7 | — | 2026-08-25 |
 | k8s (companion) | — | — | — | — | 1 | — | — | 10 | — | 2026-08-29 |
@@ -81,7 +81,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is Kubernetes workload hardening and Prometheus integration — a Go service Deployment with probes and autoscaling, a companion Helm/Kustomize scaffold, a new Kubernetes + Prometheus service-discovery guide, and a network health telemetry visualization notebook. The Trivy wrapper that fails a build on critical CVEs and the scan-policies config remain the security entry point.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is on Prometheus first-contact notes and container-monitoring configs, plus wiring Terraform and Ansible integration patterns into the concepts layer.
 
 ---
-_Last updated: 2026-09-04_
+_Last updated: 2026-09-05_
