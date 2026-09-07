@@ -48,7 +48,7 @@
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (5): most recent → [Docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - _…and 2 more under `Docker/notes/` — browse the folder._
-- **dockerfiles** (7): most recent → [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- **dockerfiles** (7): most recent → [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile), [build-and-run first image](../Docker/dockerfiles/build-and-run-first.Dockerfile)
 - _…and 5 more under `Docker/dockerfiles/` — browse the folder._
 - **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, and `.dockerignore`
 - **manifests** (5): most recent → [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus scrape config](../Docker/manifests/prometheus.yml), [Dockerfile](../Docker/manifests/Dockerfile)

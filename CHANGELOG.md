@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-07
+
+- Corrected README Coverage table and MANIFEST.json: Docker Dockerfiles 6→7 (the `multi-stage-go-http-server/` scaffold directory contains `go.mod` and `main.go` that were not counted); updated `00_index/topics.md` Docker dockerfiles listing to show all three recent files (audit-012) (`README.md`, `MANIFEST.json`, `00_index/topics.md`, `docs/audit/2026-09-07-audit-012-docker-dockerfile-count.md`)
+
 ## 2026-09-06
 
 - Added Terraform state file parser and validator snippet with structural checks, resource deduplication, and provider breakdown (con-078) (`docs/concepts/infrastructure-as-code-concepts/snippets/2026-09-06-parse-and-validate-terraform-state.py`)
