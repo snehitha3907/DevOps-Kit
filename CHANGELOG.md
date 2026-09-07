@@ -545,3 +545,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added GitHub docs/ README Layout note documenting deploy-keys vs PATs guide (gh-025) (`GitHub/docs/2026-08-22-document-github-docs-in-readme.md`, `README.md`)
 - Added minimal PR-checker workflow with path filtering and branch-protection-friendly checks (gh-016) (`GitHub/configs/2026-08-22-pr-checker-workflow.yaml`)
 - con-091: docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md
+- Added interactive notebook comparing Kubernetes workload types: Pods, Deployments, StatefulSets, DaemonSets, and Jobs (k8s-016) (`k8s/notebooks/2026-09-07-comparing-kubernetes-workload-types.ipynb`)
