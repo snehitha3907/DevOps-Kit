@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stub
+  template:
+    metadata:
+      labels:
+        app: stub
+    spec:
+      containers:
+        - name: stub
+          image: nginx:alpine

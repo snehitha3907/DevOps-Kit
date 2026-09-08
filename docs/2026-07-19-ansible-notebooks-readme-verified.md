@@ -5,7 +5,7 @@ tool_version: n/a
 
 # Ansible notebooks — README coverage verified
 
-I checked whether `Ansible/notebooks/` and `ansible-variable-precedence.ipynb` are documented in the README.
+I checked whether `Ansible/notebooks/` and `../Ansible/notebooks/ansible-variable-precedence.ipynb` are documented in the README.
 
 **Layout** (line 29) already says:
 > `- **Ansible/** — Primer notes, ad-hoc and playbook scripts, configs, snippets, docs, and a variable precedence notebook.`

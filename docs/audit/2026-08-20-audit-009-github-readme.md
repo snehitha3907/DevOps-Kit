@@ -9,7 +9,7 @@ I counted the files in `GitHub/` against the README Coverage table. The Notes co
 
 ## What I changed
 
-- **Coverage table** — GitHub Notes: 10 → 9. The file `2026-06-19-primer-already-exists.md` is a 3-line placeholder, not a genuine note.
+- **Coverage table** — GitHub Notes: 10 → 9. The file `../../GitHub/notes/2026-06-19-primer-already-exists.md` is a 3-line placeholder, not a genuine note.
 - **Layout** — description was already accurate.
 
 ## Counts verified

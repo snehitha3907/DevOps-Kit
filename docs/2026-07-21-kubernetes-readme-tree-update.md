@@ -9,8 +9,8 @@ I checked the Kubernetes directory against the README and found two files on dis
 
 ## Findings
 
-- `Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md` — L2 notes documenting the official Kubernetes Basics tutorial walkthrough using Minikube. The Coverage table counted it in the 5 notes, but it was missing from Quick links.
-- `Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml` — A Pod manifest that mounts a ConfigMap and a Secret via `envFrom` and `secretKeyRef`. The Coverage table only showed 2 manifests, but 3 exist on disk.
+- `../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md` — L2 notes documenting the official Kubernetes Basics tutorial walkthrough using Minikube. The Coverage table counted it in the 5 notes, but it was missing from Quick links.
+- `../Kubernetes/manifests/2026-06-15-configmap-secret-mounted-pod.yaml` — A Pod manifest that mounts a ConfigMap and a Secret via `envFrom` and `secretKeyRef`. The Coverage table only showed 2 manifests, but 3 exist on disk.
 
 ## Changes
 

@@ -5,4 +5,4 @@ tool_version: n/a
 
 # AWS primer already exists
 
-I checked and there's already a primer at `AWS/notes/0000-primer-aws.md`. It covers what the AWS CLI is, key terms (profile, region, aws configure, access keys), and has a tiny example. No need to write a second one.
+I checked and there's already a primer at `0000-primer-aws.md`. It covers what the AWS CLI is, key terms (profile, region, aws configure, access keys), and has a tiny example. No need to write a second one.

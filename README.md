@@ -47,6 +47,7 @@ First-contact notes, setup scripts, configs, and manifests across seventeen tool
 - **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, reusable VPC module, docs, notebooks, and manifests.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, configs, and Python wrappers.
 - **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
+- **CHANGELOG.md** — Kit-level changelog tracking additions, reworks, and audit fixes by date and artifact ID.
 
 ## Coverage
 

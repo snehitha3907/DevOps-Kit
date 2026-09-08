@@ -15,8 +15,8 @@ I checked the OpenTofu folder against the README Layout, Coverage table, and Sta
 
 ## Files in the folder
 
-- `OpenTofu/notes/0000-primer-opentofu.md` — primer covering what OpenTofu is, key terms, and a local_file example.
-- `OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh` — downloads the official install script and runs `tofu --version`.
+- `../../OpenTofu/notes/0000-primer-opentofu.md` — primer covering what OpenTofu is, key terms, and a local_file example.
+- `../../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh` — downloads the official install script and runs `tofu --version`.
 - `OpenTofu/configs/2026-07-18-minimal-local-config.tf` — local_file provider with a `greeting` variable, `output_dir` variable, and two outputs.
 
 ## Result

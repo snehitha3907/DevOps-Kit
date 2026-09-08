@@ -18,9 +18,9 @@ The README Coverage table and `MANIFEST.json` both listed Dockerfiles as 6, whic
 
 ## Fix
 
-- `README.md` Coverage table: Docker Dockerfiles 6 → 7.
+- `../../README.md` Coverage table: Docker Dockerfiles 6 → 7.
 - `MANIFEST.json`: Docker dockerfiles 5 → 7 (the manifest counts every file in the directory, including the scaffold's `go.mod` and `main.go`).
-- `00_index/topics.md`: Docker dockerfiles listing now names all three recent files instead of two.
+- `../../00_index/topics.md`: Docker dockerfiles listing now names all three recent files instead of two.
 
 ## Verification
 

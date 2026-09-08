@@ -7,7 +7,7 @@ After writing a few playbooks, a lint step catches common mistakes before runnin
 ## Prerequisites
 
 - Ansible installed (e.g. via pipx: `pipx install ansible`)
-- A playbook to lint (this walkthrough uses `docker-python-setup.yaml` from `Ansible/configs/`)
+- A playbook to lint (this walkthrough uses `../configs/docker-python-setup.yaml` from `Ansible/configs/`)
 
 ## Steps
 
@@ -22,7 +22,7 @@ pipx inject ansible ansible-lint
 ### 2. Run a first lint pass
 
 ```bash
-ansible-lint Ansible/configs/docker-python-setup.yaml
+ansible-lint Ansible/configs/../configs/docker-python-setup.yaml
 ```
 
 The first run was quiet — no output. That might mean a clean playbook, or it could mean the remote rule download silently failed. Adding `--offline` avoids the download and gives more consistent feedback:

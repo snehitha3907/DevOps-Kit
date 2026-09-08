@@ -1,0 +1,1 @@
+# OpenTofu primer (stub)

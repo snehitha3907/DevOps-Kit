@@ -1,0 +1,5 @@
+# ArgoCD install manifest stub
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd

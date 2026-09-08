@@ -6,7 +6,7 @@ sources: []
 
 # Document GitHub/notebooks/ in README Layout
 
-I noticed the README Layout entry for GitHub only lists primers, scripts, configs, docs, and Python API snippets — but it doesn't mention the notebooks folder at all. The `comparing-api-approaches-release-automation.ipynb` notebook is sitting there invisible in the repo's own navigation.
+I noticed the README Layout entry for GitHub only lists primers, scripts, configs, docs, and Python API snippets — but it doesn't mention the notebooks folder at all. The `../notebooks/comparing-api-approaches-release-automation.ipynb` notebook is sitting there invisible in the repo's own navigation.
 
 ## What I changed
 
@@ -14,6 +14,6 @@ I noticed the README Layout entry for GitHub only lists primers, scripts, config
 
 ## What's in GitHub/notebooks/
 
-- `comparing-api-approaches-release-automation.ipynb` — walks through REST, GraphQL, and GitHub CLI approaches for release automation.
+- `../notebooks/comparing-api-approaches-release-automation.ipynb` — walks through REST, GraphQL, and GitHub CLI approaches for release automation.
 
 That's it. The Layout entry now matches what's actually on disk.

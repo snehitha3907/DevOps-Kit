@@ -14,6 +14,6 @@ I went to add the Helm/ folder to the README and found it's already there. Both 
 - **Status paragraph**: mentions "Helm joins the lineup with a primer note"
 - **Last updated line**: `_Last updated: 2026-07-22 (Helm directory documented)_`
 
-The file count in the Coverage table (1 note) matches what's actually on disk in `Helm/notes/` (`0000-primer-helm.md`).
+The file count in the Coverage table (1 note) matches what's actually on disk in `Helm/notes/` (`../notes/0000-primer-helm.md`).
 
 Nothing to change — Helm is already documented.
