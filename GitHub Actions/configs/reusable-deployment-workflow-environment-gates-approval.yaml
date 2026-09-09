@@ -1,0 +1,264 @@
+# last_verified: 2026-09-09 · GitHub Actions n/a
+
+name: Reusable Deployment Workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'Target environment (dev, staging, prod)'
+        required: true
+        type: string
+      artifact_name:
+        description: 'Name of the artifact to deploy'
+        required: true
+        type: string
+      docker_image:
+        description: 'Docker image reference (e.g., ghcr.io/org/app:sha)'
+        required: true
+        type: string
+      terraform_plan_artifact:
+        description: 'Name of the Terraform plan artifact'
+        required: false
+        type: string
+        default: 'tf-plan'
+    secrets:
+      GH_TOKEN:
+        required: true
+      AZURE_CREDENTIALS:
+        required: false
+      AWS_ROLE_ARN:
+        required: false
+
+permissions:
+  contents: read
+  deployments: write
+  id-token: write
+  actions: read
+
+jobs:
+  prepare:
+    name: Prepare Deployment
+    runs-on: ubuntu-latest
+    outputs:
+      deployment_id: ${{ steps.create_deployment.outputs.deployment_id }}
+    steps:
+      - name: Create deployment
+        id: create_deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: github.sha,
+              environment: '${{ inputs.environment }}',
+              description: 'Deploy ${{ inputs.artifact_name }} to ${{ inputs.environment }}',
+              auto_merge: false,
+              required_contexts: [],
+              payload: {
+                artifact: '${{ inputs.artifact_name }}',
+                image: '${{ inputs.docker_image }}'
+              }
+            });
+            return data.id;
+
+  terraform-plan:
+    name: Terraform Plan
+    needs: prepare
+    if: inputs.terraform_plan_artifact != ''
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Download Terraform plan
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.terraform_plan_artifact }}
+          path: tf-plan
+
+      - name: Show plan
+        run: terraform show -no-color tf-plan/plan.out
+
+      - name: Post plan as deployment status
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const planOutput = fs.readFileSync('tf-plan/plan.out', 'utf8');
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ needs.prepare.outputs.deployment_id }},
+              state: 'pending',
+              description: 'Terraform plan ready for review',
+              log_url: context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId,
+              environment: '${{ inputs.environment }}',
+              environment_url: ''
+            });
+
+  deploy-dev:
+    name: Deploy to Dev
+    needs: [prepare, terraform-plan]
+    if: inputs.environment == 'dev'
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Download application artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: app
+
+      - name: Deploy to dev
+        run: |
+          echo "Deploying ${{ inputs.docker_image }} to dev environment"
+          # Example: kubectl set image deployment/app app=${{ inputs.docker_image }} -n dev
+          # or: docker compose -f docker-compose.dev.yml up -d
+
+      - name: Health check
+        run: |
+          echo "Running health checks against dev..."
+          # curl -f http://dev.example.com/health || exit 1
+
+      - name: Update deployment status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ needs.prepare.outputs.deployment_id }},
+              state: 'success',
+              description: 'Dev deployment complete',
+              environment: 'dev',
+              environment_url: 'https://dev.example.com'
+            });
+
+  deploy-staging:
+    name: Deploy to Staging
+    needs: [prepare, terraform-plan]
+    if: inputs.environment == 'staging'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Download application artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: app
+
+      - name: Run smoke tests
+        run: |
+          echo "Running smoke tests against staging..."
+          # curl -f https://staging.example.com/api/health || exit 1
+
+      - name: Run load test gate
+        run: |
+          echo "Running load test gate..."
+          # k6 run --vus 50 --duration 30s load-test.js
+
+      - name: Policy compliance check
+        run: |
+          echo "Running OPA policy checks..."
+          # conftest test --policy policies/ staging/
+
+      - name: Deploy to staging
+        run: |
+          echo "Deploying ${{ inputs.docker_image }} to staging environment"
+          # kubectl set image deployment/app app=${{ inputs.docker_image }} -n staging
+
+      - name: Update deployment status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ needs.prepare.outputs.deployment_id }},
+              state: 'success',
+              description: 'Staging deployment complete — ready for production promotion',
+              environment: 'staging',
+              environment_url: 'https://staging.example.com'
+            });
+
+  deploy-prod:
+    name: Deploy to Production
+    needs: [prepare, terraform-plan]
+    if: inputs.environment == 'prod'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://prod.example.com
+    steps:
+      - name: Download application artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: app
+
+      - name: Wait for manual approval
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // This step exists to show the approval gate in the UI.
+            // The actual approval is enforced by the environment protection rules.
+            console.log('Waiting for manual approval via environment protection rules...');
+
+      - name: Terraform apply (with saved plan)
+        if: inputs.terraform_plan_artifact != ''
+        run: |
+          echo "Applying saved Terraform plan..."
+          # terraform apply tf-plan/plan.out
+
+      - name: Deploy to production (canary)
+        run: |
+          echo "Starting canary deployment of ${{ inputs.docker_image }} to production"
+          # kubectl set image deployment/app app=${{ inputs.docker_image }} -n production
+          # Wait for canary health check
+          # sleep 300
+          # kubectl rollout status deployment/app -n production --timeout=5m
+
+      - name: Full rollout
+        run: |
+          echo "Promoting canary to full rollout"
+          # kubectl rollout restart deployment/app -n production
+
+      - name: Update deployment status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ needs.prepare.outputs.deployment_id }},
+              state: 'success',
+              description: 'Production deployment complete',
+              environment: 'production',
+              environment_url: 'https://prod.example.com'
+            });
+
+  drift-detection:
+    name: Nightly Drift Detection
+    if: inputs.environment == 'prod'
+    needs: deploy-prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for drift
+        run: |
+          echo "Running nightly terraform plan against production..."
+          # terraform plan -detailed-exitcode || echo "Drift detected!"
+          # If exit code 2, drift exists — alert via GitHub issue or Slack
+
+      - name: Create drift alert
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '[DRIFT] Production infrastructure drift detected',
+              body: 'Nightly `terraform plan` detected drift in production. Review and either import the change or revert it.',
+              labels: ['drift', 'production', 'alert']
+            });
