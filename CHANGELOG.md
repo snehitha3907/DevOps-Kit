@@ -4,6 +4,7 @@
 
 - Added Docker build cache and multi-stage layering reference covering layer ordering, BuildKit remote cache backends for CI, cache mounts, multi-stage patterns, and `.dockerignore` optimization (doc-025) (`Docker/docs/docker-build-cache-and-multi-stage-layering.md`)
 - Corrected README Coverage table: Kubernetes Notes 6→7 (doc-045)
+- Added ArgoCD app sync and health verification snippet with login, sync, wait, and status commands (arg-006) (`ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh`)
 
 ## 2026-09-08
 
