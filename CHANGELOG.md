@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-09
+
+- Added Docker build cache and multi-stage layering reference covering layer ordering, BuildKit remote cache backends for CI, cache mounts, multi-stage patterns, and `.dockerignore` optimization (doc-025) (`Docker/docs/docker-build-cache-and-multi-stage-layering.md`)
+- Corrected README Coverage table: Kubernetes Notes 6→7 (doc-045)
+
 ## 2026-09-08
 
 - Added monitoring practice script combining a Prometheus-style metrics exporter (HTTP /metrics with counters, gauges, histograms) and a structured JSON logger sharing the same route/status labels — RED method exercise (con-086) (`docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py`)

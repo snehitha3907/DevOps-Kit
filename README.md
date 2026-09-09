@@ -67,7 +67,7 @@ First-contact notes, setup scripts, configs, and manifests across seventeen tool
 | GitHub Actions | 3 | 2 | 4 | 1 | 1 | — | — | — | — | 2026-08-07 |
 | GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 2 | 1 | 4 | 1 | 3 | — | 4 | — | — | 2026-09-02 |
-| Kubernetes | 6 | 2 | 1 | 1 | 1 | 2 | 4 | — | — | 2026-09-07 |
+| Kubernetes | 7 | 2 | 1 | 1 | 1 | 2 | 4 | — | — | 2026-09-07 |
 | OpenTofu | 2 | 1 | 2 | — | 1 | — | — | — | — | 2026-08-25 |
 | Prometheus | 2 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-05 |
 | Terraform | 6 | 3 | 7 | 3 | 3 | 1 | 2 | — | — | 2026-09-03 |
