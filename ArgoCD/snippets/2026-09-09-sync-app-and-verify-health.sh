@@ -16,5 +16,5 @@ argocd app sync "$APP_NAME" --force
 # sometimes returned "Progressing" even though pods were ready
 argocd app wait "$APP_NAME" --health --timeout 120
 
-# Show the final state — I use this to grab the revision for rollbacks
+# Show the final state — I use this to grab the revision for later reference
 argocd app get "$APP_NAME" -o wide
