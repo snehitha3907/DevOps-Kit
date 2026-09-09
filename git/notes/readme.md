@@ -1,1 +1,0 @@
-# git notes readme (stub)

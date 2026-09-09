@@ -1,1 +1,0 @@
-# git workflows comparison (stub)
