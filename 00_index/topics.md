@@ -2,11 +2,11 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  48 files
+## Ansible  ·  50 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
-- **notes** (8): most recent → [2026-09-04-ansible-quickstart-trip-ups.md](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
-- _…and 5 more under `Ansible/notes/` — browse the folder._
+- **notes** (10): most recent → [2026-09-04-ansible-quickstart-trip-ups.md](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
+- _…and 7 more under `Ansible/notes/` — browse the folder._
 - **manifests** (8): [multi-server deployment manifest](../Ansible/manifests/multi-server-deployment.yaml), with [roles/](../Ansible/manifests/roles/) (webserver, loadbalancer, dbserver), [inventory/production.ini](../Ansible/manifests/inventory/production.ini), and [group_vars/all.yaml](../Ansible/manifests/group_vars/all.yaml)
 - **templates** (14): [ansible-role scaffold README](../Ansible/templates/ansible-role/roles/myrole/README.md) — full role skeleton (tasks, handlers, defaults, vars, molecule tests) plus [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 - _…and 1 more under `Ansible/templates/` — browse the folder._
@@ -19,12 +19,13 @@
 - **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 - **dockerfiles** (1): [ansible-control-node.Dockerfile](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
 
-## ArgoCD  ·  5 files
+## ArgoCD  ·  7 files
 
 - **primer:** [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
-- **notes** (2): most recent → [2026-08-11-argocd-quickstart.md](../ArgoCD/notes/2026-08-11-argocd-quickstart.md), [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
+- **notes** (3): most recent → [2026-08-11-argocd-quickstart.md](../ArgoCD/notes/2026-08-11-argocd-quickstart.md), [install.yaml](../ArgoCD/notes/install.yaml), [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
 - **configs** (2): [first application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml), [guestbook ApplicationSet](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
 - **scripts** (1): [install argocd CLI and access UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
+- **snippets** (1): [sync-app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
 ## AWS  ·  11 files
 
@@ -42,19 +43,20 @@
 - **scripts** (2): most recent → [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (2): most recent → [create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [create resource group and list regions (earlier pass)](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
-## Docker  ·  35 files
+## Docker  ·  40 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
-- **notes** (5): most recent → [Docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
-- _…and 2 more under `Docker/notes/` — browse the folder._
+- **notes** (7): most recent → [docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
+- _…and 4 more under `Docker/notes/` — browse the folder._
 - **dockerfiles** (7): most recent → [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile), [first docker image](../Docker/dockerfiles/first-docker-image.Dockerfile)
 - _…and 4 more under `Docker/dockerfiles/` — browse the folder._
-- **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`
+- **templates** (5): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`
 - **manifests** (5): most recent → [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus scrape config](../Docker/manifests/prometheus.yml), [Dockerfile](../Docker/manifests/Dockerfile)
 - _…and 2 more under `Docker/manifests/` — browse the folder._
 - **scripts** (5): most recent → [multi-stage Go Docker build](../Docker/scripts/multi-stage-go-dockerfile.sh), [health check + cleanup](../Docker/scripts/docker-health-check-and-cleanup.sh), [install and run first container](../Docker/scripts/install-and-run-first-container.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
-- **docs** (3): [docker run vs compose](../Docker/docs/docker-run-vs-compose.md), [build mount vs COPY caching](../Docker/docs/docker-build-mount-vs-copy-caching.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md)
+- **docs** (6): [docker run vs compose](../Docker/docs/docker-run-vs-compose.md), [build mount vs COPY caching](../Docker/docs/docker-build-mount-vs-copy-caching.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md), [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [compose.yml reference](../Docker/docs/docker-compose.yml), [package.json reference](../Docker/docs/package.json)
+- _1 more under `Docker/docs/` — browse the folder._
 - **notebooks** (1): [comparing docker networking drivers](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **snippets** (2): [build-run-cleanup.py](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service app config](../Docker/configs/multi-service-app.yaml)
@@ -67,21 +69,21 @@
 - **snippets** (2): most recent → [list Compute and GCS with gcloud](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [list Compute and GCS (earlier pass)](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **notes** (1): [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 
-## Git  ·  41 files
+## Git  ·  53 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
-- **templates** (21): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
-- _…and 18 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
+- **templates** (17): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
+- _…and 14 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
+- **docs** (11): most recent → [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 8 more under `Git/docs/` — browse the folder._
 - **scripts** (9): most recent → [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional commits hook](../Git/scripts/conventional-commits-hook.sh)
 - _…and 6 more under `Git/scripts/` — browse the folder._
-- **docs** (5): most recent → [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md), [automating git bisect](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md), [git workflows comparison](../Git/docs/git-workflows-comparison.md)
-- _…and 2 more under `Git/docs/` — browse the folder._
-- **notes** (4): most recent → [git branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md), [install git](../Git/notes/2026-06-04-install-git.md)
-- _1 more under `Git/notes/` — browse the folder._
+- **notes** (8): most recent → [git branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [git branching tutorial (earlier)](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md)
+- _…and 5 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  31 files
+## GitHub  ·  32 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (10): most recent → [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md), [repos, issues, and PRs](../GitHub/notes/2026-06-10-repos-issues-and-prs.md)
@@ -91,65 +93,62 @@
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
-- **docs** (4): [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [document github docs folder in readme](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
-- _1 more under `GitHub/docs/` — browse the folder._
+- **docs** (5): [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [document github docs folder in readme](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
+- _…and 2 more under `GitHub/docs/` — browse the folder._
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
-## GitHub Actions  ·  11 files
+## GitHub Actions  ·  17 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
 - **configs** (4): most recent → [matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [hello workflow](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
-- _1 more under `GitHub Actions/configs/` — browse the folder._
-- **notes** (3): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [0000 primer](../GitHub Actions/notes/0000-primer-github-actions.md)
+- _…and 1 more under `GitHub Actions/configs/` — browse the folder._
+- **notes** (6): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [quickstart tripups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md)
+- _…and 3 more under `GitHub Actions/notes/` — browse the folder._
+- **docs** (4): [quickstart tripups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md), [ci.yml reference](../GitHub Actions/docs/ci.yml), [test.yml reference](../GitHub Actions/docs/test.yml)
+- _1 more under `GitHub Actions/docs/` — browse the folder._
 - **scripts** (2): [install gh actions extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [install gh extension and list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
-- **docs** (1): [quickstart tripups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md)
 - **snippets** (1): [trigger workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
-## GitLab CI  ·  5 files
+## GitLab CI  ·  6 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **notes** (2): [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [0000 primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  15 files
+## Helm  ·  16 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates plus [values](../Helm/manifests/redis-chart/values.yaml)
 - **docs** (3): [add helm to README layout and coverage](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md), [helm readme already documented](../Helm/docs/2026-07-25-helm-readme-already-documented.md), [helm added to readme](../Helm/docs/2026-07-22-helm-added-to-readme.md)
-- **notes** (2): most recent → [helm quickstart tripups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000 primer](../Helm/notes/0000-primer-helm.md)
-- **scripts** (1): [install helm and explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
+- **notes** (3): most recent → [helm quickstart tripups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000 primer](../Helm/notes/0000-primer-helm.md), [values.yaml reference](../Helm/notes/values.yaml)
 - **configs** (4): most recent → [live-release values](../Helm/configs/2026-09-02-live-release-values.yaml), [production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml), [live values config](../Helm/configs/2026-08-29-live-values.yaml)
 - _1 more under `Helm/configs/` — browse the folder._
+- **scripts** (1): [install helm and explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
-## Kubernetes  ·  17 files
+## Kubernetes  ·  33 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
-- **notes** (7): most recent → [kubectl/minikube first pod](../Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md), [kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [first kubectl version and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
-- _…and 4 more under `Kubernetes/notes/` — browse the folder._
+- **templates** (10): [k8s-deployment-helm-chart-kustomize-overlay](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/) — Helm chart (`Chart.yaml`, `values.yaml`, `templates/`) and Kustomize overlay (`base/` + `overlays/dev|prod/`)
+- **notes** (9): most recent → [kubectl/minikube first pod](../Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md), [kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [first kubectl version and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+- _…and 6 more under `Kubernetes/notes/` — browse the folder._
+- **docs** (4): most recent → [integrating kubernetes with prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md), [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md), [prometheus.yml reference](../Kubernetes/docs/prometheus.yml)
+- _1 more under `Kubernetes/docs/` — browse the folder._
 - **manifests** (4): [stateless app](../Kubernetes/manifests/stateless-app.yaml), [deployment + service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
 - _1 more under `Kubernetes/manifests/` — browse the folder._
 - **scripts** (2): [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
-- **configs** (1): [deployment + service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
-- **docs** (1): [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
-- **notebooks** (1): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
+- **notebooks** (2): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb), [workload types (newer pass)](../Kubernetes/notebooks/2026-09-07-comparing-kubernetes-workload-types.ipynb)
 - **snippets** (1): [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
+- **configs** (1): [deployment + service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 
-### k8s (companion lowercase dir)  ·  11 files
-
-Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the main toolkit.
-
-- **docs** (1): [integrating kubernetes with prometheus](../k8s/docs/integrating-kubernetes-with-prometheus.md)
-- **templates** (10): [k8s-deployment-helm-chart-kustomize-overlay](../k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/) — Helm chart (`Chart.yaml`, `values.yaml`, `templates/`) and Kustomize overlay (`base/` + `overlays/dev|prod/`)
-
-## OpenTofu  ·  6 files
+## OpenTofu  ·  7 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **notes** (2): most recent → [opentofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md), [0000 primer](../OpenTofu/notes/0000-primer-opentofu.md)
 - **scripts** (1): [install opentofu and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
-- **docs** (1): [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — `tofu state list/mv/pull`, backend migration, workspace habits
+- **docs** (2): [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — `tofu state list/mv/pull`, backend migration, workspace habits
 
 ## Prometheus  ·  6 files
 
@@ -180,16 +179,6 @@ Newer Kubernetes material alongside `Kubernetes/`; prefer `Kubernetes/` for the 
 - **scripts** (2): [install trivy and scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - **snippets** (2): most recent → [scan image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [trivy python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
-
-## Git (lowercase companion dir)  ·  13 files
-
-A companion lowercase directory that mirrors a subset of `Git/` (bisect notes, branching mechanics, a pre-commit workflow guide, a merge-strategies notebook, and a second repo-scaffold). Prefer `Git/` for the main toolkit.
-
-- **docs** (4): [wiring git hooks into a pre-commit workflow](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [automating git bisect with a scripted regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md), [document git docs folder in readme](../git/docs/2026-08-22-document-git-docs-folder-in-readme.md)
-- _1 more under `git/docs/` — browse the folder._
-- **notes** (1): [git branching tutorial](../git/notes/2026-08-11-git-branching-tutorial.md)
-- **notebooks** (1): [comparing git merge strategies](../git/notebooks/comparing-git-merge-strategies.ipynb) — identical to the `Git/notebooks` copy above
-- **templates** (7): [git-repo-scaffold/README.md](../git/templates/git-repo-scaffold/README.md) — a second repo-scaffold starter (hooks/ folder, release-please manifest)
 
 ## Foundational Concepts  ·  47 files
 

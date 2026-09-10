@@ -122,8 +122,8 @@
 - [Git workflows comparison](../Git/docs/git-workflows-comparison.md)
 - [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
 - [Git worktrees setup gotchas guide](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- [Automate git bisect with a regression test](../git/docs/automating-git-bisect-with-scripted-regression-tests.md)
-- [Wiring Git hooks into a pre-commit workflow](../git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
+- [Automate git bisect with a regression test](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md)
+- [Wiring Git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
 - [Repository scaffold template](../Git/templates/git-repository-skeleton/)
 - [Git client-side hook templates](../Git/templates/git-hooks/)
 - [Git merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
@@ -169,8 +169,8 @@
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
-- [K8s deployment scaffold with Helm + Kustomize overlays](../k8s/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
-- [Integrating Kubernetes with Prometheus](../k8s/docs/integrating-kubernetes-with-prometheus.md)
+- [K8s deployment scaffold with Helm + Kustomize overlays](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
+- [Integrating Kubernetes with Prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
 
 ### Work with AWS
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
