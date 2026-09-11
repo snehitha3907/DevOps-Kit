@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-10
+
+- Added production Docker Compose stack with multi-service deployment (nginx, api, worker, postgres, redis, prometheus), healthchecks on all services, resource limits/reservations, internal backend network, and structured logging (doc-024) (`Docker/manifests/production-compose-stack.yaml`)
+
 ## 2026-09-09
 
 - Added reusable GitHub Actions deployment workflow with environment gates (dev/staging/prod) and manual approval gate for production via environment protection rules (ga-009) (`GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml`)
