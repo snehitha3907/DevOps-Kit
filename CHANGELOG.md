@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-11
+
+- Added docs comparing composite actions vs reusable workflows — when to use each, extraction examples, decision checklist, verification, and common errors (ga-010) (`GitHub Actions/docs/composite-actions-vs-reusable-workflows.md`)
+
 ## 2026-09-10
 
 - Added production Docker Compose stack with multi-service deployment (nginx, api, worker, postgres, redis, prometheus), healthchecks on all services, resource limits/reservations, internal backend network, and structured logging (doc-024) (`Docker/manifests/production-compose-stack.yaml`)
