@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-13
+
+- Added multi-environment Terraform project scaffold with workspaces and remote state backend: shared `main.tf`/`variables.tf`/`outputs.tf`, per-environment `backend.tf` overrides and `terraform.tfvars` for dev and prod, plus `apply.sh`/`destroy.sh` wrappers that select the workspace and init before acting (tf-023) (`Terraform/templates/multi-environment-terraform-workspaces-remote-state/`)
+- Fixed `validate_artifact.py` Pass-1 path check: introduced `TOOL_DIR_MAP` so renamed tool directories (e.g. `tf-` prefix → `Terraform/` on disk) no longer fail the top-folder check (`DevOps_Automation/Agent/tools/validate_artifact.py`)
+
 ## 2026-09-11
 
 - Added docs comparing composite actions vs reusable workflows — when to use each, extraction examples, decision checklist, verification, and common errors (ga-010) (`GitHub Actions/docs/composite-actions-vs-reusable-workflows.md`)
