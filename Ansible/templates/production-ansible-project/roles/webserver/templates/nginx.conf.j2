@@ -1,0 +1,20 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# nginx.conf.j2 — the main nginx config. The `validate` in the task runs
+# `nginx -t -c %s` so a broken template fails the play, not the server.
+
+user {{ webserver_service_user }} {{ webserver_service_group }};
+worker_processes {{ webserver_worker_processes }};
+pid /run/nginx.pid;
+error_log /var/log/nginx/error.log;
+events {
+    worker_connections 1024;
+}
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    sendfile on;
+    keepalive_timeout 65;
+    access_log /var/log/nginx/access.log;
+    include /etc/nginx/conf.d/*.conf;
+    include {{ webserver_config_dir }}/sites-enabled/*.conf;
+}

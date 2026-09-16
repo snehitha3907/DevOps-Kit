@@ -1,0 +1,73 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# webserver role — tasks. The `failed: true` / `fail_json` pattern follows the
+# ansible-core 2.21 deprecation of inferring failure from a bare non-zero rc.
+
+---
+- name: Install web server packages
+  ansible.builtin.apt:
+    name: "{{ webserver_packages }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+  tags: [packages]
+
+- name: Ensure document root exists
+  ansible.builtin.file:
+    path: "{{ webserver_document_root }}"
+    state: directory
+    owner: "{{ webserver_service_user }}"
+    group: "{{ webserver_service_group }}"
+    mode: "0755"
+  tags: [config]
+
+- name: Deploy nginx configuration from template
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: "0644"
+    validate: "nginx -t -c %s"
+  notify: Reload nginx
+  tags: [config]
+
+- name: Ensure site config is deployed
+  ansible.builtin.template:
+    src: site.conf.j2
+    dest: "{{ webserver_config_dir }}/sites-available/{{ webserver_server_name }}.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Reload nginx
+  tags: [config]
+
+- name: Enable site symlink
+  ansible.builtin.file:
+    src: "{{ webserver_config_dir }}/sites-available/{{ webserver_server_name }}.conf"
+    dest: "{{ webserver_config_dir }}/sites-enabled/{{ webserver_server_name }}.conf"
+    state: link
+    force: true
+  notify: Reload nginx
+  tags: [config]
+
+- name: Remove default site symlink if present
+  ansible.builtin.file:
+    path: "{{ webserver_config_dir }}/sites-enabled/default"
+    state: absent
+  notify: Reload nginx
+  tags: [config]
+
+- name: Ensure nginx is enabled and started
+  ansible.builtin.systemd:
+    name: "{{ webserver_service_name }}"
+    state: started
+    enabled: true
+  tags: [service]
+
+- name: Verify nginx is listening on the configured port
+  ansible.builtin.command: "ss -tlnp | grep :{{ webserver_listen_port }}"
+  register: webserver_port_check
+  changed_when: false
+  failed_when: webserver_port_check.rc != 0
+  tags: [verify]

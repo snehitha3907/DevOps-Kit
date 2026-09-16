@@ -1,0 +1,19 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# dbserver role — metadata.
+
+---
+galaxy_info:
+  author: DevOps-Kit scaffold
+  description: Installs and tunes PostgreSQL as the database tier
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Debian
+      versions: ["bullseye", "bookworm"]
+    - name: Ubuntu
+      versions: ["jammy", "noble"]
+  galaxy_tags:
+    - database
+    - postgresql
+    - sql
+dependencies: []

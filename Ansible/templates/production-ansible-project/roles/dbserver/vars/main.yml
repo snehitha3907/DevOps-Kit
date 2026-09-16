@@ -1,0 +1,6 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# dbserver role — variables.
+
+---
+dbserver_service_user: postgres
+dbserver_service_group: postgres

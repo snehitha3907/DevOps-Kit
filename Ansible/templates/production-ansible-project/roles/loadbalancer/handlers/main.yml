@@ -1,0 +1,15 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# loadbalancer role — handlers.
+
+---
+- name: Reload haproxy
+  ansible.builtin.systemd:
+    name: "{{ loadbalancer_service_name }}"
+    state: reloaded
+  listen: "Reload haproxy"
+
+- name: Restart haproxy
+  ansible.builtin.systemd:
+    name: "{{ loadbalancer_service_name }}"
+    state: restarted
+  listen: "Restart haproxy"

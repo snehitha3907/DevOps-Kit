@@ -1,0 +1,46 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# loadbalancer role — tasks.
+
+---
+- name: Install HAProxy
+  ansible.builtin.apt:
+    name: "{{ loadbalancer_package }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+  tags: [packages]
+
+- name: Ensure haproxy user exists
+  ansible.builtin.user:
+    name: "{{ loadbalancer_service_user }}"
+    system: true
+    shell: /usr/sbin/nologin
+    home: /var/lib/haproxy
+    create_home: false
+  tags: [config]
+
+- name: Deploy haproxy configuration
+  ansible.builtin.template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: "0644"
+    validate: "haproxy -c -f %s"
+  notify: Reload haproxy
+  tags: [config]
+
+- name: Ensure haproxy is enabled and started
+  ansible.builtin.systemd:
+    name: "{{ loadbalancer_service_name }}"
+    state: started
+    enabled: true
+  tags: [service]
+
+- name: Verify haproxy is listening on the configured port
+  ansible.builtin.command: "ss -tlnp | grep :{{ loadbalancer_port }}"
+  register: lb_port_check
+  changed_when: false
+  failed_when: lb_port_check.rc != 0
+  tags: [verify]

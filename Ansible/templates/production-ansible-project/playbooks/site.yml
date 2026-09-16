@@ -1,0 +1,25 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# Top-level orchestrator. Runs every tier in dependency order:
+#   database → web servers → load balancer
+# Run: ansible-playbook -i inventory/production.ini playbooks/site.yml
+---
+- name: Deploy database servers
+  hosts: dbservers
+  become: true
+  tags: [deploy, db]
+  roles:
+    - role: dbserver
+
+- name: Deploy web servers
+  hosts: webservers
+  become: true
+  tags: [deploy, web]
+  roles:
+    - role: webserver
+
+- name: Deploy load balancer
+  hosts: loadbalancers
+  become: true
+  tags: [deploy, lb]
+  roles:
+    - role: loadbalancer

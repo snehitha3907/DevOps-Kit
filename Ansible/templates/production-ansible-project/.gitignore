@@ -1,0 +1,16 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# Project .gitignore — keep the repo clean of runtime artifacts.
+
+__pycache__/
+*.pyc
+.ansible/
+*.retry
+*.log
+*.swp
+*~
+.DS_Store
+ansible_collections/
+.venv/
+venv/
+.idea/
+.vscode/

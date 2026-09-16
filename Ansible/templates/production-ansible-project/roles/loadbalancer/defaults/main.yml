@@ -1,0 +1,19 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# loadbalancer role — defaults.
+
+---
+loadbalancer_service_name: haproxy
+loadbalancer_package: haproxy
+loadbalancer_port: 80
+loadbalancer_backend_port: 8080
+loadbalancer_mode: http
+loadbalancer_backend_servers:
+  - name: web01
+    host: 10.0.1.10
+    port: 8080
+  - name: web02
+    host: 10.0.1.11
+    port: 8080
+loadbalancer_maxconn: 4096
+loadbalancer_service_user: haproxy
+loadbalancer_service_group: haproxy

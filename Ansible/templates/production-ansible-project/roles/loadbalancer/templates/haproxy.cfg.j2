@@ -1,0 +1,39 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# haproxy.cfg.j2 — HTTP mode, health checks, round-robin backend.
+
+global
+    log /dev/log local0
+    maxconn {{ loadbalancer_maxconn }}
+    daemon
+    stats socket /run/haproxy/admin.sock mode 660 level admin
+    stats timeout 30s
+
+defaults
+    mode {{ loadbalancer_mode }}
+    option httplog
+    option forwardfor
+    timeout connect 5s
+    timeout client 30s
+    timeout server 30s
+    option http-keep-alive
+    retries 3
+
+frontend http_front
+    bind *:{{ loadbalancer_port }}
+    default_backend web_servers
+
+frontend http_stats
+    bind *:8404
+    stats uri /stats
+    stats refresh 10s
+
+backend web_servers
+    balance roundrobin
+{% for server in loadbalancer_backend_servers %}
+    server {{ server.name }} {{ server.host }}:{{ server.port }} check inter 10s fall 2 rise 3
+{% endfor %}
+
+listen healthz
+    bind *:8500
+    mode http
+    http-check expect status 200

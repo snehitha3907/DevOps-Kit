@@ -1,0 +1,19 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# loadbalancer role — metadata.
+
+---
+galaxy_info:
+  author: DevOps-Kit scaffold
+  description: Installs and configures HAProxy as the edge load balancer
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Debian
+      versions: ["bullseye", "bookworm"]
+    - name: Ubuntu
+      versions: ["jammy", "noble"]
+  galaxy_tags:
+    - loadbalancer
+    - haproxy
+    - proxy
+dependencies: []

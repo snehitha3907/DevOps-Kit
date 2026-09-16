@@ -1,0 +1,6 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# loadbalancer role — variables.
+
+---
+loadbalancer_service_user: haproxy
+loadbalancer_service_group: haproxy
