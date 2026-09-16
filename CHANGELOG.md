@@ -2,6 +2,8 @@
 
 ## 2026-09-16
 
+- Corrected README Coverage table and topics.md for Ansible: Notes 10→8 (recounted 8 `.md` files in `Ansible/notes/`) and Docs 3→4 (`ansible-14-core-2-21-migration-guide.md` merged via ans-024); topics.md Ansible header 50→49 files (doc-044) (`README.md`, `00_index/topics.md`)
+
 - Added Ansible 14 and ansible-core 2.21 migration guide covering collection compatibility, removed connection options, explicit failure reporting, and staged verification (ans-024) (`Ansible/docs/ansible-14-core-2-21-migration-guide.md`)
 - Added concept doc on wiring preview-environment gates into a multi-environment deployment workflow: build-once promotion, per-PR preview slots with smoke checks, automatic teardown plus nightly sweep, staging re-validation, and evidence-backed final approval (con-067) (`docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md`)
 
