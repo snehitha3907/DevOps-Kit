@@ -15,15 +15,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across seventeen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` ground the tool-specific material, and Jupyter notebooks go deeper on specific topics.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` ground the tool-specific material, and Jupyter notebooks go deeper on specific topics.
 
 ## Quick links
 
-- [ArgoCD sync-app and verify health snippet](ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh) — Sync an ArgoCD Application and verify its health status post-deployment.
-- [Docker build cache and multi-stage layering](Docker/docs/docker-build-cache-and-multi-stage-layering.md) — How Docker layer caching interacts with multi-stage builds and cache mount strategies.
-- [Parse and validate Terraform state](docs/concepts/infrastructure-as-code-concepts/snippets/2026-09-06-parse-and-validate-terraform-state.py) — Python script that reads a Terraform state file and validates resource addresses.
-- [Prometheus container-monitoring scrape config](Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml) — Minimal Prometheus config with Docker host targets and 15s scrape intervals.
-- [Prometheus getting-started trip-ups](Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md) — Binary naming, container reachability, retention defaults, and rate() range quirks.
+- [Preview-environment gates for multi-environment deploys](docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md) — Give every pull request its own short-lived preview environment and promote only past-gate artifacts toward staging and release.
+- [Multi-environment Terraform scaffold with workspaces and remote state](Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — Run one configuration against dev and prod with workspace-scoped S3 + DynamoDB state and apply/destroy helpers.
+- [Composite actions vs reusable workflows](GitHub Actions/docs/composite-actions-vs-reusable-workflows.md) — When to package shared CI steps as a composite action and when to hand off whole pipelines to a reusable workflow.
+- [Production Compose stack](Docker/manifests/production-compose-stack.yaml) — nginx → api → postgres plus redis, worker, and Prometheus, wired with healthchecks and resource limits.
+- [Reusable deployment workflow with environment gates](GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml) — A `workflow_call` pipeline with per-environment approvals that deploys an image and Terraform plan artifact.
 
 ## Layout
 
@@ -36,13 +36,13 @@ First-contact notes, setup scripts, configs, and manifests across seventeen tool
 - **GCP/** — Primer, gcloud CLI install and configure scripts, Compute/GCS listing and IAM snippets, and configs for startup scripts and service accounts.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
 - **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide, branch protection and required reviews), and Python API snippets.
-- **GitHub Actions/** — Quickstart notes, CI workflow configs, and REST API snippets.
+- **GitHub Actions/** — Quickstart notes, CI workflow configs including a reusable deployment workflow with environment gates, a composite-actions-vs-reusable-workflows guide, runner setup scripts, and REST API snippets.
 - **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
 - **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, live-release and production-deployment values configs, custom-values snippet, and docs.
 - **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, troubleshooting snippets, and a Helm + Kustomize overlay scaffold for deployments with probes and HPA.
 - **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, state management tutorial notes, and quickstart trip-ups for the open-source Terraform alternative.
 - **Prometheus/** — Primer, getting-started trip-up notes, install and verify script, a minimal scrape config, a container-monitoring config, and a PromQL target-health snippet.
-- **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, reusable VPC module, docs, notebooks, and manifests.
+- **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, reusable VPC module, a multi-environment workspaces + remote-state scaffold, docs, notebooks, and manifests.
 - **Trivy/** — Primer, CLI exploration notes, container scanning scripts, configs, and Python wrappers.
 - **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
 - **CHANGELOG.md** — Kit-level changelog tracking additions, reworks, and audit fixes by date and artifact ID.
@@ -58,24 +58,24 @@ First-contact notes, setup scripts, configs, and manifests across seventeen tool
 | ArgoCD | 3 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-09 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 3 | 2 | — | 2 | — | — | — | — | — | 2026-08-23 |
-| Docker | 7 | 5 | 1 | 2 | 6 | 1 | 5 | 5 | 7 | 2026-09-09 |
+| Docker | 7 | 5 | 1 | 2 | 6 | 1 | 6 | 6 | 7 | 2026-09-10 |
 | GCP | 1 | 3 | 2 | 2 | — | — | — | — | — | 2026-08-24 |
-| Git | 8 | 9 | — | 1 | 11 | 1 | — | 17 | — | 2026-08-25 |
+| Git | 8 | 9 | — | 1 | 12 | 1 | — | 22 | — | 2026-08-25 |
 | GitHub | 10 | 6 | 7 | 3 | 5 | 1 | — | — | — | 2026-08-23 |
-| GitHub Actions | 6 | 2 | 4 | 1 | 4 | — | — | — | — | 2026-08-15 |
-| GitLab CI | 2 | 2 | 1 | — | — | — | — | — | — | — |
+| GitHub Actions | 6 | 3 | 5 | 1 | 5 | — | — | — | — | 2026-09-11 |
+| GitLab CI | 3 | 2 | 1 | — | — | — | — | — | — | — |
 | Helm | 3 | 1 | 4 | 1 | 3 | — | 4 | — | — | 2026-09-02 |
 | Kubernetes | 9 | 2 | 1 | 1 | 4 | 2 | 4 | 10 | — | 2026-09-04 |
 | OpenTofu | 2 | 1 | 2 | — | 2 | — | — | — | — | 2026-08-25 |
 | Prometheus | 2 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-05 |
-| Terraform | 6 | 3 | 7 | 3 | 3 | 1 | 2 | — | — | 2026-09-04 |
+| Terraform | 6 | 3 | 7 | 3 | 3 | 1 | 2 | 10 | — | 2026-09-13 |
 | Trivy | 5 | 2 | 2 | 2 | — | — | — | — | — | 2026-09-02 |
 
 </details>
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is on Prometheus first-contact notes and container-monitoring configs, plus wiring Terraform and Ansible integration patterns into the concepts layer.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is environment-promotion patterns: per-PR preview environments with gates, a reusable GitHub Actions deployment workflow with approvals, and a multi-environment Terraform scaffold with workspaces and remote state.
 
 ---
-_Last updated: 2026-09-09_
+_Last updated: 2026-09-16_

@@ -183,6 +183,8 @@
 - **Job** — A set of steps executed on the same runner.
 - **Step** — An individual task within a job, such as running a script or using an action.
 - **Action** — A reusable unit of automation that can be shared across workflows.
+- **Composite action** — An action built by combining multiple workflow steps into one callable unit (`runs.using: composite`); the caller keeps control of the surrounding job (triggers, environment, matrix) while the shared steps stay in one place.
+- **Reusable workflow** — A whole workflow file designed to be called from other workflows via `uses: owner/repo/.github/workflows/file.yml@ref` with `on: workflow_call`; the owning repository controls the jobs, environment gates, and approvals centrally.
 - **Runner** — A server that listens for workflow jobs and executes them.
 - **workflow_dispatch** — An event that lets you trigger a workflow run manually, either from the GitHub web UI or via the REST API (`POST /repos/{owner}/{repo}/actions/workflows/{workflow}/dispatches`); useful for on-demand or scheduled-on-request runs from a script.
 
@@ -336,6 +338,7 @@
 - **Secret** — A sensitive value (API key, password, token) the pipeline needs but must never print to logs; stored in the CI/CD platform's secrets manager.
 - **Matrix build** — Running the same job with multiple configurations (OS, language versions) in parallel to test all combinations.
 - **Artifact promotion** — The practice of passing a build artifact through successive environments (e.g., dev → staging → prod) after it passes validation at each stage.
+- **Preview environment** — A short-lived deployment of a single pull request's artifact, spun up automatically with its own hostname and seed data so reviewers can click through the change; torn down when the request closes. Serves as the first promotion gate before staging.
 - **Deployment gate** — A manual or automated checkpoint in a pipeline that must be passed before an artifact can proceed to the next environment.
 - **Rollback trigger** — An automated or manual action that reverts a deployment to a previous known-good state when a health check, alert, or error threshold is breached.
 

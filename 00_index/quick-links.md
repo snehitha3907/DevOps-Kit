@@ -74,6 +74,7 @@
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
 - [GitHub Actions matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
+- [Reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [Helm chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - [Helm live-release values config](../Helm/configs/2026-09-02-live-release-values.yaml)
@@ -87,6 +88,7 @@
 - [Terraform for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - [Docker Compose multi-service app config](../Docker/configs/multi-service-app.yaml)
 - [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
+- [Production Compose stack](../Docker/manifests/production-compose-stack.yaml)
 - [Prometheus scrape config (manifest)](../Docker/manifests/prometheus.yml)
 - [AWS minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini)
 - [Minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
@@ -99,6 +101,7 @@
 - [Wire outputs into a dependent module](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 - [Scaffold a reusable S3 bucket module + remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh)
 - [Reusable VPC module manifest](../Terraform/manifests/reusable-vpc-module.hcl)
+- [Multi-environment scaffold with workspaces + remote state](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md)
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
 - [Workspaces + remote state locking guide](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
@@ -138,6 +141,7 @@
 - [Build mount vs COPY caching comparison](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - [docker run vs compose decision guide](../Docker/docs/docker-run-vs-compose.md)
 - [Go microservice project scaffold](../Docker/templates/go-microservice/README.md)
+- [Production Compose stack (nginx, api, postgres, redis, worker, Prometheus)](../Docker/manifests/production-compose-stack.yaml)
 - [Docker networking drivers notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - [Container health check + cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - [Compose multi-service stack script](../Docker/scripts/2026-06-12-compose-multi-service.sh)
@@ -155,6 +159,15 @@
 - [Deploy keys vs PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - [Branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
 - [Open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
+- [Trigger a workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
+
+### Ship with GitHub Actions
+- [Composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md)
+- [Reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml)
+- [Matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
+- [CI workflow with env and secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
+- [Self-hosted runner registration + cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh)
+- [Quickstart trip-ups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md)
 - [Trigger a workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ### Work with Kubernetes
@@ -212,6 +225,7 @@
 
 ### CI/CD concepts
 - [CI/CD concepts primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+- [Preview environments with gated promotion](../docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md)
 - [Artifact promotion, environments, and rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md)
 - [Simulated CI/CD pipeline script](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh)
 - [CI/CD artifact promotion and rollback script](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
@@ -221,6 +235,7 @@
 ### Containerization concepts
 - [Containerization concepts primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
 - [Smaller images, base caching, runtimes](../docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md)
+- [Docker build, tag, and run lifecycle script](../docs/concepts/containerization-concepts/scripts/2026-09-06-docker-build-tag-run-lifecycle.sh)
 - [Inspect image layers with Python](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py)
 - [Build and push pipeline](../docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py)
 - [Container network topology and service discovery notebook](../docs/concepts/containerization-concepts/notebooks/container-network-topology-service-discovery.ipynb)
@@ -236,6 +251,7 @@
 ### Monitoring and observability
 - [Monitoring & Observability concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 - [Combining metrics, logs, and traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
+- [Metrics exporter and structured logger script](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py)
 - [Scraping endpoint three pillars notebook](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
 
 ### Scripting and automation
