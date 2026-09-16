@@ -54,7 +54,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 | Tool | Notes | Scripts | Configs | Snippets | Docs | Notebooks | Manifests | Templates | Dockerfiles | Last verified |
 |------|-------|---------|---------|----------|------|-----------|-----------|-----------|-------------|---------------|
-| Ansible | 10 | 4 | 7 | 2 | 3 | 1 | 8 | 14 | 1 | 2026-09-04 |
+| Ansible | 8 | 4 | 7 | 2 | 4 | 1 | 8 | 14 | 1 | 2026-09-04 |
 | ArgoCD | 3 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-09 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 3 | 2 | — | 2 | — | — | — | — | — | 2026-08-23 |
