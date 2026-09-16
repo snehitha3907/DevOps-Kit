@@ -2,6 +2,7 @@
 
 ## 2026-09-16
 
+- Corrected README Coverage table: Ansible Notes 10→8 and Git Notes 8→5, Docs 11→8, Templates 17→10; updated Last verified to 2026-09-16 for both (doc-044, git-021) (`README.md`, `00_index/topics.md`)
 - Added concept doc on wiring preview-environment gates into a multi-environment deployment workflow: build-once promotion, per-PR preview slots with smoke checks, automatic teardown plus nightly sweep, staging re-validation, and evidence-backed final approval (con-067) (`docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md`)
 
 ## 2026-09-13

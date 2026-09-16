@@ -2,11 +2,11 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  50 files
+## Ansible  ·  48 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
-- **notes** (10): most recent → [2026-09-04-ansible-quickstart-trip-ups.md](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
-- _…and 7 more under `Ansible/notes/` — browse the folder._
+- **notes** (8): most recent → [2026-09-04-ansible-quickstart-trip-ups.md](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
+- _…and 5 more under `Ansible/notes/` — browse the folder._
 - **manifests** (8): [multi-server deployment manifest](../Ansible/manifests/multi-server-deployment.yaml), with [roles/](../Ansible/manifests/roles/) (webserver, loadbalancer, dbserver), [inventory/production.ini](../Ansible/manifests/inventory/production.ini), and [group_vars/all.yaml](../Ansible/manifests/group_vars/all.yaml)
 - **templates** (14): [ansible-role scaffold README](../Ansible/templates/ansible-role/roles/myrole/README.md) — full role skeleton (tasks, handlers, defaults, vars, molecule tests) plus [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 - _…and 1 more under `Ansible/templates/` — browse the folder._
@@ -69,17 +69,17 @@
 - **snippets** (2): most recent → [list Compute and GCS with gcloud](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [list Compute and GCS (earlier pass)](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **notes** (1): [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 
-## Git  ·  53 files
+## Git  ·  39 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
-- **templates** (17): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
-- _…and 14 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
-- **docs** (11): most recent → [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 8 more under `Git/docs/` — browse the folder._
+- **templates** (10): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
+- _…and 7 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
+- **docs** (8): most recent → [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 5 more under `Git/docs/` — browse the folder._
 - **scripts** (9): most recent → [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional commits hook](../Git/scripts/conventional-commits-hook.sh)
 - _…and 6 more under `Git/scripts/` — browse the folder._
-- **notes** (8): most recent → [git branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [git branching tutorial (earlier)](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md)
-- _…and 5 more under `Git/notes/` — browse the folder._
+- **notes** (4): most recent → [git branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [git branching tutorial (earlier)](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md)
+- _…and 1 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
