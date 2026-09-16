@@ -43,15 +43,15 @@
 - **scripts** (2): most recent → [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (2): most recent → [create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [create resource group and list regions (earlier pass)](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
-## Docker  ·  40 files
+## Docker  ·  41 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (7): most recent → [docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - _…and 4 more under `Docker/notes/` — browse the folder._
 - **dockerfiles** (7): most recent → [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile), [first docker image](../Docker/dockerfiles/first-docker-image.Dockerfile)
 - _…and 4 more under `Docker/dockerfiles/` — browse the folder._
-- **templates** (5): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`
-- **manifests** (5): most recent → [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus scrape config](../Docker/manifests/prometheus.yml), [Dockerfile](../Docker/manifests/Dockerfile)
+- **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`
+- **manifests** (6): most recent → [production compose stack](../Docker/manifests/production-compose-stack.yaml), [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus scrape config](../Docker/manifests/prometheus.yml)
 - _…and 2 more under `Docker/manifests/` — browse the folder._
 - **scripts** (5): most recent → [multi-stage Go Docker build](../Docker/scripts/multi-stage-go-dockerfile.sh), [health check + cleanup](../Docker/scripts/docker-health-check-and-cleanup.sh), [install and run first container](../Docker/scripts/install-and-run-first-container.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
@@ -72,10 +72,10 @@
 ## Git  ·  53 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
-- **templates** (17): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
-- _…and 14 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
-- **docs** (11): most recent → [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 8 more under `Git/docs/` — browse the folder._
+- **templates** (22): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
+- _…and 19 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
+- **docs** (12): most recent → [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 9 more under `Git/docs/` — browse the folder._
 - **scripts** (9): most recent → [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional commits hook](../Git/scripts/conventional-commits-hook.sh)
 - _…and 6 more under `Git/scripts/` — browse the folder._
 - **notes** (8): most recent → [git branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [git branching tutorial (earlier)](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md)
@@ -97,22 +97,22 @@
 - _…and 2 more under `GitHub/docs/` — browse the folder._
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
-## GitHub Actions  ·  17 files
+## GitHub Actions  ·  20 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
-- **configs** (4): most recent → [matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [hello workflow](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml), [CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
-- _…and 1 more under `GitHub Actions/configs/` — browse the folder._
+- **configs** (5): most recent → [reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml), [matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [hello workflow](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml)
+- _…and 2 more under `GitHub Actions/configs/` — browse the folder._
 - **notes** (6): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [quickstart tripups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md)
 - _…and 3 more under `GitHub Actions/notes/` — browse the folder._
-- **docs** (4): [quickstart tripups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md), [ci.yml reference](../GitHub Actions/docs/ci.yml), [test.yml reference](../GitHub Actions/docs/test.yml)
+- **docs** (5): [composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md), [quickstart tripups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md), [ci.yml reference](../GitHub Actions/docs/ci.yml), [test.yml reference](../GitHub Actions/docs/test.yml)
 - _1 more under `GitHub Actions/docs/` — browse the folder._
-- **scripts** (2): [install gh actions extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [install gh extension and list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- **scripts** (3): [self-hosted runner registration + cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install gh actions extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [install gh extension and list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - **snippets** (1): [trigger workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ## GitLab CI  ·  6 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
-- **notes** (2): [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [0000 primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- **notes** (3): [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [`.gitlab-ci.yml` reference](../GitLab CI/notes/.gitlab-ci.yml), [0000 primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
@@ -158,7 +158,7 @@
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
-## Terraform  ·  25 files
+## Terraform  ·  35 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (5 files: `main.tf`, `variables.tf`, `outputs.tf`, `README.md`, `examples/`)
@@ -170,6 +170,7 @@
 - **snippets** (3): most recent → [terraform CLI exploration](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh), [scaffold S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable module for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - **notebooks** (1): [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
+- **templates** (10): [multi-environment workspaces + remote-state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev/prod with workspace-scoped S3 + DynamoDB backends and apply/destroy helpers
 
 ## Trivy  ·  11 files
 
@@ -180,11 +181,11 @@
 - **snippets** (2): most recent → [scan image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [trivy python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
-## Foundational Concepts  ·  47 files
+## Foundational Concepts  ·  65 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — pipelines, gates, rollbacks, artifact promotion.
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
-  - **docs** (2): [artifact promotion, environments, rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md), [multi-environment CI/CD gates workflow](../docs/concepts/ci-cd-concepts/docs/multi-environment-cicd-gates-workflow.md)
+  - **docs** (3): [preview environments with gated promotion](../docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md), [artifact promotion, environments, rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md), [multi-environment CI/CD gates workflow](../docs/concepts/ci-cd-concepts/docs/multi-environment-cicd-gates-workflow.md)
   - **scripts** (2): [simulated CI/CD pipeline](../docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh), [artifact promotion + rollback](../docs/concepts/ci-cd-concepts/scripts/artifact-promotion-rollback.sh)
   - **snippets** (2): [common patterns](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh), [parallelized CI stage runner](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - **Containerization Concepts:** [0000-primer-containerization-concepts.md](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md) — image layers, runtimes, caching, signing.
@@ -204,6 +205,7 @@
   - **notebooks** (1): [linux system performance analysis](../docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb)
 - **Monitoring & Observability:** [0000-primer-monitoring-observability-concepts.md](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) — metrics, logs, traces, scraping.
   - **docs** (1): [combining metrics, logs, traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
+  - **scripts** (1): [metrics exporter + structured logger](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py)
   - **notebooks** (1): [scraping endpoint, three pillars](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
 - **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md) — DNS, TLS, TCP probes, load balancing.
   - **notes** (1): [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
@@ -228,10 +230,11 @@ Operational notes kept by the kit. Browse the `docs/` folder.
 - [2026-07-19-audit-004-check.md](../docs/2026-07-19-audit-004-check.md)
 - [2026-07-11-removed-dead-general-references.md](../docs/2026-07-11-removed-dead-general-references.md)
 
-## docs/audit  ·  3 files
+## docs/audit  ·  12 files
 
 Maintenance checks that keep the README and index files aligned with what is on disk.
 
+- [2026-09-07-audit-012-docker-dockerfile-count.md](../docs/audit/2026-09-07-audit-012-docker-dockerfile-count.md)
 - [2026-08-20-audit-011-opentofu-readme.md](../docs/audit/2026-08-20-audit-011-opentofu-readme.md)
 - [2026-08-20-audit-009-github-readme.md](../docs/audit/2026-08-20-audit-009-github-readme.md)
-- [2026-08-18-coverage-table-audit.md](../docs/audit/2026-08-18-coverage-table-audit.md)
+- _…and 9 more under `docs/audit/` — browse the folder._
