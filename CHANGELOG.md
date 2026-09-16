@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-16
+
+- Added concept doc on wiring preview-environment gates into a multi-environment deployment workflow: build-once promotion, per-PR preview slots with smoke checks, automatic teardown plus nightly sweep, staging re-validation, and evidence-backed final approval (con-067) (`docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md`)
+
 ## 2026-09-13
 
 - Added multi-environment Terraform project scaffold with workspaces and remote state backend: shared `main.tf`/`variables.tf`/`outputs.tf`, per-environment `backend.tf` overrides and `terraform.tfvars` for dev and prod, plus `apply.sh`/`destroy.sh` wrappers that select the workspace and init before acting (tf-023) (`Terraform/templates/multi-environment-terraform-workspaces-remote-state/`)
