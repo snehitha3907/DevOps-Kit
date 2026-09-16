@@ -5,6 +5,10 @@
 - Corrected README Coverage table and topics.md for Ansible: Notes 10→8 (recounted 8 `.md` files in `Ansible/notes/`) and Docs 3→4 (`ansible-14-core-2-21-migration-guide.md` merged via ans-024); topics.md Ansible header 50→49 files (doc-044) (`README.md`, `00_index/topics.md`)
 
 - Added Ansible 14 and ansible-core 2.21 migration guide covering collection compatibility, removed connection options, explicit failure reporting, and staged verification (ans-024) (`Ansible/docs/ansible-14-core-2-21-migration-guide.md`)
+
+- Added production-ready Ansible project scaffold template with roles, collections, and CI pipeline: `ansible.cfg`, static production/staging inventories, shared + per-environment group vars, three roles (webserver/nginx, dbserver/postgresql, loadbalancer/haproxy) each with defaults/handlers/meta/tasks/templates/vars, four playbooks (site + per-tier), and a GitHub Actions CI workflow running ansible-lint, syntax check, and a staging dry-run (ans-025) (`Ansible/templates/production-ansible-project/`)
+
+- Fixed `validate_artifact.py` Pass-1 path check: task-id prefixes do not match the kit's canonical tool directory names (e.g. `ans-025` → `Ansible/`, `k8s-016` → `Kubernetes/`), so every correctly-placed artifact was being flagged as mis-placed. Added `tool_dir_for_prefix()` (manifest-backed map with a hardcoded fallback) and used it for both the top-folder check and the staged-file filter (`DevOps_Automation/Agent/tools/validate_artifact.py`)
 - Added concept doc on wiring preview-environment gates into a multi-environment deployment workflow: build-once promotion, per-PR preview slots with smoke checks, automatic teardown plus nightly sweep, staging re-validation, and evidence-backed final approval (con-067) (`docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md`)
 
 ## 2026-09-13
