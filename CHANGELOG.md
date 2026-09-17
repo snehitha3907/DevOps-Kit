@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-17
+
+- Finalized git-021 rework: verified Git README coverage counts match disk (Templates 22, Docs 13, Notes 8, total 54) and updated Last verified to 2026-09-17 (git-021) (`README.md`, `00_index/topics.md`, `Git/docs/2026-09-17-git-coverage-correction.md`)
+
 ## 2026-09-16
 
 - Added notebook comparing Terraform vs OpenTofu on identical config: shared HCL run under both binaries, provider registry resolution, local and remote state backend shapes, and a copy-and-replan migration path (tf-024) (`Terraform/notebooks/comparing-terraform-vs-opentofu.ipynb`)
