@@ -36,7 +36,7 @@
 - **snippets** (2): most recent → [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3 resources](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 
-## Azure  ·  9 files
+## Azure  ·  10 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
 - **notes** (3): most recent → [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [Azure CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md), [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
@@ -116,7 +116,7 @@
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  16 files
+## Helm  ·  17 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates plus [values](../Helm/manifests/redis-chart/values.yaml)

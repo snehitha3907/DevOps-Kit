@@ -42,6 +42,9 @@
 - **ARM (Azure Resource Manager)** — The underlying REST API that `az` wraps. Every CLI command maps to an ARM API call.
 - **Storage account** — A service that provides scalable storage for blobs, files, queues, and tables; each account has a globally unique, lowercase-only name, and its SKU (e.g. `Standard_LRS`) fixes redundancy and performance. Created with `az storage account create`.
 - **`az configure`** — The Azure CLI command that sets persistent defaults (location, output format, default group) so you don't repeat `--location` and `--output` on every call.
+- **Bicep** — Microsoft's domain-specific language for deploying Azure resources, transpiled to ARM templates. It offers a cleaner syntax than raw ARM JSON, with reusable modules and type-safe parameter definitions.
+- **VM scale set** — A group of identical VMs that can be scaled out or in automatically or manually based on demand metrics like CPU.
+- **Autoscaling** — Automatically adjusting the number of VM instances in a scale set based on metrics such as CPU percentage, memory pressure, or request queue length.
 
 ## Containerization Concepts
 

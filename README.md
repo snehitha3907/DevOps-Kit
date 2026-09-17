@@ -1,6 +1,5 @@
 # DevOps-Kit
-
-> A working DevOps engineer's quick-reference for Docker, Kubernetes, Terraform, Ansible, Git, GitHub Actions, and the cloud-native toolchain.
+> A working DevOps engineer's quick-reference for infrastructure, automation, containers, orchestration, CI/CD, observability, and security across 16 tool families.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
 ![Top language](https://img.shields.io/github/languages/top/snehitha3907/DevOps-Kit)
@@ -15,15 +14,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable snipp
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across eighteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` ground the tool-specific material, and Jupyter notebooks go deeper on specific topics.
+First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` ground the tool-specific material, and Jupyter notebooks go deeper on specific topics.
 
 ## Quick links
 
-- [Azure VM scale set with load balancer and autoscaling](Azure/scripts/azure-vm-scale-set-autoscaling.sh) — Provision a VM scale set behind a load balancer with autoscaling rules from the Azure CLI.
-- [Git coverage correction](Git/docs/2026-09-17-git-coverage-correction.md) — Notes on reconciling the Git section of the README with what is on disk.
-- [Terraform coverage correction](Terraform/docs/2026-09-17-coverage-correction.md) — Notes on reconciling the Terraform section of the README with what is on disk.
-- [Production Ansible project scaffold](Ansible/templates/production-ansible-project/README.md) — Full project layout: ansible.cfg, inventory, group_vars, three roles, playbooks, and a CI workflow.
-- [Ansible 14 and ansible-core 2.21 migration guide](Ansible/docs/ansible-14-core-2-21-migration-guide.md) — Move a working playbook suite to Ansible 14.3.1: collection compatibility checks, removed Paramiko and interpreter-discovery options, and staged verification.
+- [Helm dummy test script](Helm/scripts/dummy-test.sh) — Placeholder script for Helm testing workflows.
+- [Azure AKS cluster Bicep manifest](Azure/manifests/production-aks-cluster.bicep) — Production-grade Azure Kubernetes Service cluster definition using Bicep.
+- [Terraform coverage correction doc](Terraform/docs/2026-09-17-coverage-correction.md) — Notes correcting the Terraform section coverage counts in README and topics.md.
+- [Azure VM scale set autoscaling script](Azure/scripts/azure-vm-scale-set-autoscaling.sh) — Configure automatic scaling for Azure Virtual Machine Scale Sets based on CPU metrics.
+- [Git coverage correction doc](Git/docs/2026-09-17-git-coverage-correction.md) — Notes correcting the Git section coverage counts in README and topics.md.
 
 ## Layout
 
@@ -31,7 +30,7 @@ First-contact notes, setup scripts, configs, and manifests across eighteen tool 
 - **AWS/** — Primer, CLI install and configure scripts, EC2 tagging and S3 static-site snippets, and minimal config files with named profiles.
 - **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, role scaffold template, a production-ready project scaffold template (ansible.cfg, inventory, group_vars, 3 roles, playbooks, CI workflow), docs, a control-node Dockerfile, and a variable precedence notebook.
 - **ArgoCD/** — Primer, quickstart notes, first application and ApplicationSet manifests, and a sync/health verification snippet for GitOps deployment on Kubernetes.
-- **Azure/** — Primer, CLI install and login scripts, quickstart trip-up notes, resource group and storage account provisioning snippets, and a VM scale set with load balancer and autoscaling script.
+- **Azure/** — Primer, CLI install and login scripts, quickstart trip-up notes, resource group and storage account provisioning snippets, a VM scale set autoscaling script, and a production AKS cluster Bicep manifest.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, a networking drivers notebook, and a reusable Go microservice scaffold.
 - **GCP/** — Primer, gcloud CLI install and configure scripts, Compute/GCS listing and IAM snippets, and configs for startup scripts and service accounts.
 - **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
@@ -52,31 +51,30 @@ First-contact notes, setup scripts, configs, and manifests across eighteen tool 
 <details>
 <summary>Coverage table</summary>
 
-| Tool | Notes | Scripts | Configs | Snippets | Docs | Notebooks | Manifests | Templates | Dockerfiles | Last verified |
-|------|-------|---------|---------|----------|------|-----------|-----------|-----------|-------------|---------------|
-| AWS | 2 | 6 | 2 | 2 | — | — | — | — | — | 2026-08-15 |
-| Ansible | 10 | 4 | 7 | 2 | 4 | 1 | 8 | 48 | 1 | 2026-09-16 |
-| ArgoCD | 3 | 1 | 2 | 1 | — | — | — | — | — | 2026-08-11 |
-| Azure | 3 | 3 | — | 3 | — | — | 1 | — | — | 2026-09-17 |
-| Docker | 7 | 5 | 1 | 2 | 6 | 1 | 6 | 6 | 7 | 2026-09-09 |
-| GCP | 1 | 3 | 2 | 2 | — | — | — | — | — | 2026-08-24 |
-| Git | 8 | 9 | — | 1 | 13 | 1 | — | 22 | — | 2026-09-17 |
-| GitHub | 10 | 6 | 7 | 3 | 5 | 1 | — | — | — | 2026-08-23 |
-| GitHub Actions | 6 | 3 | 5 | 1 | 5 | — | — | — | — | 2026-09-11 |
-| GitLab CI | 3 | 2 | 1 | — | — | — | — | — | — | — |
-| Helm | 3 | 1 | 4 | 1 | 3 | — | 4 | — | — | 2026-09-02 |
-| Kubernetes | 9 | 2 | 1 | 1 | 4 | 2 | 4 | 10 | — | 2026-09-04 |
-| OpenTofu | 2 | 1 | 2 | — | 2 | — | — | — | — | 2026-08-25 |
-| Prometheus | 2 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-05 |
-| Terraform | 6 | 3 | 7 | 3 | 4 | 2 | 2 | 10 | — | 2026-09-17 |
-| Trivy | 5 | 2 | 2 | 2 | — | — | — | — | — | 2026-09-02 |
+| Tool | Notes | Docs | Scripts | Configs | Snippets | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
+|------|-------|------|---------|---------|----------|-----------|-----------|-------------|-----------|---------------|
+| Ansible | 10 | 4 | 4 | 7 | 2 | 8 | 1 | 1 | 48 | 2026-09-16 |
+| ArgoCD | 3 | — | 1 | 2 | 1 | — | — | — | — | 2026-08-11 |
+| AWS | 2 | — | 5 | 2 | 2 | — | — | — | — | 2026-07-13 |
+| Azure | 3 | — | 3 | 2 | 3 | 1 | — | — | — | 2026-08-23 |
+| Docker | 7 | 6 | 5 | 1 | 2 | 6 | 1 | 7 | 6 | 2026-09-09 |
+| GCP | 1 | — | 3 | 2 | 2 | — | — | — | — | 2026-07-17 |
+| Git | 8 | 13 | 10 | — | 1 | — | 1 | — | 22 | — |
+| GitHub | 10 | 5 | 6 | 7 | 3 | — | 1 | — | — | 2026-08-22 |
+| GitHub Actions | 6 | 5 | 3 | 5 | 1 | — | — | — | — | — |
+| GitLab CI | 3 | — | 2 | 1 | — | — | — | — | — | — |
+| Helm | 3 | 3 | 2 | 4 | 1 | 4 | — | — | 2 | 2026-08-07 |
+| Kubernetes | 9 | 4 | 2 | 1 | 1 | 4 | 2 | — | 10 | 2026-09-04 |
+| OpenTofu | 2 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-25 |
+| Prometheus | 2 | — | 1 | 2 | 1 | — | — | — | — | 2026-09-05 |
+| Terraform | 6 | 4 | 5 | 7 | 3 | 2 | 2 | — | 10 | 2026-09-17 |
+| Trivy | 5 | — | 2 | 2 | 2 | — | — | — | — | 2026-09-02 |
 
 </details>
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is environment-promotion patterns: per-PR preview environments with gates, a reusable GitHub Actions deployment workflow with approvals, and a multi-environment Terraform scaffold with workspaces and remote state.
+Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is environment-promotion patterns: per-PR preview environments with gates, a reusable GitHub Actions deployment workflow with approvals, and a multi-environment Terraform scaffold with workspaces and remote state. Recent additions include Azure VM scale set autoscaling, Git/Terraform coverage corrections, and an AKS cluster Bicep manifest.
 
 ---
-
 _Last updated: 2026-09-17_
