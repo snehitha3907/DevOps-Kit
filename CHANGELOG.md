@@ -2,6 +2,8 @@
 
 ## 2026-09-17
 
+- Added Bicep template for a production AKS cluster with private API server, user-assigned kubelet managed identity, Azure CNI networking on a pre-existing subnet, autoscaling system pool, and a subnet-scoped role assignment (az-013) (`Azure/manifests/production-aks-cluster.bicep`)
+
 - Finalized git-021 rework: verified Git README coverage counts match disk (Templates 22, Docs 13, Notes 8, total 54) and updated Last verified to 2026-09-17 (git-021) (`README.md`, `00_index/topics.md`, `Git/docs/2026-09-17-git-coverage-correction.md`)
 
 - Added Azure VM scale set script with load balancer and autoscaling: resource group, public IP, load balancer with health probe and rule, VMSS with custom image, and CPU-based autoscaling rules from 2 to 10 instances (az-012) (`Azure/scripts/azure-vm-scale-set-autoscaling.sh`)
