@@ -1,0 +1,14 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# postgresql.conf.j2 — tuned for the role defaults.
+
+data_directory = /var/lib/postgresql/main
+hba_file = /etc/postgresql/main/pg_hba.conf
+listen_addresses = '*'
+port = {{ dbserver_port }}
+max_connections = {{ dbserver_max_connections }}
+shared_buffers = {{ dbserver_shared_buffers }}
+effective_cache_size = {{ dbserver_effective_cache_size }}
+work_mem = {{ dbserver_work_mem }}
+maintenance_work_mem = {{ dbserver_maintenance_work_mem }}
+log_timezone = '{{ timezone }}'
+timezone = '{{ timezone }}'

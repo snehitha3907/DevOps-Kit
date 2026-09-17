@@ -1,0 +1,38 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# Shared defaults — applied to every host in every environment.
+# Environment-specific overrides live in production.yaml / staging.yaml.
+
+---
+# OS target. Debian-family is the default for this stack.
+ansible_os_family: Debian
+ansible_python_interpreter: /usr/bin/python3
+
+# Web tier
+webserver_packages:
+  - nginx
+  - curl
+webserver_service_name: nginx
+webserver_config_dir: /etc/nginx
+webserver_listen_port: 80
+webserver_server_name: example.com
+webserver_document_root: /var/www/html
+
+# Database tier
+dbserver_service_name: postgresql
+dbserver_package: postgresql
+dbserver_port: 5432
+dbserver_db_name: appdb
+dbserver_db_user: appuser
+dbserver_shared_buffers: "256MB"
+dbserver_max_connections: 100
+
+# Load balancer tier
+loadbalancer_service_name: haproxy
+loadbalancer_port: 80
+loadbalancer_backend_port: 8080
+
+# Common — timezone, NTP, unattended-upgrades
+timezone: UTC
+ntp_packages:
+  - chrony
+unattended_reboot: false

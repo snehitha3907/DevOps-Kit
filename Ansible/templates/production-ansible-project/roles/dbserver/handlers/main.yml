@@ -1,0 +1,15 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# dbserver role — handlers.
+
+---
+- name: Reload postgresql
+  ansible.builtin.systemd:
+    name: "{{ dbserver_service_name }}"
+    state: reloaded
+  listen: "Reload postgresql"
+
+- name: Restart postgresql
+  ansible.builtin.systemd:
+    name: "{{ dbserver_service_name }}"
+    state: restarted
+  listen: "Restart postgresql"

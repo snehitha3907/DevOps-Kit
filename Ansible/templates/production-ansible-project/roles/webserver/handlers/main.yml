@@ -1,0 +1,15 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# webserver role — handlers. Notified by template tasks; reload instead of restart.
+
+---
+- name: Restart nginx
+  ansible.builtin.systemd:
+    name: "{{ webserver_service_name }}"
+    state: restarted
+  listen: "Restart nginx"
+
+- name: Reload nginx
+  ansible.builtin.systemd:
+    name: "{{ webserver_service_name }}"
+    state: reloaded
+  listen: "Reload nginx"

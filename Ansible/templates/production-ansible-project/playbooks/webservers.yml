@@ -1,0 +1,10 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# Web tier only — useful when only the web layer changed.
+# Run: ansible-playbook -i inventory/production.ini playbooks/webservers.yml
+---
+- name: Deploy web servers
+  hosts: webservers
+  become: true
+  tags: [deploy, web]
+  roles:
+    - role: webserver

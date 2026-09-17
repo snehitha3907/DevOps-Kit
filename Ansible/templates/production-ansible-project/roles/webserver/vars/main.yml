@@ -1,0 +1,7 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# webserver role — variables.
+
+---
+webserver_service_user: www-data
+webserver_service_group: www-data
+webserver_worker_processes: "{{ ansible_processor_cores | default(2) }}"

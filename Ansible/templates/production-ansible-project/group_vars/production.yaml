@@ -1,0 +1,11 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# Production overrides — layered on top of group_vars/all.yaml.
+
+---
+webserver_listen_port: 80
+webserver_server_name: example.com
+dbserver_shared_buffers: "512MB"
+dbserver_max_connections: 250
+loadbalancer_backend_port: 8080
+timezone: UTC
+unattended_reboot: false

@@ -1,0 +1,10 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# Load balancer tier only — run after web servers are up.
+# Run: ansible-playbook -i inventory/production.ini playbooks/loadbalancers.yml
+---
+- name: Deploy load balancer
+  hosts: loadbalancers
+  become: true
+  tags: [deploy, lb]
+  roles:
+    - role: loadbalancer

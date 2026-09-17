@@ -1,0 +1,17 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# dbserver role — defaults.
+
+---
+dbserver_service_name: postgresql
+dbserver_package: postgresql
+dbserver_port: 5432
+dbserver_db_name: appdb
+dbserver_db_user: appuser
+dbserver_db_password: changeme
+dbserver_shared_buffers: "256MB"
+dbserver_max_connections: 100
+dbserver_effective_cache_size: "1GB"
+dbserver_work_mem: "4MB"
+dbserver_maintenance_work_mem: "64MB"
+dbserver_service_user: postgres
+dbserver_service_group: postgres

@@ -1,0 +1,14 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# webserver role — defaults. Variables namespaced under `webserver_*`.
+
+---
+webserver_packages:
+  - nginx
+  - curl
+webserver_service_name: nginx
+webserver_config_dir: /etc/nginx
+webserver_listen_port: 80
+webserver_server_name: example.com
+webserver_document_root: /var/www/html
+webserver_service_user: www-data
+webserver_service_group: www-data

@@ -1,0 +1,87 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# dbserver role — tasks.
+
+---
+- name: Install PostgreSQL
+  ansible.builtin.apt:
+    name: "{{ dbserver_package }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+  tags: [packages]
+
+- name: Ensure PostgreSQL data directory exists
+  ansible.builtin.file:
+    path: /var/lib/postgresql
+    state: directory
+    owner: "{{ dbserver_service_user }}"
+    group: "{{ dbserver_service_group }}"
+    mode: "0700"
+  tags: [config]
+
+- name: Deploy postgresql configuration
+  ansible.builtin.template:
+    src: postgresql.conf.j2
+    dest: /etc/postgresql/main/postgresql.conf
+    owner: "{{ dbserver_service_user }}"
+    group: "{{ dbserver_service_group }}"
+    mode: "0640"
+  notify: Reload postgresql
+  tags: [config]
+
+- name: Deploy pg_hba client authentication
+  ansible.builtin.template:
+    src: pg_hba.conf.j2
+    dest: /etc/postgresql/main/pg_hba.conf
+    owner: "{{ dbserver_service_user }}"
+    group: "{{ dbserver_service_group }}"
+    mode: "0640"
+  notify: Reload postgresql
+  tags: [config]
+
+- name: Ensure database and user exist
+  community.postgresql.postgresql_db:
+    name: "{{ dbserver_db_name }}"
+    login_user: "{{ dbserver_service_user }}"
+    login_unix_socket: /var/run/postgresql
+    state: present
+  become_user: "{{ dbserver_service_user }}"
+  tags: [db]
+
+- name: Ensure application user exists
+  community.postgresql.postgresql_user:
+    name: "{{ dbserver_db_user }}"
+    password: "{{ dbserver_db_password }}"
+    login_user: "{{ dbserver_service_user }}"
+    login_unix_socket: /var/run/postgresql
+    state: present
+    priv: "CONNECT"
+    db: "{{ dbserver_db_name }}"
+  become_user: "{{ dbserver_service_user }}"
+  tags: [db]
+
+- name: Grant application user full privileges on the database
+  community.postgresql.postgresql_user:
+    name: "{{ dbserver_db_user }}"
+    login_user: "{{ dbserver_service_user }}"
+    login_unix_socket: /var/run/postgresql
+    state: present
+    priv: "ALL"
+    db: "{{ dbserver_db_name }}"
+  become_user: "{{ dbserver_service_user }}"
+  tags: [db]
+
+- name: Ensure postgresql is enabled and started
+  ansible.builtin.systemd:
+    name: "{{ dbserver_service_name }}"
+    state: started
+    enabled: true
+  tags: [service]
+
+- name: Verify postgresql is listening on the configured port
+  ansible.builtin.command: "ss -tlnp | grep :{{ dbserver_port }}"
+  register: dbserver_port_check
+  changed_when: false
+  failed_when: dbserver_port_check.rc != 0
+  tags: [verify]

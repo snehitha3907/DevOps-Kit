@@ -1,0 +1,10 @@
+# last_verified: 2026-09-16 · Ansible 14.4.0
+# Database tier only.
+# Run: ansible-playbook -i inventory/production.ini playbooks/dbservers.yml
+---
+- name: Deploy database servers
+  hosts: dbservers
+  become: true
+  tags: [deploy, db]
+  roles:
+    - role: dbserver

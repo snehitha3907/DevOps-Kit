@@ -29,7 +29,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 - **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
 - **AWS/** — Primer, CLI install and configure scripts, EC2 tagging and S3 static-site snippets, and minimal config files with named profiles.
-- **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, role scaffold template, docs, and a variable precedence notebook.
+- **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, role scaffold template, a production-ready project scaffold template (ansible.cfg, inventory, group_vars, 3 roles, playbooks, CI workflow), docs, a control-node Dockerfile, and a variable precedence notebook.
 - **ArgoCD/** — Primer, quickstart notes, first application and ApplicationSet manifests, and a sync/health verification snippet for GitOps deployment on Kubernetes.
 - **Azure/** — Primer, CLI install and login scripts, quickstart trip-up notes, and resource group and storage account provisioning snippets.
 - **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, a networking drivers notebook, and a reusable Go microservice scaffold.
@@ -54,7 +54,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 | Tool | Notes | Scripts | Configs | Snippets | Docs | Notebooks | Manifests | Templates | Dockerfiles | Last verified |
 |------|-------|---------|---------|----------|------|-----------|-----------|-----------|-------------|---------------|
-| Ansible | 8 | 4 | 7 | 2 | 4 | 1 | 8 | 14 | 1 | 2026-09-16 |
+| Ansible | 8 | 4 | 7 | 2 | 4 | 1 | 8 | 15 | 1 | 2026-09-16 |
 | ArgoCD | 3 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-09 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 3 | 2 | — | 2 | — | — | — | — | — | 2026-08-23 |
