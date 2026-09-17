@@ -2,11 +2,15 @@
 
 ## 2026-09-17
 
+- Audit fix: moved misplaced `Docker/manifests/Dockerfile` → `Docker/dockerfiles/simple-go-server.Dockerfile` (Docker has a dedicated `dockerfiles/` directory and the Dockerfile references `main.go` which lives under `Docker/dockerfiles/multi-stage-go-http-server/`); removed duplicate `Docker/notes/docker-compose.yml` (identical 41-byte file to `compose.yaml` in the same directory); updated `README.md` Docker Coverage row (Notes 7→6, Manifests 6→5, Dockerfiles 7→8, last-verified 2026-09-09→2026-09-17) and `00_index/topics.md` Docker section counts — Agent 02 audit cycle
+
 - Added Bicep template for a production AKS cluster with private API server, user-assigned kubelet managed identity, Azure CNI networking on a pre-existing subnet, autoscaling system pool, and a subnet-scoped role assignment (az-013) (`Azure/manifests/production-aks-cluster.bicep`)
 
 - Finalized git-021 rework: verified Git README coverage counts match disk (Templates 22, Docs 13, Notes 8, total 54) and updated Last verified to 2026-09-17 (git-021) (`README.md`, `00_index/topics.md`, `Git/docs/2026-09-17-git-coverage-correction.md`)
 
 - Added Azure VM scale set script with load balancer and autoscaling: resource group, public IP, load balancer with health probe and rule, VMSS with custom image, and CPU-based autoscaling rules from 2 to 10 instances (az-012) (`Azure/scripts/azure-vm-scale-set-autoscaling.sh`)
+
+- Added a Helm demo web service chart script that scaffolds a chart, renders and lints it, installs the release, and verifies status and the installed manifest (hlm-009) (`Helm/scripts/demo-web-service-chart.sh`)
 
 ## 2026-09-16
 
