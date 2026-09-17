@@ -206,6 +206,7 @@
 - [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - [Create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh)
 - [Provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh)
+- [Provision a VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
 
 ### Work with GCP
 - [Create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)

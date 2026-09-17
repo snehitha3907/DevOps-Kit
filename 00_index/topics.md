@@ -36,11 +36,11 @@
 - **snippets** (2): most recent → [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3 resources](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 
-## Azure  ·  7 files
+## Azure  ·  9 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
 - **notes** (3): most recent → [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [Azure CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md), [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
-- **scripts** (2): most recent → [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
+- **scripts** (3): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (2): most recent → [create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [create resource group and list regions (earlier pass)](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
 ## Docker  ·  41 files
@@ -158,7 +158,7 @@
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
-## Terraform  ·  35 files
+## Terraform  ·  36 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (5 files: `main.tf`, `variables.tf`, `outputs.tf`, `README.md`, `examples/`)
@@ -168,7 +168,7 @@
 - **docs** (3): [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [workspaces and remote state locking (first pass)](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - **scripts** (3): [generate ansible inventory from terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py), [bootstrap project scaffold](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install and init](../Terraform/scripts/install-and-init.sh)
 - **snippets** (3): most recent → [terraform CLI exploration](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh), [scaffold S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [reusable module for_each + validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
-- **notebooks** (1): [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
+- **notebooks** (2): [comparing Terraform vs OpenTofu](../Terraform/notebooks/comparing-terraform-vs-opentofu.ipynb), [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
 - **templates** (10): [multi-environment workspaces + remote-state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev/prod with workspace-scoped S3 + DynamoDB backends and apply/destroy helpers
 
