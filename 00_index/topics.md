@@ -69,13 +69,13 @@
 - **snippets** (2): most recent → [list Compute and GCS with gcloud](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [list Compute and GCS (earlier pass)](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **notes** (1): [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 
-## Git  ·  53 files
+## Git  ·  54 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (22): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
 - _…and 19 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
-- **docs** (12): most recent → [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md), [git worktrees setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 9 more under `Git/docs/` — browse the folder._
+- **docs** (13): most recent → [git coverage correction](../Git/docs/2026-09-17-git-coverage-correction.md), [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
+- _…and 10 more under `Git/docs/` — browse the folder._
 - **scripts** (9): most recent → [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh), [conventional commits hook](../Git/scripts/conventional-commits-hook.sh)
 - _…and 6 more under `Git/scripts/` — browse the folder._
 - **notes** (8): most recent → [git branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [git branching tutorial (earlier)](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md)
