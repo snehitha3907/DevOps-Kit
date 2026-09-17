@@ -2,6 +2,8 @@
 
 ## 2026-09-16
 
+- Added notebook comparing Terraform vs OpenTofu on identical config: shared HCL run under both binaries, provider registry resolution, local and remote state backend shapes, and a copy-and-replan migration path (tf-024) (`Terraform/notebooks/comparing-terraform-vs-opentofu.ipynb`)
+- Added Azure CLI snippet creating a VNet with subnet, NSG with SSH rule, and a Linux VM with verification query (az-011) (`Azure/snippets/2026-09-16-create-vnet-nsg-and-linux-vm.sh`)
 - Corrected README Coverage table and topics.md for Ansible: Notes 10→8 (recounted 8 `.md` files in `Ansible/notes/`) and Docs 3→4 (`ansible-14-core-2-21-migration-guide.md` merged via ans-024); topics.md Ansible header 50→49 files (doc-044) (`README.md`, `00_index/topics.md`)
 
 - Added Ansible 14 and ansible-core 2.21 migration guide covering collection compatibility, removed connection options, explicit failure reporting, and staged verification (ans-024) (`Ansible/docs/ansible-14-core-2-21-migration-guide.md`)
