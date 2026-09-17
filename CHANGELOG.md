@@ -2,6 +2,8 @@
 
 ## 2026-09-17
 
+- Added notebook comparing Ansible execution patterns: block/rescue/always recovery on one host, serial batched rollout, and max_fail_percentage abort threshold, each with a runnable local playbook plus verify steps and common errors (ans-026) (`Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb`)
+
 - Added Bicep template for a production AKS cluster with private API server, user-assigned kubelet managed identity, Azure CNI networking on a pre-existing subnet, autoscaling system pool, and a subnet-scoped role assignment (az-013) (`Azure/manifests/production-aks-cluster.bicep`)
 
 - Finalized git-021 rework: verified Git README coverage counts match disk (Templates 22, Docs 13, Notes 8, total 54) and updated Last verified to 2026-09-17 (git-021) (`README.md`, `00_index/topics.md`, `Git/docs/2026-09-17-git-coverage-correction.md`)
