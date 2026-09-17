@@ -70,6 +70,7 @@
 - [Ansible inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml)
 - [Ansible role scaffold template](../Ansible/templates/ansible-role/roles/myrole/README.md)
 - [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
+- [Ansible 14 / core 2.21 migration guide](../Ansible/docs/ansible-14-core-2-21-migration-guide.md)
 - [Git repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
 - [GitHub Actions CI workflow with env/secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions hello workflow](../GitHub Actions/configs/2026-07-11-first-ci-workflow-hello.yaml)
@@ -107,6 +108,7 @@
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Simple EC2 app manifest](../Terraform/manifests/simple-ec2-app.tf)
 - [Generate Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
+- [Explore the Terraform CLI](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh)
 - [Terraform modules and environment promotion with Git branching](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
 
 ### Work with OpenTofu
@@ -139,6 +141,7 @@
 - [Multi-stage Go HTTP server Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 - [Production-ready Go HTTP server Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile)
 - [Build mount vs COPY caching comparison](../Docker/docs/docker-build-mount-vs-copy-caching.md)
+- [Build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md)
 - [docker run vs compose decision guide](../Docker/docs/docker-run-vs-compose.md)
 - [Go microservice project scaffold](../Docker/templates/go-microservice/README.md)
 - [Production Compose stack (nginx, api, postgres, redis, worker, Prometheus)](../Docker/manifests/production-compose-stack.yaml)
@@ -178,12 +181,18 @@
 - [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
 - [K8s Basics tutorial notes](../Kubernetes/notes/2026-06-15-following-kubernetes-basics-tutorial.md)
 - [First kubectl version check and pod from manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
+- [kubectl with minikube: first pod](../Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md)
 - [Kubernetes tutorial: what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md)
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - [K8s deployment scaffold with Helm + Kustomize overlays](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
 - [Integrating Kubernetes with Prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
+
+### Sync a GitOps app
+- [ArgoCD quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md)
+- [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
+- [Sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
 ### Work with AWS
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
@@ -253,6 +262,7 @@
 - [Combining metrics, logs, and traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
 - [Metrics exporter and structured logger script](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py)
 - [Scraping endpoint three pillars notebook](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
+- [Check Prometheus target health with PromQL](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
 ### Scripting and automation
 - [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)

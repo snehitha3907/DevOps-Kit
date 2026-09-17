@@ -19,11 +19,11 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 ## Quick links
 
+- [Ansible 14 and ansible-core 2.21 migration guide](Ansible/docs/ansible-14-core-2-21-migration-guide.md) — Move a working playbook suite to Ansible 14.3.1: collection compatibility checks, removed Paramiko and interpreter-discovery options, and staged verification.
 - [Preview-environment gates for multi-environment deploys](docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md) — Give every pull request its own short-lived preview environment and promote only past-gate artifacts toward staging and release.
 - [Multi-environment Terraform scaffold with workspaces and remote state](Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — Run one configuration against dev and prod with workspace-scoped S3 + DynamoDB state and apply/destroy helpers.
 - [Composite actions vs reusable workflows](GitHub Actions/docs/composite-actions-vs-reusable-workflows.md) — When to package shared CI steps as a composite action and when to hand off whole pipelines to a reusable workflow.
 - [Production Compose stack](Docker/manifests/production-compose-stack.yaml) — nginx → api → postgres plus redis, worker, and Prometheus, wired with healthchecks and resource limits.
-- [Reusable deployment workflow with environment gates](GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml) — A `workflow_call` pipeline with per-environment approvals that deploys an image and Terraform plan artifact.
 
 ## Layout
 
@@ -54,7 +54,7 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 | Tool | Notes | Scripts | Configs | Snippets | Docs | Notebooks | Manifests | Templates | Dockerfiles | Last verified |
 |------|-------|---------|---------|----------|------|-----------|-----------|-----------|-------------|---------------|
-| Ansible | 8 | 4 | 7 | 2 | 4 | 1 | 8 | 14 | 1 | 2026-09-04 |
+| Ansible | 8 | 4 | 7 | 2 | 4 | 1 | 8 | 14 | 1 | 2026-09-16 |
 | ArgoCD | 3 | 1 | 2 | 1 | — | — | — | — | — | 2026-09-09 |
 | AWS | 2 | 5 | 2 | 2 | — | — | — | — | — | 2026-08-16 |
 | Azure | 3 | 2 | — | 2 | — | — | — | — | — | 2026-08-23 |

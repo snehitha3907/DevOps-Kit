@@ -47,6 +47,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Ansible linting** — Integrating ansible-lint into your workflow. [Lint guide](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **Ansible variable precedence** — Understanding how group_vars, host_vars, and playbook vars interact. [Notebook](../Ansible/notebooks/ansible-variable-precedence.ipynb)
 - **Ansible over Terraform local-exec** — Invoking an Ansible playbook from a Terraform local-exec provisioner for post-provisioning configuration. [Guide](../Ansible/docs/ansible-over-terraform-local-exec.md)
+- **Ansible 14 / core 2.21 migration** — Moving a working playbook suite to a new Ansible line: collection compatibility checks, removed connection plugins, and staged verification. [Migration guide](../Ansible/docs/ansible-14-core-2-21-migration-guide.md)
 - **Kubernetes Ingress** — Configuring path-based routing and TLS. [Ingress guide](../Kubernetes/docs/ingress-path-based-routing.md)
 - **Kubernetes workload types** — Comparing Pods, Deployments, StatefulSets, DaemonSets, and Jobs. [Notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - **Kubernetes pod troubleshooting** — Debugging network and filesystem issues from inside a pod. [Snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)

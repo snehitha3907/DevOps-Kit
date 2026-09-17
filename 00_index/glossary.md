@@ -11,6 +11,8 @@
 - **cloud.terraform.terraform_provider** — An Ansible inventory plugin that reads Terraform state directly to populate dynamic inventory, eliminating the need for wrapper scripts or manual IP management.
 - **Jinja2 template** — A templated file (often with the `.j2` extension) rendered by Ansible using the `template` module to produce config files on managed hosts.
 - **Idempotency** — The property that running a task repeatedly produces the same end state, so Ansible can safely re-apply a playbook without unintended side effects.
+- **ansible-core** — The runtime engine underneath the Ansible package: it ships the CLI, the playbook executor, and the built-in plugins. The `ansible` package pins a specific core version and bundles a set of collections around it, so a migration (e.g. Ansible 14 on ansible-core 2.21) means changing both at once.
+- **requires_ansible** — A collection metadata key declaring the minimum ansible-core version the collection supports. Modern `ansible-galaxy` refuses to install a collection whose requirement the running core does not satisfy, unless the mismatch guard is deliberately overridden.
 
 ## AWS
 
