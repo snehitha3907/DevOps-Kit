@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working DevOps engineer's quick-reference for infrastructure, automation, containers, orchestration, CI/CD, observability, and security across 16 tool families.
+> A working DevOps engineer's shelf for cloud CLIs, containers, orchestration, infrastructure as code, CI/CD, observability, and security.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
 ![Top language](https://img.shields.io/github/languages/top/snehitha3907/DevOps-Kit)
@@ -10,41 +10,41 @@
 
 ## Who this is for
 
-A working DevOps engineer's quick-reference: first-contact notes, runnable snippets, and configs for the tools you reach for every day. Use it as a shelf you grab from, not a tutorial site. It deliberately does not try to replace each tool's official docs.
+A working DevOps engineer's quick-reference: first-contact notes, runnable examples, and configs for the tools you reach for while building and operating systems. Use it as a shelf to grab a primer, verify a command, or borrow a concrete manifest. It is not a tutorial site and does not replace each tool's official documentation.
 
 ## What's in here
 
-First-contact notes, setup scripts, configs, and manifests across sixteen tool families spanning infrastructure provisioning, configuration management, containers, orchestration, CI/CD, observability, and security scanning. Each tool directory follows a consistent layout — a primer, CLI exploration notes, executable scripts, configs, and manifests or snippets picked up along the way. Foundational concept primers under `docs/concepts/` ground the tool-specific material, and Jupyter notebooks go deeper on specific topics.
+The kit covers 16 tool families across cloud CLIs, configuration management, containers, orchestration, Git hosting, CI/CD, infrastructure as code, observability, and security scanning. Most tool folders pair a primer with notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, or templates. Shared concept primers in `docs/concepts/` connect the foundations behind the tool-specific material.
 
 ## Quick links
 
-- [Helm dummy test script](Helm/scripts/dummy-test.sh) — Placeholder script for Helm testing workflows.
-- [Azure AKS cluster Bicep manifest](Azure/manifests/production-aks-cluster.bicep) — Production-grade Azure Kubernetes Service cluster definition using Bicep.
-- [Terraform coverage correction doc](Terraform/docs/2026-09-17-coverage-correction.md) — Notes correcting the Terraform section coverage counts in README and topics.md.
-- [Azure VM scale set autoscaling script](Azure/scripts/azure-vm-scale-set-autoscaling.sh) — Configure automatic scaling for Azure Virtual Machine Scale Sets based on CPU metrics.
-- [Git coverage correction doc](Git/docs/2026-09-17-git-coverage-correction.md) — Notes correcting the Git section coverage counts in README and topics.md.
+- [AWX job template and credential configuration](Ansible/configs/awx-job-template-and-credential-config.yaml) — A production GitOps job template with typed SSH, Vault, and AWS credentials.
+- [Helm demo web service chart script](Helm/scripts/demo-web-service-chart.sh) — Scaffolds, lints, renders, installs, and verifies a small Helm release.
+- [Ansible execution patterns notebook](Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb) — Compares recovery blocks, serial rollouts, and failure thresholds.
+- [Helm dummy test script](Helm/scripts/dummy-test.sh) — A minimal Helm test entry point for quick validation.
+- [Production AKS cluster Bicep manifest](Azure/manifests/production-aks-cluster.bicep) — A private AKS pattern with managed identity, Azure CNI, and subnet-scoped permissions.
 
 ## Layout
 
-- **00_index/** — Navigation index files (topics, quick-links, glossary, learning-path).
-- **AWS/** — Primer, CLI install and configure scripts, EC2 tagging and S3 static-site snippets, and minimal config files with named profiles.
-- **Ansible/** — Primer, ad-hoc and playbook scripts, configs, snippets, an nginx template, role scaffold template, a production-ready project scaffold template (ansible.cfg, inventory, group_vars, 3 roles, playbooks, CI workflow), docs, a control-node Dockerfile, and a variable precedence notebook.
-- **ArgoCD/** — Primer, quickstart notes, first application and ApplicationSet manifests, and a sync/health verification snippet for GitOps deployment on Kubernetes.
-- **Azure/** — Primer, CLI install and login scripts, quickstart trip-up notes, resource group and storage account provisioning snippets, a VM scale set autoscaling script, and a production AKS cluster Bicep manifest.
-- **Docker/** — Primer, CLI notes, dockerfiles, configs, compose manifests, scripts, docs, a networking drivers notebook, and a reusable Go microservice scaffold.
-- **GCP/** — Primer, gcloud CLI install and configure scripts, Compute/GCS listing and IAM snippets, and configs for startup scripts and service accounts.
-- **Git/** — Primer, install notes, CLI exploration, branching and merge-conflict scripts, commit snippets, hook and repository-scaffold templates, docs, and a merge-strategies notebook.
-- **GitHub/** — Primer, CLI and web UI scripts, configs, docs (deploy-keys vs fine-grained PATs guide, branch protection and required reviews), and Python API snippets.
-- **GitHub Actions/** — Quickstart notes, CI workflow configs including a reusable deployment workflow with environment gates, a composite-actions-vs-reusable-workflows guide, runner setup scripts, and REST API snippets.
-- **GitLab CI/** — Primer, install and register runner scripts, pipeline configs, and a local pipeline runner.
-- **Helm/** — Primer, install and explore CLI script, chart inspection walkthrough, redis chart manifests, live-release and production-deployment values configs, custom-values snippet, and docs.
-- **Kubernetes/** — Primer, kubectl exploration, install script, manifests, pod lifecycle scripts, ingress docs, troubleshooting snippets, and a Helm + Kustomize overlay scaffold for deployments with probes and HPA.
-- **OpenTofu/** — Primer, install script using the official get.opentofu.org installer, minimal local config, state management tutorial notes, and quickstart trip-ups for the open-source Terraform alternative.
-- **Prometheus/** — Primer, getting-started trip-up notes, install and verify script, a minimal scrape config, a container-monitoring config, and a PromQL target-health snippet.
-- **Terraform/** — Primer, install and bootstrap scripts, configs, a reusable S3 module, reusable VPC module, a multi-environment workspaces + remote-state scaffold, docs, notebooks, and manifests.
-- **Trivy/** — Primer, CLI exploration notes, container scanning scripts, configs, and Python wrappers.
-- **docs/** — Foundational concept primers, kit-level operational notes, and internal audit records.
-- **CHANGELOG.md** — Kit-level changelog tracking additions, reworks, and audit fixes by date and artifact ID.
+- **00_index/** — Topics, quick links, glossary, and learning path.
+- **AWS/** — AWS CLI setup, profiles, resource listings, tagging, and S3 website examples.
+- **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
+- **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests, installation, and sync checks.
+- **Azure/** — Azure CLI setup, resource provisioning, VM scale sets, and a private AKS Bicep example.
+- **Docker/** — Container primers, Dockerfiles, Compose stacks, build patterns, health checks, and Go service scaffolds.
+- **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, and startup scripts.
+- **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, and regression examples.
+- **GitHub/** — Repository operations, issue forms, branch protection, API examples, and release automation notes.
+- **GitHub Actions/** — Workflow primers, reusable workflows, runner setup, and dispatch examples.
+- **GitLab CI/** — Pipeline primer, runner setup, and a first local pipeline.
+- **Helm/** — Chart inspection, values files, Redis chart manifests, release testing, and chart scaffolding.
+- **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, and Helm/Kustomize overlays.
+- **OpenTofu/** — OpenTofu primer, local configuration, state management, and verification.
+- **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
+- **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
+- **Trivy/** — Image and filesystem scanning, severity policies, and Python wrappers.
+- **docs/** — Foundational concept primers and supporting kit notes.
+- **CHANGELOG.md** — Dated record of additions, reworks, and navigation corrections.
 
 ## Coverage
 
@@ -53,28 +53,28 @@ First-contact notes, setup scripts, configs, and manifests across sixteen tool f
 
 | Tool | Notes | Docs | Scripts | Configs | Snippets | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
 |------|-------|------|---------|---------|----------|-----------|-----------|-------------|-----------|---------------|
-| Ansible | 10 | 4 | 4 | 8 | 2 | 8 | 1 | 1 | 48 | 2026-09-16 |
-| ArgoCD | 3 | — | 1 | 2 | 1 | — | — | — | — | 2026-08-11 |
-| AWS | 2 | — | 5 | 2 | 2 | — | — | — | — | 2026-07-13 |
-| Azure | 3 | — | 3 | 2 | 3 | 1 | — | — | — | 2026-08-23 |
-| Docker | 7 | 6 | 5 | 1 | 2 | 6 | 1 | 7 | 6 | 2026-09-09 |
-| GCP | 1 | — | 3 | 2 | 2 | — | — | — | — | 2026-07-17 |
-| Git | 8 | 13 | 10 | — | 1 | — | 1 | — | 22 | — |
-| GitHub | 10 | 5 | 6 | 7 | 3 | — | 1 | — | — | 2026-08-22 |
-| GitHub Actions | 6 | 5 | 3 | 5 | 1 | — | — | — | — | — |
-| GitLab CI | 3 | — | 2 | 1 | — | — | — | — | — | — |
-| Helm | 3 | 3 | 2 | 4 | 1 | 4 | — | — | 2 | 2026-08-07 |
-| Kubernetes | 9 | 4 | 2 | 1 | 1 | 4 | 2 | — | 10 | 2026-09-04 |
-| OpenTofu | 2 | 2 | 1 | 2 | — | — | — | — | — | 2026-08-25 |
-| Prometheus | 2 | — | 1 | 2 | 1 | — | — | — | — | 2026-09-05 |
-| Terraform | 6 | 4 | 5 | 7 | 3 | 2 | 2 | — | 10 | 2026-09-17 |
-| Trivy | 5 | — | 2 | 2 | 2 | — | — | — | — | 2026-09-02 |
+| Ansible | 10 | 4 | 4 | 8 | ✅ | 8 | ✅ | ✅ | 48 | 2026-09-16 |
+| ArgoCD | 3 | — | ✅ | ✅ | ✅ | — | — | — | — | — |
+| AWS | ✅ | — | 5 | ✅ | ✅ | — | — | — | — | — |
+| Azure | 3 | — | 3 | — | 3 | ✅ | — | — | — | — |
+| Docker | 6 | 6 | 5 | ✅ | ✅ | 5 | ✅ | 8 | 6 | 2026-09-09 |
+| GCP | ✅ | — | 3 | ✅ | ✅ | — | — | — | — | — |
+| Git | 8 | 13 | 9 | — | ✅ | — | ✅ | — | 22 | 2026-09-17 |
+| GitHub | 10 | 5 | 6 | 7 | 3 | — | ✅ | — | — | 2026-08-23 |
+| GitHub Actions | 6 | 5 | 3 | 5 | ✅ | — | — | — | — | 2026-09-11 |
+| GitLab CI | 3 | — | ✅ | ✅ | — | — | — | — | — | — |
+| Helm | 3 | 3 | 3 | 4 | ✅ | 4 | — | — | — | 2026-07-25 |
+| Kubernetes | 9 | 4 | ✅ | ✅ | ✅ | 4 | ✅ | — | 10 | 2026-08-29 |
+| OpenTofu | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | 2026-08-25 |
+| Prometheus | ✅ | — | ✅ | ✅ | ✅ | — | — | — | — | — |
+| Terraform | 6 | 4 | 3 | 7 | 3 | ✅ | ✅ | — | 10 | 2026-09-17 |
+| Trivy | 5 | — | ✅ | ✅ | ✅ | — | — | — | — | — |
 
 </details>
 
 ## Status
 
-Coverage is strongest on Docker, Git, and GitHub, with deeper config sets in Ansible and Terraform and first-contact notes across the three clouds, ArgoCD, Helm, OpenTofu, Prometheus, and Trivy. Current focus is environment-promotion patterns: per-PR preview environments with gates, a reusable GitHub Actions deployment workflow with approvals, and a multi-environment Terraform scaffold with workspaces and remote state. Recent additions include Azure VM scale set autoscaling, Git/Terraform coverage corrections, and an AKS cluster Bicep manifest.
+Current work strengthens production-ready patterns: private AKS, AWX job templates, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD. Recent additions include an Ansible execution-pattern notebook, a Helm chart demo script, and an Azure VM scale set autoscaling example.
 
 ---
-_Last updated: 2026-09-17_
+_Last updated: 2026-09-18_
