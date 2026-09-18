@@ -2,6 +2,9 @@
 
 ## 2026-09-18
 
+- Added production deployment manifest with HPA, PDB, and network policies: rolling-update Deployment with probes and resource requests, ClusterIP Service, CPU-based HPA (3–10 replicas), minAvailable PDB, and default-deny plus port-allow NetworkPolicies (k8s-020) (`Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml`)
+- Added first-day Azure CLI notes: install, first az login, subscription pinning with account set, and first resource list, with trip-ups on login output noise and default subscription (az-015) (`Azure/notes/2026-09-18-first-login-and-resource-list.md`)
+
 - Added notebook comparing OpenTofu and Terraform for AWS provisioning: shared HCL syntax for an S3-bucket stack, AWS provider resolution, S3 backend shape with a copy-and-replan state migration rehearsal, and the shared init/plan/review/apply CI/CD stage shape (ot-009) (`OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb`)
 - Added OpenTofu remote-state with S3 backend and workspace isolation docs: shared backend block, local-to-remote state migration, per-environment workspaces, teammate onboarding via init, and verify steps (ot-008) (`OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md`)
 - Added OpenTofu remote-state bootstrap script: scaffolds a project that provisions an S3 state bucket (versioning + encryption), a DynamoDB lock table, and a scoped IAM user, then migrates local state into the S3 backend with verify steps (ot-007) (`OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh`)
