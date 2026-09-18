@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-18
+
+- Added AWX job template and credential configuration for production GitOps automation: a job template wiring a GitOps project, inventory, playbook, and three credentials (SSH machine, Vault, AWS cloud) with become, diff mode, and extra vars, plus per-credential input blocks and a GitOps workflow walkthrough (ans-027) (`Ansible/configs/awx-job-template-and-credential-config.yaml`)
+
 ## 2026-09-17
 
 - Audit fix: moved misplaced `Docker/manifests/Dockerfile` → `Docker/dockerfiles/simple-go-server.Dockerfile` (Docker has a dedicated `dockerfiles/` directory and the Dockerfile references `main.go` which lives under `Docker/dockerfiles/multi-stage-go-http-server/`); removed duplicate `Docker/notes/docker-compose.yml` (identical 41-byte file to `compose.yaml` in the same directory); updated `README.md` Docker Coverage row (Notes 7→6, Manifests 6→5, Dockerfiles 7→8, last-verified 2026-09-09→2026-09-17) and `00_index/topics.md` Docker section counts — Agent 02 audit cycle
