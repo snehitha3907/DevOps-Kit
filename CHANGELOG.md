@@ -2,6 +2,7 @@
 
 ## 2026-09-18
 
+- Added notebook comparing OpenTofu and Terraform for AWS provisioning: shared HCL syntax for an S3-bucket stack, AWS provider resolution, S3 backend shape with a copy-and-replan state migration rehearsal, and the shared init/plan/review/apply CI/CD stage shape (ot-009) (`OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb`)
 - Added OpenTofu remote-state with S3 backend and workspace isolation docs: shared backend block, local-to-remote state migration, per-environment workspaces, teammate onboarding via init, and verify steps (ot-008) (`OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md`)
 - Added OpenTofu remote-state bootstrap script: scaffolds a project that provisions an S3 state bucket (versioning + encryption), a DynamoDB lock table, and a scoped IAM user, then migrates local state into the S3 backend with verify steps (ot-007) (`OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh`)
 - Added Helm values management comparison: --set flags vs per-environment values files vs named templates, with layering guidance and helm template/lint/get-values verify steps (hlm-010) (`Helm/docs/values-management-approaches.md`)
