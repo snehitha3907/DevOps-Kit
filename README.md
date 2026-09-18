@@ -18,11 +18,11 @@ The kit covers 16 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
+- [OpenTofu S3 backend with workspace isolation](OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — Shared state per environment in S3 with locking so concurrent applies queue instead of clobbering each other.
+- [OpenTofu S3 + DynamoDB remote-state bootstrap](OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) — Provisions the state bucket, lock table, and scoped IAM user, then migrates local state into the backend.
+- [Helm values management approaches](Helm/docs/values-management-approaches.md) — Compares `--set` flags, per-environment values files, and named templates with when to reach for each.
 - [AWX job template and credential configuration](Ansible/configs/awx-job-template-and-credential-config.yaml) — A production GitOps job template with typed SSH, Vault, and AWS credentials.
 - [Helm demo web service chart script](Helm/scripts/demo-web-service-chart.sh) — Scaffolds, lints, renders, installs, and verifies a small Helm release.
-- [Ansible execution patterns notebook](Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb) — Compares recovery blocks, serial rollouts, and failure thresholds.
-- [Helm dummy test script](Helm/scripts/dummy-test.sh) — A minimal Helm test entry point for quick validation.
-- [Production AKS cluster Bicep manifest](Azure/manifests/production-aks-cluster.bicep) — A private AKS pattern with managed identity, Azure CNI, and subnet-scoped permissions.
 
 ## Layout
 
@@ -37,9 +37,9 @@ The kit covers 16 tool families across cloud CLIs, configuration management, con
 - **GitHub/** — Repository operations, issue forms, branch protection, API examples, and release automation notes.
 - **GitHub Actions/** — Workflow primers, reusable workflows, runner setup, and dispatch examples.
 - **GitLab CI/** — Pipeline primer, runner setup, and a first local pipeline.
-- **Helm/** — Chart inspection, values files, Redis chart manifests, release testing, and chart scaffolding.
+- **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, release testing, and chart scaffolding.
 - **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, and Helm/Kustomize overlays.
-- **OpenTofu/** — OpenTofu primer, local configuration, state management, and verification.
+- **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, severity policies, and Python wrappers.
@@ -63,9 +63,9 @@ The kit covers 16 tool families across cloud CLIs, configuration management, con
 | GitHub | 10 | 5 | 6 | 7 | 3 | — | ✅ | — | — | 2026-08-23 |
 | GitHub Actions | 6 | 5 | 3 | 5 | ✅ | — | — | — | — | 2026-09-11 |
 | GitLab CI | 3 | — | ✅ | ✅ | — | — | — | — | — | — |
-| Helm | 3 | 3 | 3 | 4 | ✅ | 4 | — | — | — | 2026-07-25 |
+| Helm | 3 | 4 | 3 | 4 | ✅ | 4 | — | — | — | 2026-09-18 |
 | Kubernetes | 9 | 4 | ✅ | ✅ | ✅ | 4 | ✅ | — | 10 | 2026-08-29 |
-| OpenTofu | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | 2026-08-25 |
+| OpenTofu | ✅ | 3 | ✅ | ✅ | — | — | — | — | — | 2026-09-18 |
 | Prometheus | ✅ | — | ✅ | ✅ | ✅ | — | — | — | — | — |
 | Terraform | 6 | 4 | 3 | 7 | 3 | ✅ | ✅ | — | 10 | 2026-09-17 |
 | Trivy | 5 | — | ✅ | ✅ | ✅ | — | — | — | — | — |
@@ -74,7 +74,7 @@ The kit covers 16 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Current work strengthens production-ready patterns: private AKS, AWX job templates, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD. Recent additions include an Ansible execution-pattern notebook, a Helm chart demo script, and an Azure VM scale set autoscaling example.
+Current work strengthens production-ready patterns: private AKS, AWX job templates, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD. Recent additions include OpenTofu S3 remote state with workspace isolation, a Helm values-management comparison, and an Ansible execution-pattern notebook.
 
 ---
 _Last updated: 2026-09-18_
