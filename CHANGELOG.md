@@ -2,6 +2,7 @@
 
 ## 2026-09-18
 
+- Added OpenTofu remote-state bootstrap script: scaffolds a project that provisions an S3 state bucket (versioning + encryption), a DynamoDB lock table, and a scoped IAM user, then migrates local state into the S3 backend with verify steps (ot-007) (`OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh`)
 - Added Helm values management comparison: --set flags vs per-environment values files vs named templates, with layering guidance and helm template/lint/get-values verify steps (hlm-010) (`Helm/docs/values-management-approaches.md`)
 - Added AWX job template and credential configuration for production GitOps automation: a job template wiring a GitOps project, inventory, playbook, and three credentials (SSH machine, Vault, AWS cloud) with become, diff mode, and extra vars, plus per-credential input blocks and a GitOps workflow walkthrough (ans-027) (`Ansible/configs/awx-job-template-and-credential-config.yaml`)
 
