@@ -9,6 +9,8 @@
 - Added OpenTofu remote-state with S3 backend and workspace isolation docs: shared backend block, local-to-remote state migration, per-environment workspaces, teammate onboarding via init, and verify steps (ot-008) (`OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md`)
 - Added OpenTofu remote-state bootstrap script: scaffolds a project that provisions an S3 state bucket (versioning + encryption), a DynamoDB lock table, and a scoped IAM user, then migrates local state into the S3 backend with verify steps (ot-007) (`OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh`)
 - Added Helm values management comparison: --set flags vs per-environment values files vs named templates, with layering guidance and helm template/lint/get-values verify steps (hlm-010) (`Helm/docs/values-management-approaches.md`)
+- Added Helm release lifecycle drill notebook covering install, upgrade, rollback, and uninstall with helm history inspection (hlm-011) (`Helm/notebooks/release-lifecycle-drill.ipynb`)
+- Added Kubernetes bash snippet: create a Pod and expose it via a Service with kubectl (k8s-022) (`Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh`)
 - Added AWX job template and credential configuration for production GitOps automation: a job template wiring a GitOps project, inventory, playbook, and three credentials (SSH machine, Vault, AWS cloud) with become, diff mode, and extra vars, plus per-credential input blocks and a GitOps workflow walkthrough (ans-027) (`Ansible/configs/awx-job-template-and-credential-config.yaml`)
 
 ## 2026-09-17
