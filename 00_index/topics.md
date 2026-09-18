@@ -2,10 +2,10 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  85 files
+## Ansible  ·  87 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
-- **notes** (8): most recent → [2026-09-04-ansible-quickstart-trip-ups.md](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
+- **notes** (10): most recent → [2026-09-04-ansible-quickstart-trip-ups.md](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [2026-08-23-ansible-ad-hoc-commands.md](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [2026-08-12-ansible-handlers-and-templates-tutorial.md](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
 - _…and 5 more under `Ansible/notes/` — browse the folder._
 - **templates** (48): [production-ready Ansible project scaffold](../Ansible/templates/production-ansible-project/README.md) — full project (ansible.cfg, inventory, group_vars, 3 roles, playbooks, CI workflow) — plus [ansible-role scaffold README](../Ansible/templates/ansible-role/roles/myrole/README.md) — full role skeleton (tasks, handlers, defaults, vars, molecule tests) and [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
 - _…and 45 more under `Ansible/templates/` — browse the folder._
@@ -16,7 +16,7 @@
 - _1 more under `Ansible/scripts/` — browse the folder._
 - **docs** (4): [ansible-14-core-2-21-migration-guide.md](../Ansible/docs/ansible-14-core-2-21-migration-guide.md), [integrated-ansible-docker-ci-pipeline-testing.md](../Ansible/docs/integrated-ansible-docker-ci-pipeline-testing.md), [ansible-over-terraform-local-exec.md](../Ansible/docs/ansible-over-terraform-local-exec.md), [wiring ansible-lint](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **snippets** (2): [lint-ansible-playbook.py](../Ansible/snippets/2026-08-12-lint-ansible-playbook.py), [nginx-playbook.yaml](../Ansible/snippets/nginx-playbook.yaml)
-- **notebooks** (1): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb)
+- **notebooks** (2): [ansible-variable-precedence.ipynb](../Ansible/notebooks/ansible-variable-precedence.ipynb), [comparing-execution-patterns-block-rescue-serial.ipynb](../Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb)
 - **dockerfiles** (1): [ansible control node](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
 
 ## ArgoCD  ·  7 files
@@ -116,7 +116,7 @@
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  17 files
+## Helm  ·  18 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates plus [values](../Helm/manifests/redis-chart/values.yaml)
@@ -158,7 +158,7 @@
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
-## Terraform  ·  36 files
+## Terraform  ·  37 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (5 files: `main.tf`, `variables.tf`, `outputs.tf`, `README.md`, `examples/`)

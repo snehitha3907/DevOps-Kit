@@ -8,7 +8,7 @@
 
 ## 2026-09-17
 
-- Audit fix: moved misplaced `Docker/manifests/Dockerfile` → `Docker/dockerfiles/simple-go-server.Dockerfile` (Docker has a dedicated `dockerfiles/` directory and the Dockerfile references `main.go` which lives under `Docker/dockerfiles/multi-stage-go-http-server/`); removed duplicate `Docker/notes/docker-compose.yml` (identical 41-byte file to `compose.yaml` in the same directory); updated `README.md` Docker Coverage row (Notes 7→6, Manifests 6→5, Dockerfiles 7→8, last-verified 2026-09-09→2026-09-17) and `00_index/topics.md` Docker section counts — Agent 02 audit cycle
+- Audit fix: moved misplaced `Docker/manifests/Dockerfile` → `Docker/dockerfiles/simple-go-server.Dockerfile` (Docker has a dedicated `dockerfiles/` directory and the Dockerfile references `main.go` which lives under `Docker/dockerfiles/multi-stage-go-http-server/`); removed duplicate `Docker/notes/docker-compose.yml` (identical 41-byte file to `compose.yaml` in the same directory); updated `README.md` Docker Coverage row (Notes 7→6, Manifests 6→5, Dockerfiles 7→8, last-verified 2026-09-09→2026-09-17) and `00_index/topics.md` Docker section counts
 - Added notebook comparing Ansible execution patterns: block/rescue/always recovery on one host, serial batched rollout, and max_fail_percentage abort threshold, each with a runnable local playbook plus verify steps and common errors (ans-026) (`Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb`)
 
 - Added Bicep template for a production AKS cluster with private API server, user-assigned kubelet managed identity, Azure CNI networking on a pre-existing subnet, autoscaling system pool, and a subnet-scoped role assignment (az-013) (`Azure/manifests/production-aks-cluster.bicep`)
@@ -29,13 +29,13 @@
 
 - Added production-ready Ansible project scaffold template with roles, collections, and CI pipeline: `ansible.cfg`, static production/staging inventories, shared + per-environment group vars, three roles (webserver/nginx, dbserver/postgresql, loadbalancer/haproxy) each with defaults/handlers/meta/tasks/templates/vars, four playbooks (site + per-tier), and a GitHub Actions CI workflow running ansible-lint, syntax check, and a staging dry-run (ans-025) (`Ansible/templates/production-ansible-project/`)
 
-- Fixed `validate_artifact.py` Pass-1 path check: task-id prefixes do not match the kit's canonical tool directory names (e.g. `ans-025` → `Ansible/`, `k8s-016` → `Kubernetes/`), so every correctly-placed artifact was being flagged as mis-placed. Added `tool_dir_for_prefix()` (manifest-backed map with a hardcoded fallback) and used it for both the top-folder check and the staged-file filter (`DevOps_Automation/Agent/tools/validate_artifact.py`)
+- Fixed `validate_artifact.py` Pass-1 path check: task-id prefixes do not match the kit's canonical tool directory names (e.g. `ans-025` → `Ansible/`, `k8s-016` → `Kubernetes/`), so every correctly-placed artifact was being flagged as mis-placed. Added `tool_dir_for_prefix()` (manifest-backed map with a hardcoded fallback) and used it for both the top-folder check and the staged-file filter on this repo's validation tool
 - Added concept doc on wiring preview-environment gates into a multi-environment deployment workflow: build-once promotion, per-PR preview slots with smoke checks, automatic teardown plus nightly sweep, staging re-validation, and evidence-backed final approval (con-067) (`docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md`)
 
 ## 2026-09-13
 
 - Added multi-environment Terraform project scaffold with workspaces and remote state backend: shared `main.tf`/`variables.tf`/`outputs.tf`, per-environment `backend.tf` overrides and `terraform.tfvars` for dev and prod, plus `apply.sh`/`destroy.sh` wrappers that select the workspace and init before acting (tf-023) (`Terraform/templates/multi-environment-terraform-workspaces-remote-state/`)
-- Fixed `validate_artifact.py` Pass-1 path check: introduced `TOOL_DIR_MAP` so renamed tool directories (e.g. `tf-` prefix → `Terraform/` on disk) no longer fail the top-folder check (`DevOps_Automation/Agent/tools/validate_artifact.py`)
+- Fixed `validate_artifact.py` Pass-1 path check: introduced `TOOL_DIR_MAP` so renamed tool directories (e.g. `tf-` prefix → `Terraform/` on disk) no longer fail the top-folder check on this repo's validation tool
 
 ## 2026-09-11
 
