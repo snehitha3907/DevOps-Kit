@@ -83,6 +83,8 @@
 - [OpenTofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md)
 - [State management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md)
 - [Minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
+- [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md)
+- [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh)
 
 ### Work with Git
 
@@ -157,6 +159,8 @@
 ### Work with Helm
 
 - [Helm quickstart trip-ups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md)
+- [Values management approaches](../Helm/docs/values-management-approaches.md)
+- [Demo web service chart script](../Helm/scripts/demo-web-service-chart.sh)
 - [Helm live-release values config](../Helm/configs/2026-09-02-live-release-values.yaml)
 - [Helm production-deployment values config](../Helm/configs/2026-08-30-production-deployment-values.yaml)
 - [Helm live-values config](../Helm/configs/2026-08-29-live-values.yaml)

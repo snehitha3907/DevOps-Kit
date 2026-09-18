@@ -129,6 +129,9 @@
 - **serviceAccount** — Chart values that control creation and mounting of the Kubernetes ServiceAccount used by the release's pods.
 - **podSecurityContext / containerSecurityContext** — Chart values that harden the pod and container: `runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation: false`, `capabilities.drop: [ALL]`, and `seccompProfile.type`.
 - **resources.requests / limits** — Chart values that declare CPU/memory guarantees and ceilings; without `requests` the scheduler and HPA have nothing to schedule against.
+- **`--set` flag** — An inline `helm install/upgrade --set key=value` override for one-off tweaks or CI-injected values (e.g. an image tag); visible later in `helm history` but hard to review when chained, so it suits single computed values rather than whole environments.
+- **Per-environment values file** — A `-f values-<env>.yaml` file holding only the keys that differ from chart defaults; selecting the file per environment keeps each environment's differences reviewable instead of retyping flags on every upgrade.
+- **Named template** — A reusable snippet in a chart's `templates/_helpers.tpl`, included with `include`/`template`; used to share labels, names, and repeated blocks across manifests instead of duplicating them per file.
 
 ## Git
 
@@ -267,6 +270,9 @@
 - **Workspace (OpenTofu)** — A named, separate copy of state under the same configuration (`workspace new`, `workspace select`). Check `workspace show` before any stateful command so you don't operate on the wrong environment's state.
 - **Backend migration** — Moving state between backends by editing the `backend` block and re-running `init`; the CLI offers to copy existing state to the new location. There is no `tofu migrate` command.
 - **Plaintext secrets in state** — Values marked sensitive in code still land as plain JSON in the state file, so backend storage and read access deserve the same care as credentials.
+- **S3 backend** — A remote-state backend that stores the state file as an object in an S3 bucket (`bucket` + `key` + `region`), so every machine running `apply` reads and writes the same state instead of drifting with local files.
+- **DynamoDB lock table** — The `dynamodb_table` referenced by an S3 backend; OpenTofu takes a lock row on every state write so concurrent applies queue instead of clobbering each other.
+- **Workspace isolation** — Using one workspace per environment (`dev`, `prod`) against the same configuration and backend, so each environment gets its own state pointer (`key` prefix per workspace) while the code stays identical.
 
 ## Terraform
 
