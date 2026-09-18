@@ -3,6 +3,7 @@
 ## 2026-09-17
 
 - Audit fix: moved misplaced `Docker/manifests/Dockerfile` → `Docker/dockerfiles/simple-go-server.Dockerfile` (Docker has a dedicated `dockerfiles/` directory and the Dockerfile references `main.go` which lives under `Docker/dockerfiles/multi-stage-go-http-server/`); removed duplicate `Docker/notes/docker-compose.yml` (identical 41-byte file to `compose.yaml` in the same directory); updated `README.md` Docker Coverage row (Notes 7→6, Manifests 6→5, Dockerfiles 7→8, last-verified 2026-09-09→2026-09-17) and `00_index/topics.md` Docker section counts — Agent 02 audit cycle
+- Added notebook comparing Ansible execution patterns: block/rescue/always recovery on one host, serial batched rollout, and max_fail_percentage abort threshold, each with a runnable local playbook plus verify steps and common errors (ans-026) (`Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb`)
 
 - Added Bicep template for a production AKS cluster with private API server, user-assigned kubelet managed identity, Azure CNI networking on a pre-existing subnet, autoscaling system pool, and a subnet-scoped role assignment (az-013) (`Azure/manifests/production-aks-cluster.bicep`)
 
