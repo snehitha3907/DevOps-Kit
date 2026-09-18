@@ -2,6 +2,7 @@
 
 ## 2026-09-18
 
+- Added Helm values management comparison: --set flags vs per-environment values files vs named templates, with layering guidance and helm template/lint/get-values verify steps (hlm-010) (`Helm/docs/values-management-approaches.md`)
 - Added AWX job template and credential configuration for production GitOps automation: a job template wiring a GitOps project, inventory, playbook, and three credentials (SSH machine, Vault, AWS cloud) with become, diff mode, and extra vars, plus per-credential input blocks and a GitOps workflow walkthrough (ans-027) (`Ansible/configs/awx-job-template-and-credential-config.yaml`)
 
 ## 2026-09-17
