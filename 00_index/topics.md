@@ -43,16 +43,16 @@
 - **scripts** (3): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (2): most recent → [create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [create resource group and list regions (earlier pass)](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
-## Docker  ·  41 files
+## Docker  ·  40 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
-- **notes** (7): most recent → [docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
-- _…and 4 more under `Docker/notes/` — browse the folder._
-- **dockerfiles** (7): most recent → [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile), [first docker image](../Docker/dockerfiles/first-docker-image.Dockerfile)
-- _…and 4 more under `Docker/dockerfiles/` — browse the folder._
+- **notes** (6): most recent → [docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
+- _…and 3 more under `Docker/notes/` — browse the folder._
+- **dockerfiles** (8): most recent → [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile), [first docker image](../Docker/dockerfiles/first-docker-image.Dockerfile)
+- _…and 5 more under `Docker/dockerfiles/` — browse the folder._
 - **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`
-- **manifests** (6): most recent → [production compose stack](../Docker/manifests/production-compose-stack.yaml), [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus scrape config](../Docker/manifests/prometheus.yml)
-- _…and 2 more under `Docker/manifests/` — browse the folder._
+- **manifests** (5): most recent → [production compose stack](../Docker/manifests/production-compose-stack.yaml), [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus scrape config](../Docker/manifests/prometheus.yml)
+- _…and 1 more under `Docker/manifests/` — browse the folder._
 - **scripts** (5): most recent → [multi-stage Go Docker build](../Docker/scripts/multi-stage-go-dockerfile.sh), [health check + cleanup](../Docker/scripts/docker-health-check-and-cleanup.sh), [install and run first container](../Docker/scripts/install-and-run-first-container.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
 - **docs** (6): [docker run vs compose](../Docker/docs/docker-run-vs-compose.md), [build mount vs COPY caching](../Docker/docs/docker-build-mount-vs-copy-caching.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md), [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [compose.yml reference](../Docker/docs/docker-compose.yml), [package.json reference](../Docker/docs/package.json)
