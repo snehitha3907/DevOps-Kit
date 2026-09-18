@@ -1,0 +1,133 @@
+# last_verified: 2026-09-18 · Kubernetes n/a
+# Purpose: one way to run a small web service with autoscaling, disruption
+# protection, and locked-down pod traffic. The docs also show HPA on custom
+# metrics; this sticks to CPU so it works on a plain cluster with metrics-server.
+# Apply: kubectl apply -f production-deployment-hpa-pdb-networkpolicies.yaml
+# Verify: kubectl rollout status deployment/web-app
+#         kubectl get hpa web-app pdb web-app-pdb
+#         kubectl describe networkpolicy web-app-default-deny web-app-allow-ingress
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: nginx:1.27
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  type: ClusterIP
+---
+# HPA needs the cpu request above; without requests the CPU-utilization
+# target has nothing to scale against.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-app
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-app
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+---
+# Keeps at least 2 pods serving during voluntary disruptions (node drains,
+# cluster upgrades). With 3 replicas this still allows one pod to move.
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: web-app-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: web-app
+---
+# Default deny: drops all ingress to web-app pods except what the policy
+# below explicitly allows.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web-app-default-deny
+spec:
+  podSelector:
+    matchLabels:
+      app: web-app
+  policyTypes:
+  - Ingress
+---
+# Opens port 8080 on web-app pods (no `from:` block, so any source
+# in the cluster can reach it; add a `from:` selector to scope it to an
+# ingress-controller or monitoring namespace).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web-app-allow-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: web-app
+  policyTypes:
+  - Ingress
+  ingress:
+  - ports:
+    - port: 8080
+      protocol: TCP
