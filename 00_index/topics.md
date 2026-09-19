@@ -43,6 +43,11 @@
 - **scripts** (3): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (2): most recent → [create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [create resource group and list regions (earlier pass)](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
+## Flux CD  ·  2 files
+
+- **notes** (1): [exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up.
+- **scripts** (1): [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
+
 ## Docker  ·  40 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)

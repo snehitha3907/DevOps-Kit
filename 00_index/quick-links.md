@@ -138,6 +138,11 @@
 - [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
 - [Sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
+### Bootstrap Flux
+
+- [Exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md)
+- [Install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
+
 ### Work with AWS
 
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
