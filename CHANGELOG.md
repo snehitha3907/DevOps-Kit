@@ -2,6 +2,12 @@
 
 ## 2026-09-19
 
+- Added version control snippet analyzing branch divergence with git rev-list: compares two branches, lists divergent commits with stats (con-080) (`docs/concepts/version-control-concepts/snippets/2026-09-19-analyze-branch-divergence-with-git-rev-list.py`)
+
+- Added containerization snippet inspecting image layers and metadata with the Docker SDK for Python: pulls or gets an image, reports ID, size, OS, layer list, and history (con-083) (`docs/concepts/containerization-concepts/snippets/2026-09-19-inspect-container-image-layers-and-metadata.py`)
+
+- Added networking snippet testing TCP port reachability and DNS resolution with Python sockets: scans a host/port over TCP and resolves A/AAAA records (con-084) (`docs/concepts/networking-fundamentals/snippets/2026-09-19-test-tcp-port-reachability-and-dns-resolution.py`)
+
 - Documented HashiCorp Vault (`vlt/`) in README Layout + Coverage table and `00_index/topics.md`: corrected the Vault Coverage row to Notes=2, Scripts=1 (matching the primer + exploration note and the install/dev-server script on disk), added `Last verified` 2026-09-19, and added a `HashiCorp Vault · 3 files` topics.md section with primer + notes (2) + scripts (1) links (vlt-004) (`vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md`, `README.md`, `00_index/topics.md`)
 
 - Added HashiCorp Vault quick primer: what it is, seal/unseal, dev server, KV engine, policies, tokens, and VAULT_ADDR with a tiny kv example (vlt-001) (`vlt/notes/0000-primer-vlt.md`)
