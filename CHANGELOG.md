@@ -2,6 +2,8 @@
 
 ## 2026-09-19
 
+- Added HashiCorp Vault quick primer: what it is, seal/unseal, dev server, KV engine, policies, tokens, and VAULT_ADDR with a tiny kv example (vlt-001) (`vlt/notes/0000-primer-vlt.md`)
+- Added HashiCorp Vault first-run scratch script: check the CLI version and start a dev server, then write and read one KV secret (vlt-002) (`vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh`)
 - Added Flux CD bash script: install the Flux CLI from the official install script and run `flux check --pre` to verify cluster readiness for Flux (flx-002) (`Flux CD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh`)
 - Added Flux CD notes exploring the flux CLI command surface: bootstrap, reconcile, tree, get, create, and uninstall with trip-ups (flx-003) (`Flux CD/notes/2026-09-19-explore-flux-cli-command-surface.md`)
 - Added gh CLI quickstart trip-up notes covering auth scopes, editor behavior, repo context, and silent token failures (gh-027) (`GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md`)
