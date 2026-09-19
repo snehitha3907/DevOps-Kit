@@ -15,6 +15,7 @@
 - Added observability+containerization notebook: synthetic frontend→api→db trace spans rebuilt into a container dependency graph with slowest-edge detection, plus an agent-plus-gateway collector pipeline sketch with component-consistency checks (con-073) (`docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb`)
 - Added scripted health-gate with correlated logs: DNS/TCP/HTTP staged probes sharing a correlation id per target plus a proceed/hold gate verdict (fast-pass, slow-hold, refused, DNS-failure), demoed against loopback servers (con-093) (`docs/concepts/monitoring-observability-concepts/scripts/scripted-health-gate-with-correlated-logs.py`)
 - Added Vault CLI exploration notes: vault status against the dev server, kv put/get round-trip, and policies-as-next-step with a token-scoping follow-up (vlt-003) (`vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md`)
+- Added Azure provisioning comparison doc: when to reach for Azure CLI vs Bicep vs Python SDK for a small app stack, with credential setup, resource group, networking, compute, and verification steps for each approach (az-014) (`Azure/docs/comparing-azure-cli-bicep-python-sdk.md`)
 - Added Pulumi quick primer: what it is, what it does, why it exists, key terminology, a tiny Python bucket example, and what I'll cover next (plm-001) (`plm/notes/0000-primer-plm.md`)
 
 ## 2026-09-18
