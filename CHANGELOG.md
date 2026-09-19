@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-19
+
+- Added Flux CD bash script: install the Flux CLI from the official install script and run `flux check --pre` to verify cluster readiness for Flux (flx-002) (`Flux CD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh`)
+- Added Flux CD notes exploring the flux CLI command surface: bootstrap, reconcile, tree, get, create, and uninstall with trip-ups (flx-003) (`Flux CD/notes/2026-09-19-explore-flux-cli-command-surface.md`)
+
 ## 2026-09-18
 
 - Added production deployment manifest with HPA, PDB, and network policies: rolling-update Deployment with probes and resource requests, ClusterIP Service, CPU-based HPA (3–10 replicas), minAvailable PDB, and default-deny plus port-allow NetworkPolicies (k8s-020) (`Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml`)
