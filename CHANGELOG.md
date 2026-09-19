@@ -2,6 +2,9 @@
 
 ## 2026-09-19
 
+- Added Pulumi install + init script: check the CLI, scaffold a Python project, init a dev stack, and preview (plm-002) (`plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh`)
+- Added minimal Pulumi Python snippet: one storage bucket with its name exported as a stack output (plm-003) (`plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py`)
+
 - Documented HashiCorp Vault (`vlt/`) in README Layout + Coverage table and `00_index/topics.md`: corrected the Vault Coverage row to Notes=2, Scripts=1 (matching the primer + exploration note and the install/dev-server script on disk), added `Last verified` 2026-09-19, and added a `HashiCorp Vault · 3 files` topics.md section with primer + notes (2) + scripts (1) links (vlt-004) (`vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md`, `README.md`, `00_index/topics.md`)
 
 - Added HashiCorp Vault quick primer: what it is, seal/unseal, dev server, KV engine, policies, tokens, and VAULT_ADDR with a tiny kv example (vlt-001) (`vlt/notes/0000-primer-vlt.md`)
