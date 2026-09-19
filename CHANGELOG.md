@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-19
+
+- Added gh CLI quickstart trip-up notes covering auth scopes, editor behavior, repo context, and silent token failures (gh-027) (`GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md`)
+
 ## 2026-09-18
 
 - Added production deployment manifest with HPA, PDB, and network policies: rolling-update Deployment with probes and resource requests, ClusterIP Service, CPU-based HPA (3–10 replicas), minAvailable PDB, and default-deny plus port-allow NetworkPolicies (k8s-020) (`Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml`)
