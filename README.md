@@ -44,6 +44,7 @@ The kit covers 17 tool families across cloud CLIs, configuration management, con
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, severity policies, and Python wrappers.
+- **vlt/** — HashiCorp Vault primer, dev server setup, and KV engine examples (added per changelog vlt-001, vlt-002).
 - **docs/** — Foundational concept primers and supporting kit notes.
 - **CHANGELOG.md** — Dated record of additions, reworks, and navigation corrections.
 
@@ -71,12 +72,21 @@ The kit covers 17 tool families across cloud CLIs, configuration management, con
 | Prometheus | 2 | — | 1 | 2 | 1 | — | — | — | — | — |
 | Terraform | 6 | 4 | 3 | 7 | 3 | 2 | 2 | — | 10 | 2026-09-17 |
 | Trivy | 5 | — | 2 | 2 | 2 | — | — | — | — | — |
+| HashiCorp Vault | 2 | — | 1 | — | — | — | — | — | — | 2026-09-19 |
 
 </details>
 
 ## Status
-
 Current work strengthens production-ready patterns: private AKS, AWX job templates, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD. Recent additions include Flux CLI primer and pre-flight checks, GitHub CLI quickstart trip-ups, and monitoring + containerization observability notebooks.
 
+## Backlog
+
+- **B-01** — HashiCorp Vault (`vlt/`) Coverage row verified against disk: Notes=2 (primer + exploration note), Scripts=1, Last verified 2026-09-19; topics.md now has a Vault section (vlt-004).
+- **B-02** — `docs/audit/OpenTofu/notes/0000-primer-opentofu.md` and `docs/audit/OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh` are duplicates of `OpenTofu/notes/0000-primer-opentofu.md` and `OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh`. Decide whether to keep both, merge, or remove the audit-path copies.
+- **B-03** — `docs/audit/README.md` and `docs/audit/00_index/topics.md` are stubs with no inbound markdown links. Either complete them with real content or remove.
+- **B-04** — CHANGELOG historical references contain stale paths: `tf/manifests/reusable-vpc-module.hcl` (should be `Terraform/manifests/reusable-vpc-module.hcl`), `General/docs/*.md` (never existed, noted as removed), `Docker/notes/docker-compose.yml` (removed per 2026-09-17 audit fix).
+- **B-05** — Orphan files with no inbound links require review: `Git/docs/github.sh`, `Git/notes/file.py`, `Git/notes/readme.md`, `Git/docs/regression-test.sh` (duplicate of `docs/audit/regression-test.sh`), `docs/concepts/version-control-concepts/config_final_v2_REALLY_FINAL.sh`, `docs/audit/regression-test.sh`.
+
 ---
+
 _Last updated: 2026-09-19_

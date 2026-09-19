@@ -188,6 +188,12 @@
 - **snippets** (2): most recent → [scan image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [trivy python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
+## HashiCorp Vault  ·  3 files
+
+- **primer:** [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
+- **notes** (2): most recent → [exploring the vault CLI — secrets, policies, and what's there](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md), [0000 primer](../vlt/notes/0000-primer-vlt.md)
+- **scripts** (1): [install vault CLI and start dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+
 ## Foundational Concepts  ·  65 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — pipelines, gates, rollbacks, artifact promotion.
