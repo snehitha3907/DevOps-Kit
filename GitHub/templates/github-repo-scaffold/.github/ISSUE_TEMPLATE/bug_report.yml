@@ -1,0 +1,38 @@
+# last_verified: 2026-09-19 · GitHub n/a
+---
+name: Bug Report
+about: Report a reproducible bug or unexpected behavior
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+assignees: []
+---
+
+## Description
+A clear and concise description of what the bug is.
+
+## Steps to Reproduce
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+## Expected Behavior
+A clear and concise description of what you expected to happen.
+
+## Actual Behavior
+A clear and concise description of what actually happened.
+
+## Environment
+- OS: [e.g., Ubuntu 22.04, macOS 14, Windows 11]
+- Tool Version: [e.g., v1.2.3]
+- Runtime: [e.g., Docker, Kubernetes, bare metal]
+
+## Logs / Screenshots
+If applicable, add logs, screenshots, or error messages to help explain the problem.
+
+```text
+paste logs here
+```
+
+## Additional Context
+Add any other context about the problem here. Links to related issues, PRs, or documentation.

@@ -1,0 +1,29 @@
+# last_verified: 2026-09-19 · GitHub n/a
+---
+name: Documentation
+about: Report missing, unclear, or outdated documentation
+title: "[Docs] "
+labels: ["documentation", "needs-triage"]
+assignees: []
+---
+
+## Documentation Issue
+What documentation is missing, unclear, or outdated?
+
+## Location
+Where is the documentation (or where should it be)?
+- File/Path: 
+- Section: 
+- URL (if online):
+
+## Suggested Improvement
+What would make this documentation better?
+- [ ] Fix typo/grammar
+- [ ] Add missing example
+- [ ] Clarify confusing section
+- [ ] Add prerequisites
+- [ ] Update for new version
+- [ ] Other:
+
+## Additional Context
+Links to related issues, PRs, or external resources.

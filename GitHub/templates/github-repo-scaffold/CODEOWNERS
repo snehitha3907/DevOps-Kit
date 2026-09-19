@@ -1,0 +1,24 @@
+# last_verified: 2026-09-19 · GitHub n/a
+# Global owners for the entire repository
+* @org/core-maintainers
+
+# Documentation changes require docs team review
+/docs/ @org/docs-team
+/*.md @org/docs-team
+
+# CI/CD configuration requires platform team review
+/.github/workflows/ @org/platform-team
+/.github/actions/ @org/platform-team
+
+# Infrastructure-as-code changes require infra team review
+/terraform/ @org/infra-team
+/helm/ @org/infra-team
+/kubernetes/ @org/infra-team
+
+# Security-sensitive files require security team review
+/.github/dependabot.yml @org/security-team
+/SECURITY.md @org/security-team
+
+# Release automation requires release managers
+/.github/workflows/release.yml @org/release-managers
+/CHANGELOG.md @org/release-managers
