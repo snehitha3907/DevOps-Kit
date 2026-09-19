@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-19
+
+- Added monitoring+networking integration script: TCP/HTTP health checks (pass, HTTP-error, refused, DNS-failure) emitting structured JSONL logs with a per-target correlation report, demoed against loopback servers (con-072) (`docs/concepts/monitoring-observability-concepts/scripts/health-checks-and-log-correlation.py`)
+- Added observability+containerization notebook: synthetic frontend→api→db trace spans rebuilt into a container dependency graph with slowest-edge detection, plus an agent-plus-gateway collector pipeline sketch with component-consistency checks (con-073) (`docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb`)
+
 ## 2026-09-18
 
 - Added production deployment manifest with HPA, PDB, and network policies: rolling-update Deployment with probes and resource requests, ClusterIP Service, CPU-based HPA (3–10 replicas), minAvailable PDB, and default-deny plus port-allow NetworkPolicies (k8s-020) (`Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml`)
