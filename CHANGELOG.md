@@ -2,6 +2,8 @@
 
 ## 2026-09-19
 
+- Added HashiCorp Vault quick primer: what it is, seal/unseal, dev server, KV engine, policies, tokens, and VAULT_ADDR with a tiny kv example (vlt-001) (`vlt/notes/0000-primer-vlt.md`)
+- Added HashiCorp Vault first-run scratch script: check the CLI version and start a dev server, then write and read one KV secret (vlt-002) (`vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh`)
 - Added minimal Terraform config combining local_file with the random provider: random_pet suffix wired into file content and filename (tf-027) (`Terraform/configs/2026-09-19-local-file-random-provider.hcl`)
 - Added observability-into-CI/CD integration doc: pipeline health as telemetry, the four DORA metrics, the three failure modes to instrument first, deployment markers, and the collector sidecar/gateway pipeline with processor-isolation and fan-out cautions (con-092) (`docs/concepts/monitoring-observability-concepts/docs/cicd-pipeline-health-telemetry-dora-deployment-markers.md`)
 - Added Flux CD bash script: install the Flux CLI from the official install script and run `flux check --pre` to verify cluster readiness for Flux (flx-002) (`Flux CD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh`)
