@@ -36,10 +36,10 @@
 - **snippets** (2): most recent → [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3 resources](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 
-## Azure  ·  10 files
+## Azure  ·  11 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
-- **notes** (3): most recent → [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [Azure CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md), [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
+- **notes** (4): most recent → [first login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md), [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [Azure CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
 - **scripts** (3): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (2): most recent → [create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [create resource group and list regions (earlier pass)](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 
@@ -88,11 +88,11 @@
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  32 files
+## GitHub  ·  33 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
-- **notes** (10): most recent → [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md), [repos, issues, and PRs](../GitHub/notes/2026-06-10-repos-issues-and-prs.md)
-- _…and 7 more under `GitHub/notes/` — browse the folder._
+- **notes** (11): most recent → [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md), [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md)
+- _…and 8 more under `GitHub/notes/` — browse the folder._
 - **scripts** (6): most recent → [create repo and PR](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh), [auth and explore profile](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh), [provision repo with API](../GitHub/scripts/provision-repo-with-api.py)
 - _…and 3 more under `GitHub/scripts/` — browse the folder._
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
@@ -121,7 +121,7 @@
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 
-## Helm  ·  19 files
+## Helm  ·  20 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates plus [values](../Helm/manifests/redis-chart/values.yaml)
@@ -133,7 +133,7 @@
 - **scripts** (3): [demo web service chart](../Helm/scripts/demo-web-service-chart.sh) — scaffold, lint, render, install, verify — plus [install helm and explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh) and [dummy test](../Helm/scripts/dummy-test.sh)
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 
-## Kubernetes  ·  33 files
+## Kubernetes  ·  35 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **templates** (10): [k8s-deployment-helm-chart-kustomize-overlay](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/) — Helm chart (`Chart.yaml`, `values.yaml`, `templates/`) and Kustomize overlay (`base/` + `overlays/dev|prod/`)
@@ -141,20 +141,21 @@
 - _…and 6 more under `Kubernetes/notes/` — browse the folder._
 - **docs** (4): most recent → [integrating kubernetes with prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md), [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md), [prometheus.yml reference](../Kubernetes/docs/prometheus.yml)
 - _1 more under `Kubernetes/docs/` — browse the folder._
-- **manifests** (4): [stateless app](../Kubernetes/manifests/stateless-app.yaml), [deployment + service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
-- _1 more under `Kubernetes/manifests/` — browse the folder._
+- **manifests** (5): [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml), [deployment + service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
+- _…and 2 more under `Kubernetes/manifests/` — browse the folder._
 - **scripts** (2): [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
 - **notebooks** (2): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb), [workload types (newer pass)](../Kubernetes/notebooks/2026-09-07-comparing-kubernetes-workload-types.ipynb)
-- **snippets** (1): [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
+- **snippets** (2): [first pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh), [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **configs** (1): [deployment + service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 
-## OpenTofu  ·  9 files
+## OpenTofu  ·  10 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **notes** (2): most recent → [opentofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md), [0000 primer](../OpenTofu/notes/0000-primer-opentofu.md)
 - **scripts** (2): [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) — bucket, lock table, scoped IAM user, state migration — plus [install opentofu and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 - **docs** (3): most recent → [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — shared state per environment with locking — plus [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — `tofu state list/mv/pull`, backend migration, workspace habits
+- **notebooks** (1): [comparing OpenTofu and Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 
 ## Prometheus  ·  6 files
 
@@ -164,11 +165,10 @@
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
-## Terraform  ·  37 files
+## Terraform  ·  38 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
-- **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (5 files: `main.tf`, `variables.tf`, `outputs.tf`, `README.md`, `examples/`)
-- _…and 2 more under `Terraform/configs/` — browse the folder._
+- **configs** (8): most recent → [local_file + random_pet two-provider config](../Terraform/configs/2026-09-19-local-file-random-provider.hcl), [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (5 files: `main.tf`, `variables.tf`, `outputs.tf`, `README.md`, `examples/`)
 - **notes** (6): most recent → [install terraform and first local file](../Terraform/notes/2026-09-03-install-terraform-and-first-local-file.md), [terraform state management tutorial](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [following the provider tutorial](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
 - _…and 3 more under `Terraform/notes/` — browse the folder._
 - **docs** (4): [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [workspaces and remote state locking (first pass)](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
@@ -188,7 +188,12 @@
 - **snippets** (2): most recent → [scan image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [trivy python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
-## Foundational Concepts  ·  65 files
+## HashiCorp Vault (`vlt/`)  ·  2 files
+
+- **primer:** [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md) — what Vault is, why secrets outgrow env files, and first-day terms (seal/unseal, dev server, KV engine, policies, tokens).
+- **scripts** (1): [install Vault CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+
+## Foundational Concepts  ·  69 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — pipelines, gates, rollbacks, artifact promotion.
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
@@ -211,9 +216,9 @@
   - **scripts** (3): [systemd health-check log alerting](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh), [systemd watchdog restart + page](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh), [filesystem permissions and process management](../docs/concepts/linux-system-administration/scripts/2026-07-18-filesystem-permissions-and-process-management.sh)
   - **notebooks** (1): [linux system performance analysis](../docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb)
 - **Monitoring & Observability:** [0000-primer-monitoring-observability-concepts.md](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) — metrics, logs, traces, scraping.
-  - **docs** (1): [combining metrics, logs, traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
-  - **scripts** (1): [metrics exporter + structured logger](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py)
-  - **notebooks** (1): [scraping endpoint, three pillars](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
+  - **docs** (2): [pipeline health telemetry, DORA metrics, and deployment markers](../docs/concepts/monitoring-observability-concepts/docs/cicd-pipeline-health-telemetry-dora-deployment-markers.md), [combining metrics, logs, traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
+  - **scripts** (3): [scripted health gate with correlated logs](../docs/concepts/monitoring-observability-concepts/scripts/scripted-health-gate-with-correlated-logs.py), [health checks and log correlation](../docs/concepts/monitoring-observability-concepts/scripts/health-checks-and-log-correlation.py), [metrics exporter + structured logger](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py)
+  - **notebooks** (2): [tracing containerized service dependencies](../docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb), [scraping endpoint, three pillars](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
 - **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md) — DNS, TLS, TCP probes, load balancing.
   - **notes** (1): [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
   - **scripts** (3): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)

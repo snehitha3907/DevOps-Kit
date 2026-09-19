@@ -23,6 +23,7 @@
 - [Install Terraform + init/plan](../Terraform/scripts/install-and-init.sh)
 - [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
 - [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
+- [Install Vault CLI + start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 - [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 
 ### Explore CLI and primer concepts
@@ -43,6 +44,7 @@
 - [Prometheus primer](../Prometheus/notes/0000-primer-prometheus.md)
 - [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
 - [Trivy primer](../Trivy/notes/0000-primer-trivy.md)
+- [HashiCorp Vault primer](../vlt/notes/0000-primer-vlt.md)
 
 ### Write a playbook / pipeline / config
 
@@ -75,6 +77,7 @@
 - [Reusable VPC module manifest](../Terraform/manifests/reusable-vpc-module.hcl)
 - [Multi-environment scaffold with workspaces + remote state](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md)
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
+- [local_file + random_pet two-provider config](../Terraform/configs/2026-09-19-local-file-random-provider.hcl)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - [Terraform coverage correction doc](../Terraform/docs/2026-09-17-coverage-correction.md)
 
@@ -84,7 +87,13 @@
 - [State management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md)
 - [Minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 - [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md)
+- [Compare OpenTofu and Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 - [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh)
+
+### Manage secrets with Vault
+
+- [HashiCorp Vault primer](../vlt/notes/0000-primer-vlt.md)
+- [Install Vault CLI + start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 
 ### Work with Git
 
@@ -101,6 +110,12 @@
 - [Git coverage correction doc](../Git/docs/2026-09-17-git-coverage-correction.md)
 - [Git merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 - [Repository scaffold template](../Git/templates/git-repository-skeleton/README.md)
+
+### Work with GitHub
+
+- [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md)
+- [Create a repo and open a PR](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
+- [Provision a repo with the API](../GitHub/scripts/provision-repo-with-api.py)
 
 ### Work with Docker
 
@@ -123,6 +138,8 @@
 ### Work with Kubernetes
 
 - [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
+- [First pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh)
+- [Production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml)
 - [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
 - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
 - [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
@@ -151,6 +168,7 @@
 
 ### Work with Azure
 
+- [First login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md)
 - [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md)
 - [Create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh)
 - [Provision a VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
@@ -206,6 +224,10 @@
 
 - [Monitoring & Observability concepts primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 - [Combining metrics, logs, and traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
+- [Pipeline health telemetry, DORA metrics, and deployment markers](../docs/concepts/monitoring-observability-concepts/docs/cicd-pipeline-health-telemetry-dora-deployment-markers.md)
+- [Scripted health gate with correlated logs](../docs/concepts/monitoring-observability-concepts/scripts/scripted-health-gate-with-correlated-logs.py)
+- [Health checks and log correlation](../docs/concepts/monitoring-observability-concepts/scripts/health-checks-and-log-correlation.py)
+- [Tracing containerized service dependencies](../docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb)
 - [Check Prometheus target health with PromQL](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
 ### Scripting and automation

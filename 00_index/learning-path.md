@@ -13,7 +13,7 @@ These concepts have no prerequisites — start here if you're new to the domain.
 - **Containerization Concepts** — Packaging applications with their runtime into portable units. [Primer](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md) · [Docker build/tag/run lifecycle](../docs/concepts/containerization-concepts/scripts/2026-09-06-docker-build-tag-run-lifecycle.sh) Unlocks: Docker, Kubernetes.
 - **Infrastructure as Code Concepts** — Managing infrastructure through machine-readable definition files instead of manual processes. [Primer](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md) · [Declarative vs imperative notebook](../docs/concepts/infrastructure-as-code-concepts/notebooks/2026-08-08-declarative-vs-imperative-iac.ipynb) · [Parse and validate Terraform state](../docs/concepts/infrastructure-as-code-concepts/snippets/2026-09-06-parse-and-validate-terraform-state.py) · [IaC state workflow sandbox](../docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh) Unlocks: Terraform, Ansible, AWS, Azure, GCP.
 - **Version Control Concepts** — Tracking changes to files over time with commits, branches, and pull requests. [Primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md) · [Merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh) Unlocks: Git, GitHub.
-- **Monitoring & Observability** — Metrics, logs, traces, SLIs, SLOs, and alerting for understanding production system behaviour. [Primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) · [Metrics exporter + structured logger](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py) Unlocks: Prometheus, Grafana.
+- **Monitoring & Observability** — Metrics, logs, traces, SLIs, SLOs, and alerting for understanding production system behaviour. [Primer](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) · [Metrics exporter + structured logger](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py) · [Scripted health gate with correlated logs](../docs/concepts/monitoring-observability-concepts/scripts/scripted-health-gate-with-correlated-logs.py) · [Pipeline health telemetry, DORA metrics, and deployment markers](../docs/concepts/monitoring-observability-concepts/docs/cicd-pipeline-health-telemetry-dora-deployment-markers.md) Unlocks: Prometheus, Grafana.
 
 ## Stage 2: Core Tools
 
@@ -89,8 +89,8 @@ Advanced concepts and expert-level tool content.
 - **Kubernetes production patterns** — First real content: a Deployment wired with liveness probes, resource requests/limits, and a CPU-based HorizontalPodAutoscaler. [Go service + HPA manifest](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml) Ingress controllers, service meshes, and security policies are still ⏳.
 - **Kubernetes deployment scaffolds** — Helm chart and Kustomize overlay scaffold for a Deployment with probes, HPA, and dev/prod overlays. [Helm chart](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
 - **Helm chart authoring** ⏳ — Creating and publishing your own charts.
+- **HashiCorp Vault** — Secrets management and access control. First contact is here: [primer](../vlt/notes/0000-primer-vlt.md) (seal/unseal, KV engine, policies, tokens) and [install the CLI + start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh). Depends on Docker L2 + K8s L3.
 - **Pulumi** ⏳ — Infrastructure as code with general-purpose programming languages. Depends on Terraform L3.
-- **HashiCorp Vault** ⏳ — Secrets management and access control. Depends on Docker L2 + K8s L3.
 
 ## Progression Map
 
@@ -145,6 +145,7 @@ graph TD
     K8s --> ArgoCD
     K8s --> Prometheus
     K8s --> FluxCD
+    K8s --> Vault
 
     Terraform --> OpenTofu
     Terraform --> Pulumi
@@ -152,8 +153,8 @@ graph TD
 classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD hasContent
-    class Pulumi,Vault noContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault hasContent
+    class Pulumi noContent
 ```
 
 _Last updated: 2026-09-19_

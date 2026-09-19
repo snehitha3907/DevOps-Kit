@@ -348,6 +348,9 @@
 - **Alert** — A notification triggered when a metric crosses a threshold or a condition is met. Good alerts are actionable and low-noise; bad alerts train on-call engineers to ignore them.
 - **Service Level Indicator (SLI)** — A specific measurable attribute of a service, such as request latency or availability percentage. SLIs are the raw numbers behind service level agreements.
 - **Service Level Objective (SLO)** — A target value for an SLI, like "99.9% of requests return in under 200ms". SLOs give teams a shared language for reliability instead of vague "make it faster" goals.
+- **DORA metrics** — Four delivery-health numbers: deployment frequency, mean lead time for changes, mean time to recover, and change failure rate. Tracked from commit and deploy timestamps, they score the factory, not just the app.
+- **Deployment marker** — An annotation on a metrics timeline recording when a deploy landed, so an error-rate move can be tied back to the change that caused it.
+- **Health gate** — A checkpoint that probes targets (DNS resolution timing plus TCP/HTTP reachability), correlates the results under one id, and returns a proceed-or-hold verdict per target before a rollout continues.
 
 ## CI/CD Concepts
 
@@ -392,3 +395,12 @@
 - **Branch protection** — Rules applied to a Git branch (commonly `main`) that enforce requirements such as passing CI checks, required reviews, or preventing force pushes before merging.
 - **Merge strategy** — The method Git uses to combine branches: merge commit (preserves full history), rebase (rewrites commits onto a new base), or squash (collapses all commits into one); the choice affects history readability and bisectability.
 - **Release automation** — The practice of turning a Git tag into a deployable artifact through an automated pipeline — typically parsing conventional commits to generate a changelog, bump the version, and publish a release without manual steps.
+
+## HashiCorp Vault
+
+- **Seal / unseal** — A locked Vault refuses requests until it is unsealed with key shares (`vault operator unseal <key-share>`); a dev server starts unsealed.
+- **Dev server** — A throwaway in-memory Vault (`vault server -dev`) for learning; nothing is saved to disk.
+- **Secrets engine (KV)** — The key-value store where simple secrets live (`vault kv put secret/app password=x`).
+- **Policy** — A written rule saying which paths a token may read or write, e.g. read-only on `secret/app`.
+- **Token** — The credential presented instead of a password (`vault login <token>`); dev mode prints a root token.
+- **VAULT_ADDR** — The env var telling the CLI where the server lives (e.g. `export VAULT_ADDR='http://127.0.0.1:8200'`).
