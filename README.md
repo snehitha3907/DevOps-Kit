@@ -1,5 +1,5 @@
 # DevOps-Kit
-> A working DevOps engineer's shelf for cloud CLIs, containers, orchestration, infrastructure as code, CI/CD, observability, and security.
+> A working DevOps engineer's shelf for cloud CLIs, containers, orchestration, infrastructure as code, CI/CD, observability, and security scanning.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
 ![Top language](https://img.shields.io/github/languages/top/snehitha3907/DevOps-Kit)
@@ -14,15 +14,15 @@ A working DevOps engineer's quick-reference: first-contact notes, runnable examp
 
 ## What's in here
 
-The kit covers 16 tool families across cloud CLIs, configuration management, containers, orchestration, Git hosting, CI/CD, infrastructure as code, observability, and security scanning. Most tool folders pair a primer with notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, or templates. Shared concept primers in `docs/concepts/` connect the foundations behind the tool-specific material.
+The kit covers 17 tool families across cloud CLIs, configuration management, containers, orchestration, Git hosting, CI/CD, infrastructure as code, observability, and security scanning. Most tool folders pair a primer with notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, or templates. Shared concept primers in `docs/concepts/` connect the foundations behind the tool-specific material.
 
 ## Quick links
 
+- [Exploring the Flux CLI command surface](FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — Bootstrap, reconcile, tree, and get commands for the Flux GitOps operator, with the gotchas that tripped me up on first run.
+- [Install Flux CLI and run flux check --pre](FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh) — Smallest path to a Flux-ready cluster: install the CLI and verify prerequisites.
+- [GitHub CLI quickstart trip-ups](GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md) — What tripped me up while following the official `gh` CLI quickstart: auth, default repo scope, and output formatting.
 - [OpenTofu S3 backend with workspace isolation](OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — Shared state per environment in S3 with locking so concurrent applies queue instead of clobbering each other.
-- [OpenTofu S3 + DynamoDB remote-state bootstrap](OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) — Provisions the state bucket, lock table, and scoped IAM user, then migrates local state into the backend.
 - [Helm values management approaches](Helm/docs/values-management-approaches.md) — Compares `--set` flags, per-environment values files, and named templates with when to reach for each.
-- [AWX job template and credential configuration](Ansible/configs/awx-job-template-and-credential-config.yaml) — A production GitOps job template with typed SSH, Vault, and AWS credentials.
-- [Helm demo web service chart script](Helm/scripts/demo-web-service-chart.sh) — Scaffolds, lints, renders, installs, and verifies a small Helm release.
 
 ## Layout
 
@@ -32,6 +32,7 @@ The kit covers 16 tool families across cloud CLIs, configuration management, con
 - **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests, installation, and sync checks.
 - **Azure/** — Azure CLI setup, resource provisioning, VM scale sets, and a private AKS Bicep example.
 - **Docker/** — Container primers, Dockerfiles, Compose stacks, build patterns, health checks, and Go service scaffolds.
+- **FluxCD/** — Flux CLI primer, bootstrap, reconcile, and pre-flight cluster checks.
 - **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, and startup scripts.
 - **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, and regression examples.
 - **GitHub/** — Repository operations, issue forms, branch protection, API examples, and release automation notes.
@@ -53,28 +54,29 @@ The kit covers 16 tool families across cloud CLIs, configuration management, con
 
 | Tool | Notes | Docs | Scripts | Configs | Snippets | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
 |------|-------|------|---------|---------|----------|-----------|-----------|-------------|-----------|---------------|
-| Ansible | 10 | 4 | 4 | 8 | ✅ | 8 | ✅ | ✅ | 48 | 2026-09-16 |
-| ArgoCD | 3 | — | ✅ | ✅ | ✅ | — | — | — | — | — |
-| AWS | ✅ | — | 5 | ✅ | ✅ | — | — | — | — | — |
-| Azure | 3 | — | 3 | — | 3 | ✅ | — | — | — | — |
-| Docker | 6 | 6 | 5 | ✅ | ✅ | 5 | ✅ | 8 | 6 | 2026-09-09 |
-| GCP | ✅ | — | 3 | ✅ | ✅ | — | — | — | — | — |
-| Git | 8 | 13 | 9 | — | ✅ | — | ✅ | — | 22 | 2026-09-17 |
-| GitHub | 10 | 5 | 6 | 7 | 3 | — | ✅ | — | — | 2026-08-23 |
-| GitHub Actions | 6 | 5 | 3 | 5 | ✅ | — | — | — | — | 2026-09-11 |
-| GitLab CI | 3 | — | ✅ | ✅ | — | — | — | — | — | — |
-| Helm | 3 | 4 | 3 | 4 | ✅ | 4 | — | — | — | 2026-09-18 |
-| Kubernetes | 9 | 4 | ✅ | ✅ | ✅ | 4 | ✅ | — | 10 | 2026-08-29 |
-| OpenTofu | ✅ | 3 | ✅ | ✅ | — | — | — | — | — | 2026-09-18 |
-| Prometheus | ✅ | — | ✅ | ✅ | ✅ | — | — | — | — | — |
-| Terraform | 6 | 4 | 3 | 7 | 3 | ✅ | ✅ | — | 10 | 2026-09-17 |
-| Trivy | 5 | — | ✅ | ✅ | ✅ | — | — | — | — | — |
+| AWS | 2 | — | 5 | 2 | 2 | — | — | — | — | — |
+| Ansible | 10 | 4 | 4 | 8 | 2 | 8 | 2 | 1 | 48 | 2026-07-27 |
+| ArgoCD | 3 | — | 1 | 2 | 1 | — | — | — | — | — |
+| Azure | 4 | — | 3 | — | 3 | 1 | — | — | — | — |
+| Docker | 6 | 6 | 5 | 1 | 2 | 5 | 1 | 8 | 6 | 2026-09-09 |
+| Flux CD | 1 | — | 1 | — | — | — | — | — | — | 2026-09-19 |
+| GCP | 1 | — | 3 | 2 | 2 | — | — | — | — | — |
+| Git | 8 | 13 | 9 | — | 1 | — | 1 | — | 22 | 2026-08-04 |
+| GitHub | 11 | 5 | 6 | 7 | 3 | — | 1 | — | — | 2026-08-22 |
+| GitHub Actions | 6 | 5 | 3 | 5 | 1 | — | — | — | — | — |
+| GitLab CI | 3 | — | 2 | 1 | — | — | — | — | — | — |
+| Helm | 3 | 4 | 3 | 4 | 1 | 4 | 1 | — | — | 2026-07-25 |
+| Kubernetes | 9 | 4 | 2 | 1 | 2 | 5 | 2 | — | 10 | 2026-07-22 |
+| OpenTofu | 2 | 3 | 2 | 2 | — | — | 1 | — | — | 2026-08-25 |
+| Prometheus | 2 | — | 1 | 2 | 1 | — | — | — | — | — |
+| Terraform | 6 | 4 | 3 | 7 | 3 | 2 | 2 | — | 10 | 2026-09-17 |
+| Trivy | 5 | — | 2 | 2 | 2 | — | — | — | — | — |
 
 </details>
 
 ## Status
 
-Current work strengthens production-ready patterns: private AKS, AWX job templates, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD. Recent additions include OpenTofu S3 remote state with workspace isolation, a Helm values-management comparison, and an Ansible execution-pattern notebook.
+Current work strengthens production-ready patterns: private AKS, AWX job templates, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD. Recent additions include Flux CLI primer and pre-flight checks, GitHub CLI quickstart trip-ups, and monitoring + containerization observability notebooks.
 
 ---
-_Last updated: 2026-09-18_
+_Last updated: 2026-09-19_

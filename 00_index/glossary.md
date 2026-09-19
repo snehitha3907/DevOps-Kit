@@ -1,5 +1,15 @@
 # Glossary
 
+## Flux CD
+
+- **Flux CD** — A GitOps operator for Kubernetes that continuously reconciles cluster state with a Git repository, automating deployments without manual `kubectl apply`.
+- **Bootstrap** — The `flux bootstrap` command that installs Flux into a cluster and wires it to a Git repo in one shot: namespace, CRDs, deployment, and deploy-key secret.
+- **Kustomization** — A Flux resource that watches a path in Git and applies the Kustomize-defined manifests found there to the cluster.
+- **HelmRelease** — A Flux resource that declaratively manages a Helm chart release, including install, upgrade, and rollback.
+- **Reconcile** — The `flux reconcile` command that re-syncs a Flux object immediately instead of waiting for the next interval; `--with-source` pulls the Git source down first.
+- **`flux tree`** — A command that prints the dependency graph of Flux-managed resources, handy when a HelmRepository fetch is failing.
+- **`flux check --pre`** — A pre-flight check that verifies a cluster is ready for Flux: cert-manager, CRDs, network policy, etc.
+
 ## Ansible
 
 - **Control node** — The machine where Ansible is installed and from which commands and playbooks are run.

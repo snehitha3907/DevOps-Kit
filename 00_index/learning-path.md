@@ -75,6 +75,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **OpenTofu** — The open-source Terraform fork. Start here if you want a community-governed IaC tool. [Primer](../OpenTofu/notes/0000-primer-opentofu.md), [install and verify script](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh), [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md). Then go deeper on state with the [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md), the [S3 backend with workspace isolation guide](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md), and the [S3 + DynamoDB bootstrap script](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh).
 - **Helm** — Kubernetes package manager. Depends on K8s L2 + Docker L2. [Primer](../Helm/notes/0000-primer-helm.md), [install script](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh), [chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml), [live-values config](../Helm/configs/2026-08-29-live-values.yaml), [production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml), [live release values](../Helm/configs/2026-09-02-live-release-values.yaml), [custom-values install snippet](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh), [quickstart tripups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [values management approaches](../Helm/docs/values-management-approaches.md), [demo web service chart script](../Helm/scripts/demo-web-service-chart.sh)
 - **ArgoCD** — GitOps deployment for Kubernetes. Depends on K8s L2 + Git L2. [Primer](../ArgoCD/notes/0000-primer-argocd.md), [quickstart notes](../ArgoCD/notes/2026-08-11-argocd-quickstart.md), [first application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml), [ApplicationSet manifest](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
+- **Flux CD** — GitOps operator for Kubernetes, the open-source alternative to ArgoCD. Depends on K8s L2 + Git L2. [Exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up — plus [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh).
 - **Prometheus** — Metrics collection and alerting. Depends on Docker L2 + K8s L2. [Primer](../Prometheus/notes/0000-primer-prometheus.md), [install and verify script](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml), [container-monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml), [getting-started trip-ups](../Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md), [PromQL target-health snippet](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 - **Kubernetes + Prometheus integration** — Wiring Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations for automatic target tracking. [Guide](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
 
@@ -138,19 +139,21 @@ graph TD
     Docker --> GitHubActions
     Docker --> Trivy
     Docker --> Helm
+    Docker --> FluxCD
 
     K8s --> Helm
     K8s --> ArgoCD
     K8s --> Prometheus
+    K8s --> FluxCD
 
     Terraform --> OpenTofu
     Terraform --> Pulumi
 
-    classDef hasContent fill:#e6f3ff,stroke:#4a90d9
+classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD hasContent
     class Pulumi,Vault noContent
 ```
 
-_Last updated: 2026-09-17_
+_Last updated: 2026-09-19_
