@@ -7,6 +7,7 @@
 - Added gh CLI quickstart trip-up notes covering auth scopes, editor behavior, repo context, and silent token failures (gh-027) (`GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md`)
 - Added monitoring+networking integration script: TCP/HTTP health checks (pass, HTTP-error, refused, DNS-failure) emitting structured JSONL logs with a per-target correlation report, demoed against loopback servers (con-072) (`docs/concepts/monitoring-observability-concepts/scripts/health-checks-and-log-correlation.py`)
 - Added observability+containerization notebook: synthetic frontend→api→db trace spans rebuilt into a container dependency graph with slowest-edge detection, plus an agent-plus-gateway collector pipeline sketch with component-consistency checks (con-073) (`docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb`)
+- Added scripted health-gate with correlated logs: DNS/TCP/HTTP staged probes sharing a correlation id per target plus a proceed/hold gate verdict (fast-pass, slow-hold, refused, DNS-failure), demoed against loopback servers (con-093) (`docs/concepts/monitoring-observability-concepts/scripts/scripted-health-gate-with-correlated-logs.py`)
 
 ## 2026-09-18
 
