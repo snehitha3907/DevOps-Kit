@@ -55,6 +55,7 @@
 - **Bicep** — Microsoft's domain-specific language for deploying Azure resources, transpiled to ARM templates. It offers a cleaner syntax than raw ARM JSON, with reusable modules and type-safe parameter definitions.
 - **VM scale set** — A group of identical VMs that can be scaled out or in automatically or manually based on demand metrics like CPU.
 - **Autoscaling** — Automatically adjusting the number of VM instances in a scale set based on metrics such as CPU percentage, memory pressure, or request queue length.
+- **Azure SDK for Python** — The programmatic interface to Azure Resource Manager for Python code; the right tool when provisioning logic lives inside an application or pipeline and depends on runtime conditions rather than a static template.
 
 ## Containerization Concepts
 
@@ -105,6 +106,8 @@
 - **BuildKit** — Docker's modern build backend that enables faster, more efficient image builds with features like cache mounts and parallel execution.
 - **--mount** — A BuildKit-specific `RUN` instruction modifier that mounts cache, secret, or SSH resources into a Docker build step.
 - **docker buildx** — Docker's CLI plugin for extended build capabilities, including BuildKit, multi-platform images, and advanced caching strategies.
+- **Swarm** — Docker's native multi-node orchestrator; services deploy with `docker stack deploy` from a Compose-format file, where the `deploy:` block (replicas, update config, placement) only takes effect on a Swarm.
+- **Stack (Compose vs Swarm)** — The same Compose file runs as a single-host stack under `docker compose up` and as a multi-node stack under `docker stack deploy`; replica control and rolling updates only exist in the Swarm form.
 
 ## GCP
 
@@ -194,6 +197,9 @@
 - **Stale workflow** — A scheduled automation (often `.github/stale.yml` or an Actions workflow) that labels and closes issues and PRs after a period of inactivity.
 - **release-please** — A GitHub tool that automates versioning, changelog generation, and release creation from conventional commits; commonly wired in via a `.github/workflows/release-please.yml` file.
 - **workflow run** — An instantiation of a workflow that has been triggered; each run has an ID, a status (`queued`, `in_progress`, `completed`), and a conclusion (`success`, `failure`), queryable via the Actions API's `GET /repos/{owner}/{repo}/actions/workflows/{workflow}/runs`.
+- **CODEOWNERS** — A file that assigns review responsibility by path, so PRs touching a directory automatically request the owning team.
+- **Dependabot** — GitHub's automated dependency updater; configured in `dependabot.yml`, it opens grouped PRs (e.g. Actions, base images, providers) on a schedule.
+- **Branch protection** — Rules on a branch (commonly `main`) requiring passing status checks, a number of approving reviews, and conversation resolution before merge; optionally enforced for admins, with force pushes and deletions blocked.
 
 ## GitHub Actions
 
@@ -215,6 +221,8 @@
 - **`.gitlab-ci.yml`** — The YAML file at the root of a repository that defines the pipeline configuration.
 - **Artifact** — Files produced by a job (e.g., binary, test report) passed to later stages or downloadable from the UI.
 - **CI/CD variable** — A key-value pair used for secrets, API tokens, and configuration in GitLab CI/CD.
+- **Cache** — Paths (e.g. a pip cache directory, `node_modules/`) persisted between runs under a key such as the branch slug, so dependency installs don't redo clean-room downloads every pipeline.
+- **`needs`** — A DAG keyword letting a job start as soon as the listed jobs finish, pulling in their artifacts without waiting for the whole stage; the alternative to strictly sequential stages.
 
 ## Infrastructure as Code Concepts
 
@@ -404,3 +412,13 @@
 - **Policy** — A written rule saying which paths a token may read or write, e.g. read-only on `secret/app`.
 - **Token** — The credential presented instead of a password (`vault login <token>`); dev mode prints a root token.
 - **VAULT_ADDR** — The env var telling the CLI where the server lives (e.g. `export VAULT_ADDR='http://127.0.0.1:8200'`).
+
+## Pulumi
+
+- **Program** — The code file where I declare what I want, in Python, TypeScript, Go, or C#, instead of a YAML or DSL template.
+- **Stack** — A named instance of a program, usually one per environment (`dev`, `prod`), keeping each environment's state and config apart without duplicating code.
+- **Provider** — A plugin that teaches Pulumi to talk to one cloud; it turns resource objects in code into real API calls.
+- **Preview** — A dry look at what would change before anything happens; run preview, see "1 to create", then decide to deploy.
+- **State** — Pulumi's memory of what it already built and which outputs came back, so the next run only changes the diff.
+- **Output** — A value the cloud hands back after deploy (e.g. a bucket's real name) that can be wired into an app's config.
+- **Config** — Per-stack settings so one program behaves differently per environment.

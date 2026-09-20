@@ -24,6 +24,7 @@
 - [Install Git + make first commit](../Git/scripts/install-and-first-commit.sh)
 - [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
 - [Install Vault CLI + start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- [Install Pulumi CLI + init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
 - [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 
 ### Explore CLI and primer concepts
@@ -45,6 +46,7 @@
 - [Terraform primer](../Terraform/notes/0000-primer-terraform.md)
 - [Trivy primer](../Trivy/notes/0000-primer-trivy.md)
 - [HashiCorp Vault primer](../vlt/notes/0000-primer-vlt.md)
+- [Pulumi primer](../plm/notes/0000-primer-plm.md)
 
 ### Write a playbook / pipeline / config
 
@@ -56,6 +58,7 @@
 - [GitHub Actions matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
 - [Reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
+- [GitLab CI minimal pipeline with stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
 - [Helm redis chart manifests](../Helm/manifests/redis-chart/Chart.yaml)
 - [Helm live-release values config](../Helm/configs/2026-09-02-live-release-values.yaml)
 - [Helm production-deployment values config](../Helm/configs/2026-08-30-production-deployment-values.yaml)
@@ -90,10 +93,17 @@
 - [Compare OpenTofu and Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 - [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh)
 
+### Provision with Pulumi
+
+- [Pulumi primer](../plm/notes/0000-primer-plm.md)
+- [Install Pulumi CLI + init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- [Minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
+
 ### Manage secrets with Vault
 
 - [HashiCorp Vault primer](../vlt/notes/0000-primer-vlt.md)
 - [Install Vault CLI + start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- [Explore the Vault CLI — secrets and policies](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md)
 
 ### Work with Git
 
@@ -116,10 +126,13 @@
 - [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md)
 - [Create a repo and open a PR](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 - [Provision a repo with the API](../GitHub/scripts/provision-repo-with-api.py)
+- [Production-ready repository scaffold](../GitHub/templates/github-repo-scaffold/README.md)
+- [Apply branch protection via the API](../GitHub/templates/github-repo-scaffold/configure-branch-protection.sh)
 
 ### Work with Docker
 
 - [Docker Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
+- [Compare Compose, Swarm, and Kubernetes orchestration](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb)
 - [Multi-stage Go HTTP server Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 - [Production-ready Go HTTP server Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile)
 - [Build mount vs COPY caching comparison](../Docker/docs/docker-build-mount-vs-copy-caching.md)
@@ -134,6 +147,14 @@
 - [Composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md)
 - [Self-hosted runner registration + cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh)
 - [Trigger a workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
+
+### Ship with GitLab CI
+
+- [GitLab CI/CD primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- [Runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md)
+- [Minimal pipeline with stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
+- [Trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
+- [Run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 
 ### Work with Kubernetes
 
@@ -170,6 +191,7 @@
 
 - [First login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md)
 - [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md)
+- [Compare the CLI, Bicep, and Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md)
 - [Create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh)
 - [Provision a VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
 

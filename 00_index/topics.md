@@ -36,19 +36,21 @@
 - **snippets** (2): most recent → [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3 resources](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 
-## Azure  ·  10 files
+## Azure  ·  12 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
-- **notes** (3): most recent → [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [Azure CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md), [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
+- **notes** (4): most recent → [first login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md), [Azure quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [Azure CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
 - **scripts** (3): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision resource group + storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
 - **snippets** (2): most recent → [create resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [create resource group and list regions (earlier pass)](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
+- **docs** (1): [comparing the CLI, Bicep, and Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md) — which interface fits each stage of provisioning a small app stack
+- **manifests** (1): [production AKS cluster (Bicep)](../Azure/manifests/production-aks-cluster.bicep)
 
 ## Flux CD  ·  2 files
 
 - **notes** (1): [exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up.
 - **scripts** (1): [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 
-## Docker  ·  40 files
+## Docker  ·  41 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (6): most recent → [docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
@@ -62,7 +64,7 @@
 - _…and 2 more under `Docker/scripts/` — browse the folder._
 - **docs** (6): [docker run vs compose](../Docker/docs/docker-run-vs-compose.md), [build mount vs COPY caching](../Docker/docs/docker-build-mount-vs-copy-caching.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md), [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [compose.yml reference](../Docker/docs/docker-compose.yml), [package.json reference](../Docker/docs/package.json)
 - _1 more under `Docker/docs/` — browse the folder._
-- **notebooks** (1): [comparing docker networking drivers](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
+- **notebooks** (2): [comparing Compose, Swarm, and Kubernetes for local orchestration](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb) — same demo app in three formats, compared structurally — plus [comparing docker networking drivers](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **snippets** (2): [build-run-cleanup.py](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service app config](../Docker/configs/multi-service-app.yaml)
 
@@ -88,7 +90,7 @@
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  33 files
+## GitHub  ·  41 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (10): most recent → [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md), [repos, issues, and PRs](../GitHub/notes/2026-06-10-repos-issues-and-prs.md)
@@ -98,9 +100,10 @@
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
-- **docs** (6): [release automation: tags, milestones, and GitHub Releases end-to-end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [document github docs folder in readme](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
+- **docs** (5): [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [document github docs folder in readme](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
 - _…and 2 more under `GitHub/docs/` — browse the folder._
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
+- **templates** (8): [production-ready repo scaffold](../GitHub/templates/github-repo-scaffold/README.md) — branch protection script, CODEOWNERS, issue/PR templates, Dependabot — plus its [issue templates](../GitHub/templates/github-repo-scaffold/.github/ISSUE_TEMPLATE/bug_report.yml) and [branch protection script](../GitHub/templates/github-repo-scaffold/configure-branch-protection.sh)
 
 ## GitHub Actions  ·  20 files
 
@@ -114,14 +117,15 @@
 - **scripts** (3): [self-hosted runner registration + cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install gh actions extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [install gh extension and list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - **snippets** (1): [trigger workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
-## GitLab CI  ·  6 files
+## GitLab CI  ·  9 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
-- **notes** (3): [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [`.gitlab-ci.yml` reference](../GitLab CI/notes/.gitlab-ci.yml), [0000 primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- **notes** (4): most recent → [runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md), [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [`.gitlab-ci.yml` reference](../GitLab CI/notes/.gitlab-ci.yml)
+- **configs** (2): [minimal pipeline with stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml), [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
-- **configs** (1): [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
+- **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 
-## Helm  ·  19 files
+## Helm  ·  20 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates plus [values](../Helm/manifests/redis-chart/values.yaml)
@@ -132,8 +136,9 @@
 - _1 more under `Helm/configs/` — browse the folder._
 - **scripts** (3): [demo web service chart](../Helm/scripts/demo-web-service-chart.sh) — scaffold, lint, render, install, verify — plus [install helm and explore CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh) and [dummy test](../Helm/scripts/dummy-test.sh)
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
+- **notebooks** (1): [release lifecycle drill](../Helm/notebooks/release-lifecycle-drill.ipynb)
 
-## Kubernetes  ·  33 files
+## Kubernetes  ·  35 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **templates** (10): [k8s-deployment-helm-chart-kustomize-overlay](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/) — Helm chart (`Chart.yaml`, `values.yaml`, `templates/`) and Kustomize overlay (`base/` + `overlays/dev|prod/`)
@@ -141,20 +146,22 @@
 - _…and 6 more under `Kubernetes/notes/` — browse the folder._
 - **docs** (4): most recent → [integrating kubernetes with prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md), [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md), [prometheus.yml reference](../Kubernetes/docs/prometheus.yml)
 - _1 more under `Kubernetes/docs/` — browse the folder._
-- **manifests** (4): [stateless app](../Kubernetes/manifests/stateless-app.yaml), [deployment + service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
-- _1 more under `Kubernetes/manifests/` — browse the folder._
+- **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
+- **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
+- _…and 2 more under `Kubernetes/manifests/` — browse the folder._
 - **scripts** (2): [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
 - **notebooks** (2): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb), [workload types (newer pass)](../Kubernetes/notebooks/2026-09-07-comparing-kubernetes-workload-types.ipynb)
-- **snippets** (1): [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
+- **snippets** (2): [first pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh), [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **configs** (1): [deployment + service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 
-## OpenTofu  ·  9 files
+## OpenTofu  ·  10 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **notes** (2): most recent → [opentofu quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md), [0000 primer](../OpenTofu/notes/0000-primer-opentofu.md)
 - **scripts** (2): [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) — bucket, lock table, scoped IAM user, state migration — plus [install opentofu and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 - **docs** (3): most recent → [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — shared state per environment with locking — plus [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) — `tofu state list/mv/pull`, backend migration, workspace habits
+- **notebooks** (1): [comparing OpenTofu and Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 
 ## Prometheus  ·  6 files
 
@@ -164,11 +171,10 @@
 - **scripts** (1): [install prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
-## Terraform  ·  37 files
+## Terraform  ·  38 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
-- **configs** (7): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (5 files: `main.tf`, `variables.tf`, `outputs.tf`, `README.md`, `examples/`)
-- _…and 2 more under `Terraform/configs/` — browse the folder._
+- **configs** (8): [local file resource](../Terraform/configs/local-file.tf), [first local config with vars](../Terraform/configs/2026-06-12-tried-local-with-vars.tf), [local_file + random_pet two-provider config](../Terraform/configs/2026-09-19-local-file-random-provider.hcl) — plus the [reusable S3 module](../Terraform/configs/reusable-s3-module/) folder (5 files: `main.tf`, `variables.tf`, `outputs.tf`, `README.md`, `examples/`)
 - **notes** (6): most recent → [install terraform and first local file](../Terraform/notes/2026-09-03-install-terraform-and-first-local-file.md), [terraform state management tutorial](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [following the provider tutorial](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
 - _…and 3 more under `Terraform/notes/` — browse the folder._
 - **docs** (4): [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [workspaces and remote state locking (first pass)](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
@@ -188,13 +194,20 @@
 - **snippets** (2): most recent → [scan image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [trivy python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
-## HashiCorp Vault  ·  3 files
+## HashiCorp Vault  ·  4 files
 
 - **primer:** [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
 - **notes** (2): most recent → [exploring the vault CLI — secrets, policies, and what's there](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md), [0000 primer](../vlt/notes/0000-primer-vlt.md)
 - **scripts** (1): [install vault CLI and start dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- **docs** (1): [how the Vault folder is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
-## Foundational Concepts  ·  65 files
+## Pulumi  ·  3 files
+
+- **primer:** [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
+- **scripts** (1): [install pulumi CLI and init project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
+
+## Foundational Concepts  ·  69 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — pipelines, gates, rollbacks, artifact promotion.
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
@@ -217,12 +230,12 @@
   - **scripts** (3): [systemd health-check log alerting](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh), [systemd watchdog restart + page](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh), [filesystem permissions and process management](../docs/concepts/linux-system-administration/scripts/2026-07-18-filesystem-permissions-and-process-management.sh)
   - **notebooks** (1): [linux system performance analysis](../docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb)
 - **Monitoring & Observability:** [0000-primer-monitoring-observability-concepts.md](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) — metrics, logs, traces, scraping.
-  - **docs** (1): [combining metrics, logs, traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md)
-  - **scripts** (1): [metrics exporter + structured logger](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py)
-  - **notebooks** (1): [scraping endpoint, three pillars](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb)
+  - **docs** (2): [combining metrics, logs, traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md), [pipeline health telemetry, DORA metrics, and deployment markers](../docs/concepts/monitoring-observability-concepts/docs/cicd-pipeline-health-telemetry-dora-deployment-markers.md)
+  - **scripts** (3): [metrics exporter + structured logger](../docs/concepts/monitoring-observability-concepts/scripts/2026-09-08-metrics-exporter-structured-logger.py), [health checks and log correlation](../docs/concepts/monitoring-observability-concepts/scripts/health-checks-and-log-correlation.py), [scripted health gate with correlated logs](../docs/concepts/monitoring-observability-concepts/scripts/scripted-health-gate-with-correlated-logs.py)
+  - **notebooks** (2): [scraping endpoint, three pillars](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb), [tracing containerized service dependencies](../docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb)
 - **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md) — DNS, TLS, TCP probes, load balancing.
   - **notes** (1): [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
-  - **scripts** (3): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
+  - **scripts** (5): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [health-check automation with JSON output](../docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
   - **notebooks** (2): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb), [network health telemetry visualization](../docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) — glue scripts, jq, retry/backoff.
   - **docs** (1): [combining scripting with IaC automation patterns](../docs/concepts/scripting-automation-bash-python/docs/combining-scripting-with-iac-automation-patterns.md)
