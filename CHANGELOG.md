@@ -2,6 +2,8 @@
 
 ## 2026-09-20
 
+- Added multi-stage production Dockerfile for a Python web service with non-root user and healthcheck (doc-030) (`Docker/dockerfiles/production-python-web-service.Dockerfile`)
+- Added gcloud SDK quickstart trip-up notes: init flow, project/config confusion, and auth/output-flag fixes (gcp-012) (`GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md`)
 - Added production Docker Swarm stack manifest with secrets, healthchecks, rolling update configuration, and resource limits (doc-027) (`Docker/manifests/production-swarm-stack.yaml`)
 - Corrected Flux CD README Coverage table and topics.md: Docs 0→1, Last verified 2026-09-19→2026-09-20, topics.md Flux CD header 2→3 files with docs link added (flx-004) (`FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md`, `README.md`, `00_index/topics.md`)
 
