@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-20
+
+- Added minimal GitLab CI pipeline config with build/test/report stages, pip cache, and job artifacts (gl-007) (`GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml`)
+- Added GitLab API snippet: trigger a pipeline for a branch and poll job status until done (gl-008) (`GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh`)
+
 ## 2026-09-19
 
 - Added Pulumi install + init script: check the CLI, scaffold a Python project, init a dev stack, and preview (plm-002) (`plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh`)

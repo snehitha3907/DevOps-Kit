@@ -1,0 +1,49 @@
+# last_verified: 2026-09-20 - GitLab CI (n/a)
+# My minimal .gitlab-ci.yml — three stages with a pip cache and test artifacts
+# I put this in a scratch project to see stages/cache/artifacts working together.
+
+stages:
+  - build
+  - test
+  - report
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .cache/pip/
+
+build-job:
+  stage: build
+  script:
+    - python -m pip install --cache-dir .cache/pip -r requirements.txt
+    - python -m compileall app.py
+  artifacts:
+    paths:
+      - __pycache__/
+    expire_in: 1 day
+
+test-job:
+  stage: test
+  script:
+    - python -m pytest tests/ -q
+  artifacts:
+    when: always
+    paths:
+      - junit.xml
+    reports:
+      junit: junit.xml
+  needs:
+    - build-job
+
+pages-job:
+  stage: report
+  script:
+    - mkdir -p public && cp junit.xml public/
+  artifacts:
+    paths:
+      - public/
+  needs:
+    - test-job
