@@ -63,7 +63,7 @@ The kit covers 17 tool families across cloud CLIs, configuration management, con
 | Flux CD | 1 | — | 1 | — | — | — | — | — | — | 2026-09-19 |
 | GCP | 1 | — | 3 | 2 | 2 | — | — | — | — | — |
 | Git | 8 | 13 | 9 | — | 1 | — | 1 | — | 22 | 2026-08-04 |
-| GitHub | 11 | 5 | 6 | 7 | 3 | — | 1 | — | — | 2026-08-22 |
+| GitHub | 11 | 6 | 6 | 7 | 3 | — | 1 | — | — | 2026-09-20 |
 | GitHub Actions | 6 | 5 | 3 | 5 | 1 | — | — | — | — | — |
 | GitLab CI | 3 | — | 2 | 1 | — | — | — | — | — | — |
 | Helm | 3 | 4 | 3 | 4 | 1 | 4 | 1 | — | — | 2026-07-25 |

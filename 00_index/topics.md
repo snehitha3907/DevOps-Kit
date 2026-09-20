@@ -88,7 +88,7 @@
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  32 files
+## GitHub  ·  33 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (10): most recent → [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md), [repos, issues, and PRs](../GitHub/notes/2026-06-10-repos-issues-and-prs.md)
@@ -98,7 +98,7 @@
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
-- **docs** (5): [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [document github docs folder in readme](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
+- **docs** (6): [release automation: tags, milestones, and GitHub Releases end-to-end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [document github docs folder in readme](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
 - _…and 2 more under `GitHub/docs/` — browse the folder._
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 
