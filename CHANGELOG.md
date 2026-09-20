@@ -2,6 +2,9 @@
 
 ## 2026-09-20
 
+- Added production Docker Swarm stack manifest with secrets, healthchecks, rolling update configuration, and resource limits (doc-027) (`Docker/manifests/production-swarm-stack.yaml`)
+- Corrected Flux CD README Coverage table and topics.md: Docs 0→1, Last verified 2026-09-19→2026-09-20, topics.md Flux CD header 2→3 files with docs link added (flx-004) (`FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md`, `README.md`, `00_index/topics.md`)
+
 - Documented Pulumi (`plm/`) in README Layout + Coverage table: added the `plm/` Layout bullet and a Pulumi Coverage row (Notes=1, Docs=1, Scripts=1, Snippets=1, Last verified 2026-09-20) matching the primer, install-and-init script, and bucket snippet on disk (plm-009) (`plm/docs/2026-09-20-plm-readme-layout-and-coverage.md`, `README.md`)
 
 - Added GitHub release automation doc: tags, milestones, and GitHub Releases end-to-end (gh-020) (`GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md`, `README.md`, `00_index/topics.md`)

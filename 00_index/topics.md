@@ -45,10 +45,11 @@
 - **docs** (1): [comparing the CLI, Bicep, and Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md) — which interface fits each stage of provisioning a small app stack
 - **manifests** (1): [production AKS cluster (Bicep)](../Azure/manifests/production-aks-cluster.bicep)
 
-## Flux CD  ·  2 files
+## Flux CD  ·  3 files
 
 - **notes** (1): [exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up.
 - **scripts** (1): [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
+- **docs** (1): [Flux CD coverage correction](../FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — verified README Coverage table and topics.md counts against disk
 
 ## Docker  ·  41 files
 
