@@ -42,6 +42,7 @@ The kit covers 17 tool families across cloud CLIs, configuration management, con
 - **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, and Helm/Kustomize overlays.
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
+- **plm/** — Pulumi primer, install-and-init script, and minimal Python bucket snippet.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, severity policies, and Python wrappers.
 - **vlt/** — HashiCorp Vault primer, dev server setup, and KV engine examples (added per changelog vlt-001, vlt-002).
@@ -70,6 +71,7 @@ The kit covers 17 tool families across cloud CLIs, configuration management, con
 | Kubernetes | 9 | 4 | 2 | 1 | 2 | 5 | 2 | — | 10 | 2026-07-22 |
 | OpenTofu | 2 | 3 | 2 | 2 | — | — | 1 | — | — | 2026-08-25 |
 | Prometheus | 2 | — | 1 | 2 | 1 | — | — | — | — | — |
+| Pulumi | 1 | 1 | 1 | — | 1 | — | — | — | — | 2026-09-20 |
 | Terraform | 6 | 4 | 3 | 7 | 3 | 2 | 2 | — | 10 | 2026-09-17 |
 | Trivy | 5 | — | 2 | 2 | 2 | — | — | — | — | — |
 | HashiCorp Vault | 2 | — | 1 | — | — | — | — | — | — | 2026-09-19 |
