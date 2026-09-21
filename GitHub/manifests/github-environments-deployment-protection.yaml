@@ -1,0 +1,74 @@
+# last_verified: 2026-09-21 · GitHub n/a
+# GitHub Environments and deployment protection rules: required reviewers,
+# wait timers, and deployment branches — one block per environment.
+#
+# This is a filled-out worksheet built on top of the local-policy template
+# (environment-deployment-protection.yaml). Each environment carries its own
+# protection knobs; GitHub evaluates them in order when a deployment targets
+# the environment, so the knobs you set here are what actually gates a deploy.
+schema_version: local-policy-v1
+repository:
+  owner: "<owner>"
+  name: "<repository>"
+environments:
+  - name: development
+    purpose: Frequent integration deployments from feature branches
+    protection:
+      required-reviewers:
+        enabled: false
+        entries: []
+      wait-timer:
+        enabled: false
+        minutes: 0
+      deployment-branches:
+        allowed-patterns:
+          - "refs/heads/feature/*"
+          - "refs/heads/develop"
+    notes:
+      - No reviewers and no wait timer: development deploys are meant to be fast.
+      - Restricting to feature/* and develop prevents main from deploying here.
+
+  - name: staging
+    purpose: Pre-release validation before production
+    protection:
+      required-reviewers:
+        enabled: true
+        entries:
+          - "<reviewer-or-team>"
+          - "<reviewer-or-team>"
+      wait-timer:
+        enabled: true
+        minutes: "<minutes>"
+      deployment-branches:
+        allowed-patterns:
+          - "refs/heads/develop"
+          - "refs/tags/*"
+    notes:
+      - Two reviewers + a wait timer gives the release train a chance to pause.
+      - Tags are allowed so release-tagged workflows can still deploy to staging.
+
+  - name: production
+    purpose: Protected final deployment
+    protection:
+      required-reviewers:
+        enabled: true
+        entries:
+          - "<reviewer-or-team>"
+          - "<reviewer-or-team>"
+          - "<reviewer-or-team>"
+      wait-timer:
+        enabled: true
+        minutes: "<minutes>"
+      deployment-branches:
+        allowed-patterns:
+          - "refs/heads/main"
+          - "refs/tags/*"
+    notes:
+      - Three reviewers and a wait timer for the highest-risk environment.
+      - Only main and release tags may deploy to production.
+
+verification:
+  - Replace every "<reviewer-or-team>" placeholder with an intended reviewer or team.
+  - Choose each wait-timer "<minutes>" from the team's release process.
+  - Replace each "<minutes>" delay with the team's agreed wait period.
+  - Re-read the resolved policy before applying it to an environment.
