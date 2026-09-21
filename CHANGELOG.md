@@ -8,6 +8,7 @@
 - Added self-hosted runner Dockerfile with Docker-in-Docker and pre-installed actions dependencies (gh-023) (`GitHub/dockerfiles/self-hosted-runner.Dockerfile`)
 - Added Compute Engine quickstart script: create a VM, add an HTTP firewall rule, describe the instance, and SSH in with a remote command (gcp-013) (`GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh`)
 - Added minimal instance-template config with startup-script metadata and service account scopes (gcp-014) (`GCP/configs/2026-09-21-instance-template-with-startup-script.yaml`)
+- Added minimal boto3 Python snippet that creates an S3 bucket and uploads one object with an optional object key (aws-010) (`AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py`)
 
 ## 2026-09-20
 
