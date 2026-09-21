@@ -27,13 +27,13 @@
 - **scripts** (1): [install argocd CLI and access UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 - **snippets** (1): [sync-app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
-## AWS  ·  11 files
+## AWS  ·  12 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 - **scripts** (5): most recent → [deploy static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh), [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh), [install AWS CLI v2 with application-default credentials](../AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh)
 - _…and 2 more under `AWS/scripts/` — browse the folder._
 - **configs** (2): [minimal AWS config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini), [minimal AWS config](../AWS/configs/2026-07-12-minimal-aws-config.ini)
-- **snippets** (2): most recent → [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3 resources](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
+- **snippets** (3): most recent → [create S3 bucket and upload object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py), [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3 resources](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 
 ## Azure  ·  12 files
@@ -92,7 +92,7 @@
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  42 files
+## GitHub  ·  44 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (11): most recent → [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md), [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md)
@@ -101,6 +101,7 @@
 - _…and 3 more under `GitHub/scripts/` — browse the folder._
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
+- **manifests** (1): [Environments deployment protection](../GitHub/manifests/github-environments-deployment-protection.yaml)
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
 - **docs** (6): [release automation: tags, milestones, and GitHub Releases end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
 - _…and 3 more under `GitHub/docs/` — browse the folder._
@@ -119,12 +120,12 @@
 - **scripts** (3): [self-hosted runner registration + cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install gh actions extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [install gh extension and list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - **snippets** (1): [trigger workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
-## GitLab CI  ·  9 files
+## GitLab CI  ·  10 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **notes** (4): most recent → [runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md), [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [`.gitlab-ci.yml` reference](../GitLab CI/notes/.gitlab-ci.yml)
 - **configs** (2): [minimal pipeline with stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml), [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
-- **scripts** (2): [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
+- **scripts** (3): [local CI pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 
 ## Helm  ·  20 files
@@ -140,7 +141,7 @@
 - **snippets** (1): [nginx chart custom-values install](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 - **notebooks** (1): [release lifecycle drill](../Helm/notebooks/release-lifecycle-drill.ipynb)
 
-## Kubernetes  ·  35 files
+## Kubernetes  ·  36 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **templates** (10): [k8s-deployment-helm-chart-kustomize-overlay](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/) — Helm chart (`Chart.yaml`, `values.yaml`, `templates/`) and Kustomize overlay (`base/` + `overlays/dev|prod/`)
@@ -150,7 +151,7 @@
 - _1 more under `Kubernetes/docs/` — browse the folder._
 - **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
 - _…and 2 more under `Kubernetes/manifests/` — browse the folder._
-- **scripts** (2): [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
+- **scripts** (3): [rollout status and pod readiness](../Kubernetes/scripts/rollout-status-and-pod-readiness.sh), [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
 - **notebooks** (2): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb), [workload types (newer pass)](../Kubernetes/notebooks/2026-09-07-comparing-kubernetes-workload-types.ipynb)
 - **snippets** (2): [first pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh), [pod troubleshoot shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **configs** (1): [deployment + service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
@@ -186,12 +187,12 @@
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
 - **templates** (10): [multi-environment workspaces + remote-state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev/prod with workspace-scoped S3 + DynamoDB backends and apply/destroy helpers
 
-## Trivy  ·  11 files
+## Trivy  ·  13 files
 
 - **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
 - **notes** (5): most recent → [trivy quickstart follow-along](../Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md), [trivy quickstart trip-ups (latest)](../Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md), [trivy quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md)
 - _…and 2 more under `Trivy/notes/` — browse the folder._
-- **scripts** (2): [install trivy and scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
+- **scripts** (4): [trivy repo scan workflow](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh), [install trivy and scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh), [scan images from SARIF file](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
 - **snippets** (2): most recent → [scan image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [trivy python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [trivy config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 
