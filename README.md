@@ -18,11 +18,11 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Document plm/ in README layout and coverage](plm/docs/2026-09-20-plm-readme-layout-and-coverage.md) — How the Pulumi folder maps to the README layout and coverage table.
-- [GitHub release automation: tags, milestones, and Releases end to end](GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md) — Cutting a release with tag, milestone, and Release wired together through `gh`.
-- [Comparing Compose, Swarm, and Kubernetes for local orchestration](Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb) — Same web-plus-cache scaffold in all three formats with a structural decision table.
-- [Minimal GitLab pipeline with stages, cache, and artifacts](GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml) — Three stages with a pip cache and test artifacts working together.
-- [Trigger a GitLab pipeline and poll jobs](GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh) — Fire a pipeline via the API and watch its jobs without keeping the browser open.
+- [Launch a VM, open HTTP, and SSH in](GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh) — A throwaway Compute Engine VM with a firewall rule and a first `gcloud compute ssh`, in one ordered pass.
+- [Instance template with startup script](GCP/configs/2026-09-21-instance-template-with-startup-script.yaml) — The template shape with the startup script under metadata items and a scoped service account, written down exactly as it parsed.
+- [Production Python web-service Dockerfile](Docker/dockerfiles/production-python-web-service.Dockerfile) — Multi-stage Python image that ships only runtime packages, runs as non-root, and carries a container healthcheck.
+- [Production Swarm stack](Docker/manifests/production-swarm-stack.yaml) — Swarm manifest with secrets, healthchecks, rolling-update config, and resource limits.
+- [gcloud quickstart trip-ups](GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md) — Named configs, the two logins, and output-flag placement, from a first working setup.
 
 ## Layout
 
@@ -60,9 +60,9 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 | Ansible | 10 | 4 | 4 | 8 | 2 | 8 | 2 | 1 | 48 | 2026-09-16 |
 | ArgoCD | 3 | — | 1 | 2 | 1 | — | — | — | — | 2026-08-11 |
 | Azure | 4 | 1 | 3 | — | 3 | 1 | — | — | — | 2026-09-19 |
-| Docker | 6 | 6 | 5 | 1 | 2 | 5 | 2 | 8 | 6 | 2026-09-09 |
+| Docker | 6 | 6 | 5 | 1 | 2 | 6 | 2 | 9 | 6 | 2026-09-09 |
 | Flux CD | 1 | 1 | 1 | — | — | — | — | — | — | 2026-09-20 |
-| GCP | 1 | — | 3 | 2 | 2 | — | — | — | — | 2026-07-17 |
+| GCP | 2 | — | 4 | 3 | 2 | — | — | — | — | 2026-09-20 |
 | Git | 8 | 13 | 9 | — | 1 | — | 1 | — | 22 | 2026-09-17 |
 | GitHub | 11 | 6 | 6 | 7 | 3 | — | 1 | — | 8 | 2026-09-20 |
 | GitHub Actions | 6 | 5 | 3 | 5 | 1 | — | — | — | — | 2026-09-11 |
@@ -79,7 +79,7 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 </details>
 
 ## Status
-Recent additions: Pulumi README coverage, GitHub release automation end to end, a Compose-versus-Swarm-versus-Kubernetes comparison notebook, and GitLab pipeline plus trigger examples. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Recent additions: a GCP run from quickstart trip-ups to a first VM with firewall and SSH plus a reusable instance template, a production Python Dockerfile, and a production Swarm stack with secrets and rolling updates. Earlier work (Pulumi coverage, GitHub release automation, the Compose-versus-Swarm-versus-Kubernetes notebook, GitLab pipeline plus trigger examples) stays indexed below. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
-_Last updated: 2026-09-20_
+_Last updated: 2026-09-21_
