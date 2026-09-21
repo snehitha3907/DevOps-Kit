@@ -2,6 +2,7 @@
 
 ## 2026-09-21
 
+- Added self-hosted runner Dockerfile with Docker-in-Docker and pre-installed actions dependencies (gh-023) (`GitHub/dockerfiles/self-hosted-runner.Dockerfile`)
 - Added Compute Engine quickstart script: create a VM, add an HTTP firewall rule, describe the instance, and SSH in with a remote command (gcp-013) (`GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh`)
 - Added minimal instance-template config with startup-script metadata and service account scopes (gcp-014) (`GCP/configs/2026-09-21-instance-template-with-startup-script.yaml`)
 
