@@ -2,6 +2,9 @@
 
 ## 2026-09-21
 
+- Added GitHub environment deployment-protection worksheet with reviewer gates, wait timers, and branch patterns for development, staging, and protected final deployment (gh-024) (`GitHub/manifests/environment-deployment-protection.yaml`)
+- Added reusable kubectl helper for rollout status and pod readiness health checks (k8s-019) (`Kubernetes/scripts/rollout-status-and-pod-readiness.sh`)
+- Added batch image scanning pipeline: scans a list of images from a file and consolidates per-image findings into one SARIF report for CI consumption (trv-011) (`Trivy/scripts/scan-images-from-file-consolidated-sarif.sh`)
 - Added self-hosted runner Dockerfile with Docker-in-Docker and pre-installed actions dependencies (gh-023) (`GitHub/dockerfiles/self-hosted-runner.Dockerfile`)
 - Added Compute Engine quickstart script: create a VM, add an HTTP firewall rule, describe the instance, and SSH in with a remote command (gcp-013) (`GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh`)
 - Added minimal instance-template config with startup-script metadata and service account scopes (gcp-014) (`GCP/configs/2026-09-21-instance-template-with-startup-script.yaml`)
