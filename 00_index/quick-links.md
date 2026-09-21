@@ -128,6 +128,7 @@
 - [Provision a repo with the API](../GitHub/scripts/provision-repo-with-api.py)
 - [Production-ready repository scaffold](../GitHub/templates/github-repo-scaffold/README.md)
 - [Apply branch protection via the API](../GitHub/templates/github-repo-scaffold/configure-branch-protection.sh)
+- [Release automation: tags, milestones, and Releases end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md)
 
 ### Work with Docker
 

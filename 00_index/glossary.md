@@ -200,6 +200,9 @@
 - **CODEOWNERS** — A file that assigns review responsibility by path, so PRs touching a directory automatically request the owning team.
 - **Dependabot** — GitHub's automated dependency updater; configured in `dependabot.yml`, it opens grouped PRs (e.g. Actions, base images, providers) on a schedule.
 - **Branch protection** — Rules on a branch (commonly `main`) requiring passing status checks, a number of approving reviews, and conversation resolution before merge; optionally enforced for admins, with force pushes and deletions blocked.
+- **Tag** — A named pointer to a specific commit, usually a version like `v1.2.0`; pushing a tag is the starting signal for a release flow.
+- **Milestone** — A GitHub grouping of issues and PRs targeted at the same release, giving the changelog something concrete to summarise when the tag is cut.
+- **Release** — A versioned, downloadable package attached to a tag: notes plus binary assets, published with `gh release create` so one command ships notes and files together.
 
 ## GitHub Actions
 
@@ -223,6 +226,7 @@
 - **CI/CD variable** — A key-value pair used for secrets, API tokens, and configuration in GitLab CI/CD.
 - **Cache** — Paths (e.g. a pip cache directory, `node_modules/`) persisted between runs under a key such as the branch slug, so dependency installs don't redo clean-room downloads every pipeline.
 - **`needs`** — A DAG keyword letting a job start as soon as the listed jobs finish, pulling in their artifacts without waiting for the whole stage; the alternative to strictly sequential stages.
+- **Pipeline trigger (API)** — Starting a pipeline for a branch with `POST /projects/:id/pipeline?ref=<branch>` and a `PRIVATE-TOKEN` header, then polling `/pipelines/:id/jobs` until no job reports `running`, `pending`, or `created`.
 
 ## Infrastructure as Code Concepts
 

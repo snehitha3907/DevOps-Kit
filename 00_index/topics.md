@@ -91,18 +91,18 @@
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing git merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  41 files
+## GitHub  ·  42 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
-- **notes** (10): most recent → [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md), [repos, issues, and PRs](../GitHub/notes/2026-06-10-repos-issues-and-prs.md)
-- _…and 7 more under `GitHub/notes/` — browse the folder._
+- **notes** (11): most recent → [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md), [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [GitHub platform features](../GitHub/notes/2026-06-10-github-platform-features.md)
+- _…and 8 more under `GitHub/notes/` — browse the folder._
 - **scripts** (6): most recent → [create repo and PR](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh), [auth and explore profile](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh), [provision repo with API](../GitHub/scripts/provision-repo-with-api.py)
 - _…and 3 more under `GitHub/scripts/` — browse the folder._
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
-- **docs** (5): [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md), [document github docs folder in readme](../GitHub/docs/2026-08-22-document-github-docs-in-readme.md)
-- _…and 2 more under `GitHub/docs/` — browse the folder._
+- **docs** (6): [release automation: tags, milestones, and GitHub Releases end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews for CI](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
+- _…and 3 more under `GitHub/docs/` — browse the folder._
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 - **templates** (8): [production-ready repo scaffold](../GitHub/templates/github-repo-scaffold/README.md) — branch protection script, CODEOWNERS, issue/PR templates, Dependabot — plus its [issue templates](../GitHub/templates/github-repo-scaffold/.github/ISSUE_TEMPLATE/bug_report.yml) and [branch protection script](../GitHub/templates/github-repo-scaffold/configure-branch-protection.sh)
 
@@ -147,7 +147,6 @@
 - _…and 6 more under `Kubernetes/notes/` — browse the folder._
 - **docs** (4): most recent → [integrating kubernetes with prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md), [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md), [prometheus.yml reference](../Kubernetes/docs/prometheus.yml)
 - _1 more under `Kubernetes/docs/` — browse the folder._
-- **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
 - **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
 - _…and 2 more under `Kubernetes/manifests/` — browse the folder._
 - **scripts** (2): [install kind and first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
@@ -202,11 +201,12 @@
 - **scripts** (1): [install vault CLI and start dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 - **docs** (1): [how the Vault folder is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
-## Pulumi  ·  3 files
+## Pulumi  ·  4 files
 
 - **primer:** [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
 - **scripts** (1): [install pulumi CLI and init project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
+- **docs** (1): [how the Pulumi folder is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
 ## Foundational Concepts  ·  69 files
 
