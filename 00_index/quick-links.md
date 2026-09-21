@@ -142,6 +142,8 @@
 - [Container health check + cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - [Image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - [Docker networking drivers notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
+- [Production Python web-service Dockerfile](../Docker/dockerfiles/production-python-web-service.Dockerfile)
+- [Production Swarm stack with secrets and rolling updates](../Docker/manifests/production-swarm-stack.yaml)
 
 ### Ship with GitHub Actions
 
@@ -198,6 +200,9 @@
 
 ### Work with GCP
 
+- [gcloud quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md)
+- [Launch a VM, open HTTP, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh)
+- [Instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml)
 - [Create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
 - [List Compute instances and GCS buckets](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh)
 - [Install gcloud CLI + configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
