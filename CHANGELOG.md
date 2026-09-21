@@ -2,6 +2,8 @@
 
 ## 2026-09-21
 
+- Added Trivy filesystem and repo scan workflow: scans a Git checkout, filters by severity and fix availability, and emits a consumable summary report (trv-012) (`Trivy/scripts/trivy-fs-repo-scan-workflow.sh`)
+- Added local GitLab CI pipeline validator: lints .gitlab-ci.yml syntax and runs a local execution with gitlab-runner exec (gl-010) (`GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh`)
 - Added GitHub environment deployment-protection worksheet with reviewer gates, wait timers, and branch patterns for development, staging, and protected final deployment (gh-024) (`GitHub/manifests/environment-deployment-protection.yaml`)
 - Added reusable kubectl helper for rollout status and pod readiness health checks (k8s-019) (`Kubernetes/scripts/rollout-status-and-pod-readiness.sh`)
 - Added batch image scanning pipeline: scans a list of images from a file and consolidates per-image findings into one SARIF report for CI consumption (trv-011) (`Trivy/scripts/scan-images-from-file-consolidated-sarif.sh`)
