@@ -51,16 +51,16 @@
 - **scripts** (1): [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 - **docs** (1): [Flux CD coverage correction](../FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — verified README Coverage table and topics.md counts against disk
 
-## Docker  ·  41 files
+## Docker  ·  43 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (6): most recent → [docker tutorial tripups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring docker CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - _…and 3 more under `Docker/notes/` — browse the folder._
-- **dockerfiles** (8): most recent → [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile), [first docker image](../Docker/dockerfiles/first-docker-image.Dockerfile)
-- _…and 5 more under `Docker/dockerfiles/` — browse the folder._
+- **dockerfiles** (9): most recent → [production Python web service](../Docker/dockerfiles/production-python-web-service.Dockerfile), [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
+- _…and 6 more under `Docker/dockerfiles/` — browse the folder._
 - **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`
-- **manifests** (5): most recent → [production compose stack](../Docker/manifests/production-compose-stack.yaml), [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [prometheus scrape config](../Docker/manifests/prometheus.yml)
-- _…and 1 more under `Docker/manifests/` — browse the folder._
+- **manifests** (6): most recent → [production Swarm stack](../Docker/manifests/production-swarm-stack.yaml), [production compose stack](../Docker/manifests/production-compose-stack.yaml), [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
+- _…and 3 more under `Docker/manifests/` — browse the folder._
 - **scripts** (5): most recent → [multi-stage Go Docker build](../Docker/scripts/multi-stage-go-dockerfile.sh), [health check + cleanup](../Docker/scripts/docker-health-check-and-cleanup.sh), [install and run first container](../Docker/scripts/install-and-run-first-container.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
 - **docs** (6): [docker run vs compose](../Docker/docs/docker-run-vs-compose.md), [build mount vs COPY caching](../Docker/docs/docker-build-mount-vs-copy-caching.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md), [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [compose.yml reference](../Docker/docs/docker-compose.yml), [package.json reference](../Docker/docs/package.json)
@@ -69,13 +69,14 @@
 - **snippets** (2): [build-run-cleanup.py](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service app config](../Docker/configs/multi-service-app.yaml)
 
-## GCP  ·  8 files
+## GCP  ·  11 files
 
 - **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
-- **scripts** (3): most recent → [install gcloud CLI + configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh), [install gcloud CLI (earlier pass)](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh), [create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
-- **configs** (2): [service account and IAM config](../GCP/configs/service-account-and-iam-config.yaml), [minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml)
+- **notes** (2): most recent → [gcloud SDK quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md), [0000 primer](../GCP/notes/0000-primer-gcp.md)
+- **scripts** (4): most recent → [launch VM, firewall rule, and SSH](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh), [install gcloud CLI + configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh), [install gcloud CLI (earlier pass)](../GCP/scripts/2026-07-16-install-gcloud-cli-and-configure-creds.sh)
+- _…and 1 more under `GCP/scripts/` — browse the folder._
+- **configs** (3): most recent → [instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml), [minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml), [service account and IAM config](../GCP/configs/service-account-and-iam-config.yaml)
 - **snippets** (2): most recent → [list Compute and GCS with gcloud](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [list Compute and GCS (earlier pass)](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
-- **notes** (1): [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 
 ## Git  ·  54 files
 

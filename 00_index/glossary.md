@@ -108,6 +108,8 @@
 - **docker buildx** — Docker's CLI plugin for extended build capabilities, including BuildKit, multi-platform images, and advanced caching strategies.
 - **Swarm** — Docker's native multi-node orchestrator; services deploy with `docker stack deploy` from a Compose-format file, where the `deploy:` block (replicas, update config, placement) only takes effect on a Swarm.
 - **Stack (Compose vs Swarm)** — The same Compose file runs as a single-host stack under `docker compose up` and as a multi-node stack under `docker stack deploy`; replica control and rolling updates only exist in the Swarm form.
+- **Swarm secret** — A sensitive value (password, cert, key) created with `docker secret create` and mounted into a service's containers at runtime, so the stack file itself never carries plaintext credentials.
+- **`update_config`** — The Swarm service block (`parallelism`, `delay`, `failure_action`, `order`) controlling how `docker stack deploy` rolls a new image across replicas without taking the whole service down at once.
 
 ## GCP
 
@@ -126,6 +128,8 @@
 - **`--format`** — Controls output: `json`, `yaml`, `table`, `text`, `csv`, `list`.
 - **`--filter`** — Server-side filtering of results.
 - **IAM policy binding** — Grants a member (user, group, or service account) a role on a specific resource, e.g. `gcloud storage buckets add-iam-policy-binding` to let a service account read one bucket. Scoped bindings are preferable to project-wide roles.
+- **Named configuration** — A saved `gcloud` profile (`gcloud config configurations list|activate`) holding its own account, project, region, and zone, so learning setups stay separate from the default instead of editing it in place.
+- **Instance template** — A Compute Engine recipe (machine type, image, tags, metadata, service account) that managed instance groups copy when creating VMs; the startup script lives under `metadata.items` with the key `startup-script`.
 
 ## Helm
 
