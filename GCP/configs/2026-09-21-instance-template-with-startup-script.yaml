@@ -1,0 +1,36 @@
+# last_verified: 2026-09-21 · GCP gcloud CLI
+# gcp-014: minimal instance-template shape I pieced together — startup-script plus service account.
+# I kept tripping on where the startup script lives (metadata items) vs the service account block,
+# so I wrote this down exactly how I got it to parse.
+name: quickstart-instance-template
+machine_type: e2-micro
+region_zone: us-central1-a
+disks:
+  - boot: true
+    auto_delete: true
+    initialize_params:
+      source_image_family: debian-12
+      source_image_project: debian-cloud
+      disk_size_gb: 10
+network_interfaces:
+  - network: default
+    access_config: {}
+tags:
+  items:
+    - http-server
+metadata:
+  items:
+    - key: startup-script
+      value: |
+        #!/bin/bash
+        apt-get update
+        apt-get install -y nginx
+        systemctl enable nginx
+        systemctl start nginx
+service_accounts:
+  - email: default
+    scopes:
+      - cloud-platform
+scheduling:
+  automatic_restart: true
+  on_host_maintenance: MIGRATE

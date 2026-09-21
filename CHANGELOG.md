@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-21
+
+- Added Compute Engine quickstart script: create a VM, add an HTTP firewall rule, describe the instance, and SSH in with a remote command (gcp-013) (`GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh`)
+- Added minimal instance-template config with startup-script metadata and service account scopes (gcp-014) (`GCP/configs/2026-09-21-instance-template-with-startup-script.yaml`)
+
 ## 2026-09-20
 
 - Added production Docker Swarm stack manifest with secrets, healthchecks, rolling update configuration, and resource limits (doc-027) (`Docker/manifests/production-swarm-stack.yaml`)
