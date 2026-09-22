@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-22
+
+- Added multi-project pipeline template with workflow rules, shared includes, and a cross-project downstream trigger (gl-009) (`GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml`)
+- Added reusable gitattributes setup: line-ending rules, clean/smudge filters, custom diff drivers for notebooks/zips/binaries, and merge drivers for lockfiles and whitespace-sensitive files (git-025) (`Git/scripts/setup-gitattributes-filters-and-merge.sh`)
+
 ## 2026-09-21
 
 - Added Trivy filesystem and repo scan workflow: scans a Git checkout, filters by severity and fix availability, and emits a consumable summary report (trv-012) (`Trivy/scripts/trivy-fs-repo-scan-workflow.sh`)
