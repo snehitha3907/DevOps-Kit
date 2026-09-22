@@ -181,6 +181,9 @@
 - **Pull Request** — A review request to merge one branch into another, with a diff and discussion.
 - **.gitignore** — A file that tells Git which files or directories to skip. Example: ignoring `.terraform/` and `*.tfvars` so secrets and generated files aren't committed.
 - **pre-commit framework** — A language-agnostic Git hook manager that lets you define a `.pre-commit-config.yaml` listing hooks (formatters, linters, custom checks) which run automatically before each `git commit`. Hooks are isolated environments installed per-project, so contributors don't need to install tools globally.
+- **gitattributes** — Git's path-pattern configuration file that controls line-ending normalization, custom diff drivers, and merge strategies per file type (`.ipynb`, lockfiles, binaries).
+- **Clean/smudge filter** — A gitattributes filter that transforms file contents on checkin (clean) and checkout (smudge), e.g. normalizing line endings or converting file formats so the repo stores a canonical form.
+- **Merge driver** — A gitattributes configuration that tells Git how to resolve conflicts in specific file types (e.g. lockfiles, generated files) instead of falling back to the default 3-way merge.
 
 ## GitHub
 
@@ -231,6 +234,9 @@
 - **Cache** — Paths (e.g. a pip cache directory, `node_modules/`) persisted between runs under a key such as the branch slug, so dependency installs don't redo clean-room downloads every pipeline.
 - **`needs`** — A DAG keyword letting a job start as soon as the listed jobs finish, pulling in their artifacts without waiting for the whole stage; the alternative to strictly sequential stages.
 - **Pipeline trigger (API)** — Starting a pipeline for a branch with `POST /projects/:id/pipeline?ref=<branch>` and a `PRIVATE-TOKEN` header, then polling `/pipelines/:id/jobs` until no job reports `running`, `pending`, or `created`.
+- **Workflow rules** — A `workflow: rules` block in GitLab CI that gates whether an entire pipeline runs based on the source branch, pipeline source, or CI/CD variables.
+- **Multi-project pipeline** — A GitLab CI pattern that connects pipelines across multiple repositories using a bridge job, so a change in one project can trigger a build in another.
+- **Downstream pipeline** — A pipeline triggered by another pipeline, used in multi-project and child-pipeline setups to fan out work across repositories or stages.
 
 ## Infrastructure as Code Concepts
 
