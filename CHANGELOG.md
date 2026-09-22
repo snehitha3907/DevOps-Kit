@@ -2,6 +2,10 @@
 
 ## 2026-09-22
 
+- Fixed Flux CD docs file: marked quoted topics.md excerpt as sourced from 00_index/topics.md so relative links (`../FluxCD/...`) are understood to resolve from repo root, not from `FluxCD/docs/` (flx-010) (`FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md`)
+
+## 2026-09-22
+
 - Added multi-project pipeline template with workflow rules, shared includes, and a cross-project downstream trigger (gl-009) (`GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml`)
 - Added reusable gitattributes setup: line-ending rules, clean/smudge filters, custom diff drivers for notebooks/zips/binaries, and merge drivers for lockfiles and whitespace-sensitive files (git-025) (`Git/scripts/setup-gitattributes-filters-and-merge.sh`)
 
