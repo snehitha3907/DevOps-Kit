@@ -1,5 +1,5 @@
 ---
-last_verified: 2026-09-20
+last_verified: 2026-09-22
 tool_version: n/a
 sources: []
 ---
@@ -13,22 +13,26 @@ I went to update the Flux CD row in the README Coverage table and the Flux CD se
 On disk under `FluxCD/`:
 - `notes/` has 1 file: `2026-09-19-explore-flux-cli-command-surface.md`
 - `scripts/` has 1 file: `2026-09-19-install-flux-cli-and-run-flux-check-pre.sh`
-- No `docs/`, `configs/`, `snippets/`, `manifests/`, `notebooks/`, `dockerfiles/`, `templates/` directories yet
+- `docs/` has 1 file: `2026-09-20-flux-cd-readme-coverage-and-topics-update.md` (this file)
+- No `configs/`, `snippets/`, `manifests/`, `notebooks/`, `dockerfiles/`, `templates/` directories yet
 
 README Coverage table currently shows for Flux CD:
 | Flux CD | 1 | — | 1 | — | — | — | — | — | — | 2026-09-19 |
 
 That matches what's on disk (Notes=1, Scripts=1). The task description mentioned "new Flux CD/notes + scripts on disk, Layout entry added 2026-09-19; needs Notes/Scripts counts and topic links" — the counts are already correct in the table.
 
-But the topics.md Flux CD section (lines 48-51) shows:
+But the topics.md Flux CD section (lines 48-52) shows:
 ```
-## Flux CD  ·  2 files
+## Flux CD  ·  3 files
 
 - **notes** (1): [exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up.
 - **scripts** (1): [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
+- **docs** (1): [Flux CD coverage correction](../FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — verified README Coverage table and topics.md counts against disk
 ```
 
-This also matches what's on disk. The header says "2 files" which is correct (1 note + 1 script).
+> **Note:** The above excerpt is quoted from `00_index/topics.md` where the relative links resolve correctly from the repo root. When viewed from `FluxCD/docs/`, the `../FluxCD/...` links appear broken — they are correct in the source file.
+
+This matches what's on disk (3 files total: 1 note + 1 script + 1 doc).
 
 ## What I changed
 
@@ -41,7 +45,7 @@ It seems like this task might have been already satisfied by a prior update. Let
 ## Verification
 
 The README Coverage table Flux CD row shows Notes=1, Scripts=1 which matches disk.
-The topics.md Flux CD section shows 2 files with correct links to both files.
+The topics.md Flux CD section shows 3 files with correct links to all three files.
 The README Layout already has a FluxCD entry.
 
 No changes needed — the coverage is already correct.
