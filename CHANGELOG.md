@@ -2,6 +2,10 @@
 
 ## 2026-09-22
 
+- Added end-to-end AWS stack builder: VPC with public/private subnets, NAT gateway, EC2 in private subnet via SSM, and RDS with security group (aws-011) (`AWS/scripts/build-vpc-ec2-rds-stack.py`)
+
+## 2026-09-22
+
 - Added multi-project pipeline template with workflow rules, shared includes, and a cross-project downstream trigger (gl-009) (`GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml`)
 - Added reusable gitattributes setup: line-ending rules, clean/smudge filters, custom diff drivers for notebooks/zips/binaries, and merge drivers for lockfiles and whitespace-sensitive files (git-025) (`Git/scripts/setup-gitattributes-filters-and-merge.sh`)
 
