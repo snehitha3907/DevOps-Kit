@@ -2,6 +2,7 @@
 
 ## 2026-09-22
 
+- Added end-to-end AWS stack builder: VPC with public/private subnets, NAT gateway, EC2 in private subnet via SSM, and RDS with security group (aws-011) (`AWS/scripts/build-vpc-ec2-rds-stack.py`)
 - Fixed Flux CD docs file: marked quoted topics.md excerpt as sourced from 00_index/topics.md so relative links (`../FluxCD/...`) are understood to resolve from repo root, not from `FluxCD/docs/` (flx-010) (`FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md`)
 
 ## 2026-09-22
