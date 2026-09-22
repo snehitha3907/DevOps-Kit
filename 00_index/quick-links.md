@@ -129,6 +129,7 @@
 - [Production-ready repository scaffold](../GitHub/templates/github-repo-scaffold/README.md)
 - [Apply branch protection via the API](../GitHub/templates/github-repo-scaffold/configure-branch-protection.sh)
 - [Release automation: tags, milestones, and Releases end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md)
+- [Environments deployment protection](../GitHub/manifests/github-environments-deployment-protection.yaml) — Workflow that gates a deployment on an environment approval and required reviewers.
 
 ### Work with Docker
 
@@ -158,19 +159,20 @@
 - [Minimal pipeline with stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
 - [Trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 - [Run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
+- [Local CI pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh) — Validates a `.gitlab-ci.yml` locally before pushing, checking stages, jobs, rules, and artifact paths.
 
 ### Work with Kubernetes
 
 - [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
 - [First pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh)
+- [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
+- [Rollout status and pod readiness](../Kubernetes/scripts/rollout-status-and-pod-readiness.sh)
 - [Production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml)
-- [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
 - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
 - [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Integrating Kubernetes with Prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
-- [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - [K8s deployment scaffold with Helm + Kustomize overlays](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
 
 ### Sync a GitOps app
@@ -189,6 +191,7 @@
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
 - [List EC2 instances and S3 buckets](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - [List and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh)
+- [Create S3 bucket and upload object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py) — Creates an S3 bucket with versioning and uploads a test object using boto3.
 
 ### Work with Azure
 
@@ -226,6 +229,7 @@
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Fail a build on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
 - [Trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml)
+- [Trivy repo scan workflow](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh) — Scans a Git repository's dependencies for known vulnerabilities using `trivy repo` with SARIF output.
 
 ### CI/CD concepts
 
