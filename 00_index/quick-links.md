@@ -9,6 +9,7 @@
 - [VM scale set with autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
 - [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
 - [Deploy static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh)
+- [Create S3 bucket and upload object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py)
 - [Install gcloud CLI + configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
 - [Create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
 
@@ -59,6 +60,7 @@
 - [Reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [GitLab CI minimal pipeline with stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
+- [GitLab CI multi-project pipeline with downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml)
 - [Helm redis chart manifests](../Helm/manifests/redis-chart/Chart.yaml)
 - [Helm live-release values config](../Helm/configs/2026-09-02-live-release-values.yaml)
 - [Helm production-deployment values config](../Helm/configs/2026-08-30-production-deployment-values.yaml)
@@ -107,12 +109,13 @@
 
 ### Work with Git
 
-- [Branching tutorial](../Git/notes/2026-06-07-git-branching-tutorial.md)
+- [Branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md)
 - [Minimal branching workflow script](../Git/scripts/minimal-branching-workflow.sh)
 - [Merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - [Conventional commit hook](../Git/scripts/commit-msg-conventional-commit.sh)
 - [Squash WIP commits](../Git/scripts/squash-wip-commits.sh)
 - [Branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh)
+- [Setup gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh)
 - [Git workflows comparison](../Git/docs/git-workflows-comparison.md)
 - [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
 - [Automate git bisect with a regression test](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md)
@@ -129,7 +132,7 @@
 - [Production-ready repository scaffold](../GitHub/templates/github-repo-scaffold/README.md)
 - [Apply branch protection via the API](../GitHub/templates/github-repo-scaffold/configure-branch-protection.sh)
 - [Release automation: tags, milestones, and Releases end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md)
-- [Environments deployment protection](../GitHub/manifests/github-environments-deployment-protection.yaml) — Workflow that gates a deployment on an environment approval and required reviewers.
+- [Environments deployment protection worksheet](../GitHub/manifests/github-environments-deployment-protection.yaml)
 
 ### Work with Docker
 
@@ -137,19 +140,20 @@
 - [Compare Compose, Swarm, and Kubernetes orchestration](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb)
 - [Multi-stage Go HTTP server Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 - [Production-ready Go HTTP server Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile)
+- [Production Python web-service Dockerfile](../Docker/dockerfiles/production-python-web-service.Dockerfile)
 - [Build mount vs COPY caching comparison](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - [docker run vs compose decision guide](../Docker/docs/docker-run-vs-compose.md)
 - [Go microservice project scaffold](../Docker/templates/go-microservice/README.md)
+- [Production Docker Swarm stack with secrets and rolling updates](../Docker/manifests/production-swarm-stack.yaml)
 - [Container health check + cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - [Image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - [Docker networking drivers notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
-- [Production Python web-service Dockerfile](../Docker/dockerfiles/production-python-web-service.Dockerfile)
-- [Production Swarm stack with secrets and rolling updates](../Docker/manifests/production-swarm-stack.yaml)
 
 ### Ship with GitHub Actions
 
 - [Composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md)
 - [Self-hosted runner registration + cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh)
+- [Self-hosted runner Dockerfile (Docker-in-Docker)](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
 - [Trigger a workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ### Ship with GitLab CI
@@ -157,22 +161,23 @@
 - [GitLab CI/CD primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - [Runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md)
 - [Minimal pipeline with stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
+- [Local GitLab CI pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh)
 - [Trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 - [Run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
-- [Local CI pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh) — Validates a `.gitlab-ci.yml` locally before pushing, checking stages, jobs, rules, and artifact paths.
 
 ### Work with Kubernetes
 
 - [K8s interactive tutorial walkthrough](../Kubernetes/notes/2026-06-08-kubernetes-interactive-tutorial.md)
 - [First pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh)
-- [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
-- [Rollout status and pod readiness](../Kubernetes/scripts/rollout-status-and-pod-readiness.sh)
 - [Production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml)
+- [Rollout status and pod readiness](../Kubernetes/scripts/rollout-status-and-pod-readiness.sh)
+- [Pod lifecycle management script](../Kubernetes/scripts/pod-lifecycle.sh)
 - [Deployment and Service with probes and limits](../Kubernetes/manifests/deployment-service-with-probes-limits.yaml)
 - [Go service Deployment with probes + HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml)
 - [Ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - [Integrating Kubernetes with Prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
 - [Kubernetes workload-type comparisons notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
+- [Pod troubleshooting shell snippet](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - [K8s deployment scaffold with Helm + Kustomize overlays](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
 
 ### Sync a GitOps app
@@ -191,7 +196,6 @@
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
 - [List EC2 instances and S3 buckets](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - [List and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh)
-- [Create S3 bucket and upload object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py) — Creates an S3 bucket with versioning and uploads a test object using boto3.
 
 ### Work with Azure
 
@@ -204,7 +208,7 @@
 ### Work with GCP
 
 - [gcloud quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md)
-- [Launch a VM, open HTTP, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh)
+- [Launch a VM, firewall rule, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh)
 - [Instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml)
 - [Create GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
 - [List Compute instances and GCS buckets](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh)
@@ -229,7 +233,8 @@
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Fail a build on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
 - [Trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml)
-- [Trivy repo scan workflow](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh) — Scans a Git repository's dependencies for known vulnerabilities using `trivy repo` with SARIF output.
+- [Trivy repo scan workflow](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh)
+- [Batch image scanning pipeline with SARIF output](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
 
 ### CI/CD concepts
 
