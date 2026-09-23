@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-23
+
+- Added IAM policy walkthrough: scoping least-privilege for S3, DynamoDB, and Lambda with iam-policy-simulator verification (aws-012) (`AWS/docs/iam-policy-least-privilege-walkthrough.md`)
+
 ## 2026-09-22
 
 - Added end-to-end AWS stack builder: VPC with public/private subnets, NAT gateway, EC2 in private subnet via SSM, and RDS with security group (aws-011) (`AWS/scripts/build-vpc-ec2-rds-stack.py`)
