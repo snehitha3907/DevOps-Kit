@@ -2,6 +2,7 @@
 
 ## 2026-09-23
 
+- Added Trivy scan-modes doc: choosing between image, fs, repo, and sbom scans with a worked build-pipeline gating example (trv-013) (`Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md`)
 - Added branch-divergence snippet: ahead/behind counts and unique-commit list with git rev-list triple-dot range (con-080) (`docs/concepts/version-control-concepts/snippets/2026-09-23-branch-divergence-rev-list.py`)
 - Added parallel-task bash pattern: background jobs with per-task PIDs, structured timestamped logging, and failure collection (con-087) (`docs/concepts/scripting-automation-bash-python/scripts/2026-09-23-parallel-tasks-with-logging.sh`)
 - Added IAM policy walkthrough: scoping least-privilege for S3, DynamoDB, and Lambda with iam-policy-simulator verification (aws-012) (`AWS/docs/iam-policy-least-privilege-walkthrough.md`)
