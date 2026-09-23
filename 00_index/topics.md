@@ -27,11 +27,13 @@
 - **scripts** (1): [install argocd CLI and access UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 - **snippets** (1): [sync-app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
-## AWS  ·  12 files
+## AWS  ·  15 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
-- **scripts** (5): most recent → [deploy static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh), [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh), [install AWS CLI v2 with application-default credentials](../AWS/scripts/2026-08-13-install-aws-cli-v2-and-configure-app-default.sh)
-- _…and 2 more under `AWS/scripts/` — browse the folder._
+- **scripts** (6): most recent → [VPC + EC2 + RDS stack builder](../AWS/scripts/build-vpc-ec2-rds-stack.py) — public/private subnets, SSM-reachable instance, RDS with security group — plus [deploy static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh), [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
+- _…and 3 more under `AWS/scripts/` — browse the folder._
+- **docs** (1): [IAM least-privilege walkthrough](../AWS/docs/iam-policy-least-privilege-walkthrough.md) — scoping policies for a Lambda + S3 + DynamoDB stack, verified with the policy simulator
+- **notebooks** (1): [boto3 vs CloudFormation vs CDK](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb) — the same small versioned-S3-bucket stack built three ways
 - **configs** (2): [minimal AWS config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini), [minimal AWS config](../AWS/configs/2026-07-12-minimal-aws-config.ini)
 - **snippets** (3): most recent → [create S3 bucket and upload object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py), [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3 resources](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md), [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
@@ -187,9 +189,10 @@
 - **manifests** (2): [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf), [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public/private subnets across AZs, IGW, optional NAT gateways
 - **templates** (10): [multi-environment workspaces + remote-state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev/prod with workspace-scoped S3 + DynamoDB backends and apply/destroy helpers
 
-## Trivy  ·  13 files
+## Trivy  ·  14 files
 
 - **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
+- **docs** (1): [choosing scan modes and pipeline wiring](../Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md) — image vs fs vs repo vs sbom, and blocking a bad artifact in CI
 - **notes** (5): most recent → [trivy quickstart follow-along](../Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md), [trivy quickstart trip-ups (latest)](../Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md), [trivy quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md)
 - _…and 2 more under `Trivy/notes/` — browse the folder._
 - **scripts** (4): [trivy repo scan workflow](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh), [install trivy and scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh), [scan images from SARIF file](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
@@ -210,7 +213,7 @@
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 - **docs** (1): [how the Pulumi folder is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
-## Foundational Concepts  ·  69 files
+## Foundational Concepts  ·  71 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — pipelines, gates, rollbacks, artifact promotion.
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
@@ -242,13 +245,13 @@
   - **notebooks** (2): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb), [network health telemetry visualization](../docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) — glue scripts, jq, retry/backoff.
   - **docs** (1): [combining scripting with IaC automation patterns](../docs/concepts/scripting-automation-bash-python/docs/combining-scripting-with-iac-automation-patterns.md)
-  - **scripts** (3): [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [docker container health automation](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)
+  - **scripts** (4): [parallel tasks with logging](../docs/concepts/scripting-automation-bash-python/scripts/2026-09-23-parallel-tasks-with-logging.sh), [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [docker container health automation](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)
   - **snippets** (2): [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py), [retry, backoff, and logging](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
   - **notebooks** (1): [bash/python glue patterns](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md) — branching, merge strategies, release automation.
   - **docs** (2): [branch protection, merge strategies, release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md), [terraform modules environment promotion](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
   - **scripts** (3): [merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh), [feature branch rebase/merge/tag practice](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh), [branch management and merge validation](../docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh)
-  - **snippets** (1): [conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
+  - **snippets** (2): [branch divergence check](../docs/concepts/version-control-concepts/snippets/2026-09-23-branch-divergence-rev-list.py), [conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
 
 ## docs (kit notes)  ·  4 files
 

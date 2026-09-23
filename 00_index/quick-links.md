@@ -196,6 +196,9 @@
 - [AWS CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
 - [List EC2 instances and S3 buckets](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - [List and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh)
+- [Build a VPC with EC2 and RDS end to end](../AWS/scripts/build-vpc-ec2-rds-stack.py)
+- [Scope least-privilege IAM policies for a small app stack](../AWS/docs/iam-policy-least-privilege-walkthrough.md)
+- [Compare boto3, CloudFormation, and CDK on the same stack](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb)
 
 ### Work with Azure
 
@@ -230,6 +233,7 @@
 
 - [Trivy CLI exploration](../Trivy/notes/2026-06-25-exploring-trivy-cli.md)
 - [Trivy quickstart follow-along](../Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md)
+- [Choose a scan mode and wire it into a pipeline](../Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md)
 - [Scan container image with Trivy](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh)
 - [Fail a build on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py)
 - [Trivy config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml)
@@ -272,10 +276,12 @@
 - [Scripting & Automation concepts primer](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 - [Bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh)
 - [Config parsing with jq and retry patterns](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh)
+- [Parallel tasks with structured logging](../docs/concepts/scripting-automation-bash-python/scripts/2026-09-23-parallel-tasks-with-logging.sh)
 
 ### Version control concepts
 
 - [Version Control concepts primer](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
 - [Branch protection, merge strategies, and release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
 - [Git feature-branch rebase, merge, and tag script](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh)
+- [Branch divergence check with rev-list](../docs/concepts/version-control-concepts/snippets/2026-09-23-branch-divergence-rev-list.py)
 - [Conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
