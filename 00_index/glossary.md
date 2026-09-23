@@ -31,6 +31,9 @@
 - **Named profile** — A credential configuration stored in the AWS CLI `config` and `credentials` files that lets you switch between accounts or roles without re-entering keys.
 - **AWS CLI** — The official command-line interface for interacting with AWS services, supporting both v1 and v2.
 - **CloudFormation** — AWS's native IaC service that provisions and manages resources using JSON or YAML templates.
+- **boto3** — AWS's Python SDK: one client object per service (`boto3.client('s3')`, `boto3.client('ec2')`), with one API call per mutation applied in dependency order. The right choice when provisioning logic needs runtime decisions a static template can't express.
+- **CDK** — AWS's Cloud Development Kit: define the same stack as code in Python/TypeScript and let it synthesise a CloudFormation template. Sits between boto3's imperative calls and hand-written declarative templates.
+- **Least privilege** — Granting each component only the permissions it actually needs (e.g. a Lambda execution role limited to one bucket and one table). Over-broad policies are the most common IAM mistake; verify scoping with the IAM policy simulator before attaching a policy to a real principal.
 - **`--output`** — Controls how results are printed: `json` (default), `text`, `table`, or `yaml`.
 - **`--dry-run`** — A flag on some commands that checks whether you *could* perform the action without actually doing it.
 - **`aws sts get-caller-identity`** — The "who am I?" command. It prints the account number, ARN, and user ID the current credentials resolve to.
@@ -417,6 +420,7 @@
 - **Branch protection** — Rules applied to a Git branch (commonly `main`) that enforce requirements such as passing CI checks, required reviews, or preventing force pushes before merging.
 - **Merge strategy** — The method Git uses to combine branches: merge commit (preserves full history), rebase (rewrites commits onto a new base), or squash (collapses all commits into one); the choice affects history readability and bisectability.
 - **Release automation** — The practice of turning a Git tag into a deployable artifact through an automated pipeline — typically parsing conventional commits to generate a changelog, bump the version, and publish a release without manual steps.
+- **Divergence (ahead/behind)** — How many commits each of two branches has that the other lacks, shown by `git rev-list --left-right --count A...B` as two numbers (e.g. `2 5` means the left side is 2 ahead, 5 behind). Counts alone don't name the commits; list the unique ones on each side to see what would merge.
 
 ## HashiCorp Vault
 

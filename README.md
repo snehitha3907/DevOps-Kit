@@ -18,16 +18,16 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Reusable gitattributes setup with filters and merge drivers](Git/scripts/setup-gitattributes-filters-and-merge.sh) — Line-ending rules, clean/smudge filters, custom diff drivers for notebooks and binaries, and merge drivers for lockfiles and whitespace-sensitive files.
-- [Multi-project pipeline template with downstream trigger](GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml) — Cross-project pipeline using shared includes, workflow rules, and a bridge job that triggers a downstream pipeline in another project.
-- [Local GitLab CI pipeline validator](GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh) — Lints `.gitlab-ci.yml` syntax and runs a local execution with `gitlab-runner exec` before pushing.
-- [Trivy repo scan workflow](Trivy/scripts/trivy-fs-repo-scan-workflow.sh) — Scans a Git repository's dependencies for known vulnerabilities using `trivy repo` with SARIF output and severity filtering.
-- [Create S3 bucket and upload object](AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py) — Minimal boto3 script to create an S3 bucket with versioning and upload a test object.
+- [Comparing deployment approaches: boto3 vs CloudFormation vs CDK](AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb) — The same small versioned S3 bucket stack built three ways, so the imperative-vs-declarative trade-offs are concrete.
+- [Choosing Trivy scan modes and wiring them into a pipeline](Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md) — When to reach for `image`, `fs`, `repo`, or `sbom` scans, and how to make a failure block a bad artifact.
+- [Parallel tasks with structured logging](docs/concepts/scripting-automation-bash-python/scripts/2026-09-23-parallel-tasks-with-logging.sh) — A small pattern for running a few shell tasks at once with one log line per event and a clear signal when one fails.
+- [Branch divergence check with git rev-list](docs/concepts/version-control-concepts/snippets/2026-09-23-branch-divergence-rev-list.py) — Ahead/behind counts for two branches plus the unique commits on each side.
+- [IAM least-privilege walkthrough](AWS/docs/iam-policy-least-privilege-walkthrough.md) — Scoping policies for a Lambda + S3 + DynamoDB stack and verifying them with the policy simulator.
 
 ## Layout
 
 - **00_index/** — Topics, quick links, glossary, and learning path.
-- **AWS/** — AWS CLI setup, profiles, resource listings, tagging, S3 website examples, and boto3 snippets.
+- **AWS/** — AWS CLI setup, profiles, resource listings, tagging, S3 website examples, boto3 snippets and stack builders, an IAM least-privilege walkthrough, and a boto3-vs-CloudFormation-vs-CDK comparison notebook.
 - **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
 - **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests, installation, and sync checks.
 - **Azure/** — Azure CLI setup, CLI-vs-Bicep-vs-Python-SDK comparison, resource provisioning, VM scale sets, and a private AKS Bicep example.
@@ -43,7 +43,7 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
-- **Trivy/** — Image and filesystem scanning, severity policies, and Python wrappers.
+- **Trivy/** — Image and filesystem scanning, scan-mode selection, severity policies, and Python wrappers.
 - **vlt/** — HashiCorp Vault primer, dev server setup, and KV engine examples.
 - **plm/** — Pulumi primer, CLI install + project init, and minimal Python bucket snippet.
 - **docs/** — Foundational concept primers and supporting kit notes.
@@ -56,7 +56,7 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 
 | Tool | Notes | Docs | Snippets | Scripts | Configs | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
 |------|-------|------|----------|---------|---------|-----------|-----------|-------------|-----------|---------------|
-| AWS | 2 | — | 3 | 5 | 2 | — | — | — | — | 2026-09-22 |
+| AWS | 2 | 1 | 3 | 6 | 2 | — | 1 | — | — | 2026-09-23 |
 | Ansible | 10 | 4 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-09-16 |
 | ArgoCD | 3 | — | 1 | 1 | 2 | — | — | — | — | 2026-08-11 |
 | Azure | 4 | 1 | 3 | 3 | — | 1 | — | — | — | 2026-09-19 |
@@ -72,7 +72,7 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 | OpenTofu | 2 | 3 | — | 2 | 2 | — | 1 | — | — | 2026-09-18 |
 | Prometheus | 2 | — | 1 | 1 | 2 | — | — | — | — | 2026-09-05 |
 | Terraform | 6 | 4 | 3 | 3 | 8 | 2 | 2 | — | 10 | 2026-09-17 |
-| Trivy | 5 | — | 2 | 4 | 2 | — | — | — | — | 2026-09-02 |
+| Trivy | 5 | 1 | 2 | 4 | 2 | — | — | — | — | 2026-09-23 |
 | HashiCorp Vault | 2 | 1 | — | 1 | — | — | — | — | — | 2026-09-19 |
 | Pulumi | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-09-20 |
 
@@ -80,7 +80,7 @@ The kit covers 19 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Recent additions: a multi-project GitLab CI pipeline template with downstream triggers, a reusable gitattributes setup script with filters and merge drivers, a local GitLab CI pipeline validator, a Trivy repo scan workflow with SARIF output, and an AWS S3 bucket creation snippet with boto3. Earlier work (Pulumi coverage, GitHub release automation, the Compose-versus-Swarm-versus-Kubernetes notebook, GitLab pipeline plus trigger examples) stays indexed below. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Recent additions: a notebook comparing boto3, CloudFormation, and CDK on the same small stack, a Trivy scan-modes guide (image vs fs vs repo vs sbom) with pipeline wiring, an IAM least-privilege walkthrough for a Lambda/S3/DynamoDB stack, a VPC + EC2 + RDS stack builder in boto3, and concept exercises in parallel shell logging and git branch-divergence checks. Earlier work (the multi-project GitLab CI pipeline template, the reusable gitattributes setup, the local pipeline validator, the Trivy repo scan workflow, Pulumi coverage, GitHub release automation) stays indexed below. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
-_Last updated: 2026-09-22_
+_Last updated: 2026-09-23_
