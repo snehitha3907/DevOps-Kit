@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-24
+
+- Added container image layer inspection snippet: groups `docker history` bytes by Dockerfile instruction using the Docker SDK for Python instead of parsing CLI columns (con-083) (`docs/concepts/containerization-concepts/snippets/2026-09-24-inspect-image-layers-with-docker-sdk.py`)
+- Added TCP port reachability and DNS resolution snippet: reports name resolution and TCP connect as two independent checks, since a name can resolve while the port is firewalled (con-084) (`docs/concepts/networking-fundamentals/snippets/2026-09-24-tcp-port-and-dns-sockets.py`)
+- Added systemd health-check and log-rotation pattern: a oneshot health-check service driven by a persistent timer, plus a logrotate config invoked by a second timer so rotation is visible in `systemctl status` (con-085) (`docs/concepts/linux-system-administration/scripts/systemd-health-check-and-log-rotation.sh`)
+
 ## 2026-09-23
 
 - Added AWS deployment-approaches notebook: same small versioned/tagged S3 stack via boto3 call plan, CloudFormation JSON template, and CDK-style construct synth with equivalence checks (aws-013) (`AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb`)
@@ -22,7 +28,7 @@
 
 - Added Trivy filesystem and repo scan workflow: scans a Git checkout, filters by severity and fix availability, and emits a consumable summary report (trv-012) (`Trivy/scripts/trivy-fs-repo-scan-workflow.sh`)
 - Added local GitLab CI pipeline validator: lints .gitlab-ci.yml syntax and runs a local execution with gitlab-runner exec (gl-010) (`GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh`)
-- Added GitHub environment deployment-protection worksheet with reviewer gates, wait timers, and branch patterns for development, staging, and protected final deployment (gh-024) (`GitHub/manifests/environment-deployment-protection.yaml`)
+- Added GitHub environment deployment-protection worksheet with reviewer gates, wait timers, and branch patterns for development, staging, and protected final deployment (gh-024) (`GitHub/manifests/github-environments-deployment-protection.yaml`)
 - Added reusable kubectl helper for rollout status and pod readiness health checks (k8s-019) (`Kubernetes/scripts/rollout-status-and-pod-readiness.sh`)
 - Added batch image scanning pipeline: scans a list of images from a file and consolidates per-image findings into one SARIF report for CI consumption (trv-011) (`Trivy/scripts/scan-images-from-file-consolidated-sarif.sh`)
 - Added self-hosted runner Dockerfile with Docker-in-Docker and pre-installed actions dependencies (gh-023) (`GitHub/dockerfiles/self-hosted-runner.Dockerfile`)
