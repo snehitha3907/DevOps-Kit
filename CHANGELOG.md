@@ -5,6 +5,7 @@
 - Added container image layer inspection snippet: groups `docker history` bytes by Dockerfile instruction using the Docker SDK for Python instead of parsing CLI columns (con-083) (`docs/concepts/containerization-concepts/snippets/2026-09-24-inspect-image-layers-with-docker-sdk.py`)
 - Added TCP port reachability and DNS resolution snippet: reports name resolution and TCP connect as two independent checks, since a name can resolve while the port is firewalled (con-084) (`docs/concepts/networking-fundamentals/snippets/2026-09-24-tcp-port-and-dns-sockets.py`)
 - Added systemd health-check and log-rotation pattern: a oneshot health-check service driven by a persistent timer, plus a logrotate config invoked by a second timer so rotation is visible in `systemctl status` (con-085) (`docs/concepts/linux-system-administration/scripts/systemd-health-check-and-log-rotation.sh`)
+- Fixed systemd health-check and log-rotation script (con-085 rework): memory ratio now divides MemAvailable by MemTotal, load comparison uses awk integer math instead of bc, health timer uses OnBootSec/OnUnitActiveSec instead of invalid OnCalendar syntax, and a dedicated daily logrotate timer was added to separate resource checks from the liveness-probe sibling script
 
 ## 2026-09-23
 
