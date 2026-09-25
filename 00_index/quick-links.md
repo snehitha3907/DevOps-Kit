@@ -121,6 +121,7 @@
 - [Git workflows comparison](../Git/docs/git-workflows-comparison.md)
 - [Git worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
 - [Automate git bisect with a regression test](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md)
+- [Bisect runner script (drives `git bisect run` end to end)](../Git/scripts/bisect-automation-runner.sh)
 - [Wiring Git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
 - [Git coverage correction doc](../Git/docs/2026-09-17-git-coverage-correction.md)
 - [Git merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
@@ -159,6 +160,8 @@
 - [Trigger a workflow_dispatch and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ### Ship with GitLab CI
+
+> `GitLab/` mirrors `GitLab CI/` — every link below resolves under both paths.
 
 - [GitLab CI/CD primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - [Runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md)
@@ -278,6 +281,10 @@
 - [Grafana primer](../graf/notes/0000-primer-grafana.md)
 - [Poking around the Grafana UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
 - [Install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
+
+### Instrument with OpenTelemetry
+
+- [OpenTelemetry primer](../otel/notes/0000-primer-opentelemetry.md)
 
 ### Scripting and automation
 

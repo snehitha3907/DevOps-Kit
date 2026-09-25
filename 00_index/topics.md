@@ -80,14 +80,14 @@
 - **configs** (3): most recent → [instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml), [minimal gcloud config + startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml), [service account and IAM config](../GCP/configs/service-account-and-iam-config.yaml)
 - **snippets** (2): most recent → [list Compute and GCS with gcloud](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [list Compute and GCS (earlier pass)](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
-## Git  ·  55 files
+## Git  ·  56 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (22): [pre-commit hook](../Git/templates/git-hooks/pre-commit), [commit-msg hook](../Git/templates/git-hooks/commit-msg), [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md)
 - _…and 19 more under `Git/templates/` — browse the folder (includes the git-hooks, repo-scaffold, and repository-skeleton scaffolds)._
 - **docs** (13): most recent → [git coverage correction](../Git/docs/2026-09-17-git-coverage-correction.md), [document git docs folder in readme](../Git/docs/2026-08-22-document-git-docs-folder-in-readme.md), [wiring git hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
 - _…and 10 more under `Git/docs/` — browse the folder._
-- **scripts** (10): [setup gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh), [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
+- **scripts** (11): [automated bisect runner](../Git/scripts/bisect-automation-runner.sh) — drives `git bisect run` end to end for a scripted regression test — plus [setup gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh), [branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - _…and 7 more under `Git/scripts/` — browse the folder._
 - **notes** (8): most recent → [git branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [git branching tutorial (earlier)](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore git CLI](../Git/notes/2026-06-04-explore-git-cli.md)
 - _…and 5 more under `Git/notes/` — browse the folder._
@@ -130,11 +130,26 @@
 - **scripts** (3): [local CI pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 
-## Grafana  ·  3 files
+## GitLab  ·  11 files
+
+A mirror of `GitLab CI/` under a shorter path — same pipeline primer, runner scripts, configs, and trigger snippet.
+
+- **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab/notes/0000-primer-gitlab-ci-cd.md)
+- **notes** (4): most recent → [runner setup, variables, and artifacts trip-ups](../GitLab/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md), [following the quickstart](../GitLab/notes/2026-06-24-following-gitlab-ci-quickstart.md), [`.gitlab-ci.yml` reference](../GitLab/notes/.gitlab-ci.yml)
+- **configs** (3): most recent → [multi-project pipeline with downstream trigger](../GitLab/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml), [minimal pipeline with stages, cache, and artifacts](../GitLab/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml), [first pipeline](../GitLab/configs/2026-06-22-first-pipeline.yaml)
+- **scripts** (3): [local CI pipeline validator](../GitLab/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install runner and register](../GitLab/scripts/2026-06-22-install-runner-and-register.sh), [run first local pipeline](../GitLab/scripts/2026-06-24-run-first-local-pipeline.sh)
+- **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
+
+## Grafana  ·  4 files
 
 - **primer:** [0000-primer-grafana.md](../graf/notes/0000-primer-grafana.md)
 - **notes** (2): [poking around the Grafana UI](../graf/notes/2026-09-25-explore-grafana-ui.md) — data sources, panels, dashboards, and the localhost-in-Docker gotcha — plus [0000 primer](../graf/notes/0000-primer-grafana.md)
 - **scripts** (1): [install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh) — runs `grafana/grafana` on port 3000 and waits for the login page
+- **docs** (1): [graf/ coverage note](../graf/docs/2026-09-25-grafana-coverage-and-topics.md) — how this folder maps to the README Coverage table
+
+## OpenTelemetry  ·  1 file
+
+- **primer:** [0000-primer-opentelemetry.md](../otel/notes/0000-primer-opentelemetry.md) — traces, spans, context propagation, exporters, and the collector; where OTel sits relative to Prometheus and Grafana
 
 ## Helm  ·  20 files
 
@@ -219,7 +234,7 @@
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 - **docs** (1): [how the Pulumi folder is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
-## Foundational Concepts  ·  71 files
+## Foundational Concepts  ·  77 files
 
 - **CI/CD Concepts:** [0000-primer-ci-cd-concepts.md](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md) — pipelines, gates, rollbacks, artifact promotion.
   - **notes** (1): [artifact promotion gates and rollbacks](../docs/concepts/ci-cd-concepts/2026-08-10-artifact-promotion-gates-rollbacks.md)
@@ -228,7 +243,7 @@
   - **snippets** (2): [common patterns](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh), [parallelized CI stage runner](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - **Containerization Concepts:** [0000-primer-containerization-concepts.md](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md) — image layers, runtimes, caching, signing.
   - **docs** (2): [smaller images: base, caching, runtimes](../docs/concepts/containerization-concepts/docs/2026-08-08-smaller-images-base-caching-runtimes.md), [image scanning and signing in a build pipeline](../docs/concepts/containerization-concepts/docs/image-scanning-and-signing-in-a-build-pipeline.md)
-  - **snippets** (1): [inspect image layers](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py)
+  - **snippets** (2): [inspect image layers](../docs/concepts/containerization-concepts/snippets/2026-08-08-inspect-image-layers.py), [inspect image layers with the Docker SDK](../docs/concepts/containerization-concepts/snippets/2026-09-24-inspect-image-layers-with-docker-sdk.py)
   - **scripts** (2): [docker build tag run lifecycle](../docs/concepts/containerization-concepts/scripts/2026-09-06-docker-build-tag-run-lifecycle.sh), [build and push pipeline](../docs/concepts/containerization-concepts/scripts/build-and-push-pipeline.py)
   - **notebooks** (1): [container network topology and service discovery](../docs/concepts/containerization-concepts/notebooks/container-network-topology-service-discovery.ipynb)
 - **Infrastructure as Code Concepts:** [0000-primer-infrastructure-as-code-concepts.md](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md) — declarative vs imperative, Terraform/Ansible roles, state workflows.
@@ -239,7 +254,7 @@
 - **Linux & System Administration:** [0000-primer-linux-system-administration.md](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md) — processes, permissions, systemd, journald.
   - **notes** (1): [process and permission patterns in devops](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
   - **docs** (1): [systemd timers, journald shipping](../docs/concepts/linux-system-administration/docs/systemd-timers-journald-shipping.md)
-  - **scripts** (3): [systemd health-check log alerting](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh), [systemd watchdog restart + page](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh), [filesystem permissions and process management](../docs/concepts/linux-system-administration/scripts/2026-07-18-filesystem-permissions-and-process-management.sh)
+  - **scripts** (4): [systemd health-check log alerting](../docs/concepts/linux-system-administration/scripts/systemd-health-check-log-alerting.sh), [systemd watchdog restart + page](../docs/concepts/linux-system-administration/scripts/systemd-watchdog-restart-and-page.sh), [filesystem permissions and process management](../docs/concepts/linux-system-administration/scripts/2026-07-18-filesystem-permissions-and-process-management.sh), [systemd health check and log rotation](../docs/concepts/linux-system-administration/scripts/systemd-health-check-and-log-rotation.sh)
   - **notebooks** (1): [linux system performance analysis](../docs/concepts/linux-system-administration/notebooks/linux-system-performance-analysis.ipynb)
 - **Monitoring & Observability:** [0000-primer-monitoring-observability-concepts.md](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md) — metrics, logs, traces, scraping.
   - **docs** (2): [combining metrics, logs, traces](../docs/concepts/monitoring-observability-concepts/docs/2026-08-09-combining-metrics-logs-traces-observability.md), [pipeline health telemetry, DORA metrics, and deployment markers](../docs/concepts/monitoring-observability-concepts/docs/cicd-pipeline-health-telemetry-dora-deployment-markers.md)
@@ -247,16 +262,18 @@
   - **notebooks** (2): [scraping endpoint, three pillars](../docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb), [tracing containerized service dependencies](../docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb)
 - **Networking Fundamentals:** [0000-primer-networking-fundamentals.md](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md) — DNS, TLS, TCP probes, load balancing.
   - **notes** (1): [network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
-  - **scripts** (5): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [health-check automation with JSON output](../docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh)
+  - **scripts** (6): [TCP/TLS health probes with latency](../docs/concepts/networking-fundamentals/scripts/tcp-tls-health-probes-with-latency.sh), [health-check automation with JSON output](../docs/concepts/networking-fundamentals/scripts/health-check-automation-with-json-output.sh), [TCP/TLS health probes](../docs/concepts/networking-fundamentals/scripts/2026-08-08-tcp-tls-health-probes.sh), [netcat and curl connectivity](../docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh), [testing TCP port reachability and DNS resolution](../docs/concepts/networking-fundamentals/scripts/2026-09-25-testing-tcp-port-reachability-dns-resolution.py)
+  - **snippets** (1): [TCP port and DNS checks with sockets](../docs/concepts/networking-fundamentals/snippets/2026-09-24-tcp-port-and-dns-sockets.py)
   - **notebooks** (2): [DNS, TLS, load-balancing visualization](../docs/concepts/networking-fundamentals/notebooks/2026-08-10-dns-tls-load-balancing-visualization.ipynb), [network health telemetry visualization](../docs/concepts/networking-fundamentals/notebooks/network-health-telemetry-visualization.ipynb)
 - **Scripting & Automation (Bash/Python):** [0000-primer-scripting-automation-bash-python.md](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) — glue scripts, jq, retry/backoff.
-  - **docs** (1): [combining scripting with IaC automation patterns](../docs/concepts/scripting-automation-bash-python/docs/combining-scripting-with-iac-automation-patterns.md)
+  - **docs** (2): [combining scripting with IaC automation patterns](../docs/concepts/scripting-automation-bash-python/docs/combining-scripting-with-iac-automation-patterns.md) — plus a small [site.yml](../docs/concepts/scripting-automation-bash-python/docs/site.yml) playbook reference used by the scripting exercises
   - **scripts** (4): [parallel tasks with logging](../docs/concepts/scripting-automation-bash-python/scripts/2026-09-23-parallel-tasks-with-logging.sh), [config parsing with jq + retry](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-23-config-parsing-jq-retry.sh), [bash scripting exercises](../docs/concepts/scripting-automation-bash-python/scripts/2026-08-07-bash-scripting-exercises.sh), [docker container health automation](../docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh)
   - **snippets** (2): [log parsing and filtering](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-07-log-parsing-filtering.py), [retry, backoff, and logging](../docs/concepts/scripting-automation-bash-python/snippets/2026-08-08-retry-backoff-logging.py)
   - **notebooks** (1): [bash/python glue patterns](../docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb)
 - **Version Control Concepts:** [0000-primer-version-control-concepts.md](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md) — branching, merge strategies, release automation.
+  - **notes** (1): [trunk-based delivery with short-lived branches](../docs/concepts/version-control-concepts/2026-09-25-trunk-based-delivery-short-lived-branches.md) — branch protection, merge queues, and CODEOWNERS on `main`
   - **docs** (2): [branch protection, merge strategies, release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md), [terraform modules environment promotion](../docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md)
-  - **scripts** (3): [merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh), [feature branch rebase/merge/tag practice](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh), [branch management and merge validation](../docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh)
+  - **scripts** (4): [audit branch hygiene and clean up stale branches](../docs/concepts/version-control-concepts/scripts/2026-09-25-audit-branch-hygiene-stale-branch-cleanup.py), [merge conflict + reflog recovery sandbox](../docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh), [feature branch rebase/merge/tag practice](../docs/concepts/version-control-concepts/scripts/2026-08-08-git-feature-branch-rebase-merge-tag.sh), [branch management and merge validation](../docs/concepts/version-control-concepts/scripts/branch-management-merge-validation.sh)
   - **snippets** (2): [branch divergence check](../docs/concepts/version-control-concepts/snippets/2026-09-23-branch-divergence-rev-list.py), [conventional changelog from git log](../docs/concepts/version-control-concepts/snippets/2026-08-08-conventional-changelog-from-git-log.py)
 
 ## docs (kit notes)  ·  4 files

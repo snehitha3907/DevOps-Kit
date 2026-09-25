@@ -455,3 +455,12 @@
 - **Variable** — A dropdown that re-runs every panel with a new value, so one dashboard can flip between services.
 - **Alert rule** — A threshold check pinned to a query, e.g. warn if the error share stays above five percent for ten minutes.
 - **Snapshot** — A frozen, shareable copy of a dashboard whose graphs survive after the underlying data ages out.
+
+## OpenTelemetry
+
+- **OpenTelemetry (OTel)** — A vendor-neutral observability framework: one set of APIs and SDKs to emit traces, metrics, and logs from code, then point the data at any backend without re-instrumenting.
+- **Trace** — The full journey of one request across services, e.g. one checkout click traced from the web app through payments.
+- **Span** — A single timed step inside a trace, e.g. a span named `charge-card` covering just the payment call.
+- **Context propagation** — Passing trace IDs along with each hop (e.g. an ID header) so spans from different services land in the same trace.
+- **Exporter** — The plug that ships signals somewhere: a local collector while learning, a real backend later.
+- **Collector** — A middleman that receives, batches, and forwards signals, e.g. one collector on a laptop feeding whatever viewer is being tried.
