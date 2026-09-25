@@ -42,10 +42,10 @@ The kit covers 20 tool families across cloud CLIs, configuration management, con
 - **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, release testing, and chart scaffolding.
 - **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, production patterns with HPA and PDB, and Helm/Kustomize overlays.
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
+- **otel/** — OpenTelemetry primer: traces, spans, metrics, and logs with a tiny tracer example.
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, scan-mode selection, severity policies, and Python wrappers.
-- **graf/** — Grafana primer, UI exploration notes, and Docker-based install script.
 - **vlt/** — HashiCorp Vault primer, dev server setup, and KV engine examples.
 - **plm/** — Pulumi primer, CLI install + project init, and minimal Python bucket snippet.
 - **docs/** — Foundational concept primers and supporting kit notes.
@@ -65,20 +65,20 @@ The kit covers 20 tool families across cloud CLIs, configuration management, con
 | Docker | 6 | 6 | 2 | 5 | 1 | 6 | 2 | 9 | 6 | 2026-09-09 |
 | FluxCD | 1 | 1 | — | 1 | — | — | — | — | — | 2026-09-22 |
 | GCP | 2 | — | 2 | 4 | 3 | — | — | — | — | 2026-09-20 |
-| Git | 8 | 13 | 1 | 10 | — | — | 1 | — | 22 | 2026-09-17 |
+| Git | 8 | 14 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
 | GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 8 | 2026-09-20 |
 | GitHub Actions | 6 | 5 | 1 | 3 | 5 | — | — | — | — | 2026-09-11 |
 | GitLab CI | 4 | — | 1 | 3 | 3 | — | — | — | — | 2026-09-19 |
-| Grafana | 2 | — | — | 1 | — | — | — | — | — | 2026-09-25 |
 | Helm | 3 | 4 | 1 | 3 | 4 | 4 | 1 | — | — | 2026-09-18 |
 | Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-09-04 |
 | OpenTofu | 2 | 3 | — | 2 | 2 | — | 1 | — | — | 2026-09-18 |
+| OpenTelemetry | 1 | 1 | — | — | — | — | — | — | — | 2026-09-25 |
 | Prometheus | 2 | — | 1 | 1 | 2 | — | — | — | — | 2026-09-05 |
 | Terraform | 6 | 4 | 3 | 3 | 8 | 2 | 2 | — | 10 | 2026-09-17 |
 | Trivy | 5 | 1 | 2 | 4 | 2 | — | — | — | — | 2026-09-23 |
 | HashiCorp Vault | 2 | 1 | — | 1 | — | — | — | — | — | 2026-09-19 |
 | Pulumi | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-09-20 |
-| graf | 2 | 1 | — | 1 | — | — | — | — | — | 2026-09-25 |
+| graf | 2 | 2 | — | 1 | — | — | — | — | — | 2026-09-25 |
 
 </details>
 

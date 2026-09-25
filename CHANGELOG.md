@@ -11,6 +11,9 @@
 - Added Grafana quick primer: what it is, core concepts, and a one-command Docker start (graf-001) (`graf/notes/0000-primer-grafana.md`)
 - Added Grafana UI exploration notes: data sources, panels, dashboards, and three first-run trip-ups (graf-003) (`graf/notes/2026-09-25-explore-grafana-ui.md`)
 - Added Grafana Docker install script: starts the container and polls the login page until it answers (graf-002) (`graf/scripts/2026-09-25-install-grafana-with-docker.sh`)
+- Documented OpenTelemetry (`otel/`) in README Layout + Coverage table: new Layout bullet and OpenTelemetry row (Notes 1, Docs 1, Last verified 2026-09-25); topics.md left for the Maintainer rebuild (otl-002) (`otel/docs/2026-09-25-opentelemetry-readme-coverage.md`, `README.md`)
+- Corrected Git README Coverage row: Scripts 10→11 (bisect runner), Docs 13→14 (self-counted), Last verified 2026-09-17→2026-09-25; topics.md left for the Maintainer rebuild (doc-058) (`Git/docs/2026-09-25-git-scripts-count-correction.md`, `README.md`)
+- Deduplicated Grafana navigation: removed duplicate `graf/` Layout bullet and stale `Grafana` Coverage row, kept single `graf` row (Notes 2, Docs 2, Scripts 1); topics.md left for the Maintainer rebuild (doc-059) (`graf/docs/2026-09-25-grafana-navigation-dedup.md`, `README.md`)
 
 ## 2026-09-24
 
