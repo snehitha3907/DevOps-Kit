@@ -45,6 +45,7 @@ The kit covers 20 tool families across cloud CLIs, configuration management, con
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, scan-mode selection, severity policies, and Python wrappers.
+- **graf/** — Grafana primer, UI exploration notes, and Docker-based install script.
 - **vlt/** — HashiCorp Vault primer, dev server setup, and KV engine examples.
 - **plm/** — Pulumi primer, CLI install + project init, and minimal Python bucket snippet.
 - **docs/** — Foundational concept primers and supporting kit notes.
@@ -77,6 +78,7 @@ The kit covers 20 tool families across cloud CLIs, configuration management, con
 | Trivy | 5 | 1 | 2 | 4 | 2 | — | — | — | — | 2026-09-23 |
 | HashiCorp Vault | 2 | 1 | — | 1 | — | — | — | — | — | 2026-09-19 |
 | Pulumi | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-09-20 |
+| graf | 2 | 1 | — | 1 | — | — | — | — | — | 2026-09-25 |
 
 </details>
 
