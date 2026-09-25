@@ -26,6 +26,7 @@
 - [Install Trivy + scan filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
 - [Install Vault CLI + start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 - [Install Pulumi CLI + init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- [Install Grafana + open the login page](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
 - [Install GitLab Runner + register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 
 ### Explore CLI and primer concepts
@@ -40,6 +41,7 @@
 - [GitHub primer](../GitHub/notes/0000-primer-github.md)
 - [GitHub Actions primer](../GitHub Actions/notes/0000-primer-github-actions.md)
 - [GitLab CI/CD primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- [Grafana primer](../graf/notes/0000-primer-grafana.md)
 - [Helm primer](../Helm/notes/0000-primer-helm.md)
 - [Kubernetes primer](../Kubernetes/notes/0000-primer-kubernetes.md)
 - [OpenTofu primer](../OpenTofu/notes/0000-primer-opentofu.md)
@@ -270,6 +272,12 @@
 - [Health checks and log correlation](../docs/concepts/monitoring-observability-concepts/scripts/health-checks-and-log-correlation.py)
 - [Tracing containerized service dependencies](../docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb)
 - [Check Prometheus target health with PromQL](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
+
+### Visualize metrics
+
+- [Grafana primer](../graf/notes/0000-primer-grafana.md)
+- [Poking around the Grafana UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
+- [Install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
 
 ### Scripting and automation
 

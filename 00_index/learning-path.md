@@ -81,6 +81,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Flux CD** — GitOps operator for Kubernetes, the open-source alternative to ArgoCD. Depends on K8s L2 + Git L2. [Exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up — plus [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh).
 - **Prometheus** — Metrics collection and alerting. Depends on Docker L2 + K8s L2. [Primer](../Prometheus/notes/0000-primer-prometheus.md), [install and verify script](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml), [container-monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml), [getting-started trip-ups](../Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md), [PromQL target-health snippet](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 - **Kubernetes + Prometheus integration** — Wiring Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations for automatic target tracking. [Guide](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
+- **Grafana** — Dashboards over metrics sources like Prometheus. First contact is here: [primer](../graf/notes/0000-primer-grafana.md) (data sources, panels, dashboards, variables, alert rules), [install via Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh), and [UI exploration notes](../graf/notes/2026-09-25-explore-grafana-ui.md) covering the localhost-in-Docker gotcha. Builds on Monitoring & Observability concepts.
 
 ## Stage 5: Mastery
 
@@ -132,6 +133,9 @@ graph TD
     IaC --> Azure
     IaC --> GCP
 
+    Mon[Monitoring & Observability] --> Prometheus
+    Mon --> Grafana
+
     Git --> GitHub
     Git --> GitLabCI
     Git --> GitHubActions
@@ -156,7 +160,7 @@ graph TD
 classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault,Pulumi hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault,Pulumi,Grafana hasContent
 ```
 
- _Last updated: 2026-09-23_
+ _Last updated: 2026-09-25_
