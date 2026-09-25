@@ -4,6 +4,8 @@
 
 - Added graf/ coverage doc: added the missing graf/ Coverage-table row (notes 2, docs 1, scripts 1) and left topics.md for the Maintainer rebuild (graf-004) (`graf/docs/2026-09-25-grafana-coverage-and-topics.md`)
 - Added OpenTelemetry quick primer: what it is, traces/spans/metrics/logs, and a tiny tracer hello-world (otel-001) (`otel/notes/0000-primer-opentelemetry.md`)
+- Added bisect automation runner: validates repo state and good/bad bounds, drives `git bisect run` unattended, saves the transcript, always resets, and reports the first bad commit (git-019) (`Git/scripts/bisect-automation-runner.sh`)
+- Rewrote the bisect companion regression probe: configurable test command with rebuild hook, timeout guard, and exit 0/1/125 good/bad/skip semantics for `git bisect run` (git-028) (`Git/docs/scripts/regression-test.sh`)
 
 - Added Grafana quick primer: what it is, core concepts, and a one-command Docker start (graf-001) (`graf/notes/0000-primer-grafana.md`)
 - Added Grafana UI exploration notes: data sources, panels, dashboards, and three first-run trip-ups (graf-003) (`graf/notes/2026-09-25-explore-grafana-ui.md`)

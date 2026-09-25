@@ -421,6 +421,11 @@
 - **Merge strategy** — The method Git uses to combine branches: merge commit (preserves full history), rebase (rewrites commits onto a new base), or squash (collapses all commits into one); the choice affects history readability and bisectability.
 - **Release automation** — The practice of turning a Git tag into a deployable artifact through an automated pipeline — typically parsing conventional commits to generate a changelog, bump the version, and publish a release without manual steps.
 - **Divergence (ahead/behind)** — How many commits each of two branches has that the other lacks, shown by `git rev-list --left-right --count A...B` as two numbers (e.g. `2 5` means the left side is 2 ahead, 5 behind). Counts alone don't name the commits; list the unique ones on each side to see what would merge.
+- **Trunk-based development** — A branching strategy where all work lands on one shared branch (`main`/`trunk`) via short-lived feature branches, instead of long-lived release or feature branches that merge painfully.
+- **Short-lived branch** — A feature branch that lives hours to a day or two and merges via PR as soon as CI passes; the unit of work in trunk-based delivery.
+- **Merge queue** — A CI mechanism that serializes PR merges, re-testing each one against the latest `main` before landing so concurrent merges can't break each other.
+- **Ruleset** — GitHub's successor to classic branch protection: a programmable set of merge gates (required checks, workflows, bypass lists) applied to branches or tags.
+- **Stale branch** — A branch with no commits or PR activity for N days; the cleanup target of branch-hygiene automation.
 
 ## HashiCorp Vault
 
@@ -440,3 +445,13 @@
 - **State** — Pulumi's memory of what it already built and which outputs came back, so the next run only changes the diff.
 - **Output** — A value the cloud hands back after deploy (e.g. a bucket's real name) that can be wired into an app's config.
 - **Config** — Per-stack settings so one program behaves differently per environment.
+
+## Grafana
+
+- **Grafana** — An open-source dashboarding layer for observability: it borrows numbers from a data source and turns query results into graphs, gauges, and tables. It stores no metrics itself.
+- **Data source** — Where Grafana reads numbers from, e.g. a Prometheus server on `localhost:9090`.
+- **Panel** — A single chart or readout on a dashboard, e.g. a graph of request rate over the last hour.
+- **Dashboard** — A saved set of panels with layout and time range, shareable as a link instead of screenshots.
+- **Variable** — A dropdown that re-runs every panel with a new value, so one dashboard can flip between services.
+- **Alert rule** — A threshold check pinned to a query, e.g. warn if the error share stays above five percent for ten minutes.
+- **Snapshot** — A frozen, shareable copy of a dashboard whose graphs survive after the underlying data ages out.
