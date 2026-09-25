@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-25
+
+- Added Grafana quick primer: what it is, core concepts, and a one-command Docker start (graf-001) (`graf/notes/0000-primer-grafana.md`)
+- Added Grafana UI exploration notes: data sources, panels, dashboards, and three first-run trip-ups (graf-003) (`graf/notes/2026-09-25-explore-grafana-ui.md`)
+- Added Grafana Docker install script: starts the container and polls the login page until it answers (graf-002) (`graf/scripts/2026-09-25-install-grafana-with-docker.sh`)
+
 ## 2026-09-24
 
 - Added container image layer inspection snippet: groups `docker history` bytes by Dockerfile instruction using the Docker SDK for Python instead of parsing CLI columns (con-083) (`docs/concepts/containerization-concepts/snippets/2026-09-24-inspect-image-layers-with-docker-sdk.py`)
