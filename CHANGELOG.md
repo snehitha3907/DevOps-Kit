@@ -2,6 +2,9 @@
 
 ## 2026-09-25
 
+- Added graf/ coverage doc: added the missing graf/ Coverage-table row (notes 2, docs 1, scripts 1) and left topics.md for the Maintainer rebuild (graf-004) (`graf/docs/2026-09-25-grafana-coverage-and-topics.md`)
+- Added OpenTelemetry quick primer: what it is, traces/spans/metrics/logs, and a tiny tracer hello-world (otel-001) (`otel/notes/0000-primer-opentelemetry.md`)
+
 - Added Grafana quick primer: what it is, core concepts, and a one-command Docker start (graf-001) (`graf/notes/0000-primer-grafana.md`)
 - Added Grafana UI exploration notes: data sources, panels, dashboards, and three first-run trip-ups (graf-003) (`graf/notes/2026-09-25-explore-grafana-ui.md`)
 - Added Grafana Docker install script: starts the container and polls the login page until it answers (graf-002) (`graf/scripts/2026-09-25-install-grafana-with-docker.sh`)
