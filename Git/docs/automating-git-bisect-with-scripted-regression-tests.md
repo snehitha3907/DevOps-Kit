@@ -58,7 +58,7 @@ git bisect good v1.4.0                # last known good tag or commit
 ### 3. Run bisect in automated mode
 
 ```bash
-git bisect run ./regression-test.sh
+git bisect run ./scripts/regression-test.sh
 ```
 
 `git bisect run` invokes the script, reads the exit code, and automatically marks the commit as good or bad. It then advances to the next midpoint. The loop continues until it isolates the first bad commit.
@@ -101,7 +101,7 @@ After the automated run completes:
 
 ```bash
 git checkout <offending-commit>
-./regression-test.sh   # should exit 1
+./scripts/regression-test.sh   # should exit 1
 git checkout main
 ```
 
