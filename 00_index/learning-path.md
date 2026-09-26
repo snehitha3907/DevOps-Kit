@@ -83,7 +83,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Prometheus** — Metrics collection and alerting. Depends on Docker L2 + K8s L2. [Primer](../Prometheus/notes/0000-primer-prometheus.md), [install and verify script](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml), [container-monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml), [getting-started trip-ups](../Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md), [PromQL target-health snippet](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 - **Kubernetes + Prometheus integration** — Wiring Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations for automatic target tracking. [Guide](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
 - **Grafana** — Dashboards over metrics sources like Prometheus. First contact is here: [primer](../graf/notes/0000-primer-grafana.md) (data sources, panels, dashboards, variables, alert rules), [install via Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh), and [UI exploration notes](../graf/notes/2026-09-25-explore-grafana-ui.md) covering the localhost-in-Docker gotcha. Builds on Monitoring & Observability concepts.
-- **OpenTelemetry** — Vendor-neutral instrumentation that emits the signals Prometheus and Grafana consume. First contact is here: [primer](../otel/notes/0000-primer-opentelemetry.md) (traces, spans, context propagation, exporters, collector). Builds on Monitoring & Observability concepts; next steps are installing the SDKs and running a local collector.
+- **OpenTelemetry** — Vendor-neutral instrumentation that emits the signals Prometheus and Grafana consume. Start at the [primer](../otel/notes/0000-primer-opentelemetry.md) (traces, spans, context propagation, exporters, collector), then get something moving end to end: the [first-span snippet](../otel/snippets/2026-09-26-first-trace-span.py) wires a tracer provider to an OTLP exporter, and the [collector install script](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) brings up `otel/opentelemetry-collector-contrib` and reads the span back out of its log. Builds on Monitoring & Observability concepts. Auto-instrumentation and context propagation across services are ⏳.
 
 ## Stage 5: Mastery
 
@@ -166,4 +166,4 @@ classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault,Pulumi,Grafana,OpenTelemetry hasContent
 ```
 
- _Last updated: 2026-09-25_
+ _Last updated: 2026-09-26_
