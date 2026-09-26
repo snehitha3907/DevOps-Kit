@@ -25,12 +25,12 @@ But the topics.md Flux CD section (lines 48-52) shows:
 ```
 ## Flux CD  ·  3 files
 
-- **notes** (1): [exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up.
-- **scripts** (1): [install Flux CLI and run flux check --pre](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
-- **docs** (1): [Flux CD coverage correction](../FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — verified README Coverage table and topics.md counts against disk
+- **notes** (1): [exploring the Flux CLI command surface](../notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up.
+- **scripts** (1): [install Flux CLI and run flux check --pre](../scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
+- **docs** (1): [Flux CD coverage correction](./2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — verified README Coverage table and topics.md counts against disk
 ```
 
-> **Note:** The above excerpt is quoted from `00_index/topics.md` where the relative links resolve correctly from the repo root. When viewed from `FluxCD/docs/`, the `../FluxCD/...` links appear broken — they are correct in the source file.
+> **Note:** The above excerpt is quoted from `00_index/topics.md` where the relative links resolve correctly from the repo root. Links here are adjusted to resolve from this file's location.
 
 This matches what's on disk (3 files total: 1 note + 1 script + 1 doc).
 
