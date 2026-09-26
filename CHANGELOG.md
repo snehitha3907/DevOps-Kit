@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-26
+
+- Added OpenTelemetry Collector install script: starts a Collector on the OTLP ports, sends it one span, and reads the span back out of the container log (otel-002) (`otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh`)
+- Added first-trace-span snippet: minimal TracerProvider plus OTLP gRPC exporter that ships one span to a local Collector (otel-003) (`otel/snippets/2026-09-26-first-trace-span.py`)
+
 ## 2026-09-25
 
 - Added graf/ coverage doc: added the missing graf/ Coverage-table row (notes 2, docs 1, scripts 1) and left topics.md for the Maintainer rebuild (graf-004) (`graf/docs/2026-09-25-grafana-coverage-and-topics.md`)
