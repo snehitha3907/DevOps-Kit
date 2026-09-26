@@ -36,6 +36,7 @@ Intermediate concepts and tools that depend on Stage 1 foundations and Stage 2 t
 - **Automated git bisect** — Finding the exact commit that broke a build by scripting bisect with a regression test, for both CI and local use. [Guide](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md)
 - **Git branching mechanics** — Branches as movable pointers, switching with checkout/switch, detached HEAD, and finishing a merge. [Branching tutorial notes](../Git/notes/2026-08-11-git-branching-tutorial.md)
 - **Git repository scaffolds** — Starter templates wiring conventional-commit linting, pinned client-side hooks, and release-please automation. [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md) · [git-repo-scaffold README](../Git/templates/git-repo-scaffold/README.md). For the GitHub side (branch protection, CODEOWNERS, issue/PR templates, Dependabot), see the [github-repo-scaffold README](../GitHub/templates/github-repo-scaffold/README.md).
+- **Trunk-based delivery** — Landing all work on `main` via short-lived branches, with branch protection, merge queues, and CODEOWNERS as the safety net. [Notes](../docs/concepts/version-control-concepts/2026-09-25-trunk-based-delivery-short-lived-branches.md), [branch-hygiene audit script](../docs/concepts/version-control-concepts/scripts/2026-09-25-audit-branch-hygiene-stale-branch-cleanup.py)
 - **Git gitattributes** — Configuring line-ending normalization, custom diff drivers, and merge strategies for notebooks, lockfiles, and binaries so they merge cleanly. [Setup script](../Git/scripts/setup-gitattributes-filters-and-merge.sh)
 - **Branch protection and release automation** — Wiring branch protection rules, merge strategies, and release automation into the CI/CD pipeline. [Guide](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
 - **Docker Compose** — Defining and running multi-service applications. [Quickstart notes](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [multi-service manifest](../Docker/manifests/2026-06-13-web-db-compose.yaml), [Go + Redis with health checks](../Docker/manifests/2026-06-28-go-redis-compose-healthchecks.yaml), [Go + Redis + Prometheus stack](../Docker/manifests/go-redis-prometheus-compose.yaml), [production stack with limits and healthchecks](../Docker/manifests/production-compose-stack.yaml), [production Swarm stack with secrets and rolling updates](../Docker/manifests/production-swarm-stack.yaml). When you're ready to look past one machine, the [Compose vs Swarm vs Kubernetes notebook](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb) scaffolds the same demo app in all three formats and compares them structurally.
@@ -82,6 +83,7 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Prometheus** — Metrics collection and alerting. Depends on Docker L2 + K8s L2. [Primer](../Prometheus/notes/0000-primer-prometheus.md), [install and verify script](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml), [container-monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml), [getting-started trip-ups](../Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md), [PromQL target-health snippet](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 - **Kubernetes + Prometheus integration** — Wiring Prometheus into a Kubernetes cluster using service discovery, RBAC, and workload annotations for automatic target tracking. [Guide](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md)
 - **Grafana** — Dashboards over metrics sources like Prometheus. First contact is here: [primer](../graf/notes/0000-primer-grafana.md) (data sources, panels, dashboards, variables, alert rules), [install via Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh), and [UI exploration notes](../graf/notes/2026-09-25-explore-grafana-ui.md) covering the localhost-in-Docker gotcha. Builds on Monitoring & Observability concepts.
+- **OpenTelemetry** — Vendor-neutral instrumentation that emits the signals Prometheus and Grafana consume. First contact is here: [primer](../otel/notes/0000-primer-opentelemetry.md) (traces, spans, context propagation, exporters, collector). Builds on Monitoring & Observability concepts; next steps are installing the SDKs and running a local collector.
 
 ## Stage 5: Mastery
 
@@ -135,6 +137,7 @@ graph TD
 
     Mon[Monitoring & Observability] --> Prometheus
     Mon --> Grafana
+    Mon --> OpenTelemetry
 
     Git --> GitHub
     Git --> GitLabCI
@@ -160,7 +163,7 @@ graph TD
 classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault,Pulumi,Grafana hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault,Pulumi,Grafana,OpenTelemetry hasContent
 ```
 
  _Last updated: 2026-09-25_
