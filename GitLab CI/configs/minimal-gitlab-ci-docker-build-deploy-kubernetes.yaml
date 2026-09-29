@@ -1,0 +1,61 @@
+# last_verified: 2026-09-29 · GitLab CI (n/a)
+# Minimal GitLab CI pipeline: build Docker image, push to registry, deploy to Kubernetes
+# This config assumes a Kubernetes cluster with a configured kubeconfig in CI/CD variables.
+
+stages:
+  - build
+  - push
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+  IMAGE_TAG: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  KUBECONFIG_FILE: "$CI_PROJECT_DIR/kubeconfig"
+
+build-image:
+  stage: build
+  image: docker:27.0
+  services:
+    - docker:27.0-dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  script:
+    - docker build --pull -t "$IMAGE_TAG" .
+  tags:
+    - docker
+
+push-image:
+  stage: push
+  image: docker:27.0
+  services:
+    - docker:27.0-dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  script:
+    - docker push "$IMAGE_TAG"
+  needs:
+    - build-image
+  tags:
+    - docker
+  only:
+    - main
+    - tags
+
+deploy-k8s:
+  stage: deploy
+  image: bitnami/kubectl:1.31
+  before_script:
+    - echo "$KUBE_CONFIG" > "$KUBECONFIG_FILE"
+    - export KUBECONFIG="$KUBECONFIG_FILE"
+    - kubectl version --client
+  script:
+    - kubectl set image deployment/my-app my-app="$IMAGE_TAG" --record
+    - kubectl rollout status deployment/my-app --timeout=120s
+  needs:
+    - push-image
+  environment:
+    name: production
+  only:
+    - main
+  when: manual
