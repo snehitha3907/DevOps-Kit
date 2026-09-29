@@ -13,7 +13,7 @@ I ran `ls Git/scripts/` and counted 11 files — the extra one is `bisect-automa
 
 ## What I changed
 
-I bumped the Git Coverage row: Scripts 10→11, Docs 13→14 (this file, self-counted), Last verified 2026-09-17→2026-09-25. I left `00_index/topics.md` alone on purpose — the Maintainer rebuilds it every cycle, so my hand-edit to the Git scripts count there would just collide (it still reads scripts (10) with "7 more", which the rebuild will correct to 11 with "8 more").
+I bumped the Git Coverage row: Scripts 10→11, Docs 13→14 (this file, self-counted), Last verified 2026-09-17→2026-09-25. I left `00_index/topics.md` alone on purpose — the kit maintainer rebuilds it on each pass, so my hand-edit to the Git scripts count there would just collide (it still reads scripts (10) with "7 more", which the rebuild will correct to 11 with "8 more").
 
 ## Verification
 

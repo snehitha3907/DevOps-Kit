@@ -6,7 +6,7 @@ sources: []
 
 # GCP/ coverage note — 2026-09-28
 
-> The task that queued this said the README GCP row was behind — Scripts 1→2, Snippets 1→2. I recounted against disk and most of that had already landed on its own. Scratch notes on what was actually stale.
+> A review pass flagged that the README GCP row was behind — Scripts 1→2, Snippets 1→2. I recounted against disk and most of that had already landed on its own. Scratch notes on what was actually stale.
 
 ## What I counted
 
@@ -18,7 +18,7 @@ I edited the GCP Coverage row: Docs `—`→1 (this file, self-counted) and Last
 
 ## What I left alone
 
-`00_index/topics.md` lists the GCP folder too. I did not hand-edit anything under `00_index/` — the Maintainer rebuilds that navigation from the file tree every cycle, and two workers editing it in the same cycle is how the merge conflicts happen. Its GCP section already reads scripts (4), configs (3), snippets (2); the rebuild just needs to pick up the new `GCP/docs/` folder.
+`00_index/topics.md` lists the GCP folder too. I did not hand-edit anything under `00_index/` — the kit maintainer rebuilds that navigation from the file tree on each pass, and two people editing it at once is how the merge conflicts happen. Its GCP section already reads scripts (4), configs (3), snippets (2); the rebuild just needs to pick up the new `GCP/docs/` folder.
 
 ## Check
 

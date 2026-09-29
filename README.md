@@ -18,12 +18,11 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
+- [Integrating Docker with Kubernetes for production workloads](Docker/docs/integrating-docker-with-kubernetes.md) — The handoff between the two: immutable image tags, pull secrets, probe translation, requests and limits, rollout and rollback.
+- [GCP coverage note](GCP/docs/2026-09-28-gcp-readme-coverage-and-topics.md) — A recount of the GCP folder against the coverage table below.
 - [Install an OpenTelemetry collector and run the OTLP pipeline](otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) — Starts `otel/opentelemetry-collector-contrib` on 4317/4318, emits one span, and reads it back out of the collector log.
 - [First trace span with the OpenTelemetry Python SDK](otel/snippets/2026-09-26-first-trace-span.py) — Creates a tracer provider, starts a span, attaches an attribute, and exports it to the local collector.
-- [Poking around the Grafana UI](graf/notes/2026-09-25-explore-grafana-ui.md) — Wires a Prometheus data source, builds a first panel, and the localhost-inside-Docker gotcha.
-- [Install Grafana with Docker](graf/scripts/2026-09-25-install-grafana-with-docker.sh) — Runs `grafana/grafana` on port 3000 and waits for the login page to answer.
-- [Trunk-based delivery with short-lived branches](docs/concepts/version-control-concepts/2026-09-25-trunk-based-delivery-short-lived-branches.md) — Branch protection, merge queues, and CODEOWNERS as the safety net for `main`.
-- [Testing TCP port reachability and DNS resolution](docs/concepts/networking-fundamentals/scripts/2026-09-25-testing-tcp-port-reachability-dns-resolution.py) — Socket-level checks you can drop into a health probe or a debugging session.
+- [Git scripts-count correction](Git/docs/2026-09-25-git-scripts-count-correction.md) — A recount of the Git scripts folder against the coverage table below.
 
 ## Layout
 
@@ -32,7 +31,7 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 - **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
 - **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests, installation, and sync checks.
 - **Azure/** — Azure CLI setup, CLI-vs-Bicep-vs-Python-SDK comparison, resource provisioning, VM scale sets, and a private AKS Bicep example.
-- **Docker/** — Container primers, Dockerfiles, Compose stacks, Compose-vs-Swarm-vs-Kubernetes comparison, build patterns, health checks, and Go service scaffolds.
+- **Docker/** — Container primers, Dockerfiles, Compose stacks, Compose-vs-Swarm-vs-Kubernetes comparison, build patterns, health checks, Go service scaffolds, and a Docker-to-Kubernetes handoff guide.
 - **FluxCD/** — Flux CLI primer, bootstrap, reconcile, and pre-flight cluster checks.
 - **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, startup scripts, and instance templates.
 - **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, gitattributes setup, and regression examples.
@@ -63,7 +62,7 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 | Ansible | 10 | 4 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-09-16 |
 | ArgoCD | 3 | — | 1 | 1 | 2 | — | — | — | — | 2026-08-11 |
 | Azure | 4 | 1 | 3 | 3 | — | 1 | — | — | — | 2026-09-19 |
-| Docker | 6 | 6 | 2 | 5 | 1 | 6 | 2 | 9 | 6 | 2026-09-09 |
+| Docker | 6 | 7 | 2 | 5 | 1 | 6 | 2 | 9 | 6 | 2026-09-29 |
 | FluxCD | 1 | 1 | — | 1 | — | — | — | — | — | 2026-09-22 |
 | GCP | 2 | 1 | 2 | 4 | 3 | — | — | — | — | 2026-09-28 |
 | Git | 8 | 15 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
@@ -85,7 +84,7 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Recently added: first-contact OpenTelemetry material — a traces primer, a collector install script, and a first-span snippet — alongside Grafana UI exploration, trunk-based delivery notes, and a socket-level TCP/DNS reachability check. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Recently added: a Docker-to-Kubernetes handoff guide — immutable tags, pull secrets, probe translation, rollout and rollback — alongside first-contact OpenTelemetry material (a traces primer, a collector install script, and a first-span snippet), Grafana UI exploration, and trunk-based delivery notes. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
-_Last updated: 2026-09-26_
+_Last updated: 2026-09-29_

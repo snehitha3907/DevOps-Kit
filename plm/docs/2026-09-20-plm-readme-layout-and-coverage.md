@@ -25,4 +25,4 @@ I went to link the Pulumi folder from the README and found it was invisible: no 
 - `scripts/2026-09-19-install-pulumi-cli-and-init-project.sh` — check the CLI, scaffold a Python project, init a dev stack, and preview.
 - `snippets/2026-09-19-minimal-bucket-with-pulumi-python.py` — one bucket with its name kept as a stack output.
 
-I left `00_index/topics.md` alone on purpose — the Maintainer regenerates the index from the file tree each cycle, so a Pulumi section gets picked up there without me hand-editing it.
+I left `00_index/topics.md` alone on purpose — the kit maintainer regenerates the index from the file tree on each pass, so a Pulumi section gets picked up there without me hand-editing it.

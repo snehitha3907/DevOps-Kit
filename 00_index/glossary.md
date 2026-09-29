@@ -113,6 +113,8 @@
 - **Stack (Compose vs Swarm)** — The same Compose file runs as a single-host stack under `docker compose up` and as a multi-node stack under `docker stack deploy`; replica control and rolling updates only exist in the Swarm form.
 - **Swarm secret** — A sensitive value (password, cert, key) created with `docker secret create` and mounted into a service's containers at runtime, so the stack file itself never carries plaintext credentials.
 - **`update_config`** — The Swarm service block (`parallelism`, `delay`, `failure_action`, `order`) controlling how `docker stack deploy` rolls a new image across replicas without taking the whole service down at once.
+- **Immutable tag** — An image tag that points at exactly one build (a commit SHA or CI build number) and is never re-pushed. Deploy the immutable tag instead of a moving one, so a rollout is unambiguous about which build is live and a rollback is just a pointer move back to a known-good image.
+- **Moving tag** — A re-pushed tag like `stable` or `latest` whose contents change over time. Convenient for humans, ambiguous for deploys: nodes with a cached copy keep running the old build, so redeploying it says nothing about what is actually live.
 
 ## GCP
 
@@ -287,6 +289,7 @@
 - **ClusterRoleBinding** — A rule that grants the permissions in a ClusterRole to a specific user or service account.
 - **RBAC** — Role-Based Access Control, the Kubernetes authorization model that grants permissions through Roles and ClusterRoles bound to users or ServiceAccounts; Prometheus needs `get`, `list`, and `watch` on pods, services, endpoints, and nodes.
 - **Pod Disruption Budget** — A policy that limits the number of pods that can be voluntarily evicted from a Deployment or StatefulSet at once, protecting availability during node maintenance.
+- **imagePullSecrets** — A Pod-spec field naming the Secret that holds private-registry pull credentials, so the kubelet can fetch the image. The Secret must live in the same namespace as the workload; one Secret per namespace can be shared by every Deployment in it.
 
 ## OpenTofu
 

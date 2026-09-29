@@ -14,7 +14,7 @@ I opened the README Coverage table and `graf/` had no row at all — the table j
 
 ## What I changed
 
-I added one Coverage-table row for `graf/`: notes 2, docs 1 (this file — docs was 0 before it), scripts 1, everything else `—`, Last verified 2026-09-25. I also created this note under `graf/docs/` so the docs column is honest. I left `00_index/topics.md` alone on purpose — the Maintainer rebuilds that file from the tree every cycle, so my hand-edit would just collide with theirs.
+I added one Coverage-table row for `graf/`: notes 2, docs 1 (this file — docs was 0 before it), scripts 1, everything else `—`, Last verified 2026-09-25. I also created this note under `graf/docs/` so the docs column is honest. I left `00_index/topics.md` alone on purpose — the kit maintainer rebuilds that file from the tree on each pass, so my hand-edit would just collide with theirs.
 
 ## Verification
 

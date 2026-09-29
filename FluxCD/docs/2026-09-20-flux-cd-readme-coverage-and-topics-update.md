@@ -19,7 +19,7 @@ On disk under `FluxCD/`:
 README Coverage table currently shows for Flux CD:
 | Flux CD | 1 | — | 1 | — | — | — | — | — | — | 2026-09-19 |
 
-That matches what's on disk (Notes=1, Scripts=1). The task description mentioned "new Flux CD/notes + scripts on disk, Layout entry added 2026-09-19; needs Notes/Scripts counts and topic links" — the counts are already correct in the table.
+That matches what's on disk (Notes=1, Scripts=1). The review notes mentioned "new Flux CD/notes + scripts on disk, Layout entry added 2026-09-19; needs Notes/Scripts counts and topic links" — the counts are already correct in the table.
 
 But the topics.md Flux CD section (lines 48-52) shows:
 ```
@@ -36,11 +36,11 @@ This matches what's on disk (3 files total: 1 note + 1 script + 1 doc).
 
 ## What I changed
 
-Actually, looking more carefully at the task description: "Add Flux CD to README Coverage table and 00_index/topics.md (new Flux CD/notes + scripts on disk, Layout entry added 2026-09-19; needs Notes/Scripts counts and topic links)"
+Actually, looking more carefully at the review notes: "Add Flux CD to README Coverage table and 00_index/topics.md (new Flux CD/notes + scripts on disk, Layout entry added 2026-09-19; needs Notes/Scripts counts and topic links)"
 
 The Layout entry was already added in the README (line 35: "FluxCD/ — Flux CLI primer, bootstrap, reconcile, and pre-flight cluster checks.") and the Coverage table already has the row. The topics.md section already exists with correct counts and links.
 
-It seems like this task might have been already satisfied by a prior update. Let me verify the README and topics.md are already correct.
+It seems like this review item might have been already satisfied by a prior update. Let me verify the README and topics.md are already correct.
 
 ## Verification
 
