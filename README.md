@@ -18,11 +18,11 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
+- [Stand up a Cloud Run service from a generated Terraform config](GCP/scripts/build-cloud-run-service-terraform.py) — Writes a minimal `.tf` to a temp directory, then `init` / `plan` / `apply` it and prints the service URL.
+- [Grafana quickstart trip-ups](graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) — Running the official "Getting started" guide end to end: install, data source, dashboard, alerting, and what actually got in the way.
+- [BuildKit vs classic vs Buildx](Docker/notebooks/comparing-docker-build-strategies.ipynb) — The three build engines side by side, with a feature matrix for choosing between them.
+- [Multi-service Compose scaffold with health checks](Docker/templates/multi-service-compose-with-healthchecks/README.md) — App plus Postgres and Redis, every service health-checked, startup order gated on health.
 - [Integrating Docker with Kubernetes for production workloads](Docker/docs/integrating-docker-with-kubernetes.md) — The handoff between the two: immutable image tags, pull secrets, probe translation, requests and limits, rollout and rollback.
-- [GCP coverage note](GCP/docs/2026-09-28-gcp-readme-coverage-and-topics.md) — A recount of the GCP folder against the coverage table below.
-- [Install an OpenTelemetry collector and run the OTLP pipeline](otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) — Starts `otel/opentelemetry-collector-contrib` on 4317/4318, emits one span, and reads it back out of the collector log.
-- [First trace span with the OpenTelemetry Python SDK](otel/snippets/2026-09-26-first-trace-span.py) — Creates a tracer provider, starts a span, attaches an attribute, and exports it to the local collector.
-- [Git scripts-count correction](Git/docs/2026-09-25-git-scripts-count-correction.md) — A recount of the Git scripts folder against the coverage table below.
 
 ## Layout
 
@@ -31,24 +31,24 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 - **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
 - **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests, installation, and sync checks.
 - **Azure/** — Azure CLI setup, CLI-vs-Bicep-vs-Python-SDK comparison, resource provisioning, VM scale sets, and a private AKS Bicep example.
-- **Docker/** — Container primers, Dockerfiles, Compose stacks, Compose-vs-Swarm-vs-Kubernetes comparison, build patterns, health checks, Go service scaffolds, and a Docker-to-Kubernetes handoff guide.
+- **Docker/** — Container primers, Dockerfiles, Compose stacks, build-strategy and networking notebooks, health checks, Go and Compose scaffolds, and a Docker-to-Kubernetes handoff guide.
 - **FluxCD/** — Flux CLI primer, bootstrap, reconcile, and pre-flight cluster checks.
-- **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, startup scripts, and instance templates.
+- **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, startup scripts, instance templates, and a scripted Cloud Run deployment.
 - **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, gitattributes setup, and regression examples.
 - **GitHub/** — Repository operations, repo scaffold template, issue forms, branch protection, API examples, and release automation notes.
 - **GitHub Actions/** — Workflow primers, reusable workflows, runner setup, and dispatch examples.
-- **GitLab CI/** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline config, multi-project pipeline templates, and an API trigger snippet.
-- **graf/** — Grafana primer, Docker-based install script, and UI exploration notes (data sources, panels, dashboards).
+- **GitLab CI** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline config, multi-project pipeline templates, and an API trigger snippet.
+- **graf/** — Grafana primer, Docker-based install script, UI exploration notes, and quickstart trip-ups.
 - **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, release testing, and chart scaffolding.
 - **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, production patterns with HPA and PDB, and Helm/Kustomize overlays.
-- **OpenTelemetry/** (folder `otel/`) — Traces primer, a collector install script, and a first-span snippet.
+- **OpenTelemetry** (folder `otel/`) — Traces primer, a collector install script, and a first-span snippet.
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, scan-mode selection, severity policies, and Python wrappers.
 - **plm/** — Pulumi primer, CLI install and project init, and a minimal Python bucket snippet.
 - **vlt/** — HashiCorp Vault primer, dev server setup, and KV engine examples.
-- **docs/** — Foundational concept primers, plus the kit's own notes and audit checks.
+- **docs/** — Foundational concept primers under `docs/concepts/`, plus notes about the kit itself.
 - **CHANGELOG.md** — Dated record of additions, reworks, and navigation corrections.
 
 ## Coverage
@@ -62,14 +62,14 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 | Ansible | 10 | 4 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-09-16 |
 | ArgoCD | 3 | — | 1 | 1 | 2 | — | — | — | — | 2026-08-11 |
 | Azure | 4 | 1 | 3 | 3 | — | 1 | — | — | — | 2026-09-19 |
-| Docker | 6 | 7 | 2 | 5 | 1 | 6 | 2 | 9 | 6 | 2026-09-29 |
+| Docker | 6 | 7 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-09-29 |
 | FluxCD | 1 | 1 | — | 1 | — | — | — | — | — | 2026-09-22 |
-| GCP | 2 | 1 | 2 | 4 | 3 | — | — | — | — | 2026-09-28 |
+| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-29 |
 | Git | 8 | 15 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
 | GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 8 | 2026-09-20 |
 | GitHub Actions | 6 | 5 | 1 | 3 | 5 | — | — | — | — | 2026-09-11 |
 | GitLab CI | 4 | — | 1 | 3 | 3 | — | — | — | — | 2026-09-19 |
-| graf | 2 | 2 | — | 1 | — | — | — | — | — | 2026-09-25 |
+| graf | 3 | 2 | — | 1 | — | — | — | — | — | 2026-09-29 |
 | Helm | 3 | 4 | 1 | 3 | 4 | 4 | 1 | — | — | 2026-09-18 |
 | Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-09-04 |
 | otel | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-09-25 |
@@ -84,7 +84,7 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Recently added: a Docker-to-Kubernetes handoff guide — immutable tags, pull secrets, probe translation, rollout and rollback — alongside first-contact OpenTelemetry material (a traces primer, a collector install script, and a first-span snippet), Grafana UI exploration, and trunk-based delivery notes. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Recently added: a scripted Cloud Run deployment that drives Terraform end to end, Grafana quickstart trip-ups, a build-strategy comparison notebook, and a multi-service Compose scaffold that gates startup on health checks. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
 _Last updated: 2026-09-29_

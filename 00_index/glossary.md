@@ -115,6 +115,11 @@
 - **`update_config`** — The Swarm service block (`parallelism`, `delay`, `failure_action`, `order`) controlling how `docker stack deploy` rolls a new image across replicas without taking the whole service down at once.
 - **Immutable tag** — An image tag that points at exactly one build (a commit SHA or CI build number) and is never re-pushed. Deploy the immutable tag instead of a moving one, so a rollout is unambiguous about which build is live and a rollback is just a pointer move back to a known-good image.
 - **Moving tag** — A re-pushed tag like `stable` or `latest` whose contents change over time. Convenient for humans, ambiguous for deploys: nodes with a cached copy keep running the old build, so redeploying it says nothing about what is actually live.
+- **Classic builder** — Docker's original single-threaded build engine. Still selectable with `DOCKER_BUILDKIT=0`, useful for isolating a failure to the old path, but it lacks cache mounts, build secrets, and parallel step execution.
+- **Multi-platform build** — One build producing images for several CPU architectures (`linux/amd64,linux/arm64`) under the same tag via a manifest list. Needs `binfmt_misc`/QEMU emulation registered on the host when the target architecture is not the build machine's.
+- **Registry cache** — A BuildKit or Buildx cache exported into a container registry and pulled by the next build (`--cache-from type=registry`), so ephemeral CI runners don't rebuild every layer from scratch.
+- **`depends_on` with `condition: service_healthy`** — A Compose startup gate that holds a dependent service until the named services report `healthy`, not merely started. Without the condition, an app container begins serving before its database is accepting connections.
+- **`env_file`** — A Compose key that loads a file of `KEY=value` lines into a container's environment at start. Keep a committed `.env.example` beside it so the required keys are discoverable without committing real values.
 
 ## GCP
 
@@ -135,6 +140,9 @@
 - **IAM policy binding** — Grants a member (user, group, or service account) a role on a specific resource, e.g. `gcloud storage buckets add-iam-policy-binding` to let a service account read one bucket. Scoped bindings are preferable to project-wide roles.
 - **Named configuration** — A saved `gcloud` profile (`gcloud config configurations list|activate`) holding its own account, project, region, and zone, so learning setups stay separate from the default instead of editing it in place.
 - **Instance template** — A Compute Engine recipe (machine type, image, tags, metadata, service account) that managed instance groups copy when creating VMs; the startup script lives under `metadata.items` with the key `startup-script`.
+- **Cloud Run** — A serverless container platform: push an image, give it a service definition, and Google runs and scales revisions behind an HTTPS endpoint. The unit you deploy is a container image plus a port, not a server.
+- **Artifact Registry** — Google's container image registry, the usual home for images destined for Cloud Run. Image names are fully qualified (`REGION-docker.pkg.dev/PROJECT/REPO/IMAGE:TAG`) rather than Docker Hub's `user/image` shorthand.
+- **`google_cloud_run_v2_service`** — The Terraform resource that declares a Cloud Run service, its container image, resource limits, and the ingress setting. The generated service URL is exported as the module output and is also the value you attach to DNS or pass to a load balancer.
 
 ## Helm
 
@@ -458,6 +466,10 @@
 - **Variable** — A dropdown that re-runs every panel with a new value, so one dashboard can flip between services.
 - **Alert rule** — A threshold check pinned to a query, e.g. warn if the error share stays above five percent for ten minutes.
 - **Snapshot** — A frozen, shareable copy of a dashboard whose graphs survive after the underlying data ages out.
+- **Provisioning** — Declaring data sources, dashboards, and alert rules from files under `/etc/grafana/provisioning/` (or from `GF_*` environment variables) at start-up instead of clicking them into the UI. Provisioned objects are owned by the config: they appear in the UI but are read-only there, and edits must go back into the file.
+- **`GF_DATASOURCES`** — An environment variable holding inline JSON that provisions data sources on boot. Convenient for a throwaway container, awkward to review in version control; a YAML file under the provisioning directory is the better home once the definition grows.
+- **`uid`** — The stable string identifier a dashboard (or folder) needs to be addressable by API and URL. Exported JSON carrying only a numeric `id` will import but never show up in the list, because the numeric ID is instance-local.
+- **Unified Alerting** — The current Grafana alerting system, reachable at `/alerting/list`. A bookmarked link to the legacy `/alerting` page still resolves to the old UI, which does not show rules created under Unified Alerting.
 
 ## OpenTelemetry
 

@@ -12,6 +12,7 @@
 - [Create an S3 bucket and upload an object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py)
 - [Install gcloud CLI and configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
 - [Create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
+- [Stand up a Cloud Run service from generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py)
 
 ### Install a tool
 
@@ -136,6 +137,7 @@
 
 - [Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md)
 - [Compose vs Swarm vs Kubernetes](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb)
+- [BuildKit vs classic builder vs Buildx](../Docker/notebooks/comparing-docker-build-strategies.ipynb)
 - [Multi-stage Go HTTP server Dockerfile](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 - [Production-ready Go HTTP server Dockerfile](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile)
 - [Production Python web-service Dockerfile](../Docker/dockerfiles/production-python-web-service.Dockerfile)
@@ -143,6 +145,7 @@
 - [docker run vs compose](../Docker/docs/docker-run-vs-compose.md)
 - [Docker-to-Kubernetes handoff for production workloads](../Docker/docs/integrating-docker-with-kubernetes.md)
 - [Go microservice scaffold](../Docker/templates/go-microservice/README.md)
+- [Multi-service Compose scaffold with health checks](../Docker/templates/multi-service-compose-with-healthchecks/README.md)
 - [Production Swarm stack with secrets and rolling updates](../Docker/manifests/production-swarm-stack.yaml)
 - [Health check and cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - [Image layer analyzer](../Docker/snippets/analyze-image-layers.py)
@@ -210,6 +213,7 @@
 - [gcloud quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md)
 - [Launch a VM, firewall rule, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh)
 - [Instance template with a startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml)
+- [Deploy a Cloud Run service with generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py)
 - [Create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
 - [List Compute instances and GCS buckets](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh)
 - [Install gcloud CLI and configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
@@ -254,6 +258,7 @@
 ### Visualize metrics
 
 - [Grafana primer](../graf/notes/0000-primer-grafana.md)
+- [Grafana quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md)
 - [Poking around the Grafana UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
 - [Install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
 
