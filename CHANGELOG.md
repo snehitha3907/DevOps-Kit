@@ -2,6 +2,7 @@
 
 ## 2026-09-29
 
+- Added Docker build strategies notebook: compares the classic builder, BuildKit, and Buildx across concurrency, caching, secrets, and multi-platform features with runnable examples (doc-062) (`Docker/notebooks/comparing-docker-build-strategies.ipynb`)
 - Added multi-service Compose scaffold with health checks: app + Postgres + Redis with healthy-gated startup order, non-root app image, env template, and rollback notes (doc-061) (`Docker/templates/multi-service-compose-with-healthchecks/`)
 - Passed ([x]) doc-061 — Docker: template — Multi-service Docker Compose project scaffold with health checks · Level: L6 · 2026-09-29
 - Added Docker-to-Kubernetes integration doc: immutable image tags, pull credentials, HEALTHCHECK-to-probe translation, requests/limits, rollout verification, and rollback (doc-060) (`Docker/docs/integrating-docker-with-kubernetes.md`)
