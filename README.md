@@ -65,8 +65,8 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 | Azure | 4 | 1 | 3 | 3 | — | 1 | — | — | — | 2026-09-19 |
 | Docker | 6 | 6 | 2 | 5 | 1 | 6 | 2 | 9 | 6 | 2026-09-09 |
 | FluxCD | 1 | 1 | — | 1 | — | — | — | — | — | 2026-09-22 |
-| GCP | 2 | — | 2 | 4 | 3 | — | — | — | — | 2026-09-20 |
-| Git | 8 | 14 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
+| GCP | 2 | 1 | 2 | 4 | 3 | — | — | — | — | 2026-09-28 |
+| Git | 8 | 15 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
 | GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 8 | 2026-09-20 |
 | GitHub Actions | 6 | 5 | 1 | 3 | 5 | — | — | — | — | 2026-09-11 |
 | GitLab CI | 4 | — | 1 | 3 | 3 | — | — | — | — | 2026-09-19 |
@@ -88,4 +88,4 @@ The kit covers 21 tool families across cloud CLIs, configuration management, con
 Recently added: first-contact OpenTelemetry material — a traces primer, a collector install script, and a first-span snippet — alongside Grafana UI exploration, trunk-based delivery notes, and a socket-level TCP/DNS reachability check. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
-_Last updated: 2026-09-27_
+_Last updated: 2026-09-26_

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-29
+
+- Added Docker-to-Kubernetes integration doc: immutable image tags, pull credentials, HEALTHCHECK-to-probe translation, requests/limits, rollout verification, and rollback (doc-060) (`Docker/docs/integrating-docker-with-kubernetes.md`)
+
+## 2026-09-28
+
+- Corrected GCP README Coverage row: recounted every folder against disk (notes 2, snippets 2, scripts 4, configs 3 were already right), set Docs —→1 for the new coverage note, and bumped Last verified 2026-09-20→2026-09-28; topics.md left for the Maintainer rebuild (doc-038) (`GCP/docs/2026-09-28-gcp-readme-coverage-and-topics.md`, `README.md`)
+
 ## 2026-09-26
 
 - Added OpenTelemetry Collector install script: starts a Collector on the OTLP ports, sends it one span, and reads the span back out of the container log (otel-002) (`otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh`)
