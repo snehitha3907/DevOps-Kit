@@ -1,6 +1,28 @@
 # last_verified: 2026-09-29 · GitLab CI (n/a)
-# Minimal GitLab CI pipeline: build Docker image, push to registry, deploy to Kubernetes
-# This config assumes a Kubernetes cluster with a configured kubeconfig in CI/CD variables.
+# Purpose: build one image from the commit, push it to the GitLab registry under an
+# immutable commit-SHA tag, and roll that exact digest out to a Kubernetes Deployment.
+#
+# Reading order is build-image -> push-image -> deploy-k8s. Each job names the job it
+# consumes with `needs:`, so ordering is explicit and a stage cannot start before the
+# artifact it depends on exists. push-image also exports the pushed digest as a dotenv
+# variable, which is what lets deploy-k8s pin by digest rather than by tag.
+#
+# No image is pinned to a version here, deliberately. Registry namespaces get retired and
+# versioned tags quietly stop resolving; the job then dies at image pull, long before any
+# of the logic below is exercised, and the failure reads like a broken pipeline rather
+# than a stale tag. Set DOCKER_CLI_IMAGE / DOCKER_DIND_IMAGE / KUBECTL_IMAGE in
+# Settings > CI/CD > Variables (or override them per environment) to tags you have
+# checked, and confirm each one resolves before merging a change to this file:
+#
+#   docker manifest inspect "$KUBECTL_IMAGE"
+#
+# A non-zero exit means the tag does not exist. The values below are unversioned
+# floating tags chosen as a starting point, not a recommendation.
+#
+# Runner requirement: build-image and push-image both need a runner carrying the `docker`
+# tag that is registered as privileged (or configured for Docker-in-Docker). The dind
+# service does not start on a shared, unprivileged runner, and the symptom is a build
+# error rather than a runner-configuration error.
 
 stages:
   - build
@@ -8,54 +30,152 @@ stages:
   - deploy
 
 variables:
-  DOCKER_DRIVER: overlay2
-  DOCKER_TLS_CERTDIR: "/certs"
+  # The image under test. The commit SHA is the tag, so nothing here is mutable and a
+  # rollback is "point the Deployment at the previous SHA tag".
   IMAGE_TAG: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+
+  # The deploy job writes the kubeconfig to a file inside its own workspace instead of
+  # relying on an ambient ~/.kube/config, which a container job does not have.
   KUBECONFIG_FILE: "$CI_PROJECT_DIR/kubeconfig"
+
+  # GitLab expands CI/CD variables in the `image` and `services[].name` keys, so these
+  # three are the only place an image name is spelled out.
+  DOCKER_CLI_IMAGE: "docker"          # client that runs `docker build` and `docker push`
+  DOCKER_DIND_IMAGE: "docker:dind"    # the daemon the client talks to
+  KUBECTL_IMAGE: "bitnami/kubectl"    # replace with a tag you have verified resolves
+
+  # Deployment coordinates, kept as variables so a staging pipeline and a production
+  # pipeline differ by values here rather than by a fork of this file.
+  K8S_NAMESPACE: "default"
+  K8S_DEPLOYMENT: "my-app"
+  K8S_CONTAINER: "my-app"
+  ROLLOUT_TIMEOUT: "120s"
 
 build-image:
   stage: build
-  image: docker:27.0
+  image: $DOCKER_CLI_IMAGE
   services:
-    - docker:27.0-dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - name: $DOCKER_DIND_IMAGE
+      alias: docker
   script:
-    - docker build --pull -t "$IMAGE_TAG" .
+    - docker build --pull --tag "$IMAGE_TAG" .
   tags:
     - docker
+  rules:
+    # Nothing is built for fork merge requests: the push job below only publishes the
+    # default branch and tags, so a fork build would be built and then thrown away.
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_TAG
+    - when: never
 
 push-image:
   stage: push
-  image: docker:27.0
+  image: $DOCKER_CLI_IMAGE
   services:
-    - docker:27.0-dind
+    - name: $DOCKER_DIND_IMAGE
+      alias: docker
+  needs:
+    - job: build-image
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    # Fail before spending a build slot if the registry credentials are missing. The
+    # password is fed over stdin rather than passed with -p, which would expose it in
+    # the process list to anything else on the runner.
+    - |
+      if [ -z "$CI_REGISTRY_USER" ] || [ -z "$CI_REGISTRY_PASSWORD" ]; then
+        echo "CI_REGISTRY_USER / CI_REGISTRY_PASSWORD are not set; cannot reach $CI_REGISTRY" >&2
+        exit 1
+      fi
+    - echo "$CI_REGISTRY_PASSWORD" | docker login --username "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
   script:
     - docker push "$IMAGE_TAG"
-  needs:
-    - build-image
+    # RepoDigests is only populated once a push has succeeded, which is why the digest
+    # is read here and not in build-image. The deploy job consumes this exact digest, so
+    # the running pod cannot drift to different content if the SHA tag is ever re-pushed.
+    - |
+      digest_ref="$(docker image inspect --format '{{index .RepoDigests 0}}' "$IMAGE_TAG")"
+      if [ -z "$digest_ref" ]; then
+        echo "push reported success but $IMAGE_TAG has no RepoDigests entry" >&2
+        exit 1
+      fi
+      echo "DEPLOY_IMAGE=$digest_ref" > deploy.env
+      echo "published $digest_ref"
+  artifacts:
+    reports:
+      dotenv: deploy.env
   tags:
     - docker
-  only:
-    - main
-    - tags
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - when: never
 
 deploy-k8s:
   stage: deploy
-  image: bitnami/kubectl:1.31
-  before_script:
-    - echo "$KUBE_CONFIG" > "$KUBECONFIG_FILE"
-    - export KUBECONFIG="$KUBECONFIG_FILE"
-    - kubectl version --client
-  script:
-    - kubectl set image deployment/my-app my-app="$IMAGE_TAG" --record
-    - kubectl rollout status deployment/my-app --timeout=120s
+  image: $KUBECTL_IMAGE
   needs:
-    - push-image
+    - job: push-image
+      artifacts: true
+  before_script:
+    # KUBE_CONFIG is deliberately absent from the `variables:` block above: it holds a
+    # cluster credential, and anything written to this file is committed. It belongs in
+    # Settings > CI/CD > Variables as a masked variable, and this guard turns a missing
+    # one into a clear message instead of an empty-kubeconfig error from kubectl.
+    - |
+      if [ -z "$KUBE_CONFIG" ]; then
+        echo "KUBE_CONFIG is not set. Store the kubeconfig as a masked CI/CD variable" >&2
+        echo "in Settings > CI/CD > Variables; it is not declared in this file on purpose." >&2
+        exit 1
+      fi
+    - printf '%s' "$KUBE_CONFIG" > "$KUBECONFIG_FILE"
+    - export KUBECONFIG="$KUBECONFIG_FILE"
+    - kubectl config current-context
+  script:
+    # Read the live image before changing anything. This is the only record of what was
+    # running before this job, and the rollback below depends on it.
+    - |
+      previous_image="$(kubectl get deployment "$K8S_DEPLOYMENT" \
+        -n "$K8S_NAMESPACE" -o jsonpath='{.spec.template.spec.containers[0].image}')"
+      if [ -z "$previous_image" ]; then
+        echo "deployment/$K8S_DEPLOYMENT not found in namespace $K8S_NAMESPACE" >&2
+        exit 1
+      fi
+      echo "rolling out $DEPLOY_IMAGE over $previous_image"
+    # No --record flag: it is deprecated and only warns on current kubectl. Change-cause
+    # tracking is handled by the environment below, not by kubectl.
+    - kubectl set image "deployment/$K8S_DEPLOYMENT" "$K8S_CONTAINER=$DEPLOY_IMAGE" -n "$K8S_NAMESPACE"
+    - |
+      if kubectl rollout status "deployment/$K8S_DEPLOYMENT" \
+           -n "$K8S_NAMESPACE" --timeout="$ROLLOUT_TIMEOUT"; then
+        # Verify step: the rollout can report success while the Deployment still shows a
+        # different image if something else reconciled it, so read the value back.
+        running_image="$(kubectl get deployment "$K8S_DEPLOYMENT" \
+          -n "$K8S_NAMESPACE" -o jsonpath='{.spec.template.spec.containers[0].image}')"
+        if [ "$running_image" != "$DEPLOY_IMAGE" ]; then
+          echo "rollout finished but deployment image is $running_image, expected $DEPLOY_IMAGE" >&2
+          kubectl set image "deployment/$K8S_DEPLOYMENT" \
+            "$K8S_CONTAINER=$previous_image" -n "$K8S_NAMESPACE" || true
+          exit 1
+        fi
+        echo "deployment/$K8S_DEPLOYMENT is running $running_image"
+      else
+        # Rollback branch. Setting the captured image back is deterministic and does not
+        # depend on ReplicaSet revision history still being present in the cluster.
+        echo "rollout failed; restoring $previous_image" >&2
+        kubectl set image "deployment/$K8S_DEPLOYMENT" \
+          "$K8S_CONTAINER=$previous_image" -n "$K8S_NAMESPACE" || true
+        kubectl rollout status "deployment/$K8S_DEPLOYMENT" \
+          -n "$K8S_NAMESPACE" --timeout="$ROLLOUT_TIMEOUT" || true
+        exit 1
+      fi
   environment:
     name: production
-  only:
-    - main
-  when: manual
+  rules:
+    # `when: manual` inside a rule (rather than at job level) is what lets the pipeline
+    # actually block on the gate. A job-level `when: manual` defaults to
+    # allow_failure: true, so the pipeline goes green while nobody deploys.
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+      allow_failure: false
+    - when: never
