@@ -80,13 +80,13 @@
 - **configs** (3): most recent → [instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml), [minimal config and startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml), [service account and IAM](../GCP/configs/service-account-and-iam-config.yaml)
 - **snippets** (2): most recent → [list Compute and GCS](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [earlier pass](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 
-## Git  ·  58 files
+## Git  ·  57 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (22): [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md) — commitlint, pinned `.githooks`, release-please — plus [pre-commit hook](../Git/templates/git-hooks/pre-commit) and [commit-msg hook](../Git/templates/git-hooks/commit-msg)
 - _…and 19 more under `Git/templates/` — browse the folder._
-- **docs** (15): most recent → [worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md), [scripts count note](../Git/docs/2026-09-25-git-scripts-count-correction.md), [worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 12 more under `Git/docs/` — browse the folder._
+- **docs** (14): most recent → [worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md), [scripts count note](../Git/docs/2026-09-25-git-scripts-count-correction.md), [worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 11 more under `Git/docs/` — browse the folder._
 - **scripts** (11): [bisect automation runner](../Git/scripts/bisect-automation-runner.sh) — drives `git bisect run` end to end against a scripted regression test — plus [gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh), [branch management and tagging](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - _…and 7 more under `Git/scripts/` — browse the folder._
 - **notes** (8): most recent → [branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [earlier branching pass](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore the CLI](../Git/notes/2026-06-04-explore-git-cli.md)
