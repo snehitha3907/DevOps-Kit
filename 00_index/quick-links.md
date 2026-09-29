@@ -141,6 +141,7 @@
 - [Production Python web-service Dockerfile](../Docker/dockerfiles/production-python-web-service.Dockerfile)
 - [Build mount vs COPY caching](../Docker/docs/docker-build-mount-vs-copy-caching.md)
 - [docker run vs compose](../Docker/docs/docker-run-vs-compose.md)
+- [Docker-to-Kubernetes handoff for production workloads](../Docker/docs/integrating-docker-with-kubernetes.md)
 - [Go microservice scaffold](../Docker/templates/go-microservice/README.md)
 - [Production Swarm stack with secrets and rolling updates](../Docker/manifests/production-swarm-stack.yaml)
 - [Health check and cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
@@ -285,7 +286,7 @@
 - [Parallelized CI stage runner](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - [Branch protection, merge strategies, and release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
 
-### Troublesage a host
+### Troubleshoot a host
 
 - [Process and permission patterns](../docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md)
 - [Filesystem permissions and process management](../docs/concepts/linux-system-administration/scripts/2026-07-18-filesystem-permissions-and-process-management.sh)

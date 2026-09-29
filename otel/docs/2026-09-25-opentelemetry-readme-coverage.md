@@ -13,7 +13,7 @@ I opened the README Layout and there is no `otel/` bullet — the list jumps fro
 
 ## What I changed
 
-I added an `otel/` Layout bullet between OpenTofu and Prometheus, plus one Coverage-table row for OpenTelemetry: notes 1, docs 1 (this file — docs was 0 before it), everything else `—`, Last verified 2026-09-25. I left `00_index/topics.md` alone on purpose — the Maintainer rebuilds that file from the tree every cycle, so a hand-added OpenTelemetry section would just collide with theirs.
+I added an `otel/` Layout bullet between OpenTofu and Prometheus, plus one Coverage-table row for OpenTelemetry: notes 1, docs 1 (this file — docs was 0 before it), everything else `—`, Last verified 2026-09-25. I left `00_index/topics.md` alone on purpose — the kit maintainer rebuilds that file from the tree on each pass, so a hand-added OpenTelemetry section would just collide with theirs.
 
 ## Verification
 

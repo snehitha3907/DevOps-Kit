@@ -48,7 +48,7 @@
 - **docs** (1): [CLI vs Bicep vs Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md) — which interface fits each stage of provisioning a small app stack
 - **manifests** (1): [production AKS cluster](../Azure/manifests/production-aks-cluster.bicep)
 
-## Docker  ·  43 files
+## Docker  ·  44 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (6): most recent → [tutorial trip-ups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring the CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
@@ -60,7 +60,8 @@
 - _…and 3 more under `Docker/manifests/` — browse the folder._
 - **scripts** (5): most recent → [multi-stage Go build](../Docker/scripts/multi-stage-go-dockerfile.sh), [health check and cleanup](../Docker/scripts/docker-health-check-and-cleanup.sh), [install and run a first container](../Docker/scripts/install-and-run-first-container.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
-- **docs** (6): [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [build mount vs COPY caching](../Docker/docs/docker-build-mount-vs-copy-caching.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md), [docker run vs compose](../Docker/docs/docker-run-vs-compose.md), [compose.yml reference](../Docker/docs/docker-compose.yml), [package.json reference](../Docker/docs/package.json)
+- **docs** (7): most recent → [Docker-to-Kubernetes handoff](../Docker/docs/integrating-docker-with-kubernetes.md) — immutable tags, pull secrets, probe translation, requests/limits, rollout and rollback — plus [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md)
+- _…and 4 more under `Docker/docs/` — browse the folder._
 - **notebooks** (2): [Compose vs Swarm vs Kubernetes](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb) — the same demo app in three formats — plus [networking drivers](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **snippets** (2): [build, run, and clean up](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service app config](../Docker/configs/multi-service-app.yaml)
@@ -71,7 +72,7 @@
 - **scripts** (1): [install the CLI and run `flux check --pre`](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 - **docs** (1): [Flux CD coverage and topics note](../FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — how this folder maps into the README coverage table and topic map
 
-## GCP  ·  11 files
+## GCP  ·  12 files
 
 - **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 - **notes** (2): most recent → [gcloud SDK quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md), [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
@@ -79,14 +80,15 @@
 - _1 more under `GCP/scripts/` — browse the folder._
 - **configs** (3): most recent → [instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml), [minimal config and startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml), [service account and IAM](../GCP/configs/service-account-and-iam-config.yaml)
 - **snippets** (2): most recent → [list Compute and GCS](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [earlier pass](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
+- **docs** (1): [GCP coverage note](../GCP/docs/2026-09-28-gcp-readme-coverage-and-topics.md) — how `GCP/` maps into the README coverage table and topic map
 
-## Git  ·  57 files
+## Git  ·  58 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (22): [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md) — commitlint, pinned `.githooks`, release-please — plus [pre-commit hook](../Git/templates/git-hooks/pre-commit) and [commit-msg hook](../Git/templates/git-hooks/commit-msg)
 - _…and 19 more under `Git/templates/` — browse the folder._
-- **docs** (14): most recent → [worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md), [scripts count note](../Git/docs/2026-09-25-git-scripts-count-correction.md), [worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 11 more under `Git/docs/` — browse the folder._
+- **docs** (15): most recent → [worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md), [scripts count note](../Git/docs/2026-09-25-git-scripts-count-correction.md), [worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 12 more under `Git/docs/` — browse the folder._
 - **scripts** (11): [bisect automation runner](../Git/scripts/bisect-automation-runner.sh) — drives `git bisect run` end to end against a scripted regression test — plus [gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh), [branch management and tagging](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
 - _…and 7 more under `Git/scripts/` — browse the folder._
 - **notes** (8): most recent → [branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [earlier branching pass](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore the CLI](../Git/notes/2026-06-04-explore-git-cli.md)

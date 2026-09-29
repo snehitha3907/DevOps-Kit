@@ -13,7 +13,7 @@ I opened the README Layout and `graf/` appears in two bullets — once between G
 
 ## What I changed
 
-I deleted the duplicate Layout bullet (kept the one between GitLab CI and Helm) and removed the stale `Grafana` Coverage row, keeping a single `graf` row: notes 2, docs 2 (this file — docs was 1 before it), scripts 1, Last verified 2026-09-25. I left `00_index/topics.md` alone on purpose — the Maintainer rebuilds it every cycle, so the stale Grafana file count there gets corrected on rebuild, not by my hand-edit.
+I deleted the duplicate Layout bullet (kept the one between GitLab CI and Helm) and removed the stale `Grafana` Coverage row, keeping a single `graf` row: notes 2, docs 2 (this file — docs was 1 before it), scripts 1, Last verified 2026-09-25. I left `00_index/topics.md` alone on purpose — the kit maintainer rebuilds it on each pass, so the stale Grafana file count there gets corrected on rebuild, not by my hand-edit.
 
 ## Verification
 
