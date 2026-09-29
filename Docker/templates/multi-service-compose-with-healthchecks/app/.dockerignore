@@ -1,0 +1,4 @@
+# last_verified: 2026-09-29 · Docker (n/a)
+__pycache__/
+*.pyc
+.env

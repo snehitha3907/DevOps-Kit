@@ -2,6 +2,7 @@
 
 ## 2026-09-29
 
+- Added multi-service Compose scaffold with health checks: app + Postgres + Redis with healthy-gated startup order, non-root app image, env template, and rollback notes (doc-061) (`Docker/templates/multi-service-compose-with-healthchecks/`)
 - Added Docker-to-Kubernetes integration doc: immutable image tags, pull credentials, HEALTHCHECK-to-probe translation, requests/limits, rollout verification, and rollback (doc-060) (`Docker/docs/integrating-docker-with-kubernetes.md`)
 
 ## 2026-09-28

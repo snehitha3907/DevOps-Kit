@@ -1,0 +1,81 @@
+# last_verified: 2026-09-29 · Docker Compose (n/a)
+# Multi-service scaffold: app (built locally) + Postgres + Redis.
+# Copy this directory, fill in .env from .env.example, then: docker compose up --build
+name: multi-service-healthchecks
+
+services:
+  app:
+    build:
+      context: ./app
+    image: multi-service-app:local
+    env_file:
+      - path: ./.env
+        required: false
+    environment:
+      APP_PORT: ${APP_PORT:-8000}
+      DATABASE_URL: postgres://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-change-me}@db:5432/${POSTGRES_DB:-appdb}
+      REDIS_URL: redis://cache:6379/0
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+    networks:
+      - frontend
+      - backend
+
+  db:
+    image: ${POSTGRES_IMAGE:-postgres}
+    env_file:
+      - path: ./.env
+        required: false
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: ${POSTGRES_DB:-appdb}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-app} -d $${POSTGRES_DB:-appdb}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - backend
+
+  cache:
+    image: ${REDIS_IMAGE:-redis}
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - cache-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    networks:
+      - backend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+    internal: true
+
+volumes:
+  db-data:
+  cache-data:
