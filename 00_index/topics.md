@@ -66,9 +66,10 @@
 - **snippets** (2): [build, run, and clean up](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service app config](../Docker/configs/multi-service-app.yaml)
 
-## FluxCD  ·  3 files
+## FluxCD  ·  5 files
 
-- **notes** (1): [exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md) — bootstrap, reconcile, tree, get, and the gotchas that tripped me up
+- **notes** (2): most recent → [quickstart trip-ups](../FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md) — the Git-side path and the cluster-side objects are two separate halves, and both have to exist — plus [exploring the Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md)
+- **configs** (1): [minimal GitRepository and Kustomization](../FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml) — the two objects otherwise re-typed by hand every quickstart
 - **scripts** (1): [install the CLI and run `flux check --pre`](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 - **docs** (1): [Flux CD coverage and topics note](../FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — how this folder maps into the README coverage table and topic map
 
@@ -144,13 +145,14 @@ Folder on disk is `graf/`.
 - **scripts** (1): [install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh) — runs `grafana/grafana` on port 3000 and waits for the login page
 - **docs** (2): [navigation dedup note](../graf/docs/2026-09-25-grafana-navigation-dedup.md), [coverage and topics note](../graf/docs/2026-09-25-grafana-coverage-and-topics.md)
 
-## Grafana Cloud  ·  2 files
+## Grafana Cloud  ·  3 files
 
-Folder on disk is `grafc/`. First contact only — no notes, scripts, or primer yet.
+Folder on disk is `grafc/`. First contact only — no primer or scripts yet.
 
+- **notes** (1): [first hosted dashboard](../grafc/notes/2026-09-30-first-hosted-dashboard.md) — the hosted side is the same Grafana with a signup and a URL attached; where the scrape interval actually lives, and copying the JSON model out for the next dashboard
 - **configs** (1): [minimal metrics scrape config](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml) — the unix exporter scraped every 15s and forwarded through a pass-through relabel rule; the remote-write endpoint is deliberately left out until the target stack's addressing is settled
 - **snippets** (1): [create a dashboard over the HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js) — posts a minimal dashboard JSON with a bearer token so a dashboard is defined as data rather than clicks
-- _Prompts, alerting rules, and a remote-write half are ⏳._
+- _Remote write wiring, alerting rules, and a stack config in version control are ⏳._
 
 ## HashiCorp Vault  ·  5 files
 
@@ -209,12 +211,13 @@ Folder on disk is `otel/`.
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 - **notebooks** (1): [OpenTofu vs Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 
-## Prometheus  ·  6 files
+## Prometheus  ·  9 files
 
 - **primer:** [0000-primer-prometheus.md](../Prometheus/notes/0000-primer-prometheus.md)
 - **notes** (2): most recent → [getting-started trip-ups](../Prometheus/notes/2026-09-05-prometheus-getting-started-trip-ups.md), [0000-primer-prometheus.md](../Prometheus/notes/0000-primer-prometheus.md)
-- **configs** (2): [container monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
-- **scripts** (1): [install and verify the metrics endpoint](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
+- **configs** (3): most recent → [recording rules vs alerting rules](../Prometheus/configs/recording-vs-alerting-rules.yaml) — precompute a query once, or evaluate a condition and fire — plus [container monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml), [minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
+- **docs** (1): [Alertmanager wired to PagerDuty](../Prometheus/docs/alertmanager-pagerduty-oncall-rotations.md) — rotation schedules, escalation policies, and inhibition rules from a firing alert to an incident
+- **scripts** (2): most recent → [custom application exporter](../Prometheus/scripts/custom-app-exporter.py) — a `/metrics` endpoint built from the standard library, keeping the exposition format and scrape contract visible — plus [install and verify the metrics endpoint](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
 ## Pulumi  ·  4 files

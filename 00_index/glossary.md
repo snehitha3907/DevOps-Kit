@@ -4,7 +4,8 @@
 
 - **Flux CD** — A GitOps operator for Kubernetes that continuously reconciles cluster state with a Git repository, automating deployments without manual `kubectl apply`.
 - **Bootstrap** — The `flux bootstrap` command that installs Flux into a cluster and wires it to a Git repo in one shot: namespace, CRDs, deployment, and deploy-key secret.
-- **Kustomization** — A Flux resource that watches a path in Git and applies the Kustomize-defined manifests found there to the cluster.
+- **GitRepository** — A Flux source resource that says where to fetch from: the clone URL, the branch or tag or commit to check out, and how often to re-fetch. Everything downstream (a Kustomization, a HelmRelease) points at a GitRepository rather than at Git directly.
+- **Kustomization** — A Flux resource that watches a path in Git and applies the Kustomize-defined manifests found there to the cluster. The `--path` it takes is a path inside the fetched repo, not a directory on your laptop — pointing it at a local one is the usual reason the source comes back empty.
 - **HelmRelease** — A Flux resource that declaratively manages a Helm chart release, including install, upgrade, and rollback.
 - **Reconcile** — The `flux reconcile` command that re-syncs a Flux object immediately instead of waiting for the next interval; `--with-source` pulls the Git source down first.
 - **`flux tree`** — A command that prints the dependency graph of Flux-managed resources, handy when a HelmRepository fetch is failing.
@@ -368,6 +369,11 @@
 - **Target** — An HTTP endpoint that exposes a /metrics page and is listed in a `scrape_configs` block. Example: `localhost:9090/metrics`.
 - **PromQL** — Prometheus's query language for selecting, aggregating, and computing on time-series data. Example: `rate(http_requests_total[5m])`.
 - **Alertmanager** — A component that receives alerts from Prometheus, deduplicates them, groups by labels, and routes them to email, Slack, or pager integrations.
+- **Recording rule** — A rule that precomputes an expression into a new named time series on a schedule, so a dashboard or another rule reuses one stored result instead of re-running a heavy query on every panel refresh. Naming follows `level:metric:operations`, e.g. `job:http_error_ratio:1m`.
+- **Alerting rule** — A rule that evaluates a condition (`recorded_series > 0.05`), optionally holds it for a `for` duration, and fires when it stays true. The `for` clause is what stops a blip from paging anyone.
+- **Route tree** — Alertmanager's ordered receiver definitions: alerts are matched by label and handed to the first matching route, so grouping and routing decisions live in one place rather than in each alert's labels.
+- **Inhibition rule** — A rule that mutes an alert when another matching alert is already firing. A `Critical` firing suppresses every `Warning` for the same instance, which is what keeps a bad deploy from paging the whole rotation twice.
+- **On-call rotation** — A schedule in PagerDuty that assigns the incident to whoever is on shift, so an alert reaches a person rather than a distribution list. Rotations pair with escalation policies: if the first responder does not acknowledge within a window, the incident walks up the policy.
 - **Exporter** — A small server that translates third-party metrics into the Prometheus format. Example: Node Exporter turns Linux kernel and hardware metrics into /metrics output.
 - **ServiceMonitor** — A Kubernetes Custom Resource Definition (CRD) used by the Prometheus Operator to declaratively select which pods to scrape.
 - **PodMonitor** — A Kubernetes CRD used by the Prometheus Operator to select pods for scraping based on label selectors, similar to ServiceMonitor but targeting pods directly.
