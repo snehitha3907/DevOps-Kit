@@ -152,13 +152,13 @@ Folder on disk is `grafc/`. First contact only — no notes, scripts, or primer 
 - **snippets** (1): [create a dashboard over the HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js) — posts a minimal dashboard JSON with a bearer token so a dashboard is defined as data rather than clicks
 - _Prompts, alerting rules, and a remote-write half are ⏳._
 
-## HashiCorp Vault  ·  4 files
+## HashiCorp Vault  ·  5 files
 
 Folder on disk is `vlt/`.
 
 - **primer:** [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
 - **notes** (2): [exploring the Vault CLI](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md) — secrets, policies, and what is already there — plus [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
-- **scripts** (1): [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- **scripts** (2): [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) — dev server, KV mounted at a custom path, one secret written and read — plus [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 - **docs** (1): [how `vlt/` is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
 ## Helm  ·  20 files
@@ -189,13 +189,15 @@ Folder on disk is `vlt/`.
 - **snippets** (2): [first pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh), [pod troubleshooting shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **configs** (1): [Deployment and Service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 
-## OpenTelemetry  ·  4 files
+## OpenTelemetry  ·  7 files
 
 Folder on disk is `otel/`.
 
 - **primer:** [0000-primer-opentelemetry.md](../otel/notes/0000-primer-opentelemetry.md) — traces, spans, context propagation, exporters, and where the collector sits
+- **notes** (2): [quickstart trip-ups](../otel/notes/2026-09-30-quickstart-trip-ups.md) — the 4317-vs-4318 mix-up, pipeline order, reading the noisy log output — plus [0000-primer-opentelemetry.md](../otel/notes/0000-primer-opentelemetry.md)
+- **configs** (1): [minimal Collector OTLP export config](../otel/configs/2026-09-30-collector-otlp-export.yaml) — OTLP in, one batch step, log out
 - **scripts** (1): [install a collector and run the OTLP pipeline](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) — brings up `otel/opentelemetry-collector-contrib` on 4317/4318, emits one span, and tails the collector log
-- **snippets** (1): [first trace span](../otel/snippets/2026-09-26-first-trace-span.py) — a tracer provider, a span with an attribute, and an OTLP exporter aimed at `localhost:4317`
+- **snippets** (2): [instrumented Go HTTP server](../otel/snippets/2026-09-30-instrumented-http-server.go) — one span per request plus a per-path counter — plus [first trace span](../otel/snippets/2026-09-26-first-trace-span.py)
 - **docs** (1): [how `otel/` is reflected in the README and topic map](../otel/docs/2026-09-25-opentelemetry-readme-coverage.md)
 
 ## OpenTofu  ·  10 files

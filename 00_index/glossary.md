@@ -446,6 +446,7 @@
 - **Policy** — A written rule saying which paths a token may read or write, e.g. read-only on `secret/app`.
 - **Token** — The credential presented instead of a password (`vault login <token>`); dev mode prints a root token.
 - **VAULT_ADDR** — The env var telling the CLI where the server lives (e.g. `export VAULT_ADDR='http://127.0.0.1:8200'`).
+- **`vault secrets enable`** — Mounts a secrets engine at a chosen path (`vault secrets enable -path=my-secrets kv-v2`); mounting your own path instead of relying on the dev server's default keeps the learning explicit about which engine serves which secret.
 
 ## Pulumi
 
@@ -496,3 +497,4 @@
 - **Span processor** — The hook a span provider registers to decide what happens when a span ends. `SimpleSpanProcessor` sends each span the moment it closes — right for learning and for a collector you are watching — while a batching processor trades a little latency for far fewer network calls under load.
 - **Span attribute** — A key/value pair attached to a span (`span.set_attribute("http.method", "GET")`) recording a fact about that step. Attributes are indexed, so they are what you filter and group by in a trace backend; free-form log lines are not.
 - **OTLP endpoint** — The address a client exporter is pointed at, e.g. `localhost:4317` for a collector running on the same machine. It is the one setting most often wrong when a span silently goes nowhere: check the port matches the receiver the collector actually has enabled.
+- **Pipeline** — The named entry under `service.pipelines` that wires receivers, processors, and exporters together for one signal type. The order in that line reads receivers, then processors, then exporters, and the collector refuses to start if the stages are listed any other way.

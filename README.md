@@ -18,11 +18,11 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
+- [Collector OTLP export config](otel/configs/2026-09-30-collector-otlp-export.yaml) — OTLP in on 4317/4318, one batch step, log out: the smallest pipeline that proves a span arrived.
+- [OpenTelemetry quickstart trip-ups](otel/notes/2026-09-30-quickstart-trip-ups.md) — Sending gRPC to the HTTP port, getting the pipeline order wrong, and learning to read the log exporter's noisy output.
+- [Instrumented Go HTTP server](otel/snippets/2026-09-30-instrumented-http-server.go) — One trace span per request plus a per-path request counter, so traces and metrics sit side by side.
+- [Vault install and first secrets engine](vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) — Dev server, a KV engine mounted at a custom path, one secret written and read back.
 - [Grafana Cloud agent scrape config](grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml) — A first metrics pipeline: the unix exporter scraped every 15s and forwarded through a pass-through relabel rule.
-- [Create a dashboard over the Grafana HTTP API](grafc/snippets/2026-09-30-first-dashboard-over-http.js) — Posting a minimal dashboard JSON with a bearer token, so a dashboard stops being a click-through-the-UI exercise.
-- [GitLab CI build → push → deploy with a digest-pinned rollout](GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml) — Three stages, a manual production gate, and a deploy job that verifies health and rolls back if it fails.
-- [Deploy a Cloud Run service from generated Terraform](GCP/scripts/build-cloud-run-service-terraform.py) — Writes a minimal `.tf` to a temp directory, then `init` / `plan` / `apply` it and prints the service URL.
-- [Grafana quickstart trip-ups](graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) — Running the official "Getting started" guide end to end: install, data source, dashboard, alerting, and what actually got in the way.
 
 ## Layout
 
@@ -42,13 +42,13 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **grafc/** — Grafana Cloud first contact: an agent scrape config and a dashboard created over the HTTP API.
 - **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, release testing, and chart scaffolding.
 - **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, production patterns with HPA and PDB, and Helm/Kustomize overlays.
-- **OpenTelemetry** (folder `otel/`) — Traces primer, a collector install script, and a first-span snippet.
+- **OpenTelemetry** (folder `otel/`) — Traces primer, collector install script, first-span snippet, a minimal OTLP export config, quickstart trip-ups, and an instrumented Go server.
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
 - **Prometheus/** — Scrape configuration, target health checks, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, scan-mode selection, severity policies, and Python wrappers.
 - **plm/** — Pulumi primer, CLI install and project init, and a minimal Python bucket snippet.
-- **vlt/** — HashiCorp Vault primer, dev server setup, and KV engine examples.
+- **vlt/** — HashiCorp Vault primer, dev server setup, KV engine examples, and a script that mounts a first secrets engine at a custom path.
 - **docs/** — Foundational concept primers under `docs/concepts/`, plus notes about the kit itself.
 - **CHANGELOG.md** — Dated record of additions, reworks, and navigation corrections.
 
@@ -74,19 +74,19 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 | Grafana Cloud (`grafc/`) | — | — | 1 | — | 1 | — | — | — | — | 2026-09-30 |
 | Helm | 3 | 4 | 1 | 3 | 4 | 4 | 1 | — | — | 2026-09-18 |
 | Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-09-21 |
-| OpenTelemetry (`otel/`) | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-09-26 |
+| OpenTelemetry (`otel/`) | 2 | 1 | 2 | 1 | 1 | — | — | — | — | 2026-09-30 |
 | OpenTofu | 2 | 3 | — | 2 | 2 | — | 1 | — | — | 2026-09-18 |
 | Prometheus | 2 | — | 1 | 1 | 2 | — | — | — | — | 2026-09-05 |
 | Pulumi (`plm/`) | 1 | 1 | 1 | 1 | — | — | — | — | — | 2026-09-20 |
 | Terraform | 6 | 4 | 3 | 3 | 8 | 2 | 2 | — | 10 | 2026-09-19 |
 | Trivy | 5 | 1 | 2 | 4 | 2 | — | — | — | — | 2026-09-23 |
-| HashiCorp Vault (`vlt/`) | 2 | 1 | — | 1 | — | — | — | — | — | 2026-09-19 |
+| HashiCorp Vault (`vlt/`) | 2 | 1 | — | 2 | — | — | — | — | — | 2026-09-30 |
 
 </details>
 
 ## Status
 
-Recently added: a first Grafana Cloud contact — a Grafana agent scrape config and a dashboard pushed over the HTTP API — plus a GitLab CI template that builds an image, pushes it by digest, and gates a Kubernetes rollout behind a verify-and-rollback deploy job. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Recently added: a minimal OpenTelemetry collector config that takes OTLP in and logs spans out, trip-ups from wiring a first span end to end, a tiny instrumented Go server pairing a trace with a counter, and a Vault script that mounts a KV engine at a custom path. Current work keeps strengthening production-ready patterns: private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
 _Last updated: 2026-09-30_
