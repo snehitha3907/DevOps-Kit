@@ -1,0 +1,40 @@
+# last_verified: 2026-09-30 · Flux CD (n/a)
+# The two objects I keep re-writing by hand while learning the quickstart, so I
+# put them in one file. The GitRepository tells Flux where to fetch from, the
+# Kustomization tells it what to do with a directory inside that repo.
+#
+# I still apply this with `kubectl apply -f` and let Flux reconcile it, which is
+# what tripped me up in the quickstart - see
+# ../notes/2026-09-30-flux-quickstart-trip-ups.md
+# TODO: replace the placeholder url and branch with my own repo, and I am not
+# pinning a Flux version or a tag on the artifacts yet - I want to see the
+# default reconciliation behaviour before I start constraining it.
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: demo
+  namespace: flux-system
+spec:
+  interval: 1m
+  # TODO: my own repo, not this placeholder
+  url: https://git.example.com/example-org/example-cluster-config
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: demo
+  namespace: flux-system
+spec:
+  interval: 1m
+  # path is relative to the repo root, not to wherever I happen to be
+  path: ./demo
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: demo
+  # the namespace has to exist before this syncs, so I create it with
+  # `flux create ns demo` first - I do not want Flux managing it yet
+  target:
+    namespace: demo
