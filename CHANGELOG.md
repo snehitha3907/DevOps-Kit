@@ -4,6 +4,7 @@
 
 - Added first Grafana Cloud dashboard snippet: posts a minimal dashboard JSON to the HTTP API with a bearer token from the environment (grafc-004) (`grafc/snippets/2026-09-30-first-dashboard-over-http.js`)
 - Added minimal Grafana Cloud agent metrics config: unix exporter plus a 15s scrape job forwarding through an empty relabel, endpoint deliberately left out (grafc-005) (`grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml`)
+- Added Vault install and first secrets-engine scratch script: version check, dev server, enable a kv-v2 engine at my own path, first put/get (vlt-009) (`vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh`)
 
 ## 2026-09-29
 
