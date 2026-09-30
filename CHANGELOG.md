@@ -2,6 +2,7 @@
 
 ## 2026-09-29
 
+- Reworked minimal GitLab CI pipeline with Docker build and Kubernetes deploy: three-stage build/push/deploy config, digest-pinned rollout, per-job error handling, and a verify-and-rollback deploy (gl-015) (`GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml`)
 - Added Docker build strategies notebook: compares the classic builder, BuildKit, and Buildx across concurrency, caching, secrets, and multi-platform features with runnable examples (doc-062) (`Docker/notebooks/comparing-docker-build-strategies.ipynb`)
 - Added multi-service Compose scaffold with health checks: app + Postgres + Redis with healthy-gated startup order, non-root app image, env template, and rollback notes (doc-061) (`Docker/templates/multi-service-compose-with-healthchecks/`)
 - Passed ([x]) doc-061 — Docker: template — Multi-service Docker Compose project scaffold with health checks · Level: L6 · 2026-09-29
