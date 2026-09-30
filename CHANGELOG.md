@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-30
+
+- Added first Grafana Cloud dashboard snippet: posts a minimal dashboard JSON to the HTTP API with a bearer token from the environment (grafc-004) (`grafc/snippets/2026-09-30-first-dashboard-over-http.js`)
+- Added minimal Grafana Cloud agent metrics config: unix exporter plus a 15s scrape job forwarding through an empty relabel, endpoint deliberately left out (grafc-005) (`grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml`)
+
 ## 2026-09-29
 
 - Reworked minimal GitLab CI pipeline with Docker build and Kubernetes deploy: three-stage build/push/deploy config, digest-pinned rollout, per-job error handling, and a verify-and-rollback deploy (gl-015) (`GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml`)

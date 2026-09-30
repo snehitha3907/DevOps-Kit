@@ -1,0 +1,17 @@
+# last_verified: 2026-09-30 · Grafana Cloud (n/a)
+# My first metrics-scraping config for the Grafana Cloud agent. The unix
+# exporter gives me node metrics, the scrape job pulls them every 15s, and the
+# empty relabel is just a pass-through so I have somewhere to send the samples.
+# TODO: not run against a real stack yet, and the remote-write half is still
+# missing - I am deliberately leaving the Grafana Cloud endpoint out until I
+# check how my stack expects to be addressed.
+metrics:
+  prometheus.exporter.unix "default" {}
+
+  prometheus.relabel "default" {}
+
+  prometheus.scrape "node" {
+    targets    = prometheus.exporter.unix.default.targets
+    forward_to = [prometheus.relabel.default]
+    scrape_interval = "15s"
+  }
