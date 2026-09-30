@@ -471,6 +471,16 @@
 - **`uid`** — The stable string identifier a dashboard (or folder) needs to be addressable by API and URL. Exported JSON carrying only a numeric `id` will import but never show up in the list, because the numeric ID is instance-local.
 - **Unified Alerting** — The current Grafana alerting system, reachable at `/alerting/list`. A bookmarked link to the legacy `/alerting` page still resolves to the old UI, which does not show rules created under Unified Alerting.
 
+## Grafana Cloud
+
+- **Grafana agent** — The OpenTelemetry Collector distribution bundled as `grafana-agent` / `grafana-agent-ctl`: the same scrape-and-forward shape as a raw collector, wired to a Grafana Cloud stack by a stack ID and an API token rather than by an endpoint you assemble yourself.
+- **Prometheus scrape job** — The agent stanza that names what to scrape, how often, and where the samples go: `prometheus.scrape "node" { targets = ..., forward_to = [...], scrape_interval = "15s" }`.
+- **`prometheus.exporter.unix`** — An exporter stanza that runs node-level collectors (CPU, memory, filesystem, load) and publishes their target list, so a scrape job can point at `prometheus.exporter.unix.default.targets` instead of a hardcoded `host:port`.
+- **relay / pass-through relabel** — A `prometheus.relabel` rule that receives samples and forwards them on. An empty rule is a no-op, which makes it a convenient placeholder: give the scrape job one target today and a second one tomorrow without touching the scrape stanza.
+- **Remote write** — The push-side counterpart to scraping: the agent sends samples to the Cloud stack's `/api/prom/push` endpoint instead of waiting to be polled. Without it the samples are collected and then discarded, which is the usual reason a first agent config looks like it is working but nothing appears in the UI.
+- **API token** — The credential the agent presents to the Grafana Cloud API. It carries a specific set of instance permissions, so scoping it to just the one stack is worth the extra step — a token that can read every stack is a token you do not want in a repo.
+- **`uid`** — The stable string identifier a dashboard or folder needs to be addressable by API and URL. Without one, an imported or POSTed dashboard exists but is not listed anywhere, which is the usual reason a scripted "create a dashboard" call appears to do nothing.
+
 ## OpenTelemetry
 
 - **OpenTelemetry (OTel)** — A vendor-neutral observability framework: one set of APIs and SDKs to emit traces, metrics, and logs from code, then point the data at any backend without re-instrumenting.

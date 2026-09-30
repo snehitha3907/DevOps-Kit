@@ -87,6 +87,8 @@ Tools that depend on foundational concepts at L2 or core tools at L2+.
 - **Grafana** — Dashboards over metrics sources like Prometheus. First contact is here: [primer](../graf/notes/0000-primer-grafana.md) (data sources, panels, dashboards, variables, alert rules), [install via Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh), and [UI exploration notes](../graf/notes/2026-09-25-explore-grafana-ui.md) covering the localhost-in-Docker gotcha. The [quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) walk the official "Getting started" guide and explain why provisioned data sources are read-only, why a dashboard import needs a `uid`, and where alerting moved. Builds on Monitoring & Observability concepts.
 - **OpenTelemetry** — Vendor-neutral instrumentation that emits the signals Prometheus and Grafana consume. Start at the [primer](../otel/notes/0000-primer-opentelemetry.md) (traces, spans, context propagation, exporters, collector), then get something moving end to end: the [first-span snippet](../otel/snippets/2026-09-26-first-trace-span.py) wires a tracer provider to an OTLP exporter, and the [collector install script](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) brings up `otel/opentelemetry-collector-contrib` and reads the span back out of its log. Builds on Monitoring & Observability concepts. Auto-instrumentation and context propagation across services are ⏳.
 
+- **Grafana Cloud** — The hosted half of the Grafana stack, and the piece the local `graf/` primer deliberately doesn't cover. First contact is here and it is deliberately thin: an [agent scrape config](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml) that runs the unix exporter on a 15s interval through a pass-through relabel rule, and a [dashboard created over the HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js) with a bearer token. Read it right after the Grafana entry above — the data-source and panel concepts carry straight over; what is new is where the metrics go and how the agent is addressed. Remote write, alerting rules, and a stack config in version control are ⏳.
+
 ## Stage 5: Mastery
 
 Advanced concepts and expert-level tool content.
@@ -141,6 +143,9 @@ graph TD
     Mon --> Grafana
     Mon --> OpenTelemetry
 
+    Mon --> GrafanaCloud
+    Grafana --> GrafanaCloud
+
     Git --> GitHub
     Git --> GitLabCI
     Git --> GitHubActions
@@ -165,7 +170,7 @@ graph TD
 classDef hasContent fill:#e6f3ff,stroke:#4a90d9
     classDef noContent fill:#fff3e0,stroke:#f5a623
 
-    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault,Pulumi,Grafana,OpenTelemetry hasContent
+    class Git,GitHub,Docker,K8s,Ansible,Terraform,GitLabCI,GitHubActions,Trivy,AWS,Azure,GCP,OpenTofu,Helm,ArgoCD,Prometheus,FluxCD,Vault,Pulumi,Grafana,GrafanaCloud,OpenTelemetry hasContent
 ```
 
- _Last updated: 2026-09-29_
+_Last updated: 2026-09-30_
