@@ -11,6 +11,10 @@
 - Added Prometheus exporter script: stdlib-only /metrics endpoint with request, error, in-flight, and latency series plus demo and health endpoints (pro-014) (`Prometheus/scripts/custom-app-exporter.py`)
 - Added Prometheus recording-vs-alerting rules config: precomputed error-ratio and latency series alongside high-error-rate and exporter-down alerts (pro-016) (`Prometheus/configs/recording-vs-alerting-rules.yaml`)
 - Added Prometheus Alertmanager with PagerDuty on-call doc: severity-routed receiver and route tree wired to the demo warning/critical alerts with group and repeat intervals (pro-015) (`Prometheus/docs/alertmanager-pagerduty-oncall-rotations.md`)
+Passed ([x]) pro-015 — Prometheus: docs — How I wired Prometheus Alertmanager with PagerDuty for on-call rotations · Level: L3 · 2026-09-30
+- Added Grafana Cloud first-hosted-dashboard note: the hosted stack vs my local Docker Grafana, the pre-created Prometheus datasource, first stat panel, and finding the dashboard JSON model (grafc-006) (`grafc/notes/2026-09-30-first-hosted-dashboard.md`)
+- Added Flux CD quickstart trip-ups note: cluster-side objects vs Git path, `--path` being repo-relative, and reaching for `flux diff` and `flux reconcile` instead of hand-applying (flx-011) (`FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md`)
+- Added minimal Flux CD GitRepository and Kustomization config: repo-relative path, prune, sourceRef back to the GitRepository, and an explicitly pre-created target namespace (flx-012) (`FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml`)
 
 ## 2026-09-29
 
