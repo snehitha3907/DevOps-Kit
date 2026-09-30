@@ -125,12 +125,13 @@
 - **scripts** (3): [self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install the gh extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - **snippets** (1): [trigger a `workflow_dispatch` and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
-## GitLab CI  ·  11 files
+## GitLab CI  ·  12 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **notes** (4): most recent → [runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md), [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [`.gitlab-ci.yml` reference](../GitLab CI/notes/.gitlab-ci.yml)
-- _1 more under `GitLab CI/notes/` — browse the folder._
-- **configs** (3): most recent → [multi-project pipeline with a downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml), [stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml), [first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
+  - _1 more under `GitLab CI/notes/` — browse the folder._
+- **configs** (4): most recent → [build → push → deploy with a digest-pinned rollout](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml) — three stages, a `when: manual` production gate, and a deploy job that verifies health then rolls back — plus [multi-project pipeline with a downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml), [stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
+  - _1 more under `GitLab CI/configs/` — browse the folder._
 - **scripts** (3): [local pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install a runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 
@@ -142,6 +143,14 @@ Folder on disk is `graf/`.
 - **notes** (3): most recent → [quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) — install, data source, dashboard, alerting, and what got in the way — plus [poking around the UI](../graf/notes/2026-09-25-explore-grafana-ui.md) covering the localhost-in-Docker gotcha
 - **scripts** (1): [install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh) — runs `grafana/grafana` on port 3000 and waits for the login page
 - **docs** (2): [navigation dedup note](../graf/docs/2026-09-25-grafana-navigation-dedup.md), [coverage and topics note](../graf/docs/2026-09-25-grafana-coverage-and-topics.md)
+
+## Grafana Cloud  ·  2 files
+
+Folder on disk is `grafc/`. First contact only — no notes, scripts, or primer yet.
+
+- **configs** (1): [minimal metrics scrape config](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml) — the unix exporter scraped every 15s and forwarded through a pass-through relabel rule; the remote-write endpoint is deliberately left out until the target stack's addressing is settled
+- **snippets** (1): [create a dashboard over the HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js) — posts a minimal dashboard JSON with a bearer token so a dashboard is defined as data rather than clicks
+- _Prompts, alerting rules, and a remote-write half are ⏳._
 
 ## HashiCorp Vault  ·  4 files
 

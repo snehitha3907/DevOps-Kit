@@ -7,6 +7,7 @@
 - Added OpenTelemetry quickstart trip-ups note: OTLP port mix-up, pipeline order, and noisy log output with what I would try next (otel-006) (`otel/notes/2026-09-30-quickstart-trip-ups.md`)
 - Added instrumented Go HTTP server snippet: one span per request plus a plain-map visit counter with a meter TODO (otel-007) (`otel/snippets/2026-09-30-instrumented-http-server.go`)
 - Added minimal Collector OTLP export config: OTLP receivers, batch processor, logging exporter with traces and metrics pipelines (otel-008) (`otel/configs/2026-09-30-collector-otlp-export.yaml`)
+- Added Vault install and first secrets-engine scratch script: version check, dev server, enable a kv-v2 engine at my own path, first put/get (vlt-009) (`vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh`)
 
 ## 2026-09-29
 

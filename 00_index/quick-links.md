@@ -56,6 +56,7 @@
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [GitLab CI stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
 - [GitLab CI multi-project pipeline with a downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml)
+- [GitLab CI build, push, and deploy to Kubernetes](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml)
 - [Helm redis chart](../Helm/manifests/redis-chart/Chart.yaml)
 - [Helm live-release values](../Helm/configs/2026-09-02-live-release-values.yaml)
 - [Helm production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml)
@@ -163,6 +164,7 @@
 - [GitLab CI/CD primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - [Runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md)
 - [Stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
+- [Build, push, and deploy to Kubernetes with a verify-and-rollback job](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml)
 - [Validate a pipeline locally](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh)
 - [Trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 - [Run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
@@ -261,6 +263,11 @@
 - [Grafana quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md)
 - [Poking around the Grafana UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
 - [Install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
+
+### Ship metrics to Grafana Cloud
+
+- [Agent scrape config — unix exporter on a 15s interval](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
+- [Create a dashboard over the Grafana HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js)
 
 ### Check a target is actually up
 
