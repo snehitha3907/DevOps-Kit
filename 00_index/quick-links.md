@@ -101,6 +101,7 @@
 
 - [HashiCorp Vault primer](../vlt/notes/0000-primer-vlt.md)
 - [Install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- [Install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh)
 - [Explore the Vault CLI — secrets and policies](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md)
 
 ### Work with Git
@@ -256,6 +257,9 @@
 - [OpenTelemetry primer](../otel/notes/0000-primer-opentelemetry.md)
 - [Install a collector and run the OTLP pipeline](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh)
 - [First trace span with the Python SDK](../otel/snippets/2026-09-26-first-trace-span.py)
+- [Quickstart trip-ups — ports, pipeline order, noisy log output](../otel/notes/2026-09-30-quickstart-trip-ups.md)
+- [Minimal Collector OTLP export config](../otel/configs/2026-09-30-collector-otlp-export.yaml)
+- [Instrumented Go HTTP server — a span and a counter per request](../otel/snippets/2026-09-30-instrumented-http-server.go)
 
 ### Visualize metrics
 
