@@ -48,21 +48,21 @@
 - **docs** (1): [CLI vs Bicep vs Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md) — which interface fits each stage of provisioning a small app stack
 - **manifests** (1): [production AKS cluster](../Azure/manifests/production-aks-cluster.bicep)
 
-## Docker  ·  44 files
+## Docker  ·  51 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (6): most recent → [tutorial trip-ups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring the CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
 - _…and 3 more under `Docker/notes/` — browse the folder._
 - **dockerfiles** (9): most recent → [production Python web service](../Docker/dockerfiles/production-python-web-service.Dockerfile), [production-ready Go HTTP server](../Docker/dockerfiles/production-ready-go-http-server.Dockerfile), [multi-stage Go HTTP server](../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile)
 - _…and 6 more under `Docker/dockerfiles/` — browse the folder._
-- **templates** (6): [Go microservice scaffold](../Docker/templates/go-microservice/README.md) — multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`
+- **templates** (12): two ready-to-copy scaffolds — [multi-service Compose with health checks](../Docker/templates/multi-service-compose-with-healthchecks/README.md) (app + Postgres + Redis, `service_healthy` startup order, `.env.example`) and the [Go microservice](../Docker/templates/go-microservice/README.md) (multi-stage Dockerfile, Makefile, `.dockerignore`, sample `main.go`)
+- **notebooks** (3): most recent → [BuildKit vs classic vs Buildx](../Docker/notebooks/comparing-docker-build-strategies.ipynb) — the three build engines with a feature matrix, plus [Compose vs Swarm vs Kubernetes](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb) and [networking drivers](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **manifests** (6): most recent → [production Swarm stack](../Docker/manifests/production-swarm-stack.yaml), [production Compose stack](../Docker/manifests/production-compose-stack.yaml), [Go + Redis + Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
 - _…and 3 more under `Docker/manifests/` — browse the folder._
 - **scripts** (5): most recent → [multi-stage Go build](../Docker/scripts/multi-stage-go-dockerfile.sh), [health check and cleanup](../Docker/scripts/docker-health-check-and-cleanup.sh), [install and run a first container](../Docker/scripts/install-and-run-first-container.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
 - **docs** (7): most recent → [Docker-to-Kubernetes handoff](../Docker/docs/integrating-docker-with-kubernetes.md) — immutable tags, pull secrets, probe translation, requests/limits, rollout and rollback — plus [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md)
 - _…and 4 more under `Docker/docs/` — browse the folder._
-- **notebooks** (2): [Compose vs Swarm vs Kubernetes](../Docker/notebooks/comparing-compose-swarm-kubernetes-local-orchestration.ipynb) — the same demo app in three formats — plus [networking drivers](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
 - **snippets** (2): [build, run, and clean up](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service app config](../Docker/configs/multi-service-app.yaml)
 
@@ -72,12 +72,12 @@
 - **scripts** (1): [install the CLI and run `flux check --pre`](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 - **docs** (1): [Flux CD coverage and topics note](../FluxCD/docs/2026-09-20-flux-cd-readme-coverage-and-topics-update.md) — how this folder maps into the README coverage table and topic map
 
-## GCP  ·  12 files
+## GCP  ·  13 files
 
 - **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 - **notes** (2): most recent → [gcloud SDK quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md), [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
-- **scripts** (4): most recent → [launch a VM, firewall rule, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh), [create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh), [install and configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
-- _1 more under `GCP/scripts/` — browse the folder._
+- **scripts** (5): most recent → [build a Cloud Run service with generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py) — writes a minimal `.tf`, runs `init`/`plan`/`apply`, prints the service URL — plus [launch a VM, firewall rule, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh), [create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
+- _…and 2 more under `GCP/scripts/` — browse the folder._
 - **configs** (3): most recent → [instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml), [minimal config and startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml), [service account and IAM](../GCP/configs/service-account-and-iam-config.yaml)
 - **snippets** (2): most recent → [list Compute and GCS](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [earlier pass](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **docs** (1): [GCP coverage note](../GCP/docs/2026-09-28-gcp-readme-coverage-and-topics.md) — how `GCP/` maps into the README coverage table and topic map
@@ -134,12 +134,12 @@
 - **scripts** (3): [local pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install a runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 
-## Grafana  ·  5 files
+## Grafana  ·  6 files
 
 Folder on disk is `graf/`.
 
 - **primer:** [0000-primer-grafana.md](../graf/notes/0000-primer-grafana.md)
-- **notes** (2): [poking around the UI](../graf/notes/2026-09-25-explore-grafana-ui.md) — data sources, panels, dashboards, and the localhost-in-Docker gotcha — plus [0000-primer-grafana.md](../graf/notes/0000-primer-grafana.md)
+- **notes** (3): most recent → [quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) — install, data source, dashboard, alerting, and what got in the way — plus [poking around the UI](../graf/notes/2026-09-25-explore-grafana-ui.md) covering the localhost-in-Docker gotcha
 - **scripts** (1): [install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh) — runs `grafana/grafana` on port 3000 and waits for the login page
 - **docs** (2): [navigation dedup note](../graf/docs/2026-09-25-grafana-navigation-dedup.md), [coverage and topics note](../graf/docs/2026-09-25-grafana-coverage-and-topics.md)
 
