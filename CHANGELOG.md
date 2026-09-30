@@ -4,6 +4,9 @@
 
 - Added first Grafana Cloud dashboard snippet: posts a minimal dashboard JSON to the HTTP API with a bearer token from the environment (grafc-004) (`grafc/snippets/2026-09-30-first-dashboard-over-http.js`)
 - Added minimal Grafana Cloud agent metrics config: unix exporter plus a 15s scrape job forwarding through an empty relabel, endpoint deliberately left out (grafc-005) (`grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml`)
+- Added OpenTelemetry quickstart trip-ups note: OTLP port mix-up, pipeline order, and noisy log output with what I would try next (otel-006) (`otel/notes/2026-09-30-quickstart-trip-ups.md`)
+- Added instrumented Go HTTP server snippet: one span per request plus a plain-map visit counter with a meter TODO (otel-007) (`otel/snippets/2026-09-30-instrumented-http-server.go`)
+- Added minimal Collector OTLP export config: OTLP receivers, batch processor, logging exporter with traces and metrics pipelines (otel-008) (`otel/configs/2026-09-30-collector-otlp-export.yaml`)
 
 ## 2026-09-29
 
