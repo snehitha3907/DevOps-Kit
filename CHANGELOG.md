@@ -8,6 +8,8 @@
 - Added instrumented Go HTTP server snippet: one span per request plus a plain-map visit counter with a meter TODO (otel-007) (`otel/snippets/2026-09-30-instrumented-http-server.go`)
 - Added minimal Collector OTLP export config: OTLP receivers, batch processor, logging exporter with traces and metrics pipelines (otel-008) (`otel/configs/2026-09-30-collector-otlp-export.yaml`)
 - Added Vault install and first secrets-engine scratch script: version check, dev server, enable a kv-v2 engine at my own path, first put/get (vlt-009) (`vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh`)
+- Added Prometheus exporter script: stdlib-only /metrics endpoint with request, error, in-flight, and latency series plus demo and health endpoints (pro-014) (`Prometheus/scripts/custom-app-exporter.py`)
+- Added Prometheus recording-vs-alerting rules config: precomputed error-ratio and latency series alongside high-error-rate and exporter-down alerts (pro-016) (`Prometheus/configs/recording-vs-alerting-rules.yaml`)
 
 ## 2026-09-29
 
@@ -107,8 +109,8 @@
 - Added HashiCorp Vault first-run scratch script: check the CLI version and start a dev server, then write and read one KV secret (vlt-002) (`vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh`)
 - Added minimal Terraform config combining local_file with the random provider: random_pet suffix wired into file content and filename (tf-027) (`Terraform/configs/2026-09-19-local-file-random-provider.hcl`)
 - Added observability-into-CI/CD integration doc: pipeline health as telemetry, the four DORA metrics, the three failure modes to instrument first, deployment markers, and the collector sidecar/gateway pipeline with processor-isolation and fan-out cautions (con-092) (`docs/concepts/monitoring-observability-concepts/docs/cicd-pipeline-health-telemetry-dora-deployment-markers.md`)
-- Added Flux CD bash script: install the Flux CLI from the official install script and run `flux check --pre` to verify cluster readiness for Flux (flx-002) (`Flux CD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh`)
-- Added Flux CD notes exploring the flux CLI command surface: bootstrap, reconcile, tree, get, create, and uninstall with trip-ups (flx-003) (`Flux CD/notes/2026-09-19-explore-flux-cli-command-surface.md`)
+- Added Flux CD bash script: install the Flux CLI from the official install script and run `flux check --pre` to verify cluster readiness for Flux (flx-002) (`FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh`)
+- Added Flux CD notes exploring the flux CLI command surface: bootstrap, reconcile, tree, get, create, and uninstall with trip-ups (flx-003) (`FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md`)
 - Added gh CLI quickstart trip-up notes covering auth scopes, editor behavior, repo context, and silent token failures (gh-027) (`GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md`)
 - Added monitoring+networking integration script: TCP/HTTP health checks (pass, HTTP-error, refused, DNS-failure) emitting structured JSONL logs with a per-target correlation report, demoed against loopback servers (con-072) (`docs/concepts/monitoring-observability-concepts/scripts/health-checks-and-log-correlation.py`)
 - Added observability+containerization notebook: synthetic frontend→api→db trace spans rebuilt into a container dependency graph with slowest-edge detection, plus an agent-plus-gateway collector pipeline sketch with component-consistency checks (con-073) (`docs/concepts/monitoring-observability-concepts/notebooks/tracing-containerized-service-dependencies.ipynb`)
