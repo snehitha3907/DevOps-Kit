@@ -1,0 +1,31 @@
+# last_verified: 2026-09-30 · OpenTelemetry n/a
+# My minimal Collector config: OTLP in, batch, log out.
+# I wrote this from scratch after my pipeline-order mix-up so the flow sticks.
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: localhost:4317
+      http:
+        endpoint: localhost:4318
+
+processors:
+  batch: {}
+
+exporters:
+  logging:
+    loglevel: info
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging]
+# TODO: I left out a real backend exporter on purpose — want to see spans in
+# the log first before pointing this anywhere else.
