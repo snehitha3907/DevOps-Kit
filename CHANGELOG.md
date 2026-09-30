@@ -10,6 +10,7 @@
 - Added Vault install and first secrets-engine scratch script: version check, dev server, enable a kv-v2 engine at my own path, first put/get (vlt-009) (`vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh`)
 - Added Prometheus exporter script: stdlib-only /metrics endpoint with request, error, in-flight, and latency series plus demo and health endpoints (pro-014) (`Prometheus/scripts/custom-app-exporter.py`)
 - Added Prometheus recording-vs-alerting rules config: precomputed error-ratio and latency series alongside high-error-rate and exporter-down alerts (pro-016) (`Prometheus/configs/recording-vs-alerting-rules.yaml`)
+- Added Prometheus Alertmanager with PagerDuty on-call doc: severity-routed receiver and route tree wired to the demo warning/critical alerts with group and repeat intervals (pro-015) (`Prometheus/docs/alertmanager-pagerduty-oncall-rotations.md`)
 
 ## 2026-09-29
 
