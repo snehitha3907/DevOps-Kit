@@ -1,0 +1,49 @@
+# last_verified: 2026-09-30 · Prometheus n/a
+# Purpose: side-by-side comparison of recording rules vs alerting rules.
+# Recording rules precompute expensive or frequently-used expressions into
+# new series; alerting rules evaluate a condition and fire notifications.
+# When to use which: record when dashboards or other rules repeat the same
+# heavy query; alert when a threshold breach needs a human or a hook.
+# Load with a rule file reference and reload the server config to apply.
+# Verify: check the rules page shows both groups as healthy, then confirm
+# the recorded series appears in query results and the alert transitions
+# from pending to firing when the condition holds for the full duration.
+
+groups:
+  - name: demo-recording-rules
+    interval: 1m
+    rules:
+      # Precompute per-job error ratio so dashboards reuse one series
+      # instead of repeating the division on every panel refresh.
+      - record: job:demo_http_error_ratio:1m
+        expr: |
+          sum by (job) (rate(demo_http_errors_total[5m]))
+          /
+          clamp_min(sum by (job) (rate(demo_http_requests_total[5m])), 1e-9)
+      # Precompute average latency from the exporter gauge for SLO panels.
+      - record: job:demo_http_latency_avg:1m
+        expr: avg by (job) (demo_http_latency_seconds_avg)
+
+  - name: demo-alerting-rules
+    interval: 30s
+    rules:
+      # Fire when the recorded error ratio stays elevated; the recorded
+      # series keeps this alert cheap because the division ran once.
+      - alert: DemoHighErrorRate
+        expr: job:demo_http_error_ratio:1m > 0.05
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Elevated error rate on demo job"
+          description: "Error ratio above 5% for the last 10 minutes."
+      # Fire when the exporter target itself disappears; this guards the
+      # pipeline rather than the application behaviour above.
+      - alert: DemoExporterDown
+        expr: up{job="demo"} == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Demo exporter scrape failing"
+          description: "No successful scrape for 5 minutes."
