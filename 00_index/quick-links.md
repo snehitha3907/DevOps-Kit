@@ -63,6 +63,8 @@
 - [Azure AKS cluster in Bicep](../Azure/manifests/production-aks-cluster.bicep)
 - [OpenTofu minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf)
 - [Prometheus minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
+- [Prometheus recording rules vs alerting rules](../Prometheus/configs/recording-vs-alerting-rules.yaml)
+- [Flux GitRepository and Kustomization](../FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
 - [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/README.md)
 - [Docker Compose multi-service config](../Docker/configs/multi-service-app.yaml)
@@ -190,6 +192,8 @@
 - [ArgoCD quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md)
 - [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
 - [Sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
+- [Flux quickstart trip-ups](../FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md)
+- [Minimal Flux GitRepository and Kustomization](../FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml)
 - [Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md)
 - [Install the Flux CLI and run `flux check --pre`](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 
@@ -250,7 +254,13 @@
 - [Minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 - [Container monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml)
 - [Install Prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
+- [Write a custom application exporter](../Prometheus/scripts/custom-app-exporter.py)
+- [Recording rules vs alerting rules](../Prometheus/configs/recording-vs-alerting-rules.yaml)
 - [Check target health with PromQL](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
+
+### Get paged when something breaks
+
+- [Wire Alertmanager to PagerDuty with on-call rotations](../Prometheus/docs/alertmanager-pagerduty-oncall-rotations.md)
 
 ### Trace a request
 
@@ -270,6 +280,7 @@
 
 ### Ship metrics to Grafana Cloud
 
+- [First hosted dashboard in Grafana Cloud](../grafc/notes/2026-09-30-first-hosted-dashboard.md)
 - [Agent scrape config — unix exporter on a 15s interval](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
 - [Create a dashboard over the Grafana HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js)
 
