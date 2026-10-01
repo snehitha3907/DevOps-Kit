@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-01
+
+- Added three CI workflows to the GitHub repository scaffold: `ci/build.yml`, `ci/test.yml`, `ci/lint.yml` — each reports the matching status check context required by `configure-branch-protection.sh` (gh-037) (`GitHub/templates/github-repo-scaffold/.github/workflows/ci/`)
+- Repository audit: removed seven misplaced or duplicate artifacts. `docs/audit/OpenTofu/` was a duplicate toolkit folder holding 1- and 2-line stubs of content that exists in full under `OpenTofu/`; `Git/docs/github.sh` was byte-identical to `Git/docs/scripts/github.sh` with no inbound reference; `Git/notes/readme.md` collided by case with the canonical `Git/notes/README.md`; `Git/notes/file.py` was a two-line `print("hello")` companion with no referrer. `docs/audit/README.md`, `docs/audit/00_index/`, `docs/audit/MANIFEST.json`, `docs/audit/regression-test.sh`, `docs/audit/2026-06-19-primer-already-exists.md`, and `docs/audit/2026-08-12-deployment-service-go-app-with-probes.yaml` were stubs duplicating content owned by other folders.
+- Repository audit: removed six scratch files that had drifted into `docs/concepts/` — a duplicate `site.yml` under `infrastructure-as-code-concepts/`, `values.yaml`, `config_final_v2_REALLY_FINAL.sh`, and `playbooks/redis.yml` under `version-control-concepts/`, `file.sh` under `scripting-automation-bash-python/`, and `app.py` under `containerization-concepts/`. Each was a filename quoted inside primer prose, not a file any exercise needed.
+- README Coverage table corrected against disk: FluxCD (notes 1→2, configs —→1), Prometheus (docs —→1, scripts 1→2, configs 2→3), Grafana Cloud (notes —→1), and Git (notes 8→6, docs 15→14). README Layout now names `docs/audit/` alongside `docs/concepts/`.
+- `00_index/topics.md` counts realigned against disk after the removals: Git 58→55, FluxCD 3→5, Prometheus 6→9, Grafana Cloud 2→3, Foundational Concepts 77→71, docs/audit 12→4. Added the previously-unlisted FluxCD configs, Prometheus docs/configs/scripts, and coverage-audit entries.
+- Added two backlog items from the audit: `hlm-021` (ship the `demo-chart` fixture that `Helm/docs/values-management-approaches.md` drives every command from) and `git-025` (the `site.yml` playbook `00_index/topics.md` links is a stub referencing a role that does not exist).
+
 ## 2026-09-30
 
 - Added first Grafana Cloud dashboard snippet: posts a minimal dashboard JSON to the HTTP API with a bearer token from the environment (grafc-004) (`grafc/snippets/2026-09-30-first-dashboard-over-http.js`)
