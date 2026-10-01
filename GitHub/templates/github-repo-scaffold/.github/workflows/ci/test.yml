@@ -12,7 +12,7 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: ci/test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
