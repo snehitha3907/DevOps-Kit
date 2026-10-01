@@ -15,6 +15,9 @@ Passed ([x]) pro-015 — Prometheus: docs — How I wired Prometheus Alertmanage
 - Added Grafana Cloud first-hosted-dashboard note: the hosted stack vs my local Docker Grafana, the pre-created Prometheus datasource, first stat panel, and finding the dashboard JSON model (grafc-006) (`grafc/notes/2026-09-30-first-hosted-dashboard.md`)
 - Added Flux CD quickstart trip-ups note: cluster-side objects vs Git path, `--path` being repo-relative, and reaching for `flux diff` and `flux reconcile` instead of hand-applying (flx-011) (`FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md`)
 - Added minimal Flux CD GitRepository and Kustomization config: repo-relative path, prune, sourceRef back to the GitRepository, and an explicitly pre-created target namespace (flx-012) (`FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml`)
+- Added Pulumi quickstart trip-ups note: provider plugin install, stack config file naming, local vs remote state backend, and destroy-vs-stack confusion (plm-010) (`plm/notes/2026-09-30-pulumi-quickstart-trip-ups.md`)
+- Added minimal Pulumi Python program that creates one S3 bucket and exports its name and ARN (plm-011) (`plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py`)
+- Added minimal Pulumi project and dev-stack config: Pulumi.yaml runtime block plus Pulumi.dev.yaml stack settings (plm-012) (`plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml`)
 
 ## 2026-09-29
 
