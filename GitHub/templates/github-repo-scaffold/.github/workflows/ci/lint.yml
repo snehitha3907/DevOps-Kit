@@ -1,0 +1,25 @@
+# last_verified: 2026-10-01 · GitHub Actions n/a
+# ci/lint.yml — Lint and static analysis workflow for repository scaffold
+# Reports status check context: ci/lint
+
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run linters
+        run: |
+          echo "Lint step — replace with your project's lint commands"
+          echo "Example: make lint, golangci-lint run, eslint ., ruff check ., hadolint Dockerfile, etc."
+          exit 0

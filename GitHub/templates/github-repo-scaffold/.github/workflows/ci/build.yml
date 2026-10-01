@@ -1,0 +1,25 @@
+# last_verified: 2026-10-01 · GitHub Actions n/a
+# ci/build.yml — Build and compile workflow for repository scaffold
+# Reports status check context: ci/build
+
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          echo "Build step — replace with your project's build command"
+          echo "Example: make build, cargo build, go build, npm run build, etc."
+          exit 0

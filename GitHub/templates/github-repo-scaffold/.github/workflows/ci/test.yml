@@ -1,0 +1,25 @@
+# last_verified: 2026-10-01 · GitHub Actions n/a
+# ci/test.yml — Test suite workflow for repository scaffold
+# Reports status check context: ci/test
+
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          echo "Test step — replace with your project's test command"
+          echo "Example: make test, cargo test, go test ./..., npm test, pytest, etc."
+          exit 0
