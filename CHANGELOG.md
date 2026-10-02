@@ -2,6 +2,7 @@
 
 ## 2026-10-02
 
+- Added a dynamic child pipeline scaffold for GitLab CI/CD: `GitLab CI/scripts/dynamic-child-pipeline.sh` writes a parent `.gitlab-ci.yml` whose prepare job generates the child config at run time and hands it to a trigger job as an artifact, plus a generated `generate-child.sh` and one editable job fragment per component (gl-016) (`GitLab CI/scripts/`)
 - Added ArgoCD Application-from-scratch builder script: renders an Application manifest from CLI args, applies it, creates the destination namespace, and drives an automated sync to health (arg-007) (`ArgoCD/scripts/build-argocd-application-from-scratch.sh`)
 - Added ArgoCD + GitHub GitOps wiring doc: repo registration with a fine-grained token, project scoping, Application creation, sync-cycle verification, and common errors (arg-008) (`ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md`)
 - Added multi-cluster ApplicationSet config: one list generator fans out a guestbook Application per dev/staging/prod destination (arg-009) (`ArgoCD/configs/2026-10-02-guestbook-applicationset-multi-cluster.yaml`)
