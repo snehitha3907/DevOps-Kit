@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02
+
+- Added ArgoCD Application-from-scratch builder script: renders an Application manifest from CLI args, applies it, creates the destination namespace, and drives an automated sync to health (arg-007) (`ArgoCD/scripts/build-argocd-application-from-scratch.sh`)
+- Added ArgoCD + GitHub GitOps wiring doc: repo registration with a fine-grained token, project scoping, Application creation, sync-cycle verification, and common errors (arg-008) (`ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md`)
+- Added multi-cluster ApplicationSet config: one list generator fans out a guestbook Application per dev/staging/prod destination (arg-009) (`ArgoCD/configs/2026-10-02-guestbook-applicationset-multi-cluster.yaml`)
+
 ## 2026-10-01
 
 - Added three CI workflows to the GitHub repository scaffold: `ci/build.yml`, `ci/test.yml`, `ci/lint.yml` — each reports the matching status check context required by `configure-branch-protection.sh` (gh-037) (`GitHub/templates/github-repo-scaffold/.github/workflows/ci/`)
