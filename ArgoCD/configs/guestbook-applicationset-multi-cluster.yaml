@@ -1,0 +1,50 @@
+# last_verified: 2026-10-02
+# Declarative ApplicationSet for multi-cluster deployments.
+#
+# One ApplicationSet fans out one guestbook Deployment per cluster: the list
+# generator supplies the cluster + namespace, the template fills in the
+# destination, and ArgoCD creates one Application per element.
+#
+# Notes from following the docs:
+# - ApplicationSet CRDs are big enough to blow past the client-side 262KB
+#   annotation limit, so apply with `--server-side --force-conflicts`.
+# - The list generator below is the simplest generator: one element per
+#   destination cluster.
+# - selfHeal reverts manual cluster edits back to Git; keep prune conservative
+#   and rely on ArgoCD's `allowEmpty: false` default to guard the
+#   "generator returns zero elements" footgun.
+# - Pin the install manifest to a release tag instead of the `stable` URL.
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook-multi-cluster
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: dev
+            namespace: guestbook-dev
+            server: https://k8s-dev.example.com
+          - cluster: staging
+            namespace: guestbook-staging
+            server: https://k8s-staging.example.com
+          - cluster: prod
+            namespace: guestbook-prod
+            server: https://k8s-prod.example.com
+  template:
+    metadata:
+      name: guestbook-{{cluster}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/myorg/my-gitops.git
+        targetRevision: main
+        path: manifests/guestbook
+      destination:
+        server: '{{server}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
