@@ -57,6 +57,7 @@
 - [GitLab CI stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
 - [GitLab CI multi-project pipeline with a downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml)
 - [GitLab CI build, push, and deploy to Kubernetes](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml)
+- [GitLab CI dynamic child pipeline scaffold](../GitLab CI/scripts/dynamic-child-pipeline.sh)
 - [Helm redis chart](../Helm/manifests/redis-chart/Chart.yaml)
 - [Helm live-release values](../Helm/configs/2026-09-02-live-release-values.yaml)
 - [Helm production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml)
@@ -168,6 +169,8 @@
 - [Runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md)
 - [Stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
 - [Build, push, and deploy to Kubernetes with a verify-and-rollback job](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml)
+- [Take a pipeline from a push to a running Deployment](../GitLab CI/docs/gitlab-ci-cd-with-kubernetes.md)
+- [Dynamic child pipeline — write the child config at job time](../GitLab CI/scripts/dynamic-child-pipeline.sh)
 - [Validate a pipeline locally](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh)
 - [Trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 - [Run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
@@ -190,7 +193,10 @@
 ### Sync a GitOps app
 
 - [ArgoCD quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md)
+- [Wire ArgoCD to a private GitHub repo](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md)
+- [Build an Application and drive a sync to health](../ArgoCD/scripts/build-argocd-application-from-scratch.sh)
 - [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
+- [Multi-cluster guestbook ApplicationSet](../ArgoCD/configs/guestbook-applicationset-multi-cluster.yaml)
 - [Sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 - [Flux quickstart trip-ups](../FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md)
 - [Minimal Flux GitRepository and Kustomization](../FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml)

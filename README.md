@@ -18,18 +18,18 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Flux GitRepository and Kustomization config](FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml) — The two objects worth keeping by hand while learning the quickstart: where Flux fetches from, and what it applies out of that repo.
-- [Flux quickstart trip-ups](FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md) — The Git-side path and the cluster-side objects are two separate halves, and both have to exist.
-- [First hosted dashboard in Grafana Cloud](grafc/notes/2026-09-30-first-hosted-dashboard.md) — The hosted side is the same Grafana with a signup and a URL attached; where the scrape interval actually lives, and what to copy out of the JSON model.
-- [Wiring Alertmanager to PagerDuty](Prometheus/docs/alertmanager-pagerduty-oncall-rotations.md) — Rotation schedules, escalation policies, and inhibition rules so a firing alert reaches the right person without paging everyone.
-- [Recording rules vs alerting rules](Prometheus/configs/recording-vs-alerting-rules.yaml) — When to pre-compute a query into a new series, and when to evaluate a condition and fire.
+- [GitLab CI/CD with Kubernetes, end to end](GitLab CI/docs/gitlab-ci-cd-with-kubernetes.md) — The path from a push to a running Deployment: a runner that can reach the cluster, a credential the job is allowed to hold, and the gate that keeps a merge request from touching it.
+- [Dynamic child pipeline scaffold](GitLab CI/scripts/dynamic-child-pipeline.sh) — For when the set of jobs is only knowable at run time, and the child config has to be written by a job before anything can trigger it.
+- [Wiring ArgoCD with GitHub for GitOps deployment](ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md) — The control plane reading manifests from a private repo, and where the two-sided integration broke.
+- [Multi-cluster ApplicationSet](ArgoCD/configs/guestbook-applicationset-multi-cluster.yaml) — One generator fanning out a guestbook Deployment per cluster, and the install flags that large CRD needs.
+- [Build an Application from scratch and sync it](ArgoCD/scripts/build-argocd-application-from-scratch.sh) — Idempotent end-to-end counterpart to install, login, and sync; safe as a CI deploy step.
 
 ## Layout
 
 - **00_index/** — Topics map, quick links, glossary, and learning path.
 - **AWS/** — AWS CLI setup, profiles, resource listings, tagging, S3 website examples, boto3 snippets and stack builders, an IAM least-privilege walkthrough, and a boto3-vs-CloudFormation-vs-CDK comparison notebook.
 - **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
-- **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests, installation, and sync checks.
+- **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests including a multi-cluster one, GitHub wiring, installation, scripted sync, and health checks.
 - **Azure/** — Azure CLI setup, CLI-vs-Bicep-vs-Python-SDK comparison, resource provisioning, VM scale sets, and a private AKS Bicep example.
 - **Docker/** — Container primers, Dockerfiles, Compose stacks, build-strategy and networking notebooks, health checks, Go and Compose scaffolds, and a Docker-to-Kubernetes handoff guide.
 - **FluxCD/** — Flux CLI primer, bootstrap, reconcile, GitRepository/Kustomization manifests, and pre-flight cluster checks.
@@ -37,7 +37,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, gitattributes setup, and regression examples.
 - **GitHub/** — Repository operations, repo scaffold template, issue forms, branch protection, API examples, and release automation notes.
 - **GitHub Actions/** — Workflow primers, reusable workflows, runner setup, and dispatch examples.
-- **GitLab CI** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline configs, multi-project and build-to-deploy templates, and an API trigger snippet.
+- **GitLab CI** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline configs, multi-project and dynamic child pipelines, a build-to-deploy-to-Kubernetes walkthrough, and an API trigger snippet.
 - **graf/** — Grafana primer, Docker-based install script, UI exploration notes, and quickstart trip-ups.
 - **grafc/** — Grafana Cloud first contact: an agent scrape config, a dashboard created over the HTTP API, and notes from the hosted UI.
 - **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, release testing, and chart scaffolding.
@@ -61,15 +61,15 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 |------|-------|------|----------|---------|---------|-----------|-----------|-------------|-----------|---------------|
 | AWS | 2 | 1 | 3 | 6 | 2 | — | 1 | — | — | 2026-09-23 |
 | Ansible | 10 | 4 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-09-16 |
-| ArgoCD | 3 | — | 1 | 1 | 2 | — | — | — | — | 2026-08-11 |
+| ArgoCD | 3 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-10-02 |
 | Azure | 4 | 1 | 3 | 3 | — | 1 | — | — | — | 2026-09-19 |
 | Docker | 6 | 7 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-09-29 |
 | FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-30 |
 | GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
 | Git | 8 | 15 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
-| GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 8 | 2026-09-20 |
+| GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 11 | 2026-10-01 |
 | GitHub Actions | 6 | 5 | 1 | 3 | 5 | — | — | — | — | 2026-09-11 |
-| GitLab CI | 4 | — | 1 | 3 | 4 | — | — | — | — | 2026-09-19 |
+| GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
 | Grafana (`graf/`) | 3 | 2 | — | 1 | — | — | — | — | — | 2026-09-29 |
 | Grafana Cloud (`grafc/`) | 1 | — | 1 | — | 1 | — | — | — | — | 2026-09-30 |
 | Helm | 3 | 4 | 1 | 3 | 4 | 4 | 1 | — | — | 2026-09-18 |
@@ -86,7 +86,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Recently added: a Flux GitRepository/Kustomization pair, a Flux quickstart trip-ups note, a Grafana Cloud hosted-dashboard walkthrough, Alertmanager wired through to PagerDuty, and a recording-versus-alerting-rules reference. Current work keeps strengthening production patterns — private AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. The rest of the kit stays where it is — production patterns for AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
-_Last updated: 2026-10-01_
+_Last updated: 2026-10-02_

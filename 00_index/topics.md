@@ -19,12 +19,13 @@
 - **notebooks** (2): [variable precedence](../Ansible/notebooks/ansible-variable-precedence.ipynb), [block / rescue / serial execution patterns](../Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb)
 - **dockerfiles** (1): [Ansible control node](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
 
-## ArgoCD  ·  7 files
+## ArgoCD  ·  10 files
 
 - **primer:** [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
 - **notes** (3): most recent → [quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md), [install.yaml](../ArgoCD/notes/install.yaml), [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
-- **configs** (2): [first Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml), [guestbook ApplicationSet](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
-- **scripts** (1): [install the CLI and reach the UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
+- **configs** (3): [multi-cluster guestbook ApplicationSet](../ArgoCD/configs/guestbook-applicationset-multi-cluster.yaml) — one list generator fanning out an Application per cluster; apply it with `--server-side --force-conflicts` because the CRD outgrows the client-side annotation limit — plus [first Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml) and [guestbook ApplicationSet](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
+- **scripts** (2): [build an Application and drive a sync to health](../ArgoCD/scripts/build-argocd-application-from-scratch.sh) — idempotent, so it works as a CI deploy step — plus [install the CLI and reach the UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
+- **docs** (1): [wiring ArgoCD with GitHub for GitOps deployment](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md) — control plane, private repo, project, Application, and where the integration broke
 - **snippets** (1): [sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
 ## AWS  ·  15 files
@@ -97,7 +98,7 @@
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  44 files
+## GitHub  ·  47 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (11): most recent → [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md), [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [platform features](../GitHub/notes/2026-06-10-github-platform-features.md)
@@ -106,7 +107,7 @@
 - _…and 3 more under `GitHub/scripts/` — browse the folder._
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
-- **templates** (8): [production repo scaffold](../GitHub/templates/github-repo-scaffold/README.md) — branch protection script, CODEOWNERS, issue and PR templates, Dependabot
+- **templates** (11): [production repo scaffold](../GitHub/templates/github-repo-scaffold/README.md) — branch protection script, CODEOWNERS, issue and PR templates, Dependabot, and a split CI workflow (build / lint / test)
 - **docs** (6): most recent → [release automation end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
 - _…and 3 more under `GitHub/docs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open a PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
@@ -126,14 +127,15 @@
 - **scripts** (3): [self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install the gh extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - **snippets** (1): [trigger a `workflow_dispatch` and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
-## GitLab CI  ·  12 files
+## GitLab CI  ·  14 files
 
 - **primer:** [0000-primer-gitlab-ci-cd.md](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **notes** (4): most recent → [runner setup, variables, and artifacts trip-ups](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md), [following the quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [`.gitlab-ci.yml` reference](../GitLab CI/notes/.gitlab-ci.yml)
   - _1 more under `GitLab CI/notes/` — browse the folder._
 - **configs** (4): most recent → [build → push → deploy with a digest-pinned rollout](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml) — three stages, a `when: manual` production gate, and a deploy job that verifies health then rolls back — plus [multi-project pipeline with a downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml), [stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
   - _1 more under `GitLab CI/configs/` — browse the folder._
-- **scripts** (3): [local pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install a runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
+- **docs** (1): [GitLab CI/CD with Kubernetes, end to end](../GitLab CI/docs/gitlab-ci-cd-with-kubernetes.md) — the setup around the deploy pipeline: a runner that can reach the cluster, the variable that hands the job a kubeconfig, and the gate that blocks an unapproved rollout
+- **scripts** (4): [dynamic child pipeline scaffold](../GitLab CI/scripts/dynamic-child-pipeline.sh) — a parent pipeline that writes its child config at job time, hands it forward as an artifact, then triggers it — plus [local pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install a runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 
 ## Grafana  ·  6 files
