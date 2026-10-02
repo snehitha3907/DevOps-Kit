@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-02
+
+- Added a dynamic child pipeline scaffold for GitLab CI/CD: `GitLab CI/scripts/dynamic-child-pipeline.sh` writes a parent `.gitlab-ci.yml` whose prepare job generates the child config at run time and hands it to a trigger job as an artifact, plus a generated `generate-child.sh` and one editable job fragment per component (gl-016) (`GitLab CI/scripts/`)
+
 ## 2026-10-01
 
 - Added three CI workflows to the GitHub repository scaffold: `ci/build.yml`, `ci/test.yml`, `ci/lint.yml` — each reports the matching status check context required by `configure-branch-protection.sh` (gh-037) (`GitHub/templates/github-repo-scaffold/.github/workflows/ci/`)
