@@ -237,6 +237,8 @@
 - **Composite action** — An action built by combining multiple workflow steps into one callable unit (`runs.using: composite`); the caller keeps control of the surrounding job (triggers, environment, matrix) while the shared steps stay in one place.
 - **Reusable workflow** — A whole workflow file designed to be called from other workflows via `uses: owner/repo/.github/workflows/file.yml@ref` with `on: workflow_call`; the owning repository controls the jobs, environment gates, and approvals centrally.
 - **Runner** — A server that listens for workflow jobs and executes them.
+- **Caller workflow** — The top-level workflow in a caller-plus-reusable pair: it builds the artifact once, then calls the reusable workflow once per environment in promotion order, so staging only runs after dev succeeds.
+- **Custom runner image** — A self-built runner image (own base, own package set, pinned runner release) where registration happens at container start from `RUNNER_URL`/`RUNNER_TOKEN`, so one image serves any repository without a rebuild.
 - **workflow_dispatch** — An event that lets you trigger a workflow run manually, either from the GitHub web UI or via the REST API (`POST /repos/{owner}/{repo}/actions/workflows/{workflow}/dispatches`); useful for on-demand or scheduled-on-request runs from a script.
 
 ## GitLab CI/CD
@@ -473,6 +475,7 @@
 - **State** — Pulumi's memory of what it already built and which outputs came back, so the next run only changes the diff.
 - **Output** — A value the cloud hands back after deploy (e.g. a bucket's real name) that can be wired into an app's config.
 - **Config** — Per-stack settings so one program behaves differently per environment.
+- **Stack config file** — The `Pulumi.<stack>.yaml` file (e.g. `Pulumi.dev.yaml`) holding one stack's settings under dotted `config:` keys, read back with `pulumi config get <key>`; the project file (`Pulumi.yaml`) is not where per-environment values go.
 
 ## Grafana
 

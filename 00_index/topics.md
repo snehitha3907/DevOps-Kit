@@ -115,16 +115,18 @@
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 - **dockerfiles** (1): [self-hosted runner](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
 
-## GitHub Actions  ·  20 files
+## GitHub Actions  ·  26 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
 - **notes** (6): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [ci.yml reference](../GitHub Actions/notes/ci.yml)
 - _…and 3 more under `GitHub Actions/notes/` — browse the folder._
+- **templates** (3): [multi-environment deploy](../GitHub Actions/templates/multi-env-deploy/README.md) — a caller workflow that builds once and promotes the same artifact through dev, staging, and production via a reusable deploy workflow — with [deploy-caller.yml](../GitHub Actions/templates/multi-env-deploy/deploy-caller.yml) and [reusable-deploy.yml](../GitHub Actions/templates/multi-env-deploy/reusable-deploy.yml)
 - **configs** (5): most recent → [reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml), [matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [hello workflow](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml)
 - _…and 2 more under `GitHub Actions/configs/` — browse the folder._
 - **docs** (5): [composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md), [quickstart trip-ups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md), [ci.yml reference](../GitHub Actions/docs/ci.yml), [test.yml reference](../GitHub Actions/docs/test.yml)
 - _1 more under `GitHub Actions/docs/` — browse the folder._
-- **scripts** (3): [self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install the gh extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- **scripts** (4): [manage one secret across many repos](../GitHub Actions/scripts/manage-actions-secrets.py) — set, delete, or report a secret across a repo list in one run — plus [self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install the gh extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+- **dockerfiles** (1): [minimal custom runner image](../GitHub Actions/dockerfiles/custom-runner.Dockerfile) — pinned runner release downloaded at build time, registration from environment at container start
 - **snippets** (1): [trigger a `workflow_dispatch` and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ## GitLab CI  ·  14 files
@@ -222,12 +224,14 @@ Folder on disk is `otel/`.
 - **scripts** (2): most recent → [custom application exporter](../Prometheus/scripts/custom-app-exporter.py) — a `/metrics` endpoint built from the standard library, keeping the exposition format and scrape contract visible — plus [install and verify the metrics endpoint](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
-## Pulumi  ·  4 files
+## Pulumi  ·  7 files
 
 Folder on disk is `plm/`.
 
 - **primer:** [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
-- **scripts** (1): [install the CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- **notes** (2): [quickstart trip-ups](../plm/notes/2026-09-30-pulumi-quickstart-trip-ups.md) — provider plugins, stack config files, local state defaults, and destroy semantics — plus [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
+- **configs** (1): [minimal project and dev stack config](../plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus a `Pulumi.dev.yaml` with region and bucket name
+- **scripts** (2): [create an S3 bucket with Pulumi Python](../plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py) — the runnable one-bucket program with name and ARN exports — plus [install the CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 - **docs** (1): [how `plm/` is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
