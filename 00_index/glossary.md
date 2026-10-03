@@ -90,6 +90,9 @@
 - **`allowEmpty`** — An ArgoCD ApplicationSet safety default that refuses to render a template when a generator returns no elements, guarding against accidental mass deletion on a broken generator.
 - **`OutOfSync`** — The state where an Application's live cluster state does not match what is declared in Git; ArgoCD surfaces this so you know a sync is needed.
 - **`Synced`** — The state where an Application's live cluster state matches the Git source exactly.
+- **ArgoCD project** — A namespaced boundary holding which repositories an Application may read from and which namespaces it may deploy into (`srcRepos`, `destNamespaces`, and a `clusterResourceWhitelist`). Created with `argocd proj create`; it is what stops a new Application from syncing an arbitrary repo into an arbitrary namespace.
+- **`dest` / `destination`** — Where an Application applies: the cluster server and namespace. A wildcard namespace in the project (`'*'`) is what allows the multi-cluster ApplicationSet to fan out, so scope the project as tightly as the generator allows.
+- **Auto-sync** — The Application sync option that applies Git state without a human pressing Sync. Combined with `selfHeal` it makes the cluster self-correcting, which is the point of GitOps and the reason a prune mistake propagates on its own.
 
 ## Docker
 
@@ -251,6 +254,11 @@
 - **Workflow rules** — A `workflow: rules` block in GitLab CI that gates whether an entire pipeline runs based on the source branch, pipeline source, or CI/CD variables.
 - **Multi-project pipeline** — A GitLab CI pattern that connects pipelines across multiple repositories using a bridge job, so a change in one project can trigger a build in another.
 - **Downstream pipeline** — A pipeline triggered by another pipeline, used in multi-project and child-pipeline setups to fan out work across repositories or stages.
+- **Bridge job** — The `trigger: project:` job that starts a pipeline in another repository; a pipeline triggered this way waits for the downstream result and reports its status as part of the parent.
+- **Child pipeline** — A pipeline whose configuration is itself a pipeline job, included with `trigger: include:`. Unlike a downstream pipeline it runs in the same project as its parent, sharing that project's runners, variables, and permissions.
+- **Dynamic child pipeline** — A child pipeline whose config file does not exist in Git: an earlier job generates it, publishes it as an artifact, and the trigger job points at the same path inside that artifact. The pattern for job sets only knowable at run time — one job per discovered service, per tenant, per matrix leg.
+- **`when: manual`** — A job-level keyword that parks a job until someone plays it in the UI or triggers it through the API; the usual shape for a production deploy gate a merge request must not cross on its own.
+- **Protected environment** — A GitLab environment that requires an approval before a job targeting it runs, and whose secrets are exposed only to that job; the platform-side counterpart to a `when: manual` gate.
 
 ## Infrastructure as Code Concepts
 
@@ -288,6 +296,8 @@
 - **Readiness probe** — A periodic container check that determines whether the container is ready to serve traffic; if it fails, the pod is removed from Service endpoints until it passes again.
 - **Startup probe** — A container check that gates whether the liveness and readiness probes begin running; useful for slow-starting applications so kubelet does not kill them during boot.
 - **Context** — A cluster+user+namespace tuple stored in the kubeconfig; `kubectl` uses the current context to decide which cluster to send requests to.
+- **Kubeconfig** — The YAML file holding cluster endpoints, credentials, contexts, and the active context. A CI job gets one as a masked file-type CI/CD variable rather than as inline YAML, because an empty or truncated kubeconfig fails at `kubectl apply` with a message that does not name the real cause.
+- **KUBECONFIG** — The env var that points `kubectl` at a specific kubeconfig path; the simplest way to hand a job its own credential without touching the runner's `~/.kube/config`.
 - **ImagePullBackOff** — A pod image-pull error state where Kubernetes cannot download the container image, usually due to a wrong image name or missing registry credentials.
 - **ContainerCreating** — A pod phase indicating the container runtime is pulling the image or setting up the filesystem; distinct from `ImagePullBackOff`, which means the pull itself failed.
 - **HorizontalPodAutoscaler (HPA)** — An autoscaling/v2 resource that adjusts a Deployment's replica count between `minReplicas` and `maxReplicas` based on metrics such as CPU utilisation; pairs with resource requests because the utilisation target is computed against them.
