@@ -4,7 +4,7 @@
 
 - Added minimal custom GitHub Actions runner Dockerfile: runner release pinned via a required `--build-arg RUNNER_VERSION` (no floating default), downloaded into a builder stage, non-root `runner` user, and a start script that registers from `RUNNER_URL`/`RUNNER_TOKEN` env vars at container start before exec'ing the listener (ga-013) (`GitHub Actions/dockerfiles/custom-runner.Dockerfile`)
 - Added multi-environment deploy template for GitHub Actions: a caller workflow that builds once and promotes the same artifact dev → staging → production through a reusable deploy workflow with environment approvals and manual single-environment dispatch (ga-012) (`GitHub Actions/templates/multi-env-deploy/`)
-- Added script to manage GitHub Actions secrets across multiple repositories: sync, list, and delete operations with libsodium encryption, CSV/JSON input, and per-repo error reporting (ga-014) (`GitHub Actions/scripts/manage-secrets-across-repos.py`)
+- Added script to manage GitHub Actions secrets across multiple repositories: `sync`, `list`, and `delete` across an explicit repo fleet, sealed-box encryption of every value, CSV/JSON/inline `NAME=VALUE` sources, a printed plan before any write plus `--dry-run`, and per-repo error reporting that does not abort the run (ga-014) (`GitHub Actions/scripts/manage-secrets-across-repos.py`)
 Passed ([x]) ga-012 — Reusable GitHub Actions workflow template for multi-env deploy · Level: L4 · 2026-10-03
 
 ## 2026-10-02
