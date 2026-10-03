@@ -53,6 +53,7 @@
 - [GitHub Actions CI workflow with env and secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
 - [Reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml)
+- [Multi-environment caller plus reusable deploy template](../GitHub Actions/templates/multi-env-deploy/README.md)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
 - [GitLab CI stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
 - [GitLab CI multi-project pipeline with a downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml)
@@ -98,6 +99,9 @@
 
 - [Pulumi primer](../plm/notes/0000-primer-plm.md)
 - [Install the CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- [Quickstart trip-ups — plugins, stack config, state, destroy](../plm/notes/2026-09-30-pulumi-quickstart-trip-ups.md)
+- [Minimal project and dev stack config](../plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml)
+- [Create an S3 bucket with Pulumi Python](../plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py)
 - [Minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 
 ### Manage secrets with Vault
@@ -159,8 +163,11 @@
 ### Ship with GitHub Actions
 
 - [Composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md)
+- [Promote one artifact through dev, staging, and production](../GitHub Actions/templates/multi-env-deploy/README.md)
 - [Self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh)
+- [Minimal custom runner image](../GitHub Actions/dockerfiles/custom-runner.Dockerfile)
 - [Self-hosted runner Dockerfile (Docker-in-Docker)](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
+- [Manage one secret across many repos](../GitHub Actions/scripts/manage-actions-secrets.py)
 - [Trigger a `workflow_dispatch` and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ### Ship with GitLab CI
