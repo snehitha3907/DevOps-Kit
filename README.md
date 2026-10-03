@@ -6,7 +6,7 @@
 ![Languages](https://img.shields.io/github/languages/count/snehitha3907/DevOps-Kit)
 ![Repo size](https://img.shields.io/github/repo-size/snehitha3907/DevOps-Kit)
 
-> **New here? Start at [the learning path](00_index/learning-path.md).** It walks you from first-contact to confident in a sensible order — read that before this table.
+> **New here? Start at [the learning path](00_index/learning-path.md).** It walks you from first-contact to confident in a sensible order — read that before the coverage table below.
 
 ## Who this is for
 
@@ -18,11 +18,11 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Multi-environment deploy template](GitHub Actions/templates/multi-env-deploy/README.md) — Build once, promote the same artifact through dev, staging, and production with a caller plus reusable workflow.
-- [Custom GitHub Actions runner image](GitHub Actions/dockerfiles/custom-runner.Dockerfile) — A minimal self-hosted runner you build and pin yourself, registered at container start from environment variables.
-- [GitLab CI/CD with Kubernetes, end to end](GitLab CI/docs/gitlab-ci-cd-with-kubernetes.md) — The path from a push to a running Deployment: a runner that can reach the cluster, a credential the job is allowed to hold, and the gate that keeps a merge request from touching it.
-- [Dynamic child pipeline scaffold](GitLab CI/scripts/dynamic-child-pipeline.sh) — For when the set of jobs is only knowable at run time, and the child config has to be written by a job before anything can trigger it.
-- [Wiring ArgoCD with GitHub for GitOps deployment](ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md) — The control plane reading manifests from a private repo, and where the two-sided integration broke.
+- [Manage Actions secrets across a repo fleet](GitHub Actions/scripts/manage-secrets-across-repos.py) — `sync`, `list`, and `delete` repository-level secrets across an explicit set of repos, sealing every value against each repo's own public key and printing the plan before it writes.
+- [Minimal custom runner image](GitHub Actions/dockerfiles/custom-runner.Dockerfile) — The runner release pinned at build time rather than at start, a non-root `runner` user, and registration from the environment when the container comes up.
+- [Multi-environment deploy template](GitHub Actions/templates/multi-env-deploy/README.md) — A caller workflow that builds once and promotes the same artifact dev → staging → production through a reusable deploy workflow.
+- [deploy-caller.yml](GitHub Actions/templates/multi-env-deploy/deploy-caller.yml) — The caller half of that pair: one build job, then one reusable-deploy call per environment, chained so staging only runs after dev succeeds.
+- [reusable-deploy.yml](GitHub Actions/templates/multi-env-deploy/reusable-deploy.yml) — The reusable half: environment approval gates and a single-environment dispatch path alongside the chained promotion.
 
 ## Layout
 
@@ -36,7 +36,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, startup scripts, instance templates, and a scripted Cloud Run deployment.
 - **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, gitattributes setup, and regression examples.
 - **GitHub/** — Repository operations, repo scaffold template, issue forms, branch protection, API examples, and release automation notes.
-- **GitHub Actions/** — Workflow primers, reusable workflows including a multi-environment caller-plus-reusable deploy template, runner setup with a minimal custom runner image, secrets management across repos, and dispatch examples.
+- **GitHub Actions/** — Workflow primers, reusable workflows, a multi-environment deploy template, custom runner images, bulk Actions-secret management, and dispatch examples.
 - **GitLab CI** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline configs, multi-project and dynamic child pipelines, a build-to-deploy-to-Kubernetes walkthrough, and an API trigger snippet.
 - **graf/** — Grafana primer, Docker-based install script, UI exploration notes, and quickstart trip-ups.
 - **grafc/** — Grafana Cloud first contact: an agent scrape config, a dashboard created over the HTTP API, and notes from the hosted UI.
@@ -47,9 +47,10 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **Prometheus/** — Scrape configuration, target health checks, a hand-rolled exporter, recording versus alerting rules, Alertmanager-to-PagerDuty routing, and getting-started notes.
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, scan-mode selection, severity policies, and Python wrappers.
-- **plm/** — Pulumi primer, CLI install and project init, quickstart trip-ups, a minimal project plus stack config, and Python bucket programs.
+- **plm/** — Pulumi primer, CLI install and project init, and a minimal Python bucket snippet.
 - **vlt/** — HashiCorp Vault primer, dev server setup, KV engine examples, and a script that mounts a first secrets engine at a custom path.
 - **docs/** — Foundational concept primers under `docs/concepts/`, plus notes about the kit itself.
+- **docs/audit/** — Coverage and readme audit notes about the kit's own documentation.
 - **CHANGELOG.md** — Dated record of additions, reworks, and navigation corrections.
 
 ## Coverage
@@ -60,25 +61,25 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 | Tool | Notes | Docs | Snippets | Scripts | Configs | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
 |------|-------|------|----------|---------|---------|-----------|-----------|-------------|-----------|---------------|
 | AWS | 2 | 1 | 3 | 6 | 2 | — | 1 | — | — | 2026-09-23 |
-| Ansible | 10 | 4 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-09-18 |
+| Ansible | 10 | 4 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-09-16 |
 | ArgoCD | 3 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-10-02 |
 | Azure | 4 | 1 | 3 | 3 | — | 1 | — | — | — | 2026-09-19 |
 | Docker | 6 | 7 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-09-29 |
 | FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-30 |
-| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-29 |
+| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
 | Git | 8 | 15 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
-| GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 11 | 2026-10-01 |
+| GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 11 | 2026-09-20 |
 | GitHub Actions | 6 | 5 | 1 | 4 | 5 | — | — | 1 | 3 | 2026-10-03 |
 | GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
 | Grafana (`graf/`) | 3 | 2 | — | 1 | — | — | — | — | — | 2026-09-29 |
 | Grafana Cloud (`grafc/`) | 1 | — | 1 | — | 1 | — | — | — | — | 2026-09-30 |
 | Helm | 3 | 4 | 1 | 3 | 4 | 4 | 1 | — | — | 2026-09-18 |
-| Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-09-21 |
+| Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-09-04 |
 | OpenTelemetry (`otel/`) | 2 | 1 | 2 | 1 | 1 | — | — | — | — | 2026-09-30 |
 | OpenTofu | 2 | 3 | — | 2 | 2 | — | 1 | — | — | 2026-09-18 |
 | Prometheus | 2 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-09-30 |
 | Pulumi (`plm/`) | 2 | 1 | 1 | 2 | 1 | — | — | — | — | 2026-09-30 |
-| Terraform | 6 | 4 | 3 | 3 | 8 | 2 | 2 | — | 10 | 2026-09-19 |
+| Terraform | 6 | 4 | 3 | 3 | 8 | 2 | 2 | — | 10 | 2026-09-17 |
 | Trivy | 5 | 1 | 2 | 4 | 2 | — | — | — | — | 2026-09-23 |
 | HashiCorp Vault (`vlt/`) | 2 | 1 | — | 2 | — | — | — | — | — | 2026-09-19 |
 
@@ -86,7 +87,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet, and a caller-plus-reusable GitHub Actions template that promotes one build artifact through dev, staging, and production. The rest of the kit stays where it is — production patterns for AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions are about the unglamorous half of a workflow platform — a custom runner image, a multi-environment promotion template, and bulk management of repository secrets across a fleet. The rest of the kit stays where it is — production patterns for AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
 
 ---
-_Last updated: 2026-10-03_
+_Last updated: 2026-10-04_
