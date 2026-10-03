@@ -1,0 +1,64 @@
+# last_verified: 2026-10-03 · GitHub Actions n/a
+# Reusable deployment workflow: deploys one build artifact to one environment.
+# Copy this file to .github/workflows/reusable-deploy.yml in the app repo,
+# then drive it from deploy-caller.yml (one call per environment).
+
+name: Reusable Deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'Target environment (dev, staging, or production)'
+        required: true
+        type: string
+      artifact_name:
+        description: 'Build artifact uploaded by the caller workflow'
+        required: true
+        type: string
+      image_tag:
+        description: 'Container image tag to deploy (e.g. the caller run SHA)'
+        required: true
+        type: string
+    secrets:
+      DEPLOY_TOKEN:
+        description: 'Token the deploy step uses against the target environment'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: dist
+
+      - name: Deploy image to environment
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          echo "Deploying tag ${{ inputs.image_tag }} to ${{ inputs.environment }}"
+          # Replace with the real deploy command, e.g.:
+          # ./deploy.sh --env "${{ inputs.environment }}" --tag "${{ inputs.image_tag }}"
+
+      - name: Health check
+        run: |
+          echo "Checking health of ${{ inputs.environment }}"
+          # Replace with a real probe against the environment health endpoint, e.g.
+          # curl -f "<health-url>" || exit 1
+
+      - name: Write job summary
+        run: |
+          {
+            echo "### Deploy ${{ inputs.environment }}: success"
+            echo ""
+            echo "- Tag: \`${{ inputs.image_tag }}\`"
+            echo "- Artifact: \`${{ inputs.artifact_name }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"

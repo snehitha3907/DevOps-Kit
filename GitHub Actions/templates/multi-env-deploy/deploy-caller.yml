@@ -1,0 +1,80 @@
+# last_verified: 2026-10-03 · GitHub Actions n/a
+# Caller workflow: builds once, then promotes the same artifact
+# dev -> staging -> production through the reusable-deploy.yml workflow.
+# Copy this file to .github/workflows/deploy.yml in the app repo.
+# Create three GitHub Environments (dev, staging, production) first;
+# put a required reviewer on production so the last call pauses for approval.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Single environment to deploy (empty = full promotion chain)'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          mkdir -p dist
+          echo "build output for ${{ github.sha }}" > dist/build.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-build-${{ github.sha }}
+          path: dist/
+          retention-days: 7
+
+  deploy-dev:
+    name: Deploy dev
+    needs: build
+    if: ${{ !inputs.environment || inputs.environment == 'dev' }}
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      environment: dev
+      artifact_name: app-build-${{ github.sha }}
+      image_tag: ${{ github.sha }}
+    secrets:
+      DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN_DEV }}
+
+  deploy-staging:
+    name: Deploy staging
+    # always() keeps a manual single-environment run alive when the earlier
+    # chain job was skipped; the result checks still enforce the order.
+    needs: [build, deploy-dev]
+    if: ${{ always() && needs.build.result == 'success' && (needs.deploy-dev.result == 'success' || needs.deploy-dev.result == 'skipped') && (!inputs.environment || inputs.environment == 'staging') }}
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      environment: staging
+      artifact_name: app-build-${{ github.sha }}
+      image_tag: ${{ github.sha }}
+    secrets:
+      DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN_STAGING }}
+
+  deploy-production:
+    name: Deploy production
+    needs: [build, deploy-staging]
+    if: ${{ always() && needs.build.result == 'success' && (needs.deploy-staging.result == 'success' || needs.deploy-staging.result == 'skipped') && (!inputs.environment || inputs.environment == 'production') }}
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      environment: production
+      artifact_name: app-build-${{ github.sha }}
+      image_tag: ${{ github.sha }}
+    secrets:
+      DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN_PROD }}
