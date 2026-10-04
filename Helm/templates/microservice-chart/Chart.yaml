@@ -1,0 +1,47 @@
+# last_verified: 2026-10-04 · Helm · n/a
+apiVersion: v2
+name: microservice-chart
+description: A reusable Helm chart for a stateless HTTP microservice, with a vendored PostgreSQL subchart for local installs
+type: application
+
+# Chart version tracks this chart's own packaging; appVersion tracks the microservice
+# the chart deploys. Both are placeholders here — a consuming team bumps appVersion
+# whenever it cuts a new image tag.
+version: 0.1.0
+appVersion: "1.0.0"
+
+# The floor is set by the API versions the templates request, not by Helm itself:
+# autoscaling/v2 (HorizontalPodAutoscaler) is the newest of them, PDBs are on
+# policy/v1 and Ingresses on networking.k8s.io/v1.
+kubeVersion: ">=1.23.0-0"
+
+keywords:
+  - microservice
+  - http
+  - api
+
+maintainers:
+  - name: platform-team
+    email: platform@example.com
+
+annotations:
+  category: Infrastructure
+
+# One dependency, vendored rather than fetched. `repository` is a file:// path, so
+# `helm dependency update` copies charts/postgresql/ into charts/ with no network
+# access and no external chart repository to authenticate against — the chart
+# lints, templates and installs offline.
+#
+#   alias:    the subchart's values land under .Values.database, not .Values.postgresql.
+#             Every `{{ .Values.database.* }}` reference in this chart depends on it.
+#   condition: setting database.enabled: false drops the subchart from the render
+#             entirely, which is the switch for deploying against a managed database.
+#   tags:     lets a dependency be selected by tag when several are added later.
+dependencies:
+  - name: postgresql
+    version: "0.1.0"
+    repository: "file://charts/postgresql"
+    condition: database.enabled
+    alias: database
+    tags:
+      - datastore

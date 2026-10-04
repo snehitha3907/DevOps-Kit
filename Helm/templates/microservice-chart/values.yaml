@@ -1,0 +1,221 @@
+# last_verified: 2026-10-04 · Helm · n/a
+# Default values for microservice-chart. A `helm install` with no overrides gets
+# exactly this file; per-environment differences belong in a second file layered
+# with -f, not in here.
+
+# -- Cross-chart values. `global` is the only namespace Helm merges into every
+# -- subchart, so a registry override set here also reaches charts/postgresql.
+global:
+  imageRegistry: ""
+  # Pull secrets, as {name: <secret>} maps. Merged with the chart-level
+  # imagePullSecrets below by one helper, so a pod spec can only ever end up with
+  # a single imagePullSecrets key.
+# -- Registry-wide pull secrets for this chart, same {name: <secret>} shape as
+# -- global.imagePullSecrets.
+imagePullSecrets: []
+
+# -- Name overrides. fullnameOverride wins over everything; nameOverride replaces
+# -- the chart name without triggering the release-name suffix in the helper.
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 2
+
+revisionHistoryLimit: 3
+
+image:
+  registry: ""
+  repository: example/orders-api
+  # Defaults to .Chart.AppVersion when empty, so bumping appVersion in Chart.yaml
+  # is enough to move every environment.
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+  # The microservice talks to PostgreSQL and nothing else, so it does not need a
+  # token mounted into the pod filesystem.
+  automountServiceAccountToken: false
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 10001
+  runAsGroup: 10001
+  fsGroup: 10001
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: http
+  annotations: {}
+
+# Container port the probes and the Service targetPort both point at. Named so the
+# port can move without editing the probe blocks.
+containerPort: 8080
+
+# -- Plain config rendered into a ConfigMap and projected as env vars. Anything
+# -- secret belongs in an external secret store, not in this block.
+config:
+  logLevel: info
+  logFormat: json
+  featureFlags: {}
+  dbHost: ""
+  dbPort: "5432"
+
+# Extra env for cases configMapKeyRef cannot express (a literal value, or a
+# secretKeyRef against a Secret managed elsewhere).
+extraEnv: []
+# Same for whole ConfigMap/Secret sources.
+extraEnvFrom: []
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 15
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 3
+
+startupProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  periodSeconds: 5
+  failureThreshold: 30
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 75
+  targetMemoryUtilizationPercentage: 0
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 60
+
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 1
+  maxUnavailable: ""
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: orders.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# -- Pre-install/pre-upgrade database migration. Rendered as a Helm hook Job, so it
+# -- runs to completion before the Deployment rolls. Hook resources are not part of
+# -- the release manifest, which is why the delete policy below matters.
+migrations:
+  enabled: false
+  image:
+    repository: example/orders-api
+    tag: ""
+    pullPolicy: IfNotPresent
+  # Seconds the hook waits for the Job to finish before the release fails.
+  timeoutSeconds: 300
+  backoffLimit: 3
+  command: []
+  extraArgs: []
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# -- Spreading replicas across nodes. leftAligned keeps all replicas on distinct
+# -- nodes while they fit, then wraps; this is what stops one node draining from
+# -- taking the whole service down.
+topologySpreadConstraints: []
+  # - maxSkew: 1
+  #   topologyKey: topology.kubernetes.io/zone
+  #   whenUnsatisfiable: ScheduleAnyway
+
+affinity: {}
+nodeSelector: {}
+tolerations: []
+
+# -- Extra volumes and mounts for a config file, a service-account token, or a
+# -- projected Secret that does not fit the env-var path.
+extraVolumes: []
+extraVolumeMounts: []
+
+# -- Image the `helm test` pod uses to curl the Service. Left unpinned on purpose
+# -- to avoid asserting a tag here; pin it in CI, because a test helper that
+# -- silently moves is a test helper that stops meaning anything.
+tests:
+  image:
+    repository: busybox
+    tag: ""
+    pullPolicy: IfNotPresent
+
+# -- Dependency: charts/postgresql, aliased to `database`. Flip enabled to false to
+# -- deploy against a database the chart does not manage; the Deployment reads
+# -- config.dbHost either way, so nothing else changes.
+database:
+  enabled: true
+  auth:
+    database: orders
+    username: orders
+    # Empty means the subchart generates one and keeps it in the release Secret.
+    # Setting it here puts a plaintext password in this file — prefer leaving it
+    # empty and reading the generated value after install.
+    password: ""
+  persistence:
+    enabled: true
+    size: 8Gi
+    storageClass: ""
+  resources:
+    limits:
+      cpu: "1"
+      memory: 1Gi
+    requests:
+      cpu: 250m
+      memory: 512Mi
+  # Pod-level scheduling the subchart applies to its own StatefulSet.
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}

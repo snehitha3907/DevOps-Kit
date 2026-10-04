@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04
+
+- Added a reusable Helm chart scaffold for an HTTP microservice: Deployment/Service/ServiceAccount/ConfigMap plus opt-in Ingress, HPA, PDB and a migration hook Job, a `helm test` connection Pod, a `values.schema.json` that validates on lint and install, and a vendored `charts/postgresql/` subchart wired in with `alias: database` and `condition: database.enabled` so the datastore can be switched off without touching the workload templates (hlm-012) (`Helm/templates/microservice-chart/`)
+
 ## 2026-10-03
 
 - Added minimal custom GitHub Actions runner Dockerfile: runner release pinned via a required `--build-arg RUNNER_VERSION` (no floating default), downloaded into a builder stage, non-root `runner` user, and a start script that registers from `RUNNER_URL`/`RUNNER_TOKEN` env vars at container start before exec'ing the listener (ga-013) (`GitHub Actions/dockerfiles/custom-runner.Dockerfile`)

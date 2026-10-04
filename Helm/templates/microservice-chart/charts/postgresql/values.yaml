@@ -1,0 +1,39 @@
+# last_verified: 2026-10-04 · Helm · n/a
+# Reachable from the parent as .Values.database.* because the parent declares
+# `alias: database` on the dependency.
+
+image:
+  repository: postgres
+  tag: "16-alpine"
+  pullPolicy: IfNotPresent
+
+# Credentials. Leaving password empty makes the chart generate one and keep it in
+# the release Secret, which is the only option here that does not put a plaintext
+# password in Git.
+auth:
+  database: orders
+  username: orders
+  password: ""
+
+port: 5432
+
+persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: ""
+
+resources:
+  limits:
+    cpu: "1"
+    memory: 1Gi
+  requests:
+    cpu: 250m
+    memory: 512Mi
+
+# Pod-level scheduling for the StatefulSet. The parent chart keeps its own
+# nodeSelector/affinity/tolerations for the workload and does not push them down
+# here — a dependency that silently inherited the parent's scheduling would make
+# the parent's placement hard to reason about.
+nodeSelector: {}
+tolerations: []
+affinity: {}
