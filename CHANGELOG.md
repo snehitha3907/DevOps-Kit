@@ -3,6 +3,7 @@
 ## 2026-10-04
 
 - Added a reusable Helm chart scaffold for an HTTP microservice: Deployment/Service/ServiceAccount/ConfigMap plus opt-in Ingress, HPA, PDB and a migration hook Job, a `helm test` connection Pod, a `values.schema.json` that validates on lint and install, and a vendored `charts/postgresql/` subchart wired in with `alias: database` and `condition: database.enabled` so the datastore can be switched off without touching the workload templates (hlm-012) (`Helm/templates/microservice-chart/`)
+- Added GitHub Actions OIDC-to-AWS guide: the IAM OIDC provider and trust-policy shape, the `sub`/`aud` claims that scope a role to one repository and ref or Environment, the `permissions: id-token: write` grant and the caller-side caveat for reusable workflows, the credential exchange via the AWS credential action or a direct STS call, a Terraform variant, and removal of the long-lived access-key secrets (ga-015) (`GitHub Actions/docs/github-actions-oidc-with-aws.md`)
 
 ## 2026-10-03
 
