@@ -1,0 +1,16 @@
+# last_verified: 2026-10-04 · Helm · n/a
+# The subchart that microservice-chart depends on. It is vendored under
+# charts/postgresql/ so the parent chart renders with no network access; the
+# parent's Chart.yaml points at it with repository: "file://charts/postgresql".
+apiVersion: v2
+name: postgresql
+description: A deliberately small PostgreSQL StatefulSet, enough to give the parent chart a real dependency to wire against
+type: application
+version: 0.1.0
+appVersion: "16"
+
+# Intentionally inherits nothing from the parent. This chart exists to be read,
+# so its own knobs stay flat and obvious.
+maintainers:
+  - name: platform-team
+    email: platform@example.com

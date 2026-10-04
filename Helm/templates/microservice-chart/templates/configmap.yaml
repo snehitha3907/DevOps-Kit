@@ -1,0 +1,17 @@
+# last_verified: 2026-10-04 · Helm · n/a
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "microservice-chart.fullname" . }}
+  labels:
+    {{- include "microservice-chart.labels" . | nindent 4 }}
+data:
+  # dbHost is resolved by the helper rather than copied from values, so it always
+  # points at the postgresql subchart's Service while that subchart is enabled.
+  dbHost: {{ include "microservice-chart.dbHost" . | quote }}
+  dbPort: {{ .Values.config.dbPort | quote }}
+  logLevel: {{ .Values.config.logLevel | quote }}
+  logFormat: {{ .Values.config.logFormat | quote }}
+  {{- range $flag, $enabled := .Values.config.featureFlags }}
+  FEATURE_{{ $flag | upper | replace "-" "_" }}: {{ $enabled | quote }}
+  {{- end }}

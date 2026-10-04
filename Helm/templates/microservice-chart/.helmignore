@@ -1,0 +1,26 @@
+# last_verified: 2026-10-04 · Helm · n/a
+# Patterns listed here are never packaged into the chart archive by `helm package`.
+# The goal is to keep the built .tgz to what a cluster actually needs to render.
+
+# VCS and editor metadata
+.git/
+.gitignore
+.gitattributes
+.hg/
+.svn/
+.vscode/
+.idea/
+*.swp
+*~
+
+# Chart documentation and CI config travels with the source repo, not the release
+README.md
+CONTRIBUTING.md
+Makefile
+*.tgz
+ci/
+tests/*.sh
+
+# Local scratch used while iterating on values
+values-local*.yaml
+*.local.yaml

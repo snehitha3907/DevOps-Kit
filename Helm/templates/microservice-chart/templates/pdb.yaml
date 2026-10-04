@@ -1,0 +1,24 @@
+# last_verified: 2026-10-04 · Helm · n/a
+{{- if .Values.podDisruptionBudget.enabled }}
+{{- if and (not .Values.podDisruptionBudget.minAvailable) (not .Values.podDisruptionBudget.maxUnavailable) }}
+{{- fail "podDisruptionBudget.enabled is true but neither podDisruptionBudget.minAvailable nor podDisruptionBudget.maxUnavailable is set" }}
+{{- end }}
+{{- if and .Values.podDisruptionBudget.minAvailable .Values.podDisruptionBudget.maxUnavailable }}
+{{- fail "podDisruptionBudget sets both minAvailable and maxUnavailable — set exactly one" }}
+{{- end }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "microservice-chart.fullname" . }}
+  labels:
+    {{- include "microservice-chart.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "microservice-chart.selectorLabels" . | nindent 6 }}
+  {{- if .Values.podDisruptionBudget.maxUnavailable }}
+  maxUnavailable: {{ .Values.podDisruptionBudget.maxUnavailable }}
+  {{- else }}
+  minAvailable: {{ .Values.podDisruptionBudget.minAvailable }}
+  {{- end }}
+{{- end }}
