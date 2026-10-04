@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04
+
+- Added GitHub Actions OIDC-to-AWS guide: the IAM OIDC provider and trust-policy shape, the `sub`/`aud` claims that scope a role to one repository and ref or Environment, the `permissions: id-token: write` grant and the caller-side caveat for reusable workflows, the credential exchange via the AWS credential action or a direct STS call, a Terraform variant, and removal of the long-lived access-key secrets (ga-015) (`GitHub Actions/docs/github-actions-oidc-with-aws.md`)
+
 ## 2026-10-03
 
 - Added minimal custom GitHub Actions runner Dockerfile: runner release pinned via a required `--build-arg RUNNER_VERSION` (no floating default), downloaded into a builder stage, non-root `runner` user, and a start script that registers from `RUNNER_URL`/`RUNNER_TOKEN` env vars at container start before exec'ing the listener (ga-013) (`GitHub Actions/dockerfiles/custom-runner.Dockerfile`)
