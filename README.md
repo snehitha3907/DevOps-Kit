@@ -18,11 +18,11 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Manage Actions secrets across a repo fleet](GitHub Actions/scripts/manage-secrets-across-repos.py) — `sync`, `list`, and `delete` repository-level secrets across an explicit set of repos, sealing every value against each repo's own public key and printing the plan before it writes.
-- [Minimal custom runner image](GitHub Actions/dockerfiles/custom-runner.Dockerfile) — The runner release pinned at build time rather than at start, a non-root `runner` user, and registration from the environment when the container comes up.
-- [Multi-environment deploy template](GitHub Actions/templates/multi-env-deploy/README.md) — A caller workflow that builds once and promotes the same artifact dev → staging → production through a reusable deploy workflow.
-- [deploy-caller.yml](GitHub Actions/templates/multi-env-deploy/deploy-caller.yml) — The caller half of that pair: one build job, then one reusable-deploy call per environment, chained so staging only runs after dev succeeds.
-- [reusable-deploy.yml](GitHub Actions/templates/multi-env-deploy/reusable-deploy.yml) — The reusable half: environment approval gates and a single-environment dispatch path alongside the chained promotion.
+- [Reusable microservice Helm chart](Helm/templates/microservice-chart/README.md) — Deployment plus Service plus ConfigMap, with an optional Ingress, autoscaler, PDB, migration Job hook, and a vendored PostgreSQL subchart for local installs.
+- [Chart defaults with reasons](Helm/templates/microservice-chart/values.yaml) — Every knob the chart exposes and why it exists; per-environment differences belong in layered `-f` files, not in here.
+- [Schema-guarded values](Helm/templates/microservice-chart/values.schema.json) — JSON Schema Helm checks on lint, template, install, and upgrade, so a mistyped key fails before it reaches the cluster.
+- [GitHub Actions OIDC with AWS](GitHub Actions/docs/github-actions-oidc-with-aws.md) — Replace long-lived access-key secrets with short-lived workload identity: trust policy, token claims, and the exchange, folded into the multi-environment deploy template.
+- [Validate chart values across envs](Helm/scripts/validate-chart-values-across-envs.sh) — Key checks plus a per-environment render diff that catches copy-paste promotion errors before `helm upgrade`.
 
 ## Layout
 
@@ -36,11 +36,11 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, startup scripts, instance templates, and a scripted Cloud Run deployment.
 - **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, gitattributes setup, and regression examples.
 - **GitHub/** — Repository operations, repo scaffold template, issue forms, branch protection, API examples, and release automation notes.
-- **GitHub Actions/** — Workflow primers, reusable workflows, a multi-environment deploy template, custom runner images, bulk Actions-secret management, and dispatch examples.
+- **GitHub Actions/** — Workflow primers, reusable workflows, a multi-environment deploy template, an OIDC-with-AWS guide, custom runner images, bulk Actions-secret management, and dispatch examples.
 - **GitLab CI** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline configs, multi-project and dynamic child pipelines, a build-to-deploy-to-Kubernetes walkthrough, and an API trigger snippet.
 - **graf/** — Grafana primer, Docker-based install script, UI exploration notes, and quickstart trip-ups.
 - **grafc/** — Grafana Cloud first contact: an agent scrape config, a dashboard created over the HTTP API, and notes from the hosted UI.
-- **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, release testing, and chart scaffolding.
+- **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, a reusable microservice chart with a vendored PostgreSQL subchart, a cross-environment values validator, release testing, and chart scaffolding.
 - **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, production patterns with HPA and PDB, and Helm/Kustomize overlays.
 - **OpenTelemetry** (folder `otel/`) — Traces primer, collector install script, first-span snippet, a minimal OTLP export config, quickstart trip-ups, and an instrumented Go server.
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
@@ -65,17 +65,17 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 | ArgoCD | 3 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-10-02 |
 | Azure | 4 | 1 | 3 | 3 | — | 1 | — | — | — | 2026-09-19 |
 | Docker | 6 | 7 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-09-29 |
-| FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-30 |
+| FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-22 |
 | GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
 | Git | 8 | 15 | 1 | 11 | — | — | 1 | — | 22 | 2026-09-25 |
 | GitHub | 11 | 6 | 3 | 6 | 7 | 1 | 1 | 1 | 11 | 2026-09-20 |
-| GitHub Actions | 6 | 5 | 1 | 4 | 5 | — | — | 1 | 3 | 2026-10-03 |
+| GitHub Actions | 6 | 6 | 1 | 4 | 5 | — | — | 1 | 3 | 2026-10-04 |
 | GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
 | Grafana (`graf/`) | 3 | 2 | — | 1 | — | — | — | — | — | 2026-09-29 |
 | Grafana Cloud (`grafc/`) | 1 | — | 1 | — | 1 | — | — | — | — | 2026-09-30 |
-| Helm | 3 | 4 | 1 | 3 | 4 | 4 | 1 | — | — | 2026-09-18 |
-| Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-09-04 |
-| OpenTelemetry (`otel/`) | 2 | 1 | 2 | 1 | 1 | — | — | — | — | 2026-09-30 |
+| Helm | 3 | 4 | 1 | 4 | 4 | 4 | 1 | — | 22 | 2026-09-18 |
+| Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-08-29 |
+| OpenTelemetry (`otel/`) | 2 | 1 | 2 | 1 | 1 | — | — | — | — | 2026-09-25 |
 | OpenTofu | 2 | 3 | — | 2 | 2 | — | 1 | — | — | 2026-09-18 |
 | Prometheus | 2 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-09-30 |
 | Pulumi (`plm/`) | 2 | 1 | 1 | 2 | 1 | — | — | — | — | 2026-09-30 |
@@ -87,7 +87,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions are about the unglamorous half of a workflow platform — a custom runner image, a multi-environment promotion template, and bulk management of repository secrets across a fleet. The rest of the kit stays where it is — production patterns for AKS, Helm chart validation, Ansible rollout safeguards, and environment promotion across Terraform, containers, and CI/CD.
+Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion.
 
 ---
-_Last updated: 2026-10-04_
+_Last updated: 2026-10-05_
