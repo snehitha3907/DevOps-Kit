@@ -115,17 +115,17 @@
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 - **dockerfiles** (1): [self-hosted runner](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
 
-## GitHub Actions  ·  26 files
+## GitHub Actions  ·  25 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
 - **notes** (6): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [ci.yml reference](../GitHub Actions/notes/ci.yml)
-- _…and 3 more under `GitHub Actions/notes/` — browse the folder._
+  - _…and 3 more under `GitHub Actions/notes/` — browse the folder._
 - **templates** (3): [multi-environment deploy](../GitHub Actions/templates/multi-env-deploy/README.md) — a caller workflow that builds once and promotes the same artifact through dev, staging, and production via a reusable deploy workflow — with [deploy-caller.yml](../GitHub Actions/templates/multi-env-deploy/deploy-caller.yml) and [reusable-deploy.yml](../GitHub Actions/templates/multi-env-deploy/reusable-deploy.yml)
 - **configs** (5): most recent → [reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml), [matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [hello workflow](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml)
-- _…and 2 more under `GitHub Actions/configs/` — browse the folder._
+  - _…and 2 more under `GitHub Actions/configs/` — browse the folder._
 - **docs** (5): [composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md), [quickstart trip-ups](../GitHub Actions/docs/2026-08-07-github-actions-quickstart-tripups.md), [ci.yml reference](../GitHub Actions/docs/ci.yml), [test.yml reference](../GitHub Actions/docs/test.yml)
-- _1 more under `GitHub Actions/docs/` — browse the folder._
-- **scripts** (4): [manage one secret across many repos](../GitHub Actions/scripts/manage-actions-secrets.py) — set, delete, or report a secret across a repo list in one run — plus [self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install the gh extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
+  - _…and 1 more under `GitHub Actions/docs/` — browse the folder._
+- **scripts** (4): [manage Actions secrets across a repo fleet](../GitHub Actions/scripts/manage-secrets-across-repos.py) — `sync`, `list`, or `delete` repository-level secrets across a named set of repos, sealing every value against each repo's own public key and printing the whole plan before it writes — plus [self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh), [install the gh extension](../GitHub Actions/scripts/2026-07-13-install-gh-actions-extension.sh), [list runs](../GitHub Actions/scripts/2026-07-11-install-gh-extension-and-list-runs.sh)
 - **dockerfiles** (1): [minimal custom runner image](../GitHub Actions/dockerfiles/custom-runner.Dockerfile) — pinned runner release downloaded at build time, registration from environment at container start
 - **snippets** (1): [trigger a `workflow_dispatch` and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
@@ -317,9 +317,10 @@ Notes about the kit itself, kept alongside the content they refer to. Browse `do
 
 ## docs/audit  ·  12 files
 
-Checks that keep the README and index files aligned with what is actually on disk. Browse `docs/audit/`.
+Coverage and README audits that keep the index files honest against what is on disk. Browse `docs/audit/`.
 
 - [audit-012: Docker Dockerfile count](../docs/audit/2026-09-07-audit-012-docker-dockerfile-count.md)
 - [audit-011: OpenTofu README](../docs/audit/2026-08-20-audit-011-opentofu-readme.md)
 - [audit-009: GitHub README](../docs/audit/2026-08-20-audit-009-github-readme.md)
-- _…and 9 more under `docs/audit/` — browse the folder._
+- [coverage-table audit](../docs/audit/2026-08-18-coverage-table-audit.md)
+- _…and 8 further files under `docs/audit/` — older stubs superseded by the audits above._

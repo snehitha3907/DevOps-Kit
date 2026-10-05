@@ -34,6 +34,8 @@
 
 ### Read a primer first
 
+**Foundational concepts**
+
 - [Linux & System Administration](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
 - [Networking Fundamentals](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 - [Scripting & Automation (Bash/Python)](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
@@ -42,7 +44,29 @@
 - [Containerization Concepts](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
 - [Infrastructure as Code Concepts](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
 - [Monitoring & Observability Concepts](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
-- [Ansible](../Ansible/notes/0000-primer-ansible.md) · [ArgoCD](../ArgoCD/notes/0000-primer-argocd.md) · [AWS](../AWS/notes/0000-primer-aws.md) · [Azure](../Azure/notes/0000-primer-azure.md) · [Docker](../Docker/notes/0000-primer-docker.md) · [GCP](../GCP/notes/0000-primer-gcp.md) · [Git](../Git/notes/0000-primer-git.md) · [GitHub](../GitHub/notes/0000-primer-github.md) · [GitHub Actions](../GitHub Actions/notes/0000-primer-github-actions.md) · [GitLab CI/CD](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md) · [Grafana](../graf/notes/0000-primer-grafana.md) · [Helm](../Helm/notes/0000-primer-helm.md) · [Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md) · [OpenTelemetry](../otel/notes/0000-primer-opentelemetry.md) · [OpenTofu](../OpenTofu/notes/0000-primer-opentofu.md) · [Prometheus](../Prometheus/notes/0000-primer-prometheus.md) · [Terraform](../Terraform/notes/0000-primer-terraform.md) · [Trivy](../Trivy/notes/0000-primer-trivy.md) · [HashiCorp Vault](../vlt/notes/0000-primer-vlt.md) · [Pulumi](../plm/notes/0000-primer-plm.md)
+
+**Tools**
+
+- [Ansible](../Ansible/notes/0000-primer-ansible.md)
+- [ArgoCD](../ArgoCD/notes/0000-primer-argocd.md)
+- [AWS](../AWS/notes/0000-primer-aws.md)
+- [Azure](../Azure/notes/0000-primer-azure.md)
+- [Docker](../Docker/notes/0000-primer-docker.md)
+- [GCP](../GCP/notes/0000-primer-gcp.md)
+- [Git](../Git/notes/0000-primer-git.md)
+- [GitHub](../GitHub/notes/0000-primer-github.md)
+- [GitHub Actions](../GitHub Actions/notes/0000-primer-github-actions.md)
+- [GitLab CI/CD](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+- [Grafana](../graf/notes/0000-primer-grafana.md)
+- [HashiCorp Vault](../vlt/notes/0000-primer-vlt.md)
+- [Helm](../Helm/notes/0000-primer-helm.md)
+- [Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md)
+- [OpenTelemetry](../otel/notes/0000-primer-opentelemetry.md)
+- [OpenTofu](../OpenTofu/notes/0000-primer-opentofu.md)
+- [Prometheus](../Prometheus/notes/0000-primer-prometheus.md)
+- [Pulumi](../plm/notes/0000-primer-plm.md)
+- [Terraform](../Terraform/notes/0000-primer-terraform.md)
+- [Trivy](../Trivy/notes/0000-primer-trivy.md)
 
 ### Write a playbook, pipeline, or config
 
@@ -111,6 +135,12 @@
 - [Install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh)
 - [Explore the Vault CLI — secrets and policies](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md)
 
+### Rotate a credential across many repositories
+
+- [Manage Actions secrets across a repo fleet](../GitHub Actions/scripts/manage-secrets-across-repos.py) — `sync`, `list`, and `delete` across an explicit repo list; `--dry-run` prints the plan first, and every value is sealed against each repo's own public key before upload
+- [Deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md) — choosing the credential a fleet of pipelines should hold
+- [Environments deployment protection](../GitHub/manifests/github-environments-deployment-protection.yaml) — scoping what a workflow may reach at deploy time
+
 ### Work with Git
 
 - [Branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md)
@@ -121,7 +151,7 @@
 - [Branch management and tag creation](../Git/scripts/branch-management-and-tag-creation.sh)
 - [gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh)
 - [Git workflow comparison](../Git/docs/git-workflows-comparison.md)
-- [Worktrees for parallel development](../Git/docs/git-worktrees-parallel-feature-development.md)
+- [Worktrees for parallel development](../Git/docs/git-worktrees-parallel-development.md)
 - [Worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
 - [Worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md)
 - [Automate `git bisect` with a regression test](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md)
@@ -167,7 +197,7 @@
 - [Self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh)
 - [Minimal custom runner image](../GitHub Actions/dockerfiles/custom-runner.Dockerfile)
 - [Self-hosted runner Dockerfile (Docker-in-Docker)](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
-- [Manage one secret across many repos](../GitHub Actions/scripts/manage-actions-secrets.py)
+- [Manage Actions secrets across a repo fleet](../GitHub Actions/scripts/manage-secrets-across-repos.py)
 - [Trigger a `workflow_dispatch` and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
 
 ### Ship with GitLab CI

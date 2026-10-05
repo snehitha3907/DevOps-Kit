@@ -240,6 +240,12 @@
 - **Caller workflow** — The top-level workflow in a caller-plus-reusable pair: it builds the artifact once, then calls the reusable workflow once per environment in promotion order, so staging only runs after dev succeeds.
 - **Custom runner image** — A self-built runner image (own base, own package set, pinned runner release) where registration happens at container start from `RUNNER_URL`/`RUNNER_TOKEN`, so one image serves any repository without a rebuild.
 - **workflow_dispatch** — An event that lets you trigger a workflow run manually, either from the GitHub web UI or via the REST API (`POST /repos/{owner}/{repo}/actions/workflows/{workflow}/dispatches`); useful for on-demand or scheduled-on-request runs from a script.
+- **Repository Actions secret** — An encrypted credential scoped to a single repository and readable only by workflows running in it. The API never hands the value back: reads return the name, the public-key fingerprint, and the last-updated timestamp, which is why a rotation has to be verified by writing rather than by fetching.
+- **Sealed box** — The libsodium sealed-box encryption the API expects for a secret value. Each repository publishes its own public key; the value is sealed against that key locally and only the sealed blob is uploaded, so the plaintext never crosses the wire.
+- **Public key vs write permission** — Two separate permissions on the same token. A token that can write secrets but cannot read a repository's public key fails at the very first request against every repository, which reads as a credentials problem rather than a scope one.
+- **Secret fleet** — The explicit list of repositories a bulk command targets, given inline (`repo1,repo2`), as a one-per-line file, or as a CSV with a `repository` column. Naming the fleet on the command line is what makes a mis-typed repository name visible in the plan before anything is sent.
+- **`--dry-run`** — Prints every repository, every secret, and every intended write, then stops. On a bulk write the plan is the only place a wrong repository name or a wrong secret name can still be caught cheaply.
+- **`GITHUB_API_VERSION`** — Pins the REST API version header on each request. Left unset, the header is omitted and the server's current default applies, which means a script written against one API shape can change behaviour when GitHub moves the default.
 
 ## GitLab CI/CD
 
