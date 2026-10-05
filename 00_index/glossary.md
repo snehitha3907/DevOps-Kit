@@ -166,6 +166,9 @@
 - **`--set` flag** — An inline `helm install/upgrade --set key=value` override for one-off tweaks or CI-injected values (e.g. an image tag); visible later in `helm history` but hard to review when chained, so it suits single computed values rather than whole environments.
 - **Per-environment values file** — A `-f values-<env>.yaml` file holding only the keys that differ from chart defaults; selecting the file per environment keeps each environment's differences reviewable instead of retyping flags on every upgrade.
 - **Named template** — A reusable snippet in a chart's `templates/_helpers.tpl`, included with `include`/`template`; used to share labels, names, and repeated blocks across manifests instead of duplicating them per file.
+- **Subchart** — A chart nested inside another chart's `charts/` directory and deployed as part of the parent release; a vendored subchart (e.g. a PostgreSQL one checked into the parent) keeps local installs working without an external chart repository, and `database.enabled=false`-style switches turn it off when a managed service takes over.
+- **values.schema.json** — A JSON Schema file Helm validates every supplied values file against on `lint`, `template`, `install`, and `upgrade`; a mistyped key fails there instead of rendering into a manifest the cluster refuses.
+- **Hook** — A Helm manifest annotated with `helm.sh/hook` (e.g. `pre-install`, `pre-upgrade`) that runs once around the release lifecycle rather than living with it; the usual shape is a migration Job that must succeed before the new Deployment rolls out.
 
 ## Git
 
@@ -246,6 +249,8 @@
 - **Secret fleet** — The explicit list of repositories a bulk command targets, given inline (`repo1,repo2`), as a one-per-line file, or as a CSV with a `repository` column. Naming the fleet on the command line is what makes a mis-typed repository name visible in the plan before anything is sent.
 - **`--dry-run`** — Prints every repository, every secret, and every intended write, then stops. On a bulk write the plan is the only place a wrong repository name or a wrong secret name can still be caught cheaply.
 - **`GITHUB_API_VERSION`** — Pins the REST API version header on each request. Left unset, the header is omitted and the server's current default applies, which means a script written against one API shape can change behaviour when GitHub moves the default.
+- **OIDC (workload identity federation)** — Exchanging a short-lived identity token the workflow mints for itself (`id-token: write` permission) for cloud credentials, instead of storing a long-lived access key as a secret. AWS verifies the token against a trust policy and STS hands back session credentials with a bounded lifetime.
+- **Trust policy** — The IAM role condition that constrains which tokens may assume it: the identity provider, the repository, and the ref or environment in the token's subject claim. A tight subject (one repo, one environment) is what stops any other workflow from exchanging for the same role.
 
 ## GitLab CI/CD
 

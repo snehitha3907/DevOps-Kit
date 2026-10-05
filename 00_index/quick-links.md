@@ -193,6 +193,7 @@
 ### Ship with GitHub Actions
 
 - [Composite actions vs reusable workflows](../GitHub Actions/docs/composite-actions-vs-reusable-workflows.md)
+- [Authenticate to AWS with OIDC instead of stored keys](../GitHub Actions/docs/github-actions-oidc-with-aws.md)
 - [Promote one artifact through dev, staging, and production](../GitHub Actions/templates/multi-env-deploy/README.md)
 - [Self-hosted runner registration and cleanup](../GitHub Actions/scripts/self-hosted-runner-registration-cleanup.sh)
 - [Minimal custom runner image](../GitHub Actions/dockerfiles/custom-runner.Dockerfile)
@@ -279,6 +280,9 @@
 - [Chart inspection config](../Helm/configs/2026-07-23-first-helm-chart-inspection.yaml)
 - [Redis chart](../Helm/manifests/redis-chart/Chart.yaml)
 - [nginx chart with custom values](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
+- [Reusable microservice chart](../Helm/templates/microservice-chart/README.md)
+- [Microservice chart defaults](../Helm/templates/microservice-chart/values.yaml)
+- [Validate chart values across envs](../Helm/scripts/validate-chart-values-across-envs.sh)
 
 ### Scan for vulnerabilities
 
