@@ -1,0 +1,9 @@
+# last_verified: 2026-10-05 · Helm · n/a
+# Production overlay. Layer over values-common.yaml the same way:
+#   helm install web-demo ./demo-chart -f ./demo-chart/values-common.yaml -f ./demo-chart/values-production.yaml
+replicaCount: 3
+image:
+  tag: production-latest
+ingress:
+  enabled: true
+  host: production.example.internal

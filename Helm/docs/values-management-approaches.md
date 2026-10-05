@@ -1,5 +1,5 @@
 ---
-last_verified: 2026-09-18
+last_verified: 2026-10-05
 tool_version: n/a
 ---
 
@@ -27,8 +27,8 @@ Where it falls apart: a long `--set` chain is hard to read and harder to review.
 Instead of flags, keep one file per environment and select with `-f`:
 
 ```bash
-helm install web-demo ./demo-chart -f values-production.yaml
-helm upgrade web-demo ./demo-chart -f values-staging.yaml
+helm install web-demo ./demo-chart -f ./demo-chart/values-production.yaml
+helm upgrade web-demo ./demo-chart -f ./demo-chart/values-staging.yaml
 ```
 
 A `values-staging.yaml` only needs the keys that differ from the chart defaults:
@@ -42,7 +42,7 @@ ingress:
   host: staging.example.internal
 ```
 
-What this is good for: this is the approach I would default to. Each environment's full intended state sits in a file that can be committed, reviewed, and diffed. Upgrades become a single repeatable command, and comparing environments is just diffing two files. Multiple `-f` flags layer (later files win), so a shared `values-common.yaml` plus a small per-environment file keeps duplication low.
+What this is good for: this is the approach I would default to. Each environment's full intended state sits in a file that can be committed, reviewed, and diffed. Upgrades become a single repeatable command, and comparing environments is just diffing two files. Multiple `-f` flags layer (later files win), so a shared `values-common.yaml` plus a small per-environment file keeps duplication low. The fixture lives in `Helm/manifests/demo-chart/`, so run these commands from `Helm/manifests/`:
 
 What to watch out for: someone still has to remember which `-f` file goes with which release — I once upgraded staging with the production file and only caught it because the replica count looked wrong in `helm get values`. Naming the release and the file after the environment helps.
 
@@ -84,7 +84,7 @@ Render locally without touching the cluster to confirm each approach produces th
 
 ```bash
 helm lint ./demo-chart
-helm template web-demo ./demo-chart -f values-staging.yaml | grep -A 3 "replicaCount\|replicas:"
+helm template web-demo ./demo-chart -f ./demo-chart/values-staging.yaml | grep -A 3 "replicaCount\|replicas:"
 helm template web-demo ./demo-chart --set replicaCount=5 | grep "replicas:"
 helm get values web-demo
 ```

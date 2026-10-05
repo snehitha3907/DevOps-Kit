@@ -1,0 +1,18 @@
+# last_verified: 2026-10-05 · Helm · n/a
+# Shared baseline layered under every environment file:
+#   helm upgrade web-demo ./demo-chart -f ./demo-chart/values-common.yaml -f ./demo-chart/values-staging.yaml
+# Later -f files win, so per-environment files only carry their deltas.
+image:
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
