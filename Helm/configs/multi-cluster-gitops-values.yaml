@@ -1,0 +1,159 @@
+# last_verified: 2026-10-05 · Helm n/a
+# Purpose: shared baseline values file for one release deployed to several
+#   clusters from a GitOps repository. Holds every setting that is identical
+#   on all clusters; per-cluster differences live in small overlay files.
+# When to use: the same chart and release name go to two or more clusters
+#   (e.g. staging and production, or per-region clusters) and the cluster
+#   copies must stay comparable. Not needed for a single-cluster release —
+#   a flat values file is simpler there.
+# Prerequisites: a chart whose templates read .Values.global and the keys
+#   below; one overlay file per cluster supplying clusterName and the
+#   cluster's deltas; a GitOps tool or pipeline that applies the same
+#   layering order on every cluster.
+# Layout (suggested repo paths):
+#   Helm/configs/multi-cluster-gitops-values.yaml   <- this file (shared base)
+#   <cluster>/values-<cluster>.yaml                 <- per-cluster overlay
+# Usage (later -f files win; always pass the base first):
+#   helm upgrade --install myapp ./chart \
+#     -f Helm/configs/multi-cluster-gitops-values.yaml \
+#     -f clusters/eu-west/values-eu-west.yaml
+# Verify (renders without touching a cluster):
+#   helm lint ./chart
+#   helm template myapp ./chart \
+#     -f Helm/configs/multi-cluster-gitops-values.yaml \
+#     -f clusters/eu-west/values-eu-west.yaml | grep -E "replicas:|host:"
+#   helm diff upgrade myapp ./chart -f <base> -f <overlay>   # needs helm-diff
+# Rollback: releases are versioned server-side, so a bad values change is
+#   reverted with `helm rollback myapp <revision>`; the durable fix is to
+#   revert the overlay commit in git so the next sync does not re-apply it.
+# Common errors: passing the overlay before the base (base silently wins);
+#   two overlays setting the same map key with different shapes (lists such
+#   as tolerations replace wholesale instead of merging); a template reading
+#   .Values.clusterName while the overlay sets .Values.global.clusterName.
+
+# Overlay contract: each per-cluster file sets at minimum
+#   global.clusterName  (used in names, hosts, and external labels)
+# and overrides only the keys that differ (replicas, resources, hosts).
+# Everything else falls through to the defaults below.
+global:
+  # Empty here on purpose — every overlay must set it. Rendering with an
+  # empty clusterName produces hosts like "app-.example.internal", which the
+  # helm template grep in the header catches before anything is applied.
+  clusterName: ""
+  domainSuffix: example.internal
+  # Labels attached by the chart's helpers to every rendered object.
+  commonLabels:
+    managed-by: gitops
+  # Image baseline: registry and pull policy are shared; the tag is pinned
+  # per cluster (overlay) or injected by the image-update pipeline, never
+  # floated here.
+  image:
+    repository: my-registry/my-app
+    pullPolicy: IfNotPresent
+    tag: ""
+
+# Workload baseline. Overlays raise replicaCount and resources where the
+# cluster is larger; the base keeps the smallest footprint that still
+# passes probes and scheduling.
+replicaCount: 2
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 20
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+service:
+  type: ClusterIP
+  port: 80
+
+# Ingress stays disabled in the base. Each overlay enables it with its own
+# host built from the cluster name, e.g. "app-eu-west.example.internal",
+# plus the cluster's TLS secret. Keeping hosts out of the base is what
+# prevents one cluster's DNS name from leaking into another's manifests.
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Autoscaling is off in the base so small clusters get a fixed replica
+# count; overlays for larger clusters enable it with their own bounds.
+# Requires resources.requests above, otherwise the target cannot be computed.
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+
+# Disruption budget baseline: at least one pod stays available during node
+# maintenance. Takes effect only if the chart templates a PDB object.
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+# Scheduling stays unconstrained in the base so any cluster can place pods.
+# Overlays add nodeSelector / tolerations for dedicated node pools. Note that
+# tolerations and affinity are lists and maps respectively: an overlay list
+# replaces the base list entirely, it does not append.
+nodeSelector: {}
+
+tolerations: []
+
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: my-app
+          topologyKey: kubernetes.io/hostname
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+# Example per-cluster overlay (clusters/eu-west/values-eu-west.yaml):
+#   global:
+#     clusterName: "eu-west"
+#   replicaCount: 4
+#   ingress:
+#     enabled: true
+#     className: "nginx"
+#     hosts:
+#       - host: app-eu-west.example.internal
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#     tls:
+#       - secretName: app-eu-west-tls
+#         hosts:
+#           - app-eu-west.example.internal
+#   autoscaling:
+#     enabled: true
+#     minReplicas: 4
+#     maxReplicas: 12
