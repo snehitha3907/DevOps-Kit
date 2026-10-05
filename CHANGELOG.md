@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05
+
+- Added Helm chart-testing guide: scoping lint and install runs to changed charts with `ct list-changed`, `ct lint`, and `ct install`, plus a minimal `ct.yaml` and local `helm lint` / `helm template` pre-checks against the redis example chart (hlm-014) (`Helm/docs/chart-testing-ct-lint.md`)
+
 ## 2026-10-04
 
 - Added a reusable Helm chart scaffold for an HTTP microservice: Deployment/Service/ServiceAccount/ConfigMap plus opt-in Ingress, HPA, PDB and a migration hook Job, a `helm test` connection Pod, a `values.schema.json` that validates on lint and install, and a vendored `charts/postgresql/` subchart wired in with `alias: database` and `condition: database.enabled` so the datastore can be switched off without touching the workload templates (hlm-012) (`Helm/templates/microservice-chart/`)
