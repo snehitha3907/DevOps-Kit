@@ -1,0 +1,40 @@
+{{/*
+# last_verified: 2026-10-04 · Helm · n/a
+*/}}
+{{ .Chart.Name }} {{ .Chart.Version }} released as {{ .Release.Name }} (namespace {{ .Release.Namespace }}).
+
+Workload:
+  Deployment/{{ include "microservice-chart.fullname" . }}
+  Image:      {{ include "microservice-chart.image" . }}
+  Replicas:   {{ if .Values.autoscaling.enabled }}managed by HorizontalPodAutoscaler ({{ .Values.autoscaling.minReplicas }}-{{ .Values.autoscaling.maxReplicas }}){{ else }}{{ .Values.replicaCount }}{{ end }}
+
+{{ if .Values.ingress.enabled -}}
+{{ $hosts := list -}}
+{{ range .Values.ingress.hosts -}}
+{{ $hosts = append $hosts .host -}}
+{{ end -}}
+Route traffic through the ingress:
+  http{{ if .Values.ingress.tls }}s{{ end }}://{{ join " and http{{ if .Values.ingress.tls }}s{{ end }}://" $hosts }}{{ if .Values.ingress.tls }} (TLS configured){{ end }}
+{{- else -}}
+No ingress is enabled. Reach the service from inside the cluster:
+  kubectl --namespace {{ .Release.Namespace }} port-forward svc/{{ include "microservice-chart.fullname" . }} 8080:{{ .Values.service.port }}
+  curl http://127.0.0.1:8080/ready
+{{- end }}
+
+{{ if .Values.database.enabled -}}
+Database: the postgresql subchart is enabled, so DB_HOST is wired to
+  {{ include "microservice-chart.dbHost" . }}:{{ .Values.config.dbPort }}
+Credentials live in the release Secret, not in values.yaml. Read them with:
+  kubectl --namespace {{ .Release.Namespace }} get secret {{ include "microservice-chart.databaseServiceName" . }} \
+    -o go-template='{{ `{{ index .data "postgres-password" }}` }}'; echo
+Point the chart at an externally managed database instead with --set database.enabled=false.
+{{- else -}}
+Database: no subchart in this release. DB_HOST is whatever config.dbHost is set to:
+  {{ include "microservice-chart.dbHost" . | default "(empty — set config.dbHost)" }}:{{ .Values.config.dbPort }}
+{{- end }}
+
+Check the release end to end with:
+  helm test {{ .Release.Name }} --namespace {{ .Release.Namespace }}
+
+Then read NOTES.txt output for this release with:
+  helm --namespace {{ .Release.Namespace }} get notes {{ .Release.Name }}

@@ -1,0 +1,22 @@
+# last_verified: 2026-10-04 · Helm · n/a
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "microservice-chart.fullname" . }}-test-connection"
+  labels:
+    {{- include "microservice-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  restartPolicy: Never
+  {{- include "microservice-chart.imagePullSecrets" . | nindent 2 }}
+  containers:
+    - name: test-connection
+      image: {{ printf "%s:%s" .Values.tests.image.repository (.Values.tests.image.tag | default "latest") | quote }}
+      imagePullPolicy: {{ .Values.tests.image.pullPolicy }}
+      command:
+        - wget
+      args:
+        - "-qO-"
+        - "{{ include "microservice-chart.fullname" . }}:{{ .Values.service.port }}/ready"
