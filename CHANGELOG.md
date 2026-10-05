@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05
+
+- Added Helm values cross-environment validation script: lints and renders one chart per environment over an optional shared values file, asserts per-environment expected strings land in the manifests, and diffs each environment's render against the first so drift is visible before upgrade (hlm-013) (`Helm/scripts/validate-chart-values-across-environments.sh`)
+
 ## 2026-10-04
 
 - Added a reusable Helm chart scaffold for an HTTP microservice: Deployment/Service/ServiceAccount/ConfigMap plus opt-in Ingress, HPA, PDB and a migration hook Job, a `helm test` connection Pod, a `values.schema.json` that validates on lint and install, and a vendored `charts/postgresql/` subchart wired in with `alias: database` and `condition: database.enabled` so the datastore can be switched off without touching the workload templates (hlm-012) (`Helm/templates/microservice-chart/`)
