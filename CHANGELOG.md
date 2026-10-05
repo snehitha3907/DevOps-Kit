@@ -2,6 +2,7 @@
 
 ## 2026-10-05
 
+- Added Helm chart-testing guide: scoping lint and install runs to changed charts with `ct list-changed`, `ct lint`, and `ct install`, plus a minimal `ct.yaml` and local `helm lint` / `helm template` pre-checks against the redis example chart (hlm-014) (`Helm/docs/chart-testing-ct-lint.md`)
 - Added Helm values cross-environment validation script: lints and renders one chart per environment over an optional shared values file, asserts per-environment expected strings land in the manifests, and diffs each environment's render against the first so drift is visible before upgrade (hlm-013) (`Helm/scripts/validate-chart-values-across-environments.sh`)
 
 ## 2026-10-04
