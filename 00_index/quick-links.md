@@ -118,6 +118,8 @@
 - [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md)
 - [OpenTofu vs Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 - [S3 and DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh)
+- [Plan/apply wrapper with policy checks](../OpenTofu/scripts/plan-apply-with-policy-checks.sh)
+- [Reusable AWS VPC module template](../OpenTofu/templates/aws-reusable-module/README.md)
 
 ### Provision with Pulumi
 
@@ -273,6 +275,7 @@
 
 - [Helm quickstart trip-ups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md)
 - [Values management approaches](../Helm/docs/values-management-approaches.md)
+- [`demo-chart` fixture for the values walkthrough](../Helm/manifests/demo-chart/README.md)
 - [Demo web service chart](../Helm/scripts/demo-web-service-chart.sh)
 - [Live-release values](../Helm/configs/2026-09-02-live-release-values.yaml)
 - [Production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml)
