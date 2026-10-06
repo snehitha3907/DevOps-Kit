@@ -1,0 +1,9 @@
+# last_verified: 2026-10-05 · Helm · n/a
+# Staging overlay. Matches the example in
+# Helm/docs/values-management-approaches.md.
+replicaCount: 2
+image:
+  tag: staging-latest
+ingress:
+  enabled: true
+  host: staging.example.internal

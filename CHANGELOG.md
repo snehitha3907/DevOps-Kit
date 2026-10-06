@@ -2,6 +2,8 @@
 
 ## 2026-10-05
 
+- Added Helm `demo-chart` fixture backing the values-management walkthrough: minimal Deployment/Service/optional-Ingress chart with a `demo-chart.labels` helper, chart defaults plus a shared `values-common.yaml` baseline and staging/production overlays, so every `helm lint` / `helm template` / `helm install` / `helm upgrade` command in the doc runs as written (hlm-021) (`Helm/manifests/demo-chart/`)
+
 - Added Helm shared-baseline values pattern for multi-cluster GitOps: common defaults under `global` plus workload, ingress, autoscaling, and scheduling baselines, with a per-cluster overlay contract, `-f` layering order, `helm template` verify steps, and rollback notes (hlm-015) (`Helm/configs/multi-cluster-gitops-values.yaml`)
 - Added Helm chart-testing guide: scoping lint and install runs to changed charts with `ct list-changed`, `ct lint`, and `ct install`, plus a minimal `ct.yaml` and local `helm lint` / `helm template` pre-checks against the redis example chart (hlm-014) (`Helm/docs/chart-testing-ct-lint.md`)
 - Added Helm values cross-environment validation script: lints and renders one chart per environment over an optional shared values file, asserts per-environment expected strings land in the manifests, and diffs each environment's render against the first so drift is visible before upgrade (hlm-013) (`Helm/scripts/validate-chart-values-across-environments.sh`)
