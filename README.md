@@ -18,11 +18,11 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Reusable microservice Helm chart](Helm/templates/microservice-chart/README.md) — Deployment plus Service plus ConfigMap, with an optional Ingress, autoscaler, PDB, migration Job hook, and a vendored PostgreSQL subchart for local installs.
-- [Chart defaults with reasons](Helm/templates/microservice-chart/values.yaml) — Every knob the chart exposes and why it exists; per-environment differences belong in layered `-f` files, not in here.
-- [Schema-guarded values](Helm/templates/microservice-chart/values.schema.json) — JSON Schema Helm checks on lint, template, install, and upgrade, so a mistyped key fails before it reaches the cluster.
-- [GitHub Actions OIDC with AWS](GitHub Actions/docs/github-actions-oidc-with-aws.md) — Replace long-lived access-key secrets with short-lived workload identity: trust policy, token claims, and the exchange, folded into the multi-environment deploy template.
-- [Validate chart values across envs](Helm/scripts/validate-chart-values-across-envs.sh) — Key checks plus a per-environment render diff that catches copy-paste promotion errors before `helm upgrade`.
+- [Shared base values for multi-cluster GitOps](Helm/configs/multi-cluster-gitops-values.yaml) — One baseline values file for a release deployed to several clusters; per-cluster overlays supply `clusterName` and only the keys that differ.
+- [Chart testing with `ct lint`](Helm/docs/chart-testing-ct-lint.md) — Lint and install only the charts a branch touched, walked through against the `redis-chart` example already in the kit.
+- [Validate chart values across envs](Helm/scripts/validate-chart-values-across-environments.sh) — Lint, render, and diff one chart against a values file per environment, catching promotion mistakes before `helm upgrade`.
+- [Microservice chart metadata](Helm/templates/microservice-chart/Chart.yaml) — Name, versions, kube floor, and a vendored PostgreSQL subchart switched by `database.enabled`.
+- [What `helm package` leaves out](Helm/templates/microservice-chart/.helmignore) — Keeps VCS metadata, CI config, and local values scratch out of the built chart archive.
 
 ## Layout
 
@@ -40,7 +40,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **GitLab CI** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline configs, multi-project and dynamic child pipelines, a build-to-deploy-to-Kubernetes walkthrough, and an API trigger snippet.
 - **graf/** — Grafana primer, Docker-based install script, UI exploration notes, and quickstart trip-ups.
 - **grafc/** — Grafana Cloud first contact: an agent scrape config, a dashboard created over the HTTP API, and notes from the hosted UI.
-- **Helm/** — Chart inspection, values files, values-management approaches, Redis chart manifests, a reusable microservice chart with a vendored PostgreSQL subchart, a cross-environment values validator, release testing, and chart scaffolding.
+- **Helm/** — Chart inspection, values files, values-management approaches, a shared base values file for multi-cluster GitOps releases, Redis chart manifests, a reusable microservice chart with a vendored PostgreSQL subchart, a cross-environment values validator, chart testing with `ct lint`, and chart scaffolding.
 - **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, production patterns with HPA and PDB, and Helm/Kustomize overlays.
 - **OpenTelemetry** (folder `otel/`) — Traces primer, collector install script, first-span snippet, a minimal OTLP export config, quickstart trip-ups, and an instrumented Go server.
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, and verification.
@@ -73,7 +73,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 | GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
 | Grafana (`graf/`) | 3 | 2 | — | 1 | — | — | — | — | — | 2026-09-29 |
 | Grafana Cloud (`grafc/`) | 1 | — | 1 | — | 1 | — | — | — | — | 2026-09-30 |
-| Helm | 3 | 4 | 1 | 4 | 4 | 4 | 1 | — | 22 | 2026-09-18 |
+| Helm | 3 | 5 | 1 | 4 | 5 | 4 | 1 | — | 22 | 2026-10-05 |
 | Kubernetes | 9 | 4 | 2 | 3 | 1 | 5 | 2 | — | 10 | 2026-08-29 |
 | OpenTelemetry (`otel/`) | 2 | 1 | 2 | 1 | 1 | — | — | — | — | 2026-09-25 |
 | OpenTofu | 2 | 3 | — | 2 | 2 | — | 1 | — | — | 2026-09-18 |
@@ -87,7 +87,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion.
+Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion. The newest additions on that same theme are a shared base values file for deploying one release to several clusters from a GitOps repo, and a chart-testing walkthrough that lints and installs only the charts a branch touched.
 
 ---
 _Last updated: 2026-10-05_

@@ -167,19 +167,18 @@ Folder on disk is `vlt/`.
 - **scripts** (2): [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) — dev server, KV mounted at a custom path, one secret written and read — plus [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 - **docs** (1): [how `vlt/` is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
-## Helm  ·  43 files
+## Helm  ·  45 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **templates** (22): [reusable microservice chart](../Helm/templates/microservice-chart/README.md) — Deployment + Service + ConfigMap, optional Ingress/HPA/PDB, migration Job hook, `values.schema.json` guard, vendored PostgreSQL subchart — with [defaults](../Helm/templates/microservice-chart/values.yaml) and [chart metadata](../Helm/templates/microservice-chart/Chart.yaml)
-- **scripts** (4): [validate values across envs](../Helm/scripts/validate-chart-values-across-envs.sh) — key checks plus a per-env render diff before promotion — plus [demo web service chart](../Helm/scripts/demo-web-service-chart.sh) and [install and explore the CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
+- **scripts** (4): [validate values across envs](../Helm/scripts/validate-chart-values-across-environments.sh) — key checks plus a per-env render diff before promotion — plus [demo web service chart](../Helm/scripts/demo-web-service-chart.sh) and [install and explore the CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - _1 more under `Helm/scripts/` — browse the folder._
 - **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates, plus [values](../Helm/manifests/redis-chart/values.yaml)
-- **docs** (4): most recent → [values management approaches](../Helm/docs/values-management-approaches.md) — `--set` vs per-environment files vs named templates — plus [adding Helm to the README](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md) and [already documented](../Helm/docs/2026-07-25-helm-readme-already-documented.md)
+- **docs** (5): most recent → [chart testing with `ct lint`](../Helm/docs/chart-testing-ct-lint.md) — lint and install only the charts a branch touched, against the redis-chart example — plus [values management approaches](../Helm/docs/values-management-approaches.md) (`--set` vs per-environment files vs named templates), [adding Helm to the README](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md) and [already documented](../Helm/docs/2026-07-25-helm-readme-already-documented.md)
 - _1 more under `Helm/docs/` — browse the folder._
 - **notes** (3): most recent → [quickstart trip-ups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md), [values.yaml reference](../Helm/notes/values.yaml)
-- **configs** (4): most recent → [live-release values](../Helm/configs/2026-09-02-live-release-values.yaml), [production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml), [live values](../Helm/configs/2026-08-29-live-values.yaml)
-- _1 more under `Helm/configs/` — browse the folder._
-- **scripts** (3): [demo web service chart](../Helm/scripts/demo-web-service-chart.sh) — scaffold, lint, render, install, verify — plus [install and explore the CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh) and [a scratch test](../Helm/scripts/dummy-test.sh)
+- **configs** (5): most recent → [shared base values for multi-cluster GitOps](../Helm/configs/multi-cluster-gitops-values.yaml) — every setting identical on all clusters; per-cluster overlays supply `clusterName` and deltas — plus [live-release values](../Helm/configs/2026-09-02-live-release-values.yaml), [production-deployment values](../Helm/configs/2026-08-30-production-deployment-values.yaml)
+- _…and 2 more under `Helm/configs/` — browse the folder._
 - **snippets** (1): [nginx chart with custom values](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 - **notebooks** (1): [release lifecycle drill](../Helm/notebooks/release-lifecycle-drill.ipynb)
 

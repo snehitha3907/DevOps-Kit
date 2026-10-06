@@ -169,6 +169,8 @@
 - **Subchart** — A chart nested inside another chart's `charts/` directory and deployed as part of the parent release; a vendored subchart (e.g. a PostgreSQL one checked into the parent) keeps local installs working without an external chart repository, and `database.enabled=false`-style switches turn it off when a managed service takes over.
 - **values.schema.json** — A JSON Schema file Helm validates every supplied values file against on `lint`, `template`, `install`, and `upgrade`; a mistyped key fails there instead of rendering into a manifest the cluster refuses.
 - **Hook** — A Helm manifest annotated with `helm.sh/hook` (e.g. `pre-install`, `pre-upgrade`) that runs once around the release lifecycle rather than living with it; the usual shape is a migration Job that must succeed before the new Deployment rolls out.
+- **chart-testing (`ct`)** — A tool that detects which charts changed on a branch (`ct list-changed`) and runs lint plus install over just those charts (`ct lint`, `ct install`), so a repo with many charts does not re-verify everything on every change.
+- **Shared base values with per-cluster overlays** — A layering pattern for one release deployed to several clusters: a single base file holds every setting identical everywhere, and each cluster adds a small overlay file supplying `clusterName` and its own deltas. Later `-f` files win, so the base is always passed first.
 
 ## Git
 

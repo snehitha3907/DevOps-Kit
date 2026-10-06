@@ -282,7 +282,9 @@
 - [nginx chart with custom values](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 - [Reusable microservice chart](../Helm/templates/microservice-chart/README.md)
 - [Microservice chart defaults](../Helm/templates/microservice-chart/values.yaml)
-- [Validate chart values across envs](../Helm/scripts/validate-chart-values-across-envs.sh)
+- [Shared base values for multi-cluster GitOps](../Helm/configs/multi-cluster-gitops-values.yaml)
+- [Chart testing with `ct lint`](../Helm/docs/chart-testing-ct-lint.md)
+- [Validate chart values across envs](../Helm/scripts/validate-chart-values-across-environments.sh)
 
 ### Scan for vulnerabilities
 
