@@ -115,7 +115,7 @@
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 - **dockerfiles** (1): [self-hosted runner](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
 
-## GitHub Actions  ·  25 files
+## GitHub Actions  ·  26 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
 - **notes** (6): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [ci.yml reference](../GitHub Actions/notes/ci.yml)
@@ -167,13 +167,13 @@ Folder on disk is `vlt/`.
 - **scripts** (2): [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) — dev server, KV mounted at a custom path, one secret written and read — plus [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 - **docs** (1): [how `vlt/` is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
-## Helm  ·  45 files
+## Helm  ·  55 files
 
 - **primer:** [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md)
 - **templates** (22): [reusable microservice chart](../Helm/templates/microservice-chart/README.md) — Deployment + Service + ConfigMap, optional Ingress/HPA/PDB, migration Job hook, `values.schema.json` guard, vendored PostgreSQL subchart — with [defaults](../Helm/templates/microservice-chart/values.yaml) and [chart metadata](../Helm/templates/microservice-chart/Chart.yaml)
 - **scripts** (4): [validate values across envs](../Helm/scripts/validate-chart-values-across-environments.sh) — key checks plus a per-env render diff before promotion — plus [demo web service chart](../Helm/scripts/demo-web-service-chart.sh) and [install and explore the CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
 - _1 more under `Helm/scripts/` — browse the folder._
-- **manifests** (4): a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates, plus [values](../Helm/manifests/redis-chart/values.yaml)
+- **manifests** (14): a runnable [`demo-chart` fixture](../Helm/manifests/demo-chart/README.md) for the values-management walkthrough — Deployment + Service + optional Ingress with `values-common.yaml` baseline and staging/production overlays — plus a minimal [redis chart](../Helm/manifests/redis-chart/Chart.yaml) with [deployment](../Helm/manifests/redis-chart/templates/deployment.yaml) and [service](../Helm/manifests/redis-chart/templates/service.yaml) templates, plus [values](../Helm/manifests/redis-chart/values.yaml)
 - **docs** (5): most recent → [chart testing with `ct lint`](../Helm/docs/chart-testing-ct-lint.md) — lint and install only the charts a branch touched, against the redis-chart example — plus [values management approaches](../Helm/docs/values-management-approaches.md) (`--set` vs per-environment files vs named templates), [adding Helm to the README](../Helm/docs/2026-07-25-add-helm-to-readme-layout-and-coverage.md) and [already documented](../Helm/docs/2026-07-25-helm-readme-already-documented.md)
 - _1 more under `Helm/docs/` — browse the folder._
 - **notes** (3): most recent → [quickstart trip-ups](../Helm/notes/2026-08-07-helm-quickstart-tripups.md), [0000-primer-helm.md](../Helm/notes/0000-primer-helm.md), [values.yaml reference](../Helm/notes/values.yaml)
@@ -208,12 +208,13 @@ Folder on disk is `otel/`.
 - **snippets** (2): [instrumented Go HTTP server](../otel/snippets/2026-09-30-instrumented-http-server.go) — one span per request plus a per-path counter — plus [first trace span](../otel/snippets/2026-09-26-first-trace-span.py)
 - **docs** (1): [how `otel/` is reflected in the README and topic map](../otel/docs/2026-09-25-opentelemetry-readme-coverage.md)
 
-## OpenTofu  ·  10 files
+## OpenTofu  ·  17 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
+- **templates** (6): [reusable AWS VPC module](../OpenTofu/templates/aws-reusable-module/README.md) — VPC with public/private subnets, internet gateway, count-gated NAT gateways, referencing outputs, and an [`examples/basic/` caller](../OpenTofu/templates/aws-reusable-module/examples/basic/main.tf)
 - **docs** (3): most recent → [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — shared state per environment with locking — plus [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) covering `state list/mv/pull` and backend migration
 - **notes** (2): most recent → [quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md), [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
-- **scripts** (2): [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) — bucket, lock table, scoped IAM user, state migration — plus [install and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
+- **scripts** (3): [plan/apply wrapper with policy checks](../OpenTofu/scripts/plan-apply-with-policy-checks.sh) — init, validate, plan, policy gate, then apply — plus [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) and [install and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 - **notebooks** (1): [OpenTofu vs Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 

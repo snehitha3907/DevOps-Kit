@@ -345,6 +345,9 @@
 - **S3 backend** — A remote-state backend that stores the state file as an object in an S3 bucket (`bucket` + `key` + `region`), so every machine running `apply` reads and writes the same state instead of drifting with local files.
 - **DynamoDB lock table** — The `dynamodb_table` referenced by an S3 backend; OpenTofu takes a lock row on every state write so concurrent applies queue instead of clobbering each other.
 - **Workspace isolation** — Using one workspace per environment (`dev`, `prod`) against the same configuration and backend, so each environment gets its own state pointer (`key` prefix per workspace) while the code stays identical.
+- **Root module** — The top-level configuration a caller writes: provider blocks plus one or more `module` calls with concrete inputs. Shared modules stay provider-free so the same code serves every environment through different root modules.
+- **`versions.tf`** — The file in a shared module that declares `required_providers` (and the OpenTofu version floor) without any `provider` blocks, so version constraints travel with the module while credentials stay in the caller's root module.
+- **Count-gated resource** — A resource block with `count = var.enable_x ? 1 : 0` so an input flag decides whether the resource exists at all (e.g. skipping NAT gateways in isolated environments); guarded by a `validation` block so incompatible flag combinations fail at plan time.
 
 ## Terraform
 
