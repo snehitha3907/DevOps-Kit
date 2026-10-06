@@ -3,6 +3,8 @@
 ## 2026-10-06
 
 - Added OpenTofu plan/apply wrapper with policy gates: init plus format-check and validate, plan to a fixed file, no-destroy and plan-summary gates before apply, apply runs exactly the reviewed plan (ot-011) (`OpenTofu/scripts/tofu-plan-apply-with-policy-checks.sh`)
+- Added OpenTofu/Terraform state management comparison notebook: local and remote state schema parity, S3 backend argument equivalence, lock table independence, copy-and-replan migration procedure, state command parity table, and CI/CD stage parity (ot-012) (`OpenTofu/notebooks/comparing-opentofu-and-terraform-state-management.ipynb`)
+- Added Git regression test script for scripted bisect: deterministic exit codes (0 good, 1 bad, 125 skip), configurable TEST_CMD/PRE_CMD/TEST_TIMEOUT_SECS, rebuild step with skip-on-failure, binary presence check, timeout support, companion to bisect automation guide (git-027) (`Git/scripts/regression-test.sh`)
 
 ## 2026-10-05
 
