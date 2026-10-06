@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-06
+
+- Added OpenTofu plan/apply wrapper with policy gates: init plus format-check and validate, plan to a fixed file, no-destroy and plan-summary gates before apply, apply runs exactly the reviewed plan (ot-011) (`OpenTofu/scripts/tofu-plan-apply-with-policy-checks.sh`)
+
 ## 2026-10-05
 
 - Added reusable OpenTofu VPC module template for AWS: VPC with public/private subnets, internet gateway, count-gated NAT gateways with private routing, a validation guard on the NAT switch, referencing outputs for every resource, and an `examples/basic/` root-module caller (ot-010) (`OpenTofu/templates/aws-reusable-module/`)
