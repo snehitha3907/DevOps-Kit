@@ -2,6 +2,7 @@
 
 ## 2026-10-05
 
+- Added reusable OpenTofu VPC module template for AWS: VPC with public/private subnets, internet gateway, count-gated NAT gateways with private routing, a validation guard on the NAT switch, referencing outputs for every resource, and an `examples/basic/` root-module caller (ot-010) (`OpenTofu/templates/aws-reusable-module/`)
 - Added Helm `demo-chart` fixture backing the values-management walkthrough: minimal Deployment/Service/optional-Ingress chart with a `demo-chart.labels` helper, chart defaults plus a shared `values-common.yaml` baseline and staging/production overlays, so every `helm lint` / `helm template` / `helm install` / `helm upgrade` command in the doc runs as written (hlm-021) (`Helm/manifests/demo-chart/`)
 
 - Added Helm shared-baseline values pattern for multi-cluster GitOps: common defaults under `global` plus workload, ingress, autoscaling, and scheduling baselines, with a per-cluster overlay contract, `-f` layering order, `helm template` verify steps, and rollback notes (hlm-015) (`Helm/configs/multi-cluster-gitops-values.yaml`)
