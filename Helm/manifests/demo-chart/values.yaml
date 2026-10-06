@@ -1,0 +1,25 @@
+# last_verified: 2026-10-05 · Helm · n/a
+# Default configuration for demo-chart. Every environment file in this
+# directory only overrides the keys that differ from these defaults.
+replicaCount: 1
+
+image:
+  repository: demo-app
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  host: chart-example.local
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
