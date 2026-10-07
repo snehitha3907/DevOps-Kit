@@ -1,0 +1,57 @@
+# last_verified: 2026-10-07 · AWS ECS
+
+# Blue-green deployment configuration for an AWS ECS service.
+#
+# This file drives a CodeDeploy blue/green ECS deployment:
+#   - A single ECS service runs against a fixed task definition family.
+#   - CodeDeploy shifts traffic from the "blue" task set (current) to the
+#     "green" task set (new) by editing the service's deployment configuration.
+#   - A CodeDeploy application + deployment group consume this config and
+#     perform the traffic-shifting roll.
+#
+# Deploy with:
+#   aws deploy create-application --application-name <app-name>
+#   aws deploy create-deployment-group --application-name <app-name> \
+#       --deployment-group-name <dg-name> \
+#       --deployment-config-file file://aws/configs/ecs-service-deployment-blue-green.yaml \
+#       --service-role-arn <role-arn> --ecs-services serviceArn=<service-arn>
+#   aws deploy create-deployment --application-name <app-name> \
+#       --deployment-group-name <dg-name> \
+#       --task-definition <new-task-def-family>:<revision>
+
+application:
+  name: <app-name>
+  computePlatform: ECS
+
+deploymentGroup:
+  name: <dg-name>
+  serviceRoleArn: <role-arn>
+  ecsServices:
+    - serviceArn: <service-arn>
+
+deploymentConfig:
+  # CodeDeploy's blue/green preset for ECS. The service runs two task sets
+  # during the roll; traffic shifts in the configured increments below.
+  deploymentTemplateName: CodeDefault_ECSComputeMinDown
+  minimumHealthyHosts:
+    type: FLEET_COUNT
+    value: 0
+  trafficRouting:
+    type: TIME_BASED_CANARY
+    timeBasedCanary:
+      canarySizePercent: 10
+      canaryIntervalSeconds: 600
+  testConnection:
+    type: HOOK
+    hookTarget:
+      type: HOOK
+      hookTargetArn: <hook-lambda-arn>
+      hookTimeoutSeconds: 300
+  rollbackConfig:
+    - event: DEPLOYMENT_FAILURE
+      action: AUTOMATIC_ROLLBACK
+    - event: DEPLOYMENT_COMPLETE
+      action: AUTOMATIC_ROLLBACK
+  alarms:
+    - name: <alarm-name>
+      alarmArn: <alarm-arn>
