@@ -2,10 +2,12 @@
 
 ## 2026-10-07
 
+- Added Azure Bicep module template for AKS cluster with addons: private AKS cluster with Azure CNI, user-assigned kubelet identity, system pool with autoscaling, and opt-in managed addons (Container Insights monitoring, Azure Policy Gatekeeper, Key Vault CSI driver, HTTP application routing, Flux GitOps, Calico network policies) composed through a modular Bicep architecture (az-016) (`Azure/templates/aks-cluster-with-addons/`)
 - Added AWS ECS blue-green deployment config: CodeDeploy application/deploymentGroup/deploymentConfig for a single ECS service, time-based-canary traffic shift, hook test connection, and automatic rollback on failure or completion (aws-017) (`AWS/configs/ecs-service-deployment-blue-green.yaml`)
 - Added AWS IAM cross-account roles guide: one role per consumer and purpose, trust policies scoped to the exact caller principal with MFA and external-ID conditions, least-privilege permissions policies kept independent of trust, short scoped assume-role sessions, and simulator-backed positive and negative verification (aws-016) (`AWS/docs/iam-cross-account-roles-least-privilege.md`)
 - Added AWS CDK Python stack for VPC with private endpoints: public/private/isolated subnets across environments, gateway endpoints plus interface endpoints with a scoped TLS security group, and per-environment CIDR and NAT sizing (aws-015) (`AWS/scripts/vpc-with-private-endpoints.py`)
 - Added AWS CloudFormation StackSet template for multi-account deployment: shared template body (encrypted S3 bucket for CloudTrail logs with a CloudTrail-write bucket policy and a DenyInsecureTransport statement, a baseline IAM group with no inline policies, and a parameterized SNS topic with optional email subscription) plus an example CLI sequence for creating the set and its stack instances across accounts and regions (aws-014) (`AWS/templates/cloudformation-multi-account-stack-set/`)
+Passed ([x]) aws-017 — AWS: config(yaml) — AWS ECS service deployment config with blue-green · Level: L4 · 2026-10-07
 
 ## 2026-10-06
 
