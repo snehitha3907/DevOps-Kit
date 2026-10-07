@@ -2,6 +2,7 @@
 
 ## 2026-10-07
 
+- Added AWS ECS blue-green deployment config: CodeDeploy application/deploymentGroup/deploymentConfig for a single ECS service, time-based-canary traffic shift, hook test connection, and automatic rollback on failure or completion (aws-017) (`AWS/configs/ecs-service-deployment-blue-green.yaml`)
 - Added AWS IAM cross-account roles guide: one role per consumer and purpose, trust policies scoped to the exact caller principal with MFA and external-ID conditions, least-privilege permissions policies kept independent of trust, short scoped assume-role sessions, and simulator-backed positive and negative verification (aws-016) (`AWS/docs/iam-cross-account-roles-least-privilege.md`)
 - Added AWS CDK Python stack for VPC with private endpoints: public/private/isolated subnets across environments, gateway endpoints plus interface endpoints with a scoped TLS security group, and per-environment CIDR and NAT sizing (aws-015) (`AWS/scripts/vpc-with-private-endpoints.py`)
 - Added AWS CloudFormation StackSet template for multi-account deployment: shared template body (encrypted S3 bucket for CloudTrail logs with a CloudTrail-write bucket policy and a DenyInsecureTransport statement, a baseline IAM group with no inline policies, and a parameterized SNS topic with optional email subscription) plus an example CLI sequence for creating the set and its stack instances across accounts and regions (aws-014) (`AWS/templates/cloudformation-multi-account-stack-set/`)
@@ -287,7 +288,7 @@ Passed ([x]) pro-015 — Prometheus: docs — How I wired Prometheus Alertmanage
 
 ## 2026-08-29
 
-- Added Kubernetes docs on integrating Kubernetes with Prometheus for production monitoring (k8s-015) (`k8s/docs/integrating-kubernetes-with-prometheus.md`)
+- Added Kubernetes docs on integrating Kubernetes with Prometheus for production monitoring (k8s-015) (`Kubernetes/docs/integrating-kubernetes-with-prometheus.md`)
 - Added container health automation script combining bash retry patterns with Docker containerization concepts and YAML report generation (con-064) (`docs/concepts/scripting-automation-bash-python/scripts/docker-container-health-automation.sh`)
 - Added docs on wiring version control concepts (branch protection, merge strategies, release tags) into CI/CD pipelines (con-065) (`docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md`)
 - Added Helm values configuration for a live deployment with tuned resources, probes, and autoscaling (hlm-008) (`Helm/configs/2026-08-29-live-values.yaml`)
@@ -304,14 +305,14 @@ Passed ([x]) pro-015 — Prometheus: docs — How I wired Prometheus Alertmanage
 
 ## 2026-08-25
 
-- Added reusable VPC module manifest with public/private subnets across AZs and optional NAT gateways (tf-019) (`tf/manifests/reusable-vpc-module.hcl`)
+- Added reusable VPC module manifest with public/private subnets across AZs and optional NAT gateways (tf-019) (`Terraform/manifests/reusable-vpc-module.hcl`)
 - Added OpenTofu state management tutorial notes: state mv renames, state pull backups, backend switching without tofu migrate (ot-006) (`OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md`)
 - Moved the Linux filesystem permissions script and the netcat/curl connectivity script into their concept folders' `scripts/` subfolders and updated the index links to match (audit fix) (`docs/concepts/linux-system-administration/scripts/`, `docs/concepts/networking-fundamentals/scripts/`)
 - Added Kubernetes Deployment and HPA manifest for a Go service with liveness, readiness, and CPU-based autoscaling (k8s-013) (`Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml`)
 - Added minimal OpenTofu local backend configuration with state path output (ot-005) (`OpenTofu/configs/2026-08-25-minimal-local-backend.hcl`)
 - Added IaC state workflow practice script: plan, apply, and rollback with backup (con-077) (`docs/concepts/infrastructure-as-code-concepts/scripts/2026-08-25-iac-state-workflow.sh`)
 - Added merge conflict resolution and reflog recovery practice script (con-079) (`docs/concepts/version-control-concepts/scripts/2026-08-25-merge-conflict-reflog-recovery.sh`)
-- Added Git docs for wiring Git hooks into a pre-commit workflow with Black and Ruff (git-015) (`git/docs/wiring-git-hooks-into-pre-commit-workflow.md`)
+- Added Git docs for wiring Git hooks into a pre-commit workflow with Black and Ruff (git-015) (`Git/docs/wiring-git-hooks-into-pre-commit-workflow.md`)
 
 ## 2026-08-24
 
@@ -383,7 +384,7 @@ Passed ([x]) pro-015 — Prometheus: docs — How I wired Prometheus Alertmanage
 
 ## 2026-08-11
 
-- Added notes on the official Git branching tutorial and what tripped me up (git-010) (`git/notes/2026-08-11-git-branching-tutorial.md`)
+- Added notes on the official Git branching tutorial and what tripped me up (git-010) (`Git/notes/2026-08-11-git-branching-tutorial.md`)
 - Added notebook exercising Bash/Python glue patterns: parsing, looping, error handling (con-046) (`docs/concepts/scripting-automation-bash-python/notebooks/2026-08-11-bash-python-glue-patterns.ipynb`)
 - Passed ([x]) con-057 — Linux & System Administration: notebook — Pattern: Linux system performance analysis combining /proc, cgroups, and systemd-cgtop · Level: L3 · 2026-08-11
 - Added notebook exercising metrics/logs/traces mental model by scraping a local service's /metrics endpoint with trace_id correlation (con-056) (`docs/concepts/monitoring-observability-concepts/notebooks/2026-08-11-scraping-endpoint-three-pillars.ipynb`)
@@ -437,7 +438,7 @@ Passed ([x]) gh-017 — GitHub: notebook — Comparing GitHub API approaches: RE
 - Added notebook comparing GitHub API approaches for release automation: REST, GraphQL, and CLI methods (gh-017) (`GitHub/notebooks/comparing-api-approaches-release-automation.ipynb`)
 Passed ([x]) con-009 — CI/CD Concepts: script — Practice: Build a simulated CI/CD pipeline with Bash — build, test, deploy stages · Level: L2 · 2026-08-04
 - Added CI/CD common patterns bash snippet demonstrating artifact promotion, rollback triggers, and deployment gates (con-010) (`docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh`)
-- Documented `git/` folder in README Layout and Coverage table, noting the merge-strategies notebook and scaffold template (git-013) (`git/docs/2026-08-04-git-folder-readme-coverage.md`)
+- Documented `Git/` folder in README Layout and Coverage table, noting the merge-strategies notebook and scaffold template (git-013) (`Git/docs/2026-08-04-git-folder-readme-coverage.md`)
 - Reworked git-008 template: corrected directory case to `git/` (lowercase) to match `git-` prefix convention, removed unverifiable claims (Git version 2.28, release-please-action@v4, @commitlint/config-conventional, release-please schema URL) not backed by research.md (`git/templates/git-repo-scaffold/`)
 - Added notebook comparing Kubernetes workload types: Deployments, StatefulSets, DaemonSets, and Jobs (k8s-010) (`Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb`)
 - Added simulated CI/CD pipeline script with build, test, and deploy stages (con-009) (`docs/concepts/ci-cd-concepts/scripts/2026-08-04-simulated-cicd-pipeline.sh`)
@@ -446,7 +447,7 @@ Passed ([x]) con-009 — CI/CD Concepts: script — Practice: Build a simulated 
 
 ## 2026-08-03
 
-- Added docs on automating git bisect with scripted regression tests for CI and local development (git-009) (`git/docs/automating-git-bisect-with-scripted-regression-tests.md`)
+- Added docs on automating git bisect with scripted regression tests for CI and local development (git-009) (`Git/docs/automating-git-bisect-with-scripted-regression-tests.md`)
 
 ## 2026-08-02
 
@@ -458,7 +459,7 @@ Passed ([x]) con-009 — CI/CD Concepts: script — Practice: Build a simulated 
 - Added Git notebook comparing merge commit, rebase, squash, and cherry-pick strategies across branch topologies (git-007) (`Git/notebooks/comparing-git-merge-strategies.ipynb`)
 ## 2026-08-01
 
-- Added Git notebook comparing merge commit, rebase, squash, and cherry-pick strategies across branch topologies (git-007) (`git/notebooks/comparing-git-merge-strategies.ipynb`)
+- Added Git notebook comparing merge commit, rebase, squash, and cherry-pick strategies across branch topologies (git-007) (`Git/notebooks/comparing-git-merge-strategies.ipynb`)
 
 ## 2026-07-30
 
@@ -532,9 +533,9 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added OpenTofu quick primer (ot-001) (`OpenTofu/notes/0000-primer-opentofu.md`)
 - Added OpenTofu install and verify script (ot-002) (`OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh`)
 - Added minimal OpenTofu local-provider config with variables and outputs (ot-003) (`OpenTofu/configs/2026-07-18-minimal-local-config.tf`)
-- Added Linux filesystem permissions and process management practice script (con-011) (`docs/concepts/linux-system-administration/2026-07-18-filesystem-permissions-and-process-management.sh`)
+- Added Linux filesystem permissions and process management practice script (con-011) (`docs/concepts/linux-system-administration/scripts/2026-07-18-filesystem-permissions-and-process-management.sh`)
 - Added Linux process and file permission patterns in DevOps notes (con-012) (`docs/concepts/linux-system-administration/2026-07-18-process-and-permission-patterns-in-devops.md`)
-- Added network connectivity and port testing practice script with curl and netcat (con-013) (`docs/concepts/networking-fundamentals/2026-07-18-netcat-and-curl-connectivity.sh`)
+- Added network connectivity and port testing practice script with curl and netcat (con-013) (`docs/concepts/networking-fundamentals/scripts/2026-07-18-netcat-and-curl-connectivity.sh`)
 
 ## 2026-07-17
 
@@ -792,4 +793,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added GitHub docs/ README Layout note documenting deploy-keys vs PATs guide (gh-025) (`GitHub/docs/2026-08-22-document-github-docs-in-readme.md`, `README.md`)
 - Added minimal PR-checker workflow with path filtering and branch-protection-friendly checks (gh-016) (`GitHub/configs/2026-08-22-pr-checker-workflow.yaml`)
 - con-091: docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md
-- Added interactive notebook comparing Kubernetes workload types: Pods, Deployments, StatefulSets, DaemonSets, and Jobs (k8s-016) (`k8s/notebooks/2026-09-07-comparing-kubernetes-workload-types.ipynb`)
+- Added interactive notebook comparing Kubernetes workload types: Pods, Deployments, StatefulSets, DaemonSets, and Jobs (k8s-016) (`Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb`)
