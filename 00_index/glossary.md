@@ -42,6 +42,9 @@
 - **`~/.aws/credentials`** — The file that stores access key pairs. Sensitive — should never be committed to git.
 - **Static website hosting** — An S3 bucket mode that serves a directory as a public website: you point the bucket at an `index.html` and enable public-read, and S3 exposes a `<bucket>.s3-website-<region>.amazonaws.com` endpoint. The index document is mandatory — the endpoint returns 200 only when it exists.
 - **Tagging** — Attaching `Key=Value` metadata to AWS resources (e.g. `Name`, `Environment`) so they are identifiable in lists and cost reports. With the CLI, `aws ec2 create-tags --resources <id> --tags Key=Name,Value=web` writes them, and a `Tags[?...]` clause inside an `--query` expression reads them back alongside `InstanceId` and `State.Name`.
+- **StackSet** — A CloudFormation construct that deploys one shared template into many accounts and regions at once. The template itself stays account-agnostic (no account IDs or region literals); the account list, region list, and capabilities live in the StackSet operation that creates the stack instances.
+- **Gateway VPC endpoint** — A route-table entry that keeps traffic to S3 or DynamoDB inside the AWS network instead of sending it through the internet gateway. Free, and the usual first step when a private subnet needs object storage without a NAT hop.
+- **Interface VPC endpoint** — An elastic network interface with a private IP placed inside the workload subnets, fronting an AWS service over PrivateLink behind a security group. Used for services without a gateway endpoint, scoped to the small set the workload actually calls.
 
 ## Azure
 

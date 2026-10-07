@@ -117,8 +117,9 @@
 - [Minimal local backend config](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
 - [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md)
 - [OpenTofu vs Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
+- [State management with OpenTofu and Terraform](../OpenTofu/notebooks/comparing-opentofu-and-terraform-state-management.ipynb)
 - [S3 and DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh)
-- [Plan/apply wrapper with policy checks](../OpenTofu/scripts/plan-apply-with-policy-checks.sh)
+- [Plan/apply wrapper with policy checks](../OpenTofu/scripts/tofu-plan-apply-with-policy-checks.sh)
 - [Reusable AWS VPC module template](../OpenTofu/templates/aws-reusable-module/README.md)
 
 ### Provision with Pulumi
@@ -158,6 +159,7 @@
 - [Worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md)
 - [Automate `git bisect` with a regression test](../Git/docs/automating-git-bisect-with-scripted-regression-tests.md)
 - [Bisect runner — drives `git bisect run` end to end](../Git/scripts/bisect-automation-runner.sh)
+- [Regression test probe for `git bisect run`](../Git/scripts/regression-test.sh)
 - [Wiring hooks into a pre-commit workflow](../Git/docs/wiring-git-hooks-into-pre-commit-workflow.md)
 - [Merge strategies notebook](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 - [Repository skeleton scaffold](../Git/templates/git-repository-skeleton/README.md)
@@ -249,6 +251,8 @@
 - [List EC2 instances and S3 buckets](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - [List and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh)
 - [Build a VPC with EC2 and RDS end to end](../AWS/scripts/build-vpc-ec2-rds-stack.py)
+- [VPC with private endpoints (CDK)](../AWS/scripts/vpc-with-private-endpoints.py)
+- [Multi-account baseline with a CloudFormation StackSet](../AWS/templates/cloudformation-multi-account-stack-set/README.md)
 - [Scope least-privilege IAM policies](../AWS/docs/iam-policy-least-privilege-walkthrough.md)
 - [boto3 vs CloudFormation vs CDK on the same stack](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb)
 

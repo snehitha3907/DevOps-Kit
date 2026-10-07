@@ -28,11 +28,12 @@
 - **docs** (1): [wiring ArgoCD with GitHub for GitOps deployment](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md) — control plane, private repo, project, Application, and where the integration broke
 - **snippets** (1): [sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
-## AWS  ·  15 files
+## AWS  ·  19 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
-- **scripts** (6): most recent → [VPC + EC2 + RDS stack builder](../AWS/scripts/build-vpc-ec2-rds-stack.py) — public/private subnets, SSM-reachable instance, RDS with its own security group — plus [deploy a static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh), [CLI quickstart walkthrough](../AWS/scripts/2026-08-14-aws-cli-quickstart-walkthrough.sh)
-- _…and 3 more under `AWS/scripts/` — browse the folder._
+- **scripts** (7): most recent → [VPC with private endpoints (CDK)](../AWS/scripts/vpc-with-private-endpoints.py) — public/private/isolated subnets per environment with gateway plus interface endpoints — plus [VPC + EC2 + RDS stack builder](../AWS/scripts/build-vpc-ec2-rds-stack.py), [deploy a static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh)
+- _…and 4 more under `AWS/scripts/` — browse the folder._
+- **templates** (3): [multi-account baseline StackSet](../AWS/templates/cloudformation-multi-account-stack-set/README.md) — shared template body plus an example deploy sequence — with [template.yaml](../AWS/templates/cloudformation-multi-account-stack-set/template.yaml) and [examples/deploy.sh](../AWS/templates/cloudformation-multi-account-stack-set/examples/deploy.sh)
 - **docs** (1): [IAM least-privilege walkthrough](../AWS/docs/iam-policy-least-privilege-walkthrough.md) — scoping policies for a Lambda + S3 + DynamoDB stack, checked with the policy simulator
 - **notebooks** (1): [boto3 vs CloudFormation vs CDK](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb) — the same small versioned-bucket stack built three ways
 - **configs** (2): [minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini), [minimal config](../AWS/configs/2026-07-12-minimal-aws-config.ini)
@@ -84,15 +85,15 @@
 - **snippets** (2): most recent → [list Compute and GCS](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [earlier pass](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **docs** (1): [GCP coverage note](../GCP/docs/2026-09-28-gcp-readme-coverage-and-topics.md) — how `GCP/` maps into the README coverage table and topic map
 
-## Git  ·  58 files
+## Git  ·  59 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (22): [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md) — commitlint, pinned `.githooks`, release-please — plus [pre-commit hook](../Git/templates/git-hooks/pre-commit) and [commit-msg hook](../Git/templates/git-hooks/commit-msg)
 - _…and 19 more under `Git/templates/` — browse the folder._
 - **docs** (15): most recent → [worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md), [scripts count note](../Git/docs/2026-09-25-git-scripts-count-correction.md), [worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
 - _…and 12 more under `Git/docs/` — browse the folder._
-- **scripts** (11): [bisect automation runner](../Git/scripts/bisect-automation-runner.sh) — drives `git bisect run` end to end against a scripted regression test — plus [gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh), [branch management and tagging](../Git/scripts/branch-management-and-tag-creation.sh), [merge conflict practice](../Git/scripts/2026-06-10-merge-conflict-practice.sh)
-- _…and 7 more under `Git/scripts/` — browse the folder._
+- **scripts** (12): [regression test probe for `git bisect run`](../Git/scripts/regression-test.sh) — deterministic 0/1/125 exit codes with TEST_CMD/PRE_CMD knobs, companion to the scripted-bisect guide — plus [bisect automation runner](../Git/scripts/bisect-automation-runner.sh), [gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh), [branch management and tagging](../Git/scripts/branch-management-and-tag-creation.sh)
+- _…and 8 more under `Git/scripts/` — browse the folder._
 - **notes** (8): most recent → [branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [earlier branching pass](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore the CLI](../Git/notes/2026-06-04-explore-git-cli.md)
 - _…and 5 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
@@ -208,15 +209,15 @@ Folder on disk is `otel/`.
 - **snippets** (2): [instrumented Go HTTP server](../otel/snippets/2026-09-30-instrumented-http-server.go) — one span per request plus a per-path counter — plus [first trace span](../otel/snippets/2026-09-26-first-trace-span.py)
 - **docs** (1): [how `otel/` is reflected in the README and topic map](../otel/docs/2026-09-25-opentelemetry-readme-coverage.md)
 
-## OpenTofu  ·  17 files
+## OpenTofu  ·  18 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **templates** (6): [reusable AWS VPC module](../OpenTofu/templates/aws-reusable-module/README.md) — VPC with public/private subnets, internet gateway, count-gated NAT gateways, referencing outputs, and an [`examples/basic/` caller](../OpenTofu/templates/aws-reusable-module/examples/basic/main.tf)
 - **docs** (3): most recent → [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — shared state per environment with locking — plus [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) covering `state list/mv/pull` and backend migration
 - **notes** (2): most recent → [quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md), [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
-- **scripts** (3): [plan/apply wrapper with policy checks](../OpenTofu/scripts/plan-apply-with-policy-checks.sh) — init, validate, plan, policy gate, then apply — plus [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) and [install and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
+- **scripts** (3): [plan/apply wrapper with policy checks](../OpenTofu/scripts/tofu-plan-apply-with-policy-checks.sh) — init, validate, plan, policy gate, then apply — plus [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) and [install and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
-- **notebooks** (1): [OpenTofu vs Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
+- **notebooks** (2): [state management with OpenTofu and Terraform](../OpenTofu/notebooks/comparing-opentofu-and-terraform-state-management.ipynb) — local/remote schema parity, S3 backend equivalence, copy-and-replan migration — plus [OpenTofu vs Terraform for AWS provisioning](../OpenTofu/notebooks/comparing-opentofu-and-terraform-aws-provisioning.ipynb)
 
 ## Prometheus  ·  9 files
 
