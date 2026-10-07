@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-07
+
+- Added AWS CloudFormation StackSet template for multi-account deployment: shared template body (encrypted S3 bucket for CloudTrail logs with a CloudTrail-write bucket policy and a DenyInsecureTransport statement, a baseline IAM group with no inline policies, and a parameterized SNS topic with optional email subscription) plus an example CLI sequence for creating the set and its stack instances across accounts and regions (aws-014) (`AWS/templates/cloudformation-multi-account-stack-set/`)
+
 ## 2026-10-06
 
 - Added OpenTofu plan/apply wrapper with policy gates: init plus format-check and validate, plan to a fixed file, no-destroy and plan-summary gates before apply, apply runs exactly the reviewed plan (ot-011) (`OpenTofu/scripts/tofu-plan-apply-with-policy-checks.sh`)
