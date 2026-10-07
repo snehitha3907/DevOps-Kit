@@ -2,6 +2,7 @@
 
 ## 2026-10-07
 
+- Added AWS CDK Python stack for VPC with private endpoints: public/private/isolated subnets across environments, gateway endpoints plus interface endpoints with a scoped TLS security group, and per-environment CIDR and NAT sizing (aws-015) (`AWS/scripts/vpc-with-private-endpoints.py`)
 - Added AWS CloudFormation StackSet template for multi-account deployment: shared template body (encrypted S3 bucket for CloudTrail logs with a CloudTrail-write bucket policy and a DenyInsecureTransport statement, a baseline IAM group with no inline policies, and a parameterized SNS topic with optional email subscription) plus an example CLI sequence for creating the set and its stack instances across accounts and regions (aws-014) (`AWS/templates/cloudformation-multi-account-stack-set/`)
 
 ## 2026-10-06
