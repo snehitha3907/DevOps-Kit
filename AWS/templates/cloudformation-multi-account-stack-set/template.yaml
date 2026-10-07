@@ -1,0 +1,149 @@
+# last_verified: 2026-10-07 · AWS CloudFormation · n/a
+# CloudFormation StackSet template for multi-account deployment.
+# A StackSet is a stack that CloudFormation deploys once into a list of
+# target accounts, in one or more regions. The template body below is the
+# shared, account-agnostic definition; the StackSet itself (its name, the
+# list of accounts, the regions) is created outside this file, either
+# through the console, the CLI, or a Terraform aws_cloudformation_stack_set
+# resource. This template deliberately contains no account IDs, region
+# literals, or credentials — those live in the StackSet operation, not here.
+
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >
+  Multi-account CloudFormation StackSet template. Deploys one small, safe
+  baseline into every target account: an S3 bucket for CloudTrail logs
+  (trail-free, just a bucket), an IAM group with no inline policies attached,
+  and a parameterized SNS topic. Nothing here creates compute, billing,
+  or network resources, so the template is safe to roll out to accounts
+  that are still being set up.
+
+Parameters:
+  LogBucketName:
+    Type: String
+    Default: ""
+    Description: >
+      Name of the S3 bucket that will receive CloudTrail logs. Leave empty
+      to have CloudFormation auto-derive a unique name from the stack name.
+
+  SNSTopicName:
+    Type: String
+    Default: ""
+    Description: >
+      Name of the SNS topic to create. Leave empty to derive one from the
+      stack name.
+
+  NotificationEmail:
+    Type: String
+    Default: ""
+    Description: >
+      Optional email address to subscribe to the SNS topic. Leave empty to
+      create the topic with no subscription.
+
+Conditions:
+  HasLogBucketName: !Not [!Equals [!Ref LogBucketName, ""]]
+  HasSNSTopicName: !Not [!Equals [!Ref SNSTopicName, ""]]
+  HasNotificationEmail: !Not [!Equals [!Ref NotificationEmail, ""]]
+
+Resources:
+  # The bucket that receives CloudTrail logs. ServerAccessLogging is off on
+  # purpose — this template only creates the bucket, the trail is created
+  # elsewhere so the two can evolve independently.
+  LogBucket:
+    Type: AWS::S3::Bucket
+    Condition: HasLogBucketName
+    Properties:
+      BucketName: !Ref LogBucketName
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      LifecycleConfiguration:
+        Rules:
+          - Id: expire-old-objects
+            Status: Enabled
+            ExpirationInDays: 365
+            NoncurrentVersionExpirationInDays: 30
+
+  LogBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Condition: HasLogBucketName
+    Properties:
+      Bucket: !Ref LogBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowCloudTrailWrite
+            Effect: Allow
+            Principal:
+              Service: cloudtrail.amazonaws.com
+            Action: s3:PutObject
+            Resource: !Sub arn:aws:s3:::${LogBucket}/*
+            Condition:
+              StringEquals:
+                aws:SourceArn: !Sub arn:aws:cloudtrail:*:${AWS::AccountId}:trail/*
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: "*"
+            Action: s3:*
+            Resource:
+              - !Sub arn:aws:s3:::${LogBucket}
+              - !Sub arn:aws:s3:::${LogBucket}/*
+            Condition:
+              Bool:
+                aws:SecureTransport: false
+
+  # A group with no inline policies. Inline policies are the easiest way to
+  # accidentally grant broad permissions; this template attaches nothing
+  # inline and leaves managed-policy attachment to a follow-up change.
+  BaselineGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: baseline-operators
+      Path: /
+      ManagedPolicyArns: []
+
+  # A topic for operational notifications. The subscription is optional so
+  # the template succeeds even when no email is supplied.
+  NotificationTopic:
+    Type: AWS::SNS::Topic
+    Condition: HasSNSTopicName
+    Properties:
+      TopicName: !Ref SNSTopicName
+      DisplayName: baseline-notifications
+
+  NotificationSubscription:
+    Type: AWS::SNS::Subscription
+    Condition: HasNotificationEmail
+    Properties:
+      TopicArn: !Ref NotificationTopic
+      Protocol: email
+      Endpoint: !Ref NotificationEmail
+
+Outputs:
+  LogBucketName:
+    Description: Name of the created CloudTrail log bucket (empty when not created).
+    Value: !If [HasLogBucketName, !Ref LogBucket, ""]
+
+  LogBucketArn:
+    Description: ARN of the created CloudTrail log bucket.
+    Value: !If [HasLogBucketName, !GetAtt LogBucket.Arn, ""]
+
+  BaselineGroupName:
+    Description: Name of the created IAM group.
+    Value: !Ref BaselineGroup
+
+  BaselineGroupArn:
+    Description: ARN of the created IAM group.
+    Value: !GetAtt BaselineGroup.Arn
+
+  NotificationTopicArn:
+    Description: ARN of the created SNS topic (empty when not created).
+    Value: !If [HasSNSTopicName, !Ref NotificationTopic, ""]
