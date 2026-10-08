@@ -28,24 +28,25 @@
 - **docs** (1): [wiring ArgoCD with GitHub for GitOps deployment](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md) — control plane, private repo, project, Application, and where the integration broke
 - **snippets** (1): [sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 
-## AWS  ·  19 files
+## AWS  ·  21 files
 
 - **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
 - **scripts** (7): most recent → [VPC with private endpoints (CDK)](../AWS/scripts/vpc-with-private-endpoints.py) — public/private/isolated subnets per environment with gateway plus interface endpoints — plus [VPC + EC2 + RDS stack builder](../AWS/scripts/build-vpc-ec2-rds-stack.py), [deploy a static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh)
 - _…and 4 more under `AWS/scripts/` — browse the folder._
 - **templates** (3): [multi-account baseline StackSet](../AWS/templates/cloudformation-multi-account-stack-set/README.md) — shared template body plus an example deploy sequence — with [template.yaml](../AWS/templates/cloudformation-multi-account-stack-set/template.yaml) and [examples/deploy.sh](../AWS/templates/cloudformation-multi-account-stack-set/examples/deploy.sh)
-- **docs** (1): [IAM least-privilege walkthrough](../AWS/docs/iam-policy-least-privilege-walkthrough.md) — scoping policies for a Lambda + S3 + DynamoDB stack, checked with the policy simulator
+- **docs** (2): most recent → [IAM cross-account roles, least privilege](../AWS/docs/iam-cross-account-roles-least-privilege.md) — scoping a role that one account assumes into another, checked with the policy simulator — plus [IAM least-privilege walkthrough](../AWS/docs/iam-policy-least-privilege-walkthrough.md)
 - **notebooks** (1): [boto3 vs CloudFormation vs CDK](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb) — the same small versioned-bucket stack built three ways
-- **configs** (2): [minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini), [minimal config](../AWS/configs/2026-07-12-minimal-aws-config.ini)
+- **configs** (3): most recent → [blue-green ECS service deployment](../AWS/configs/ecs-service-deployment-blue-green.yaml) — task definition plus service with blue/green wiring — plus [minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini), [minimal config](../AWS/configs/2026-07-12-minimal-aws-config.ini)
 - **snippets** (3): most recent → [create an S3 bucket and upload an object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py), [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md), [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md)
 
-## Azure  ·  12 files
+## Azure  ·  23 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
 - **notes** (4): most recent → [first login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md), [quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
 - _1 more under `Azure/notes/` — browse the folder._
-- **scripts** (3): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision a resource group and storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install the CLI and log in](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
+- **templates** (10): [AKS cluster with modular addons](../Azure/templates/aks-cluster-with-addons/README.md) — public/private subnets, an AKS cluster, and addons for GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy — with [main.bicep](../Azure/templates/aks-cluster-with-addons/main.bicep), [deploy example](../Azure/templates/aks-cluster-with-addons/examples/deploy.sh), and the [addon modules](../Azure/templates/aks-cluster-with-addons/modules/)
+- **scripts** (4): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision a resource group and storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install the CLI and log in](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh), [cleanup resource groups](../Azure/scripts/cleanup-resource-groups.sh)
 - **snippets** (3): most recent → [create a VNet, NSG, and Linux VM](../Azure/snippets/2026-09-16-create-vnet-nsg-and-linux-vm.sh), [create a resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [earlier pass](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 - **docs** (1): [CLI vs Bicep vs Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md) — which interface fits each stage of provisioning a small app stack
 - **manifests** (1): [production AKS cluster](../Azure/manifests/production-aks-cluster.bicep)
