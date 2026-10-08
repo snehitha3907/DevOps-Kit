@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-08
+
+- Added Azure resource group cleanup script: selects groups by name prefix, skips groups carrying management locks, deletes the rest with confirmation gating, and verifies by re-listing the prefix (az-017) (`Azure/scripts/resource-group-cleanup.sh`)
+
 ## 2026-10-07
 
 - Added Vault quickstart trip-ups note: KV v2 versioning surprises (put creates a version, does not overwrite), `vault kv get` wraps data in metadata so `-field=data`/`-format=json` help, `VAULT_ADDR` is per-shell not global, and dev mode re-issues a fresh root token each launch unless `-dev-root-token-id` is set (vlt-013) (`vlt/notes/2026-10-07-vault-quickstart-trip-ups.md`)
