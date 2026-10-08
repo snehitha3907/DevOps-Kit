@@ -137,6 +137,9 @@
 - [Install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
 - [Install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh)
 - [Explore the Vault CLI — secrets and policies](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md)
+- [Vault dev-mode quickstart trip-ups](../vlt/notes/2026-10-07-vault-quickstart-trip-ups.md)
+- [KV v2 write/read/list round-trip in Python](../vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py)
+- [Least-privilege read-only policy bound to a group](../vlt/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl)
 
 ### Rotate a credential across many repositories
 
@@ -264,6 +267,8 @@
 - [Create a resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh)
 - [Create a VNet, NSG, and Linux VM](../Azure/snippets/2026-09-16-create-vnet-nsg-and-linux-vm.sh)
 - [VM scale set with a load balancer](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
+- [Delete leftover resource groups by prefix](../Azure/scripts/resource-group-cleanup.sh)
+- [Scheduled cleanup of stale resource groups](../Azure/scripts/cleanup-resource-groups.sh)
 
 ### Work with GCP
 
