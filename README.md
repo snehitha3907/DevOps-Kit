@@ -18,11 +18,11 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Azure Bicep module template for AKS cluster with addons](Azure/templates/aks-cluster-with-addons/README.md) — Public/private subnets, AKS cluster, and modular addons for GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy.
-- [Reusable OpenTofu VPC module for AWS](OpenTofu/templates/aws-reusable-module/README.md) — Public/private subnets, internet gateway, count-gated NAT gateways, referencing outputs for every resource, and an `examples/basic/` root-module caller.
-- [Helm `demo-chart` fixture](Helm/manifests/demo-chart/README.md) — Minimal Deployment/Service/optional-Ingress chart with a shared `values-common.yaml` baseline and staging/production overlays, backing the values-management walkthrough.
-- [Shared base values for multi-cluster GitOps](Helm/configs/multi-cluster-gitops-values.yaml) — One baseline values file for a release deployed to several clusters; per-cluster overlays supply `clusterName` and only the keys that differ.
-- [Chart testing with `ct lint`](Helm/docs/chart-testing-ct-lint.md) — Lint and install only the charts a branch touched, walked through against the `redis-chart` example already in the kit.
+- [Delete leftover resource groups by prefix](Azure/scripts/resource-group-cleanup.sh) — Lists groups matching `NAME_PREFIX`, skips any carrying a management lock, and deletes only with `CONFIRM=yes`; re-lists the prefix to verify.
+- [Read-only Vault policy bound to a group](vlt/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl) — Least-privilege `read` on one KV v2 path plus its metadata, with the `identity/group` call that binds it for token issuance.
+- [Vault dev-mode quickstart trip-ups](vlt/notes/2026-10-07-vault-quickstart-trip-ups.md) — KV v2 versions instead of overwriting, `kv get` wraps values in metadata, `VAULT_ADDR` is per-shell, and dev mode re-issues its root token each launch.
+- [KV v2 write/read/list round-trip in Python](vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py) — Writes a secret with hvac, reads version 1 back, writes again for version 2, and lists the versions at the path.
+- [Scheduled cleanup of stale resource groups](Azure/scripts/cleanup-resource-groups.sh) — Prefix, tag-filter, and max-age selection with dry-run by default, exclusion tags, and a log file; safe to run from cron.
 
 ## Layout
 
@@ -30,7 +30,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **AWS/** — AWS CLI setup, profiles, resource listings, tagging, S3 website examples, boto3 snippets and stack builders, an IAM least-privilege walkthrough, and a boto3-vs-CloudFormation-vs-CDK comparison notebook.
 - **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
 - **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests including a multi-cluster one, GitHub wiring, installation, scripted sync, and health checks.
-- **Azure/** — Azure CLI setup, CLI-vs-Bicep-vs-Python-SDK comparison, resource provisioning, VM scale sets, and a private AKS Bicep example with modular addons.
+- **Azure/** — Azure CLI setup, CLI-vs-Bicep-vs-Python-SDK comparison, resource provisioning, VM scale sets, a private AKS Bicep example with modular addons, and two prefix-selected resource-group cleanup scripts.
 - **Docker/** — Container primers, Dockerfiles, Compose stacks, build-strategy and networking notebooks, health checks, Go and Compose scaffolds, and a Docker-to-Kubernetes handoff guide.
 - **FluxCD/** — Flux CLI primer, bootstrap, reconcile, GitRepository/Kustomization manifests, and pre-flight cluster checks.
 - **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, startup scripts, instance templates, and a scripted Cloud Run deployment.
@@ -48,7 +48,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **Terraform/** — Terraform primer, modules, workspaces, remote state, notebooks, and environment scaffolds.
 - **Trivy/** — Image and filesystem scanning, scan-mode selection, severity policies, and Python wrappers.
 - **plm/** — Pulumi primer, CLI install and project init, and a minimal Python bucket snippet.
-- **vlt/** — HashiCorp Vault primer, dev server setup, KV engine examples, and a script that mounts a first secrets engine at a custom path.
+- **vlt/** — HashiCorp Vault primer, dev server setup, KV engine examples, a script that mounts a first secrets engine at a custom path, quickstart trip-ups, an hvac script that round-trips a KV v2 secret through its versions, and a least-privilege read-only policy bound to a group.
 - **docs/** — Foundational concept primers under `docs/concepts/`, plus notes about the kit itself.
 - **docs/audit/** — Coverage and readme audit notes about the kit's own documentation.
 - **CHANGELOG.md** — Dated record of additions, reworks, and navigation corrections.
@@ -63,7 +63,7 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 | AWS | 2 | 2 | 3 | 7 | 3 | — | 1 | — | 3 | 2026-10-07 |
 | Ansible | 10 | 4 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-09-16 |
 | ArgoCD | 3 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-10-02 |
-| Azure | 4 | 1 | 3 | 4 | — | 1 | — | — | 10 | 2026-09-19 |
+| Azure | 4 | 1 | 3 | 5 | — | 1 | — | — | 10 | 2026-09-19 |
 | Docker | 6 | 7 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-09-29 |
 | FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-22 |
 | GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
@@ -81,13 +81,13 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 | Pulumi (`plm/`) | 2 | 1 | 1 | 2 | 1 | — | — | — | — | 2026-09-20 |
 | Terraform | 6 | 4 | 3 | 3 | 8 | 2 | 2 | — | 10 | 2026-09-17 |
 | Trivy | 5 | 1 | 2 | 4 | 2 | — | — | — | — | 2026-09-23 |
-| HashiCorp Vault (`vlt/`) | 2 | 1 | — | 2 | — | — | — | — | — | 2026-09-19 |
+| HashiCorp Vault (`vlt/`) | 3 | 1 | — | 3 | 1 | — | — | — | — | 2026-09-19 |
 
 </details>
 
 ## Status
 
-Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion. The newest additions on that same theme are a shared base values file for deploying one release to several clusters from a GitOps repo, and a chart-testing walkthrough that lints and installs only the charts a branch touched. Alongside that, OpenTofu grew a reusable AWS VPC module template with a plan/apply wrapper that runs policy checks before anything is applied, and the Helm values-management walkthrough gained a runnable `demo-chart` fixture so every lint, template, install, and upgrade command runs as written. Most recently, Azure gained a Bicep module template for an AKS cluster with modular addons (GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy).
+Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion. The newest additions on that same theme are a shared base values file for deploying one release to several clusters from a GitOps repo, and a chart-testing walkthrough that lints and installs only the charts a branch touched. Alongside that, OpenTofu grew a reusable AWS VPC module template with a plan/apply wrapper that runs policy checks before anything is applied, and the Helm values-management walkthrough gained a runnable `demo-chart` fixture so every lint, template, install, and upgrade command runs as written. Most recently, Azure gained a Bicep module template for an AKS cluster with modular addons (GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy). Since then the Vault shelf filled out its second layer: quickstart trip-ups from a dev server, an hvac script that writes, reads, and lists versions of a KV v2 secret, and a minimal read-only policy bound to a group for least-privilege token issuance. On the Azure side there are now two cleanup scripts that delete prefix-matched resource groups while sparing locked ones — one gated on an explicit confirmation flag, one built for scheduled runs with dry-run by default.
 
 ---
 _Last updated: 2026-10-08_

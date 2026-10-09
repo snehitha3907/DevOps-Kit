@@ -40,13 +40,14 @@
 - **snippets** (3): most recent → [create an S3 bucket and upload an object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py), [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md), [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md)
 
-## Azure  ·  23 files
+## Azure  ·  24 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
 - **notes** (4): most recent → [first login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md), [quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
 - _1 more under `Azure/notes/` — browse the folder._
 - **templates** (10): [AKS cluster with modular addons](../Azure/templates/aks-cluster-with-addons/README.md) — public/private subnets, an AKS cluster, and addons for GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy — with [main.bicep](../Azure/templates/aks-cluster-with-addons/main.bicep), [deploy example](../Azure/templates/aks-cluster-with-addons/examples/deploy.sh), and the [addon modules](../Azure/templates/aks-cluster-with-addons/modules/)
-- **scripts** (4): most recent → [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh), [provision a resource group and storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh), [install the CLI and log in](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh), [cleanup resource groups](../Azure/scripts/cleanup-resource-groups.sh)
+- **scripts** (5): most recent → [delete leftover resource groups by prefix](../Azure/scripts/resource-group-cleanup.sh) — prefix match, skips management-locked groups, deletes only with `CONFIRM=yes` — plus [scheduled cleanup of stale groups](../Azure/scripts/cleanup-resource-groups.sh) (prefix/tag/age selection, dry-run by default), [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
+- _…and 2 more under `Azure/scripts/` — browse the folder._
 - **snippets** (3): most recent → [create a VNet, NSG, and Linux VM](../Azure/snippets/2026-09-16-create-vnet-nsg-and-linux-vm.sh), [create a resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [earlier pass](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
 - **docs** (1): [CLI vs Bicep vs Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md) — which interface fits each stage of provisioning a small app stack
 - **manifests** (1): [production AKS cluster](../Azure/manifests/production-aks-cluster.bicep)
@@ -160,13 +161,14 @@ Folder on disk is `grafc/`. First contact only — no primer or scripts yet.
 - **snippets** (1): [create a dashboard over the HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js) — posts a minimal dashboard JSON with a bearer token so a dashboard is defined as data rather than clicks
 - _Remote write wiring, alerting rules, and a stack config in version control are ⏳._
 
-## HashiCorp Vault  ·  5 files
+## HashiCorp Vault  ·  8 files
 
 Folder on disk is `vlt/`.
 
 - **primer:** [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
-- **notes** (2): [exploring the Vault CLI](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md) — secrets, policies, and what is already there — plus [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
-- **scripts** (2): [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) — dev server, KV mounted at a custom path, one secret written and read — plus [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- **notes** (3): most recent → [dev-mode quickstart trip-ups](../vlt/notes/2026-10-07-vault-quickstart-trip-ups.md) — KV v2 versions instead of overwriting, `kv get` metadata wrapping, per-shell `VAULT_ADDR` — plus [exploring the Vault CLI](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md) and [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
+- **scripts** (3): most recent → [KV v2 write/read/list round-trip](../vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py) — hvac against a dev server, version 1 read back, version 2 created, versions listed — plus [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) and [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- **configs** (1): [least-privilege read-only policy bound to a group](../vlt/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl) — `read` on one KV v2 path and its metadata, with the group binding for token issuance
 - **docs** (1): [how `vlt/` is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
 ## Helm  ·  55 files

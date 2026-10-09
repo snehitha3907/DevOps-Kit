@@ -63,6 +63,7 @@
 - **VM scale set** — A group of identical VMs that can be scaled out or in automatically or manually based on demand metrics like CPU.
 - **Autoscaling** — Automatically adjusting the number of VM instances in a scale set based on metrics such as CPU percentage, memory pressure, or request queue length.
 - **Azure SDK for Python** — The programmatic interface to Azure Resource Manager for Python code; the right tool when provisioning logic lives inside an application or pipeline and depends on runtime conditions rather than a static template.
+- **Management lock** — A lock placed on a subscription, resource group, or resource that blocks deletion (`CanNotDelete`) or all modification (`ReadOnly`). Cleanup automation lists locks first and skips whatever carries one, so a scheduled sweep cannot remove a group someone deliberately protected.
 
 ## Containerization Concepts
 
@@ -484,6 +485,8 @@
 - **Token** — The credential presented instead of a password (`vault login <token>`); dev mode prints a root token.
 - **VAULT_ADDR** — The env var telling the CLI where the server lives (e.g. `export VAULT_ADDR='http://127.0.0.1:8200'`).
 - **`vault secrets enable`** — Mounts a secrets engine at a chosen path (`vault secrets enable -path=my-secrets kv-v2`); mounting your own path instead of relying on the dev server's default keeps the learning explicit about which engine serves which secret.
+- **KV v2 versioning** — Every `kv put` to a versioned path creates a new version instead of overwriting; old values stay readable until destroyed. `kv get` shows the value nested under `data` beside version metadata — use `-field=data` or `-format=json` when scripting against it.
+- **Read-only policy** — A policy granting only `read` on one data path (plus `read` on its `metadata` path for KV v2, so versions can be listed), bound to an identity group so tokens minted for that group can see exactly one secret and nothing else.
 
 ## Pulumi
 
