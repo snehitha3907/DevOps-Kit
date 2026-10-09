@@ -2,6 +2,7 @@
 
 ## 2026-10-08
 
+- Added Azure DevOps pipeline guide for Bicep deployments: compile the template to ARM in a build stage, lint and what-if in a validate stage, and apply behind an environment approval gate in the deploy stage, with secrets sourced from a variable group (az-018) (`Azure/docs/azure-devops-pipeline-bicep-integration.md`)
 - Added Azure resource group cleanup script: selects groups by name prefix, skips groups carrying management locks, deletes the rest with confirmation gating, and verifies by re-listing the prefix (az-017) (`Azure/scripts/resource-group-cleanup.sh`)
 
 ## 2026-10-07
