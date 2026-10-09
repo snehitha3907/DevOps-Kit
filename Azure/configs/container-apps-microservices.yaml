@@ -1,0 +1,115 @@
+# last_verified: 2026-10-09 · Azure Container Apps (n/a)
+#
+# Purpose: baseline Container Apps setup for two microservices (an HTTP API
+#   with external ingress and an internal background worker) sharing one
+#   managed environment. This is one way to lay it out; the docs also show a
+#   single-app-per-environment split, which isolates logs but costs more.
+# When to use: small service pair where the API needs to scale on concurrent
+#   requests and the worker needs to scale on queue length.
+# Prerequisites: resource group, container registry login server, and a
+#   Log Analytics workspace id for environment logging.
+# Usage:
+#   1. Fill the <placeholders> below (registry, images, workspace id).
+#   2. Deploy the environment document first, then each app document:
+#      az containerapp env create --name <env> --resource-group <rg> \
+#        --logs-destination log-analytics \
+#        --logs-destination-config customer-id=<id> shared-key=<key>
+#      az containerapp create --resource-group <rg> --yaml orders-api.yaml
+#      az containerapp create --resource-group <rg> --yaml orders-worker.yaml
+#   Or split this file on the '---' lines into three files and deploy each.
+# Verify:
+#   az containerapp show --name orders-api --resource-group <rg> \
+#     --query "{ingress:configuration.ingress.fqdn, replicas:template.scale}"
+#   az containerapp revision list --name orders-api --resource-group <rg> \
+#     --output table
+# Rollback: revisions stay available after each new deployment, so a bad
+#   release can be reactivated from the previous revision.
+
+# Document 1 of 3: shared managed environment.
+type: Microsoft.App/managedEnvironments
+name: shop-env
+# VNet integration and zone redundancy are optional follow-ups; the default
+# consumption environment is enough for this pair to start with.
+
+---
+
+# Document 2 of 3: public HTTP API.
+type: Microsoft.App/containerApps
+name: orders-api
+configuration:
+  ingress:
+    external: true
+    targetPort: 8080
+    transport: http
+    allowInsecure: false
+    traffic:
+      - latestRevision: true
+        weight: 100
+  secrets:
+    - name: registry-password
+      value: set-at-deploy-time
+  registries:
+    - server: <registry-login-server>
+      username: <registry-username>
+      passwordSecretRef: registry-password
+template:
+  containers:
+    - name: orders-api
+      image: <registry-login-server>/orders-api:latest
+      resources:
+        cpu: 0.5
+        memory: 1Gi
+      env:
+        - name: ORDERS_WORKER_HOST
+          value: orders-worker
+        - name: LOG_LEVEL
+          value: info
+  scale:
+    minReplicas: 1
+    maxReplicas: 5
+    rules:
+      - name: http-concurrency
+        http:
+          metadata:
+            concurrentRequests: "10"
+
+---
+
+# Document 3 of 3: internal background worker (no ingress).
+type: Microsoft.App/containerApps
+name: orders-worker
+configuration:
+  secrets:
+    - name: registry-password
+      value: set-at-deploy-time
+    - name: servicebus-connection
+      value: set-at-deploy-time
+  registries:
+    - server: <registry-login-server>
+      username: <registry-username>
+      passwordSecretRef: registry-password
+template:
+  containers:
+    - name: orders-worker
+      image: <registry-login-server>/orders-worker:latest
+      resources:
+        cpu: 0.5
+        memory: 1Gi
+      env:
+        - name: QUEUE_NAME
+          value: orders
+        - name: LOG_LEVEL
+          value: info
+  scale:
+    minReplicas: 0
+    maxReplicas: 3
+    rules:
+      - name: queue-length
+        custom:
+          type: azure-servicebus
+          metadata:
+            queueName: orders
+            messageCount: "5"
+          auth:
+            - secretRef: servicebus-connection
+              triggerParameter: connection

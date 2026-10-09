@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-09
+
+- Added Azure Container Apps microservices config: shared managed environment plus an externally-exposed orders API with HTTP-concurrency scaling and an internal queue-driven worker with Service Bus scaling (az-019) (`Azure/configs/container-apps-microservices.yaml`)
+
 ## 2026-10-08
 
 - Added Azure DevOps pipeline guide for Bicep deployments: compile the template to ARM in a build stage, lint and what-if in a validate stage, and apply behind an environment approval gate in the deploy stage, with secrets sourced from a variable group (az-018) (`Azure/docs/azure-devops-pipeline-bicep-integration.md`)
