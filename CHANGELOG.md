@@ -2,6 +2,8 @@
 
 ## 2026-10-09
 
+- Added Terraform provider schema validation tool: a Go CLI that checks a `terraform providers schema -json` export against a hand-written contract of required arguments and attributes, failing CI when a module's dependencies drift from the provider's published schema (tf-031) (`Terraform/scripts/validate-provider-schema.go`, `Terraform/configs/provider-schema-contract.json`)
+
 - Added Terraform 1.9 migration guide: inventory and version-pin audit, state backup, one-environment-at-a-time plan comparison, plan-file apply promotion, lock refresh, verify and rollback runbook (tf-029) (`Terraform/docs/terraform-1-9-migration-guide.md`)
 - Added Azure Container Apps microservices config: shared managed environment plus an externally-exposed orders API with HTTP-concurrency scaling and an internal queue-driven worker with Service Bus scaling (az-019) (`Azure/configs/container-apps-microservices.yaml`)
 
