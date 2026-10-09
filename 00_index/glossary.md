@@ -63,6 +63,9 @@
 - **VM scale set** — A group of identical VMs that can be scaled out or in automatically or manually based on demand metrics like CPU.
 - **Autoscaling** — Automatically adjusting the number of VM instances in a scale set based on metrics such as CPU percentage, memory pressure, or request queue length.
 - **Azure SDK for Python** — The programmatic interface to Azure Resource Manager for Python code; the right tool when provisioning logic lives inside an application or pipeline and depends on runtime conditions rather than a static template.
+- **Service connection** — An Azure DevOps credential object (a service principal or managed identity) that lets a pipeline deploy into a subscription or resource group without storing a password in the YAML. Secrets the template needs come from the pipeline's variable group at deploy time.
+- **What-if** — A preview operation (`az deployment group what-if`) that shows which resources a Bicep/ARM deployment would create, modify, or delete before anything is applied. The validate stage of a pipeline runs it so a reviewer sees the blast radius before the deploy stage runs.
+- **Container Apps environment** — The shared boundary (networking, logging, scaling defaults) that one or more Container Apps run inside. A small API-plus-worker pair can share one consumption environment; each app keeps its own scaling rule (HTTP concurrency for the API, queue length for the worker) and each deployment leaves prior revisions available for reactivation on rollback.
 - **Management lock** — A lock placed on a subscription, resource group, or resource that blocks deletion (`CanNotDelete`) or all modification (`ReadOnly`). Cleanup automation lists locks first and skips whatever carries one, so a scheduled sweep cannot remove a group someone deliberately protected.
 
 ## Containerization Concepts
@@ -373,6 +376,7 @@
 - **Tainted** — A Terraform resource state flag marking a previously-created resource for destruction and recreation on the next apply, set automatically after a partial failure or via `terraform taint`, so Terraform replaces it cleanly instead of attempting in-place changes.
 - **Child module** — A Terraform module invoked from a parent module, exposing computed values through `output` blocks so the parent can consume them without hard-coding resource attributes.
 - **Parent module** — A Terraform module that calls one or more child modules and wires their outputs into its own resources or further child modules.
+- **`required_version`** — The version constraint in a `terraform` block declaring which CLI releases a configuration supports (e.g. `>= 1.5, < 1.9`). Widen or move the bound only after the migration is verified, so a narrow bound rejects the new binary instead of letting a mixed-version estate plan against the same state.
 
 ## Trivy
 
@@ -487,6 +491,7 @@
 - **`vault secrets enable`** — Mounts a secrets engine at a chosen path (`vault secrets enable -path=my-secrets kv-v2`); mounting your own path instead of relying on the dev server's default keeps the learning explicit about which engine serves which secret.
 - **KV v2 versioning** — Every `kv put` to a versioned path creates a new version instead of overwriting; old values stay readable until destroyed. `kv get` shows the value nested under `data` beside version metadata — use `-field=data` or `-format=json` when scripting against it.
 - **Read-only policy** — A policy granting only `read` on one data path (plus `read` on its `metadata` path for KV v2, so versions can be listed), bound to an identity group so tokens minted for that group can see exactly one secret and nothing else.
+- **Identity group** — A named set of Vault entities (`vault write identity/group name="readers" policies="read-only-hello"`) that carries policies to every member token. Attaching the policy to the group instead of to individual tokens is what keeps least-privilege issuance to one place.
 
 ## Pulumi
 
