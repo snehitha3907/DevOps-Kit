@@ -1,0 +1,237 @@
+name: Publish Module to Terraform Registry
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag to publish (e.g., v1.0.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  TERRAFORM_VERSION: '1.16.5'
+  TFLINT_VERSION: '0.58.1'
+  TERRADOCS_VERSION: '0.19.0'
+
+jobs:
+  validate:
+    name: Validate Module
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+      - name: Terraform fmt check
+        run: terraform fmt -check -recursive -diff
+
+      - name: Terraform init
+        run: terraform init -backend=false
+
+      - name: Terraform validate
+        run: terraform validate
+
+  lint:
+    name: Lint with TFLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: ${{ env.TFLINT_VERSION }}
+
+      - name: Initialize TFLint
+        run: tflint --init
+
+      - name: Run TFLint
+        run: tflint --recursive
+
+  test:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+      - name: Run Terratest
+        run: |
+          cd tests
+          go mod init test
+          go get github.com/gruntwork-io/terratest/modules/terraform
+          go test -v -timeout 25m
+
+  docs:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    needs: [validate, lint]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup terraform-docs
+        uses: terraform-docs/gh-actions@v1
+        with:
+          version: ${{ env.TERRADOCS_VERSION }}
+
+      - name: Generate README
+        run: terraform-docs markdown table --output-file README.md .
+
+      - name: Commit updated README
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'docs: update README with terraform-docs'
+          file_pattern: README.md
+
+  sign:
+    name: Sign Module
+    runs-on: ubuntu-latest
+    needs: [validate, lint, test, docs]
+    if: env.GPG_PRIVATE_KEY != ''
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Create module package
+        id: package
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          MODULE_NAME=$(basename $(pwd))
+          zip -r "${MODULE_NAME}_${VERSION}.zip" . -x "*.git*" -x "tests/*" -x "examples/*" -x ".github/*"
+          echo "package=${MODULE_NAME}_${VERSION}.zip" >> $GITHUB_OUTPUT
+
+      - name: Sign package
+        run: |
+          gpg --armor --detach-sign "${{ steps.package.outputs.package }}"
+          echo "signature=${{ steps.package.outputs.package }}.asc" >> $GITHUB_OUTPUT
+
+      - name: Upload signed artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-module
+          path: |
+            ${{ steps.package.outputs.package }}
+            ${{ steps.package.outputs.package }}.asc
+
+  publish:
+    name: Publish to Registry
+    runs-on: ubuntu-latest
+    needs: [validate, lint, test, docs, sign]
+    if: github.event_name == 'push' || github.event.inputs.version != ''
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download signed artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: signed-module
+        if: env.GPG_PRIVATE_KEY != ''
+
+      - name: Determine version
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create module package
+        if: env.GPG_PRIVATE_KEY == ''
+        id: package
+        run: |
+          MODULE_NAME=$(basename $(pwd))
+          zip -r "${MODULE_NAME}_${{ steps.version.outputs.version }}.zip" . -x "*.git*" -x "tests/*" -x "examples/*" -x ".github/*"
+          echo "package=${MODULE_NAME}_${{ steps.version.outputs.version }}.zip" >> $GITHUB_OUTPUT
+
+      - name: Publish to Terraform Registry
+        env:
+          TF_TOKEN: ${{ secrets.TF_REGISTRY_TOKEN }}
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          NAMESPACE="${{ github.repository_owner }}"
+          NAME=$(basename ${{ github.repository }} | sed 's/^terraform-//' | sed 's/-/-/g')
+          PROVIDER="aws"
+
+          PACKAGE="${{ steps.package.outputs.package }}"
+          SIGNATURE="${{ steps.package.outputs.package }}.asc"
+
+          if [[ -f "$SIGNATURE" ]]; then
+            curl -X POST \
+              -H "Authorization: Bearer $TF_TOKEN" \
+              -H "Content-Type: application/octet-stream" \
+              --data-binary @"$PACKAGE" \
+              "https://registry.terraform.io/v1/modules/$NAMESPACE/$NAME/$PROVIDER/$VERSION/upload"
+            curl -X POST \
+              -H "Authorization: Bearer $TF_TOKEN" \
+              -H "Content-Type: application/octet-stream" \
+              --data-binary @"$SIGNATURE" \
+              "https://registry.terraform.io/v1/modules/$NAMESPACE/$NAME/$PROVIDER/$VERSION/upload-signature"
+          else
+            curl -X POST \
+              -H "Authorization: Bearer $TF_TOKEN" \
+              -H "Content-Type: application/octet-stream" \
+              --data-binary @"$PACKAGE" \
+              "https://registry.terraform.io/v1/modules/$NAMESPACE/$NAME/$PROVIDER/$VERSION/upload"
+          fi
+
+      - name: Verify publication
+        env:
+          TF_TOKEN: ${{ secrets.TF_REGISTRY_TOKEN }}
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          NAMESPACE="${{ github.repository_owner }}"
+          NAME=$(basename ${{ github.repository }} | sed 's/^terraform-//' | sed 's/-/-/g')
+          PROVIDER="aws"
+
+          for i in {1..10}; do
+            RESPONSE=$(curl -s -H "Authorization: Bearer $TF_TOKEN" \
+              "https://registry.terraform.io/v1/modules/$NAMESPACE/$NAME/$PROVIDER/$VERSION")
+            if echo "$RESPONSE" | grep -q '"version":"'$VERSION'"'; then
+              echo "Module published successfully"
+              exit 0
+            fi
+            echo "Waiting for registry propagation... ($i/10)"
+            sleep 10
+          done
+          echo "Module not found in registry after 100 seconds"
+          exit 1
