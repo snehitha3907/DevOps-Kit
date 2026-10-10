@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-10
+
+- Added GitHub Apps vs OAuth Apps integration guide: actor-first comparison table (unattended automation, granular permissions, event reaction, distribution, user-facing work), presence/lifetime and distribution trade-offs, registration and token-issuance steps, verification checks, and common integration mistakes (gh-033) (`GitHub/docs/github-apps-vs-oauth-apps.md`)
+
 ## 2026-10-09
 
 - Added Terraform provider schema validation tool: a Go CLI that checks a `terraform providers schema -json` export against a hand-written contract of required arguments and attributes, failing CI when a module's dependencies drift from the provider's published schema (tf-031) (`Terraform/scripts/validate-provider-schema.go`, `Terraform/configs/provider-schema-contract.json`)
