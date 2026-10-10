@@ -1,0 +1,15 @@
+{
+  "resources": [
+    {
+      "name": "example_resource",
+      "arguments": [
+        { "name": "name", "required": true },
+        { "name": "tags", "required": false }
+      ],
+      "attributes": [
+        { "name": "id", "required": true },
+        { "name": "arn", "required": true }
+      ]
+    }
+  ]
+}
