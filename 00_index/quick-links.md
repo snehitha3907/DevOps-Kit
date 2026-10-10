@@ -93,6 +93,8 @@
 - [Flux GitRepository and Kustomization](../FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml)
 - [Terraform local file config](../Terraform/configs/local-file.tf)
 - [Terraform reusable S3 module](../Terraform/configs/reusable-s3-module/README.md)
+- [Terraform provider schema contract](../Terraform/configs/provider-schema-contract.json) — required arguments and attributes declared as JSON for the schema validation CLI
+- [Terraform module registry publishing workflow template](../Terraform/templates/terraform-module-registry-publishing/README.md) — complete module structure with CI/CD pipeline that validates, tests, and publishes modules on version tags
 - [Docker Compose multi-service config](../Docker/configs/multi-service-app.yaml)
 - [Production Compose stack](../Docker/manifests/production-compose-stack.yaml)
 - [Go, Redis, and Prometheus Compose stack](../Docker/manifests/go-redis-prometheus-compose.yaml)
@@ -106,10 +108,12 @@
 - [Scaffold a reusable S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh)
 - [Reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl)
 - [Multi-environment scaffold with workspaces and remote state](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md)
+- [Module registry publishing workflow template](../Terraform/templates/terraform-module-registry-publishing/README.md)
+- [Validate a Terraform provider schema against a contract](../Terraform/scripts/validate-provider-schema.go)
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
+- [Generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 - [local_file and random_pet across two providers](../Terraform/configs/2026-09-19-local-file-random-provider.hcl)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
-- [Generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 
 ### Work with OpenTofu
 
@@ -172,6 +176,7 @@
 ### Work with GitHub
 
 - [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md)
+- [GitHub Apps vs OAuth Apps: choosing the right integration](../GitHub/docs/github-apps-vs-oauth-apps.md) — actor-first comparison of which registration fits unattended automation, event-driven workflows, and user-facing tooling
 - [Create a repo and open a PR](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh)
 - [Provision a repo with the API](../GitHub/scripts/provision-repo-with-api.py)
 - [Production repository scaffold](../GitHub/templates/github-repo-scaffold/README.md)
