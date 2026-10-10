@@ -239,6 +239,8 @@
 - **Tag** — A named pointer to a specific commit, usually a version like `v1.2.0`; pushing a tag is the starting signal for a release flow.
 - **Milestone** — A GitHub grouping of issues and PRs targeted at the same release, giving the changelog something concrete to summarise when the tag is cut.
 - **Release** — A versioned, downloadable package attached to a tag: notes plus binary assets, published with `gh release create` so one command ships notes and files together.
+- **GitHub App** — A registered integration that is an actor in its own right; it is installed on repositories or organizations, acts under its own identity with per-category permissions, runs without a user present, and can subscribe to webhook events.
+- **OAuth App** — A registered integration that proxies for a user; it asks a user to authorize it, receives a token representing that user, and can do what the user can do — no more. Fits user-facing tooling where work should happen under the user's own identity.
 
 ## GitHub Actions
 
@@ -377,6 +379,9 @@
 - **Child module** — A Terraform module invoked from a parent module, exposing computed values through `output` blocks so the parent can consume them without hard-coding resource attributes.
 - **Parent module** — A Terraform module that calls one or more child modules and wires their outputs into its own resources or further child modules.
 - **`required_version`** — The version constraint in a `terraform` block declaring which CLI releases a configuration supports (e.g. `>= 1.5, < 1.9`). Widen or move the bound only after the migration is verified, so a narrow bound rejects the new binary instead of letting a mixed-version estate plan against the same state.
+- **Provider schema** — The structured description of every resource type and data source a provider exposes, including required and optional arguments and attribute types; emitted as JSON by `terraform providers schema -json`, it is the authoritative source of what a provider accepts.
+- **Schema contract** — A hand-written JSON file declaring the arguments and attributes a module requires from a provider, checked against the live schema export before CI merges, so a provider-version drift that silently drops a required field fails the build instead of surfacing at apply time.
+- **Module Registry** — The public (or private) catalog where versioned Terraform modules are published for others to consume; a module published with a version tag becomes selectable by `terraform init` and `source = "terraform-aws-modules/vpc/aws"`.
 
 ## Trivy
 
