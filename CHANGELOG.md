@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-10
+
+- Added GitHub Apps vs OAuth Apps integration guide: actor-first comparison table (unattended automation, granular permissions, event reaction, distribution, user-facing work), presence/lifetime and distribution trade-offs, registration and token-issuance steps, verification checks, and common integration mistakes (gh-033) (`GitHub/docs/github-apps-vs-oauth-apps.md`)
+
 ## 2026-10-09
 
 - Added Terraform 1.9 migration guide: inventory and version-pin audit, state backup, one-environment-at-a-time plan comparison, plan-file apply promotion, lock refresh, verify and rollback runbook (tf-029) (`Terraform/docs/terraform-1-9-migration-guide.md`)
