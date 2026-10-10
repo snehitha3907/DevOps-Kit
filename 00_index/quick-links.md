@@ -101,6 +101,7 @@
 
 ### Work with Terraform
 
+- [Migrate a codebase to Terraform 1.9](../Terraform/docs/terraform-1-9-migration-guide.md)
 - [Wire outputs into a dependent module](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 - [Scaffold a reusable S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh)
 - [Reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl)
@@ -267,6 +268,8 @@
 - [Create a resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh)
 - [Create a VNet, NSG, and Linux VM](../Azure/snippets/2026-09-16-create-vnet-nsg-and-linux-vm.sh)
 - [VM scale set with a load balancer](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
+- [Run two microservices on Container Apps](../Azure/configs/container-apps-microservices.yaml)
+- [Ship Bicep through an Azure DevOps pipeline](../Azure/docs/azure-devops-pipeline-bicep-integration.md)
 - [Delete leftover resource groups by prefix](../Azure/scripts/resource-group-cleanup.sh)
 - [Scheduled cleanup of stale resource groups](../Azure/scripts/cleanup-resource-groups.sh)
 

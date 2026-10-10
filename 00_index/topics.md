@@ -40,7 +40,7 @@
 - **snippets** (3): most recent → [create an S3 bucket and upload an object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py), [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
 - **notes** (2): [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md), [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md)
 
-## Azure  ·  24 files
+## Azure  ·  26 files
 
 - **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
 - **notes** (4): most recent → [first login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md), [quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
@@ -49,7 +49,8 @@
 - **scripts** (5): most recent → [delete leftover resource groups by prefix](../Azure/scripts/resource-group-cleanup.sh) — prefix match, skips management-locked groups, deletes only with `CONFIRM=yes` — plus [scheduled cleanup of stale groups](../Azure/scripts/cleanup-resource-groups.sh) (prefix/tag/age selection, dry-run by default), [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
 - _…and 2 more under `Azure/scripts/` — browse the folder._
 - **snippets** (3): most recent → [create a VNet, NSG, and Linux VM](../Azure/snippets/2026-09-16-create-vnet-nsg-and-linux-vm.sh), [create a resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [earlier pass](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
-- **docs** (1): [CLI vs Bicep vs Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md) — which interface fits each stage of provisioning a small app stack
+- **docs** (2): most recent → [Azure DevOps pipeline for Bicep](../Azure/docs/azure-devops-pipeline-bicep-integration.md) — build, what-if validate, and deploy stages so a Bicep file ships through CI/CD — plus [CLI vs Bicep vs Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md)
+- **configs** (1): [Container Apps baseline for two microservices](../Azure/configs/container-apps-microservices.yaml) — a public API and an internal worker sharing one managed environment, with per-service scaling and revision rollback
 - **manifests** (1): [production AKS cluster](../Azure/manifests/production-aks-cluster.bicep)
 
 ## Docker  ·  51 files
@@ -242,7 +243,7 @@ Folder on disk is `plm/`.
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 - **docs** (1): [how `plm/` is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
-## Terraform  ·  38 files
+## Terraform  ·  39 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **templates** (10): [multi-environment workspaces + remote state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev and prod with workspace-scoped S3 and DynamoDB backends, plus `apply.sh` / `destroy.sh` helpers
@@ -250,7 +251,7 @@ Folder on disk is `plm/`.
 - _…and 5 more under `Terraform/configs/` — browse the folder._
 - **notes** (6): most recent → [install and a first local file](../Terraform/notes/2026-09-03-install-terraform-and-first-local-file.md), [state management tutorial](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [following the provider tutorial](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
 - _…and 3 more under `Terraform/notes/` — browse the folder._
-- **docs** (4): most recent → [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [the earlier pass](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
+- **docs** (5): most recent → [1.9 migration guide](../Terraform/docs/terraform-1-9-migration-guide.md) — one environment at a time, plan diff as changelog, state backup behind every step — plus [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [the earlier pass](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - _1 more under `Terraform/docs/` — browse the folder._
 - **scripts** (3): [generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py), [bootstrap a project scaffold](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install and init](../Terraform/scripts/install-and-init.sh)
 - **snippets** (3): most recent → [explore the CLI](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh), [scaffold an S3 module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [for_each and validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
