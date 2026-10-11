@@ -1,9 +1,10 @@
 # Changelog
 
 ## 2026-10-11
-
+ 
 - Added Terraform testing strategies guide: layered fmt/validate, tflint lint, native test-framework contract tests, Terratest ephemeral-environment tests, and plan-artifact assertions bound into a plan-file CI harness (tf-036) (`Terraform/docs/terraform-testing-strategies-tflint-terratest.md`)
-
+- Passed ([x]) tf-036 — Terraform: docs — Terraform testing strategies: tflint, terratest, and infrastructure test harnesses · Level: L6 · 2026-10-11
+ 
 ## 2026-10-10
 
 - Added GitHub Apps vs OAuth Apps integration guide: actor-first comparison table (unattended automation, granular permissions, event reaction, distribution, user-facing work), presence/lifetime and distribution trade-offs, registration and token-issuance steps, verification checks, and common integration mistakes (gh-033) (`GitHub/docs/github-apps-vs-oauth-apps.md`)
