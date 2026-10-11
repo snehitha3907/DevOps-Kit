@@ -2,6 +2,7 @@
 
 ## 2026-10-11
 
+- Added GitHub Actions org-usage audit notebook: inventory org repos, collect workflow runs per repo, and summarize run volume, failure rate, and repeat-failure jobs with verify assertions (gh-036) (`GitHub/notebooks/analyzing-github-actions-usage-across-org-repos.ipynb`)
 - Added Dependabot PR merge automation script: lists open Dependabot PRs, polls commit check-runs, and squash-merges only when every check is `success` (gh-035) (`GitHub/scripts/dependabot-merge-automation.py`)
 - Added Terraform testing strategies guide: layered fmt/validate, tflint lint, native test-framework contract tests, Terratest ephemeral-environment tests, and plan-artifact assertions bound into a plan-file CI harness (tf-036) (`Terraform/docs/terraform-testing-strategies-tflint-terratest.md`)
 - Passed ([x]) tf-036 — Terraform: docs — Terraform testing strategies: tflint, terratest, and infrastructure test harnesses · Level: L6 · 2026-10-11
