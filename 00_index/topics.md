@@ -112,8 +112,8 @@
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
 - **templates** (11): [production repo scaffold](../GitHub/templates/github-repo-scaffold/README.md) — branch protection script, CODEOWNERS, issue and PR templates, Dependabot, and a split CI workflow (build / lint / test)
-- **docs** (6): most recent → [release automation end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
-- _…and 3 more under `GitHub/docs/` — browse the folder._
+- **docs** (7): most recent → [GitHub Apps vs OAuth Apps](../GitHub/docs/github-apps-vs-oauth-apps.md) — actor-first comparison of which registration fits unattended automation, event-driven workflows, and user-facing tooling — plus [release automation end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
+  - _…and 4 more under `GitHub/docs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open a PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
 - **manifests** (1): [Environments deployment protection](../GitHub/manifests/github-environments-deployment-protection.yaml)
 - **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
@@ -243,17 +243,18 @@ Folder on disk is `plm/`.
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 - **docs** (1): [how `plm/` is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
-## Terraform  ·  39 files
+## Terraform  ·  56 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
-- **templates** (10): [multi-environment workspaces + remote state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev and prod with workspace-scoped S3 and DynamoDB backends, plus `apply.sh` / `destroy.sh` helpers
-- **configs** (8): [reusable S3 module](../Terraform/configs/reusable-s3-module/README.md), [local_file plus random_pet across two providers](../Terraform/configs/2026-09-19-local-file-random-provider.hcl), [local_file resource](../Terraform/configs/local-file.tf)
-- _…and 5 more under `Terraform/configs/` — browse the folder._
+- **templates** (25): [multi-environment workspaces + remote state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev and prod with workspace-scoped S3 and DynamoDB backends — plus [module registry publishing workflow](../Terraform/templates/terraform-module-registry-publishing/README.md) — complete module structure with CI/CD pipeline that validates, tests, and publishes on version tags
+  - _…and 22 more under `Terraform/templates/` — browse the folder._
+- **configs** (9): [provider schema contract](../Terraform/configs/provider-schema-contract.json) — required arguments and attributes declared as JSON for the validation CLI — plus [reusable S3 module](../Terraform/configs/reusable-s3-module/README.md), [local_file plus random_pet](../Terraform/configs/2026-09-19-local-file-random-provider.hcl), [local_file resource](../Terraform/configs/local-file.tf)
+  - _…and 5 more under `Terraform/configs/` — browse the folder._
 - **notes** (6): most recent → [install and a first local file](../Terraform/notes/2026-09-03-install-terraform-and-first-local-file.md), [state management tutorial](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [following the provider tutorial](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
 - _…and 3 more under `Terraform/notes/` — browse the folder._
 - **docs** (5): most recent → [1.9 migration guide](../Terraform/docs/terraform-1-9-migration-guide.md) — one environment at a time, plan diff as changelog, state backup behind every step — plus [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [the earlier pass](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - _1 more under `Terraform/docs/` — browse the folder._
-- **scripts** (3): [generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py), [bootstrap a project scaffold](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install and init](../Terraform/scripts/install-and-init.sh)
+- **scripts** (4): [validate a provider schema against a contract](../Terraform/scripts/validate-provider-schema.go) — Go CLI that checks `terraform providers schema -json` against the hand-written contract — plus [generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py), [bootstrap a project scaffold](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install and init](../Terraform/scripts/install-and-init.sh)
 - **snippets** (3): most recent → [explore the CLI](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh), [scaffold an S3 module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [for_each and validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
 - **notebooks** (2): [Terraform vs OpenTofu](../Terraform/notebooks/comparing-terraform-vs-opentofu.ipynb), [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public and private subnets across AZs, IGW, optional NAT gateways — plus [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf)
@@ -323,12 +324,13 @@ Notes about the kit itself, kept alongside the content they refer to. Browse `do
 - [audit-004 check](../docs/2026-07-19-audit-004-check.md)
 - [removed dead `general/` references](../docs/2026-07-11-removed-dead-general-references.md)
 
-## docs/audit  ·  12 files
+## docs/audit  ·  13 files
 
 Coverage and README audits that keep the index files honest against what is on disk. Browse `docs/audit/`.
 
+- [audit-013: repo audit — counts, links, dates](../docs/audit/2026-10-10-repo-audit-013.md)
 - [audit-012: Docker Dockerfile count](../docs/audit/2026-09-07-audit-012-docker-dockerfile-count.md)
 - [audit-011: OpenTofu README](../docs/audit/2026-08-20-audit-011-opentofu-readme.md)
 - [audit-009: GitHub README](../docs/audit/2026-08-20-audit-009-github-readme.md)
 - [coverage-table audit](../docs/audit/2026-08-18-coverage-table-audit.md)
-- _…and 8 further files under `docs/audit/` — older stubs superseded by the audits above._
+- _…and 7 further files under `docs/audit/` — older stubs superseded by the audits above._
