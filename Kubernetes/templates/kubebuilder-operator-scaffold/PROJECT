@@ -1,0 +1,20 @@
+# last_verified: 2026-10-12 · kubebuilder 4.0.0
+domain: example.org
+layout:
+- go.kubebuilder.io/v4
+projectName: webapp-operator
+repo: github.com/example/webapp-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: example.org
+  group: apps
+  kind: WebApp
+  path: github.com/example/webapp-operator/api/v1alpha1
+  version: v1alpha1
+  webhooks:
+    defaulting: false
+    validation: false
+    conversion: false

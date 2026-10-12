@@ -1,0 +1,18 @@
+# last_verified: 2026-10-12 · prometheus-operator 0.75.0
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    control-plane: controller-manager
+  name: webapp-operator-controller-manager-monitor
+  namespace: system
+spec:
+  endpoints:
+  - path: /metrics
+    port: https
+    scheme: https
+    tlsConfig:
+      insecureSkipVerify: true
+  selector:
+    matchLabels:
+      control-plane: controller-manager
