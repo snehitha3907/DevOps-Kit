@@ -2,6 +2,7 @@
 
 ## 2026-10-12
 
+- Added Docker BuildKit advanced features guide: cache mounts with explicit scoping, secret and SSH mounts for build-time credentials, multi-stage hygiene, and leak verification (doc-063) (`Docker/docs/docker-buildkit-cache-mounts-secrets.md`)
 - Added Ansible execution environments guide: pinning the 14.5.0 line, writing the EE definition file, building and testing the image with ansible-builder/ansible-navigator, and rolling it out tag-by-tag with rollback (ans-029) (`Ansible/docs/ansible-execution-environments-custom-images.md`)
 
 ## 2026-10-11
