@@ -1,0 +1,25 @@
+# last_verified: 2026-10-12
+apiVersion: apps.example.org/v1alpha1
+kind: WebApp
+metadata:
+  name: sample-webapp
+  namespace: default
+spec:
+  replicas: 3
+  image: nginx:latest
+  port: 80
+  serviceType: ClusterIP
+  ingressEnabled: true
+  ingressHost: webapp.example.com
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "64Mi"
+    limits:
+      cpu: "500m"
+      memory: "128Mi"
+  envVars:
+    - name: ENVIRONMENT
+      value: production
+    - name: LOG_LEVEL
+      value: info
