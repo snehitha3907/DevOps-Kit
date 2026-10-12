@@ -1,1 +1,0 @@
-# Git notes companion readme

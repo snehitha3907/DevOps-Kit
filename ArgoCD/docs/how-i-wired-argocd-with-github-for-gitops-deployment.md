@@ -104,7 +104,8 @@ argocd app get guestbook -o wide
 ```
 
 A healthy sync shows `SYNCED` status and `Healthy` health. Committing a change
-to `manifests/guestbook/deployment.yaml` triggers the next sync automatically.
+to `manifests/guestbook/deployment.yaml` in your GitHub repo (local example:
+`../../manifests/guestbook/deployment.yaml`) triggers the next sync automatically.
 
 ## Verify
 

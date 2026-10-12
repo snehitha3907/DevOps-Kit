@@ -103,6 +103,7 @@
 
 ### Work with Terraform
 
+- [Test with tflint, native contracts, and Terratest](../Terraform/docs/terraform-testing-strategies-tflint-terratest.md)
 - [Migrate a codebase to Terraform 1.9](../Terraform/docs/terraform-1-9-migration-guide.md)
 - [Wire outputs into a dependent module](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md)
 - [Scaffold a reusable S3 bucket module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh)
@@ -126,6 +127,7 @@
 - [S3 and DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh)
 - [Plan/apply wrapper with policy checks](../OpenTofu/scripts/tofu-plan-apply-with-policy-checks.sh)
 - [Reusable AWS VPC module template](../OpenTofu/templates/aws-reusable-module/README.md)
+- [Build a custom provider with the plugin framework](../OpenTofu/docs/opentofu-provider-development-custom-provider.md)
 
 ### Provision with Pulumi
 
@@ -184,6 +186,8 @@
 - [Release automation end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md)
 - [Deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md)
 - [Environments deployment protection](../GitHub/manifests/github-environments-deployment-protection.yaml)
+- [Merge Dependabot PRs that pass CI](../GitHub/scripts/dependabot-merge-automation.py)
+- [Audit Actions usage across the org's repos](../GitHub/notebooks/analyzing-github-actions-usage-across-org-repos.ipynb)
 
 ### Work with Docker
 
@@ -213,6 +217,7 @@
 - [Self-hosted runner Dockerfile (Docker-in-Docker)](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
 - [Manage Actions secrets across a repo fleet](../GitHub Actions/scripts/manage-secrets-across-repos.py)
 - [Trigger a `workflow_dispatch` and poll status](../GitHub Actions/snippets/2026-08-15-trigger-workflow-dispatch-poll-status.py)
+- [Audit Actions usage across the org's repos](../GitHub/notebooks/analyzing-github-actions-usage-across-org-repos.ipynb)
 
 ### Ship with GitLab CI
 

@@ -241,6 +241,7 @@
 - **Release** — A versioned, downloadable package attached to a tag: notes plus binary assets, published with `gh release create` so one command ships notes and files together.
 - **GitHub App** — A registered integration that is an actor in its own right; it is installed on repositories or organizations, acts under its own identity with per-category permissions, runs without a user present, and can subscribe to webhook events.
 - **OAuth App** — A registered integration that proxies for a user; it asks a user to authorize it, receives a token representing that user, and can do what the user can do — no more. Fits user-facing tooling where work should happen under the user's own identity.
+- **Auto-merge** — Letting GitHub merge a pull request as soon as its required checks pass, instead of merging by hand. For Dependabot fleets the safe shape is a script that lists open Dependabot PRs, reads each head commit's check-runs, and squash-merges only the green ones, leaving failed or pending PRs open.
 
 ## GitHub Actions
 
@@ -357,6 +358,9 @@
 - **Root module** — The top-level configuration a caller writes: provider blocks plus one or more `module` calls with concrete inputs. Shared modules stay provider-free so the same code serves every environment through different root modules.
 - **`versions.tf`** — The file in a shared module that declares `required_providers` (and the OpenTofu version floor) without any `provider` blocks, so version constraints travel with the module while credentials stay in the caller's root module.
 - **Count-gated resource** — A resource block with `count = var.enable_x ? 1 : 0` so an input flag decides whether the resource exists at all (e.g. skipping NAT gateways in isolated environments); guarded by a `validation` block so incompatible flag combinations fail at plan time.
+- **Custom provider** — A provider built for an API that has no official coverage, written in Go against the Terraform Plugin Framework. The scaffold generates the provider server plus resource and data-source templates; the author fills in the schema, CRUD against the target API, and acceptance tests before installing it for real configurations.
+- **Provider schema** — The typed declaration of what a provider accepts (endpoint, credentials) and what each resource and data source exposes (required/optional/computed attributes). Schema mistakes surface as plan-time errors, which is why the testing guide pins contracts before any apply.
+- **Acceptance test** — A Go test that builds the provider, applies a real configuration against a sandbox API, and asserts on the resulting state. Slower than unit tests but the only layer that proves the provider's CRUD matches the API's behaviour.
 
 ## Terraform
 
@@ -379,6 +383,9 @@
 - **Child module** — A Terraform module invoked from a parent module, exposing computed values through `output` blocks so the parent can consume them without hard-coding resource attributes.
 - **Parent module** — A Terraform module that calls one or more child modules and wires their outputs into its own resources or further child modules.
 - **`required_version`** — The version constraint in a `terraform` block declaring which CLI releases a configuration supports (e.g. `>= 1.5, < 1.9`). Widen or move the bound only after the migration is verified, so a narrow bound rejects the new binary instead of letting a mixed-version estate plan against the same state.
+- **tflint** — A static linter that parses Terraform configurations the way Terraform does and applies a rule set on top: deprecated syntax, provider-specific misuse, missing version constraints, and team naming conventions. Runs per pull request; initialise plugins once per repository with `tflint --init`.
+- **Terratest** — A Go library for integration-testing infrastructure: it runs `terraform apply` against an ephemeral environment, asserts on outputs and real resource behaviour, then destroys everything. Catches defects that plan cleanly but misbehave once deployed.
+- **Native test framework (`.tftest.hcl`)** — Terraform's built-in contract tests: `run` blocks apply a module with given inputs and assert on outputs, so variable-validation and wiring mistakes fail before any real apply.
 - **Provider schema** — The structured description of every resource type and data source a provider exposes, including required and optional arguments and attribute types; emitted as JSON by `terraform providers schema -json`, it is the authoritative source of what a provider accepts.
 - **Schema contract** — A hand-written JSON file declaring the arguments and attributes a module requires from a provider, checked against the live schema export before CI merges, so a provider-version drift that silently drops a required field fails the build instead of surfacing at apply time.
 - **Module Registry** — The public (or private) catalog where versioned Terraform modules are published for others to consume; a module published with a version tag becomes selectable by `terraform init` and `source = "terraform-aws-modules/vpc/aws"`.

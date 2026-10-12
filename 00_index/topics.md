@@ -19,7 +19,7 @@
 - **notebooks** (2): [variable precedence](../Ansible/notebooks/ansible-variable-precedence.ipynb), [block / rescue / serial execution patterns](../Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb)
 - **dockerfiles** (1): [Ansible control node](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
 
-## ArgoCD  ·  10 files
+## ArgoCD  ·  11 files
 
 - **primer:** [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
 - **notes** (3): most recent → [quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md), [install.yaml](../ArgoCD/notes/install.yaml), [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
@@ -27,6 +27,7 @@
 - **scripts** (2): [build an Application and drive a sync to health](../ArgoCD/scripts/build-argocd-application-from-scratch.sh) — idempotent, so it works as a CI deploy step — plus [install the CLI and reach the UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 - **docs** (1): [wiring ArgoCD with GitHub for GitOps deployment](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md) — control plane, private repo, project, Application, and where the integration broke
 - **snippets** (1): [sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
+- **manifests** (1): [guestbook deployment](../ArgoCD/manifests/guestbook/deployment.yaml) — minimal 3-replica Guestbook Deployment backing the GitOps walkthrough
 
 ## AWS  ·  21 files
 
@@ -88,26 +89,26 @@
 - **snippets** (2): most recent → [list Compute and GCS](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [earlier pass](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
 - **docs** (1): [GCP coverage note](../GCP/docs/2026-09-28-gcp-readme-coverage-and-topics.md) — how `GCP/` maps into the README coverage table and topic map
 
-## Git  ·  59 files
+## Git  ·  56 files
 
 - **primer:** [0000-primer-git.md](../Git/notes/0000-primer-git.md)
 - **templates** (22): [git-repository-skeleton README](../Git/templates/git-repository-skeleton/README.md) — commitlint, pinned `.githooks`, release-please — plus [pre-commit hook](../Git/templates/git-hooks/pre-commit) and [commit-msg hook](../Git/templates/git-hooks/commit-msg)
 - _…and 19 more under `Git/templates/` — browse the folder._
-- **docs** (15): most recent → [worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md), [scripts count note](../Git/docs/2026-09-25-git-scripts-count-correction.md), [worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
-- _…and 12 more under `Git/docs/` — browse the folder._
+- **docs** (14): most recent → [worktree workflows for parallel branches](../Git/docs/worktree-workflows-parallel-branches.md), [scripts count note](../Git/docs/2026-09-25-git-scripts-count-correction.md), [worktree setup gotchas](../Git/docs/git-worktrees-parallel-feature-development-setup-workflow-gotchas.md)
+- _…and 11 more under `Git/docs/` — browse the folder._
 - **scripts** (12): [regression test probe for `git bisect run`](../Git/scripts/regression-test.sh) — deterministic 0/1/125 exit codes with TEST_CMD/PRE_CMD knobs, companion to the scripted-bisect guide — plus [bisect automation runner](../Git/scripts/bisect-automation-runner.sh), [gitattributes filters and merge drivers](../Git/scripts/setup-gitattributes-filters-and-merge.sh), [branch management and tagging](../Git/scripts/branch-management-and-tag-creation.sh)
 - _…and 8 more under `Git/scripts/` — browse the folder._
-- **notes** (8): most recent → [branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [earlier branching pass](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore the CLI](../Git/notes/2026-06-04-explore-git-cli.md)
-- _…and 5 more under `Git/notes/` — browse the folder._
+- **notes** (6): most recent → [branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [earlier branching pass](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore the CLI](../Git/notes/2026-06-04-explore-git-cli.md)
+- _…and 3 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  47 files
+## GitHub  ·  50 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (11): most recent → [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md), [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [platform features](../GitHub/notes/2026-06-10-github-platform-features.md)
 - _…and 8 more under `GitHub/notes/` — browse the folder._
-- **scripts** (6): most recent → [create a repo and open a PR](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh), [auth and explore the profile](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh), [provision a repo with the API](../GitHub/scripts/provision-repo-with-api.py)
+- **scripts** (7): most recent → [merge Dependabot PRs that pass CI](../GitHub/scripts/dependabot-merge-automation.py) — lists Dependabot PRs, checks commit check-runs, squash-merges only the green ones — plus [create a repo and open a PR](../GitHub/scripts/2026-06-12-create-repo-and-pr.sh), [auth and explore the profile](../GitHub/scripts/2026-06-10-auth-and-explore-profile.sh), [provision a repo with the API](../GitHub/scripts/provision-repo-with-api.py)
 - _…and 3 more under `GitHub/scripts/` — browse the folder._
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
@@ -116,14 +117,14 @@
   - _…and 4 more under `GitHub/docs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open a PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
 - **manifests** (1): [Environments deployment protection](../GitHub/manifests/github-environments-deployment-protection.yaml)
-- **notebooks** (1): [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
+- **notebooks** (2): [org-wide Actions usage audit](../GitHub/notebooks/analyzing-github-actions-usage-across-org-repos.ipynb) — inventory repos, collect runs, summarise volume, failure rate, and repeat-failure jobs — plus [comparing API approaches to release automation](../GitHub/notebooks/comparing-api-approaches-release-automation.ipynb)
 - **dockerfiles** (1): [self-hosted runner](../GitHub/dockerfiles/self-hosted-runner.Dockerfile)
 
-## GitHub Actions  ·  26 files
+## GitHub Actions  ·  25 files
 
 - **primer:** [0000-primer-github-actions.md](../GitHub Actions/notes/0000-primer-github-actions.md)
-- **notes** (6): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [ci.yml reference](../GitHub Actions/notes/ci.yml)
-  - _…and 3 more under `GitHub Actions/notes/` — browse the folder._
+- **notes** (5): most recent → [following the quickstart](../GitHub Actions/notes/2026-06-23-following-github-actions-quickstart.md), [primer-already-exists check](../GitHub Actions/notes/2026-07-13-primer-already-exists.md), [ci.yml reference](../GitHub Actions/notes/ci.yml)
+  - _…and 2 more under `GitHub Actions/notes/` — browse the folder._
 - **templates** (3): [multi-environment deploy](../GitHub Actions/templates/multi-env-deploy/README.md) — a caller workflow that builds once and promotes the same artifact through dev, staging, and production via a reusable deploy workflow — with [deploy-caller.yml](../GitHub Actions/templates/multi-env-deploy/deploy-caller.yml) and [reusable-deploy.yml](../GitHub Actions/templates/multi-env-deploy/reusable-deploy.yml)
 - **configs** (5): most recent → [reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml), [matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml), [hello workflow](../GitHub Actions/configs/2026-07-13-hello-workflow.yaml)
   - _…and 2 more under `GitHub Actions/configs/` — browse the folder._
@@ -213,11 +214,11 @@ Folder on disk is `otel/`.
 - **snippets** (2): [instrumented Go HTTP server](../otel/snippets/2026-09-30-instrumented-http-server.go) — one span per request plus a per-path counter — plus [first trace span](../otel/snippets/2026-09-26-first-trace-span.py)
 - **docs** (1): [how `otel/` is reflected in the README and topic map](../otel/docs/2026-09-25-opentelemetry-readme-coverage.md)
 
-## OpenTofu  ·  18 files
+## OpenTofu  ·  19 files
 
 - **primer:** [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **templates** (6): [reusable AWS VPC module](../OpenTofu/templates/aws-reusable-module/README.md) — VPC with public/private subnets, internet gateway, count-gated NAT gateways, referencing outputs, and an [`examples/basic/` caller](../OpenTofu/templates/aws-reusable-module/examples/basic/main.tf)
-- **docs** (3): most recent → [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — shared state per environment with locking — plus [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) covering `state list/mv/pull` and backend migration
+- **docs** (4): most recent → [custom provider development](../OpenTofu/docs/opentofu-provider-development-custom-provider.md) — scaffold with the plugin framework, provider schema, resources, data sources, build and test — plus [S3 backend with workspace isolation](../OpenTofu/docs/remote-state-s3-backend-workspace-isolation.md) — shared state per environment with locking — plus [state management tutorial notes](../OpenTofu/docs/2026-08-25-state-management-tutorial-notes.md) covering `state list/mv/pull` and backend migration
 - **notes** (2): most recent → [quickstart trip-ups](../OpenTofu/notes/2026-08-21-opentofu-quickstart-trip-ups.md), [0000-primer-opentofu.md](../OpenTofu/notes/0000-primer-opentofu.md)
 - **scripts** (3): [plan/apply wrapper with policy checks](../OpenTofu/scripts/tofu-plan-apply-with-policy-checks.sh) — init, validate, plan, policy gate, then apply — plus [S3 + DynamoDB remote-state bootstrap](../OpenTofu/scripts/s3-dynamodb-remote-state-bootstrap.sh) and [install and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - **configs** (2): [minimal local config](../OpenTofu/configs/2026-07-18-minimal-local-config.tf), [minimal local backend](../OpenTofu/configs/2026-08-25-minimal-local-backend.hcl)
@@ -243,7 +244,7 @@ Folder on disk is `plm/`.
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 - **docs** (1): [how `plm/` is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
-## Terraform  ·  56 files
+## Terraform  ·  57 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **templates** (25): [multi-environment workspaces + remote state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev and prod with workspace-scoped S3 and DynamoDB backends — plus [module registry publishing workflow](../Terraform/templates/terraform-module-registry-publishing/README.md) — complete module structure with CI/CD pipeline that validates, tests, and publishes on version tags
@@ -252,7 +253,7 @@ Folder on disk is `plm/`.
   - _…and 5 more under `Terraform/configs/` — browse the folder._
 - **notes** (6): most recent → [install and a first local file](../Terraform/notes/2026-09-03-install-terraform-and-first-local-file.md), [state management tutorial](../Terraform/notes/2026-08-12-terraform-state-management-tutorial.md), [following the provider tutorial](../Terraform/notes/2026-06-24-following-provider-tutorial.md)
 - _…and 3 more under `Terraform/notes/` — browse the folder._
-- **docs** (5): most recent → [1.9 migration guide](../Terraform/docs/terraform-1-9-migration-guide.md) — one environment at a time, plan diff as changelog, state backup behind every step — plus [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [the earlier pass](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
+- **docs** (6): most recent → [testing strategies with tflint and Terratest](../Terraform/docs/terraform-testing-strategies-tflint-terratest.md) — five layers from `fmt`/`validate` through tflint, native `.tftest.hcl` contracts, and Terratest to plan-artifact checks in CI — plus [1.9 migration guide](../Terraform/docs/terraform-1-9-migration-guide.md) — one environment at a time, plan diff as changelog, state backup behind every step — plus [wiring outputs into dependent modules](../Terraform/docs/wiring-terraform-outputs-into-dependent-modules.md), [workspaces and remote state locking](../Terraform/docs/how-i-wired-terraform-workspaces-and-remote-state-locking.md), [the earlier pass](../Terraform/docs/2026-06-29-terraform-workspaces-and-remote-state-locking.md)
 - _1 more under `Terraform/docs/` — browse the folder._
 - **scripts** (4): [validate a provider schema against a contract](../Terraform/scripts/validate-provider-schema.go) — Go CLI that checks `terraform providers schema -json` against the hand-written contract — plus [generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py), [bootstrap a project scaffold](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh), [install and init](../Terraform/scripts/install-and-init.sh)
 - **snippets** (3): most recent → [explore the CLI](../Terraform/snippets/2026-09-04-terraform-cli-exploration.sh), [scaffold an S3 module with remote state](../Terraform/snippets/2026-08-17-scaffold-s3-bucket-module-remote-state.sh), [for_each and validation pattern](../Terraform/snippets/reusable-module-for-each-validation.hcl)
@@ -269,7 +270,7 @@ Folder on disk is `plm/`.
 - **configs** (2): most recent → [config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - **docs** (1): [choosing scan modes and pipeline wiring](../Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md) — image vs fs vs repo vs sbom, and blocking a bad artifact in CI
 
-## Foundational Concepts  ·  77 files
+## Foundational Concepts  ·  71 files
 
 - **CI/CD Concepts** — [primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md): pipelines, gates, rollbacks, artifact promotion.
   - **docs** (3): [preview environments with gated promotion](../docs/concepts/ci-cd-concepts/docs/ephemeral-preview-environments-gated-promotion.md), [artifact promotion, environments, rollbacks](../docs/concepts/ci-cd-concepts/docs/artifact-promotion-environment-rollbacks.md), [multi-environment gates workflow](../docs/concepts/ci-cd-concepts/docs/multi-environment-cicd-gates-workflow.md)
@@ -324,7 +325,7 @@ Notes about the kit itself, kept alongside the content they refer to. Browse `do
 - [audit-004 check](../docs/2026-07-19-audit-004-check.md)
 - [removed dead `general/` references](../docs/2026-07-11-removed-dead-general-references.md)
 
-## docs/audit  ·  13 files
+## docs/audit  ·  6 files
 
 Coverage and README audits that keep the index files honest against what is on disk. Browse `docs/audit/`.
 
@@ -333,4 +334,3 @@ Coverage and README audits that keep the index files honest against what is on d
 - [audit-011: OpenTofu README](../docs/audit/2026-08-20-audit-011-opentofu-readme.md)
 - [audit-009: GitHub README](../docs/audit/2026-08-20-audit-009-github-readme.md)
 - [coverage-table audit](../docs/audit/2026-08-18-coverage-table-audit.md)
-- _…and 7 further files under `docs/audit/` — older stubs superseded by the audits above._
