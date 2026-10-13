@@ -2,6 +2,7 @@
 
 ## 2026-10-13
 
+- Added Kubernetes Gateway API migration guide: GatewayClass/Gateway role split vs Ingress, Ingress-to-HTTPRoute rule translation, TLS listener move, side-by-side cutover with Ingress kept as fallback, plus rollback (k8s-025) (`Kubernetes/docs/gateway-api-migration-from-ingress.md`)
 - Added Kubernetes custom resource reconciliation controller: level-driven Go reconcile core with finalizer-first deletes, idempotent apply, and conflict backoff over a testable Store interface (k8s-024) (`Kubernetes/scripts/custom-resource-reconciliation-controller.go`)
 - Added Grafana quickstart trip-ups note: quickstart assumes Prometheus is already running, the localhost-in-container data-source gotcha, dashboard URL vs share-link, "No data" delay on first alert evaluation, and the still-reachable legacy `/alerting` page (graf-012) (`graf/notes/2026-10-13-grafana-quickstart-trip-ups.md`)
 - Added minimal Grafana datasource and dashboard provisioning config: one Prometheus datasource plus a single-panel dashboard, written as YAML for the provisioning directories (graf-013) (`graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml`)
