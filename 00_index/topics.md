@@ -2,7 +2,7 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  87 files
+## Ansible  ·  88 files
 
 - **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
 - **notes** (10): most recent → [quickstart trip-ups](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [ad-hoc commands](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [handlers and templates](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
@@ -14,7 +14,7 @@
 - _…and 5 more under `Ansible/configs/` — browse the folder._
 - **scripts** (4): [scan for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py), [install and explore modules](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [run first playbook](../Ansible/scripts/run-first-playbook.sh)
 - _1 more under `Ansible/scripts/` — browse the folder._
-- **docs** (4): [Ansible 14 / core 2.21 migration](../Ansible/docs/ansible-14-core-2-21-migration-guide.md), [Ansible over Terraform local-exec](../Ansible/docs/ansible-over-terraform-local-exec.md), [Ansible + Docker CI testing](../Ansible/docs/integrated-ansible-docker-ci-pipeline-testing.md), [wiring ansible-lint](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
+- **docs** (5): [execution environments with custom images](../Ansible/docs/ansible-execution-environments-custom-images.md), [Ansible 14 / core 2.21 migration](../Ansible/docs/ansible-14-core-2-21-migration-guide.md), [Ansible over Terraform local-exec](../Ansible/docs/ansible-over-terraform-local-exec.md), [Ansible + Docker CI testing](../Ansible/docs/integrated-ansible-docker-ci-pipeline-testing.md), [wiring ansible-lint](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
 - **snippets** (2): [lint a playbook](../Ansible/snippets/2026-08-12-lint-ansible-playbook.py), [nginx playbook](../Ansible/snippets/nginx-playbook.yaml)
 - **notebooks** (2): [variable precedence](../Ansible/notebooks/ansible-variable-precedence.ipynb), [block / rescue / serial execution patterns](../Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb)
 - **dockerfiles** (1): [Ansible control node](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
@@ -54,7 +54,7 @@
 - **configs** (1): [Container Apps baseline for two microservices](../Azure/configs/container-apps-microservices.yaml) — a public API and an internal worker sharing one managed environment, with per-service scaling and revision rollback
 - **manifests** (1): [production AKS cluster](../Azure/manifests/production-aks-cluster.bicep)
 
-## Docker  ·  51 files
+## Docker  ·  52 files
 
 - **primer:** [0000-primer-docker.md](../Docker/notes/0000-primer-docker.md)
 - **notes** (6): most recent → [tutorial trip-ups](../Docker/notes/2026-08-12-docker-tutorial-tripups.md), [Compose quickstart](../Docker/notes/2026-06-07-docker-compose-quickstart.md), [exploring the CLI](../Docker/notes/2026-06-06-exploring-docker-cli.md)
@@ -67,8 +67,8 @@
 - _…and 3 more under `Docker/manifests/` — browse the folder._
 - **scripts** (5): most recent → [multi-stage Go build](../Docker/scripts/multi-stage-go-dockerfile.sh), [health check and cleanup](../Docker/scripts/docker-health-check-and-cleanup.sh), [install and run a first container](../Docker/scripts/install-and-run-first-container.sh)
 - _…and 2 more under `Docker/scripts/` — browse the folder._
-- **docs** (7): most recent → [Docker-to-Kubernetes handoff](../Docker/docs/integrating-docker-with-kubernetes.md) — immutable tags, pull secrets, probe translation, requests/limits, rollout and rollback — plus [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md)
-- _…and 4 more under `Docker/docs/` — browse the folder._
+- **docs** (8): most recent → [BuildKit cache mounts and secrets](../Docker/docs/docker-buildkit-cache-mounts-secrets.md), [Docker-to-Kubernetes handoff](../Docker/docs/integrating-docker-with-kubernetes.md) — immutable tags, pull secrets, probe translation, requests/limits, rollout and rollback — plus [build cache and multi-stage layering](../Docker/docs/docker-build-cache-and-multi-stage-layering.md), [health check patterns](../Docker/docs/docker-health-check-patterns.md)
+- _…and 5 more under `Docker/docs/` — browse the folder._
 - **snippets** (2): [build, run, and clean up](../Docker/snippets/2026-08-12-build-run-and-cleanup.py), [image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - **configs** (1): [multi-service app config](../Docker/configs/multi-service-app.yaml)
 
@@ -188,10 +188,10 @@ Folder on disk is `vlt/`.
 - **snippets** (1): [nginx chart with custom values](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 - **notebooks** (1): [release lifecycle drill](../Helm/notebooks/release-lifecycle-drill.ipynb)
 
-## Kubernetes  ·  36 files
+## Kubernetes  ·  58 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
-- **templates** (10): [Helm chart + Kustomize overlay scaffold](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml) — a chart (`Chart.yaml`, `values.yaml`, `templates/`) with `kustomize/base/` and `overlays/dev|prod/`
+- **templates** (32): [Kubebuilder operator scaffold](../Kubernetes/templates/kubebuilder-operator-scaffold/README.md) — API types, controller, CRD bases, RBAC, manager and samples — plus [Helm chart + Kustomize overlay scaffold](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml) — a chart (`Chart.yaml`, `values.yaml`, `templates/`) with `kustomize/base/` and `overlays/dev|prod/`
 - **notes** (9): most recent → [kubectl and minikube, first pod](../Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md), [what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [first pod from a manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 - _…and 6 more under `Kubernetes/notes/` — browse the folder._
 - **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service with probes and an HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
