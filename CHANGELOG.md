@@ -3,9 +3,13 @@
 ## 2026-10-13
 
 - Added Kubernetes custom resource reconciliation controller: level-driven Go reconcile core with finalizer-first deletes, idempotent apply, and conflict backoff over a testable Store interface (k8s-024) (`Kubernetes/scripts/custom-resource-reconciliation-controller.go`)
+- Added Grafana quickstart trip-ups note: quickstart assumes Prometheus is already running, the localhost-in-container data-source gotcha, dashboard URL vs share-link, "No data" delay on first alert evaluation, and the still-reachable legacy `/alerting` page (graf-012) (`graf/notes/2026-10-13-grafana-quickstart-trip-ups.md`)
+- Added minimal Grafana datasource and dashboard provisioning config: one Prometheus datasource plus a single-panel dashboard, written as YAML for the provisioning directories (graf-013) (`graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml`)
+- Added Grafana Cloud quickstart trip-ups note: signup and pre-wired datasource, the Grafana Agent config vs stack endpoint split, free-stack remote-write credentials, scrape-interval ownership, and the save-then-reopen "No data" panel (grafc-007) (`grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md`)
 
 ## 2026-10-12
 
+- Added Kubernetes operator scaffold generated with Kubebuilder v4: a WebApp custom resource (v1alpha1) with controller reconciling Deployment, Service, and Ingress, plus CRD bases, RBAC, manager config, and a sample — ready to extend with `kubebuilder create api` (k8s-023) (`Kubernetes/templates/kubebuilder-operator-scaffold/`)
 - Added Docker BuildKit advanced features guide: cache mounts with explicit scoping, secret and SSH mounts for build-time credentials, multi-stage hygiene, and leak verification (doc-063) (`Docker/docs/docker-buildkit-cache-mounts-secrets.md`)
 - Added Ansible execution environments guide: pinning the 14.5.0 line, writing the EE definition file, building and testing the image with ansible-builder/ansible-navigator, and rolling it out tag-by-tag with rollback (ans-029) (`Ansible/docs/ansible-execution-environments-custom-images.md`)
 - Added Kubernetes operator scaffold with Kubebuilder: API types, controller reconciliation, CRD bases, RBAC, manager config and samples (k8s-023) (`Kubernetes/templates/kubebuilder-operator-scaffold/README.md`)

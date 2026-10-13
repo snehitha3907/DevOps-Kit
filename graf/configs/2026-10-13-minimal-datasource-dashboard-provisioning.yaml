@@ -1,0 +1,46 @@
+# last_verified: 2026-10-13 · Grafana n/a
+# My minimal provisioning config: one Prometheus datasource plus one simple
+# dashboard with a single graph panel. Drop this under
+# /etc/grafana/provisioning/datasources/ and /etc/grafana/provisioning/dashboards/
+# (or point GF_DATASOURCES_PATH / GF_DASHBOARDS_PATH at the folder) and Grafana
+# picks them up on start. No UI clicks, no env-var JSON — everything is in git.
+# TODO: the query below is a placeholder; point it at a real metric once a
+# Prometheus is actually scraping something.
+
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: localhost:9090
+    isDefault: true
+    editable: false
+
+dashboards:
+  - name: minimal-dashboard
+    dashboard:
+      title: My First Provisioned Dashboard
+      uid: my-first-provisioned-dashboard
+      tags:
+        - provisioning
+        - minimal
+      timezone: browser
+      refresh: 30s
+      time:
+        from: now-6h
+        to: now
+      panels:
+        - id: 1
+          title: Request rate
+          type: timeseries
+          datasource:
+            type: prometheus
+            uid: Prometheus
+          targets:
+            - expr: rate(http_requests_total[5m])
+              refId: A
+          gridPos:
+            h: 8
+            w: 12
+            x: 0
+            y: 0
