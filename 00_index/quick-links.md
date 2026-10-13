@@ -245,6 +245,9 @@
 - [Workload-type comparison notebook](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb)
 - [Pod troubleshooting shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - [Helm and Kustomize overlay scaffold](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml)
+- [Migrate a path-based Ingress to Gateway API](../Kubernetes/docs/gateway-api-migration-from-ingress.md)
+- [Reusable custom-resource reconciliation core](../Kubernetes/scripts/custom-resource-reconciliation-controller.go)
+- [Kubebuilder operator scaffold](../Kubernetes/templates/kubebuilder-operator-scaffold/README.md)
 
 ### Sync a GitOps app
 
@@ -351,12 +354,15 @@
 - [Grafana quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md)
 - [Poking around the Grafana UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
 - [Install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
+- [Grafana quickstart trip-ups, second pass](../graf/notes/2026-10-13-grafana-quickstart-trip-ups.md)
+- [Provision a Prometheus datasource and dashboard as files](../graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml)
 
 ### Ship metrics to Grafana Cloud
 
 - [First hosted dashboard in Grafana Cloud](../grafc/notes/2026-09-30-first-hosted-dashboard.md)
 - [Agent scrape config — unix exporter on a 15s interval](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
 - [Create a dashboard over the Grafana HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js)
+- [Grafana Cloud quickstart trip-ups](../grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md)
 
 ### Check a target is actually up
 

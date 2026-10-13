@@ -334,6 +334,12 @@
 - **RBAC** — Role-Based Access Control, the Kubernetes authorization model that grants permissions through Roles and ClusterRoles bound to users or ServiceAccounts; Prometheus needs `get`, `list`, and `watch` on pods, services, endpoints, and nodes.
 - **Pod Disruption Budget** — A policy that limits the number of pods that can be voluntarily evicted from a Deployment or StatefulSet at once, protecting availability during node maintenance.
 - **imagePullSecrets** — A Pod-spec field naming the Secret that holds private-registry pull credentials, so the kubelet can fetch the image. The Secret must live in the same namespace as the workload; one Secret per namespace can be shared by every Deployment in it.
+- **GatewayClass** — A cluster-scoped resource naming a Gateway API implementation (the controller that will program the data plane). The platform team installs one per implementation; every Gateway binds to one, so the edge has a single advertised entry point per controller.
+- **Gateway (Gateway API)** — The platform-owned resource holding listeners: which hostnames, ports, and protocols accept traffic and where TLS terminates. Replaces the Ingress class plus listener surface, without saying anything about which Service a host or path reaches.
+- **HTTPRoute** — The app-owned Gateway API resource binding hostnames and path matches to backend Services, with filters for header matching and request rewriting. Scoped by RBAC separately from the Gateway, so app teams change routing without touching infrastructure-owned fields.
+- **Custom resource** — An API object defined by a CustomResourceDefinition (CRD) rather than built into Kubernetes; the extension point operators use to model app-specific desired state (replicas, image, config) as native YAML.
+- **Reconciliation** — The controller loop that converges observed state toward the desired state declared in a custom resource: read both, apply the diff idempotently, and stop applying once they match. Terminal validation failures return without requeueing; only conflicts and transient errors back off and retry.
+- **Finalizer** — A string key on an object that blocks its deletion until the controller removes it. The controller sets it before creating external state, then honours it on delete by tearing that state down first — without it, deleting the custom resource orphans whatever it provisioned.
 
 ## OpenTofu
 
