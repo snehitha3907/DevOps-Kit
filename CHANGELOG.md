@@ -1,9 +1,14 @@
 # Changelog
 
+## 2026-10-13
+
+- Added Kubernetes custom resource reconciliation controller: level-driven Go reconcile core with finalizer-first deletes, idempotent apply, and conflict backoff over a testable Store interface (k8s-024) (`Kubernetes/scripts/custom-resource-reconciliation-controller.go`)
+
 ## 2026-10-12
 
 - Added Docker BuildKit advanced features guide: cache mounts with explicit scoping, secret and SSH mounts for build-time credentials, multi-stage hygiene, and leak verification (doc-063) (`Docker/docs/docker-buildkit-cache-mounts-secrets.md`)
 - Added Ansible execution environments guide: pinning the 14.5.0 line, writing the EE definition file, building and testing the image with ansible-builder/ansible-navigator, and rolling it out tag-by-tag with rollback (ans-029) (`Ansible/docs/ansible-execution-environments-custom-images.md`)
+- Added Kubernetes operator scaffold with Kubebuilder: API types, controller reconciliation, CRD bases, RBAC, manager config and samples (k8s-023) (`Kubernetes/templates/kubebuilder-operator-scaffold/README.md`)
 
 ## 2026-10-11
 
