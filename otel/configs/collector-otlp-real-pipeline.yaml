@@ -1,0 +1,45 @@
+# last_verified: 2026-10-14 · OpenTelemetry n/a
+# A real Collector pipeline: OTLP receiver in, memory_limiter + batch processors,
+# Prometheus and OTLP exporters out. This is the config I run when I want spans
+# and metrics to actually land somewhere visible instead of just being logged.
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_percentage: 65
+    spike_limit_percentage: 20
+  batch:
+    timeout: 5s
+    max_batch_size: 512
+    max_export_size: 512
+
+exporters:
+  prometheus:
+    endpoint: 0.0.0.0:8889
+    namespace: otel
+    const_labels:
+      label1: value1
+  otlp:
+    endpoint: localhost:4317
+    headers:
+      x-custom-header: custom-value
+    compression: gzip
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlp]
+    metrics:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [prometheus, otlp]

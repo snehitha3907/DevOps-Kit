@@ -2,6 +2,9 @@
 
 ## 2026-10-14
 
+- Added OpenTelemetry Collector config for a real pipeline: OTLP receiver, memory_limiter and batch processors, Prometheus and OTLP exporters (otel-012) (`otel/configs/collector-otlp-real-pipeline.yaml`)
+- Added OpenTelemetry context propagation guide: W3C tracecontext vs B3 formats, what breaks when a format is mismatched or dropped between hops (otel-013) (`otel/docs/context-propagation-w3c-vs-b3.md`)
+- Added OpenTelemetry custom span processor and resource detector: stamps app attributes onto every span and batch-exports to an OTLP endpoint (otel-014) (`otel/scripts/custom-span-processor-resource-detector.py`)
 - Added Kubernetes Cluster API bootstrap manifest: namespace, DockerCluster, Cluster, KubeadmControlPlane with control-plane machine template, and a two-replica worker MachineDeployment with bootstrap and machine templates, plus apply/verify/rollback usage (k8s-026) (`Kubernetes/manifests/cluster-api-bootstrap.yaml`)
 - Added GitHub repository security and compliance template: SECURITY.md vulnerability disclosure policy, Dependabot security-update config with security-team reviewers, CODEOWNERS for security-sensitive paths, security-focused pull-request template, and a COMPLIANCE.md audit checklist (gh-034) (`GitHub/templates/github-security-compliance/`)
 
