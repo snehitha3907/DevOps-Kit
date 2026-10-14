@@ -145,20 +145,21 @@
 - **scripts** (4): [dynamic child pipeline scaffold](../GitLab CI/scripts/dynamic-child-pipeline.sh) — a parent pipeline that writes its child config at job time, hands it forward as an artifact, then triggers it — plus [local pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install a runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
 - **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 
-## Grafana  ·  6 files
+## Grafana  ·  8 files
 
 Folder on disk is `graf/`.
 
 - **primer:** [0000-primer-grafana.md](../graf/notes/0000-primer-grafana.md)
-- **notes** (3): most recent → [quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) — install, data source, dashboard, alerting, and what got in the way — plus [poking around the UI](../graf/notes/2026-09-25-explore-grafana-ui.md) covering the localhost-in-Docker gotcha
+- **notes** (4): most recent → [quickstart trip-ups, second pass](../graf/notes/2026-10-13-grafana-quickstart-trip-ups.md) — Docker localhost gotcha, legacy alerting page, first-evaluation delay — plus [quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) and [poking around the UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
+- **configs** (1): [minimal datasource and dashboard provisioning](../graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml) — one Prometheus datasource plus one graph panel as files, picked up on start
 - **scripts** (1): [install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh) — runs `grafana/grafana` on port 3000 and waits for the login page
 - **docs** (2): [navigation dedup note](../graf/docs/2026-09-25-grafana-navigation-dedup.md), [coverage and topics note](../graf/docs/2026-09-25-grafana-coverage-and-topics.md)
 
-## Grafana Cloud  ·  3 files
+## Grafana Cloud  ·  4 files
 
 Folder on disk is `grafc/`. First contact only — no primer or scripts yet.
 
-- **notes** (1): [first hosted dashboard](../grafc/notes/2026-09-30-first-hosted-dashboard.md) — the hosted side is the same Grafana with a signup and a URL attached; where the scrape interval actually lives, and copying the JSON model out for the next dashboard
+- **notes** (2): most recent → [quickstart trip-ups](../grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md) — where the stack endpoint and agent token live, scrape interval ownership, remote-write path — plus [first hosted dashboard](../grafc/notes/2026-09-30-first-hosted-dashboard.md)
 - **configs** (1): [minimal metrics scrape config](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml) — the unix exporter scraped every 15s and forwarded through a pass-through relabel rule; the remote-write endpoint is deliberately left out until the target stack's addressing is settled
 - **snippets** (1): [create a dashboard over the HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js) — posts a minimal dashboard JSON with a bearer token so a dashboard is defined as data rather than clicks
 - _Remote write wiring, alerting rules, and a stack config in version control are ⏳._
@@ -188,7 +189,7 @@ Folder on disk is `vlt/`.
 - **snippets** (1): [nginx chart with custom values](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 - **notebooks** (1): [release lifecycle drill](../Helm/notebooks/release-lifecycle-drill.ipynb)
 
-## Kubernetes  ·  58 files
+## Kubernetes  ·  60 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **templates** (32): [Kubebuilder operator scaffold](../Kubernetes/templates/kubebuilder-operator-scaffold/README.md) — API types, controller, CRD bases, RBAC, manager and samples — plus [Helm chart + Kustomize overlay scaffold](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml) — a chart (`Chart.yaml`, `values.yaml`, `templates/`) with `kustomize/base/` and `overlays/dev|prod/`
@@ -196,9 +197,10 @@ Folder on disk is `vlt/`.
 - _…and 6 more under `Kubernetes/notes/` — browse the folder._
 - **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service with probes and an HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
 - _…and 2 more under `Kubernetes/manifests/` — browse the folder._
-- **docs** (4): most recent → [integrating with Prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md), [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md), [prometheus.yml reference](../Kubernetes/docs/prometheus.yml)
-- _1 more under `Kubernetes/docs/` — browse the folder._
-- **scripts** (3): [rollout status and pod readiness](../Kubernetes/scripts/rollout-status-and-pod-readiness.sh), [install kind and create a first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh), [pod lifecycle](../Kubernetes/scripts/pod-lifecycle.sh)
+- **docs** (5): most recent → [Gateway API migration from Ingress](../Kubernetes/docs/gateway-api-migration-from-ingress.md) — one path-based Ingress moved to a Gateway plus HTTPRoute pair, platform-owned listeners split from app-owned routes — plus [integrating with Prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md), [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
+- _…and 2 more under `Kubernetes/docs/` — browse the folder._
+- **scripts** (4): most recent → [custom-resource reconciliation core](../Kubernetes/scripts/custom-resource-reconciliation-controller.go) — idempotent applies toward desired state with finalizer cleanup on delete, plus a runnable demo — plus [rollout status and pod readiness](../Kubernetes/scripts/rollout-status-and-pod-readiness.sh), [install kind and create a first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
+- _1 more under `Kubernetes/scripts/` — browse the folder._
 - **notebooks** (2): [comparing workload types](../Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb), [workload types, newer pass](../Kubernetes/notebooks/2026-09-07-comparing-kubernetes-workload-types.ipynb)
 - **snippets** (2): [first pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh), [pod troubleshooting shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **configs** (1): [Deployment and Service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
