@@ -175,6 +175,12 @@
 - [Repository skeleton scaffold](../Git/templates/git-repository-skeleton/README.md)
 - [Trunk-based delivery with short-lived branches](../docs/concepts/version-control-concepts/2026-09-25-trunk-based-delivery-short-lived-branches.md)
 
+### Harden a repository
+
+- [GitHub repository security and compliance template](../GitHub/templates/github-security-compliance/README.md) — SECURITY.md vulnerability disclosure policy, Dependabot security-update config with security-team reviewers, CODEOWNERS for security-sensitive paths, a security-focused PR template, and a COMPLIANCE.md audit checklist
+- [Apply branch protection via the API](../GitHub/templates/github-repo-scaffold/configure-branch-protection.sh)
+- [Issue forms, labels, and stale rules](../GitHub/configs/dot-github-repository/)
+
 ### Work with GitHub
 
 - [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md)

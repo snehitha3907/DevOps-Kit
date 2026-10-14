@@ -1,4 +1,5 @@
 # DevOps-Kit
+
 > A working DevOps engineer's shelf for cloud CLIs, containers, orchestration, infrastructure as code, CI/CD, observability, and security scanning.
 
 ![Last commit](https://img.shields.io/github/last-commit/snehitha3907/DevOps-Kit)
@@ -18,11 +19,11 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Migrate a path-based Ingress to Gateway API](Kubernetes/docs/gateway-api-migration-from-ingress.md) — Move one working Ingress to a Gateway plus HTTPRoute pair, splitting platform-owned listeners and TLS from app-owned host and path routing.
-- [Reusable custom-resource reconciliation core](Kubernetes/scripts/custom-resource-reconciliation-controller.go) — A small reconcile loop that converges desired state with idempotent applies and honours a finalizer on delete, with a runnable demo.
-- [Provision a Prometheus datasource and dashboard as files](graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml) — One datasource plus one graph panel under the provisioning directory, so the first dashboard ships in version control instead of UI clicks.
-- [Grafana quickstart trip-ups, second pass](graf/notes/2026-10-13-grafana-quickstart-trip-ups.md) — The Docker localhost gotcha, the legacy alerting page that shows nothing, and the first-evaluation delay on new alert rules.
-- [Grafana Cloud quickstart trip-ups](grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md) — Where the stack endpoint and agent token actually live, why the scrape interval belongs to the agent config, and how the remote-write path differs.
+- [GitHub repository security and compliance template](GitHub/templates/github-security-compliance/README.md) — SECURITY.md vulnerability disclosure policy, Dependabot security-update config with security-team reviewers, CODEOWNERS for security-sensitive paths, a security-focused PR template, and a COMPLIANCE.md audit checklist.
+- [Minimal Grafana datasource and dashboard provisioning config](graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml) — one Prometheus datasource plus a single-panel dashboard, written as YAML for the provisioning directories.
+- [Grafana quickstart trip-ups](graf/notes/2026-10-13-grafana-quickstart-trip-ups.md) — quickstart assumes Prometheus is already running, the localhost-in-container data-source gotcha, dashboard URL vs share-link, and the "No data" delay on first alert evaluation.
+- [Grafana Cloud quickstart trip-ups](grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md) — signup and pre-wired datasource, the Grafana Agent config vs stack endpoint split, free-stack remote-write credentials, and the save-then-reopen "No data" panel.
+- [Kubernetes Gateway API migration guide](Kubernetes/docs/gateway-api-migration-from-ingress.md) — GatewayClass/Gateway role split vs Ingress, Ingress-to-HTTPRoute rule translation, TLS listener move, and side-by-side cutover with Ingress kept as fallback.
 
 ## Layout
 
@@ -35,13 +36,13 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 - **FluxCD/** — Flux CLI primer, bootstrap, reconcile, GitRepository/Kustomization manifests, and pre-flight cluster checks.
 - **GCP/** — gcloud setup, Compute and Cloud Storage examples, IAM, startup scripts, instance templates, and a scripted Cloud Run deployment.
 - **Git/** — Branching, hooks, worktrees, merge strategies, repository scaffolds, gitattributes setup, and regression examples.
-- **GitHub/** — Repository operations, repo scaffold template, issue forms, branch protection, API examples, release automation notes, an org-wide Actions-usage audit notebook, and a Dependabot merge script.
+- **GitHub/** — Repository operations, repo scaffold template, issue forms, branch protection, API examples, release automation notes, an org-wide Actions-usage audit notebook, a Dependabot merge script, and a security-and-compliance template.
 - **GitHub Actions/** — Workflow primers, reusable workflows, a multi-environment deploy template, an OIDC-with-AWS guide, custom runner images, bulk Actions-secret management, and dispatch examples.
 - **GitLab CI** — Pipeline primer, runner setup, variables and artifacts notes, minimal pipeline configs, multi-project and dynamic child pipelines, a build-to-deploy-to-Kubernetes walkthrough, and an API trigger snippet.
-- **graf/** — Grafana primer, Docker-based install script, UI exploration notes, quickstart trip-ups from two passes, and a provisioning config declaring a Prometheus datasource and first dashboard as files.
-- **grafc/** — Grafana Cloud first contact: an agent scrape config, a dashboard created over the HTTP API, notes from the hosted UI, and quickstart trip-ups covering the agent wiring and the remote-write path.
+- **graf/** — Grafana primer, Docker-based install script, UI exploration notes, and quickstart trip-ups.
+- **grafc/** — Grafana Cloud first contact: an agent scrape config, a dashboard created over the HTTP API, and notes from the hosted UI.
 - **Helm/** — Chart inspection, values files, values-management approaches with a runnable `demo-chart` fixture, a shared base values file for multi-cluster GitOps releases, Redis chart manifests, a reusable microservice chart with a vendored PostgreSQL subchart, a cross-environment values validator, chart testing with `ct lint`, and chart scaffolding.
-- **Kubernetes/** — kubectl notes, workloads, probes, ingress plus a Gateway API migration, monitoring, production patterns with HPA and PDB, Helm/Kustomize overlays, a Kubebuilder operator scaffold, and a reusable custom-resource reconciliation core.
+- **Kubernetes/** — kubectl notes, workloads, probes, ingress, monitoring, production patterns with HPA and PDB, and Helm/Kustomize overlays.
 - **OpenTelemetry** (folder `otel/`) — Traces primer, collector install script, first-span snippet, a minimal OTLP export config, quickstart trip-ups, and an instrumented Go server.
 - **OpenTofu/** — OpenTofu primer, local configuration, S3 remote state with workspace isolation, state management, a plan/apply wrapper with policy checks, a reusable AWS VPC module template, and a custom-provider development guide.
 - **Prometheus/** — Scrape configuration, target health checks, a hand-rolled exporter, recording versus alerting rules, Alertmanager-to-PagerDuty routing, and getting-started notes.
@@ -63,23 +64,23 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 | AWS | 2 | 2 | 3 | 7 | 3 | — | 1 | — | 3 | 2026-10-07 |
 | Ansible | 10 | 5 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-10-12 |
 | ArgoCD | 3 | 1 | 1 | 2 | 3 | 1 | — | — | — | 2026-10-02 |
-| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | 10 | 2026-10-09 |
+| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | 10 | 2026-10-08 |
 | Docker | 6 | 8 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-10-12 |
 | FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-30 |
-| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-29 |
-| Git | 6 | 14 | 1 | 12 | — | — | 1 | — | 22 | 2026-10-06 |
-| GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 11 | 2026-10-11 |
+| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
+| Git | 6 | 14 | 1 | 14 | — | — | 1 | — | 22 | 2026-09-25 |
+| GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-14 |
 | GitHub Actions | 5 | 6 | 1 | 4 | 5 | — | — | 1 | 3 | 2026-10-04 |
 | GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
-| Grafana (`graf/`) | 4 | 2 | — | 1 | 1 | — | — | — | — | 2026-10-13 |
+| Grafana (`graf/`) | 4 | 2 | — | 1 | — | — | — | — | — | 2026-10-13 |
 | Grafana Cloud (`grafc/`) | 2 | — | 1 | — | 1 | — | — | — | — | 2026-10-13 |
-| Helm | 3 | 5 | 1 | 4 | 5 | 14 | 1 | — | 22 | 2026-10-05 |
-| Kubernetes | 9 | 5 | 2 | 4 | 1 | 5 | 2 | — | 32 | 2026-10-13 |
+| Helm | 3 | 5 | 1 | 4 | 5 | 14 | 1 | — | 28 | 2026-10-05 |
+| Kubernetes | 9 | 5 | 2 | 4 | 1 | 6 | 2 | — | 32 | 2026-10-13 |
 | OpenTelemetry (`otel/`) | 2 | 1 | 2 | 1 | 1 | — | — | — | — | 2026-09-30 |
 | OpenTofu | 2 | 4 | — | 3 | 2 | — | 2 | — | 6 | 2026-10-10 |
 | Prometheus | 2 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-09-30 |
 | Pulumi (`plm/`) | 2 | 1 | 1 | 2 | 1 | — | — | — | — | 2026-09-30 |
-| Terraform | 6 | 6 | 3 | 4 | 9 | 2 | 2 | — | 25 | 2026-10-11 |
+| Terraform | 6 | 6 | 3 | 6 | 9 | 2 | 2 | — | 25 | 2026-10-11 |
 | Trivy | 5 | 1 | 2 | 4 | 2 | — | — | — | — | 2026-09-23 |
 | HashiCorp Vault (`vlt/`) | 3 | 1 | — | 3 | 1 | — | — | — | — | 2026-10-07 |
 
@@ -87,7 +88,8 @@ The kit covers 22 tool families across cloud CLIs, configuration management, con
 
 ## Status
 
-Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion. The newest additions on that same theme are a shared base values file for deploying one release to several clusters from a GitOps repo, and a chart-testing walkthrough that lints and installs only the charts a branch touched. Alongside that, OpenTofu grew a reusable AWS VPC module template with a plan/apply wrapper that runs policy checks before anything is applied, and the Helm values-management walkthrough gained a runnable `demo-chart` fixture so every lint, template, install, and upgrade command runs as written. Most recently, Azure gained a Bicep module template for an AKS cluster with modular addons (GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy). Since then the Vault shelf filled out its second layer: quickstart trip-ups from a dev server, an hvac script that writes, reads, and lists versions of a KV v2 secret, and a minimal read-only policy bound to a group for least-privilege token issuance. On the Azure side there are now two cleanup scripts that delete prefix-matched resource groups while sparing locked ones — one gated on an explicit confirmation flag, one built for scheduled runs with dry-run by default. Newest since then: a Container Apps baseline for a small API-plus-worker pair, an Azure DevOps pipeline pattern that takes Bicep through build, what-if, and deploy, a Terraform 1.9 migration walkthrough that treats the plan diff as the changelog, a GitHub Apps vs OAuth Apps integration guide for choosing the right registration type, a Terraform module registry publishing workflow template, and a Go CLI that validates a provider's schema against a hand-written contract. Newest since then: an org-wide Actions-usage audit notebook and a Dependabot merge script on the GitHub side, a layered Terraform testing guide from tflint through Terratest to CI plan-artifact checks, and an OpenTofu walkthrough for building a custom provider. Newest since then: a Gateway API migration that moves a path-based Ingress to a Gateway plus HTTPRoute pair with platform and app concerns split, a reusable custom-resource reconciliation core with finalizer cleanup alongside a Kubebuilder operator scaffold, and a Grafana provisioning config declaring the Prometheus datasource and first dashboard as files — each paired with quickstart trip-ups from the Grafana and Grafana Cloud walkthroughs.
+Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion. The newest additions on that same theme are a shared base values file for deploying one release to several clusters from a GitOps repo, and a chart-testing walkthrough that lints and installs only the charts a branch touched. Alongside that, OpenTofu grew a reusable AWS VPC module template with a plan/apply wrapper that runs policy checks before anything is applied, and the Helm values-management walkthrough gained a runnable `demo-chart` fixture so every lint, template, install, and upgrade command runs as written. Most recently, Azure gained a Bicep module template for an AKS cluster with modular addons (GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy). Since then, the Vault shelf filled out its second layer: quickstart trip-ups from a dev server, an hvac script that writes, reads, and lists versions of a KV v2 secret, and a minimal read-only policy bound to a group for least-privilege token issuance. On the Azure side there are now two cleanup scripts that delete prefix-matched resource groups while sparing locked ones — one gated on an explicit confirmation flag, one built for scheduled runs with dry-run by default. Newest since then: a Container Apps baseline for a small API-plus-worker pair, an Azure DevOps pipeline pattern that takes a Bicep file through build, what-if validate, and deploy, and a Kubernetes Gateway API migration guide that walks an Ingress-to-HTTPRoute move with side-by-side cutover. The newest arrivals are a minimal Grafana datasource-and-dashboard provisioning config, Grafana and Grafana Cloud quickstart trip-ups, a Kubernetes custom-resource reconciliation controller written against a testable Store interface, a Cluster API bootstrap manifest, and a GitHub repository security-and-compliance template (SECURITY.md, Dependabot security config, CODEOWNERS, security PR template, and a COMPLIANCE.md audit checklist).
 
 ---
+
 _Last updated: 2026-10-14_
