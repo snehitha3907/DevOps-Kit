@@ -1,0 +1,33 @@
+# last_verified: 2026-10-14 · pulumi n/a
+# A complete, minimal Pulumi project: the project file plus dev and prod
+# stack configs. Each stack uses a config namespace for its settings, and one
+# value is stored as an encrypted secret so it never appears in plaintext in
+# the YAML.
+---
+# Pulumi.yaml — the project definition. One of these per repo.
+name: demo
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Minimal multi-stack Pulumi project with a reusable Network component.
+---
+# Pulumi.dev.yaml — the dev stack.
+# Namespaces are just dotted keys; read them back with
+# `pulumi config get <namespace>:<key>`.
+config:
+  aws:region: us-west-2
+  app:
+    instance-type: t3.micro
+    owner: team-dev
+  db:
+    password: secure:AAABBBCCCDDD==  # set with `pulumi config set --secret db:password`
+---
+# Pulumi.prod.yaml — the prod stack. Same namespaces, production values.
+config:
+  aws:region: us-west-2
+  app:
+    instance-type: t3.large
+    owner: team-prod
+  db:
+    password: secure:AAAABBBBCCCCDDDD==  # set with `pulumi config set --secret db:password`
