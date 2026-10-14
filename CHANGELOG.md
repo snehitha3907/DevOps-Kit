@@ -2,6 +2,7 @@
 
 ## 2026-10-14
 
+- Fixed Pulumi Network component-resource stack (plm-013 rework): replaced invented `pulumi.get_region()` with `aws.get_availability_zones`, route-table names now use the component name instead of invalid `self.id`, `register_outputs` passes ID outputs, and CIDR input is validated with a clear error (`plm/scripts/network-component-vpc-subnets.py`)
 - Added Pulumi Network component-resource stack: a reusable Network component wrapping a VPC with public and private subnets, an Internet Gateway, and a NAT Gateway, exported as a runnable Python stack (plm-013) (`plm/scripts/network-component-vpc-subnets.py`)
 - Added Pulumi multi-stack project structure guide: dev/staging/prod stacks under `stacks/`, shared components, and cross-stack wiring with StackReference (plm-014) (`plm/docs/multi-stack-project-structure.md`)
 - Added Pulumi project and stack config: minimal Pulumi.yaml plus dev and prod stack configs with config namespaces and an encrypted secret (plm-015) (`plm/configs/minimal-project-and-stack-config.yaml`)
