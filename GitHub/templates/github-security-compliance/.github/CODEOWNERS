@@ -1,0 +1,15 @@
+# last_verified: 2026-10-14 · GitHub n/a
+# Code ownership rules — the security team reviews all changes to security-sensitive files.
+# GitHub checks this file first (ahead of a root-level CODEOWNERS).
+
+# Security and compliance documentation
+SECURITY.md @security-team
+COMPLIANCE.md @security-team
+
+# Security configuration files
+.github/dependabot.yml @security-team
+.github/CODEOWNERS @security-team
+.github/PULL_REQUEST_TEMPLATE.md @security-team
+
+# Default owners for all other changes
+* @developers @security-team

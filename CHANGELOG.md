@@ -3,6 +3,7 @@
 ## 2026-10-14
 
 - Added Kubernetes Cluster API bootstrap manifest: namespace, DockerCluster, Cluster, KubeadmControlPlane with control-plane machine template, and a two-replica worker MachineDeployment with bootstrap and machine templates, plus apply/verify/rollback usage (k8s-026) (`Kubernetes/manifests/cluster-api-bootstrap.yaml`)
+- Added GitHub repository security and compliance template: SECURITY.md vulnerability disclosure policy, Dependabot security-update config with security-team reviewers, CODEOWNERS for security-sensitive paths, security-focused pull-request template, and a COMPLIANCE.md audit checklist (gh-034) (`GitHub/templates/github-security-compliance/`)
 
 ## 2026-10-13
 

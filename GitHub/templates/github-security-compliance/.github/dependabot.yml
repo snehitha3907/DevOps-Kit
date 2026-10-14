@@ -1,0 +1,62 @@
+# last_verified: 2026-10-14 · GitHub n/a
+version: 2
+updates:
+  # GitHub Actions — security updates for workflow dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "security"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    reviewers:
+      - "security-team"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+
+  # Docker — security updates for container base images
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "docker"
+      - "security"
+    reviewers:
+      - "security-team"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+
+  # npm — security updates for Node.js dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "npm"
+      - "security"
+    reviewers:
+      - "security-team"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    allow:
+      - dependency-type: "direct"
