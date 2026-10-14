@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-14
+
+- Added Kubernetes Cluster API bootstrap manifest: namespace, DockerCluster, Cluster, KubeadmControlPlane with control-plane machine template, and a two-replica worker MachineDeployment with bootstrap and machine templates, plus apply/verify/rollback usage (k8s-026) (`Kubernetes/manifests/cluster-api-bootstrap.yaml`)
+
 ## 2026-10-13
 
 - Added Kubernetes Gateway API migration guide: GatewayClass/Gateway role split vs Ingress, Ingress-to-HTTPRoute rule translation, TLS listener move, side-by-side cutover with Ingress kept as fallback, plus rollback (k8s-025) (`Kubernetes/docs/gateway-api-migration-from-ingress.md`)
