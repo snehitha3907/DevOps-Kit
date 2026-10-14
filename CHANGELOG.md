@@ -2,6 +2,9 @@
 
 ## 2026-10-14
 
+- Added Pulumi Network component-resource stack: a reusable Network component wrapping a VPC with public and private subnets, an Internet Gateway, and a NAT Gateway, exported as a runnable Python stack (plm-013) (`plm/scripts/network-component-vpc-subnets.py`)
+- Added Pulumi multi-stack project structure guide: dev/staging/prod stacks under `stacks/`, shared components, and cross-stack wiring with StackReference (plm-014) (`plm/docs/multi-stack-project-structure.md`)
+- Added Pulumi project and stack config: minimal Pulumi.yaml plus dev and prod stack configs with config namespaces and an encrypted secret (plm-015) (`plm/configs/minimal-project-and-stack-config.yaml`)
 - Added OpenTelemetry Collector config for a real pipeline: OTLP receiver, memory_limiter and batch processors, Prometheus and OTLP exporters (otel-012) (`otel/configs/collector-otlp-real-pipeline.yaml`)
 - Added OpenTelemetry context propagation guide: W3C tracecontext vs B3 formats, what breaks when a format is mismatched or dropped between hops (otel-013) (`otel/docs/context-propagation-w3c-vs-b3.md`)
 - Added OpenTelemetry custom span processor and resource detector: stamps app attributes onto every span and batch-exports to an OTLP endpoint (otel-014) (`otel/scripts/custom-span-processor-resource-detector.py`)
