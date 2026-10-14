@@ -1,0 +1,164 @@
+# last_verified: 2026-10-14 · Kubernetes n/a
+# Purpose: bootstrap a workload cluster with Cluster API on the local Docker
+#   infrastructure provider. One multi-document file holds the full object
+#   chain: namespace, DockerCluster, Cluster, KubeadmControlPlane plus its
+#   machine template, and a worker MachineDeployment with its bootstrap and
+#   machine templates.
+# When to use: spinning up a disposable Cluster API workload cluster on a
+#   laptop or CI runner where no cloud account is wanted. For a cloud
+#   provider, the same object chain applies with the Docker provider types
+#   swapped for that provider's cluster and machine types.
+# Prerequisites: a management cluster (kind or an existing cluster) with the
+#   Cluster API core, bootstrap, and Docker infrastructure providers
+#   installed (`clusterctl init --infrastructure docker`), the `clusterctl`
+#   and `kubectl` CLIs on PATH, and a working Docker daemon.
+# Usage:
+#   1. Set the Kubernetes version to install, then render and apply:
+#        export KUBERNETES_VERSION=<release matching the provider images>
+#        envsubst < Kubernetes/manifests/cluster-api-bootstrap.yaml | kubectl apply -f -
+#      (The version is a placeholder on purpose: pin it to a release the
+#      installed provider images actually support.)
+#   2. Watch the control plane come up:
+#        kubectl -n capi-bootstrap get cluster,kubeadmcontrolplane,machinedeployment
+# Verify: `kubectl -n capi-bootstrap get cluster capi-quickstart` shows
+#   Phase Provisioned, and `clusterctl get kubeconfig capi-quickstart
+#   --namespace capi-bootstrap > workload.kubeconfig` followed by
+#   `kubectl --kubeconfig workload.kubeconfig get nodes` lists one control
+#   plane node and two workers in Ready state.
+# Rollback: `kubectl -n capi-bootstrap delete cluster capi-quickstart`
+#   removes the workload cluster and its Docker containers. If provisioning
+#   stalls, delete first and re-apply rather than patching a half-created
+#   control plane in place.
+# Common errors: Docker daemon unreachable (the Docker provider cannot create
+#   containers); pod CIDR colliding with the host network (edit
+#   clusterNetwork.pods.cidrBlocks); version placeholder left unrendered
+#   (apply through envsubst as shown above, not the raw file).
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-bootstrap
+  labels:
+    app: capi-quickstart
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerCluster
+metadata:
+  name: capi-quickstart
+  namespace: capi-bootstrap
+spec: {}
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: capi-quickstart
+  namespace: capi-bootstrap
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 192.168.0.0/16
+    serviceDomain: cluster.local
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+    kind: KubeadmControlPlane
+    name: capi-quickstart-control-plane
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: DockerCluster
+    name: capi-quickstart
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerMachineTemplate
+metadata:
+  name: capi-quickstart-control-plane
+  namespace: capi-bootstrap
+spec:
+  template:
+    spec: {}
+---
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: KubeadmControlPlane
+metadata:
+  name: capi-quickstart-control-plane
+  namespace: capi-bootstrap
+spec:
+  replicas: 1
+  version: ${KUBERNETES_VERSION}
+  machineTemplate:
+    infrastructureRef:
+      apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+      kind: DockerMachineTemplate
+      name: capi-quickstart-control-plane
+  kubeadmConfigSpec:
+    clusterConfiguration:
+      controllerManager:
+        extraArgs:
+          allocate-node-cidrs: "true"
+    initConfiguration:
+      nodeRegistration:
+        name: "{{ ds.meta_data.hostname }}"
+        kubeletExtraArgs:
+          node-labels: "node-role.kubernetes.io/control-plane="
+    joinConfiguration:
+      nodeRegistration:
+        name: "{{ ds.meta_data.hostname }}"
+        kubeletExtraArgs:
+          node-labels: "node-role.kubernetes.io/control-plane="
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerMachineTemplate
+metadata:
+  name: capi-quickstart-worker
+  namespace: capi-bootstrap
+spec:
+  template:
+    spec: {}
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata:
+  name: capi-quickstart-worker
+  namespace: capi-bootstrap
+spec:
+  template:
+    spec:
+      joinConfiguration:
+        nodeRegistration:
+          name: "{{ ds.meta_data.hostname }}"
+          kubeletExtraArgs:
+            node-labels: "node-role.kubernetes.io/worker="
+      users:
+        - name: capi-admin
+          sudo: ALL=(ALL) NOPASSWD:ALL
+          groups: sudo
+          sshAuthorizedKeys:
+            - "ssh-ed25519 AAAAC3replace-with-your-own-key capi-admin"
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachineDeployment
+metadata:
+  name: capi-quickstart-workers
+  namespace: capi-bootstrap
+spec:
+  clusterName: capi-quickstart
+  replicas: 2
+  selector:
+    matchLabels:
+      cluster.x-k8s.io/cluster-name: capi-quickstart
+  template:
+    metadata:
+      labels:
+        cluster.x-k8s.io/cluster-name: capi-quickstart
+    spec:
+      clusterName: capi-quickstart
+      version: ${KUBERNETES_VERSION}
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+          kind: KubeadmConfigTemplate
+          name: capi-quickstart-worker
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: DockerMachineTemplate
+        name: capi-quickstart-worker
