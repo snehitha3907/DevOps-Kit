@@ -242,6 +242,9 @@
 - **GitHub App** — A registered integration that is an actor in its own right; it is installed on repositories or organizations, acts under its own identity with per-category permissions, runs without a user present, and can subscribe to webhook events.
 - **OAuth App** — A registered integration that proxies for a user; it asks a user to authorize it, receives a token representing that user, and can do what the user can do — no more. Fits user-facing tooling where work should happen under the user's own identity.
 - **Auto-merge** — Letting GitHub merge a pull request as soon as its required checks pass, instead of merging by hand. For Dependabot fleets the safe shape is a script that lists open Dependabot PRs, reads each head commit's check-runs, and squash-merges only the green ones, leaving failed or pending PRs open.
+- **SECURITY.md** — A repository-level vulnerability disclosure policy file, placed at the repo root and surfaced by GitHub's Security tab. It states which versions receive security updates and gives reporters a private channel (the GitHub vulnerability report form or a direct email) instead of opening a public issue.
+- **Dependabot security config** — The `security` block inside `dependabot.yml` that asks Dependabot to open security-update pull requests for vulnerable dependencies and assigns a reviewer (often a security team) to each. Distinct from the ordinary `updates` schedule, which only handles version bumps.
+- **COMPLIANCE.md** — A checklist-style document that records which security and compliance controls a repository enforces and where each lives, so auditors and contributors can verify coverage without hunting through `.github/`. It is a human-readable manifest of the declarative controls, not a substitute for a full compliance audit.
 
 ## GitHub Actions
 

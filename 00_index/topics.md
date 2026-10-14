@@ -103,7 +103,7 @@
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
 - **notebooks** (1): [comparing merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
 
-## GitHub  ·  50 files
+## GitHub  ·  56 files
 
 - **primer:** [0000-primer-github.md](../GitHub/notes/0000-primer-github.md)
 - **notes** (11): most recent → [gh CLI quickstart trip-ups](../GitHub/notes/2026-09-19-gh-cli-quickstart-trip-ups.md), [hello-world guide and GitHub flow](../GitHub/notes/2026-06-15-hello-world-guide-and-github-flow.md), [platform features](../GitHub/notes/2026-06-10-github-platform-features.md)
@@ -112,7 +112,7 @@
 - _…and 3 more under `GitHub/scripts/` — browse the folder._
 - **configs** (7): [dot-github-repository/](../GitHub/configs/dot-github-repository/) (issue forms, labels, stale rules), [issue templates and labels](../GitHub/configs/issue-templates-and-labels.yaml), [PR checker workflow](../GitHub/configs/2026-08-22-pr-checker-workflow.yaml)
 - _…and 4 more under `GitHub/configs/` — browse the folder._
-- **templates** (11): [production repo scaffold](../GitHub/templates/github-repo-scaffold/README.md) — branch protection script, CODEOWNERS, issue and PR templates, Dependabot, and a split CI workflow (build / lint / test)
+- **templates** (17): [production repo scaffold](../GitHub/templates/github-repo-scaffold/README.md) — branch protection script, CODEOWNERS, issue and PR templates, Dependabot, and a split CI workflow (build / lint / test) — plus the [security and compliance template](../GitHub/templates/github-security-compliance/README.md) — SECURITY.md vulnerability disclosure policy, Dependabot security-update config with security-team reviewers, CODEOWNERS for security-sensitive paths, a security-focused PR template, and a COMPLIANCE.md audit checklist
 - **docs** (7): most recent → [GitHub Apps vs OAuth Apps](../GitHub/docs/github-apps-vs-oauth-apps.md) — actor-first comparison of which registration fits unattended automation, event-driven workflows, and user-facing tooling — plus [release automation end to end](../GitHub/docs/release-automation-tags-milestones-and-releases-end-to-end.md), [deploy keys vs fine-grained PATs for CI/CD](../GitHub/docs/how-i-wired-deploy-keys-vs-fine-grained-pats-for-cicd.md), [branch protection and required reviews](../GitHub/docs/branch-protection-and-required-reviews-for-ci.md)
   - _…and 4 more under `GitHub/docs/` — browse the folder._
 - **snippets** (3): [issues API](../GitHub/snippets/github-issues-api.py), [list repos with Python](../GitHub/snippets/list-repos-with-python.py), [open a PR and wait for CI](../GitHub/snippets/open-pr-and-wait-for-ci.sh)
