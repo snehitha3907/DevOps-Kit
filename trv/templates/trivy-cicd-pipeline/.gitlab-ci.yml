@@ -1,0 +1,206 @@
+# last_verified: 2026-10-15 · Trivy 0.58.1
+# GitLab CI pipeline: Trivy container and source scanning with vulnerability report.
+# Copy to .gitlab-ci.yml in the application repository (or merge into existing).
+# Requires: Security & Compliance → Vulnerability Report enabled in project settings.
+
+stages:
+  - scan
+  - build
+  - scan
+  - release
+
+variables:
+  TRIVY_VERSION: "0.58.1"
+  TRIVY_CONFIG: ".trivy.yaml"
+  # Cache Trivy DB across pipeline runs
+  TRIVY_CACHE_DIR: "$CI_PROJECT_DIR/.trivy-cache"
+  # Docker registry (adjust for your registry)
+  DOCKER_REGISTRY: $CI_REGISTRY
+  DOCKER_IMAGE: $CI_REGISTRY_IMAGE
+
+# Global cache for Trivy vulnerability database
+cache:
+  key: "trivy-db-${CI_COMMIT_REF_SLUG}"
+  paths:
+    - .trivy-cache/
+  policy: pull-push
+
+# Default image with Docker and Trivy pre-installed
+default:
+  image: docker:27-cli
+  services:
+    - docker:27-dind
+  before_script:
+    - apk add --no-cache curl jq python3 py3-pip
+    - pip install --no-cache-dir trivy==${TRIVY_VERSION} 2>/dev/null || true
+    - trivy --version || (curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v${TRIVY_VERSION})
+  interruptible: true
+
+# =============================================================================
+# Stage 1: Fast source scan (fail fast)
+# =============================================================================
+trivy_fs:
+  stage: scan
+  name: "Trivy: Filesystem Scan"
+  timeout: 10m
+  variables:
+    TRIVY_SKIP_GATE: "${TRIVY_SKIP_GATE:-false}"
+  script:
+    - |
+      echo "=== Trivy Filesystem Scan ==="
+      trivy fs \
+        --config ${TRIVY_CONFIG} \
+        --format sarif \
+        --output trivy-fs.sarif \
+        --exit-code $( [ "${TRIVY_SKIP_GATE}" = "true" ] && echo 0 || echo 1 ) \
+        .
+  artifacts:
+    name: "trivy-fs-${CI_COMMIT_SHA}"
+    when: always
+    expire_in: 30d
+    paths:
+      - trivy-fs.sarif
+    reports:
+      sast: trivy-fs.sarif  # GitLab SAST report ingestion
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+# =============================================================================
+# Stage 2: Build container image
+# =============================================================================
+build_image:
+  stage: build
+  name: "Build: Container Image"
+  timeout: 20m
+  script:
+    - |
+      echo "=== Building image: ${DOCKER_IMAGE}:${CI_COMMIT_SHA} ==="
+      docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $DOCKER_REGISTRY
+      docker build -t ${DOCKER_IMAGE}:${CI_COMMIT_SHA} .
+      docker push ${DOCKER_IMAGE}:${CI_COMMIT_SHA}
+      # Also tag as latest for default branch
+      if [ "${CI_COMMIT_BRANCH}" = "${CI_DEFAULT_BRANCH}" ]; then
+        docker tag ${DOCKER_IMAGE}:${CI_COMMIT_SHA} ${DOCKER_IMAGE}:latest
+        docker push ${DOCKER_IMAGE}:latest
+      fi
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual  # MR builds are manual to save resources
+    - if: $CI_PIPELINE_SOURCE == "push"
+      when: never  # skip on tag pushes unless explicitly needed
+
+# =============================================================================
+# Stage 3: Artifact scans (image, SBOM, config)
+# =============================================================================
+trivy_image:
+  stage: scan
+  name: "Trivy: Image Scan"
+  timeout: 15m
+  needs:
+    - job: build_image
+      artifacts: false
+  variables:
+    TRIVY_SKIP_GATE: "${TRIVY_SKIP_GATE:-false}"
+  script:
+    - |
+      echo "=== Trivy Image Scan ==="
+      docker pull ${DOCKER_IMAGE}:${CI_COMMIT_SHA}
+      trivy image \
+        --config ${TRIVY_CONFIG} \
+        --format sarif \
+        --output trivy-image.sarif \
+        --exit-code $( [ "${TRIVY_SKIP_GATE}" = "true" ] && echo 0 || echo 1 ) \
+        ${DOCKER_IMAGE}:${CI_COMMIT_SHA}
+  artifacts:
+    name: "trivy-image-${CI_COMMIT_SHA}"
+    when: always
+    expire_in: 30d
+    paths:
+      - trivy-image.sarif
+    reports:
+      sast: trivy-image.sarif  # GitLab Vulnerability Report ingestion
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+trivy_sbom:
+  stage: scan
+  name: "Trivy: SBOM Generation"
+  timeout: 10m
+  needs:
+    - job: build_image
+      artifacts: false
+  script:
+    - |
+      echo "=== Trivy SBOM Generation ==="
+      docker pull ${DOCKER_IMAGE}:${CI_COMMIT_SHA}
+      trivy image \
+        --config ${TRIVY_CONFIG} \
+        --format cyclonedx \
+        --output trivy-sbom.cyclonedx.json \
+        ${DOCKER_IMAGE}:${CI_COMMIT_SHA}
+  artifacts:
+    name: "trivy-sbom-${CI_COMMIT_SHA}"
+    when: always
+    expire_in: 90d  # SBOMs kept longer for audit
+    paths:
+      - trivy-sbom.cyclonedx.json
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+trivy_config:
+  stage: scan
+  name: "Trivy: Config Scan (IaC)"
+  timeout: 10m
+  variables:
+    TRIVY_SKIP_GATE: "${TRIVY_SKIP_GATE:-false}"
+  script:
+    - |
+      echo "=== Trivy Config Scan ==="
+      trivy config \
+        --config ${TRIVY_CONFIG} \
+        --format sarif \
+        --output trivy-config.sarif \
+        --exit-code $( [ "${TRIVY_SKIP_GATE}" = "true" ] && echo 0 || echo 1 ) \
+        .
+  artifacts:
+    name: "trivy-config-${CI_COMMIT_SHA}"
+    when: always
+    expire_in: 30d
+    paths:
+      - trivy-config.sarif
+    reports:
+      sast: trivy-config.sarif
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+# =============================================================================
+# Stage 4: Release (optional - tag-based)
+# =============================================================================
+release:
+  stage: release
+  name: "Release: Tag and Deploy"
+  timeout: 10m
+  needs:
+    - job: trivy_image
+      artifacts: false
+    - job: trivy_config
+      artifacts: false
+  script:
+    - |
+      echo "=== Release stage - all scans passed ==="
+      # Add deployment logic here (helm, kubectl, terraform, etc.)
+      echo "Deploy ${DOCKER_IMAGE}:${CI_COMMIT_SHA} to target environment"
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "pipeline"
+      when: manual

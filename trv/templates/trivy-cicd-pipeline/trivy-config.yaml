@@ -1,0 +1,68 @@
+# last_verified: 2026-10-15 · Trivy 0.58.1
+# Shared Trivy configuration for CI/CD pipelines.
+# Copy to .trivy.yaml in the repository root, or reference via --config flag.
+#
+# This config is tuned for CI gates:
+# - Only CRITICAL and HIGH block the pipeline (adjust severity when ready)
+# - ignore-unfixed: true prevents blocking on vulns without published fixes
+# - Unknown severity findings are ignored (often false positives)
+# - Vendored/dependency directories are skipped for misconfig scans
+
+severity: CRITICAL,HIGH
+ignore-unfixed: true
+scanners: vuln,secret,misconfig
+
+vulnerability:
+  severity: CRITICAL,HIGH
+  ignore-status:
+    - unknown
+
+misconfig:
+  scan:
+    skip-dirs:
+      - ./vendor
+      - ./node_modules
+      - ./.git
+      - ./venv
+      - ./.venv
+      - ./dist
+      - ./build
+      - ./target
+    skip-files:
+      - go.sum
+      - package-lock.json
+      - yarn.lock
+      - pnpm-lock.yaml
+      - Cargo.lock
+      - composer.lock
+      - poetry.lock
+      - Pipfile.lock
+      - requirements.txt
+  policy:
+    - bundle: default
+      name: default
+
+scan:
+  skip-dirs:
+    - ./vendor
+    - ./node_modules
+    - ./.git
+    - ./venv
+    - ./.venv
+    - ./dist
+    - ./build
+    - ./target
+  skip-files:
+    - go.sum
+    - package-lock.json
+    - yarn.lock
+    - pnpm-lock.yaml
+    - Cargo.lock
+    - composer.lock
+    - poetry.lock
+    - Pipfile.lock
+    - requirements.txt
+
+# Secret scanning: enable built-in rules, add custom rules via --secret-config if needed
+secret:
+  config: ""

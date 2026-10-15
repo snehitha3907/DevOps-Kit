@@ -1,0 +1,208 @@
+# last_verified: 2026-10-15 · Trivy 0.58.1
+# GitHub Actions workflow: Trivy container and source scanning with SARIF upload.
+# Copy to .github/workflows/trivy-scan.yml in the application repository.
+# Requires: Code Scanning enabled (Settings → Security → Code scanning alerts).
+
+name: Trivy Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1'  # weekly Monday 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      skip_gate:
+        description: 'Skip fail gates for emergency deployment (true/false)'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['true', 'false']
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  TRIVY_VERSION: 0.58.1
+  TRIVY_CONFIG: .trivy.yaml
+
+permissions:
+  contents: read
+  security-events: write  # for SARIF upload
+  packages: write         # for GHCR push
+
+jobs:
+  trivy-fs:
+    name: Trivy Filesystem Scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      sarif_path: ${{ steps.upload.outputs.sarif_path }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          version: ${{ env.TRIVY_VERSION }}
+          cache-dir: ~/.cache/trivy
+
+      - name: Run Trivy filesystem scan
+        id: scan
+        run: |
+          trivy fs \
+            --config ${{ env.TRIVY_CONFIG }} \
+            --format sarif \
+            --output trivy-fs.sarif \
+            --exit-code ${{ github.event.inputs.skip_gate == 'true' && '0' || '1' }} \
+            .
+
+      - name: Upload SARIF to GitHub Code Scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-fs.sarif
+          category: trivy-fs
+
+  build:
+    name: Build and Push Image
+    needs: trivy-fs
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    outputs:
+      image_tag: ${{ steps.meta.outputs.tags }}
+      image_digest: ${{ steps.build.outputs.digest }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for image
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  trivy-image:
+    name: Trivy Image Scan
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: needs.build.outputs.image_tag != ''
+    steps:
+      - name: Set up Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          version: ${{ env.TRIVY_VERSION }}
+          cache-dir: ~/.cache/trivy
+
+      - name: Pull image for scanning
+        run: |
+          docker pull ${{ needs.build.outputs.image_tag }}
+
+      - name: Run Trivy image scan
+        id: scan
+        run: |
+          trivy image \
+            --config ${{ env.TRIVY_CONFIG }} \
+            --format sarif \
+            --output trivy-image.sarif \
+            --exit-code ${{ github.event.inputs.skip_gate == 'true' && '0' || '1' }} \
+            ${{ needs.build.outputs.image_tag }}
+
+      - name: Upload SARIF to GitHub Code Scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-image.sarif
+          category: trivy-image
+
+  trivy-sbom:
+    name: Trivy SBOM Generation
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: needs.build.outputs.image_tag != ''
+    steps:
+      - name: Set up Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          version: ${{ env.TRIVY_VERSION }}
+          cache-dir: ~/.cache/trivy
+
+      - name: Pull image for SBOM
+        run: |
+          docker pull ${{ needs.build.outputs.image_tag }}
+
+      - name: Generate CycloneDX SBOM
+        run: |
+          trivy image \
+            --config ${{ env.TRIVY_CONFIG }} \
+            --format cyclonedx \
+            --output trivy-sbom.cyclonedx.json \
+            ${{ needs.build.outputs.image_tag }}
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-sbom-${{ github.sha }}
+          path: trivy-sbom.cyclonedx.json
+          retention-days: 30
+
+  trivy-config:
+    name: Trivy Config Scan (IaC)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          version: ${{ env.TRIVY_VERSION }}
+          cache-dir: ~/.cache/trivy
+
+      - name: Run Trivy config scan
+        run: |
+          trivy config \
+            --config ${{ env.TRIVY_CONFIG }} \
+            --format sarif \
+            --output trivy-config.sarif \
+            --exit-code ${{ github.event.inputs.skip_gate == 'true' && '0' || '1' }} \
+            .
+
+      - name: Upload SARIF to GitHub Code Scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-config.sarif
+          category: trivy-config

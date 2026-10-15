@@ -849,3 +849,7 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added minimal PR-checker workflow with path filtering and branch-protection-friendly checks (gh-016) (`GitHub/configs/2026-08-22-pr-checker-workflow.yaml`)
 - con-091: docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md
 - Added interactive notebook comparing Kubernetes workload types: Pods, Deployments, StatefulSets, DaemonSets, and Jobs (k8s-016) (`Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb`)
+
+## 2026-10-15
+Passed ([x]) plm-013 — Pulumi: script — Build a small component-resource stack from scratch: a reusable Network component wrapping a VPC and its public/private subnets  · Level: L3 · 2026-10-15
+- Added Trivy CI/CD pipeline template for container scanning with GitHub Actions and GitLab CI, SARIF upload, SBOM generation, and shared config (trv-014) (`trv/templates/trivy-cicd-pipeline/`)
