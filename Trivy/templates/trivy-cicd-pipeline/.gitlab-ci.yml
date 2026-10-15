@@ -1,0 +1,98 @@
+# last_verified: 2026-10-15 · Trivy 0.58.1
+# Trivy GitLab CI pipeline template for container scanning
+# Based on: https://trivy.dev/docs/latest/guide/advanced/private-registries/ecr [source: https://trivy.dev/docs/latest/guide/advanced/private-registries/ecr]
+
+stages:
+  - build
+  - test
+  - scan
+  - deploy
+
+variables:
+  # Docker image name and tag
+  IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  # Trivy severity thresholds
+  TRIVY_SEVERITY: "CRITICAL,HIGH"
+  # Trivy exit code (1 = fail on findings above severity threshold)
+  TRIVY_EXIT_CODE: "1"
+
+build_image:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Building Docker image: $IMAGE_NAME"
+    - docker build -t $IMAGE_NAME .
+    - docker push $IMAGE_NAME
+  only:
+    - branches
+  tags:
+    - docker
+
+trivy_fs_scan:
+  stage: test
+  image: aquasec/trivy:0.58.1
+  script:
+    - echo "Running Trivy filesystem scan on source code"
+    - trivy fs --severity $TRIVY_SEVERITY --format sarif --output trivy-fs.sarif --exit-code $TRIVY_EXIT_CODE .
+  only:
+    - branches
+  tags:
+    - security
+  artifacts:
+    reports:
+      sast: trivy-fs.sarif
+
+trivy_image_scan:
+  stage: scan
+  image: aquasec/trivy:0.58.1
+  script:
+    - echo "Pulling built image for scanning: $IMAGE_NAME"
+    - docker pull $IMAGE_NAME
+    - echo "Running Trivy image scan"
+    - trivy image --severity $TRIVY_SEVERITY --format sarif --output trivy-image.sarif --exit-code $TRIVY_EXIT_CODE $IMAGE_NAME
+  only:
+    - branches
+  tags:
+    - security
+  artifacts:
+    reports:
+      sast: trivy-image.sarif
+
+trivy_sbom_scan:
+  stage: scan
+  image: aquasec/trivy:0.58.1
+  script:
+    - echo "Generating SBOM for the built image"
+    - # In a real pipeline, you would use your SBOM generation tool here
+    - # For example: syft $IMAGE_NAME -o cyclonedx=sbom.cyclonedx.json
+    - echo '{"bomFormat":"CycloneDX","specVersion":"1.4","version":1,"metadata":{"timestamp":"2026-10-15T00:00:00Z","tools":[{"vendor":"Aqua Security","name":"trivy","version":"0.58.1"}]},"components":[]}' > sbom.cyclonedx.json
+    - echo "Running Trivy SBOM scan"
+    - trivy sbom --severity $TRIVY_SEVERITY --format sarif --output trivy-sbom.sarif --exit-code $TRIVY_EXIT_CODE sbom.cyclonedx.json
+  only:
+    - branches
+  tags:
+    - security
+  artifacts:
+    reports:
+      sast: trivy-sbom.sarif
+  needs:
+    - job: build_image
+      artifacts: true
+
+# Optional: Deployment stage that only runs if all scans pass
+deploy:
+  stage: deploy
+  image: alpine/latest
+  script:
+    - echo "Deploying application (placeholder)"
+    - echo "In a real pipeline, you would deploy to your target environment here"
+  only:
+    - branches
+  tags:
+    - deploy
+  needs:
+    - job: trivy_fs_scan
+    - job: trivy_image_scan
+    - job: trivy_sbom_scan

@@ -1,0 +1,30 @@
+# last_verified: 2026-10-15 · Trivy 0.58.1
+# Trivy configuration for CI/CD pipeline scanning
+# Based on: https://trivy.dev/docs/latest/guide/advanced/private-registries/ecr [source: https://trivy.dev/docs/latest/guide/advanced/private-registries/ecr]
+
+scanners: vuln,secret,misconfig
+severity: CRITICAL,HIGH
+
+vulnerability:
+  severity: CRITICAL,HIGH
+  ignore-status:
+    - unknown
+  ignore-unfixed: true
+
+misconfig:
+  scan:
+    skip-dirs:
+      - ./vendor
+      - ./node_modules
+    skip-files:
+      - go.sum
+      - package-lock.json
+  policy:
+    - bundle: default
+      name: default
+
+secret:
+  scan:
+    skip-dirs:
+      - ./vendor
+      - ./node_modules

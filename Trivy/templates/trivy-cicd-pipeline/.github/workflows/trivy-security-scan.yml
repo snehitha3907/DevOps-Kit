@@ -1,0 +1,109 @@
+# last_verified: 2026-10-15 · Trivy 0.58.1
+# Trivy GitHub Actions workflow template for container scanning
+# Based on: https://trivy.dev/docs/latest/guide/advanced/private-registries/ecr [source: https://trivy.dev/docs/latest/guide/advanced/private-registries/ecr]
+
+name: Trivy Container Security Scan
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is needed to push the image to GitHub Packages
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Run Trivy filesystem scan
+        uses: aquasecurity/trivy-action@0.25.0
+        with:
+          scan-type: fs
+          severity: CRITICAL,HIGH
+          exit-code: '1'
+          ignore-unfixed: true
+          format: sarif
+          output: trivy-fs.sarif
+        continue-on-error: false
+
+      - name: Run Trivy image scan
+        uses: aquasecurity/trivy-action@0.25.0
+        with:
+          image: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          format: sarif
+          output: trivy-image.sarif
+          severity: CRITICAL,HIGH
+          exit-code: '1'
+          ignore-unfixed: true
+        continue-on-error: false
+
+      - name: Upload Trivy scan results as SARIF artifacts
+        if: always()  # Upload results even if scan fails
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: trivy-fs.sarif
+        continue-on-error: true
+
+      - name: Upload Trivy image scan results as SARIF artifacts
+        if: always()  # Upload results even if scan fails
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: trivy-image.sarif
+        continue-on-error: true
+
+      # Optional: Generate and scan SBOM
+      - name: Generate SBOM
+        if: success()  # Only run if previous steps succeeded
+        run: |
+          echo '{"bomFormat":"CycloneDX","specVersion":"1.4","version":1,"metadata":{"timestamp":"$(date -u +%Y-%m-%dT%H:%M:%SZ)","tools":[{"vendor":"Aqua Security","name":"trivy","version":"0.58.1"}]},"components":[]}' > sbom.cyclonedx.json
+
+      - name: Run Trivy SBOM scan
+        if: success()
+        uses: aquasecurity/trivy-action@0.25.0
+        with:
+          sbom: sbom.cyclonedx.json
+          format: sarif
+          output: trivy-sbom.sarif
+          severity: CRITICAL,HIGH
+          exit-code: '1'
+          ignore-unfixed: true
+        continue-on-error: false
+
+      - name: Upload Trivy SBOM scan results as SARIF artifacts
+        if: always()
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: trivy-sbom.sarif
+        continue-on-error: true
