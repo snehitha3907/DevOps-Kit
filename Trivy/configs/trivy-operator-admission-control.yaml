@@ -1,0 +1,292 @@
+# last_verified: 2026-10-18 · Trivy Operator 0.22.0
+# Trivy Operator admission control configuration for Kubernetes
+# Configures vulnerability scanning on pod creation via ValidatingWebhook
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trivy-operator-config
+  namespace: trivy-system
+  labels:
+    app.kubernetes.io/name: trivy-operator
+    app.kubernetes.io/component: config
+data:
+  # Operator behavior configuration
+  OPERATOR_TARGET_NAMESPACES: ""
+  OPERATOR_EXCLUDE_NAMESPACES: "kube-system,kube-public,kube-node-lease"
+  OPERATOR_TARGET_WORKLOADS: "Deployment,ReplicaSet,ReplicationController,StatefulSet,DaemonSet,Job,CronJob,Pod"
+  OPERATOR_SCAN_JOB_TIMEOUT: "5m"
+  OPERATOR_CONCURRENT_SCAN_JOBS_LIMIT: "10"
+  OPERATOR_SCAN_JOB_RETRY_AFTER: "30s"
+  OPERATOR_SCANNER_REPORT_TTL: "24h"
+  OPERATOR_VULNERABILITY_SCANNER_ENABLED: "true"
+  OPERATOR_CONFIG_AUDIT_SCANNER_ENABLED: "true"
+  OPERATOR_RBAC_ASSESSMENT_SCANNER_ENABLED: "true"
+  OPERATOR_INFRA_ASSESSMENT_SCANNER_ENABLED: "true"
+  OPERATOR_CLUSTER_COMPLIANCE_ENABLED: "true"
+  OPERATOR_EXPOSED_SECRET_SCANNER_ENABLED: "true"
+  OPERATOR_SBOM_GENERATION_ENABLED: "true"
+  OPERATOR_ACCESS_GLOBAL_SECRETS_SERVICE_ACCOUNTS: "true"
+  OPERATOR_BUILT_IN_TRIVY_SERVER: "false"
+  OPERATOR_LEADER_ELECTION_ENABLED: "true"
+  OPERATOR_LEADER_ELECTION_ID: "trivy-operator-lock"
+  OPERATOR_METRICS_BIND_ADDRESS: ":8080"
+  OPERATOR_HEALTH_PROBE_BIND_ADDRESS: ":9090"
+  # Admission controller configuration
+  OPERATOR_WEBHOOK_BROADCAST_URL: ""
+  OPERATOR_WEBHOOK_BROADCAST_TIMEOUT: "30s"
+  OPERATOR_SEND_DELETED_REPORTS: "false"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trivy-operator-trivy-config
+  namespace: trivy-system
+  labels:
+    app.kubernetes.io/name: trivy-operator
+    app.kubernetes.io/component: trivy-config
+data:
+  # Trivy scanning behavior configuration
+  vulnerabilityReports.scanner: "Trivy"
+  vulnerabilityReports.scanJobsInSameNamespace: "false"
+  scanJob.tolerations: '[{"key":"CriticalAddonsOnly","operator":"Exists"},{"key":"node.kubernetes.io/memory-pressure","operator":"Exists","effect":"NoSchedule"},{"key":"node.kubernetes.io/disk-pressure","operator":"Exists","effect":"NoSchedule"},{"key":"node.kubernetes.io/pid-pressure","operator":"Exists","effect":"NoSchedule"},{"key":"node.kubernetes.io/not-ready","operator":"Exists","effect":"NoSchedule"},{"key":"node.kubernetes.io/unreachable","operator":"Exists","effect":"NoSchedule"}]'
+  scanJob.skipInitContainers: "false"
+  scanJob.automountServiceAccountToken: "false"
+  report.additionalLabels: "app=trivy-operator,component=scanner"
+  scanJob.podTemplateContainerSecurityContext: '{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"privileged":false,"readOnlyRootFilesystem":true}'
+  scanJob.podTemplatePodSecurityContext: '{"runAsNonRoot":true,"runAsUser":1000,"runAsGroup":1000}'
+  report.recordFailedChecksOnly: "true"
+  skipResourceByLabels: "test,transient"
+  node.collector.imageRef: "ghcr.io/aquasecurity/node-collector:0.3.1"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: trivy-image-validator
+  labels:
+    app.kubernetes.io/name: trivy-operator
+    app.kubernetes.io/component: admission-controller
+webhooks:
+  - name: validate.trivy-operator.aquasecurity.github.io
+    clientConfig:
+      service:
+        name: trivy-operator-webhook
+        namespace: trivy-system
+        path: /validate
+        port: 443
+      caBundle: ""  # Populated by cert-manager or manual cert generation
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE"]
+        resources: ["pods"]
+        scope: "*"
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    failurePolicy: Fail
+    matchPolicy: Equivalent
+    namespaceSelector:
+      matchLabels:
+        trivy-operator-validation: "true"
+    timeoutSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trivy-operator-webhook
+  namespace: trivy-system
+  labels:
+    app.kubernetes.io/name: trivy-operator
+    app.kubernetes.io/component: webhook
+spec:
+  ports:
+    - port: 443
+      targetPort: 8443
+      protocol: TCP
+      name: https
+  selector:
+    app.kubernetes.io/name: trivy-operator
+    app.kubernetes.io/component: webhook
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trivy-operator
+  namespace: trivy-system
+  labels:
+    app.kubernetes.io/name: trivy-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: trivy-operator
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: trivy-operator
+        app.kubernetes.io/component: operator
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: trivy-operator
+      containers:
+        - name: trivy-operator
+          image: aquasec/trivy-operator:0.22.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: metrics
+            - containerPort: 9090
+              name: healthz
+            - containerPort: 8443
+              name: webhook
+          env:
+            - name: OPERATOR_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: OPERATOR_TARGET_NAMESPACES
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_TARGET_NAMESPACES
+            - name: OPERATOR_EXCLUDE_NAMESPACES
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_EXCLUDE_NAMESPACES
+            - name: OPERATOR_TARGET_WORKLOADS
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_TARGET_WORKLOADS
+            - name: OPERATOR_SCAN_JOB_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_SCAN_JOB_TIMEOUT
+            - name: OPERATOR_CONCURRENT_SCAN_JOBS_LIMIT
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_CONCURRENT_SCAN_JOBS_LIMIT
+            - name: OPERATOR_SCAN_JOB_RETRY_AFTER
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_SCAN_JOB_RETRY_AFTER
+            - name: OPERATOR_SCANNER_REPORT_TTL
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_SCANNER_REPORT_TTL
+            - name: OPERATOR_VULNERABILITY_SCANNER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_VULNERABILITY_SCANNER_ENABLED
+            - name: OPERATOR_CONFIG_AUDIT_SCANNER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_CONFIG_AUDIT_SCANNER_ENABLED
+            - name: OPERATOR_RBAC_ASSESSMENT_SCANNER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_RBAC_ASSESSMENT_SCANNER_ENABLED
+            - name: OPERATOR_INFRA_ASSESSMENT_SCANNER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_INFRA_ASSESSMENT_SCANNER_ENABLED
+            - name: OPERATOR_CLUSTER_COMPLIANCE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_CLUSTER_COMPLIANCE_ENABLED
+            - name: OPERATOR_EXPOSED_SECRET_SCANNER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_EXPOSED_SECRET_SCANNER_ENABLED
+            - name: OPERATOR_SBOM_GENERATION_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_SBOM_GENERATION_ENABLED
+            - name: OPERATOR_ACCESS_GLOBAL_SECRETS_SERVICE_ACCOUNTS
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_ACCESS_GLOBAL_SECRETS_SERVICE_ACCOUNTS
+            - name: OPERATOR_BUILT_IN_TRIVY_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_BUILT_IN_TRIVY_SERVER
+            - name: OPERATOR_LEADER_ELECTION_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_LEADER_ELECTION_ENABLED
+            - name: OPERATOR_LEADER_ELECTION_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_LEADER_ELECTION_ID
+            - name: OPERATOR_METRICS_BIND_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_METRICS_BIND_ADDRESS
+            - name: OPERATOR_HEALTH_PROBE_BIND_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_HEALTH_PROBE_BIND_ADDRESS
+            - name: OPERATOR_WEBHOOK_BROADCAST_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_WEBHOOK_BROADCAST_URL
+            - name: OPERATOR_WEBHOOK_BROADCAST_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_WEBHOOK_BROADCAST_TIMEOUT
+            - name: OPERATOR_SEND_DELETED_REPORTS
+              valueFrom:
+                configMapKeyRef:
+                  name: trivy-operator-config
+                  key: OPERATOR_SEND_DELETED_REPORTS
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 9090
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 9090
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: webhook-certs
+              mountPath: /etc/webhook/certs
+              readOnly: true
+      volumes:
+        - name: webhook-certs
+          secret:
+            secretName: trivy-operator-webhook-certs
