@@ -189,13 +189,13 @@ Folder on disk is `vlt/`.
 - **snippets** (1): [nginx chart with custom values](../Helm/snippets/2026-08-11-nginx-helm-chart-custom-values.sh)
 - **notebooks** (1): [release lifecycle drill](../Helm/notebooks/release-lifecycle-drill.ipynb)
 
-## Kubernetes  ·  60 files
+## Kubernetes  ·  61 files
 
 - **primer:** [0000-primer-kubernetes.md](../Kubernetes/notes/0000-primer-kubernetes.md)
 - **templates** (32): [Kubebuilder operator scaffold](../Kubernetes/templates/kubebuilder-operator-scaffold/README.md) — API types, controller, CRD bases, RBAC, manager and samples — plus [Helm chart + Kustomize overlay scaffold](../Kubernetes/templates/k8s-deployment-helm-chart-kustomize-overlay/helm/Chart.yaml) — a chart (`Chart.yaml`, `values.yaml`, `templates/`) with `kustomize/base/` and `overlays/dev|prod/`
 - **notes** (9): most recent → [kubectl and minikube, first pod](../Kubernetes/notes/2026-09-04-kubectl-minikube-first-pod.md), [what tripped me up](../Kubernetes/notes/2026-08-12-kubernetes-tutorial-what-tripped-me-up.md), [first pod from a manifest](../Kubernetes/notes/2026-07-19-first-kubectl-version-and-pod-from-manifest.md)
 - _…and 6 more under `Kubernetes/notes/` — browse the folder._
-- **manifests** (5): most recent → [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service with probes and an HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
+- **manifests** (6): most recent → [Cluster API bootstrap](../Kubernetes/manifests/cluster-api-bootstrap.yaml) — namespace, DockerCluster, Cluster, and KubeadmControlPlane with a two-replica worker MachineDeployment — plus [production deployment with HPA, PDB, and NetworkPolicies](../Kubernetes/manifests/production-deployment-hpa-pdb-networkpolicies.yaml), [Go service with probes and an HPA](../Kubernetes/manifests/go-service-deployment-with-probes-hpa.yaml), [stateless app](../Kubernetes/manifests/stateless-app.yaml)
 - _…and 2 more under `Kubernetes/manifests/` — browse the folder._
 - **docs** (5): most recent → [Gateway API migration from Ingress](../Kubernetes/docs/gateway-api-migration-from-ingress.md) — one path-based Ingress moved to a Gateway plus HTTPRoute pair, platform-owned listeners split from app-owned routes — plus [integrating with Prometheus](../Kubernetes/docs/integrating-kubernetes-with-prometheus.md), [ingress path-based routing](../Kubernetes/docs/ingress-path-based-routing.md)
 - _…and 2 more under `Kubernetes/docs/` — browse the folder._
@@ -205,16 +205,16 @@ Folder on disk is `vlt/`.
 - **snippets** (2): [first pod and service with kubectl](../Kubernetes/snippets/2026-09-18-first-pod-and-service-with-kubectl.sh), [pod troubleshooting shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - **configs** (1): [Deployment and Service for a Go app with probes](../Kubernetes/configs/2026-08-12-deployment-service-go-app-with-probes.yaml)
 
-## OpenTelemetry  ·  7 files
+## OpenTelemetry  ·  10 files
 
 Folder on disk is `otel/`.
 
 - **primer:** [0000-primer-opentelemetry.md](../otel/notes/0000-primer-opentelemetry.md) — traces, spans, context propagation, exporters, and where the collector sits
 - **notes** (2): [quickstart trip-ups](../otel/notes/2026-09-30-quickstart-trip-ups.md) — the 4317-vs-4318 mix-up, pipeline order, reading the noisy log output — plus [0000-primer-opentelemetry.md](../otel/notes/0000-primer-opentelemetry.md)
-- **configs** (1): [minimal Collector OTLP export config](../otel/configs/2026-09-30-collector-otlp-export.yaml) — OTLP in, one batch step, log out
-- **scripts** (1): [install a collector and run the OTLP pipeline](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) — brings up `otel/opentelemetry-collector-contrib` on 4317/4318, emits one span, and tails the collector log
+- **docs** (2): most recent → [context propagation: W3C tracecontext vs B3](../otel/docs/context-propagation-w3c-vs-b3.md) — what breaks when the format is mismatched or dropped between hops — plus [how `otel/` is reflected in the README and topic map](../otel/docs/2026-09-25-opentelemetry-readme-coverage.md)
+- **configs** (2): most recent → [real Collector pipeline](../otel/configs/collector-otlp-real-pipeline.yaml) — OTLP in, memory_limiter and batch processors, Prometheus and OTLP out — plus [minimal OTLP export config](../otel/configs/2026-09-30-collector-otlp-export.yaml) — OTLP in, one batch step, log out
+- **scripts** (2): most recent → [custom span processor and resource detector](../otel/scripts/custom-span-processor-resource-detector.py) — stamps app attributes onto every span and batch-exports to an OTLP endpoint — plus [install a collector and run the OTLP pipeline](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) — brings up `otel/opentelemetry-collector-contrib` on 4317/4318, emits one span, and tails the collector log
 - **snippets** (2): [instrumented Go HTTP server](../otel/snippets/2026-09-30-instrumented-http-server.go) — one span per request plus a per-path counter — plus [first trace span](../otel/snippets/2026-09-26-first-trace-span.py)
-- **docs** (1): [how `otel/` is reflected in the README and topic map](../otel/docs/2026-09-25-opentelemetry-readme-coverage.md)
 
 ## OpenTofu  ·  19 files
 
@@ -235,18 +235,18 @@ Folder on disk is `otel/`.
 - **scripts** (2): most recent → [custom application exporter](../Prometheus/scripts/custom-app-exporter.py) — a `/metrics` endpoint built from the standard library, keeping the exposition format and scrape contract visible — plus [install and verify the metrics endpoint](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - **snippets** (1): [PromQL target health check](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
 
-## Pulumi  ·  7 files
+## Pulumi  ·  10 files
 
 Folder on disk is `plm/`.
 
 - **primer:** [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
 - **notes** (2): [quickstart trip-ups](../plm/notes/2026-09-30-pulumi-quickstart-trip-ups.md) — provider plugins, stack config files, local state defaults, and destroy semantics — plus [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
-- **configs** (1): [minimal project and dev stack config](../plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus a `Pulumi.dev.yaml` with region and bucket name
-- **scripts** (2): [create an S3 bucket with Pulumi Python](../plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py) — the runnable one-bucket program with name and ARN exports — plus [install the CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- **docs** (2): most recent → [multi-stack project structure](../plm/docs/multi-stack-project-structure.md) — dev/staging/prod stacks under `stacks/`, a shared Network component, and cross-stack wiring with StackReference — plus [how `plm/` is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
+- **configs** (2): most recent → [minimal project and stack config](../plm/configs/minimal-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus dev and prod stack configs with config namespaces and an encrypted secret — plus [minimal project and dev stack config](../plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus a `Pulumi.dev.yaml` with region and bucket name
+- **scripts** (3): most recent → [reusable Network component](../plm/scripts/network-component-vpc-subnets.py) — a VPC with public and private subnets, an Internet Gateway, and a NAT Gateway, exported as a runnable Python stack — plus [create an S3 bucket with Pulumi Python](../plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py) — the runnable one-bucket program with name and ARN exports — plus [install the CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
 - **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
-- **docs** (1): [how `plm/` is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
 
-## Terraform  ·  57 files
+## Terraform  ·  56 files
 
 - **primer:** [0000-primer-terraform.md](../Terraform/notes/0000-primer-terraform.md)
 - **templates** (25): [multi-environment workspaces + remote state scaffold](../Terraform/templates/multi-environment-terraform-workspaces-remote-state/README.md) — one configuration for dev and prod with workspace-scoped S3 and DynamoDB backends — plus [module registry publishing workflow](../Terraform/templates/terraform-module-registry-publishing/README.md) — complete module structure with CI/CD pipeline that validates, tests, and publishes on version tags
@@ -262,12 +262,12 @@ Folder on disk is `plm/`.
 - **notebooks** (2): [Terraform vs OpenTofu](../Terraform/notebooks/comparing-terraform-vs-opentofu.ipynb), [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public and private subnets across AZs, IGW, optional NAT gateways — plus [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf)
 
-## Trivy  ·  14 files
+## Trivy  ·  15 files
 
 - **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
 - **notes** (5): most recent → [quickstart follow-along](../Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md), [quickstart trip-ups (latest)](../Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md), [quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md)
 - _…and 2 more under `Trivy/notes/` — browse the folder._
-- **scripts** (4): [repo scan workflow with SARIF output](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh), [install and scan a filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh), [batch image scanning](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
+- **scripts** (5): most recent → [policy-as-code with OPA/Rego](../Trivy/scripts/trivy-policy-as-code-opa-rego.sh) — write custom Rego policies, bundle them, and scan images and manifests against them with a severity-filtered summary — plus [repo scan workflow with SARIF output](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh), [install and scan a filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh), [batch image scanning](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
 - **snippets** (2): most recent → [scan an image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [a Python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
 - **configs** (2): most recent → [config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - **docs** (1): [choosing scan modes and pipeline wiring](../Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md) — image vs fs vs repo vs sbom, and blocking a bad artifact in CI

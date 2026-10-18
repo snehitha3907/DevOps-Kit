@@ -413,6 +413,7 @@
 - **`--severity`** — A Trivy flag that narrows a scan to given levels (e.g. `--severity CRITICAL`), so exit codes and reports can be scoped to the findings you actually care about.
 - **`VulnerabilityID`** — The CVE identifier Trivy assigns to each finding in its JSON report; paired with `PkgName`, `InstalledVersion`, and `FixedVersion` it tells you exactly which package needs upgrading to clear a finding.
 - **Scan policy** — A misconfiguration policy bundle Trivy consults during `misconfig` scanning, referenced in config by a `bundle`/`name` pair (e.g. `bundle: default`); it defines which checks run so a scan fails on the rules you actually care about instead of the whole built-in set.
+- **Policy as code (OPA/Rego)** — Writing custom checks as Rego rules, bundling them into a policy package, and pointing Trivy at the bundle with `-f` so a scan fails on your own rules rather than only the built-in misconfig set. The bundle is a directory of `.rego` files; `trivy image --policy ./policies --severity CRITICAL` runs them and reports `PolicyName`/`Severity`/`Message` per failing rule.
 - **`trivy image`** — Scans a container image for OS and language vulnerabilities; requires the Docker daemon and downloads a vulnerability DB on first run (cached at `~/.cache/trivy/db`).
 - **DB caching** — Trivy's vulnerability database is fetched once and cached locally; subsequent `trivy image` runs are immediate and re-pulling the image is needed after a Dockerfile base-tag change.
 - **`trivy k8s`** — Scans a Kubernetes cluster for vulnerabilities and misconfigurations across its workloads and node components; the cluster must be reachable from the machine running the scan.
@@ -524,6 +525,10 @@
 - **Output** — A value the cloud hands back after deploy (e.g. a bucket's real name) that can be wired into an app's config.
 - **Config** — Per-stack settings so one program behaves differently per environment.
 - **Stack config file** — The `Pulumi.<stack>.yaml` file (e.g. `Pulumi.dev.yaml`) holding one stack's settings under dotted `config:` keys, read back with `pulumi config get <key>`; the project file (`Pulumi.yaml`) is not where per-environment values go.
+- **Encrypted secret** — A config value Pulumi stores sealed in its backend instead of plaintext, set with `pulumi config set --secret <key> <value>` and read back as an `Output` that only decrypts at runtime. Worth it for anything that would otherwise sit in a YAML file in version control.
+- **Component resource** — A Pulumi component that bundles several child resources under one type and exports a typed interface (`export("vpc-id", ...)`), so callers never reach into the wiring. A reusable Network wrapping a VPC, subnets, and a gateway is the shape.
+- **StackReference** — A cross-stack handle (`StackReference.get("dev", "vpc-id")`) that lets one stack read another stack's exported outputs without sharing state files. The usual way stacks talk to each other instead of each one re-creating what it needs.
+- **Multi-stack project** — One `Pulumi.yaml` with several stacks (`dev`, `staging`, `prod`) pointing at separate program directories under `stacks/`, so each environment is its own code path while the shared components stay in one place.
 
 ## Grafana
 
@@ -555,6 +560,9 @@
 - **Trace** — The full journey of one request across services, e.g. one checkout click traced from the web app through payments.
 - **Span** — A single timed step inside a trace, e.g. a span named `charge-card` covering just the payment call.
 - **Context propagation** — Passing trace IDs along with each hop (e.g. an ID header) so spans from different services land in the same trace.
+- **W3C tracecontext** — The W3C standard propagation format carried in the `traceparent` header (`00-<trace-id>-<span-id>-<flags>`). The default choice for new services, and the format most SDKs inject and extract out of the box.
+- **B3 (Zipkin-style propagation)** — The older single-header or paired-header format Zipkin popularised (`b3: <trace-id>-<span-id>-<sampled>`). Still met in legacy services and in some SDK default configurations.
+- **Propagation mismatch** — What happens when one service injects `traceparent` and the downstream only understands `b3`, or when a gateway injects a header the consumer ignores: the trace stops at the boundary and the downstream spans arrive as orphaned roots. The fix is to align the propagator on both sides of the boundary.
 - **Exporter** — The plug that ships signals somewhere: a local collector while learning, a real backend later.
 - **Collector** — A middleman that receives, batches, and forwards signals, e.g. one collector on a laptop feeding whatever viewer is being tried. `otel/opentelemetry-collector-contrib` is the distribution that bundles the common receivers, processors, and exporters into one binary.
 - **OTLP** — OpenTelemetry Protocol, the wire format the SDKs use to hand signals to a collector. The gRPC flavour listens on port 4317 and is the default target of the Python OTLP exporter; the HTTP/protobuf flavour uses 4318.
