@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18
+
+- Added Trivy policy-as-code script: validates Rego policies with OPA, builds Trivy policy bundles, scans targets against custom policies, and emits a severity-filtered summary (trv-015) (`Trivy/scripts/trivy-policy-as-code-opa-rego.sh`)
+
 ## 2026-10-14
 
 - Fixed Pulumi Network component-resource stack (plm-013 rework): replaced invented `pulumi.get_region()` with `aws.get_availability_zones`, route-table names now use the component name instead of invalid `self.id`, `register_outputs` passes ID outputs, and CIDR input is validated with a clear error (`plm/scripts/network-component-vpc-subnets.py`)
