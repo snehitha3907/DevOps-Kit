@@ -2,6 +2,7 @@
 
 ## 2026-10-19
 
+- Added production prometheus.yml with relabeling, external labels, exemplar support, and recording/alerting rules (pro-019) (`Prometheus/configs/production-prometheus.yml`)
 - Added Prometheus + Alertmanager + Grafana monitoring stack template: docker-compose scaffold with Prometheus scrape/recording/alerting rules, Alertmanager routing/inhibition, Grafana provisioned datasource and system dashboard (pro-018) (`Prometheus/templates/prometheus-alertmanager-grafana-stack/`)
 - Added Prometheus custom counters and histograms service: exposes a request counter and response-latency histogram on /metrics, with steps to verify the scrape using promtool (pro-017) (`Prometheus/scripts/custom-metrics-service.py`)
 - Added Trivy SBOM generation and vulnerability reporting guide: CycloneDX/SPDX SBOM output, SARIF/table vulnerability reports, Kubernetes cluster scanning, CI threshold enforcement, and ignore-file workflow (trv-016) (`Trivy/docs/trivy-sbom-generation-and-vulnerability-reporting.md`)
@@ -861,3 +862,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added minimal PR-checker workflow with path filtering and branch-protection-friendly checks (gh-016) (`GitHub/configs/2026-08-22-pr-checker-workflow.yaml`)
 - con-091: docs/concepts/version-control-concepts/docs/terraform-modules-environment-promotion.md
 - Added interactive notebook comparing Kubernetes workload types: Pods, Deployments, StatefulSets, DaemonSets, and Jobs (k8s-016) (`Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb`)
+- Added production prometheus.yml with relabeling, external labels, exemplar support, and recording/alerting rules (pro-019) ()
