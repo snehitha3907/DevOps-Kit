@@ -2,6 +2,7 @@
 
 ## 2026-10-19
 
+- Added Prometheus Kubernetes integration guide: service discovery roles, pod annotations, kube-state-metrics, and managed Prometheus differences (AMP, GMP, Azure) (pro-021) (`Prometheus/docs/prometheus-kubernetes-integration.md`)
 - Added production prometheus.yml with relabeling, external labels, exemplar support, and recording/alerting rules (pro-019) (`Prometheus/configs/production-prometheus.yml`)
 - Added Prometheus + Alertmanager + Grafana monitoring stack template: docker-compose scaffold with Prometheus scrape/recording/alerting rules, Alertmanager routing/inhibition, Grafana provisioned datasource and system dashboard (pro-018) (`Prometheus/templates/prometheus-alertmanager-grafana-stack/`)
 - Added Prometheus custom counters and histograms service: exposes a request counter and response-latency histogram on /metrics, with steps to verify the scrape using promtool (pro-017) (`Prometheus/scripts/custom-metrics-service.py`)
