@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-19
+
+- Added Trivy SBOM generation and vulnerability reporting guide: CycloneDX/SPDX SBOM output, SARIF/table vulnerability reports, Kubernetes cluster scanning, CI threshold enforcement, and ignore-file workflow (trv-016) (`Trivy/docs/trivy-sbom-generation-and-vulnerability-reporting.md`)
+- Passed ([x]) trv-017 — Trivy operator configuration for Kubernetes admission control · Level: L4 · 2026-10-19
+
 ## 2026-10-18
 
 - Added Trivy Operator admission control configuration: ConfigMaps for operator and Trivy scanning behavior, ValidatingWebhookConfiguration for pod creation blocking, webhook Service, and operator Deployment with TLS cert volume (trv-017) (`Trivy/configs/trivy-operator-admission-control.yaml`)
