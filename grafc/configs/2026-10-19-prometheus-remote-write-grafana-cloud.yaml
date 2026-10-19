@@ -1,0 +1,32 @@
+# last_verified: 2026-10-19 · Grafana Cloud (n/a)
+# Prometheus remote-write config pointing at a Grafana Cloud stack.
+# I copied the endpoint and credentials from the stack's "Details" and
+# "Agent configuration" pages. The key thing I missed at first: the username
+# is the numeric Mimir user ID (same as the stack ID), not "grafana", and
+# the password is the base64-decoded API token from the agent config screen.
+#
+# To use: fill in <STACK_ID>, <REGION> (us or eu), and <API_TOKEN> then drop
+# this into your prometheus.yml under remote_write. Restart Prometheus and
+# check the Grafana Cloud Explore UI for incoming series.
+
+remote_write:
+  - url: "https://prometheus-prod-<REGION>-backend.grafana.net/api/prom/push"
+    basic_auth:
+      username: "<STACK_ID>"           # numeric Mimir user ID from stack details
+      password: "<API_TOKEN>"          # Grafana Cloud API token with metrics:write
+    queue_config:
+      capacity: 2500
+      max_shards: 200
+      min_shards: 1
+      max_samples_per_send: 500
+      batch_send_deadline: 5s
+      min_backoff: 30ms
+      max_backoff: 100ms
+    write_relabel_configs:
+      # Optional: drop noisy labels or add static ones
+      - source_labels: [__name__]
+        regex: "go_.*|process_.*"
+        action: drop
+      - target_label: "cluster"
+        replacement: "my-cluster"
+        action: replace
