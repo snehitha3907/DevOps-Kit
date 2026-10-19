@@ -1,0 +1,15 @@
+# last_verified: 2026-10-19 · Grafana n/a
+# Grafana dashboard provisioning configuration.
+# Loads dashboards from /var/lib/grafana/dashboards at startup.
+apiVersion: 1
+
+providers:
+  - name: "monitoring-stack"
+    orgId: 1
+    folder: "Monitoring Stack"
+    type: "file"
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: false
+    options:
+      path: /var/lib/grafana/dashboards

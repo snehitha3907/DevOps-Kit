@@ -1,0 +1,20 @@
+# last_verified: 2026-10-19 · Alertmanager n/a
+# Default notification template for Alertmanager.
+{{ define "default.title" }}
+  [{{ .Status }}] {{ .CommonLabels.alertname }} ({{ .CommonLabels.severity }})
+{{ end }}
+
+{{ define "default.body" }}
+  {{ range .Alerts }}
+    **Alert:** {{ .Labels.alertname }}
+    **Severity:** {{ .Labels.severity }}
+    **Instance:** {{ .Labels.instance }}
+    **Cluster:** {{ .Labels.cluster }}
+    **Environment:** {{ .Labels.environment }}
+    **Summary:** {{ .Annotations.summary }}
+    **Description:** {{ .Annotations.description }}
+    **Starts At:** {{ .StartsAt.Format "2006-01-02 15:04:05" }}
+    {{ if .EndsAt }}**Ends At:** {{ .EndsAt.Format "2006-01-02 15:04:05" }}{{ end }}
+    ---
+  {{ end }}
+{{ end }}

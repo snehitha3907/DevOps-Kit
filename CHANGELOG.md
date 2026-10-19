@@ -3,6 +3,7 @@
 ## 2026-10-19
 
 - Added production prometheus.yml with relabeling, external labels, exemplar support, and recording/alerting rules (pro-019) (`Prometheus/configs/production-prometheus.yml`)
+- Added Prometheus + Alertmanager + Grafana monitoring stack template: docker-compose scaffold with Prometheus scrape/recording/alerting rules, Alertmanager routing/inhibition, Grafana provisioned datasource and system dashboard (pro-018) (`Prometheus/templates/prometheus-alertmanager-grafana-stack/`)
 - Added Prometheus custom counters and histograms service: exposes a request counter and response-latency histogram on /metrics, with steps to verify the scrape using promtool (pro-017) (`Prometheus/scripts/custom-metrics-service.py`)
 - Added Trivy SBOM generation and vulnerability reporting guide: CycloneDX/SPDX SBOM output, SARIF/table vulnerability reports, Kubernetes cluster scanning, CI threshold enforcement, and ignore-file workflow (trv-016) (`Trivy/docs/trivy-sbom-generation-and-vulnerability-reporting.md`)
 - Passed ([x]) trv-017 — Trivy operator configuration for Kubernetes admission control · Level: L4 · 2026-10-19
