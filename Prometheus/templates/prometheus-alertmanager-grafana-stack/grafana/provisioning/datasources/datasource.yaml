@@ -1,0 +1,21 @@
+# last_verified: 2026-10-19 · Grafana n/a
+# Grafana datasource provisioning for Prometheus.
+# This file is loaded at startup and creates the Prometheus datasource.
+apiVersion: 1
+
+datasources:
+  - name: "Prometheus"
+    uid: "prometheus"
+    type: "prometheus"
+    access: "proxy"
+    url: "http://prometheus:9090"
+    isDefault: true
+    editable: false
+    jsonData:
+      timeInterval: "15s"
+      queryTimeout: "60s"
+      httpMethod: "POST"
+      exemplarTraceIdDestinations:
+        - name: "traceID"
+          datasourceUid: "tempo"
+    version: 1

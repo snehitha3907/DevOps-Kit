@@ -1,0 +1,103 @@
+# last_verified: 2026-10-19 · Prometheus n/a
+# Alerting rules for the monitoring stack.
+# Fires alerts routed to Alertmanager.
+groups:
+  - name: "monitoring-stack-alerting.rules"
+    interval: 30s
+    rules:
+      # Node Exporter alerts
+      - alert: "InstanceDown"
+        expr: up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Instance {{ $labels.instance }} is down"
+          description: "{{ $labels.instance }} has been down for more than 2 minutes."
+
+      - alert: "InstanceHighCPU"
+        expr: instance:node_cpu_utilisation:avg1m > 0.85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage on {{ $labels.instance }}"
+          description: "CPU usage above 85% for 5 minutes on {{ $labels.instance }}."
+
+      - alert: "InstanceHighMemory"
+        expr: instance:node_memory_utilisation:ratio > 0.90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage on {{ $labels.instance }}"
+          description: "Memory usage above 90% for 5 minutes on {{ $labels.instance }}."
+
+      - alert: "InstanceDiskFull"
+        expr: instance:node_disk_utilisation:ratio > 0.85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Disk usage high on {{ $labels.instance }}"
+          description: "Disk usage above 85% on {{ $labels.instance }} (mountpoint: {{ $labels.mountpoint }})."
+
+      # Prometheus self-monitoring alerts
+      - alert: "PrometheusTargetDown"
+        expr: up{job="prometheus"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Prometheus cannot scrape itself"
+          description: "Prometheus self-scrape target has been down for 2 minutes."
+
+      - alert: "PrometheusHighScrapeFailureRate"
+        expr: |
+          (rate(prometheus_target_scrapes_sample_limit_exceeded_total[5m]) > 0)
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prometheus scrape sample limit exceeded"
+          description: "One or more targets exceeded the sample limit; check target configurations."
+
+      - alert: "PrometheusTSDBHeadSeriesHigh"
+        expr: |
+          prometheus_tsdb_head_series > 1000000
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prometheus TSDB head series count high"
+          description: "Head series count exceeds 1M; consider increasing retention or reducing cardinality."
+
+      # Alertmanager alerts
+      - alert: "AlertmanagerDown"
+        expr: up{job="alertmanager"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Alertmanager is down"
+          description: "Alertmanager has been unreachable for 2 minutes."
+
+      - alert: "AlertmanagerNotificationFailures"
+        expr: |
+          rate(alertmanager_notifications_failed_total[5m]) > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Alertmanager notification failures"
+          description: "One or more notification integrations are failing."
+
+      # Grafana alerts
+      - alert: "GrafanaDown"
+        expr: up{job="grafana"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Grafana is down"
+          description: "Grafana has been unreachable for 2 minutes."
