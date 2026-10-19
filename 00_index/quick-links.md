@@ -137,6 +137,9 @@
 - [Minimal project and dev stack config](../plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml)
 - [Create an S3 bucket with Pulumi Python](../plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py)
 - [Minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
+- [Minimal project and stack config with an encrypted secret](../plm/configs/minimal-project-and-stack-config.yaml)
+- [Multi-stack project structure: dev/staging/prod, StackReference, cross-stack wiring](../plm/docs/multi-stack-project-structure.md)
+- [Reusable Network component: VPC, subnets, IGW, NAT gateway](../plm/scripts/network-component-vpc-subnets.py)
 
 ### Manage secrets with Vault
 
@@ -330,6 +333,7 @@
 - [Config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml)
 - [Repo scan workflow with SARIF output](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh)
 - [Batch image scanning from a file](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
+- [Policy-as-code with OPA/Rego](../Trivy/scripts/trivy-policy-as-code-opa-rego.sh) — write custom Rego policies, bundle them, and scan images and manifests against them with a severity-filtered summary
 
 ### Collect metrics
 
@@ -353,6 +357,9 @@
 - [Quickstart trip-ups — ports, pipeline order, noisy log output](../otel/notes/2026-09-30-quickstart-trip-ups.md)
 - [Minimal Collector OTLP export config](../otel/configs/2026-09-30-collector-otlp-export.yaml)
 - [Instrumented Go HTTP server — a span and a counter per request](../otel/snippets/2026-09-30-instrumented-http-server.go)
+- [Real Collector pipeline: OTLP in, memory_limiter and batch, Prometheus and OTLP out](../otel/configs/collector-otlp-real-pipeline.yaml)
+- [Context propagation: W3C tracecontext vs B3](../otel/docs/context-propagation-w3c-vs-b3.md) — what breaks when the format is mismatched or dropped between hops
+- [Custom span processor and resource detector](../otel/scripts/custom-span-processor-resource-detector.py) — stamps app attributes onto every span and batch-exports to an OTLP endpoint
 
 ### Visualize metrics
 
