@@ -262,15 +262,15 @@ Folder on disk is `plm/`.
 - **notebooks** (2): [Terraform vs OpenTofu](../Terraform/notebooks/comparing-terraform-vs-opentofu.ipynb), [for_each vs count](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
 - **manifests** (2): [reusable VPC module](../Terraform/manifests/reusable-vpc-module.hcl) — public and private subnets across AZs, IGW, optional NAT gateways — plus [simple EC2 app](../Terraform/manifests/simple-ec2-app.tf)
 
-## Trivy  ·  15 files
+## Trivy  ·  17 files
 
 - **primer:** [0000-primer-trivy.md](../Trivy/notes/0000-primer-trivy.md)
 - **notes** (5): most recent → [quickstart follow-along](../Trivy/notes/2026-09-02-trivy-quickstart-follow-along.md), [quickstart trip-ups (latest)](../Trivy/notes/2026-08-29-trivy-quickstart-trip-ups.md), [quickstart trip-ups](../Trivy/notes/2026-08-14-trivy-quickstart-trip-ups.md)
 - _…and 2 more under `Trivy/notes/` — browse the folder._
 - **scripts** (5): most recent → [policy-as-code with OPA/Rego](../Trivy/scripts/trivy-policy-as-code-opa-rego.sh) — write custom Rego policies, bundle them, and scan images and manifests against them with a severity-filtered summary — plus [repo scan workflow with SARIF output](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh), [install and scan a filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh), [first container image scan](../Trivy/scripts/2026-06-26-scanned-first-container-image.sh), [batch image scanning](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
 - **snippets** (2): most recent → [scan an image and fail on critical CVEs](../Trivy/snippets/2026-08-16-scan-image-fail-critical-cves.py), [a Python wrapper](../Trivy/snippets/2026-07-12-trivy-python-wrapper.py)
-- **configs** (2): most recent → [config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
-- **docs** (1): [choosing scan modes and pipeline wiring](../Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md) — image vs fs vs repo vs sbom, and blocking a bad artifact in CI
+- **configs** (3): most recent → [admission control configuration](../Trivy/configs/trivy-operator-admission-control.yaml) — configure the Trivy Operator to block or warn on vulnerabilities and misconfigurations — plus [config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
+- **docs** (2): most recent → [SBOM generation and vulnerability reporting](../Trivy/docs/trivy-sbom-generation-and-vulnerability-reporting.md) — generate CycloneDX/SPDX SBOMs and machine-readable vulnerability reports — plus [choosing scan modes and pipeline wiring](../Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md) — image vs fs vs repo vs sbom, and blocking a bad artifact in CI
 
 ## Foundational Concepts  ·  71 files
 

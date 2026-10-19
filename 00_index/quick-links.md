@@ -334,6 +334,7 @@
 - [Repo scan workflow with SARIF output](../Trivy/scripts/trivy-fs-repo-scan-workflow.sh)
 - [Batch image scanning from a file](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
 - [Policy-as-code with OPA/Rego](../Trivy/scripts/trivy-policy-as-code-opa-rego.sh) — write custom Rego policies, bundle them, and scan images and manifests against them with a severity-filtered summary
+- [SBOM generation and vulnerability reporting](../Trivy/docs/trivy-sbom-generation-and-vulnerability-reporting.md) — Generate SBOMs in CycloneDX/SPDX and produce vulnerability reports for compliance and audit workflows
 
 ### Collect metrics
 

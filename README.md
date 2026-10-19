@@ -53,8 +53,6 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 - **docs/audit/** — Coverage and readme audit notes about the kit's own documentation.
 - **CHANGELOG.md** — Dated record of additions, reworks, and navigation corrections.
 
-## Coverage
-
 <details>
 <summary>Coverage table</summary>
 
@@ -63,32 +61,27 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 | AWS | 2 | 2 | 3 | 7 | 3 | — | 1 | — | 3 | 2026-10-07 |
 | Ansible | 10 | 5 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-10-12 |
 | ArgoCD | 3 | 1 | 1 | 2 | 3 | 1 | — | — | — | 2026-10-02 |
-| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | 10 | 2026-10-09 |
+| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | 10 | 2026-10-08 |
 | Docker | 6 | 8 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-10-12 |
 | FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-30 |
-| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-29 |
-| Git | 6 | 14 | 1 | 12 | — | — | 1 | — | 22 | 2026-10-06 |
+| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
+| Git | 6 | 14 | 1 | 12 | — | — | 1 | — | 22 | 2026-09-25 |
 | GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-14 |
 | GitHub Actions | 5 | 6 | 1 | 4 | 5 | — | — | 1 | 3 | 2026-10-04 |
 | GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
 | Grafana (`graf/`) | 4 | 2 | — | 1 | 1 | — | — | — | — | 2026-10-13 |
 | Grafana Cloud (`grafc/`) | 2 | — | 1 | — | 1 | — | — | — | — | 2026-10-13 |
 | Helm | 3 | 5 | 1 | 4 | 5 | 14 | 1 | — | 22 | 2026-10-05 |
-| Kubernetes | 9 | 5 | 2 | 4 | 1 | 6 | 2 | — | 32 | 2026-10-14 |
+| Kubernetes | 9 | 5 | 2 | 4 | 1 | 6 | 2 | — | 32 | 2026-10-13 |
 | OpenTelemetry (`otel/`) | 2 | 2 | 2 | 2 | 2 | — | — | — | — | 2026-10-14 |
 | OpenTofu | 2 | 4 | — | 3 | 2 | — | 2 | — | 6 | 2026-10-10 |
 | Prometheus | 2 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-09-30 |
 | Pulumi (`plm/`) | 2 | 2 | 1 | 3 | 2 | — | — | — | — | 2026-10-14 |
 | Terraform | 6 | 6 | 3 | 4 | 9 | 2 | 2 | — | 24 | 2026-10-11 |
-| Trivy | 5 | 1 | 2 | 5 | 2 | — | — | — | — | 2026-10-18 |
+| Trivy | 5 | 2 | 2 | 5 | 3 | — | — | — | — | 2026-10-19 |
 | HashiCorp Vault (`vlt/`) | 3 | 1 | — | 3 | 1 | — | — | — | — | 2026-10-07 |
-
 </details>
 
 ## Status
-
-Current focus is the seam between CI and the cluster: a GitLab runner that can reach Kubernetes and roll a digest-pinned image, dynamic child pipelines for job sets that only exist at run time, and ArgoCD reading from a private GitHub repo with a multi-cluster ApplicationSet. On the GitHub Actions side the recent additions retire stored AWS keys in favour of OIDC workload identity, alongside the custom runner image, multi-environment promotion template, and bulk secret management. The newest arrival is a reusable Helm microservice chart — Deployment, Service, ConfigMap, optional Ingress/HPA/PDB, a migration Job hook, and a vendored PostgreSQL subchart — with a script that validates layered values files across environments before promotion. The newest additions on that same theme are a shared base values file for deploying one release to several clusters from a GitOps repo, and a chart-testing walkthrough that lints and installs only the charts a branch touched. Alongside that, OpenTofu grew a reusable AWS VPC module template with a plan/apply wrapper that runs policy checks before anything is applied, and the Helm values-management walkthrough gained a runnable `demo-chart` fixture so every lint, template, install, and upgrade command runs as written. Most recently, Azure gained a Bicep module template for an AKS cluster with modular addons (GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy). Since then, the Vault shelf filled out its second layer: quickstart trip-ups from a dev server, an hvac script that writes, reads, and lists versions of a KV v2 secret, and a minimal read-only policy bound to a group for least-privilege token issuance. On the Azure side there are now two cleanup scripts that delete prefix-matched resource groups while sparing locked ones — one gated on an explicit confirmation flag, one built for scheduled runs with dry-run by default. Newest since then: a Container Apps baseline for a small API-plus-worker pair, an Azure DevOps pipeline pattern that ships Bicep through CI/CD with a what-if validate stage, and a Kubernetes Cluster API bootstrap manifest that stands up a control plane and two worker nodes from Docker. The OpenTelemetry shelf grew a real Collector pipeline config with memory_limiter and batch processors, a context-propagation guide comparing W3C tracecontext and B3, and a custom span processor that stamps app attributes onto every span before batch-export. Pulumi gained a multi-stack project structure guide with cross-stack StackReference wiring, a reusable Network component, and a minimal project-plus-stack-config pair. On the security side, Trivy added a policy-as-code script that bundles custom OPA/Rego checks and scans images and manifests against them with a severity-filtered summary.
-
----
 
 _Last updated: 2026-10-19_
