@@ -2,6 +2,8 @@
 
 ## 2026-10-19
 
+- Added Grafana Cloud stack creation and first metric push script: creates stack via API and sends sample metric via OTLP endpoint (grafc-008) (`grafc/scripts/2026-10-19-create-stack-and-send-metrics.py`)
+- Added Prometheus remote-write configuration for Grafana Cloud: endpoint, Mimir user ID auth, queue tuning, and optional relabel rules (grafc-009) (`grafc/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml`)
 - Added Prometheus Kubernetes integration guide: service discovery roles, pod annotations, kube-state-metrics, and managed Prometheus differences (AMP, GMP, Azure) (pro-021) (`Prometheus/docs/prometheus-kubernetes-integration.md`)
 - Added production prometheus.yml with relabeling, external labels, exemplar support, and recording/alerting rules (pro-019) (`Prometheus/configs/production-prometheus.yml`)
 - Added Prometheus + Alertmanager + Grafana monitoring stack template: docker-compose scaffold with Prometheus scrape/recording/alerting rules, Alertmanager routing/inhibition, Grafana provisioned datasource and system dashboard (pro-018) (`Prometheus/templates/prometheus-alertmanager-grafana-stack/`)
