@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-19
+
+- Added Prometheus custom counters and histograms service: exposes a request counter and response-latency histogram on /metrics, with steps to verify the scrape using promtool (pro-017) (`Prometheus/scripts/custom-metrics-service.py`)
+
 ## 2026-10-18
 
 - Added Trivy Operator admission control configuration: ConfigMaps for operator and Trivy scanning behavior, ValidatingWebhookConfiguration for pod creation blocking, webhook Service, and operator Deployment with TLS cert volume (trv-017) (`Trivy/configs/trivy-operator-admission-control.yaml`)
