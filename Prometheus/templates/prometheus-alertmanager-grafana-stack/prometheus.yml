@@ -1,0 +1,48 @@
+# last_verified: 2026-10-19 · Prometheus n/a
+# Prometheus configuration for the monitoring stack.
+# Scrapes: prometheus, alertmanager, grafana, node-exporter.
+# Rules loaded from /etc/prometheus/rules/*.yml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: "docker-compose"
+    environment: "${ENVIRONMENT:-development}"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+
+rule_files:
+  - "/etc/prometheus/rules/*.yml"
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: "alertmanager"
+    static_configs:
+      - targets: ["alertmanager:9093"]
+
+  - job_name: "grafana"
+    static_configs:
+      - targets: ["grafana:3000"]
+
+  - job_name: "node-exporter"
+    static_configs:
+      - targets: ["node-exporter:9100"]
+
+  - job_name: "docker"
+    static_configs:
+      - targets: ["host.docker.internal:9323"]
+    # Uncomment and configure if Docker Engine metrics are exposed:
+    # docker host metric endpoint requires: dockerd --metrics-addr 0.0.0.0:9323
+
+# Remote write (disabled by default — uncomment and configure for long-term storage)
+# remote_write:
+#   - url: "https://prometheus-prod.example.com/api/v1/write"
+#     basic_auth:
+#       username: "remote_write_user"
+#       password: "${REMOTE_WRITE_PASSWORD}"

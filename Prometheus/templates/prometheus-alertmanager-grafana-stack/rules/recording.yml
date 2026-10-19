@@ -1,0 +1,54 @@
+# last_verified: 2026-10-19 · Prometheus n/a
+# Recording rules for the monitoring stack.
+# Precompute expensive expressions for dashboards and alerts.
+groups:
+  - name: "monitoring-stack-recording.rules"
+    interval: 30s
+    rules:
+      # Node Exporter recording rules
+      - record: "instance:node_cpu_utilisation:avg1m"
+        expr: |
+          avg by (instance) (irate(node_cpu_seconds_total{mode!="idle"}[1m]))
+
+      - record: "instance:node_memory_utilisation:ratio"
+        expr: |
+          1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)
+
+      - record: "instance:node_disk_utilisation:ratio"
+        expr: |
+          1 - (node_filesystem_avail_bytes{fstype!="tmpfs"} / node_filesystem_size_bytes{fstype!="tmpfs"})
+
+      - record: "instance:node_network_receive_bytes:rate1m"
+        expr: |
+          sum by (instance) (rate(node_network_receive_bytes_total[1m]))
+
+      - record: "instance:node_network_transmit_bytes:rate1m"
+        expr: |
+          sum by (instance) (rate(node_network_transmit_bytes_total[1m]))
+
+      # Prometheus self-monitoring recording rules
+      - record: "prometheus:tsdb_head_samples_appended:rate5m"
+        expr: |
+          rate(prometheus_tsdb_head_samples_appended_total[5m])
+
+      - record: "prometheus:tsdb_head_series:current"
+        expr: |
+          prometheus_tsdb_head_series
+
+      - record: "prometheus:target_scrapes_sample_limit_exceeded:rate5m"
+        expr: |
+          rate(prometheus_target_scrapes_exceeded_sample_limit_total[5m])
+
+      # Alertmanager recording rules
+      - record: "alertmanager:notifications_sent:rate5m"
+        expr: |
+          sum by (integration) (rate(alertmanager_notifications_sent_total[5m]))
+
+      - record: "alertmanager:notifications_failed:rate5m"
+        expr: |
+          sum by (integration) (rate(alertmanager_notifications_failed_total[5m]))
+
+      # Grafana recording rules
+      - record: "grafana:dashboard_view_count:rate5m"
+        expr: |
+          rate(grafana_dashboard_view_total[5m])
