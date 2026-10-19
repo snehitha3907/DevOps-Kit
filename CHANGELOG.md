@@ -2,6 +2,7 @@
 
 ## 2026-10-18
 
+- Added Trivy Operator admission control configuration: ConfigMaps for operator and Trivy scanning behavior, ValidatingWebhookConfiguration for pod creation blocking, webhook Service, and operator Deployment with TLS cert volume (trv-017) (`Trivy/configs/trivy-operator-admission-control.yaml`)
 - Added Trivy policy-as-code script: validates Rego policies with OPA, builds Trivy policy bundles, scans targets against custom policies, and emits a severity-filtered summary (trv-015) (`Trivy/scripts/trivy-policy-as-code-opa-rego.sh`)
 
 ## 2026-10-14
