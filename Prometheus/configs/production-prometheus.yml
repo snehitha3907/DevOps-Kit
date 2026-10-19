@@ -1,0 +1,114 @@
+# last_verified: 2026-10-19 · Prometheus n/a
+# Purpose: production prometheus.yml — relabeling, external labels, exemplar
+# support, plus recording and alerting rules.
+# When to use: a real deployment that scrapes many targets across namespaces
+# and needs stable identity for alert routing, remote write, and trace
+# correlation. Not a learning sandbox.
+# Prerequisites: Prometheus started with --enable-feature=exemplar-storage
+# (exemplar storage is experimental and must be enabled at startup).
+# Load with: prometheus --config.file=production-prometheus.yml
+# Verify: promtool check config production-prometheus.yml; then open the
+# Targets page and confirm every job is UP, the Rules page shows both rule
+# groups as healthy, and a trace_id label appears on exemplars attached to
+# histogram buckets in the expression browser.
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+  # Labels attached to every series and alert before they leave Prometheus.
+  # External labels make a HA pair of Prometheus servers produce identical
+  # alert identities, and they are the stable names remote write and
+  # Alertmanager use when routing. Set them per cluster, never per target.
+  external_labels:
+    cluster: prod-us-east
+    replica: prometheus-a
+
+storage:
+  tsdb:
+    out_of_order_time_window: 10m
+  exemplars:
+    # Size of the circular buffer that holds exemplars for all series.
+    # Resizable at runtime via the HTTP PUT /-/tsdb/delete or a reload.
+    max_exemplars: 100000
+
+# Where to send alerts. The alert_relabel_configs here run after external
+# labels, so they can drop alerts that should never reach on-call.
+alerting:
+  alert_relabel_configs:
+    - source_labels: [severity]
+      regex: "debug"
+      action: drop
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager-0:9093", "alertmanager-1:9093"]
+
+# Recording rules precompute expensive expressions so dashboards and other
+# rules reuse one series instead of repeating the division on every panel
+# refresh. Alerting rules evaluate a condition and fire notifications.
+rule_files:
+  - "recording-vs-alerting-rules.yaml"
+
+scrape_configs:
+  # Self-scrape. The relabel step here is a no-op replacement that shows the
+  # shape: keep the target, then stamp the job label from the job_name.
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+
+  # Application workloads discovered by Kubernetes. The pod annotation
+  # `prometheus.io/scrape: "true"` is the signal to scrape; everything else
+  # is dropped before a target is ever created, which keeps the target list
+  # under control in a large cluster.
+  - job_name: kubernetes-pods
+    kubernetes_sd_configs:
+      - role: pod
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        regex: "true"
+        action: keep
+      - source_labels: [__meta_kubernetes_pod_namespace]
+        target_label: namespace
+      - source_labels: [__meta_kubernetes_pod_name]
+        target_label: pod
+      - source_labels: [__address__]
+        regex: ".*"
+        replacement: "${1}"
+        target_label: address
+
+  # Node-level metrics. The __meta_kubernetes_node_name label is the natural
+  # key for external_labels, so it is kept as the instance identity.
+  - job_name: kubernetes-nodes
+    kubernetes_sd_configs:
+      - role: node
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_node_name]
+        target_label: instance
+      - source_labels: [__address__]
+        regex: ".*"
+        replacement: "${1}"
+        target_label: address
+
+  # Pushgateway-style push metrics. honor_labels: true keeps the labels the
+  # exporter set instead of letting Prometheus overwrite them.
+  - job_name: pushgateway
+    static_configs:
+      - targets: ["pushgateway:9091"]
+    honor_labels: true
+    metrics_path: /metrics
+
+# Remote write forwards samples to a long-term store. send_exemplars only
+# has effect once exemplar storage is enabled at startup; without it, the
+# exemplars are scraped but never shipped.
+remote_write:
+  - url: "<remote-write-endpoint>/api/v1/write"
+    send_exemplars: true
+    send_native_histograms: true
+    write_relabel_configs:
+      - source_labels: [job]
+        regex: "kubernetes-pods"
+        action: drop
