@@ -6,6 +6,7 @@
 - Added Flux CD HelmRelease image automation config: ImageRepository, ImagePolicy, and ImageUpdateAutomation for automated container image updates (flx-015) (`FluxCD/configs/helmrelease-image-automation.yaml`)
 - Added Argo CD multi-cluster GitOps repository template: Kustomize base/overlays for dev/staging/prod, ApplicationSet matrix generator, kind bootstrap script, and sample Application (arg-015) (`ArgoCD/templates/multi-cluster-gitops-repo/`)
 - Added Argo CD multi-cluster fleet ApplicationSet manifest: matrix generator over the cluster inventory and the application directories in the GitOps repository, per-cluster prune and selfHeal, per-cluster sync waves, and the fleet sync-options policy Application (arg-016) (`ArgoCD/manifests/multi-cluster-fleet-applicationset.yaml`)
+- Added Argo CD application helper script: reports OutOfSync and Degraded Applications, diffs the live resources against the target revision, and triggers a targeted sync or a rollback to an earlier deployment (arg-017) (`ArgoCD/scripts/argocd-application-helper.py`)
 
 ## 2026-10-19
 
