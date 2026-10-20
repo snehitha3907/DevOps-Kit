@@ -268,8 +268,10 @@
 - [Sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 - [Flux quickstart trip-ups](../FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md)
 - [Minimal Flux GitRepository and Kustomization](../FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml)
+- [Flux HelmRelease with image automation](../FluxCD/configs/helmrelease-image-automation.yaml)
 - [Flux CLI command surface](../FluxCD/notes/2026-09-19-explore-flux-cli-command-surface.md)
 - [Install the Flux CLI and run `flux check --pre`](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
+- [Bootstrap Flux on kind](../FluxCD/scripts/bootstrap-flux-on-kind.sh)
 
 ### Work with AWS
 
@@ -342,9 +344,14 @@
 - [Minimal scrape config](../Prometheus/configs/2026-07-23-minimal-scrape-config.yml)
 - [Container monitoring config](../Prometheus/configs/2026-09-05-minimal-container-monitoring-config.yml)
 - [Install Prometheus and verify metrics](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
-- [Write a custom application exporter](../Prometheus/scripts/custom-app-exporter.py)
+- [Write a custom application exporter (Python)](../Prometheus/scripts/custom-app-exporter.py)
+- [Write a custom metrics collector (Go)](../Prometheus/scripts/custom-app-metrics-collector.go)
+- [Custom metrics service (Python)](../Prometheus/scripts/custom-metrics-service.py)
 - [Recording rules vs alerting rules](../Prometheus/configs/recording-vs-alerting-rules.yaml)
 - [Check target health with PromQL](../Prometheus/snippets/2026-09-05-promql-target-health-check.sh)
+- [Production Prometheus config](../Prometheus/configs/production-prometheus.yml)
+- [Prometheus + Alertmanager + Grafana stack template](../Prometheus/templates/prometheus-alertmanager-grafana-stack/README.md)
+- [Prometheus + Kubernetes integration](../Prometheus/docs/prometheus-kubernetes-integration.md)
 
 ### Get paged when something breaks
 
@@ -377,6 +384,8 @@
 - [Agent scrape config — unix exporter on a 15s interval](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
 - [Create a dashboard over the Grafana HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js)
 - [Grafana Cloud quickstart trip-ups](../grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md)
+- [Prometheus remote-write config for Grafana Cloud](../grafc/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml)
+- [Create Grafana Cloud stack and send metrics](../grafc/scripts/2026-10-19-create-stack-and-send-metrics.py)
 
 ### Check a target is actually up
 

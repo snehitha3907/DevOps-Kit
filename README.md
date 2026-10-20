@@ -18,11 +18,11 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Trivy policy-as-code with OPA/Rego](Trivy/scripts/trivy-policy-as-code-opa-rego.sh) — Write custom Rego policies, bundle them, and scan images and manifests against them with a severity-filtered summary.
-- [Pulumi multi-stack project structure](plm/docs/multi-stack-project-structure.md) — Dev, staging, and prod stacks under `stacks/`, a shared Network component, and cross-stack wiring with StackReference.
-- [OpenTelemetry Collector real pipeline](otel/configs/collector-otlp-real-pipeline.yaml) — OTLP receiver in, memory_limiter and batch processors, Prometheus and OTLP exporters out, so spans and metrics land somewhere visible.
-- [Custom span processor and resource detector](otel/scripts/custom-span-processor-resource-detector.py) — Stamps app attributes onto every span and batch-exports to an OTLP endpoint; runs standalone.
-- [Pulumi project and stack config](plm/configs/minimal-project-and-stack-config.yaml) — A minimal `Pulumi.yaml` plus dev and prod stack configs with config namespaces and an encrypted secret.
+- [Flux CD HelmRelease image automation](FluxCD/configs/helmrelease-image-automation.yaml) — A HelmRelease with image automation so Flux watches the registry and rolls out new tags without a Git commit.
+- [Flux CD bootstrap script for kind](FluxCD/scripts/bootstrap-flux-on-kind.sh) — Installs Flux, creates a GitRepository and Kustomization, and waits for readiness; idempotent and safe to re-run.
+- [Grafana Cloud Prometheus remote-write config](grafc/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml) — Minimal scrape config with a pass-through relabel rule forwarding metrics to Grafana Cloud via remote_write.
+- [Create Grafana Cloud stack and send metrics](grafc/scripts/2026-10-19-create-stack-and-send-metrics.py) — Scripts the stack creation, grabs the endpoint and token, writes the agent config, and verifies metrics arrive.
+- [Prometheus + Kubernetes integration](Prometheus/docs/prometheus-kubernetes-integration.md) — Service discovery, RBAC, and workload annotations so Prometheus automatically tracks cluster targets.
 
 ## Layout
 
@@ -58,30 +58,34 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 
 | Tool | Notes | Docs | Snippets | Scripts | Configs | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
 |------|-------|------|----------|---------|---------|-----------|-----------|-------------|-------------|---------------|
-| AWS | 2 | 2 | 3 | 7 | 3 | — | 1 | — | 3 | 2026-10-07 |
-| Ansible | 10 | 5 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-10-12 |
-| ArgoCD | 3 | 1 | 1 | 2 | 3 | 1 | — | — | — | 2026-10-02 |
-| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | 10 | 2026-10-08 |
-| Docker | 6 | 8 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-10-12 |
-| FluxCD | 2 | 1 | — | 1 | 1 | — | — | — | — | 2026-09-30 |
+| AWS | 2 | 2 | 3 | 7 | 3 | — | 1 | — | — | 2026-10-07 |
+| Ansible | 9 | 5 | 2 | 4 | 8 | 1 | 2 | 1 | 1 | 2026-10-12 |
+| ArgoCD | 3 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-10-02 |
+| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | — | 2026-10-08 |
+| Docker | 6 | 8 | 2 | 5 | 1 | 6 | 3 | 7 | — | 2026-10-12 |
+| FluxCD | 2 | 1 | — | 2 | 2 | — | — | — | — | 2026-09-22 |
 | GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
-| Git | 6 | 14 | 1 | 12 | — | — | 1 | — | 22 | 2026-09-25 |
-| GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-14 |
-| GitHub Actions | 5 | 6 | 1 | 4 | 5 | — | — | 1 | 3 | 2026-10-04 |
+| Git | 6 | 12 | 1 | 12 | — | — | 1 | — | — | 2026-09-25 |
+| GitHub | 11 | 7 | 3 | 7 | 2 | 1 | 2 | 1 | — | 2026-10-10 |
+| GitHub Actions | 5 | 5 | 1 | 4 | 5 | — | — | 1 | — | 2026-10-04 |
 | GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
 | Grafana (`graf/`) | 4 | 2 | — | 1 | 1 | — | — | — | — | 2026-10-13 |
-| Grafana Cloud (`grafc/`) | 2 | — | 1 | — | 1 | — | — | — | — | 2026-10-13 |
-| Helm | 3 | 5 | 1 | 4 | 5 | 14 | 1 | — | 22 | 2026-10-05 |
-| Kubernetes | 9 | 5 | 2 | 4 | 1 | 6 | 2 | — | 32 | 2026-10-13 |
+| Grafana Cloud (`grafc/`) | 2 | — | 1 | 1 | 2 | — | — | — | — | 2026-10-13 |
+| Helm | 3 | 5 | 1 | 4 | 5 | — | 1 | — | — | 2026-10-05 |
+| Kubernetes | 9 | 5 | 2 | 4 | 1 | 6 | 2 | — | — | 2026-10-13 |
 | OpenTelemetry (`otel/`) | 2 | 2 | 2 | 2 | 2 | — | — | — | — | 2026-10-14 |
-| OpenTofu | 2 | 4 | — | 3 | 2 | — | 2 | — | 6 | 2026-10-10 |
-| Prometheus | 2 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-09-30 |
+| OpenTofu | 2 | 4 | — | 3 | 2 | — | 2 | — | — | 2026-10-10 |
+| Prometheus | 2 | 2 | 1 | 4 | 4 | — | — | — | — | 2026-10-19 |
 | Pulumi (`plm/`) | 2 | 2 | 1 | 3 | 2 | — | — | — | — | 2026-10-14 |
-| Terraform | 6 | 6 | 3 | 4 | 9 | 2 | 2 | — | 24 | 2026-10-11 |
+| Terraform | 6 | 6 | 3 | 4 | 4 | 2 | 2 | — | — | 2026-10-11 |
 | Trivy | 5 | 2 | 2 | 5 | 3 | — | — | — | — | 2026-10-19 |
-| HashiCorp Vault (`vlt/`) | 3 | 1 | — | 3 | 1 | — | — | — | — | 2026-10-07 |
+| HashiCorp Vault (`vlt/`) | 3 | 1 | — | 3 | 1 | — | — | — | — | 2026-09-19 |
+
 </details>
 
 ## Status
 
-_Last updated: 2026-10-19_
+Currently working through L1 first-contact notes for Flux CD and Grafana Cloud, and expanding template scaffolds for Ansible, Helm, and Terraform.
+
+---
+_Last updated: 2026-10-20_
