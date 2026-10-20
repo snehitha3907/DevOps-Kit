@@ -1,0 +1,27 @@
+# Development environment values
+environment: dev
+replicaCount: 1
+logLevel: debug
+resources:
+  cpuRequest: 100m
+  memoryRequest: 128Mi
+  cpuLimit: 500m
+  memoryLimit: 512Mi
+ingress:
+  enabled: true
+  className: nginx
+  host: dev.example.com
+  tls:
+    enabled: false
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+monitoring:
+  enabled: true
+  prometheus:
+    scrape: true
+    port: 9090
+  grafana:
+    dashboard: true

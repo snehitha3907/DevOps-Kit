@@ -1,0 +1,77 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: multi-cluster-gitops-apps
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/managed-by: argocd
+    gitops.repo: multi-cluster-gitops
+spec:
+  generators:
+    - matrix:
+        generators:
+          - clusters:
+              selector:
+                matchLabels:
+                  argocd.argoproj.io/managed-by: argocd
+              values:
+                environment: ["dev", "staging", "prod"]
+          - git:
+              repoURL: https://github.com/your-org/multi-cluster-gitops-repo.git
+              revision: HEAD
+              directories:
+                - path: applications/*
+  template:
+    metadata:
+      name: '{{name}}-{{environment}}'
+      namespace: argocd
+      labels:
+        argocd.argoproj.io/managed-by: argocd
+        gitops.repo: multi-cluster-gitops
+        environment: '{{environment}}'
+        application: '{{name}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"
+    spec:
+      project: multi-cluster-gitops
+      source:
+        repoURL: https://github.com/your-org/multi-cluster-gitops-repo.git
+        targetRevision: HEAD
+        path: overlays/{{environment}}
+        kustomize:
+          namePrefix: '{{name}}-'
+          commonLabels:
+            application: '{{name}}'
+            environment: '{{environment}}'
+            managed-by: argocd
+      destination:
+        server: '{{server}}'
+        namespace: applications
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+      ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jsonPointers:
+            - /spec/replicas
+        - group: ""
+          kind: Secret
+          jsonPointers:
+            - /data
+  syncPolicy:
+    preserveResourcesOnDeletion: false
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]

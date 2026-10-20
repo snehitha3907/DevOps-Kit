@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: multi-cluster-gitops
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/managed-by: argocd
+  annotations:
+    description: "Project for multi-cluster GitOps applications"
+spec:
+  description: "Multi-cluster GitOps project managing applications across dev, staging, and prod environments"
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server: "*"
+  clusterResourceWhitelist:
+    - group: ""
+      kind: "Namespace"
+    - group: "rbac.authorization.k8s.io"
+      kind: "ClusterRole"
+    - group: "rbac.authorization.k8s.io"
+      kind: "ClusterRoleBinding"
+  namespaceResourceWhitelist:
+    - group: ""
+      kind: "*"
+    - group: "apps"
+      kind: "*"
+    - group: "batch"
+      kind: "*"
+    - group: "networking.k8s.io"
+      kind: "*"
+    - group: "argoproj.io"
+      kind: "Application"
+    - group: "argoproj.io"
+      kind: "AppProject"
+  roles:
+    - name: admin
+      description: "Full access to all applications in this project"
+      policies:
+        - p, proj:multi-cluster-gitops:admin, applications, *, multi-cluster-gitops/*, allow
+      groups:
+        - argocd-admins
+    - name: developer
+      description: "Read/write access to dev environment applications"
+      policies:
+        - p, proj:multi-cluster-gitops:developer, applications, get, multi-cluster-gitops/*, allow
+        - p, proj:multi-cluster-gitops:developer, applications, create, multi-cluster-gitops/*, allow
+        - p, proj:multi-cluster-gitops:developer, applications, update, multi-cluster-gitops/*, allow
+        - p, proj:multi-cluster-gitops:developer, applications, delete, multi-cluster-gitops/*, allow
+      groups:
+        - argocd-developers
+    - name: viewer
+      description: "Read-only access to all applications"
+      policies:
+        - p, proj:multi-cluster-gitops:viewer, applications, get, multi-cluster-gitops/*, allow
+      groups:
+        - argocd-viewers

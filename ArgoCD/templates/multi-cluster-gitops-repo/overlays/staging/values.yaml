@@ -1,0 +1,34 @@
+# Staging environment values
+environment: staging
+replicaCount: 2
+logLevel: info
+resources:
+  cpuRequest: 250m
+  memoryRequest: 256Mi
+  cpuLimit: 1000m
+  memoryLimit: 1Gi
+ingress:
+  enabled: true
+  className: nginx
+  host: staging.example.com
+  tls:
+    enabled: true
+    secretName: staging-tls-secret
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 70
+monitoring:
+  enabled: true
+  prometheus:
+    scrape: true
+    port: 9090
+  grafana:
+    dashboard: true
+  alerting:
+    enabled: true
+    rules:
+      - HighErrorRate
+      - HighLatency
+      - PodCrashLooping

@@ -1,0 +1,60 @@
+# Production environment values
+environment: prod
+replicaCount: 3
+logLevel: warn
+resources:
+  cpuRequest: 500m
+  memoryRequest: 512Mi
+  cpuLimit: 2000m
+  memoryLimit: 2Gi
+ingress:
+  enabled: true
+  className: nginx
+  host: prod.example.com
+  tls:
+    enabled: true
+    secretName: prod-tls-secret
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+  targetMemoryUtilizationPercentage: 70
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 10
+          periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 15
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+      selectPolicy: Max
+monitoring:
+  enabled: true
+  prometheus:
+    scrape: true
+    port: 9090
+  grafana:
+    dashboard: true
+  alerting:
+    enabled: true
+    rules:
+      - HighErrorRate
+      - HighLatency
+      - PodCrashLooping
+      - HighMemoryUsage
+      - HighCPUUsage
+      - DiskPressure
+      - NodeNotReady
+  slo:
+    enabled: true
+    availabilityTarget: 99.9
+    latencyTarget: 200ms

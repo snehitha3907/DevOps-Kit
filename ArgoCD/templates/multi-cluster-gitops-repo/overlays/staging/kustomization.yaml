@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: applications
+resources:
+  - ../../base
+commonLabels:
+  argocd.argoproj.io/managed-by: argocd
+  gitops.repo: multi-cluster-gitops
+  environment: staging
+configMapGenerator:
+  - name: env-config
+    behavior: merge
+    literals:
+      - ENVIRONMENT=staging
+      - LOG_LEVEL=info
+      - REPLICA_COUNT=2
+      - RESOURCES_CPU_REQUEST=250m
+      - RESOURCES_MEMORY_REQUEST=256Mi
+      - RESOURCES_CPU_LIMIT=1000m
+      - RESOURCES_MEMORY_LIMIT=1Gi
