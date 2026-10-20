@@ -10,6 +10,11 @@
 - **Reconcile** — The `flux reconcile` command that re-syncs a Flux object immediately instead of waiting for the next interval; `--with-source` pulls the Git source down first.
 - **`flux tree`** — A command that prints the dependency graph of Flux-managed resources, handy when a HelmRepository fetch is failing.
 - **`flux check --pre`** — A pre-flight check that verifies a cluster is ready for Flux: cert-manager, CRDs, network policy, etc.
+- **ImageRepository** — A Flux Image Automation resource that watches a container registry for new image tags matching a filter pattern; the source of truth for what images exist.
+- **ImagePolicy** — A Flux Image Automation resource that selects which tags from an ImageRepository to use (e.g., semver range, alphabetical order); defines the "what to pick" logic.
+- **ImageUpdateAutomation** — A Flux Image Automation resource that patches a HelmRelease (or other resource) in Git when a new image is selected by an ImagePolicy; the "write back" half of the loop.
+- **ImageReflectorController** — The Flux controller that scans ImageRepositories, fetches tag lists from registries, and updates their status.
+- **ImageAutomationController** — The Flux controller that evaluates ImagePolicies against ImageRepositories and, when a new image is selected, commits the update via ImageUpdateAutomation.
 
 ## Ansible
 
