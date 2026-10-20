@@ -1,0 +1,86 @@
+# last_verified: 2026-10-20 · Flux CD 2.x (HelmRelease + ImageAutomation)
+# Purpose
+#   Show how to configure Flux CD to automatically update container images in a
+#   HelmRelease when new images are pushed to a registry. Uses ImageRepository,
+#   ImagePolicy, and ImageUpdateAutomation to detect new tags and patch the
+#   HelmRelease values.
+#
+# When to use
+#   - Teams using Helm charts deployed via Flux who want automated image updates
+#   - CI/CD pipelines that build and push images; Flux handles deployment updates
+#   - GitOps workflows where the Git repo should reflect the running image version
+#
+# Prerequisites
+#   - Flux CD controllers installed (source-controller, kustomize-controller,
+#     helm-controller, notification-controller, image-automation-controller,
+#     image-reflector-controller)
+#   - A HelmRelease already deployed via Flux
+#   - Container registry accessible to the image-reflector-controller
+#   - Write access to the Git repository (for ImageUpdateAutomation to commit)
+#
+# Components
+#   1. ImageRepository — watches a registry for new tags matching a pattern
+#   2. ImagePolicy — selects which tags to use (semver, alphabetical, etc.)
+#   3. ImageUpdateAutomation — updates the HelmRelease values in Git when a new
+#      image is selected
+#
+# The HelmRelease must have .spec.values.image.repository and .spec.values.image.tag
+# (or equivalent paths) for the automation to patch them.
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: myapp
+  namespace: flux-system
+spec:
+  image: ghcr.io/example-org/myapp
+  interval: 5m
+  # Optional: filter tags by regex (e.g., only semver tags)
+  # tagFilter:
+  #   regex: '^v?[0-9]+\.[0-9]+\.[0-9]+$'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: myapp
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: myapp
+  # Select the newest semver tag
+  policy:
+    semver:
+      range: '>=0.0.0'
+  # Or use alphabetical for non-semver tags:
+  # policy:
+  #   alphabetical:
+  #     order: asc
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: myapp
+  namespace: flux-system
+spec:
+  interval: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system  # assumes the cluster repo is registered as flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxcdbot@example.com
+        name: fluxcdbot
+      messageTemplate: 'chore: update myapp to {{ range .Updated.Images }}{{ . }}{{ end }}'
+    push:
+      branch: main
+  update:
+    path: ./clusters/production  # path to the HelmRelease in the repo
+    strategy: Setters
+    # The HelmRelease must use setters like:
+    # {{ .Values.image.repository }} and {{ .Values.image.tag }}
+    # or define explicit setters in the HelmRelease metadata

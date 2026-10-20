@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-20
+
+- Added Flux CD bootstrap script for kind: creates cluster, installs Flux CLI, runs pre-flight checks, bootstraps components, and creates GitRepository/Kustomization (flx-013) (`FluxCD/scripts/bootstrap-flux-on-kind.sh`)
+- Added Flux CD HelmRelease image automation config: ImageRepository, ImagePolicy, and ImageUpdateAutomation for automated container image updates (flx-015) (`FluxCD/configs/helmrelease-image-automation.yaml`)
+
 ## 2026-10-19
 
 - Added Grafana Cloud stack creation and first metric push script: creates stack via API and sends sample metric via OTLP endpoint (grafc-008) (`grafc/scripts/2026-10-19-create-stack-and-send-metrics.py`)
