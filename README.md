@@ -18,18 +18,18 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 
 ## Quick links
 
-- [Flux CD HelmRelease image automation](FluxCD/configs/helmrelease-image-automation.yaml) — A HelmRelease with image automation so Flux watches the registry and rolls out new tags without a Git commit.
-- [Flux CD bootstrap script for kind](FluxCD/scripts/bootstrap-flux-on-kind.sh) — Installs Flux, creates a GitRepository and Kustomization, and waits for readiness; idempotent and safe to re-run.
-- [Grafana Cloud Prometheus remote-write config](grafc/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml) — Minimal scrape config with a pass-through relabel rule forwarding metrics to Grafana Cloud via remote_write.
-- [Create Grafana Cloud stack and send metrics](grafc/scripts/2026-10-19-create-stack-and-send-metrics.py) — Scripts the stack creation, grabs the endpoint and token, writes the agent config, and verifies metrics arrive.
-- [Prometheus + Kubernetes integration](Prometheus/docs/prometheus-kubernetes-integration.md) — Service discovery, RBAC, and workload annotations so Prometheus automatically tracks cluster targets.
+- [ArgoCD docs: Vault/External Secrets integration](ArgoCD/docs/argocd-vault-external-secrets.md) — Complete guide to wiring ArgoCD with HashiCorp Vault and External Secrets Operator for GitOps secret management.
+- [ArgoCD scripts: application helper](ArgoCD/scripts/argocd-application-helper.py) — Python helper to create, sync, and verify ArgoCD Applications from scripts or CI pipelines.
+- [ArgoCD manifests: multi-cluster fleet ApplicationSet](ArgoCD/manifests/multi-cluster-fleet-applicationset.yaml) — ApplicationSet manifest that fans out Applications across a fleet of clusters using a list generator.
+- [ArgoCD templates: multi-cluster GitOps repo scaffold](ArgoCD/templates/multi-cluster-gitops-repo/README.md) — Scaffold for a multi-cluster GitOps repository structure with base apps, overlays, and bootstrap script.
+- [ArgoCD samples: guestbook Application manifest](ArgoCD/templates/multi-cluster-gitops-repo/applications/sample-app.yaml) — Minimal Guestbook Application manifest for the multi-cluster GitOps scaffold.
 
 ## Layout
 
 - **00_index/** — Topics map, quick links, glossary, and learning path.
-- **AWS/** — AWS CLI setup, profiles, resource listings, tagging, S3 website examples, boto3 snippets and stack builders, an IAM least-privilege walkthrough, and a boto3-vs-CloudFormation-vs-CDK comparison notebook.
 - **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
-- **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests including a multi-cluster one, GitHub wiring, installation, scripted sync, and health checks.
+- **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests including a multi-cluster one, GitHub wiring, installation, scripted sync, health checks, and Vault/External Secrets integration.
+- **AWS/** — AWS CLI setup, profiles, resource listings, tagging, S3 website examples, boto3 snippets and stack builders, an IAM least-privilege walkthrough, and a boto3-vs-CloudFormation-vs-CDK comparison notebook.
 - **Azure/** — Azure CLI setup, CLI-vs-Bicep-vs-Python-SDK comparison, resource provisioning, VM scale sets, a private AKS Bicep example with modular addons, a Container Apps microservices baseline, an Azure DevOps pipeline pattern for Bicep, and two prefix-selected resource-group cleanup scripts.
 - **Docker/** — Container primers, Dockerfiles, Compose stacks, build-strategy and networking notebooks, health checks, Go and Compose scaffolds, and a Docker-to-Kubernetes handoff guide.
 - **FluxCD/** — Flux CLI primer, bootstrap, reconcile, GitRepository/Kustomization manifests, and pre-flight cluster checks.
@@ -57,35 +57,35 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 <summary>Coverage table</summary>
 
 | Tool | Notes | Docs | Snippets | Scripts | Configs | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
-|------|-------|------|----------|---------|---------|-----------|-----------|-------------|-------------|---------------|
-| AWS | 2 | 2 | 3 | 7 | 3 | — | 1 | — | — | 2026-10-07 |
-| Ansible | 9 | 5 | 2 | 4 | 8 | 1 | 2 | 1 | 1 | 2026-10-12 |
-| ArgoCD | 3 | 1 | 1 | 2 | 3 | — | — | — | — | 2026-10-02 |
-| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | — | 2026-10-08 |
-| Docker | 6 | 8 | 2 | 5 | 1 | 6 | 3 | 7 | — | 2026-10-12 |
-| FluxCD | 2 | 1 | — | 2 | 2 | — | — | — | — | 2026-09-22 |
-| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-28 |
-| Git | 6 | 12 | 1 | 12 | — | — | 1 | — | — | 2026-09-25 |
-| GitHub | 11 | 7 | 3 | 7 | 2 | 1 | 2 | 1 | — | 2026-10-10 |
-| GitHub Actions | 5 | 5 | 1 | 4 | 5 | — | — | 1 | — | 2026-10-04 |
+|------|-------|------|----------|---------|---------|-----------|-----------|-------------|-----------|---------------|
+| Ansible | 10 | 5 | 2 | 4 | 8 | 8 | 2 | 1 | 48 | 2026-10-12 |
+| ArgoCD | 3 | 2 | 1 | 3 | 3 | 2 | — | — | 13 | 2026-10-20 |
+| AWS | 2 | 2 | 3 | 7 | 3 | — | 1 | — | 3 | 2026-10-08 |
+| Azure | 4 | 2 | 3 | 5 | 1 | 1 | — | — | 10 | 2026-10-09 |
+| Docker | 6 | 8 | 2 | 5 | 1 | 6 | 3 | 9 | 12 | 2026-10-12 |
+| FluxCD | 2 | 2 | — | 2 | 2 | — | — | — | — | 2026-10-20 |
+| GCP | 2 | 1 | 2 | 5 | 3 | — | — | — | — | 2026-09-29 |
+| Git | 6 | 14 | 1 | 12 | — | — | 1 | — | 22 | 2026-10-11 |
+| GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-14 |
+| GitHub Actions | 5 | 6 | 1 | 4 | 5 | — | — | 1 | 3 | 2026-10-11 |
 | GitLab CI | 4 | 1 | 1 | 4 | 4 | — | — | — | — | 2026-10-02 |
-| Grafana (`graf/`) | 4 | 2 | — | 1 | 1 | — | — | — | — | 2026-10-13 |
-| Grafana Cloud (`grafc/`) | 2 | — | 1 | 1 | 2 | — | — | — | — | 2026-10-13 |
-| Helm | 3 | 5 | 1 | 4 | 5 | — | 1 | — | — | 2026-10-05 |
-| Kubernetes | 9 | 5 | 2 | 4 | 1 | 6 | 2 | — | — | 2026-10-13 |
+| Grafana (`graf/`) | 4 | 2 | — | 1 | 1 | — | — | — | — | 2026-10-14 |
+| Grafana Cloud (`grafc/`) | 2 | — | 1 | 1 | 2 | — | — | — | — | 2026-10-19 |
+| Helm | 3 | 5 | 1 | 4 | 5 | 14 | 1 | — | 22 | 2026-10-06 |
+| Kubernetes | 9 | 5 | 2 | 4 | 1 | 6 | 2 | — | 32 | 2026-10-14 |
 | OpenTelemetry (`otel/`) | 2 | 2 | 2 | 2 | 2 | — | — | — | — | 2026-10-14 |
-| OpenTofu | 2 | 4 | — | 3 | 2 | — | 2 | — | — | 2026-10-10 |
-| Prometheus | 2 | 2 | 1 | 4 | 4 | — | — | — | — | 2026-10-19 |
-| Pulumi (`plm/`) | 2 | 2 | 1 | 3 | 2 | — | — | — | — | 2026-10-14 |
-| Terraform | 6 | 6 | 3 | 4 | 4 | 2 | 2 | — | — | 2026-10-11 |
+| OpenTofu | 2 | 4 | — | 3 | 2 | — | 2 | — | 6 | 2026-10-11 |
+| Prometheus | 2 | 2 | 1 | 4 | 4 | — | — | — | 11 | 2026-10-19 |
+| Pulumi (`plm/`) | 2 | 2 | 1 | 3 | 2 | — | — | — | — | 2026-10-15 |
+| Terraform | 6 | 6 | 3 | 4 | 9 | 2 | 2 | — | 24 | 2026-10-14 |
 | Trivy | 5 | 2 | 2 | 5 | 3 | — | — | — | — | 2026-10-19 |
-| HashiCorp Vault (`vlt/`) | 3 | 1 | — | 3 | 1 | — | — | — | — | 2026-09-19 |
+| HashiCorp Vault (`vlt/`) | 3 | 1 | — | 3 | 1 | — | — | — | — | 2026-10-08 |
 
 </details>
 
 ## Status
 
-Currently working through L1 first-contact notes for Flux CD and Grafana Cloud, and expanding template scaffolds for Ansible, Helm, and Terraform.
+Currently working through L1 first-contact notes for Flux CD and Grafana Cloud, and expanding template scaffolds for Ansible, Helm, and Terraform. Recently added ArgoCD Vault/External Secrets integration docs and multi-cluster GitOps scaffold.
 
 ---
 _Last updated: 2026-10-20_
