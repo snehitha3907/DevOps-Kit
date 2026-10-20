@@ -578,3 +578,19 @@
 - **Span attribute** — A key/value pair attached to a span (`span.set_attribute("http.method", "GET")`) recording a fact about that step. Attributes are indexed, so they are what you filter and group by in a trace backend; free-form log lines are not.
 - **OTLP endpoint** — The address a client exporter is pointed at, e.g. `localhost:4317` for a collector running on the same machine. It is the one setting most often wrong when a span silently goes nowhere: check the port matches the receiver the collector actually has enabled.
 - **Pipeline** — The named entry under `service.pipelines` that wires receivers, processors, and exporters together for one signal type. The order in that line reads receivers, then processors, then exporters, and the collector refuses to start if the stages are listed any other way.
+
+## Jenkins
+
+- **Jenkins** — An open-source automation server that provides hundreds of plugins to support building, deploying, and automating any project.
+- **Pipeline** — A suite of plugins that supports implementing and integrating continuous delivery pipelines into Jenkins. Defined in a `Jenkinsfile` using either Declarative or Scripted syntax.
+- **Declarative Pipeline** — A simplified, opinionated syntax for writing Jenkins Pipelines with a predefined structure (`pipeline { agent any; stages { ... } }`).
+- **Scripted Pipeline** — The original Groovy-based syntax for Jenkins Pipelines, offering full programming flexibility but more verbose.
+- **Agent** — The machine or container where Pipeline stages execute. Can be `any`, a labeled node, a Docker container, or a Kubernetes pod.
+- **Stage** — A logical grouping of tasks within a Pipeline (e.g., `Build`, `Test`, `Deploy`).
+- **Step** — A single task within a stage, such as `sh`, `git`, `archiveArtifacts`, or a plugin-provided step.
+- **Jenkinsfile** — The text file checked into source control that defines the Pipeline. The standard contract between developers and the automation system.
+- **Blue Ocean** — A modern UI for Jenkins that visualizes Pipelines, shows stage-level logs, and surfaces failures more clearly than the classic UI.
+- **Shared Library** — A versioned collection of reusable Pipeline code (steps, functions, global variables) loaded from a Git repo or Jenkins internal storage, enabling DRY across many Jenkinsfiles.
+- **Credentials Binding** — The mechanism that injects secrets (username/password, SSH key, secret text) into a Pipeline as environment variables without writing them to the console log.
+- **Pipeline Agent** — Where the Pipeline runs. `agent any` picks any available executor; `agent { docker { image '...' } }` runs inside a container; `agent { kubernetes { yaml '...' } }` runs on a cluster pod.
+- **Post Section** — A block in a Declarative Pipeline that runs after the main stages (`always`, `success`, `failure`, `unstable`, `changed`, `fixed`) — useful for cleanup, notifications, or artifact archival.

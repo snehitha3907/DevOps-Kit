@@ -274,6 +274,12 @@ Folder on disk is `plm/`.
 - **configs** (3): most recent → [admission control configuration](../Trivy/configs/trivy-operator-admission-control.yaml) — configure the Trivy Operator to block or warn on vulnerabilities and misconfigurations — plus [config with scan policies](../Trivy/configs/2026-08-27-trivy-config-with-scan-policies.yaml), [config with severity filtering](../Trivy/configs/2026-08-12-trivy-config.yaml)
 - **docs** (2): most recent → [SBOM generation and vulnerability reporting](../Trivy/docs/trivy-sbom-generation-and-vulnerability-reporting.md) — generate CycloneDX/SPDX SBOMs and machine-readable vulnerability reports — plus [choosing scan modes and pipeline wiring](../Trivy/docs/choosing-scan-modes-and-pipeline-wiring.md) — image vs fs vs repo vs sbom, and blocking a bad artifact in CI
 
+## Jenkins  ·  1 file
+
+Folder on disk is `jnk/`.
+
+- **primer:** [0000-primer-jenkins.md](../jnk/notes/0000-primer-jenkins.md) — core concepts, pipeline syntax, agents, and common patterns
+
 ## Foundational Concepts  ·  71 files
 
 - **CI/CD Concepts** — [primer](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md): pipelines, gates, rollbacks, artifact promotion.
