@@ -1,5 +1,7 @@
 # Changelog
 
+- Added Grafana script to build a multi-panel service dashboard via HTTP API with Prometheus datasource, request rate, error rate, latency p95, and active requests panels (graf-014) (`graf/scripts/build-multi-panel-service-dashboard-via-http-api.py`)
+
 ## 2026-10-20
 
 - Added Flux CD bootstrap script for kind: creates cluster, installs Flux CLI, runs pre-flight checks, bootstraps components, and creates GitRepository/Kustomization (flx-013) (`FluxCD/scripts/bootstrap-flux-on-kind.sh`)
