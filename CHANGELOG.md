@@ -5,6 +5,7 @@
 - Added Flux CD bootstrap script for kind: creates cluster, installs Flux CLI, runs pre-flight checks, bootstraps components, and creates GitRepository/Kustomization (flx-013) (`FluxCD/scripts/bootstrap-flux-on-kind.sh`)
 - Added Flux CD HelmRelease image automation config: ImageRepository, ImagePolicy, and ImageUpdateAutomation for automated container image updates (flx-015) (`FluxCD/configs/helmrelease-image-automation.yaml`)
 - Added Argo CD multi-cluster GitOps repository template: Kustomize base/overlays for dev/staging/prod, ApplicationSet matrix generator, kind bootstrap script, and sample Application (arg-015) (`ArgoCD/templates/multi-cluster-gitops-repo/`)
+- Added Argo CD multi-cluster fleet ApplicationSet manifest: matrix generator over the cluster inventory and the application directories in the GitOps repository, per-cluster prune and selfHeal, per-cluster sync waves, and the fleet sync-options policy Application (arg-016) (`ArgoCD/manifests/multi-cluster-fleet-applicationset.yaml`)
 
 ## 2026-10-19
 

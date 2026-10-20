@@ -1,0 +1,169 @@
+# last_verified: 2026-10-20 · Argo CD (argoproj.io/v1alpha1 ApplicationSet and Application API)
+#
+# Fleet GitOps manifests: one ApplicationSet for the whole fleet, plus the
+# Application that carries the fleet's sync-options policy.
+#
+# Purpose
+#   A single GitOps repository drives every cluster registered with Argo CD.
+#   The ApplicationSet fans out one Application per (application directory x
+#   cluster) pair, and each cluster entry of the generator supplies its own
+#   prune, selfHeal and sync-wave values. The sync-options policy Application
+#   keeps the fleet-wide sync behaviour in Git, where it is reviewed like any
+#   other change instead of being set in the Argo CD UI.
+#
+# When to use
+#   - Several clusters are managed by one Argo CD installation.
+#   - The cluster inventory is known ahead of time and small. For clusters that
+#     register themselves, replace the list generator with a clusters generator
+#     that selects on a label.
+#
+# Prerequisites
+#   - Argo CD running in the "argocd" namespace with the ApplicationSet
+#     controller enabled.
+#   - The GitOps repository added as a repository in Argo CD, reachable over
+#     the same revision that the generator references.
+#   - Every destination cluster registered with Argo CD and reachable from it.
+#   - One Kustomize root per application under "apps/" in that repository.
+#
+# Apply
+#   kubectl apply --server-side --force-conflicts \
+#     -f ArgoCD/manifests/multi-cluster-fleet-applicationset.yaml
+#
+# Verify
+#   argocd appset list
+#   argocd appset get fleet-apps
+#   kubectl -n argocd get applications -l app.kubernetes.io/part-of=fleet
+#
+# Notes
+#   - The generated Application objects are large enough to exceed the
+#     client-side apply annotation limit, so --server-side is required.
+#   - Generator values are substituted as text, so the per-cluster booleans are
+#     carried as quoted strings and rendered without quotes in the patch below.
+#     templatePatch is parsed as plain YAML after the substitution, which keeps
+#     prune and selfHeal booleans instead of turning them into strings.
+#   - The Application-level sync wave orders the fleet rollout: the policy
+#     Application first, then prod, staging and dev. Ordering between the
+#     applications inside one cluster is handled by the sync-wave annotations on
+#     the resources in each application directory.
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: fleet-apps
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/managed-by: argocd
+    app.kubernetes.io/part-of: fleet
+spec:
+  generators:
+    - matrix:
+        generators:
+          # Cluster inventory. Each entry carries the sync policy that applies
+          # to that cluster only: prune and selfHeal decide how strictly the
+          # cluster is kept in sync with Git, wave orders the rollout.
+          - list:
+              elements:
+                - cluster: dev
+                  server: https://k8s-dev.example.com
+                  namespace: fleet-dev
+                  prune: "false"
+                  selfHeal: "false"
+                  wave: "4"
+                - cluster: staging
+                  server: https://k8s-staging.example.com
+                  namespace: fleet-staging
+                  prune: "true"
+                  selfHeal: "false"
+                  wave: "3"
+                - cluster: prod
+                  server: https://k8s-prod.example.com
+                  namespace: fleet-prod
+                  prune: "true"
+                  selfHeal: "true"
+                  wave: "2"
+          # Application inventory. Every directory under "apps/" in the GitOps
+          # repository becomes one Application for every cluster above, so a
+          # new application directory is picked up without touching this file.
+          - git:
+              repoURL: https://github.com/your-org/fleet-gitops.git
+              revision: main
+              directories:
+                - path: apps/*
+  template:
+    metadata:
+      name: '{{path.basename}}-{{cluster}}'
+      labels:
+        argocd.argoproj.io/managed-by: argocd
+        app.kubernetes.io/part-of: fleet
+        app.kubernetes.io/instance: '{{path.basename}}'
+        fleet.cluster: '{{cluster}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{wave}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/your-org/fleet-gitops.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: '{{server}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+  # Per-cluster prune and selfHeal. The patch is plain YAML text, so the
+  # substituted values stay unquoted booleans when it is parsed.
+  templatePatch: |
+    spec:
+      syncPolicy:
+        automated:
+          prune: {{prune}}
+          selfHeal: {{selfHeal}}
+  syncPolicy:
+    allowEmpty: false
+    preserveResourcesOnDeletion: false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fleet-sync-policy
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/managed-by: argocd
+    app.kubernetes.io/part-of: fleet
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-org/fleet-gitops.git
+    targetRevision: main
+    # Directory in the GitOps repository that holds the fleet-wide sync policy
+    # manifests, for example the ConfigMap listing the sync options every fleet
+    # Application is expected to use and the AppProject that scopes them.
+    path: policy/sync-options
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fleet-policy
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 5m
