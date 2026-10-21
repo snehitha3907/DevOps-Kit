@@ -1,110 +1,7 @@
 # Glossary
 
-## Flux CD
-
-- **Flux CD** — A GitOps operator for Kubernetes that continuously reconciles cluster state with a Git repository, automating deployments without manual `kubectl apply`.
-- **Bootstrap** — The `flux bootstrap` command that installs Flux into a cluster and wires it to a Git repo in one shot: namespace, CRDs, deployment, and deploy-key secret.
-- **GitRepository** — A Flux source resource that says where to fetch from: the clone URL, the branch or tag or commit to check out, and how often to re-fetch. Everything downstream (a Kustomization, a HelmRelease) points at a GitRepository rather than at Git directly.
-- **Kustomization** — A Flux resource that watches a path in Git and applies the Kustomize-defined manifests found there to the cluster. The `--path` it takes is a path inside the fetched repo, not a directory on your laptop — pointing it at a local one is the usual reason the source comes back empty.
-- **HelmRelease** — A Flux resource that declaratively manages a Helm chart release, including install, upgrade, and rollback.
-- **Reconcile** — The `flux reconcile` command that re-syncs a Flux object immediately instead of waiting for the next interval; `--with-source` pulls the Git source down first.
-- **`flux tree`** — A command that prints the dependency graph of Flux-managed resources, handy when a HelmRepository fetch is failing.
-- **`flux check --pre`** — A pre-flight check that verifies a cluster is ready for Flux: cert-manager, CRDs, network policy, etc.
-- **ImageRepository** — A Flux Image Automation resource that watches a container registry for new image tags matching a filter pattern; the source of truth for what images exist.
-- **ImagePolicy** — A Flux Image Automation resource that selects which tags from an ImageRepository to use (e.g., semver range, alphabetical order); defines the "what to pick" logic.
-- **ImageUpdateAutomation** — A Flux Image Automation resource that patches a HelmRelease (or other resource) in Git when a new image is selected by an ImagePolicy; the "write back" half of the loop.
-- **ImageReflectorController** — The Flux controller that scans ImageRepositories, fetches tag lists from registries, and updates their status.
-- **ImageAutomationController** — The Flux controller that evaluates ImagePolicies against ImageRepositories and, when a new image is selected, commits the update via ImageUpdateAutomation.
-
-## Ansible
-
-- **Control node** — The machine where Ansible is installed and from which commands and playbooks are run.
-- **Inventory** — A file listing managed hosts and their groupings.
-- **Playbook** — A YAML file defining a set of tasks to run on managed hosts.
-- **Module** — A reusable unit of work Ansible executes (e.g., `apt`, `copy`, `service`).
-- **Ad-hoc command** — A one-off Ansible command run directly without a playbook.
-- **ansible-lint** — A linting tool that checks Ansible playbooks for syntax errors, best-practice violations, and idempotency risks.
-- **cloud.terraform.terraform_provider** — An Ansible inventory plugin that reads Terraform state directly to populate dynamic inventory, eliminating the need for wrapper scripts or manual IP management.
-- **Jinja2 template** — A templated file (often with the `.j2` extension) rendered by Ansible using the `template` module to produce config files on managed hosts.
-- **Idempotency** — The property that running a task repeatedly produces the same end state, so Ansible can safely re-apply a playbook without unintended side effects.
-- **ansible-core** — The runtime engine underneath the Ansible package: it ships the CLI, the playbook executor, and the built-in plugins. The `ansible` package pins a specific core version and bundles a set of collections around it, so a migration (e.g. Ansible 14 on ansible-core 2.21) means changing both at once.
-- **requires_ansible** — A collection metadata key declaring the minimum ansible-core version the collection supports. Modern `ansible-galaxy` refuses to install a collection whose requirement the running core does not satisfy, unless the mismatch guard is deliberately overridden.
-
-## AWS
-
-- **Region** — A geographic area containing multiple isolated availability zones where AWS services are hosted.
-- **Availability Zone (AZ)** — An isolated location within a region, providing fault tolerance and high availability.
-- **Named profile** — A credential configuration stored in the AWS CLI `config` and `credentials` files that lets you switch between accounts or roles without re-entering keys.
-- **AWS CLI** — The official command-line interface for interacting with AWS services, supporting both v1 and v2.
-- **CloudFormation** — AWS's native IaC service that provisions and manages resources using JSON or YAML templates.
-- **boto3** — AWS's Python SDK: one client object per service (`boto3.client('s3')`, `boto3.client('ec2')`), with one API call per mutation applied in dependency order. The right choice when provisioning logic needs runtime decisions a static template can't express.
-- **CDK** — AWS's Cloud Development Kit: define the same stack as code in Python/TypeScript and let it synthesise a CloudFormation template. Sits between boto3's imperative calls and hand-written declarative templates.
-- **Least privilege** — Granting each component only the permissions it actually needs (e.g. a Lambda execution role limited to one bucket and one table). Over-broad policies are the most common IAM mistake; verify scoping with the IAM policy simulator before attaching a policy to a real principal.
-- **`--output`** — Controls how results are printed: `json` (default), `text`, `table`, or `yaml`.
-- **`--dry-run`** — A flag on some commands that checks whether you *could* perform the action without actually doing it.
-- **`aws sts get-caller-identity`** — The "who am I?" command. It prints the account number, ARN, and user ID the current credentials resolve to.
-- **`~/.aws/config`** — The INI-style file that holds profile settings (region, output format). Distinct from `~/.aws/credentials` which holds the secret keys.
-- **`~/.aws/credentials`** — The file that stores access key pairs. Sensitive — should never be committed to git.
-- **Static website hosting** — An S3 bucket mode that serves a directory as a public website: you point the bucket at an `index.html` and enable public-read, and S3 exposes a `<bucket>.s3-website-<region>.amazonaws.com` endpoint. The index document is mandatory — the endpoint returns 200 only when it exists.
-- **Tagging** — Attaching `Key=Value` metadata to AWS resources (e.g. `Name`, `Environment`) so they are identifiable in lists and cost reports. With the CLI, `aws ec2 create-tags --resources <id> --tags Key=Name,Value=web` writes them, and a `Tags[?...]` clause inside an `--query` expression reads them back alongside `InstanceId` and `State.Name`.
-- **StackSet** — A CloudFormation construct that deploys one shared template into many accounts and regions at once. The template itself stays account-agnostic (no account IDs or region literals); the account list, region list, and capabilities live in the StackSet operation that creates the stack instances.
-- **Gateway VPC endpoint** — A route-table entry that keeps traffic to S3 or DynamoDB inside the AWS network instead of sending it through the internet gateway. Free, and the usual first step when a private subnet needs object storage without a NAT hop.
-- **Interface VPC endpoint** — An elastic network interface with a private IP placed inside the workload subnets, fronting an AWS service over PrivateLink behind a security group. Used for services without a gateway endpoint, scoped to the small set the workload actually calls.
-
-## Azure
-
-- **Resource group** — A logical container that holds related Azure resources for an application or solution, enabling lifecycle management as a group.
-- **Azure CLI** — The official cross-platform command-line tool for managing Azure resources and subscriptions.
-- **Region** — A geographic location containing one or more datacentres where Azure services are deployed.
-- **Subscription** — A billing and access-control boundary in Azure that defines how resources are paid for and who can manage them.
-- **ARM template** — A JSON-based IaC template used to declaratively define Azure resources and their dependencies.
-- **`--output` / `-o`** — Controls output format: `json` (default), `table`, `tsv`, `yaml`.
-- **`--query`** — JMESPath filter to pick specific fields from JSON output.
-- **Service principal** — A non-human identity for automation, used instead of a user account in CI/CD.
-- **ARM (Azure Resource Manager)** — The underlying REST API that `az` wraps. Every CLI command maps to an ARM API call.
-- **Storage account** — A service that provides scalable storage for blobs, files, queues, and tables; each account has a globally unique, lowercase-only name, and its SKU (e.g. `Standard_LRS`) fixes redundancy and performance. Created with `az storage account create`.
-- **`az configure`** — The Azure CLI command that sets persistent defaults (location, output format, default group) so you don't repeat `--location` and `--output` on every call.
-- **Bicep** — Microsoft's domain-specific language for deploying Azure resources, transpiled to ARM templates. It offers a cleaner syntax than raw ARM JSON, with reusable modules and type-safe parameter definitions.
-- **VM scale set** — A group of identical VMs that can be scaled out or in automatically or manually based on demand metrics like CPU.
-- **Autoscaling** — Automatically adjusting the number of VM instances in a scale set based on metrics such as CPU percentage, memory pressure, or request queue length.
-- **Azure SDK for Python** — The programmatic interface to Azure Resource Manager for Python code; the right tool when provisioning logic lives inside an application or pipeline and depends on runtime conditions rather than a static template.
-- **Service connection** — An Azure DevOps credential object (a service principal or managed identity) that lets a pipeline deploy into a subscription or resource group without storing a password in the YAML. Secrets the template needs come from the pipeline's variable group at deploy time.
-- **What-if** — A preview operation (`az deployment group what-if`) that shows which resources a Bicep/ARM deployment would create, modify, or delete before anything is applied. The validate stage of a pipeline runs it so a reviewer sees the blast radius before the deploy stage runs.
-- **Container Apps environment** — The shared boundary (networking, logging, scaling defaults) that one or more Container Apps run inside. A small API-plus-worker pair can share one consumption environment; each app keeps its own scaling rule (HTTP concurrency for the API, queue length for the worker) and each deployment leaves prior revisions available for reactivation on rollback.
-- **Management lock** — A lock placed on a subscription, resource group, or resource that blocks deletion (`CanNotDelete`) or all modification (`ReadOnly`). Cleanup automation lists locks first and skips whatever carries one, so a scheduled sweep cannot remove a group someone deliberately protected.
-
-## Containerization Concepts
-
-- **Image** — A read-only template containing an application and its dependencies. Example: `nginx:1.25` is an official image with the Nginx web server and everything it needs.
-- **Container** — A running instance of an image. Example: `docker run -d -p 80:80 nginx:1.25` starts one container from that image.
-- **Dockerfile** — A text file that defines how to build an image, layer by layer. Example: `FROM python:3.12`, `COPY requirements.txt`, `RUN pip install`, `COPY .`, `CMD ["python", "app.py"]`.
-- **Layer** — A read-only filesystem delta in an image. Each instruction in a Dockerfile creates a new layer. Example: the `COPY` layer holds my app code; the `RUN pip install` layer holds installed packages.
-- **Volume** — A persistent storage location that survives container restarts and deletions. Example: a PostgreSQL container mounts a volume so database files aren't lost when the container exits.
-- **Network** — An isolated communication channel between containers. Example: a `frontend` network lets my web container talk to my API container on `api:5000` without exposing the API to the host.
-- **Registry** — A storage and distribution system for images. Example: Docker Hub, AWS ECR, or a private registry I run inside the cluster.
-- **Multi-stage build** — A Dockerfile that uses multiple `FROM` lines to produce a smaller final image by copying only artifacts from a builder stage. Example: compile a Go binary in a `golang:1.22` stage, then copy just the binary into a `scratch` or `alpine` stage.
-- **Base image** — The starting point for building an image. Example: `python:3.12-slim` is a small base with Python pre-installed; `alpine` is even smaller but less compatible.
-- **Entrypoint** — The default command or executable that runs when a container starts. Example: `ENTRYPOINT ["python"]` with `CMD ["app.py"]` means the container runs `python app.py`.
-
-## ArgoCD
-
-- **Application** — A set of Kubernetes resources that ArgoCD manages from a single Git path, defined as a custom resource.
-- **GitOps** — Using Git as the single source of truth for cluster state; changes are made via commits and PRs, and ArgoCD syncs automatically.
-- **Sync** — The operation that makes the cluster match the manifests in the Git repo.
-- **Sync status** — The current state of an Application relative to its Git source: `Synced`, `OutOfSync`, or an error condition.
-- **Health** — The operational state of an Application's resources: `Healthy`, `Degraded`, `Progressing`, or `Missing`.
-- **App of Apps** — A pattern where one Application deploys other Applications, enabling whole-cluster management from a single Git repository.
-- **ApplicationSet** — A custom resource that generates Application definitions from a set of generators (list, git, cluster, etc.), so one template fans out deployments across multiple clusters or namespaces instead of writing each Application by hand.
-- **List generator** — The simplest ApplicationSet generator: it iterates over a hardcoded list of elements (e.g. `cluster` + `namespace` pairs), templating each into a separate Application.
-- **Server-side apply** — A `kubectl apply --server-side --force-conflicts` install strategy that pushes manifests to the API server directly; needed for ArgoCD's ApplicationSet CRD, which is large enough to exceed the client-side annotation size limit.
-- **`selfHeal`** — An ArgoCD sync option that automatically reverts manual cluster changes (e.g. `kubectl edit`) back to the state declared in Git.
-- **`prune`** — An ArgoCD sync option that deletes cluster resources once they disappear from Git; pair it with the `allowEmpty: false` default so a generator returning zero resources cannot wipe everything.
-- **`allowEmpty`** — An ArgoCD ApplicationSet safety default that refuses to render a template when a generator returns no elements, guarding against accidental mass deletion on a broken generator.
-- **`OutOfSync`** — The state where an Application's live cluster state does not match what is declared in Git; ArgoCD surfaces this so you know a sync is needed.
-- **`Synced`** — The state where an Application's live cluster state matches the Git source exactly.
-- **ArgoCD project** — A namespaced boundary holding which repositories an Application may read from and which namespaces it may deploy into (`srcRepos`, `destNamespaces`, and a `clusterResourceWhitelist`). Created with `argocd proj create`; it is what stops a new Application from syncing an arbitrary repo into an arbitrary namespace.
-- **`dest` / `destination`** — Where an Application applies: the cluster server and namespace. A wildcard namespace in the project (`'*'`) is what allows the multi-cluster ApplicationSet to fan out, so scope the project as tightly as the generator allows.
-- **Auto-sync** — The Application sync option that applies Git state without a human pressing Sync. Combined with `selfHeal` it makes the cluster self-correcting, which is the point of GitOps and the reason a prune mistake propagates on its own.
+## Git
+- **Commit** — A snapshot of the repository at a point in time.
 
 ## Docker
 
@@ -578,3 +475,19 @@
 - **Span attribute** — A key/value pair attached to a span (`span.set_attribute("http.method", "GET")`) recording a fact about that step. Attributes are indexed, so they are what you filter and group by in a trace backend; free-form log lines are not.
 - **OTLP endpoint** — The address a client exporter is pointed at, e.g. `localhost:4317` for a collector running on the same machine. It is the one setting most often wrong when a span silently goes nowhere: check the port matches the receiver the collector actually has enabled.
 - **Pipeline** — The named entry under `service.pipelines` that wires receivers, processors, and exporters together for one signal type. The order in that line reads receivers, then processors, then exporters, and the collector refuses to start if the stages are listed any other way.
+
+## Jenkins
+
+- **Jenkins** — An open-source automation server that provides hundreds of plugins to support building, deploying, and automating any project.
+- **Pipeline** — A suite of plugins that supports implementing and integrating continuous delivery pipelines into Jenkins. Defined in a `Jenkinsfile` using either Declarative or Scripted syntax.
+- **Declarative Pipeline** — A simplified, opinionated syntax for writing Jenkins Pipelines with a predefined structure (`pipeline { agent any; stages { ... } }`).
+- **Scripted Pipeline** — The original Groovy-based syntax for Jenkins Pipelines, offering full programming flexibility but more verbose.
+- **Agent** — The machine or container where Pipeline stages execute. Can be `any`, a labeled node, a Docker container, or a Kubernetes pod.
+- **Stage** — A logical grouping of tasks within a Pipeline (e.g., `Build`, `Test`, `Deploy`).
+- **Step** — A single task within a stage, such as `sh`, `git`, `archiveArtifacts`, or a plugin-provided step.
+- **Jenkinsfile** — The text file checked into source control that defines the Pipeline. The standard contract between developers and the automation system.
+- **Blue Ocean** — A modern UI for Jenkins that visualizes Pipelines, shows stage-level logs, and surfaces failures more clearly than the classic UI.
+- **Shared Library** — A versioned collection of reusable Pipeline code (steps, functions, global variables) loaded from a Git repo or Jenkins internal storage, enabling DRY across many Jenkinsfiles.
+- **Credentials Binding** — The mechanism that injects secrets (username/password, SSH key, secret text) into a Pipeline as environment variables without writing them to the console log.
+- **Pipeline Agent** — Where the Pipeline runs. `agent any` picks any available executor; `agent { docker { image '...' } }` runs inside a container; `agent { kubernetes { yaml '...' } }` runs on a cluster pod.
+- **Post Section** — A block in a Declarative Pipeline that runs after the main stages (`always`, `success`, `failure`, `unstable`, `changed`, `fixed`) — useful for cleanup, notifications, or artifact archival.

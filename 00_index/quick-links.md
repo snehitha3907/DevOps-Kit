@@ -2,23 +2,18 @@
 
 ## I need to...
 
-### Set up a cloud provider
+### Fix a Git issue
+- [Git notes](../Git/)
 
-- [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
-- [Provision a resource group and storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh)
-- [Provision a VM scale set with autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
-- [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
-- [Deploy a static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh)
-- [Create an S3 bucket and upload an object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py)
-- [Install gcloud CLI and configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
-- [Create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
-- [Stand up a Cloud Run service from generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py)
+### Set up Docker
+- [Docker notes](../Docker/)
 
 ### Install a tool
 
 - [Install Ansible and run a first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
 - [Install Docker and run a first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install Helm and explore the CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
+- [Install Jenkins and explore core concepts](../jnk/notes/0000-primer-jenkins.md)
 - [Install kind and create a first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - [Install OpenTofu and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - [Install Prometheus and verify the metrics endpoint](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
@@ -60,6 +55,7 @@
 - [Grafana](../graf/notes/0000-primer-grafana.md)
 - [HashiCorp Vault](../vlt/notes/0000-primer-vlt.md)
 - [Helm](../Helm/notes/0000-primer-helm.md)
+- [Jenkins](../jnk/notes/0000-primer-jenkins.md)
 - [Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md)
 - [OpenTelemetry](../otel/notes/0000-primer-opentelemetry.md)
 - [OpenTofu](../OpenTofu/notes/0000-primer-opentofu.md)
@@ -262,9 +258,12 @@
 
 - [ArgoCD quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md)
 - [Wire ArgoCD to a private GitHub repo](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md)
+- [ArgoCD + Vault + External Secrets integration](../ArgoCD/docs/argocd-vault-external-secrets.md)
 - [Build an Application and drive a sync to health](../ArgoCD/scripts/build-argocd-application-from-scratch.sh)
+- [ArgoCD Application helper over REST API](../ArgoCD/scripts/argocd-application-helper.py)
 - [First ArgoCD Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml)
 - [Multi-cluster guestbook ApplicationSet](../ArgoCD/configs/guestbook-applicationset-multi-cluster.yaml)
+- [Multi-cluster fleet ApplicationSet](../ArgoCD/manifests/multi-cluster-fleet-applicationset.yaml)
 - [Sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
 - [Flux quickstart trip-ups](../FluxCD/notes/2026-09-30-flux-quickstart-trip-ups.md)
 - [Minimal Flux GitRepository and Kustomization](../FluxCD/configs/2026-09-30-minimal-gitrepository-and-kustomization.yaml)
@@ -377,6 +376,7 @@
 - [Install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
 - [Grafana quickstart trip-ups, second pass](../graf/notes/2026-10-13-grafana-quickstart-trip-ups.md)
 - [Provision a Prometheus datasource and dashboard as files](../graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml)
+- [Build a multi-panel service dashboard via Grafana HTTP API](../graf/scripts/build-multi-panel-service-dashboard-via-http-api.py)
 
 ### Ship metrics to Grafana Cloud
 
