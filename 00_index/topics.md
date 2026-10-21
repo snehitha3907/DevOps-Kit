@@ -2,57 +2,31 @@
 
 > A map of what's here. For a beginner-to-advanced reading order, see [learning-path.md](learning-path.md).
 
-## Ansible  ·  88 files
+## AWS · 21 files
+- **primer:** [notes/0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
+- _…browse the folder._
 
-- **primer:** [0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
-- **notes** (10): most recent → [quickstart trip-ups](../Ansible/notes/2026-09-04-ansible-quickstart-trip-ups.md), [ad-hoc commands](../Ansible/notes/2026-08-23-ansible-ad-hoc-commands.md), [handlers and templates](../Ansible/notes/2026-08-12-ansible-handlers-and-templates-tutorial.md)
-- _…and 7 more under `Ansible/notes/` — browse the folder._
-- **templates** (48): [production project scaffold](../Ansible/templates/production-ansible-project/README.md) — `ansible.cfg`, inventory, `group_vars`, three roles, playbooks, CI workflow — plus the [role skeleton](../Ansible/templates/ansible-role/roles/myrole/README.md) and [nginx-default.conf.j2](../Ansible/templates/nginx-default.conf.j2)
-- _…and 45 more under `Ansible/templates/` — browse the folder._
-- **manifests** (8): [multi-server deployment](../Ansible/manifests/multi-server-deployment.yaml), with [roles/](../Ansible/manifests/roles/) (webserver, loadbalancer, dbserver), [inventory/production.ini](../Ansible/manifests/inventory/production.ini), and [group_vars/all.yaml](../Ansible/manifests/group_vars/all.yaml)
-- **configs** (8): most recent → [AWX job template and credentials](../Ansible/configs/awx-job-template-and-credential-config.yaml), [first inventory and ping playbook](../Ansible/configs/2026-07-19-first-inventory-and-ping-playbook.yaml), [nginx + PHP-FPM + UFW on Ubuntu](../Ansible/configs/2026-07-19-nginx-phpfpm-ufw-ubuntu.yaml)
-- _…and 5 more under `Ansible/configs/` — browse the folder._
-- **scripts** (4): [scan for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py), [install and explore modules](../Ansible/scripts/2026-07-19-install-ansible-and-explore-modules.sh), [run first playbook](../Ansible/scripts/run-first-playbook.sh)
-- _1 more under `Ansible/scripts/` — browse the folder._
-- **docs** (5): [execution environments with custom images](../Ansible/docs/ansible-execution-environments-custom-images.md), [Ansible 14 / core 2.21 migration](../Ansible/docs/ansible-14-core-2-21-migration-guide.md), [Ansible over Terraform local-exec](../Ansible/docs/ansible-over-terraform-local-exec.md), [Ansible + Docker CI testing](../Ansible/docs/integrated-ansible-docker-ci-pipeline-testing.md), [wiring ansible-lint](../Ansible/docs/2026-06-15-wiring-ansible-lint.md)
-- **snippets** (2): [lint a playbook](../Ansible/snippets/2026-08-12-lint-ansible-playbook.py), [nginx playbook](../Ansible/snippets/nginx-playbook.yaml)
-- **notebooks** (2): [variable precedence](../Ansible/notebooks/ansible-variable-precedence.ipynb), [block / rescue / serial execution patterns](../Ansible/notebooks/comparing-execution-patterns-block-rescue-serial.ipynb)
-- **dockerfiles** (1): [Ansible control node](../Ansible/dockerfiles/ansible-control-node.Dockerfile)
+## Ansible · 88 files
+- **primer:** [notes/0000-primer-ansible.md](../Ansible/notes/0000-primer-ansible.md)
+- _…browse the folder._
 
-## ArgoCD  ·  11 files
+## Docker · 52 files
+- _…browse the folder._
 
-- **primer:** [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
-- **notes** (3): most recent → [quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md), [install.yaml](../ArgoCD/notes/install.yaml), [0000-primer-argocd.md](../ArgoCD/notes/0000-primer-argocd.md)
-- **configs** (3): [multi-cluster guestbook ApplicationSet](../ArgoCD/configs/guestbook-applicationset-multi-cluster.yaml) — one list generator fanning out an Application per cluster; apply it with `--server-side --force-conflicts` because the CRD outgrows the client-side annotation limit — plus [first Application manifest](../ArgoCD/configs/2026-07-23-first-application-manifest.yaml) and [guestbook ApplicationSet](../ArgoCD/configs/2026-08-11-guestbook-applicationset.yaml)
-- **scripts** (2): [build an Application and drive a sync to health](../ArgoCD/scripts/build-argocd-application-from-scratch.sh) — idempotent, so it works as a CI deploy step — plus [install the CLI and reach the UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
-- **docs** (1): [wiring ArgoCD with GitHub for GitOps deployment](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md) — control plane, private repo, project, Application, and where the integration broke
-- **snippets** (1): [sync an app and verify health](../ArgoCD/snippets/2026-09-09-sync-app-and-verify-health.sh)
-- **manifests** (1): [guestbook deployment](../ArgoCD/manifests/guestbook/deployment.yaml) — minimal 3-replica Guestbook Deployment backing the GitOps walkthrough
+## Kubernetes · 61 files
+- _…browse the folder._
 
-## AWS  ·  21 files
+## Terraform · 56 files
+- _…browse the folder._
 
-- **primer:** [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md)
-- **scripts** (7): most recent → [VPC with private endpoints (CDK)](../AWS/scripts/vpc-with-private-endpoints.py) — public/private/isolated subnets per environment with gateway plus interface endpoints — plus [VPC + EC2 + RDS stack builder](../AWS/scripts/build-vpc-ec2-rds-stack.py), [deploy a static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh)
-- _…and 4 more under `AWS/scripts/` — browse the folder._
-- **templates** (3): [multi-account baseline StackSet](../AWS/templates/cloudformation-multi-account-stack-set/README.md) — shared template body plus an example deploy sequence — with [template.yaml](../AWS/templates/cloudformation-multi-account-stack-set/template.yaml) and [examples/deploy.sh](../AWS/templates/cloudformation-multi-account-stack-set/examples/deploy.sh)
-- **docs** (2): most recent → [IAM cross-account roles, least privilege](../AWS/docs/iam-cross-account-roles-least-privilege.md) — scoping a role that one account assumes into another, checked with the policy simulator — plus [IAM least-privilege walkthrough](../AWS/docs/iam-policy-least-privilege-walkthrough.md)
-- **notebooks** (1): [boto3 vs CloudFormation vs CDK](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb) — the same small versioned-bucket stack built three ways
-- **configs** (3): most recent → [blue-green ECS service deployment](../AWS/configs/ecs-service-deployment-blue-green.yaml) — task definition plus service with blue/green wiring — plus [minimal config with named profiles](../AWS/configs/2026-07-13-minimal-aws-config.ini), [minimal config](../AWS/configs/2026-07-12-minimal-aws-config.ini)
-- **snippets** (3): most recent → [create an S3 bucket and upload an object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py), [list and tag EC2 instances](../AWS/snippets/2026-08-16-list-and-tag-ec2-instances.sh), [list EC2 and S3](../AWS/snippets/2026-08-12-list-ec2-and-s3.sh)
-- **notes** (2): [0000-primer-aws.md](../AWS/notes/0000-primer-aws.md), [primer-already-exists check](../AWS/notes/2026-07-13-primer-already-exists.md)
+## Git · 56 files
+- _…browse the folder._
 
-## Azure  ·  26 files
+## Helm · 55 files
+- _…browse the folder._
 
-- **primer:** [0000-primer-azure.md](../Azure/notes/0000-primer-azure.md)
-- **notes** (4): most recent → [first login and resource list](../Azure/notes/2026-09-18-first-login-and-resource-list.md), [quickstart trip-ups](../Azure/notes/2026-08-23-azure-quickstart-trip-ups.md), [CLI quickstart trip-ups](../Azure/notes/2026-08-16-azure-cli-quickstart-trip-ups.md)
-- _1 more under `Azure/notes/` — browse the folder._
-- **templates** (10): [AKS cluster with modular addons](../Azure/templates/aks-cluster-with-addons/README.md) — public/private subnets, an AKS cluster, and addons for GitOps, HTTP routing, Key Vault, monitoring, network policy, and policy — with [main.bicep](../Azure/templates/aks-cluster-with-addons/main.bicep), [deploy example](../Azure/templates/aks-cluster-with-addons/examples/deploy.sh), and the [addon modules](../Azure/templates/aks-cluster-with-addons/modules/)
-- **scripts** (5): most recent → [delete leftover resource groups by prefix](../Azure/scripts/resource-group-cleanup.sh) — prefix match, skips management-locked groups, deletes only with `CONFIRM=yes` — plus [scheduled cleanup of stale groups](../Azure/scripts/cleanup-resource-groups.sh) (prefix/tag/age selection, dry-run by default), [VM scale set with load balancer and autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
-- _…and 2 more under `Azure/scripts/` — browse the folder._
-- **snippets** (3): most recent → [create a VNet, NSG, and Linux VM](../Azure/snippets/2026-09-16-create-vnet-nsg-and-linux-vm.sh), [create a resource group and list regions](../Azure/snippets/2026-08-23-create-resource-group-and-list-regions.sh), [earlier pass](../Azure/snippets/2026-07-13-create-resource-group-and-list-regions.sh)
-- **docs** (2): most recent → [Azure DevOps pipeline for Bicep](../Azure/docs/azure-devops-pipeline-bicep-integration.md) — build, what-if validate, and deploy stages so a Bicep file ships through CI/CD — plus [CLI vs Bicep vs Python SDK](../Azure/docs/comparing-azure-cli-bicep-python-sdk.md)
-- **configs** (1): [Container Apps baseline for two microservices](../Azure/configs/container-apps-microservices.yaml) — a public API and an internal worker sharing one managed environment, with per-service scaling and revision rollback
-- **manifests** (1): [production AKS cluster](../Azure/manifests/production-aks-cluster.bicep)
+## GitHub · 56 files
+- _…browse the folder._
 
 ## Docker  ·  52 files
 

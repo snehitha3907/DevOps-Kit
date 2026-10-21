@@ -9,12 +9,6 @@
 
 > **New here? Start at [the learning path](00_index/learning-path.md).** It walks you from first-contact to confident in a sensible order — read that before this table.
 
-## Who this is for
-
-A working DevOps engineer's quick-reference: first-contact notes, runnable scripts, and configs for the tools you reach for while building and operating systems. Use it as a shelf to grab a primer, verify a command, or borrow a concrete manifest that you can edit into your own. It is not a tutorial site and it does not try to replace each tool's official documentation.
-
-## What's in here
-
 The kit covers 27 tool families across cloud CLIs, configuration management, containers, orchestration, Git hosting, CI/CD, infrastructure as code, secrets management, observability, and security scanning. Most tool folders pair a primer with notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, or templates. Under `docs/concepts/`, eight foundational concept primers cover the ground the tool-specific material stands on — networking, Linux, scripting, version control, infrastructure as code, CI/CD, containerization, and observability.
 
 ## Quick links
@@ -24,9 +18,6 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 - [ArgoCD: Vault + External Secrets integration](ArgoCD/docs/argocd-vault-external-secrets.md) — How to wire ArgoCD with HashiCorp Vault and the External Secrets Operator for GitOps secret management.
 - [ArgoCD: Application helper over REST API](ArgoCD/scripts/argocd-application-helper.py) — Helper over the Argo CD REST API: report drift, diff live state, sync, roll back.
 - [ArgoCD: Multi-cluster fleet ApplicationSet](ArgoCD/manifests/multi-cluster-fleet-applicationset.yaml) — Fleet GitOps manifests: one ApplicationSet for the whole fleet, plus the Application that carries the fleet's sync-options policy.
-
-## Layout
-
 - **00_index/** — Topics map, quick links, glossary, and learning path.
 - **Ansible/** — Primers, playbooks, inventories, roles, templates, Docker integration, and execution-pattern notebooks.
 - **ArgoCD/** — GitOps primer, Application and ApplicationSet manifests including a multi-cluster one, GitHub wiring, installation, scripted sync, and health checks.

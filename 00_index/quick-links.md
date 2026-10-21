@@ -2,17 +2,11 @@
 
 ## I need to...
 
-### Set up a cloud provider
+### Fix a Git issue
+- [Git notes](../Git/)
 
-- [Install Azure CLI and login](../Azure/scripts/2026-07-13-install-azure-cli-and-login.sh)
-- [Provision a resource group and storage account](../Azure/scripts/2026-08-17-provision-resource-group-and-storage-account.sh)
-- [Provision a VM scale set with autoscaling](../Azure/scripts/azure-vm-scale-set-autoscaling.sh)
-- [Install AWS CLI v2 and configure profiles](../AWS/scripts/2026-07-13-install-aws-cli-v2-and-configure.sh)
-- [Deploy a static website to S3](../AWS/scripts/2026-08-15-deploy-static-website-to-s3.sh)
-- [Create an S3 bucket and upload an object](../AWS/snippets/2026-09-21-create-s3-bucket-and-upload-object.py)
-- [Install gcloud CLI and configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)
-- [Create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
-- [Stand up a Cloud Run service from generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py)
+### Set up Docker
+- [Docker notes](../Docker/)
 
 ### Install a tool
 
