@@ -1,0 +1,482 @@
+# Shared Library — Anchors, References, and Reusable Job Templates
+# last_verified: 2026-10-21 · GitLab CI/CD 17.4
+
+# =============================================================================
+# Global Anchors
+# =============================================================================
+
+.docker_environment: &docker_environment
+  image: docker:27.0-cli
+  services:
+    - name: docker:27.0-dind
+      alias: docker
+  variables:
+    DOCKER_HOST: "tcp://docker:2376"
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_BUILDKIT: "1"
+  before_script:
+    - apk add --no-cache bash curl jq git openssh-client make
+    - |
+      if [ -n "$CI_REGISTRY_USER" ]; then
+        echo "Logging into registry $CI_REGISTRY..."
+        echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+      fi
+
+.helm_environment: &helm_environment
+  image: alpine/helm:3.15.2
+  before_script:
+    - apk add --no-cache bash curl jq git kubectl
+    - |
+      if [ -n "$KUBE_CONFIG" ]; then
+        mkdir -p ~/.kube
+        echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config
+        chmod 600 ~/.kube/config
+      fi
+
+.kubectl_environment: &kubectl_environment
+  image: bitnami/kubectl:1.29
+  before_script:
+    - |
+      if [ -n "$KUBE_CONFIG" ]; then
+        mkdir -p ~/.kube
+        echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config
+        chmod 600 ~/.kube/config
+      fi
+
+# Default cache configuration
+.cache_default: &cache_default
+  key: "${CACHE_KEY}"
+  policy: "pull-push"
+  paths:
+    - .cache/
+    - node_modules/
+    - vendor/
+    - target/
+    - .m2/
+    - go/pkg/mod/
+
+# Cache policies
+.cache_pull: &cache_pull
+  <<: *cache_default
+  policy: "pull"
+
+.cache_push: &cache_push
+  <<: *cache_default
+  policy: "push"
+
+# Common rules
+.only_default_branch: &only_default_branch
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+.only_merge_requests: &only_merge_requests
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+.only_tags: &only_tags
+  - if: $CI_COMMIT_TAG
+
+.only_schedules: &only_schedules
+  - if: $CI_PIPELINE_SOURCE == "schedule"
+
+.except_draft_mr: &except_draft_mr
+  - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft:/
+    when: never
+  - if: $CI_MERGE_REQUEST_TITLE =~ /^WIP:/
+    when: never
+
+# Resource limits
+.resource_limits_small: &resource_limits_small
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+
+.resource_limits_medium: &resource_limits_medium
+  resources:
+    limits:
+      cpu: "1000m"
+      memory: "1Gi"
+    requests:
+      cpu: "250m"
+      memory: "256Mi"
+
+.resource_limits_large: &resource_limits_large
+  resources:
+    limits:
+      cpu: "2000m"
+      memory: "4Gi"
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+
+# Retry configuration
+.retry_on_failure: &retry_on_failure
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+
+# Timeout configuration
+.timeout_short: &timeout_short
+  timeout: "15m"
+
+.timeout_medium: &timeout_medium
+  timeout: "30m"
+
+.timeout_long: &timeout_long
+  timeout: "60m"
+
+# =============================================================================
+# Reusable Job Templates (Hidden Jobs)
+# =============================================================================
+
+# Base job template with common configuration
+.job_base: &job_base
+  <<: *docker_environment
+  <<: *retry_on_failure
+  <<: *timeout_medium
+  <<: *resource_limits_medium
+
+# Docker build job template
+.docker_build_template: &docker_build_template
+  <<: *job_base
+  stage: build
+  variables:
+    DOCKERFILE: "Dockerfile"
+    BUILD_CONTEXT: "."
+    BUILD_ARGS: ""
+  script:
+    - |
+      BUILD_TAGS="${REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        BUILD_TAGS="${BUILD_TAGS} ${REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
+      fi
+      if [ "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ]; then
+        BUILD_TAGS="${BUILD_TAGS} ${REGISTRY_IMAGE}:latest"
+      fi
+      echo "Building with tags: $BUILD_TAGS"
+      docker build \
+        --file "$DOCKERFILE" \
+        --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+        --build-arg VCS_REF="${CI_COMMIT_SHA}" \
+        --build-arg VERSION="${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}" \
+        $BUILD_ARGS \
+        -t "$BUILD_TAGS" \
+        "$BUILD_CONTEXT"
+    - |
+      for tag in $BUILD_TAGS; do
+        echo "Pushing $tag"
+        docker push "$tag"
+      done
+  cache:
+    <<: *cache_push
+  artifacts:
+    reports:
+      dotenv: build.env
+    expire_in: "1 week"
+
+# Docker buildx multi-platform template
+.docker_buildx_template: &docker_buildx_template
+  <<: *job_base
+  stage: build
+  variables:
+    PLATFORMS: "linux/amd64,linux/arm64"
+  before_script:
+    - *docker_environment.before_script
+    - |
+      docker buildx create --name multiarch --driver docker-container --use
+      docker buildx inspect --bootstrap
+  script:
+    - |
+      BUILD_TAGS="${REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        BUILD_TAGS="${BUILD_TAGS} ${REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
+      fi
+      if [ "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ]; then
+        BUILD_TAGS="${BUILD_TAGS} ${REGISTRY_IMAGE}:latest"
+      fi
+      echo "Building multi-platform with tags: $BUILD_TAGS"
+      docker buildx build \
+        --platform "$PLATFORMS" \
+        --file "$DOCKERFILE" \
+        --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+        --build-arg VCS_REF="${CI_COMMIT_SHA}" \
+        --build-arg VERSION="${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}" \
+        $BUILD_ARGS \
+        --push \
+        -t "$BUILD_TAGS" \
+        "$BUILD_CONTEXT"
+  cache:
+    <<: *cache_push
+
+# Unit test template
+.unit_test_template: &unit_test_template
+  <<: *job_base
+  stage: test
+  script:
+    - echo "Running unit tests..."
+    - |
+      if [ -f "Makefile" ] && grep -q "^test:" Makefile; then
+        make test
+      elif [ -f "package.json" ]; then
+        npm ci --cache .cache/npm && npm test
+      elif [ -f "pyproject.toml" ] || [ -f "requirements.txt" ]; then
+        pip install -r requirements.txt --cache-dir .cache/pip 2>/dev/null || true
+        python -m pytest --junitxml=report.xml -v
+      elif [ -f "go.mod" ]; then
+        go test -v -race -coverprofile=coverage.out ./...
+      elif [ -f "Cargo.toml" ]; then
+        cargo test --all --verbose
+      else
+        echo "No recognized test configuration found"
+        exit 1
+      fi
+  artifacts:
+    reports:
+      junit: report.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    expire_in: "1 week"
+  cache:
+    <<: *cache_pull
+
+# Integration test template
+.integration_test_template: &integration_test_template
+  <<: *job_base
+  stage: test
+  variables:
+    TEST_ENV: "integration"
+  script:
+    - echo "Running integration tests..."
+    - |
+      if [ -f "Makefile" ] && grep -q "^integration-test:" Makefile; then
+        make integration-test
+      elif [ -f "docker-compose.test.yml" ]; then
+        docker compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from test
+      else
+        echo "No integration test configuration found"
+        exit 0
+      fi
+  services:
+    - name: postgres:16-alpine
+      alias: postgres
+    - name: redis:7-alpine
+      alias: redis
+  artifacts:
+    reports:
+      junit: integration-report.xml
+    expire_in: "1 week"
+
+# Security scan template (SAST)
+.sast_template: &sast_template
+  <<: *job_base
+  stage: test
+  variables:
+    SAST_EXCLUDED_PATHS: "vendor/**,tests/**,*.test.*,*_test.*"
+  script:
+    - echo "Running SAST scan..."
+    - /analyzer run
+  artifacts:
+    reports:
+      sast: gl-sast-report.json
+    expire_in: "1 month"
+  allow_failure: true
+  rules:
+    - *only_default_branch
+    - *only_merge_requests
+    - *only_tags
+    - *only_schedules
+
+# Dependency scanning template
+.dependency_scan_template: &dependency_scan_template
+  <<: *job_base
+  stage: test
+  script:
+    - echo "Running dependency scanning..."
+    - /analyzer run
+  artifacts:
+    reports:
+      dependency_scanning: gl-dependency-scanning-report.json
+    expire_in: "1 month"
+  allow_failure: true
+  rules:
+    - *only_default_branch
+    - *only_tags
+    - *only_schedules
+
+# Container scanning template
+.container_scan_template: &container_scan_template
+  <<: *job_base
+  stage: test
+  variables:
+    DOCKER_IMAGE: "${REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+  script:
+    - echo "Running container scanning on $DOCKER_IMAGE..."
+    - /analyzer run
+  artifacts:
+    reports:
+      container_scanning: gl-container-scanning-report.json
+    expire_in: "1 month"
+  allow_failure: true
+  rules:
+    - *only_default_branch
+    - *only_tags
+    - *only_schedules
+
+# Helm lint template
+.helm_lint_template: &helm_lint_template
+  <<: *helm_environment
+  <<: *retry_on_failure
+  <<: *timeout_short
+  <<: *resource_limits_small
+  stage: validate
+  script:
+    - echo "Linting Helm charts..."
+    - |
+      for chart in charts/*/; do
+        if [ -f "${chart}Chart.yaml" ]; then
+          echo "Linting $chart"
+          helm lint "$chart" --strict
+        fi
+      done
+  rules:
+    - *only_default_branch
+    - *only_merge_requests
+    - *only_tags
+
+# Kubernetes manifest validation template
+.kubeval_template: &kubeval_template
+  <<: *kubectl_environment
+  <<: *retry_on_failure
+  <<: *timeout_short
+  <<: *resource_limits_small
+  stage: validate
+  image: instrumenta/kubeval:latest
+  script:
+    - echo "Validating Kubernetes manifests..."
+    - |
+      find . -name "*.yaml" -o -name "*.yml" | grep -E "(k8s|kubernetes|manifests|deploy)" | while read -r file; do
+        echo "Validating $file"
+        kubeval --strict --ignore-missing-schemas --kubernetes-version "${KUBERNETES_VERSION}" "$file" || exit 1
+      done
+  rules:
+    - *only_default_branch
+    - *only_merge_requests
+    - *only_tags
+
+# Deploy to Kubernetes template
+.deploy_k8s_template: &deploy_k8s_template
+  <<: *kubectl_environment
+  <<: *retry_on_failure
+  <<: *timeout_medium
+  <<: *resource_limits_medium
+  stage: deploy
+  environment:
+    name: $DEPLOY_ENVIRONMENT
+    url: $DEPLOY_URL
+    action: start
+  variables:
+    DEPLOY_ENVIRONMENT: "staging"
+    NAMESPACE: "${CI_PROJECT_NAME}-${DEPLOY_ENVIRONMENT}"
+    HELM_RELEASE: "${CI_PROJECT_NAME}"
+    HELM_CHART: "./charts/${CI_PROJECT_NAME}"
+  script:
+    - echo "Deploying to $DEPLOY_ENVIRONMENT environment..."
+    - |
+      kubectl create namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f -
+      if [ -f "$HELM_CHART/Chart.yaml" ]; then
+        helm upgrade --install "$HELM_RELEASE" "$HELM_CHART" \
+          --namespace "$NAMESPACE" \
+          --create-namespace \
+          --wait --timeout 5m \
+          --set image.repository="${REGISTRY_IMAGE}" \
+          --set image.tag="${CI_COMMIT_SHA}" \
+          --set environment="${DEPLOY_ENVIRONMENT}"
+      else
+        kubectl apply -k "k8s/overlays/${DEPLOY_ENVIRONMENT}" --namespace "$NAMESPACE"
+      fi
+    - echo "Deployment complete. Checking rollout status..."
+    - kubectl rollout status deployment/"$HELM_RELEASE" -n "$NAMESPACE" --timeout=300s
+  rules:
+    - *only_default_branch
+    - *only_tags
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $DEPLOY_ENVIRONMENT == "review"
+
+# Deploy to production with manual approval
+.deploy_production_template: &deploy_production_template
+  <<: *deploy_k8s_template
+  environment:
+    name: production
+    url: $PRODUCTION_URL
+    action: start
+  variables:
+    DEPLOY_ENVIRONMENT: "production"
+    NAMESPACE: "${CI_PROJECT_NAME}-production"
+  when: manual
+  rules:
+    - *only_tags
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "schedule"
+
+# =============================================================================
+# Helper Scripts (Inlined for include:local)
+# =============================================================================
+
+.helpers_script: &helpers_script |
+  #!/bin/bash
+  # GitLab CI Helper Functions
+  # Sourced in before_script via: source .gitlab/ci/helpers.sh
+
+  set -euo pipefail
+
+  log_info() { echo -e "\033[1;34m[INFO]\033[0m $*"; }
+  log_warn() { echo -e "\033[1;33m[WARN]\033[0m $*"; }
+  log_error() { echo -e "\033[1;31m[ERROR]\033[0m $*"; }
+  log_success() { echo -e "\033[1;32m[SUCCESS]\033[0m $*"; }
+
+  # Check if a command exists
+  command_exists() { command -v "$1" >/dev/null 2>&1; }
+
+  # Retry a command with exponential backoff
+  retry() {
+    local max_attempts="$1"
+    local delay="$2"
+    shift 2
+    local attempt=1
+    until "$@"; do
+      if [ $attempt -ge $max_attempts ]; then
+        log_error "Command failed after $max_attempts attempts: $*"
+        return 1
+      fi
+      log_warn "Attempt $attempt failed. Retrying in ${delay}s..."
+      sleep $delay
+      delay=$((delay * 2))
+      attempt=$((attempt + 1))
+    done
+  }
+
+  # Wait for a Kubernetes resource to be ready
+  wait_for_rollout() {
+    local resource="$1"
+    local namespace="${2:-default}"
+    local timeout="${3:-300s}"
+    log_info "Waiting for rollout of $resource in namespace $namespace..."
+    kubectl rollout status "$resource" -n "$namespace" --timeout="$timeout"
+  }
+
+  # Generate a semantic version from Git tags
+  generate_version() {
+    local version
+    version=$(git describe --tags --always --dirty 2>/dev/null || echo "0.0.0-${CI_COMMIT_SHORT_SHA}")
+    echo "$version"
+  }
+
+  # Extract Docker image digest
+  get_image_digest() {
+    local image="$1"
+    docker inspect --format='{{index .RepoDigests 0}}' "$image" 2>/dev/null | cut -d'@' -f2
+  }
+```
