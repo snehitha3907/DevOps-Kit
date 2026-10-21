@@ -878,3 +878,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added interactive notebook comparing Kubernetes workload types: Pods, Deployments, StatefulSets, DaemonSets, and Jobs (k8s-016) (`Kubernetes/notebooks/comparing-kubernetes-workload-types.ipynb`)
 
 - 2026-10-19: Prometheus/scripts/custom-app-metrics-collector.go (pro-020)
+- 2026-10-21: Add Helm/ templates/helm-library-scaffold (hlm-027) — reusable library chart with helpers, labels, and JSON schema

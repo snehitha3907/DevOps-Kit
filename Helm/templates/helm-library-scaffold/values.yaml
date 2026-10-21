@@ -1,0 +1,6 @@
+# last_verified: 2026-10-21 · Helm · n/a
+# Default values for helm-library-scaffold (library charts do not render manifests)
+
+global:
+  imageRegistry: ""
+  imagePullSecrets: []

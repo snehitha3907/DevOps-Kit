@@ -1,0 +1,17 @@
+# last_verified: 2026-10-21 · Helm · n/a
+apiVersion: v2
+name: helm-library-scaffold
+description: A library chart scaffold with reusable helpers, common labels, and JSON schema patterns
+type: library
+version: 0.1.0
+appVersion: "1.0.0"
+kubeVersion: ">=1.20.0-0"
+keywords:
+  - library
+  - helpers
+  - scaffold
+maintainers:
+  - name: platform-team
+    email: platform@example.com
+annotations:
+  category: Library
