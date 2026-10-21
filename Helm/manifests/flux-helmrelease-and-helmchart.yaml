@@ -1,0 +1,213 @@
+# last_verified: 2026-10-21 · Helm · n/a
+#
+# Purpose
+#   Deploy a Helm chart to a Kubernetes cluster through Flux CD instead of
+#   running `helm install` by hand. Four objects are involved:
+#     HelmRepository - points at a chart repository and keeps its index fresh
+#     HelmChart      - pins one chart and one version range in that repository
+#     HelmRelease    - asks the helm-controller to install, upgrade, test and
+#                      drift-correct that chart
+#     ConfigMap      - holds the chart values the release reads
+#   The helm-controller reconciles the release on a schedule, so the state of
+#   the cluster follows the manifest in Git instead of the last person to run
+#   a Helm command.
+#
+# When to use
+#   - The chart is published to a Helm repository and the release should be
+#     reconciled by a controller rather than by an operator.
+#   - The chart version and the values are both versioned, so a change to the
+#     running workload is a reviewable commit.
+#   - The same chart has to be delivered to more than one cluster, namespace
+#     or environment; the same object is copied per target instead of a new
+#     command being typed.
+#   - Drift matters: a change made to the workload outside of Git has to be
+#     corrected automatically.
+#
+# Prerequisites
+#   - Flux CD installed with the source-controller and the helm-controller.
+#     `flux check` reports which controllers are present in the cluster.
+#   - The source.toolkit.fluxcd.io/v1 and helm.toolkit.fluxcd.io/v2 CRDs
+#     registered in the target cluster.
+#   - A Helm repository that holds the chart, and read access to it.
+#   - The flux-system namespace to exist (`flux create ns flux-system`).
+#
+# Design notes
+#   - A HelmRelease can embed the chart inline under .spec.chart instead of
+#     pointing at a HelmChart with .spec.chartRef. The inline form saves an
+#     object, but the controller then owns the generated HelmChart. The
+#     chartRef form used here keeps the pinned chart version visible in this
+#     file. Only one of .spec.chart and .spec.chartRef may be set.
+#   - The sources and the release live in the same namespace. Cross-namespace
+#     source references can be switched off on the source-controller with
+#     --no-cross-namespace-refs=true, and a reference that crosses a namespace
+#     is then rejected.
+#   - Inline .spec.values are merged on top of the values that .spec.valuesFrom
+#     pulls in, so the inline block wins on conflicting keys.
+#   - The Helm CLI version is not pinned by these objects - they are Flux
+#     toolkit API calls, and the chart itself declares the Helm version it
+#     needs in its Chart.yaml. The version field is n/a for that reason.
+#
+# Apply
+#   kubectl apply -f flux-helmrelease-and-helmchart.yaml
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: webapp-charts
+  namespace: flux-system
+spec:
+  # How often the repository index is refreshed.
+  interval: 10m
+  # Replace with the URL of the repository that publishes the chart.
+  url: https://charts.example.com
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: webapp
+  namespace: flux-system
+spec:
+  # How often a new chart version inside the range is looked for.
+  interval: 5m
+  chart: webapp
+  # A range, not an exact version: a new upstream release inside the range is
+  # picked up and rolled out without a change to this file. Pin an exact
+  # version here when the chart version itself has to be reviewed.
+  version: "1.x"
+  # ChartVersion produces a new artifact when the resolved chart version
+  # changes in the HelmRepository, and it is the default. Revision is the
+  # alternative for charts that come from a GitRepository or a Bucket, where
+  # the artifact is refreshed when the source revision changes.
+  reconcileStrategy: ChartVersion
+  sourceRef:
+    kind: HelmRepository
+    name: webapp-charts
+    namespace: flux-system
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: webapp
+  namespace: flux-system
+spec:
+  # The name of the Helm release as it is recorded in the release storage.
+  releaseName: webapp
+  # The namespace the chart is installed into. createNamespace below makes the
+  # helm-controller create it when it does not exist yet.
+  targetNamespace: webapp
+  # How often the release is reconciled, and how long a single Helm action may
+  # take before it is given up on.
+  interval: 10m
+  timeout: 5m
+  # The chart comes from the HelmChart object above rather than from an inline
+  # chart spec.
+  chartRef:
+    kind: HelmChart
+    name: webapp
+    namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      # A failed install is retried up to three times. Each retry uninstalls
+      # the failed release first, so a broken revision does not stay behind.
+      retries: 3
+  upgrade:
+    remediation:
+      # A failed upgrade is rolled back to the last working revision and
+      # retried, up to three times.
+      retries: 3
+      # rollback is the default remediation for a failed upgrade; uninstall
+      # would remove the release instead and let the next attempt reinstall
+      # it.
+      strategy: rollback
+  test:
+    # Run the chart's test hooks after a successful install or upgrade.
+    enable: true
+  driftDetection:
+    # enabled means the release is corrected when the cluster no longer
+    # matches the release; warn only reports the difference.
+    mode: enabled
+    ignore:
+      # A Horizontal Pod Autoscaler owns the replica count, so the field is
+      # expected to differ from the release and must not be corrected.
+      - paths: ["/spec/replicas"]
+        target:
+          kind: Deployment
+  valuesFrom:
+    - kind: ConfigMap
+      name: webapp-values
+  values:
+    # Inline values are merged last and win over the values above.
+    replicaCount: 2
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webapp-values
+  namespace: flux-system
+  labels:
+    # This label makes the helm-controller watch the ConfigMap, so a change to
+    # the values is rolled out immediately instead of at the next interval.
+    reconcile.fluxcd.io/watch: Enabled
+data:
+  values.yaml: |
+    image:
+      repository: ghcr.io/example-org/webapp
+      tag: "1.0.0"
+      pullPolicy: IfNotPresent
+    service:
+      type: ClusterIP
+      port: 80
+    resources:
+      limits:
+        cpu: 250m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+#
+# Verify
+#   kubectl get helmrepository webapp-charts -n flux-system
+#   kubectl get helmchart webapp -n flux-system
+#   kubectl get helmrelease webapp -n flux-system
+#   flux get helmrelease webapp -n flux-system
+#   kubectl describe helmrelease webapp -n flux-system
+#
+#   The release is ready when the Ready condition of the HelmRelease is True
+#   and the reported chart version matches the version that was pinned above.
+#   `flux reconcile helmrelease webapp -n flux-system` asks the controller to
+#   act on the current spec without waiting for the next interval.
+#
+# Common errors
+#   - The release stays reconciling and the events mention a chart that
+#     cannot be resolved. The HelmRepository URL does not serve the chart, or
+#     the version range in the HelmChart matches no published version.
+#   - A values reference is not found. The ConfigMap or Secret named in
+#     .spec.valuesFrom has to live in the same namespace as the HelmRelease.
+#   - Drift is corrected and then reported again. Something outside Flux writes
+#     the same field on every reconcile - a Horizontal Pod Autoscaler, a
+#     mutating admission webhook - and the field belongs in the
+#     driftDetection.ignore list.
+#   - A source reference is rejected. The cluster runs the source-controller
+#     with --no-cross-namespace-refs=true, so the HelmChart and the
+#     HelmRelease have to share a namespace.
+#
+# Rollback
+#   - `flux suspend helmrelease webapp -n flux-system` stops the controller
+#     from touching the release without uninstalling it.
+#   - Reverting the commit that changed the chart version or the values makes
+#     the controller roll the release back to the previous revision; the
+#     upgrade remediation above restores the last working revision on its own
+#     when an upgrade fails.
+#
+# References
+#   - Flux documentation - Helm Releases (helm.toolkit.fluxcd.io/v2)
+#   - Flux documentation - Helm Charts (source.toolkit.fluxcd.io/v1)
+#   - Flux documentation - Helm Repositories (source.toolkit.fluxcd.io/v1)
+#   - ../../FluxCD/configs/helmrelease-image-automation.yaml - image
+#     automation layered on top of a HelmRelease
+#   - ../../FluxCD/docs/how-i-wired-flux-cd-with-github-for-gitops-deployment.md
+#     - the Git side of the same flow
+#   - ../docs/values-management-approaches.md - how chart values are supplied:
+#     inline flags, per-environment files, or named templates
