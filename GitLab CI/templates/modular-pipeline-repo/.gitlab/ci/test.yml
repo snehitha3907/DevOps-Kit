@@ -1,0 +1,39 @@
+# last_verified: 2026-10-22 · GitLab CI (n/a)
+# Test stage. The templates live in lib.yml; the rule sets are picked there
+# as well, because a job may only take its rules from one parent.
+
+test:unit:
+  extends: [.unit_test_template, .rules_default_branch_and_mr]
+  tags:
+    - test
+
+test:integration:
+  extends: [.integration_test_template, .rules_default_branch_and_mr]
+  tags:
+    - test
+
+test:lint:
+  extends: [.lint_template, .rules_default_branch_and_mr]
+  tags:
+    - test
+
+# The charts are linted and rendered before anything is deployed.
+test:helm-lint:
+  extends: [.helm_lint_template, .rules_default_branch_and_mr]
+  tags:
+    - test
+
+# The scan of the working tree and of the built image. The image only exists
+# once the build stage has pushed it, so the scan of the image is skipped in
+# a pipeline that does not run the build job.
+test:scan:
+  extends: [.trivy_scan_template, .rules_default_branch_and_mr]
+  needs:
+    # The build job is skipped on a pipeline that does not run it, and a
+    # `needs:` on a job that is missing from the pipeline stops the pipeline
+    # from being created at all.
+    - job: "build:docker"
+      artifacts: true
+      optional: true
+  tags:
+    - test

@@ -1,0 +1,106 @@
+# last_verified: 2026-10-22 · GitLab CI (n/a)
+# Deploy stage. The jobs extend the templates in lib.yml; the environments
+# they create are the ones GitLab shows in the UI, so the name of an
+# environment here is the name a reviewer sees on the pipeline page.
+
+# A review environment per merge request, torn down by stop:review. The rule
+# sets `when: manual` inside the rule rather than on the job, because a
+# job-level `when: manual` allows the failure and the pipeline goes green
+# while nobody deploys.
+deploy:review:
+  extends: .deploy_k8s_template
+  variables:
+    DEPLOY_ENVIRONMENT: "review-$CI_MERGE_REQUEST_IID"
+    NAMESPACE: "$CI_PROJECT_NAME-review-$CI_MERGE_REQUEST_IID"
+  environment:
+    name: "review/$CI_MERGE_REQUEST_IID"
+    on_stop: "stop:review"
+    auto_stop_in: "1 week"
+  needs:
+    - job: "build:docker"
+      artifacts: true
+      optional: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: false
+  tags:
+    - deploy
+
+# Removes the review environment. It runs in the same stage as the deploy
+# jobs, so it waits for them the same way.
+stop:review:
+  extends: .kubectl_job_template
+  stage: deploy
+  variables:
+    NAMESPACE: "$CI_PROJECT_NAME-review-$CI_MERGE_REQUEST_IID"
+  environment:
+    name: "review/$CI_MERGE_REQUEST_IID"
+    action: stop
+  script:
+    - kubectl delete namespace "$NAMESPACE" --ignore-not-found=true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: false
+  tags:
+    - deploy
+
+# The default branch goes to staging on its own.
+deploy:staging:
+  extends: [.deploy_k8s_template, .rules_default_branch]
+  variables:
+    DEPLOY_ENVIRONMENT: "staging"
+    NAMESPACE: "$CI_PROJECT_NAME-staging"
+  needs:
+    - job: "build:docker"
+      artifacts: true
+      optional: true
+  tags:
+    - deploy
+
+# A tag goes to production, by hand.
+deploy:production:
+  extends: .deploy_k8s_template
+  variables:
+    DEPLOY_ENVIRONMENT: "production"
+    NAMESPACE: "$CI_PROJECT_NAME-production"
+  environment:
+    name: "production"
+  needs:
+    - job: "build:docker"
+      artifacts: true
+      optional: true
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: manual
+      allow_failure: false
+  tags:
+    - deploy
+
+# Puts the previous release back. The Helm path is used when the release is
+# a Helm release, and the rollout history is used otherwise, because the two
+# are not interchangeable.
+deploy:rollback:
+  extends: .deploy_k8s_template
+  variables:
+    DEPLOY_ENVIRONMENT: "production"
+    NAMESPACE: "$CI_PROJECT_NAME-production"
+    HELM_RELEASE: "$CI_PROJECT_NAME"
+  environment:
+    name: "production"
+    action: rollback
+  script:
+    - |
+      if helm list -n "$NAMESPACE" | grep -q "$HELM_RELEASE"; then
+        helm rollback "$HELM_RELEASE" -n "$NAMESPACE"
+      else
+        kubectl rollout undo "deployment/$HELM_RELEASE" -n "$NAMESPACE"
+      fi
+    - kubectl rollout status "deployment/$HELM_RELEASE" -n "$NAMESPACE" --timeout="$ROLLOUT_TIMEOUT"
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: manual
+      allow_failure: false
+  tags:
+    - deploy
