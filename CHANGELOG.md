@@ -3,6 +3,9 @@
 ## 2026-10-22
 
 - Added GitLab CI/CD modular pipeline template: root .gitlab-ci.yml with include:local, .gitlab/ci/{lib,build,test,deploy}.yml job templates using anchors and !reference, Kind runner bootstrap script, and README (gl-019) (`GitLab CI/templates/modular-pipeline-repo/`)
+- Added GitLab CI/CD pipeline library patterns documentation: include:project, extends, !reference, rules, and spec:inputs for shipping one maintained pipeline to many repositories (gl-022) (`GitLab CI/docs/gitlab-ci-cd-pipeline-library-patterns.md`)
+- Passed ([x]) gl-019 — GitLab CI/CD: template — Project scaffold: modular GitLab CI/CD pipeline repo · Level: L4 · 2026-10-22
+- Passed ([x]) gl-022 — GitLab CI/CD: docs — GitLab CI/CD pipeline library patterns: include:project, extends, !reference, rules and spec:inputs · Level: L4 · 2026-10-22
 
 ## 2026-10-21
 
