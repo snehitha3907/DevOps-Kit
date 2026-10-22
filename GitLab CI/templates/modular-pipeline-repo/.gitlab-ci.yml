@@ -1,0 +1,77 @@
+# last_verified: 2026-10-22 · GitLab CI (n/a)
+# Root of the modular pipeline. It pulls the stage files in, declares the
+# stages, and holds the variables every stage shares.
+#
+# No image is pinned to a version here on purpose. The jobs run the images
+# named by the variables at the bottom of this file, and those values are
+# unversioned floating tags chosen as a starting point rather than a
+# recommendation: a tag that quietly stops resolving fails at image pull, long
+# before any pipeline logic runs, and the symptom reads like a broken pipeline
+# rather than a stale tag. Point the variables at tags you have checked, and
+# confirm each one resolves before you change this file:
+#
+#   docker manifest inspect "$KUBECTL_IMAGE"
+#
+# A non-zero exit means the tag does not exist.
+
+include:
+  - local: '.gitlab/ci/lib.yml'
+  - local: '.gitlab/ci/build.yml'
+  - local: '.gitlab/ci/test.yml'
+  - local: '.gitlab/ci/deploy.yml'
+
+stages:
+  - validate
+  - build
+  - test
+  - deploy
+
+workflow:
+  # Tags, merge requests, the default branch and scheduled runs get a
+  # pipeline. The trailing `- when: never` is what stops a feature-branch push
+  # from creating a pipeline at all, rather than creating an empty one.
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - when: never
+
+variables:
+  # ── names the stages share ──────────────────────────────────────────────
+  # $CI_REGISTRY_IMAGE already carries the group and the project, so it is
+  # used as it is. Appending $CI_PROJECT_NAME to it would build a path such
+  # as registry.example.com/group/project/project.
+  REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE"
+  CACHE_KEY: "$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG"
+  GIT_DEPTH: "20"
+
+  # ── how the jobs reach the Docker daemon ───────────────────────────────
+  # The daemon runs in the dind service, so the client talks to it over the
+  # network with TLS rather than to a socket on the runner. These three are
+  # the settings that make the client find the service.
+  DOCKER_HOST: "tcp://docker:2376"
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: "1"
+  DOCKER_BUILDKIT: "1"
+
+  # ── the images the jobs run ────────────────────────────────────────────
+  # Every job image is named here, so there is one place to change it. All of
+  # them are Alpine-based, which is what lets .job_base install packages with
+  # a single `apk add` line in before_script.
+  DOCKER_CLI_IMAGE: "docker:cli"
+  DOCKER_DIND_IMAGE: "docker:dind"
+  KUBECTL_IMAGE: "alpine/kubectl"
+  HELM_IMAGE: "alpine/helm"
+  TRIVY_IMAGE: "aquasec/trivy"
+
+  # ── service containers for the integration test job ────────────────────
+  POSTGRES_IMAGE: "postgres"
+  REDIS_IMAGE: "redis"
+
+  # ── knobs the jobs read ────────────────────────────────────────────────
+  # The severity floor the scanner reports. The scanner writes its report and
+  # the job still passes; turning findings into a gate is a separate step,
+  # because a gate that fails the whole pipeline on any finding tends to get
+  # switched off.
+  SCAN_SEVERITY: "HIGH,CRITICAL"

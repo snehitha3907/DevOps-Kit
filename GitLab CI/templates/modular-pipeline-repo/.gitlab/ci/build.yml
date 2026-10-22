@@ -1,0 +1,21 @@
+# last_verified: 2026-10-22 · GitLab CI (n/a)
+# Build stage. Every job here extends a template from lib.yml, and picks one
+# of the rule sets in the same file as its second parent.
+
+build:docker:
+  extends: [.docker_build_template, .rules_default_branch_and_mr_and_tags]
+  tags:
+    - docker
+
+# A multi-platform build is slow and only worth it for a release, so it runs
+# on tags rather than on every merge request.
+build:docker:multiarch:
+  extends: [.docker_buildx_template, .rules_tags_only]
+  tags:
+    - docker
+
+# The project's own build output, kept as an artifact for the test stage.
+build:artifact:
+  extends: [.build_artifact_template, .rules_default_branch_and_mr]
+  tags:
+    - build

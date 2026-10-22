@@ -1,6 +1,11 @@
 # Changelog
 
-- Added GitLab CI/CD modular pipeline template: root .gitlab-ci.yml with include:local, .gitlab/ci/{lib,build,test,deploy}.yml job templates using anchors and !reference, Kind runner bootstrap script, and README (gl-019) (`gl/templates/modular-pipeline-repo/`)
+## 2026-10-22
+
+- Added GitLab CI/CD modular pipeline template: root .gitlab-ci.yml with include:local, .gitlab/ci/{lib,build,test,deploy}.yml job templates using anchors and !reference, Kind runner bootstrap script, and README (gl-019) (`GitLab CI/templates/modular-pipeline-repo/`)
+
+## 2026-10-21
+
 - Added Helm Flux CD manifest set: HelmRepository, HelmChart, and HelmRelease custom resources for deploying a Helm chart through Flux CD GitOps, with values from a ConfigMap, install and upgrade remediation, and drift detection (hlm-028) (`Helm/manifests/flux-helmrelease-and-helmchart.yaml`)
 - Added Grafana script to build a multi-panel service dashboard via HTTP API with Prometheus datasource, request rate, error rate, latency p95, and active requests panels (graf-014) (`graf/scripts/build-multi-panel-service-dashboard-via-http-api.py`)
 

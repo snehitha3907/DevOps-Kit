@@ -1,0 +1,483 @@
+# last_verified: 2026-10-22 · GitLab CI (n/a)
+# Shared job templates for the modular pipeline.
+#
+# GitLab parses every included file on its own, so a YAML anchor written here
+# is not visible from build.yml, test.yml or deploy.yml. Everything below
+# therefore only uses aliases inside this file; the stage files reach these
+# templates through `extends:` and through `!reference [template, key]`, and
+# both of those do cross file boundaries.
+#
+# The hidden jobs — the names that start with a dot — never run on their own.
+# They exist to be extended by concrete jobs and to be the target of a
+# !reference.
+#
+# A mapping may carry only one merge key, so a job that needs two blocks
+# merged uses the list form: `<<: [*first, *second]`. Two things about that
+# form are worth knowing. The earlier mapping wins, so a template that
+# changes a value that .job_base also sets puts its own block first. And a
+# merge key replaces a whole key rather than merging it key by key: a
+# template that writes its own `variables:` does not inherit the variables of
+# the block it merged, which is why the shared variables live in the root
+# .gitlab-ci.yml instead of here.
+
+# ── file-local anchors ────────────────────────────────────────────────────
+
+.cache_default: &cache_default
+  key: "$CACHE_KEY"
+  policy: "pull-push"
+  paths:
+    - .cache/
+    - node_modules/
+    - vendor/
+    - target/
+    - .m2/
+    - go/pkg/mod/
+
+.cache_pull: &cache_pull
+  <<: *cache_default
+  policy: "pull"
+
+.cache_push: &cache_push
+  <<: *cache_default
+  policy: "push"
+
+.retry_on_failure: &retry_on_failure
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+
+.timeout_short: &timeout_short
+  timeout: "15m"
+
+.timeout_medium: &timeout_medium
+  timeout: "30m"
+
+.timeout_long: &timeout_long
+  timeout: "60m"
+
+.resources_small: &resources_small
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+
+.resources_medium: &resources_medium
+  resources:
+    limits:
+      cpu: "1000m"
+      memory: "1Gi"
+    requests:
+      cpu: "250m"
+      memory: "256Mi"
+
+.resources_large: &resources_large
+  resources:
+    limits:
+      cpu: "2000m"
+      memory: "4Gi"
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+
+# ── the runtimes the jobs execute in ──────────────────────────────────────
+# The image is named by a variable, so it can be changed in one place. All of
+# them are Alpine-based, which is what lets .job_base install packages with a
+# single `apk add` line in before_script.
+
+.docker_runtime: &docker_runtime
+  image: "$DOCKER_CLI_IMAGE"
+  services:
+    - name: "$DOCKER_DIND_IMAGE"
+      alias: docker
+
+.kubectl_runtime: &kubectl_runtime
+  image: "$KUBECTL_IMAGE"
+
+.helm_runtime: &helm_runtime
+  image: "$HELM_IMAGE"
+
+# ── rule sets ─────────────────────────────────────────────────────────────
+# A job picks one of these with a second parent in its `extends:` list. Only
+# one parent may set `rules`, otherwise the second one replaces the first.
+
+.rules_default_branch: &rules_default_branch
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - when: never
+
+.rules_default_branch_and_mr: &rules_default_branch_and_mr
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - when: never
+
+# The image is built for a tag as well, because the production deploy runs
+# on a tag and needs the image that the tag points at.
+.rules_default_branch_and_mr_and_tags: &rules_default_branch_and_mr_and_tags
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - when: never
+
+.rules_tags_only: &rules_tags_only
+  rules:
+    - if: $CI_COMMIT_TAG
+    - when: never
+
+# ── base for every container job ──────────────────────────────────────────
+# The helper file is POSIX sh rather than bash: the runner picks the shell
+# from the image, and the images above do not ship bash, so a bash-only helper
+# would fail to parse at the moment it is sourced.
+
+.job_base: &job_base
+  <<: [*retry_on_failure, *timeout_medium, *resources_medium]
+  before_script:
+    - apk add --no-cache bash curl jq git
+    - . .gitlab/ci/helpers.sh
+
+# ── build templates ───────────────────────────────────────────────────────
+
+# Builds the image and pushes it to the project registry. The tag is the
+# commit SHA, so the image a later job deploys can be traced back to a commit.
+.docker_build_template: &docker_build_template
+  <<: [*docker_runtime, *job_base]
+  stage: build
+  variables:
+    DOCKERFILE: "Dockerfile"
+    BUILD_CONTEXT: "."
+  before_script:
+    # The base setup is pulled in by reference rather than repeated, so the
+    # two lists cannot drift apart.
+    - !reference [.job_base, before_script]
+    # The password goes over stdin rather than through -p, which would put it
+    # in the process list for anything else on the runner to read.
+    - |
+      if [ -n "$CI_REGISTRY_USER" ]; then
+        echo "$CI_REGISTRY_PASSWORD" \
+          | docker login --username "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+      fi
+  script:
+    - |
+      docker build \
+        --file "$DOCKERFILE" \
+        --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+        --build-arg VCS_REF="$CI_COMMIT_SHA" \
+        --build-arg VERSION="${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}" \
+        $BUILD_ARGS \
+        --tag "$REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" \
+        "$BUILD_CONTEXT"
+    # A release tag points at the same image under a second name, so the
+    # commit SHA stays the identity of the build.
+    - |
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        docker tag "$REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" "$REGISTRY_IMAGE:$CI_COMMIT_TAG"
+      fi
+    - |
+      docker push "$REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        docker push "$REGISTRY_IMAGE:$CI_COMMIT_TAG"
+      fi
+    # The tag travels to the rest of the pipeline as build.env, the dotenv
+    # report of this job.
+    - |
+      # build.env is the dotenv report the other stages read.
+      export_pipeline_vars
+  cache:
+    <<: *cache_push
+  artifacts:
+    reports:
+      dotenv: build.env
+    expire_in: "1 week"
+
+# Multi-platform build. The buildx builder has to exist before the build
+# runs, which is why this template brings its own before_script instead of
+# reusing the one from .docker_build_template.
+.docker_buildx_template: &docker_buildx_template
+  <<: [*timeout_long, *resources_large, *docker_runtime, *job_base]
+  stage: build
+  variables:
+    DOCKERFILE: "Dockerfile"
+    BUILD_CONTEXT: "."
+    PLATFORMS: "linux/amd64,linux/arm64"
+  before_script:
+    - !reference [.job_base, before_script]
+    # The password goes over stdin rather than through -p, which would put it
+    # in the process list for anything else on the runner to read.
+    - |
+      if [ -n "$CI_REGISTRY_USER" ]; then
+        echo "$CI_REGISTRY_PASSWORD" \
+          | docker login --username "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+      fi
+    - |
+      docker buildx create --name multiarch --driver docker-container --use
+      docker buildx inspect --bootstrap
+  script:
+    - |
+      docker buildx build \
+        --platform "$PLATFORMS" \
+        --file "$DOCKERFILE" \
+        --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+        --build-arg VCS_REF="$CI_COMMIT_SHA" \
+        --build-arg VERSION="${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}" \
+        $BUILD_ARGS \
+        --push \
+        --tag "$REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" \
+        "$BUILD_CONTEXT"
+    - |
+      # build.env is the dotenv report the other stages read.
+      export_pipeline_vars
+  cache:
+    <<: *cache_push
+  artifacts:
+    reports:
+      dotenv: build.env
+    expire_in: "1 week"
+
+# Builds whatever the project builds and keeps the result. The command is
+# picked from the files in the repository, and the toolchain comes from the
+# package manager of the image, so the versions are the ones the image
+# ships. A project that needs a specific toolchain replaces this job with one
+# that names its own image.
+.build_artifact_template: &build_artifact_template
+  <<: [*docker_runtime, *job_base]
+  stage: build
+  script:
+    - |
+      if [ -f "Makefile" ] && grep -q "^build:" Makefile; then
+        apk add --no-cache make
+        make build
+      elif [ -f "package.json" ]; then
+        apk add --no-cache nodejs npm
+        npm ci --cache .cache/npm
+        npm run build
+      elif [ -f "pyproject.toml" ] || [ -f "requirements.txt" ]; then
+        apk add --no-cache python3 py3-pip
+        if [ -f "requirements.txt" ]; then
+          python3 -m pip install --cache-dir .cache/pip -r requirements.txt
+        else
+          python3 -m pip install --cache-dir .cache/pip .
+        fi
+        python3 -m build
+      elif [ -f "go.mod" ]; then
+        apk add --no-cache go
+        go build -o bin/app ./...
+      else
+        echo "no recognised build configuration found"
+      fi
+  artifacts:
+    paths:
+      - bin/
+      - dist/
+      - target/
+    expire_in: "1 week"
+  cache:
+    <<: *cache_pull
+
+# ── test templates ────────────────────────────────────────────────────────
+
+# Unit tests. No junit report is declared here: only the Python branch writes
+# a JUnit file, and a report that points at a file the job never wrote is a
+# broken promise to the merge request widget. A project that wants one adds a
+# job of its own and points the report at the file its test runner writes.
+.unit_test_template: &unit_test_template
+  <<: [*docker_runtime, *job_base]
+  stage: test
+  script:
+    - |
+      if [ -f "Makefile" ] && grep -q "^test:" Makefile; then
+        apk add --no-cache make
+        make test
+      elif [ -f "requirements.txt" ]; then
+        apk add --no-cache python3 py3-pip
+        python3 -m pip install --cache-dir .cache/pip -r requirements.txt
+        python3 -m pytest -v
+      elif [ -f "pyproject.toml" ]; then
+        apk add --no-cache python3 py3-pip
+        python3 -m pip install --cache-dir .cache/pip .
+        python3 -m pytest -v
+      elif [ -f "package.json" ]; then
+        apk add --no-cache nodejs npm
+        npm ci --cache .cache/npm
+        npm test
+      elif [ -f "go.mod" ]; then
+        apk add --no-cache go
+        go test -v ./...
+      else
+        echo "no recognised test configuration found"
+        exit 1
+      fi
+  cache:
+    <<: *cache_pull
+
+# Integration tests. The service containers are attached to the job, so a test
+# that expects a database finds one at the usual host name.
+.integration_test_template: &integration_test_template
+  <<: [*docker_runtime, *job_base]
+  stage: test
+  variables:
+    TEST_ENV: "integration"
+  services:
+    - name: "$POSTGRES_IMAGE"
+      alias: postgres
+    - name: "$REDIS_IMAGE"
+      alias: redis
+  script:
+    - |
+      if [ -f "docker-compose.test.yml" ]; then
+        docker compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from test
+      elif [ -f "requirements.txt" ]; then
+        apk add --no-cache python3 py3-pip
+        python3 -m pip install --cache-dir .cache/pip -r requirements.txt
+        python3 -m pytest -v -m integration
+      else
+        echo "no integration test configuration found"
+      fi
+  cache:
+    <<: *cache_pull
+
+# Linting. The output is published as a plain artifact: the JSON the linters
+# write is not the Code Quality format GitLab expects, and publishing it
+# under `reports:codequality` makes a job that reported nothing look like a
+# job that reported a clean bill of health.
+.lint_template: &lint_template
+  <<: [*timeout_short, *resources_small, *docker_runtime, *job_base]
+  stage: validate
+  before_script:
+    - !reference [.job_base, before_script]
+    - apk add --no-cache python3 py3-pip
+  script:
+    - mkdir -p reports
+    - |
+      if [ -f "pyproject.toml" ]; then
+        python3 -m pip install --cache-dir .cache/pip ruff
+        ruff check --output-format=json . > reports/ruff.json
+      elif [ -f "package.json" ] && grep -q '"lint"' package.json; then
+        apk add --no-cache nodejs npm
+        npm ci --cache .cache/npm
+        npm run lint -- --format=json > reports/eslint.json
+      elif [ -f "Makefile" ] && grep -q "^lint:" Makefile; then
+        apk add --no-cache make
+        make lint
+      else
+        echo "no lint configuration found"
+      fi
+  artifacts:
+    # `when: always` keeps the report when the linter fails, which is the
+    # moment the report matters most.
+    when: always
+    paths:
+      - reports/
+    expire_in: "1 week"
+  cache:
+    <<: *cache_pull
+
+# Vulnerability scan. The scanner writes a report and the job still passes;
+# the severity floor is a variable, and turning findings into a gate is a
+# decision for the team that owns the pipeline.
+.trivy_scan_template: &trivy_scan_template
+  <<: [*docker_runtime, *job_base]
+  stage: test
+  image: "$TRIVY_IMAGE"
+  script:
+    - mkdir -p reports
+    - trivy fs . --severity "$SCAN_SEVERITY" --format json --output reports/trivy-fs.json
+    # The image scan needs the image the build stage pushed, so it only runs
+    # when that job was part of the pipeline.
+    - |
+      if [ -n "$IMAGE_TAG" ]; then
+        docker pull "$IMAGE_TAG"
+        trivy image "$IMAGE_TAG" --severity "$SCAN_SEVERITY" \
+          --format json --output reports/trivy-image.json
+      fi
+  artifacts:
+    paths:
+      - reports/
+    expire_in: "1 week"
+  cache:
+    <<: *cache_pull
+
+# ── deploy templates ──────────────────────────────────────────────────────
+
+# A reusable block rather than a job. The deploy jobs pull it in with
+# !reference, so each of them can add its own steps without repeating this
+# one. The kubeconfig is written to a file inside the workspace, because a
+# container job has no ~/.kube to write to, and it is left out of the
+# variables on purpose: it holds a cluster credential, and anything written
+# to a file in the repository is committed.
+.kubeconfig_setup: &kubeconfig_setup
+  script:
+    - |
+      if [ -z "$KUBE_CONFIG" ]; then
+        echo "KUBE_CONFIG is not set. Store the kubeconfig as a masked CI/CD variable" >&2
+        exit 1
+      fi
+      mkdir -p "$(dirname "$KUBECONFIG_FILE")"
+      printf '%s' "$KUBE_CONFIG" | base64 -d > "$KUBECONFIG_FILE"
+      export KUBECONFIG="$KUBECONFIG_FILE"
+
+# A job that only needs kubectl: the base setup and the kubeconfig, without
+# Helm.
+.kubectl_job_template: &kubectl_job_template
+  <<: [*kubectl_runtime, *job_base]
+  variables:
+    KUBECONFIG_FILE: "$CI_PROJECT_DIR/.kube/config"
+  before_script:
+    - !reference [.job_base, before_script]
+    - !reference [.kubeconfig_setup, script]
+
+.deploy_k8s_template: &deploy_k8s_template
+  <<: [*helm_runtime, *job_base]
+  stage: deploy
+  variables:
+    DEPLOY_ENVIRONMENT: "staging"
+    NAMESPACE: "$CI_PROJECT_NAME-$DEPLOY_ENVIRONMENT"
+    HELM_RELEASE: "$CI_PROJECT_NAME"
+    HELM_CHART: "./charts/$CI_PROJECT_NAME"
+    ROLLOUT_TIMEOUT: "300s"
+    KUBECONFIG_FILE: "$CI_PROJECT_DIR/.kube/config"
+  before_script:
+    - !reference [.job_base, before_script]
+    # The Helm image does not carry the kubectl client, so it is added from
+    # the same package manager as the rest of the setup.
+    - apk add --no-cache kubectl
+    - !reference [.kubeconfig_setup, script]
+  script:
+    - |
+      if [ -z "$IMAGE_TAG" ]; then
+        echo "IMAGE_TAG is not set. The deploy job needs the image built by the build stage." >&2
+        exit 1
+      fi
+      kubectl create namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f -
+      if [ -f "$HELM_CHART/Chart.yaml" ]; then
+        helm upgrade --install "$HELM_RELEASE" "$HELM_CHART" \
+          --namespace "$NAMESPACE" \
+          --create-namespace \
+          --wait --timeout 5m \
+          --set image.repository="$REGISTRY_IMAGE" \
+          --set image.tag="$IMAGE_TAG"
+      else
+        kubectl apply -k "k8s/overlays/$DEPLOY_ENVIRONMENT" --namespace "$NAMESPACE"
+      fi
+    - kubectl rollout status "deployment/$HELM_RELEASE" -n "$NAMESPACE" --timeout="$ROLLOUT_TIMEOUT"
+  environment:
+    name: "$DEPLOY_ENVIRONMENT"
+
+# A Helm chart that is linted and rendered before anything is deployed.
+.helm_lint_template: &helm_lint_template
+  <<: [*timeout_short, *resources_small, *helm_runtime, *job_base]
+  stage: validate
+  script:
+    - |
+      for chart in charts/*/; do
+        if [ -f "${chart}Chart.yaml" ]; then
+          echo "linting $chart"
+          helm lint "$chart" --strict
+          helm template "$chart" > /dev/null
+        fi
+      done

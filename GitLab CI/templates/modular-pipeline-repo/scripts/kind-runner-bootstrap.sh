@@ -1,39 +1,60 @@
 #!/bin/bash
-# Kind Runner Bootstrap Script for GitLab CI/CD
-# last_verified: 2026-10-21 · GitLab CI/CD 17.4 · Kind 0.26.0
+# Kind runner bootstrap script for GitLab CI/CD
+# last_verified: 2026-10-22 · GitLab CI (n/a) · Kind (n/a)
 #
 # This script creates a Kind cluster and registers a GitLab Runner
 # configured to run CI jobs inside the cluster using the Kubernetes executor.
+#
+# Nothing here is pinned to a version. The node image tag, the GitLab URL,
+# the chart repository and the two optional manifests are all supplied by the
+# caller, because a tag that quietly stops resolving fails a long way from
+# the thing that broke. Check that the node image tag matches the Kind
+# release you have installed before you run this:
+#
+#   kind get images
 #
 # Usage:
 #   ./kind-runner-bootstrap.sh [OPTIONS]
 #
 # Options:
 #   -n, --name NAME          Cluster name (default: gitlab-runner)
-#   -v, --version VERSION    Kind/Kubernetes version (default: v1.29.2)
+#   -v, --version TAG        Kind node image tag, for example the tag that
+#                            matches your Kind release (required)
 #   -r, --runner-token TOKEN GitLab Runner registration token (required)
-#   -u, --gitlab-url URL     GitLab instance URL (default: https://gitlab.com)
+#   -u, --gitlab-url URL     GitLab instance URL (required)
+#   -c, --chart-repo URL     Helm repository holding the GitLab Runner chart
+#                            (required)
 #   -t, --tags TAGS          Runner tags (default: kubernetes,docker,build,test,deploy)
+#   -i, --ingress-manifest URL
+#                            Ingress controller manifest to apply. The step is
+#                            skipped when this is not set.
+#   -m, --cert-manager-manifest URL
+#                            Certificate manager manifest to apply. The step
+#                            is skipped when this is not set.
 #   -h, --help               Show this help message
 #
 # Environment variables (alternative to flags):
-#   KIND_CLUSTER_NAME, K8S_VERSION, RUNNER_TOKEN, GITLAB_URL, RUNNER_TAGS
+#   KIND_CLUSTER_NAME, K8S_VERSION, RUNNER_TOKEN, GITLAB_URL, CHART_REPO,
+#   RUNNER_TAGS, INGRESS_MANIFEST_URL, CERT_MANAGER_MANIFEST_URL
 #
 # Prerequisites:
 #   - Docker installed and running
-#   - kind installed (https://kind.sigs.k8s.io/)
+#   - kind installed
 #   - kubectl installed
-#   - helm installed (for runner installation)
-#   - GitLab Runner registration token from Admin Area > Runners
+#   - helm installed (for the runner installation)
 
 set -euo pipefail
 
 # Default values
 CLUSTER_NAME="${KIND_CLUSTER_NAME:-gitlab-runner}"
-K8S_VERSION="${K8S_VERSION:-v1.29.2}"
+K8S_VERSION="${K8S_VERSION:-}"
 RUNNER_TOKEN="${RUNNER_TOKEN:-}"
-GITLAB_URL="${GITLAB_URL:-https://gitlab.com}"
+GITLAB_URL="${GITLAB_URL:-}"
+CHART_REPO="${CHART_REPO:-}"
 RUNNER_TAGS="${RUNNER_TAGS:-kubernetes,docker,build,test,deploy}"
+RUNNER_JOB_IMAGE="${RUNNER_JOB_IMAGE:-ubuntu}"
+INGRESS_MANIFEST_URL="${INGRESS_MANIFEST_URL:-}"
+CERT_MANAGER_MANIFEST_URL="${CERT_MANAGER_MANIFEST_URL:-}"
 RUNNER_NAME="${RUNNER_NAME:-kind-runner-$(date +%s)}"
 NAMESPACE="gitlab-runner"
 
@@ -61,15 +82,35 @@ while [[ $# -gt 0 ]]; do
     -v|--version) K8S_VERSION="$2"; shift 2 ;;
     -r|--runner-token) RUNNER_TOKEN="$2"; shift 2 ;;
     -u|--gitlab-url) GITLAB_URL="$2"; shift 2 ;;
+    -c|--chart-repo) CHART_REPO="$2"; shift 2 ;;
     -t|--tags) RUNNER_TAGS="$2"; shift 2 ;;
+    -i|--ingress-manifest) INGRESS_MANIFEST_URL="$2"; shift 2 ;;
+    -m|--cert-manager-manifest) CERT_MANAGER_MANIFEST_URL="$2"; shift 2 ;;
     -h|--help) usage ;;
     *) log_error "Unknown option: $1"; usage ;;
   esac
 done
 
 # Validate required parameters
+if [ -z "$K8S_VERSION" ]; then
+  log_error "A node image tag is required. Use -v/--version or set K8S_VERSION."
+  log_error "Pick the tag that matches the Kind release you have installed."
+  exit 1
+fi
+
 if [ -z "$RUNNER_TOKEN" ]; then
   log_error "Runner token is required. Use -r/--runner-token or set RUNNER_TOKEN env var."
+  exit 1
+fi
+
+if [ -z "$GITLAB_URL" ]; then
+  log_error "GitLab URL is required. Use -u/--gitlab-url or set GITLAB_URL env var."
+  exit 1
+fi
+
+if [ -z "$CHART_REPO" ]; then
+  log_error "Chart repository is required. Use -c/--chart-repo or set CHART_REPO env var."
+  log_error "It has to be the Helm repository that holds the GitLab Runner chart."
   exit 1
 fi
 
@@ -96,7 +137,7 @@ check_prereqs() {
 
 # Create Kind cluster with custom configuration
 create_cluster() {
-  log_info "Creating Kind cluster '$CLUSTER_NAME' with Kubernetes $K8S_VERSION..."
+  log_info "Creating Kind cluster '$CLUSTER_NAME' with the node image $K8S_VERSION..."
 
   # Check if cluster already exists
   if kind get clusters | grep -q "^${CLUSTER_NAME}$"; then
@@ -142,14 +183,6 @@ nodes:
         nodeRegistration:
           kubeletExtraArgs:
             node-labels: "gitlab-runner=true,role=worker"
-containerdConfigPatches:
-  - |
-    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
-      endpoint = ["https://registry-1.docker.io"]
-    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."gcr.io"]
-      endpoint = ["https://gcr.io"]
-    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."ghcr.io"]
-      endpoint = ["https://ghcr.io"]
 EOF
 
   log_success "Kind cluster '$CLUSTER_NAME' created"
@@ -158,34 +191,45 @@ EOF
 # Configure kubectl context
 configure_kubectl() {
   log_info "Configuring kubectl context..."
-  kind get kubeconfig --name "$CLUSTER_NAME" > ~/.kube/kind-${CLUSTER_NAME}
-  export KUBECONFIG=~/.kube/kind-${CLUSTER_NAME}
+  kind get kubeconfig --name "$CLUSTER_NAME" > "$HOME/.kube/kind-${CLUSTER_NAME}"
+  export KUBECONFIG="$HOME/.kube/kind-${CLUSTER_NAME}"
   kubectl cluster-info --context "kind-${CLUSTER_NAME}"
   log_success "kubectl configured for cluster '$CLUSTER_NAME'"
 }
 
-# Install ingress controller (NGINX)
+# Install an ingress controller. The manifest is supplied by the caller,
+# because the controller publishes a new manifest per release and the one
+# that matches the cluster is the caller's choice.
 install_ingress() {
-  log_info "Installing NGINX Ingress Controller..."
-  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-  log_info "Waiting for ingress controller to be ready..."
+  if [ -z "$INGRESS_MANIFEST_URL" ]; then
+    log_warn "No ingress manifest given, skipping the ingress controller."
+    return 0
+  fi
+  log_info "Installing the ingress controller..."
+  kubectl apply -f "$INGRESS_MANIFEST_URL"
+  log_info "Waiting for the ingress controller to be ready..."
   kubectl wait --namespace ingress-nginx \
     --for=condition=ready pod \
     --selector=app.kubernetes.io/component=controller \
     --timeout=120s
-  log_success "NGINX Ingress Controller installed"
+  log_success "Ingress controller installed"
 }
 
-# Install Cert-Manager for TLS
+# Install the certificate manager. The manifest is supplied by the caller for
+# the same reason as the ingress manifest.
 install_cert_manager() {
-  log_info "Installing Cert-Manager..."
-  kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.yaml
-  log_info "Waiting for Cert-Manager to be ready..."
+  if [ -z "$CERT_MANAGER_MANIFEST_URL" ]; then
+    log_warn "No certificate manager manifest given, skipping it."
+    return 0
+  fi
+  log_info "Installing the certificate manager..."
+  kubectl apply -f "$CERT_MANAGER_MANIFEST_URL"
+  log_info "Waiting for the certificate manager to be ready..."
   kubectl wait --namespace cert-manager \
     --for=condition=ready pod \
     --selector=app.kubernetes.io/instance=cert-manager \
     --timeout=120s
-  log_success "Cert-Manager installed"
+  log_success "Certificate manager installed"
 }
 
 # Create namespace for GitLab Runner
@@ -209,8 +253,8 @@ create_runner_secret() {
 install_runner() {
   log_info "Installing GitLab Runner via Helm..."
 
-  # Add GitLab Helm repository
-  helm repo add gitlab https://charts.gitlab.io --force-update
+  # Add the chart repository the caller named
+  helm repo add gitlab "$CHART_REPO" --force-update
   helm repo update
 
   # Create runner configuration
@@ -226,7 +270,7 @@ runners:
     [[runners]]
       [runners.kubernetes]
         namespace = "${NAMESPACE}"
-        image = "ubuntu:24.04"
+        image = "${RUNNER_JOB_IMAGE}"
         privileged = true
         cpu_limit = "2000m"
         memory_limit = "2Gi"
@@ -246,15 +290,6 @@ runners:
           [[runners.kubernetes.volumes.empty_dir]]
             name = "cache-dir"
             mount_path = "/cache"
-      [runners.cache]
-        Type = "s3"
-        Path = "gitlab-runner/cache"
-        Shared = true
-        [runners.cache.s3]
-          ServerAddress = "minio:9000"
-          BucketName = "gitlab-runner"
-          BucketLocation = "us-east-1"
-          Insecure = true
       [runners.kubernetes.pod_annotations]
         "prometheus.io/scrape" = "true"
         "prometheus.io/port" = "9100"
@@ -296,15 +331,15 @@ verify_runner() {
 print_info() {
   log_info "Cluster information:"
   echo "  Cluster name: $CLUSTER_NAME"
-  echo "  Kubernetes version: $K8S_VERSION"
+  echo "  Node image tag: $K8S_VERSION"
   echo "  Runner name: $RUNNER_NAME"
   echo "  Runner tags: $RUNNER_TAGS"
   echo "  Namespace: $NAMESPACE"
   echo "  GitLab URL: $GITLAB_URL"
   echo
   log_info "To use this cluster for local development:"
-  echo "  export KUBECONFIG=~/.kube/kind-${CLUSTER_NAME}"
-  echo "  kubectl config use-context kind-${CLUSTER_NAME}"
+  echo "  export KUBECONFIG=~/.kube/kind-$CLUSTER_NAME"
+  echo "  kubectl config use-context kind-$CLUSTER_NAME"
   echo
   log_info "To delete the cluster:"
   echo "  kind delete cluster --name $CLUSTER_NAME"
@@ -315,7 +350,7 @@ print_info() {
 # Main execution
 main() {
   log_info "Starting Kind runner bootstrap for GitLab CI/CD"
-  log_info "Cluster: $CLUSTER_NAME, K8s: $K8S_VERSION, GitLab: $GITLAB_URL"
+  log_info "Cluster: $CLUSTER_NAME, node image: $K8S_VERSION, GitLab: $GITLAB_URL"
 
   check_prereqs
   create_cluster
