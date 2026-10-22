@@ -2,6 +2,7 @@
 
 ## 2026-10-22
 
+- Added GitLab CI/CD self-hosted runner Dockerfile with Docker-in-Docker, kaniko, buildah, kubectl, and helm for in-job image builds and Kubernetes deployments (gl-020) (`GitLab CI/dockerfiles/gitlab-runner-dind-kaniko.Dockerfile`)
 - Added GitLab CI/CD modular pipeline template: root .gitlab-ci.yml with include:local, .gitlab/ci/{lib,build,test,deploy}.yml job templates using anchors and !reference, Kind runner bootstrap script, and README (gl-019) (`GitLab CI/templates/modular-pipeline-repo/`)
 - Added GitLab CI/CD pipeline library patterns documentation: include:project, extends, !reference, rules, and spec:inputs for shipping one maintained pipeline to many repositories (gl-022) (`GitLab CI/docs/gitlab-ci-cd-pipeline-library-patterns.md`)
 - Passed ([x]) gl-019 — GitLab CI/CD: template — Project scaffold: modular GitLab CI/CD pipeline repo · Level: L4 · 2026-10-22
