@@ -82,4 +82,4 @@ The kit covers 27 tool families across cloud CLIs, configuration management, con
 Currently working through L1 first-contact notes for Flux CD and Grafana Cloud, and expanding template scaffolds for Ansible, Helm, and Terraform. New this cycle: Jenkins primer, ArgoCD Vault integration, and a Grafana HTTP API dashboard builder.
 
 ---
-_Last updated: 2026-10-21_
+_Last updated: 2026-10-22_
