@@ -1,0 +1,43 @@
+# last_verified: 2026-10-25 · Flux CD v2.5.0
+# Purpose: Flux GitRepository for management cluster GitOps source
+# When to use: Bootstrap Flux on management cluster to sync from Git repository
+# Prerequisites: Flux controllers installed; Git repository with SSH/HTTPS access; SSH secret created
+# Verify: flux get sources git --all-namespaces
+# Rollback: kubectl delete gitrepository flux-system -n flux-system
+# Common errors: SSH key not in known_hosts; repository URL incorrect; branch doesn't exist
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  url: ssh://git@github.com/your-org/your-gitops-repo.git
+  secretRef:
+    name: flux-git-deploy-key
+  ignore: |
+    # exclude directories
+    /docs/**
+    /scripts/**
+    # exclude files
+    .gitignore
+    README.md
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: flux-git-deploy-key
+  namespace: flux-system
+type: kubernetes.io/ssh-auth
+stringData:
+  identity: |
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    REPLACE_WITH_YOUR_SSH_PRIVATE_KEY
+    -----END OPENSSH PRIVATE KEY-----
+  known_hosts: |
+    github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+    github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+    github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVs

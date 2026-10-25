@@ -1,0 +1,121 @@
+# last_verified: 2026-10-25 · Cluster API v1.7.0
+# Purpose: GCP managed cluster ClusterClass — GKE-style control plane with self-managed GCE workers
+# When to use: Production GCP workload clusters requiring full CAPI lifecycle management
+# Prerequisites: CAPG v1.7+ installed, GCP credentials configured, VPC/subnets exist
+# Usage: clusterctl generate cluster <name> --from clusterclass/gcp-managed-cluster --kubernetes-version v1.29.4
+# Verify: kubectl get clusterclass gcp-managed-cluster -o yaml
+# Rollback: kubectl delete clusterclass gcp-managed-cluster
+# Common errors: GCP quota limits; service account permissions; private cluster networking
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: ClusterClass
+metadata:
+  name: gcp-managed-cluster
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-gcp
+    topology.cluster.x-k8s.io/managed: "true"
+spec:
+  variables:
+    - name: kubernetesVersion
+      description: "Kubernetes version for control plane and worker nodes"
+      schema:
+        type: string
+        pattern: "^v?1\\.(2[89]|30)\\.[0-9]+$"
+      default: "v1.29.4"
+    - name: controlPlaneReplicas
+      description: "Number of control plane replicas (must be odd)"
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 5
+      default: 3
+    - name: workerReplicas
+      description: "Number of worker node replicas"
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+      default: 3
+    - name: controlPlaneMachineType
+      description: "GCE machine type for control plane nodes"
+      schema:
+        type: string
+        enum: ["e2-standard-4", "e2-standard-8", "n2-standard-4", "n2-standard-8", "n2-highmem-4"]
+      default: "e2-standard-4"
+    - name: workerMachineType
+      description: "GCE machine type for worker nodes"
+      schema:
+        type: string
+        enum: ["e2-standard-4", "e2-standard-8", "n2-standard-4", "n2-standard-8", "n2-highmem-4", "c2-standard-4"]
+      default: "e2-standard-4"
+    - name: project
+      description: "GCP project ID"
+      schema:
+        type: string
+    - name: network
+      description: "Existing VPC network name"
+      schema:
+        type: string
+    - name: controlPlaneSubnetwork
+      description: "Subnetwork for control plane nodes"
+      schema:
+        type: string
+    - name: nodeSubnetwork
+      description: "Subnetwork for worker nodes"
+      schema:
+        type: string
+    - name: cni
+      description: "CNI plugin to deploy"
+      schema:
+        type: string
+        enum: ["calico", "cilium", "gcp-cni"]
+      default: "gcp-cni"
+    - name: enableMonitoring
+      description: "Deploy Prometheus monitoring stack"
+      schema:
+        type: boolean
+      default: true
+    - name: enableLogging
+      description: "Deploy Loki logging stack"
+      schema:
+        type: boolean
+      default: true
+    - name: enableSecurity
+      description: "Deploy Falco runtime security and Kyverno policies"
+      schema:
+        type: boolean
+      default: true
+  infrastructure:
+    ref:
+      apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+      kind: GCPClusterTemplate
+      name: gcp-managed-cluster
+    namespace: capi-system
+  controlPlane:
+    ref:
+      apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+      kind: KubeadmControlPlaneTemplate
+      name: gcp-managed-control-plane
+    namespace: capi-system
+    machineInfrastructure:
+      ref:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: GCPMachineTemplate
+        name: gcp-control-plane
+      namespace: capi-system
+  workers:
+    machineDeployments:
+      - class: default-worker
+        failureDomain: "${failureDomain}"
+        bootstrap:
+          ref:
+            apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+            kind: KubeadmConfigTemplate
+            name: gcp-worker-bootstrap
+          namespace: capi-system
+        infrastructure:
+          ref:
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: GCPMachineTemplate
+            name: gcp-worker
+          namespace: capi-system

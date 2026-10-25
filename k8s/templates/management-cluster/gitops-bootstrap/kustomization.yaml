@@ -1,0 +1,20 @@
+# last_verified: 2026-10-25 · kustomize v5.4.0
+# Purpose: Kustomization for Flux GitOps bootstrap on management cluster
+# When to use: Apply Flux GitRepository and Kustomization resources
+# Prerequisites: Flux controllers installed in flux-system namespace
+# Usage: kubectl apply -k management-cluster/gitops-bootstrap/
+# Verify: flux get sources git -n flux-system && flux get kustomizations -n flux-system
+# Rollback: kubectl delete -k management-cluster/gitops-bootstrap/
+# Common errors: SSH secret not created; GitRepository URL wrong; path doesn't exist in repo
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: flux-system
+resources:
+  - flux-gitrepository.yaml
+  - flux-kustomization-mgmt.yaml
+  - flux-kustomization-fleet.yaml
+  - flux-kustomization-apps.yaml
+commonLabels:
+  managed-by: kustomize
+  component: gitops-bootstrap

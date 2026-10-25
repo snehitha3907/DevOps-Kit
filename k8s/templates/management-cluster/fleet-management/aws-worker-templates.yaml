@@ -1,0 +1,61 @@
+# last_verified: 2026-10-25 · CAPA v1.7.0
+# Purpose: AWSMachineTemplate and KubeadmConfigTemplate for AWS worker nodes
+# When to use: Referenced by aws-managed-cluster ClusterClass workers section
+# Prerequisites: CAPA v1.7+, kubeadm bootstrap provider v1.7+
+# Verify: kubectl get awsmachinetemplate aws-worker -n capi-system -o yaml
+# Rollback: kubectl delete awsmachinetemplate aws-worker -n capi-system
+# Common errors: Instance type not available in AZ; spot instance interruption
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AWSMachineTemplate
+metadata:
+  name: aws-worker
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      instanceType: "${workerMachineType}"
+      sshKeyName: "${AWS_SSH_KEY_NAME}"
+      iamInstanceProfile: nodes.cluster-api-provider-aws.sigs.k8s.io
+      rootVolume:
+        size: 100
+        type: gp3
+        encryptionKey: "${AWS_KMS_KEY_ARN}"
+      additionalSecurityGroups:
+        - "${nodeSecurityGroupId}"
+      subnet:
+        id: "${privateSubnetIds}"
+        type: Private
+      spotMarketOptions: {}
+      preBuiltAMI: "${AMI_ID}"
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata:
+  name: aws-worker-bootstrap
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      joinConfiguration:
+        nodeRegistration:
+          name: "{{ ds.meta_data.hostname }}"
+          kubeletExtraArgs:
+            cloud-provider: external
+            node-labels: "node-role.kubernetes.io/worker="
+      users:
+        - name: capi-admin
+          sudo: ALL=(ALL) NOPASSWD:ALL
+          groups: sudo
+          sshAuthorizedKeys:
+            - "${AWS_SSH_PUBLIC_KEY}"
+      files:
+        - path: /etc/kubernetes/cloud-config
+          owner: "root:root"
+          permissions: "0644"
+          content: |
+            [Global]
+            region = ${AWS_REGION}
+            vpc = ${vpcId}
+            subnet-id = ${privateSubnetIds}
+            route-table-id = ${routeTableId}

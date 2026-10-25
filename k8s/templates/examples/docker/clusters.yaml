@@ -1,0 +1,49 @@
+# last_verified: 2026-10-25 · Cluster API v1.7.0, CAPD v1.7.0
+# Purpose: Example Docker development cluster generated from self-managed-cluster ClusterClass
+# When to use: Local development and testing with kind management cluster
+# Prerequisites: kind, clusterctl, Docker daemon, ClusterClass self-managed-cluster applied
+# Usage: clusterctl generate cluster docker-dev --from clusterclass/self-managed-cluster --kubernetes-version v1.29.4 > docker-dev.yaml
+# Verify: kubectl apply -f docker-dev.yaml && kubectl get cluster docker-dev -n capi-dev -w
+# Rollback: kubectl delete cluster docker-dev -n capi-dev
+# Common errors: Docker daemon not accessible in CI; port 6443 already in use
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: docker-dev
+  namespace: capi-dev
+  labels:
+    topology.cluster.x-k8s.io/managed: "true"
+    cni: kindnet
+    monitoring: disabled
+    logging: disabled
+    security: disabled
+    environment: development
+spec:
+  topology:
+    class: self-managed-cluster
+    version: v1.29.4
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+        - class: default-worker
+          failureDomain: docker
+          replicas: 2
+    variables:
+      - name: kubernetesVersion
+        value: v1.29.4
+      - name: controlPlaneReplicas
+        value: "1"
+      - name: workerReplicas
+        value: "2"
+      - name: cni
+        value: kindnet
+      - name: containerRuntime
+        value: containerd
+      - name: enableMonitoring
+        value: "false"
+      - name: enableLogging
+        value: "false"
+      - name: enableSecurity
+        value: "false"

@@ -1,0 +1,39 @@
+# last_verified: 2026-10-25 · Flux CD v2.5.0
+# Purpose: Flux Kustomization for fleet-wide ClusterResourceSet sync
+# When to use: Sync ClusterClass, ClusterResourceSet, and provider templates across all workload clusters
+# Prerequisites: GitRepository flux-system exists; fleet-management path in Git repo
+# Verify: flux get kustomizations -n flux-system fleet-management
+# Rollback: kubectl delete kustomization fleet-management -n flux-system
+# Common errors: ClusterResourceSet CRDs not installed; provider templates missing dependencies
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: fleet-management
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./clusters/management/fleet-management
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: cluster.x-k8s.io/v1beta1
+      kind: ClusterClass
+      name: aws-managed-cluster
+      namespace: capi-system
+    - apiVersion: cluster.x-k8s.io/v1beta1
+      kind: ClusterClass
+      name: azure-managed-cluster
+      namespace: capi-system
+    - apiVersion: cluster.x-k8s.io/v1beta1
+      kind: ClusterClass
+      name: gcp-managed-cluster
+      namespace: capi-system
+    - apiVersion: cluster.x-k8s.io/v1beta1
+      kind: ClusterClass
+      name: self-managed-cluster
+      namespace: capi-system
+  retryInterval: 2m0s
+  timeout: 10m0s

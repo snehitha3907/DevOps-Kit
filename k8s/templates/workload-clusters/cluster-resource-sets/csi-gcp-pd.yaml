@@ -1,0 +1,196 @@
+# last_verified: 2026-10-25 · GCP PD CSI Driver v1.30.0
+# Purpose: ClusterResourceSet for GCP Persistent Disk CSI Driver — applies to GCP clusters
+# When to use: Enable persistent volumes on GCP workload clusters
+# Prerequisites: GCP service account with Compute Disks permissions; ClusterResourceSet controller running
+# Verify: kubectl get clusterresourceset gcp-pd-csi -n capi-system -o yaml
+# Rollback: kubectl delete clusterresourceset gcp-pd-csi -n capi-system
+# Common errors: Service account missing compute.disks.* permissions; PD CSI version mismatch
+---
+apiVersion: addons.cluster.x-k8s.io/v1beta1
+kind: ClusterResourceSet
+metadata:
+  name: gcp-pd-csi
+  namespace: capi-system
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-gcp
+spec:
+  clusterSelector:
+    matchLabels:
+      provider: gcp
+      csi: gcp-pd
+  resources:
+    - kind: ServiceAccount
+      name: gcp-pd-csi-controller-sa
+      apiVersion: v1
+    - kind: ClusterRole
+      name: gcp-pd-csi-controller-role
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ClusterRoleBinding
+      name: gcp-pd-csi-controller-binding
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: Deployment
+      name: gcp-pd-csi-controller
+      apiVersion: apps/v1
+    - kind: DaemonSet
+      name: gcp-pd-csi-node
+      apiVersion: apps/v1
+    - kind: CSIDriver
+      name: pd.csi.storage.gke.io
+      apiVersion: storage.k8s.io/v1
+    - kind: StorageClass
+      name: pd-ssd
+      apiVersion: storage.k8s.io/v1
+    - kind: StorageClass
+      name: pd-ssd-retain
+      apiVersion: storage.k8s.io/v1
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gcp-pd-csi-controller-sa
+  namespace: kube-system
+  annotations:
+    iam.gke.io/gcp-service-account: ${GCP_CSI_SERVICE_ACCOUNT_EMAIL}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: gcp-pd-csi-controller-role
+rules:
+  - apiGroups: [""]
+    resources: ["events", "persistentvolumes", "persistentvolumeclaims", "nodes"]
+    verbs: ["get", "list", "watch", "update", "create", "patch"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["volumeattachments", "storageclasses", "csidrivers", "csinodes"]
+    verbs: ["get", "list", "watch", "update", "create", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gcp-pd-csi-controller-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gcp-pd-csi-controller-role
+subjects:
+  - kind: ServiceAccount
+    name: gcp-pd-csi-controller-sa
+    namespace: kube-system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcp-pd-csi-controller
+  namespace: kube-system
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gcp-pd-csi-controller
+  template:
+    metadata:
+      labels:
+        app: gcp-pd-csi-controller
+    spec:
+      serviceAccountName: gcp-pd-csi-controller-sa
+      containers:
+        - name: gcp-pd-plugin
+          image: gcr.io/gke-release/csi-driver:v1.30.0
+          args:
+            - "--endpoint=$(CSI_ENDPOINT)"
+            - "--logtostderr"
+            - "--v=5"
+            - "--default-fstype=ext4"
+          env:
+            - name: CSI_ENDPOINT
+              value: unix:///csi/csi.sock
+            - name: GCP_PROJECT
+              value: ${project}
+            - name: GCP_REGION
+              value: ${GCP_REGION}
+          volumeMounts:
+            - name: socket-dir
+              mountPath: /csi
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: gcp-pd-csi-node
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: gcp-pd-csi-node
+  template:
+    metadata:
+      labels:
+        app: gcp-pd-csi-node
+    spec:
+      serviceAccountName: gcp-pd-csi-controller-sa
+      containers:
+        - name: node-driver-registrar
+          image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.10.1
+          args:
+            - "--v=5"
+            - "--csi-address=/csi/csi.sock"
+        - name: gcp-pd-plugin
+          image: gcr.io/gke-release/csi-driver:v1.30.0
+          args:
+            - "--endpoint=$(CSI_ENDPOINT)"
+            - "--logtostderr"
+            - "--v=5"
+          env:
+            - name: CSI_ENDPOINT
+              value: unix:///csi/csi.sock
+            - name: GCP_PROJECT
+              value: ${project}
+            - name: GCP_REGION
+              value: ${GCP_REGION}
+          volumeMounts:
+            - name: socket-dir
+              mountPath: /csi
+            - name: kubelet-dir
+              mountPath: /var/lib/kubelet
+              mountPropagation: Bidirectional
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+        - name: kubelet-dir
+          hostPath:
+            path: /var/lib/kubelet
+---
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: pd.csi.storage.gke.io
+spec:
+  attachRequired: true
+  podInfoOnMount: true
+  fsGroupPolicy: File
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: pd-ssd
+provisioner: pd.csi.storage.gke.io
+parameters:
+  type: pd-ssd
+  replication-type: regional-pd
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: pd-ssd-retain
+provisioner: pd.csi.storage.gke.io
+parameters:
+  type: pd-ssd
+  replication-type: regional-pd
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true

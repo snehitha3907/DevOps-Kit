@@ -1,0 +1,39 @@
+# last_verified: 2026-10-25 · CAPD v1.7.0
+# Purpose: DockerMachineTemplate and KubeadmConfigTemplate for self-managed worker nodes
+# When to use: Referenced by self-managed-cluster ClusterClass workers section
+# Prerequisites: CAPD v1.7+, kubeadm bootstrap provider v1.7+
+# Verify: kubectl get dockermachinetemplate self-managed-worker -n capi-system -o yaml
+# Rollback: kubectl delete dockermachinetemplate self-managed-worker -n capi-system
+# Common errors: Docker daemon not accessible; port conflicts
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerMachineTemplate
+metadata:
+  name: self-managed-worker
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      extraMounts:
+        - containerPath: /var/run/docker.sock
+          hostPath: /var/run/docker.sock
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata:
+  name: self-managed-worker-bootstrap
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      joinConfiguration:
+        nodeRegistration:
+          name: "{{ ds.meta_data.hostname }}"
+          kubeletExtraArgs:
+            node-labels: "node-role.kubernetes.io/worker="
+      users:
+        - name: capi-admin
+          sudo: ALL=(ALL) NOPASSWD:ALL
+          groups: sudo
+          sshAuthorizedKeys:
+            - "ssh-ed25519 AAAAC3replace-with-your-own-key capi-admin"

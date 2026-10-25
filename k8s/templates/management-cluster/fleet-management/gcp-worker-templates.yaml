@@ -1,0 +1,68 @@
+# last_verified: 2026-10-25 · CAPG v1.7.0
+# Purpose: GCPMachineTemplate and KubeadmConfigTemplate for GCP worker nodes
+# When to use: Referenced by gcp-managed-cluster ClusterClass workers section
+# Prerequisites: CAPG v1.7+, kubeadm bootstrap provider v1.7+
+# Verify: kubectl get gcpmachinetemplate gcp-worker -n capi-system -o yaml
+# Rollback: kubectl delete gcpmachinetemplate gcp-worker -n capi-system
+# Common errors: Quota exceeded for machine type; subnetwork not in same region
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: GCPMachineTemplate
+metadata:
+  name: gcp-worker
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      machineType: "${workerMachineType}"
+      image: projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts
+      disk:
+        type: pd-ssd
+        sizeGB: 100
+      sshKeys:
+        - "capi-user:${GCP_SSH_PUBLIC_KEY}"
+      networkInterfaces:
+        - network: "${network}"
+          subnetwork: "${nodeSubnetwork}"
+          accessConfigs:
+            - externalIP: EPHEMERAL
+      serviceAccounts:
+        - email: "${GCP_SERVICE_ACCOUNT_EMAIL}"
+          scopes:
+            - "https://www.googleapis.com/auth/cloud-platform"
+      tags:
+        - "gcp-worker"
+        - "${clusterName}-worker"
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata:
+  name: gcp-worker-bootstrap
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      joinConfiguration:
+        nodeRegistration:
+          name: "{{ ds.meta_data.hostname }}"
+          kubeletExtraArgs:
+            cloud-provider: external
+            node-labels: "node-role.kubernetes.io/worker="
+      users:
+        - name: capi-admin
+          sudo: ALL=(ALL) NOPASSWD:ALL
+          groups: sudo
+          sshAuthorizedKeys:
+            - "${GCP_SSH_PUBLIC_KEY}"
+      files:
+        - path: /etc/kubernetes/gcp.conf
+          owner: "root:root"
+          permissions: "0644"
+          content: |
+            [Global]
+            project-id = ${project}
+            network-name = ${network}
+            subnetwork-name = ${nodeSubnetwork}
+            region = ${GCP_REGION}
+            node-tags = gcp-worker
+            node-instance-prefix = ${clusterName}

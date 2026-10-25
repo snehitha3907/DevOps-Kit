@@ -1,0 +1,192 @@
+# last_verified: 2026-10-25 · AWS EBS CSI Driver v1.32.0
+# Purpose: ClusterResourceSet for AWS EBS CSI Driver — applies to AWS clusters
+# When to use: Enable persistent volumes on AWS workload clusters
+# Prerequisites: IAM role for service account with EBS permissions; ClusterResourceSet controller running
+# Verify: kubectl get clusterresourceset aws-ebs-csi -n capi-system -o yaml
+# Rollback: kubectl delete clusterresourceset aws-ebs-csi -n capi-system
+# Common errors: IAM policy not attached to node role; CSI driver version incompatible
+---
+apiVersion: addons.cluster.x-k8s.io/v1beta1
+kind: ClusterResourceSet
+metadata:
+  name: aws-ebs-csi
+  namespace: capi-system
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-aws
+spec:
+  clusterSelector:
+    matchLabels:
+      provider: aws
+      csi: aws-ebs
+  resources:
+    - kind: ServiceAccount
+      name: ebs-csi-controller-sa
+      apiVersion: v1
+    - kind: ClusterRole
+      name: ebs-csi-controller-role
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ClusterRoleBinding
+      name: ebs-csi-controller-binding
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: Deployment
+      name: ebs-csi-controller
+      apiVersion: apps/v1
+    - kind: DaemonSet
+      name: ebs-csi-node
+      apiVersion: apps/v1
+    - kind: CSIDriver
+      name: ebs.csi.aws.com
+      apiVersion: storage.k8s.io/v1
+    - kind: StorageClass
+      name: gp3
+      apiVersion: storage.k8s.io/v1
+    - kind: StorageClass
+      name: gp3-retain
+      apiVersion: storage.k8s.io/v1
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ebs-csi-controller-sa
+  namespace: kube-system
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::${AWS_ACCOUNT_ID}:role/AmazonEBSCSIDriverRole
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ebs-csi-controller-role
+rules:
+  - apiGroups: [""]
+    resources: ["events", "persistentvolumes", "persistentvolumeclaims", "nodes"]
+    verbs: ["get", "list", "watch", "update", "create", "patch"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["volumeattachments", "storageclasses", "csidrivers", "csinodes"]
+    verbs: ["get", "list", "watch", "update", "create", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ebs-csi-controller-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ebs-csi-controller-role
+subjects:
+  - kind: ServiceAccount
+    name: ebs-csi-controller-sa
+    namespace: kube-system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ebs-csi-controller
+  namespace: kube-system
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ebs-csi-controller
+  template:
+    metadata:
+      labels:
+        app: ebs-csi-controller
+    spec:
+      serviceAccountName: ebs-csi-controller-sa
+      containers:
+        - name: ebs-plugin
+          image: public.ecr.aws/ebs-csi-driver/ebs-plugin:v1.32.0
+          args:
+            - "--endpoint=$(CSI_ENDPOINT)"
+            - "--logtostderr"
+            - "--v=5"
+            - "--default-fstype=ext4"
+          env:
+            - name: CSI_ENDPOINT
+              value: unix:///csi/csi.sock
+            - name: AWS_DEFAULT_REGION
+              value: ${AWS_REGION}
+          volumeMounts:
+            - name: socket-dir
+              mountPath: /csi
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ebs-csi-node
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: ebs-csi-node
+  template:
+    metadata:
+      labels:
+        app: ebs-csi-node
+    spec:
+      serviceAccountName: ebs-csi-controller-sa
+      containers:
+        - name: node-driver-registrar
+          image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.10.1
+          args:
+            - "--v=5"
+            - "--csi-address=/csi/csi.sock"
+        - name: ebs-plugin
+          image: public.ecr.aws/ebs-csi-driver/ebs-plugin:v1.32.0
+          args:
+            - "--endpoint=$(CSI_ENDPOINT)"
+            - "--logtostderr"
+            - "--v=5"
+          env:
+            - name: CSI_ENDPOINT
+              value: unix:///csi/csi.sock
+            - name: AWS_DEFAULT_REGION
+              value: ${AWS_REGION}
+          volumeMounts:
+            - name: socket-dir
+              mountPath: /csi
+            - name: kubelet-dir
+              mountPath: /var/lib/kubelet
+              mountPropagation: Bidirectional
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+        - name: kubelet-dir
+          hostPath:
+            path: /var/lib/kubelet
+---
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: ebs.csi.aws.com
+spec:
+  attachRequired: true
+  podInfoOnMount: true
+  fsGroupPolicy: File
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gp3
+provisioner: ebs.csi.aws.com
+parameters:
+  type: gp3
+  encrypted: "true"
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gp3-retain
+provisioner: ebs.csi.aws.com
+parameters:
+  type: gp3
+  encrypted: "true"
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true

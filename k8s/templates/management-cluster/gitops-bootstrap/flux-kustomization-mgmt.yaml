@@ -1,0 +1,33 @@
+# last_verified: 2026-10-25 · Flux CD v2.5.0
+# Purpose: Flux Kustomization for management cluster self-sync
+# When to use: Management cluster manages its own Flux configuration and fleet management
+# Prerequisites: GitRepository flux-system exists in flux-system namespace
+# Verify: flux get kustomizations -n flux-system
+# Rollback: kubectl delete kustomization flux-system -n flux-system
+# Common errors: Path doesn't exist in Git repo; dependsOn circular dependency; health checks fail
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./clusters/management
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: flux2
+      namespace: flux-system
+    - apiVersion: source.toolkit.fluxcd.io/v1
+      kind: GitRepository
+      name: flux-system
+      namespace: flux-system
+  dependsOn:
+    - name: fleet-management
+  retryInterval: 1m0s
+  timeout: 5m0s

@@ -1,0 +1,98 @@
+# last_verified: 2026-10-25 · Cluster API v1.7.0
+# Purpose: Self-managed cluster ClusterClass — kubeadm control plane for any infrastructure provider
+# When to use: Development, testing, or environments requiring full control plane control
+# Prerequisites: Appropriate infrastructure provider installed (Docker, AWS, Azure, GCP)
+# Usage: clusterctl generate cluster <name> --from clusterclass/self-managed-cluster --kubernetes-version v1.29.4
+# Verify: kubectl get clusterclass self-managed-cluster -o yaml
+# Rollback: kubectl delete clusterclass self-managed-cluster
+# Common errors: Version mismatch between kubeadm and kubelet; container runtime not configured
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: ClusterClass
+metadata:
+  name: self-managed-cluster
+  labels:
+    topology.cluster.x-k8s.io/managed: "true"
+spec:
+  variables:
+    - name: kubernetesVersion
+      description: "Kubernetes version for control plane and worker nodes"
+      schema:
+        type: string
+        pattern: "^v?1\\.(2[89]|30)\\.[0-9]+$"
+      default: "v1.29.4"
+    - name: controlPlaneReplicas
+      description: "Number of control plane replicas (must be odd)"
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 5
+      default: 1
+    - name: workerReplicas
+      description: "Number of worker node replicas"
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+      default: 2
+    - name: cni
+      description: "CNI plugin to deploy"
+      schema:
+        type: string
+        enum: ["calico", "cilium", "kindnet"]
+      default: "kindnet"
+    - name: containerRuntime
+      description: "Container runtime (containerd, docker)"
+      schema:
+        type: string
+        enum: ["containerd", "docker"]
+      default: "containerd"
+    - name: enableMonitoring
+      description: "Deploy Prometheus monitoring stack"
+      schema:
+        type: boolean
+      default: false
+    - name: enableLogging
+      description: "Deploy Loki logging stack"
+      schema:
+        type: boolean
+      default: false
+    - name: enableSecurity
+      description: "Deploy Falco runtime security and Kyverno policies"
+      schema:
+        type: boolean
+      default: false
+  infrastructure:
+    ref:
+      apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+      kind: DockerClusterTemplate
+      name: self-managed-cluster
+    namespace: capi-system
+  controlPlane:
+    ref:
+      apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+      kind: KubeadmControlPlaneTemplate
+      name: self-managed-control-plane
+    namespace: capi-system
+    machineInfrastructure:
+      ref:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: DockerMachineTemplate
+        name: self-managed-control-plane
+      namespace: capi-system
+  workers:
+    machineDeployments:
+      - class: default-worker
+        failureDomain: "${failureDomain}"
+        bootstrap:
+          ref:
+            apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+            kind: KubeadmConfigTemplate
+            name: self-managed-worker-bootstrap
+          namespace: capi-system
+        infrastructure:
+          ref:
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: DockerMachineTemplate
+            name: self-managed-worker
+          namespace: capi-system

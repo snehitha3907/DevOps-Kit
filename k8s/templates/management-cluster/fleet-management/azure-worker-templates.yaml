@@ -1,0 +1,76 @@
+# last_verified: 2026-10-25 · CAPZ v1.7.0
+# Purpose: AzureMachineTemplate and KubeadmConfigTemplate for Azure worker nodes
+# When to use: Referenced by azure-managed-cluster ClusterClass workers section
+# Prerequisites: CAPZ v1.7+, kubeadm bootstrap provider v1.7+
+# Verify: kubectl get azuremachinetemplate azure-worker -n capi-system -o yaml
+# Rollback: kubectl delete azuremachinetemplate azure-worker -n capi-system
+# Common errors: VMSS scaling limits; image version not available in region
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureMachineTemplate
+metadata:
+  name: azure-worker
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      vmSize: "${workerVMSize}"
+      image:
+        marketplace:
+          publisher: cncf-upstream
+          offer: kubernetes-ubuntu-2204
+          sku: kubernetes-1-29
+          version: latest
+      osDisk:
+        osType: Linux
+        diskSizeGB: 128
+        managedDisk:
+          storageAccountType: Premium_LRS
+      sshPublicKey: "${AZURE_SSH_PUBLIC_KEY}"
+      subnetName: "${nodeSubnetName}"
+      vnetName: "${vnetName}"
+      vnetResourceGroup: "${vnetResourceGroup}"
+      identity: "${azureClusterIdentity}"
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: KubeadmConfigTemplate
+metadata:
+  name: azure-worker-bootstrap
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      joinConfiguration:
+        nodeRegistration:
+          name: "{{ ds.meta_data.hostname }}"
+          kubeletExtraArgs:
+            cloud-provider: external
+            node-labels: "node-role.kubernetes.io/worker="
+      users:
+        - name: capi-admin
+          sudo: ALL=(ALL) NOPASSWD:ALL
+          groups: sudo
+          sshAuthorizedKeys:
+            - "${AZURE_SSH_PUBLIC_KEY}"
+      files:
+        - path: /etc/kubernetes/azure.json
+          owner: "root:root"
+          permissions: "0644"
+          content: |
+            {
+              "cloud": "AzurePublicCloud",
+              "tenantId": "${AZURE_TENANT_ID}",
+              "subscriptionId": "${AZURE_SUBSCRIPTION_ID}",
+              "resourceGroup": "${AZURE_RESOURCE_GROUP}",
+              "location": "${AZURE_LOCATION}",
+              "vnetName": "${vnetName}",
+              "vnetResourceGroup": "${vnetResourceGroup}",
+              "subnetName": "${nodeSubnetName}",
+              "securityGroupName": "${nodeSecurityGroupName}",
+              "routeTableName": "${nodeRouteTableName}",
+              "cloudProviderBackoff": true,
+              "cloudProviderBackoffRetries": 6,
+              "cloudProviderBackoffExponent": 1.5,
+              "cloudProviderBackoffDuration": 5,
+              "cloudProviderBackoffJitter": 1.0
+            }

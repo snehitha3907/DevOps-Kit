@@ -1,0 +1,67 @@
+# last_verified: 2026-10-25 · KubeadmControlPlane v1.7.0
+# Purpose: KubeadmControlPlaneTemplate for self-managed cluster (Docker provider)
+# When to use: Referenced by self-managed-cluster ClusterClass for local development
+# Prerequisites: CAPD v1.7+, kubeadm bootstrap provider v1.7+
+# Verify: kubectl get kubeadmcontrolplanetemplate self-managed-control-plane -n capi-system -o yaml
+# Rollback: kubectl delete kubeadmcontrolplanetemplate self-managed-control-plane -n capi-system
+# Common errors: Port conflicts on host; Docker-in-Docker not configured in CI
+---
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: KubeadmControlPlaneTemplate
+metadata:
+  name: self-managed-control-plane
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      replicas: "${controlPlaneReplicas}"
+      version: "${kubernetesVersion}"
+      machineTemplate:
+        infrastructureRef:
+          apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+          kind: DockerMachineTemplate
+          name: self-managed-control-plane
+          namespace: capi-system
+      kubeadmConfigSpec:
+        clusterConfiguration:
+          apiServer:
+            extraArgs:
+              cloud-provider: external
+          controllerManager:
+            extraArgs:
+              allocate-node-cidrs: "true"
+          dns:
+            type: CoreDNS
+          etcd:
+            local:
+              dataDir: /var/lib/etcd
+          networking:
+            dnsDomain: cluster.local
+            podSubnet: 10.244.0.0/16
+            serviceSubnet: 10.96.0.0/12
+        initConfiguration:
+          nodeRegistration:
+            name: "{{ ds.meta_data.hostname }}"
+            kubeletExtraArgs:
+              node-labels: "node-role.kubernetes.io/control-plane="
+        joinConfiguration:
+          nodeRegistration:
+            name: "{{ ds.meta_data.hostname }}"
+            kubeletExtraArgs:
+              node-labels: "node-role.kubernetes.io/control-plane="
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerMachineTemplate
+metadata:
+  name: self-managed-control-plane
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      extraMounts:
+        - containerPath: /var/run/docker.sock
+          hostPath: /var/run/docker.sock
+      extraPorts:
+        - containerPort: 6443
+          hostPort: 6443
+          protocol: TCP
