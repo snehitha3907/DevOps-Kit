@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# prepare-commit-msg hook — auto-generate commit message template
+#
+# Provides a conventional commit template for interactive commits.
+# Runs before the commit message editor opens.
+#
+# Install: ./scripts/install-hooks.sh
+#   (or copy to .git/hooks/prepare-commit-msg and make executable)
+
+set -euo pipefail
+
+COMMIT_MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+SHA1="${3:-}"
+
+# Skip for merge, squash, fixup, or commit --amend
+if [ "$COMMIT_SOURCE" = "merge" ] || [ "$COMMIT_SOURCE" = "squash" ] || [ "$COMMIT_SOURCE" = "commit" ] && [ -n "$SHA1" ]; then
+  exit 0
+fi
+
+# Skip if message already provided (e.g., -m flag)
+if [ -s "$COMMIT_MSG_FILE" ]; then
+  exit 0
+fi
+
+# Get current branch name for scope suggestion
+BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
+SCOPE=""
+if echo "$BRANCH" | grep -qE '^(feature|fix|hotfix|chore|docs|refactor|test)/'; then
+  SCOPE=$(echo "$BRANCH" | sed -E 's/^[^/]+\///' | sed -E 's/[^a-zA-Z0-9._-]//g')
+fi
+
+# Generate template
+cat > "$COMMIT_MSG_FILE" <<EOF
+# <type>(<scope>): <subject>
+#
+# Types: feat, fix, docs, style, refactor, perf, test, chore, ci, build, revert
+# Scope: optional, e.g., api, ui, db, auth, config
+# Subject: imperative mood, capitalize first letter, no period
+#
+# Example: feat(auth): Add OAuth2 login flow
+# Example: fix(api): Handle null response in user endpoint
+#
+# Body: explain what and why (not how), wrap at 72 chars
+#
+# Footer: BREAKING CHANGE: <description>
+#         Closes #123
+#         Fixes #456
+#         Refs #789
+#
+# $(git status --short)
+EOF
+
+# Pre-fill scope if detected
+if [ -n "$SCOPE" ]; then
+  sed -i "1s/(<scope>)/($SCOPE)/" "$COMMIT_MSG_FILE"
+fi
+
+exit 0

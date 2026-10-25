@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# pre-merge-commit hook — validate merge commits
+#
+# Runs before a merge commit is created.
+# Validates that the merge follows conventions.
+#
+# Install: ./scripts/install-hooks.sh
+#   (or copy to .git/hooks/pre-merge-commit and make executable)
+
+set -euo pipefail
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+error() {
+  echo -e "${RED}error:${NC} $*" >&2
+}
+
+# Get the merge message
+MERGE_MSG_FILE="$1"
+
+# Read the default merge message
+DEFAULT_MSG=$(cat "$MERGE_MSG_FILE")
+
+# Check if it's a standard merge message
+if echo "$DEFAULT_MSG" | grep -qE '^Merge (branch|pull request|remote-tracking branch) '; then
+  # Standard merge message, allow it
+  exit 0
+fi
+
+# If custom message, validate it follows conventional format for merge commits
+# Merge commits can use: merge(scope): description
+if echo "$DEFAULT_MSG" | head -1 | grep -qE '^merge(\([a-zA-Z0-9._/-]+\))?: [A-Z].+$'; then
+  exit 0
+fi
+
+# Allow empty message (will be filled by editor)
+if [ -z "$(echo "$DEFAULT_MSG" | head -1 | tr -d '[:space:]')" ]; then
+  exit 0
+fi
+
+error "merge commit message does not follow convention"
+echo "  expected: merge(scope): Description" >&2
+echo "  or standard: Merge branch 'feature/xyz'" >&2
+exit 1

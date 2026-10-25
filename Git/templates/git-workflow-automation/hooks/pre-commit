@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+# pre-commit hook — validate staged changes before commit
+#
+# Checks:
+#   - Trailing whitespace
+#   - Unresolved merge conflict markers
+#   - Files larger than 1 MB (staged additions)
+#   - Debug statements (TODO, FIXME, debugger) in staged files
+#   - Shell script syntax (if shellcheck available)
+#   - YAML syntax (if yamllint or python available)
+#
+# Install: ./scripts/install-hooks.sh
+#   (or copy to .git/hooks/pre-commit and make executable)
+
+set -euo pipefail
+
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+error() {
+  echo -e "${RED}error:${NC} $*" >&2
+}
+
+warn() {
+  echo -e "${YELLOW}warning:${NC} $*" >&2
+}
+
+check_trailing_whitespace() {
+  local found=0
+  while IFS= read -r file; do
+    if grep -Hn '[[:space:]]$' "$file" >&2 2>/dev/null; then
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_merge_markers() {
+  local found=0
+  while IFS= read -r file; do
+    if grep -HnE '^(<<<<<<< |=======$|>>>>>>> )' "$file" >&2 2>/dev/null; then
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_large_files() {
+  local ok=0
+  while IFS= read -r file; do
+    local size
+    size=$(git diff --cached -- "$file" | wc -c)
+    if [ "$size" -gt 1048576 ]; then
+      error "staged changes in $file exceed 1 MB ($(( size / 1024 )) KB)"
+      ok=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=A)
+  return "$ok"
+}
+
+check_debug_statements() {
+  local pattern='\b(TODO|FIXME|XXX|debugger|console\.log)\b'
+  local skip_ext='\.md$|\.txt$|\.json$|\.yaml$|\.yml$'
+  local found=0
+  while IFS= read -r file; do
+    if echo "$file" | grep -qE "$skip_ext"; then
+      continue
+    fi
+    if git diff --cached "$file" | grep '^+' | grep -qE "$pattern"; then
+      error "debug statement detected in staged changes: $file"
+      found=1
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_shell_syntax() {
+  if ! command -v shellcheck >/dev/null 2>&1; then
+    return 0
+  fi
+  local found=0
+  while IFS= read -r file; do
+    if [[ "$file" == *.sh ]] || head -1 "$file" 2>/dev/null | grep -q '^#!/.*bash'; then
+      if ! shellcheck "$file" >&2; then
+        found=1
+      fi
+    fi
+  done < <(git diff --cached --name-only --diff-filter=ACM)
+  return "$found"
+}
+
+check_yaml_syntax() {
+  if command -v yamllint >/dev/null 2>&1; then
+    local found=0
+    while IFS= read -r file; do
+      if [[ "$file" == *.yaml ]] || [[ "$file" == *.yml ]]; then
+        if ! yamllint "$file" >&2; then
+          found=1
+        fi
+      fi
+    done < <(git diff --cached --name-only --diff-filter=ACM)
+    return "$found"
+  elif command -v python3 >/dev/null 2>&1; then
+    local found=0
+    while IFS= read -r file; do
+      if [[ "$file" == *.yaml ]] || [[ "$file" == *.yml ]]; then
+        if ! python3 -c "import yaml, sys; yaml.safe_load(open('$file'))" >&2; then
+          error "YAML syntax error in $file"
+          found=1
+        fi
+      fi
+    done < <(git diff --cached --name-only --diff-filter=ACM)
+    return "$found"
+  fi
+  return 0
+}
+
+errors=0
+
+check_trailing_whitespace || errors=1
+check_merge_markers || errors=1
+check_large_files || errors=1
+check_debug_statements || errors=1
+check_shell_syntax || errors=1
+check_yaml_syntax || errors=1
+
+if [ "$errors" -eq 0 ]; then
+  echo "pre-commit checks passed" >&2
+fi
+
+exit "$errors"

@@ -1,0 +1,313 @@
+# GitLab CI Deploy Stage
+# Place in .gitlab/ci/deploy.yml
+#
+# Deployment jobs for various platforms and environments.
+# Included by .gitlab-ci.yml
+
+# Kubernetes deploy (using kubectl)
+deploy:kubernetes:
+  stage: deploy
+  image: bitnami/kubectl:1.28
+  before_script:
+    - apk add --no-cache bash git curl
+    - |
+      if [ -n "$KUBE_CONFIG" ]; then
+        echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config
+      elif [ -n "$KUBE_TOKEN" ] && [ -n "$KUBE_URL" ]; then
+        kubectl config set-cluster default --server="$KUBE_URL" --insecure-skip-tls-verify=true
+        kubectl config set-credentials default --token="$KUBE_TOKEN"
+        kubectl config set-context default --cluster=default --user=default
+        kubectl config use-context default
+      fi
+  script:
+    - kubectl version --client
+    - kubectl apply -f k8s/ -R
+    - kubectl rollout status deployment -n "${K8S_NAMESPACE:-default}" --timeout=300s
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+    - exists:
+        - k8s/
+
+# Helm deploy
+deploy:helm:
+  stage: deploy
+  image: alpine/helm:3.14
+  before_script:
+    - apk add --no-cache bash git curl
+    - |
+      if [ -n "$KUBE_CONFIG" ]; then
+        echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config
+      elif [ -n "$KUBE_TOKEN" ] && [ -n "$KUBE_URL" ]; then
+        kubectl config set-cluster default --server="$KUBE_URL" --insecure-skip-tls-verify=true
+        kubectl config set-credentials default --token="$KUBE_TOKEN"
+        kubectl config set-context default --cluster=default --user=default
+        kubectl config use-context default
+      fi
+    - helm repo add --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" myrepo "oci://$CI_REGISTRY/helm" 2>/dev/null || true
+  script:
+    - helm upgrade --install "$HELM_RELEASE" myrepo/"$HELM_CHART" \
+        --namespace "${K8S_NAMESPACE:-default}" \
+        --create-namespace \
+        --wait --timeout 300s \
+        --set image.tag="$CI_COMMIT_SHORT_SHA" \
+        --set image.repository="$CI_REGISTRY_IMAGE"
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+    - exists:
+        - charts/
+
+# Docker Compose deploy
+deploy:docker-compose:
+  stage: deploy
+  extends: .docker
+  before_script:
+    - apk add --no-cache bash git curl docker-compose
+    - |
+      if [ -n "$DOCKER_HOST" ]; then
+        export DOCKER_HOST="$DOCKER_HOST"
+      fi
+      if [ -n "$DOCKER_CERT_PATH" ]; then
+        export DOCKER_CERT_PATH="$DOCKER_CERT_PATH"
+      fi
+  script:
+    - docker-compose -f docker-compose.yml -f docker-compose.$ENVIRONMENT.yml up -d --remove-orphans
+    - docker-compose ps
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+    - exists:
+        - docker-compose.yml
+
+# AWS ECS deploy
+deploy:ecs:
+  stage: deploy
+  image: amazon/aws-cli:2.15
+  before_script:
+    - apk add --no-cache bash git curl jq
+    - aws configure set region "${AWS_DEFAULT_REGION:-us-east-1}"
+  script:
+    - |
+      TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "$ECS_TASK_DEFINITION" --query 'taskDefinition' --output json)
+      NEW_TASK_DEF=$(echo "$TASK_DEFINITION" | jq --arg IMAGE "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" '.containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)')
+      aws ecs register-task-definition --cli-input-json "$NEW_TASK_DEF" > /dev/null
+      aws ecs update-service --cluster "$ECS_CLUSTER" --service "$ECS_SERVICE" --task-definition "$ECS_TASK_DEFINITION" --force-new-deployment
+      aws ecs wait services-stable --cluster "$ECS_CLUSTER" --services "$ECS_SERVICE"
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+
+# AWS Lambda deploy
+deploy:lambda:
+  stage: deploy
+  image: amazon/aws-cli:2.15
+  before_script:
+    - apk add --no-cache bash git curl jq zip
+    - aws configure set region "${AWS_DEFAULT_REGION:-us-east-1}"
+  script:
+    - |
+      if [ -f "package.json" ]; then
+        npm ci --production
+        zip -r function.zip . -x "*.git*" "node_modules/.cache/*" "test*" "*.md"
+      elif [ -f "requirements.txt" ]; then
+        pip install --target ./package -r requirements.txt
+        cp *.py ./package/ 2>/dev/null || true
+        cd package && zip -r ../function.zip . && cd ..
+      elif [ -f "go.mod" ]; then
+        GOOS=linux GOARCH=amd64 go build -o bootstrap .
+        zip function.zip bootstrap
+      fi
+      aws lambda update-function-code --function-name "$LAMBDA_FUNCTION_NAME" --zip-file fileb://function.zip
+      aws lambda wait function-updated --function-name "$LAMBDA_FUNCTION_NAME"
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+
+# Google Cloud Run deploy
+deploy:cloud-run:
+  stage: deploy
+  image: google/cloud-sdk:470-alpine
+  before_script:
+    - apk add --no-cache bash git curl
+    - |
+      if [ -n "$GCLOUD_SERVICE_KEY" ]; then
+        echo "$GCLOUD_SERVICE_KEY" | base64 -d > /tmp/gcloud-key.json
+        gcloud auth activate-service-account --key-file /tmp/gcloud-key.json
+        gcloud config set project "$GCLOUD_PROJECT"
+      fi
+  script:
+    - gcloud run deploy "$CLOUD_RUN_SERVICE" \
+        --image "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" \
+        --region "${GCLOUD_REGION:-us-central1}" \
+        --platform managed \
+        --allow-unauthenticated \
+        --set-env-vars "COMMIT_SHA=$CI_COMMIT_SHA"
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+
+# Azure Container Apps deploy
+deploy:container-apps:
+  stage: deploy
+  image: mcr.microsoft.com/azure-cli:2.58
+  before_script:
+    - apk add --no-cache bash git curl
+    - az login --service-principal -u "$AZURE_CLIENT_ID" -p "$AZURE_CLIENT_SECRET" --tenant "$AZURE_TENANT_ID"
+    - az config set defaults.group="$AZURE_RESOURCE_GROUP" location="$AZURE_LOCATION"
+  script:
+    - az containerapp update --name "$CONTAINER_APP_NAME" --image "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+
+# Terraform deploy
+deploy:terraform:
+  stage: deploy
+  image: hashicorp/terraform:1.8
+  before_script:
+    - apk add --no-cache bash git curl
+    - |
+      if [ -n "$AWS_ACCESS_KEY_ID" ]; then
+        aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
+        aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+        aws configure set default.region "${AWS_DEFAULT_REGION:-us-east-1}"
+      fi
+      if [ -n "$GCLOUD_SERVICE_KEY" ]; then
+        echo "$GCLOUD_SERVICE_KEY" | base64 -d > /tmp/gcloud-key.json
+        gcloud auth activate-service-account --key-file /tmp/gcloud-key.json
+        gcloud config set project "$GCLOUD_PROJECT"
+      fi
+  script:
+    - terraform init
+    - terraform plan -out=tfplan
+    - terraform apply -auto-approve tfplan
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+    - exists:
+        - "*.tf"
+
+# SSH deploy (generic)
+deploy:ssh:
+  stage: deploy
+  image: alpine:3.19
+  before_script:
+    - apk add --no-cache bash git openssh-client rsync
+    - |
+      if [ -n "$SSH_PRIVATE_KEY" ]; then
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+      fi
+  script:
+    - rsync -avz --delete ./ "$SSH_USER@$SSH_HOST:$SSH_PATH/"
+    - ssh "$SSH_USER@$SSH_HOST" "cd $SSH_PATH && $DEPLOY_COMMAND"
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_TAG
+      when: manual
+
+# Rollback job
+rollback:
+  stage: deploy
+  image: alpine:3.19
+  before_script:
+    - apk add --no-cache bash git curl
+  script:
+    - echo "Manual rollback triggered"
+    - echo "Environment: $ENVIRONMENT"
+    - echo "Previous deployment: $CI_COMMIT_BEFORE_SHA"
+    - |
+      if [ -n "$KUBE_CONFIG" ]; then
+        echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config
+        kubectl rollout undo deployment -n "${K8S_NAMESPACE:-default}" "$K8S_DEPLOYMENT"
+        kubectl rollout status deployment -n "${K8S_NAMESPACE:-default}" "$K8S_DEPLOYMENT" --timeout=300s
+      elif [ -n "$HELM_RELEASE" ]; then
+        helm rollback "$HELM_RELEASE" --namespace "${K8S_NAMESPACE:-default}"
+      elif [ -n "$ECS_SERVICE" ]; then
+        PREV_TASK_DEF=$(aws ecs describe-services --cluster "$ECS_CLUSTER" --services "$ECS_SERVICE" --query 'services[0].taskDefinition' --output text)
+        aws ecs update-service --cluster "$ECS_CLUSTER" --service "$ECS_SERVICE" --task-definition "$PREV_TASK_DEF" --force-new-deployment
+      else
+        echo "No automated rollback configured for this environment"
+        exit 1
+      fi
+  environment:
+    name: $ENVIRONMENT
+    action: rollback
+  when: manual
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+# GitHub Pages deploy
+deploy:github-pages:
+  stage: deploy
+  image: node:20-alpine
+  before_script:
+    - apk add --no-cache bash git
+  script:
+    - npm ci
+    - npm run build
+    - cp -r dist/* public/ 2>/dev/null || cp -r build/* public/ 2>/dev/null || true
+    - |
+      git config --global user.email "ci@gitlab.com"
+      git config --global user.name "GitLab CI"
+      cd public
+      git init
+      git add .
+      git commit -m "Deploy $CI_COMMIT_SHA"
+      git push --force "https://$GITHUB_TOKEN@github.com/$GITHUB_REPO.git" main:gh-pages
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1h
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - exists:
+        - package.json

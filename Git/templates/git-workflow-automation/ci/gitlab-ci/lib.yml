@@ -1,0 +1,289 @@
+# GitLab CI Shared Library
+# Place in .gitlab/ci/lib.yml
+#
+# Shared configuration, variables, and reusable job templates.
+# Included by .gitlab-ci.yml and other pipeline files.
+
+# Global job defaults
+.defaults:
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+  timeout: 1h
+  interruptible: true
+
+# Docker configuration
+.docker:
+  image: docker:24
+  services:
+    - name: docker:24-dind
+      alias: docker
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_DRIVER: "overlay2"
+    DOCKER_BUILDKIT: "1"
+  before_script:
+    - apk add --no-cache bash git curl jq python3 py3-pip
+    - pip install --no-cache-dir docker-compose
+    - docker version
+    - docker info
+
+# Node.js configuration
+.node:
+  image: node:20-alpine
+  variables:
+    NODE_ENV: "test"
+    NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.cache/npm"
+  cache:
+    key: "node-${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .cache/npm/
+      - node_modules/
+  before_script:
+    - apk add --no-cache bash git python3 make g++
+    - npm ci --cache .cache/npm --prefer-offline 2>/dev/null || npm install --cache .cache/npm
+
+# Python configuration
+.python:
+  image: python:3.12-alpine
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+    PYTHONDONTWRITEBYTECODE: "1"
+    PYTHONUNBUFFERED: "1"
+  cache:
+    key: "python-${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .cache/pip/
+      - .venv/
+  before_script:
+    - apk add --no-cache bash git gcc musl-dev libffi-dev openssl-dev
+    - python -m venv .venv
+    - source .venv/bin/activate
+    - pip install --no-cache-dir --upgrade pip setuptools wheel
+    - pip install --no-cache-dir -e .[test] 2>/dev/null || pip install --no-cache-dir pytest pytest-cov
+
+# Go configuration
+.go:
+  image: golang:1.22-alpine
+  variables:
+    GO_CACHE_DIR: "$CI_PROJECT_DIR/.cache/go"
+    GOMODCACHE: "$CI_PROJECT_DIR/.cache/go/pkg/mod"
+  cache:
+    key: "go-${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .cache/go/
+  before_script:
+    - apk add --no-cache bash git make gcc musl-dev
+    - go version
+    - go mod download
+
+# Rust configuration
+.rust:
+  image: rust:1.78-alpine
+  variables:
+    CARGO_HOME: "$CI_PROJECT_DIR/.cache/cargo"
+    RUSTUP_HOME: "$CI_PROJECT_DIR/.cache/rustup"
+  cache:
+    key: "rust-${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .cache/cargo/
+      - .cache/rustup/
+      - target/
+  before_script:
+    - apk add --no-cache bash git musl-dev
+    - rustup component add clippy rustfmt
+    - cargo version
+
+# Java/Maven configuration
+.maven:
+  image: maven:3.9-eclipse-temurin-21-alpine
+  variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.cache/m2"
+  cache:
+    key: "maven-${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .cache/m2/
+  before_script:
+    - mvn --version
+
+# Java/Gradle configuration
+.gradle:
+  image: gradle:8.5-jdk21-alpine
+  variables:
+    GRADLE_USER_HOME: "$CI_PROJECT_DIR/.cache/gradle"
+  cache:
+    key: "gradle-${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .cache/gradle/
+  before_script:
+    - gradle --version
+
+# Security scanning templates
+.trivy-scan:
+  extends: .docker
+  stage: security
+  variables:
+    TRIVY_VERSION: "0.53.0"
+  before_script:
+    - apk add --no-cache bash git curl
+    - |
+      wget -qO- https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz | tar xz -C /usr/local/bin trivy
+    - trivy --version
+  script:
+    - trivy fs --format sarif --output trivy-results.sarif --severity HIGH,CRITICAL .
+    - trivy fs --format table --exit-code 1 --severity HIGH,CRITICAL .
+  artifacts:
+    reports:
+      sast: trivy-results.sarif
+    when: always
+    expire_in: 30d
+
+.hadolint:
+  extends: .docker
+  stage: validate
+  script:
+    - |
+      wget -qO- https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 > /usr/local/bin/hadolint
+      chmod +x /usr/local/bin/hadolint
+    - find . -name "Dockerfile*" -o -name "*.dockerfile" | xargs -r hadolint
+
+.secret-scan:
+  stage: security
+  image: python:3.12-alpine
+  before_script:
+    - pip install --no-cache-dir trufflehog
+  script:
+    - trufflehog filesystem --directory . --fail --json | tee trufflehog-results.json || true
+  artifacts:
+    reports:
+      sast: trufflehog-results.json
+    when: always
+    expire_in: 30d
+
+# Dependency scanning templates
+.dependency-scan:
+  stage: security
+  script:
+    - |
+      if [ -f "package.json" ]; then
+        npm audit --audit-level=high --json > npm-audit.json || true
+        cat npm-audit.json | jq '.metadata.vulnerabilities' || true
+      fi
+    - |
+      if [ -f "requirements.txt" ] || [ -f "pyproject.toml" ]; then
+        pip install --no-cache-dir safety
+        safety check --json > safety-results.json || true
+      fi
+    - |
+      if [ -f "go.mod" ]; then
+        go install golang.org/x/vuln/cmd/govulncheck@latest
+        govulncheck ./... || true
+      fi
+  artifacts:
+    reports:
+      dependency_scanning: gl-dependency-scanning-report.json
+    when: always
+    expire_in: 30d
+
+# Container scanning templates
+.container-scan:
+  extends: .docker
+  stage: security
+  variables:
+    TRIVY_VERSION: "0.53.0"
+  before_script:
+    - apk add --no-cache bash git curl
+    - |
+      wget -qO- https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz | tar xz -C /usr/local/bin trivy
+  script:
+    - trivy image --format sarif --output container-results.sarif --severity HIGH,CRITICAL $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - trivy image --format table --exit-code 1 --severity HIGH,CRITICAL $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  artifacts:
+    reports:
+      container_scanning: container-results.sarif
+    when: always
+    expire_in: 30d
+
+# Release templates
+.semantic-release:
+  stage: deploy
+  image: node:20-alpine
+  variables:
+    NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.cache/npm"
+  cache:
+    key: "release-${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .cache/npm/
+      - node_modules/
+  before_script:
+    - apk add --no-cache bash git python3 make g++
+    - npm ci --cache .cache/npm --prefer-offline
+  script:
+    - npx semantic-release
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  environment:
+    name: production
+  only:
+    - main
+    - master
+
+# Notification templates
+.notify-success:
+  stage: .post
+  image: curlimages/curl:8.7
+  script:
+    - |
+      if [ -n "$SLACK_WEBHOOK_URL" ]; then
+        curl -X POST -H 'Content-type: application/json' \
+          --data "{\"text\":\"✅ Pipeline $CI_PIPELINE_ID passed for $CI_PROJECT_NAME ($CI_COMMIT_REF_NAME)\"}" \
+          $SLACK_WEBHOOK_URL
+      fi
+  when: on_success
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+
+.notify-failure:
+  stage: .post
+  image: curlimages/curl:8.7
+  script:
+    - |
+      if [ -n "$SLACK_WEBHOOK_URL" ]; then
+        curl -X POST -H 'Content-type: application/json' \
+          --data "{\"text\":\"❌ Pipeline $CI_PIPELINE_ID failed for $CI_PROJECT_NAME ($CI_COMMIT_REF_NAME)\"}" \
+          $SLACK_WEBHOOK_URL
+      fi
+  when: on_failure
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+
+# Helper functions
+.setup-ssh:
+  before_script:
+    - |
+      if [ -n "$SSH_PRIVATE_KEY" ]; then
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+      fi
+
+.setup-gcloud:
+  before_script:
+    - |
+      if [ -n "$GCLOUD_SERVICE_KEY" ]; then
+        echo "$GCLOUD_SERVICE_KEY" | base64 -d > /tmp/gcloud-key.json
+        gcloud auth activate-service-account --key-file /tmp/gcloud-key.json
+        gcloud config set project "$GCLOUD_PROJECT"
+      fi
+
+.setup-aws:
+  before_script:
+    - |
+      if [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$AWS_SECRET_ACCESS_KEY" ]; then
+        aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
+        aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+        aws configure set default.region "${AWS_DEFAULT_REGION:-us-east-1}"
+      fi

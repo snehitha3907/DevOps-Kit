@@ -1,0 +1,202 @@
+# Git aliases for workflow automation
+# Append to ~/.gitconfig or run setup-aliases.sh to install
+
+[alias]
+  # Basic shortcuts
+  co = checkout
+  cb = checkout -b
+  st = status
+  br = branch
+  brd = branch -d
+  brD = branch -D
+  brm = branch -m
+  bra = branch -a
+  brr = branch -r
+
+  # Commit shortcuts
+  cm = commit -m
+  ca = commit -a
+  cam = commit -am
+  amend = commit --amend --no-edit
+  amendf = commit --amend
+  fixup = commit --fixup
+  squash = commit --squash
+
+  # Log & history
+  lg = log --oneline --graph --decorate --all -20
+  lga = log --oneline --graph --decorate --all
+  ll = log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s %C(red)%d%C(reset)' --date=short
+  lds = log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s %C(red)%d%C(reset)' --date=short --since='1 week ago'
+  last = log -1 --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s %C(red)%d%C(reset)' --date=short
+  authors = shortlog -sn --all
+
+  # Diff & show
+  df = diff
+  dfs = diff --staged
+  dfw = diff --word-diff
+  show = show --stat
+  showf = show --name-only
+
+  # Staging & reset
+  unstage = reset HEAD --
+  uncommit = reset --soft HEAD~1
+  uncommit-hard = reset --hard HEAD~1
+  discard = checkout --
+  clean-untracked = clean -fd
+
+  # Remote & sync
+  fe = fetch --all --prune
+  pullr = pull --rebase
+  pus = push
+  pusf = push --force-with-lease
+  pusff = push --force
+  pus-u = push -u origin HEAD
+  prune = fetch --prune
+
+  # Branch management
+  merged = branch --merged
+  no-merged = branch --no-merged
+  gone = branch -vv | grep ': gone]'
+  clean-merged = !git branch --merged | grep -v '\\*\\|master\\|main' | xargs -r git branch -d
+
+  # Tagging
+  tags = tag -l
+  tag-latest = describe --tags --abbrev=0
+  tag-push = push --tags
+  tag-delete = tag -d
+  tag-remote-delete = push origin --delete
+
+  # Rebase & merge
+  rb = rebase
+  rbi = rebase -i
+  rbc = rebase --continue
+  rbs = rebase --skip
+  rba = rebase --abort
+  rbom = rebase origin/main
+  rbum = rebase upstream/main
+
+  # Stash
+  sta = stash
+  sta-s = stash save
+  sta-p = stash pop
+  sta-l = stash list
+  sta-d = stash drop
+  sta-c = stash clear
+  sta-a = stash apply
+
+  # Search & blame
+  g = grep -n
+  gf = grep -n --full-name
+  blame = blame -w
+  blamec = blame -C -C -C
+
+  # Submodules
+  smi = submodule init
+  smu = submodule update
+  smui = submodule update --init --recursive
+
+  # Configuration
+  config-l = config --list
+  config-e = config --edit
+  config-ge = config --global --edit
+
+  # Workflow helpers
+  # Create feature branch from main
+  feature = !"git fetch origin && git checkout -b feature/${1} origin/main"
+  # Create hotfix branch from main
+  hotfix = !"git fetch origin && git checkout -b hotfix/${1} origin/main"
+  # Create release branch
+  release = !"git fetch origin && git checkout -b release/${1} origin/main"
+  # Sync feature branch with main
+  sync = !"git fetch origin && git rebase origin/main"
+  # Push current branch and create PR (GitHub)
+  pr = !"git push -u origin HEAD && gh pr create --fill"
+  # Push current branch and create MR (GitLab)
+  mr = !"git push -u origin HEAD && glab mr create --fill"
+  # Show branch upstream status
+  upstream = !"git rev-parse --abbrev-ref --symbolic-full-name @{u}"
+  # Show commits not pushed
+  unpushed = log @{u}..
+  # Show commits not pulled
+  unpulled = log ..@{u}
+  # Interactive rebase last N commits
+  rbi-n = "!f() { git rebase -i HEAD~${1:-5}; }; f"
+
+  # Conventional commit helpers
+  feat = !"git commit -m 'feat(${1}): ${2}'"
+  fix = !"git commit -m 'fix(${1}): ${2}'"
+  docs = !"git commit -m 'docs(${1}): ${2}'"
+  style = !"git commit -m 'style(${1}): ${2}'"
+  refactor = !"git commit -m 'refactor(${1}): ${2}'"
+  perf = !"git commit -m 'perf(${1}): ${2}'"
+  test = !"git commit -m 'test(${1}): ${2}'"
+  chore = !"git commit -m 'chore(${1}): ${2}'"
+  ci = !"git commit -m 'ci(${1}): ${2}'"
+  build = !"git commit -m 'build(${1}): ${2}'"
+  revert = !"git commit -m 'revert(${1}): ${2}'"
+
+  # Repository info
+  root = rev-parse --show-toplevel
+  remote-url = remote get-url origin
+  current-branch = symbolic-ref --short HEAD
+  commit-hash = rev-parse --short HEAD
+  commit-hash-full = rev-parse HEAD
+  is-clean = !"git status --porcelain | grep -q . && echo 'dirty' || echo 'clean'"
+
+[core]
+  # Use pager for log, diff, etc.
+  pager = less -FRSX
+  # Autocorrect typos
+  autocorrect = 10
+  # Case-insensitive file system handling
+  ignorecase = true
+  # Precompose unicode (macOS)
+  precomposeunicode = true
+
+[pull]
+  # Default to rebase
+  rebase = true
+  # Fast-forward only
+  ff = only
+
+[push]
+  # Default to current branch
+  default = current
+  # Follow tags
+  followTags = true
+
+[merge]
+  # No fast-forward by default for explicit merge commits
+  ff = false
+  # Conflict style
+  conflictstyle = diff3
+
+[rebase]
+  # Auto-stash before rebase
+  autostash = true
+  # Update refs
+  updateRefs = true
+
+[diff]
+  # Algorithm
+  algorithm = histogram
+  # Color
+  colorMoved = zebra
+
+[status]
+  # Show branch info
+  showUntrackedFiles = normal
+  # Short format
+  short = false
+
+[init]
+  # Default branch name
+  defaultBranch = main
+
+[fetch]
+  # Prune by default
+  prune = true
+
+[gc]
+  # Auto garbage collection
+  auto = 256

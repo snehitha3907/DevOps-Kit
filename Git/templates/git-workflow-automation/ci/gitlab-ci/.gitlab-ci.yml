@@ -1,0 +1,93 @@
+# GitLab CI Pipeline
+# Place in .gitlab-ci.yml at repository root
+#
+# Modular pipeline with separate stages for build, test, security, and deploy.
+# Includes shared library configuration and environment-specific deployments.
+
+stages:
+  - validate
+  - build
+  - test
+  - security
+  - deploy
+
+# Default image for jobs
+default:
+  image: docker:24
+  services:
+    - docker:24-dind
+  before_script:
+    - apk add --no-cache bash git curl jq
+    - git config --global user.email "ci@gitlab.com"
+    - git config --global user.name "GitLab CI"
+
+# Global variables
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_DRIVER: "overlay2"
+  # Cache configuration
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  NPM_CACHE_DIR: "$CI_PROJECT_DIR/.cache/npm"
+  GO_CACHE_DIR: "$CI_PROJECT_DIR/.cache/go"
+
+# Cache policy
+cache:
+  key: "${CI_JOB_NAME}-${CI_COMMIT_REF_SLUG}"
+  paths:
+    - .cache/
+    - node_modules/
+    - vendor/
+    - target/
+    - .gradle/
+    - .m2/
+
+# Include shared library
+include:
+  - local: 'lib.yml'
+  - local: 'build.yml'
+  - local: 'test.yml'
+  - local: 'deploy.yml'
+
+# Validate stage - runs on every push and MR
+validate:
+  stage: validate
+  script:
+    - |
+      echo "Validating commit messages..."
+      if ! git log --oneline -20 | grep -qE '^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert)(\(.+\))?!?: [A-Z]'; then
+        echo "WARNING: Some recent commits don't follow conventional commit format"
+      fi
+    - |
+      echo "Checking for large files..."
+      LARGE_FILES=$(git ls-files | xargs -r ls -la 2>/dev/null | awk '$5 > 10485760 {print $9, $5}')
+      if [ -n "$LARGE_FILES" ]; then
+        echo "Large files detected (>10MB):"
+        echo "$LARGE_FILES"
+        exit 1
+      fi
+    - |
+      echo "Scanning for secrets..."
+      if git log --all --full-history --oneline --source --remotes --tags --since="30 days ago" | xargs -r git show | grep -iE '(api[_-]?key|secret|token|password|private[_-]?key)\s*[:=]\s*[^ ]+' | head -5; then
+        echo "WARNING: Potential secrets found in recent history"
+      fi
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+# Semantic release - only on default branch
+semantic-release:
+  stage: deploy
+  image: node:20
+  before_script:
+    - npm ci --cache .cache/npm --prefer-offline
+  script:
+    - npx semantic-release
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual
+  environment:
+    name: production
+  only:
+    - main
+    - master

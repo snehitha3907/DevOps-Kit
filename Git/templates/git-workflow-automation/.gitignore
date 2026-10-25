@@ -1,0 +1,96 @@
+# Git Workflow Automation Scaffold - Recommended .gitignore
+# Add these patterns to your repository's .gitignore
+
+# Dependencies
+node_modules/
+vendor/
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+*.whl
+target/
+bin/
+out/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test outputs
+coverage/
+.coverage
+.htmlcov/
+.pytest_cache/
+.mypy_cache/
+.tox/
+nosetests.xml
+test-results/
+*.lcov
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cache
+.cache/
+*.cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# OS generated
+.DS_Store
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# CI/CD
+.github/workflows/*.yml.bak
+.gitlab/ci/*.yml.bak
+
+# Secrets (never commit)
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+*.secret
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan
+
+# Docker
+.docker/
+
+# Helm
+charts/*.tgz
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/

@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+# pre-push hook — validate before allowing a push
+#
+# Checks:
+#   - Run test suite (npm test, pytest, or go test) and block on failure
+#   - Scan staged changes for secrets (API keys, tokens, passwords)
+#   - Prevent force-push to protected branches (main/master)
+#   - Validate branch naming convention (optional)
+#
+# Install: ./scripts/install-hooks.sh
+#   (or copy to .git/hooks/pre-push and make executable)
+
+set -euo pipefail
+
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+error() {
+  echo -e "${RED}error:${NC} $*" >&2
+}
+
+warn() {
+  echo -e "${YELLOW}warning:${NC} $*" >&2
+}
+
+PROTECTED_BRANCHES="main master"
+
+REF_LOCAL="$(git symbolic-ref --short HEAD 2>/dev/null || echo '')"
+
+# Check for force-push to protected branches
+for protected in $PROTECTED_BRANCHES; do
+  if [ "$REF_LOCAL" = "$protected" ]; then
+    # Check if this is a force push
+    while read -r _local_ref local_sha _remote_ref remote_sha; do
+      if [ "$remote_sha" != "0000000000000000000000000000000000000000" ]; then
+        # Not a new branch, check if force push
+        if git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null; then
+          # Fast-forward, OK
+          :
+        else
+          error "force-push to $protected is not allowed"
+          exit 1
+        fi
+      fi
+    done
+  fi
+done
+
+# Run tests if available
+HAS_TESTS=false
+if [ -f package.json ]; then HAS_TESTS=true; fi
+if [ -f pytest.ini ] || [ -f tox.ini ] || [ -f pyproject.toml ]; then HAS_TESTS=true; fi
+if [ -f go.mod ]; then HAS_TESTS=true; fi
+if [ -f Cargo.toml ]; then HAS_TESTS=true; fi
+if [ -f Makefile ] && grep -q '^test:' Makefile; then HAS_TESTS=true; fi
+
+if [ "$HAS_TESTS" = true ]; then
+  if command -v npm >/dev/null 2>&1 && [ -f package.json ]; then
+    echo "running npm test..." >&2
+    if ! npm test; then
+      error "npm test failed — push rejected"
+      exit 1
+    fi
+  fi
+  if command -v pytest >/dev/null 2>&1 && { [ -f pytest.ini ] || [ -f tox.ini ] || [ -f pyproject.toml ]; }; then
+    echo "running pytest..." >&2
+    if ! pytest; then
+      error "pytest failed — push rejected"
+      exit 1
+    fi
+  fi
+  if command -v go >/dev/null 2>&1 && [ -f go.mod ]; then
+    echo "running go test..." >&2
+    if ! go test ./...; then
+      error "go test failed — push rejected"
+      exit 1
+    fi
+  fi
+  if command -v cargo >/dev/null 2>&1 && [ -f Cargo.toml ]; then
+    echo "running cargo test..." >&2
+    if ! cargo test; then
+      error "cargo test failed — push rejected"
+      exit 1
+    fi
+  fi
+  if command -v make >/dev/null 2>&1 && [ -f Makefile ] && grep -q '^test:' Makefile; then
+    echo "running make test..." >&2
+    if ! make test; then
+      error "make test failed — push rejected"
+      exit 1
+    fi
+  fi
+fi
+
+# Scan for secrets in staged changes
+SECRET_PATTERNS='\b(api[_-]?key|secret|token|password|passwd|private[_-]?key|access[_-]?key)\b'
+if git diff --cached | grep -qiE "$SECRET_PATTERNS"; then
+  warn "possible secret detected in staged changes — review before pushing"
+fi
+
+# Validate branch naming convention (optional, warn only)
+if [ -n "$REF_LOCAL" ] && [ "$REF_LOCAL" != "main" ] && [ "$REF_LOCAL" != "master" ]; then
+  if ! echo "$REF_LOCAL" | grep -qE '^(feature|fix|hotfix|release|chore|docs|refactor|test)/[a-z0-9._-]+$'; then
+    warn "branch name '$REF_LOCAL' does not follow convention: type/description"
+  fi
+fi
+
+echo "pre-push checks passed" >&2
+exit 0
