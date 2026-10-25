@@ -2,6 +2,8 @@
 
 ## 2026-10-25
 
+- Added Git workflow automation script for semantic versioning and conventional changelog generation: inspects conventional commits since the latest semver tag, auto-determines bump level (major/minor/patch), writes a grouped changelog, and creates an annotated release tag (git-032) (`Git/scripts/semver-changelog-workflow.sh`)
+
 - Added Git workflow automation scaffold: Git hooks (pre-commit, commit-msg, pre-push, pre-rebase, post-commit, post-checkout, prepare-commit-msg, pre-merge-commit), Git aliases, GitHub Actions workflows (workflow-automation, dependabot, auto-merge), GitLab CI modular pipelines (validate, build, test, security, deploy), and automation scripts (install-hooks, setup-workflow, semantic-version, changelog-generator) (git-033) (`Git/templates/git-workflow-automation/`)
 - Added Helm plugin for chart dependency validation and version constraint checking: validates Chart.yaml dependencies, checks version constraints against Helm and OCI repositories, outputs JSON results (hlm-029) (`hlm/scripts/helm-dep-validate.go`)
 - Added Vault dynamic database credential flow script: enables database secrets engine, configures PostgreSQL connection, creates a read-only role, generates dynamic credentials, and demonstrates lease renewal and revocation (vlt-017) (`vlt/scripts/dynamic-database-credentials.py`)
