@@ -900,3 +900,5 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - 2026-10-21 hlm-026: Helm chart testing strategies doc
 - 2026-10-23 gl-021: GitLab CI/scripts/gitlab-pipeline-helper.py — reusable python-gitlab helper
 - merge-rebase-squash-comparison.ipynb
+2026-10-25: vlt/docs/vault-agent-secret-injection.md (vlt-018) — Vault Agent sidecar for container secret injection
+2026-10-25: vlt/configs/vault-approle.hcl (vlt-019) — AppRole auth method, policy, and token role
