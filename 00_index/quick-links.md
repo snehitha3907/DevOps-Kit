@@ -145,6 +145,7 @@
 - [Explore the Vault CLI — secrets and policies](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md)
 - [Vault dev-mode quickstart trip-ups](../vlt/notes/2026-10-07-vault-quickstart-trip-ups.md)
 - [KV v2 write/read/list round-trip in Python](../vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py)
+- [Dynamic database credentials with Vault engine](../vlt/scripts/dynamic-database-credentials.py) — Enables the database secrets engine, configures a PostgreSQL connection, creates a role, and generates/revokes dynamic credentials using hvac.
 - [Least-privilege read-only policy bound to a group](../vlt/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl)
 
 ### Rotate a credential across many repositories
@@ -235,6 +236,8 @@
 - [Validate a pipeline locally](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh)
 - [Trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 - [Run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
+- [GitLab pipeline helper](../GitLab CI/scripts/gitlab-pipeline-helper.py) — Python helper for triggering pipelines, polling jobs, and extracting artifacts via the GitLab API.
+- [GitLab Runner with Docker-in-Docker and Kaniko](../GitLab CI/dockerfiles/gitlab-runner-dind-kaniko.Dockerfile) — Runner image that can build containers inside containers using Kaniko for rootless builds.
 
 ### Work with Kubernetes
 
@@ -301,7 +304,7 @@
 - [gcloud quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md)
 - [Launch a VM, firewall rule, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh)
 - [Instance template with a startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml)
-- [Deploy a Cloud Run service with generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py)
+- [Deploy a Cloud Run service with generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py) — Writes a minimal `.tf`, runs `init`/`plan`/`apply`, and prints the service URL.
 - [Create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
 - [List Compute instances and GCS buckets](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh)
 - [Install gcloud CLI and configure credentials](../GCP/scripts/2026-08-23-install-gcloud-cli-and-configure-creds.sh)

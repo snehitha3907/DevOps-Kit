@@ -57,7 +57,7 @@
 
 - **primer:** [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
 - **notes** (2): most recent → [gcloud SDK quickstart trip-ups](../GCP/notes/2026-09-20-gcloud-sdk-quickstart-trip-ups.md), [0000-primer-gcp.md](../GCP/notes/0000-primer-gcp.md)
-- **scripts** (5): most recent → [build a Cloud Run service with generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py) — writes a minimal `.tf`, runs `init`/`plan`/`apply`, prints the service URL — plus [launch a VM, firewall rule, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh), [create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
+- **scripts** (6): most recent → [build a Cloud Run service with generated Terraform](../GCP/scripts/build-cloud-run-service-terraform.py) — writes a minimal `.tf`, runs `init`/`plan`/`apply`, prints the service URL — plus [launch a VM, firewall rule, and SSH in](../GCP/scripts/2026-09-21-launch-vm-firewall-and-ssh.sh), [create a GCS bucket and set up IAM](../GCP/scripts/create-gcs-bucket-and-setup-iam.sh)
 - _…and 2 more under `GCP/scripts/` — browse the folder._
 - **configs** (3): most recent → [instance template with startup script](../GCP/configs/2026-09-21-instance-template-with-startup-script.yaml), [minimal config and startup script](../GCP/configs/2026-08-14-minimal-gcloud-config-and-startup-script.yaml), [service account and IAM](../GCP/configs/service-account-and-iam-config.yaml)
 - **snippets** (2): most recent → [list Compute and GCS](../GCP/snippets/2026-08-23-list-compute-and-gcs-with-gcloud.sh), [earlier pass](../GCP/snippets/2026-07-16-list-compute-and-gcs-with-gcloud.sh)
@@ -75,7 +75,7 @@
 - **notes** (6): most recent → [branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md), [earlier branching pass](../Git/notes/2026-06-07-git-branching-tutorial.md), [explore the CLI](../Git/notes/2026-06-04-explore-git-cli.md)
 - _…and 3 more under `Git/notes/` — browse the folder._
 - **snippets** (1): [first commit](../Git/snippets/first-commit.sh)
-- **notebooks** (1): [comparing merge strategies](../Git/notebooks/comparing-git-merge-strategies.ipynb)
+- **notebooks** (2): most recent → [merge, rebase, and squash comparison notebook](../Git/notebooks/merge-rebase-squash-comparison.ipynb) — Visual comparison of the three merge strategies with commit graphs and history outcomes., [branching tutorial](../Git/notes/2026-08-11-git-branching-tutorial.md)
 
 ## GitHub  ·  56 files
 
@@ -116,8 +116,9 @@
 - **configs** (4): most recent → [build → push → deploy with a digest-pinned rollout](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml) — three stages, a `when: manual` production gate, and a deploy job that verifies health then rolls back — plus [multi-project pipeline with a downstream trigger](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml), [stages, cache, and artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
   - _1 more under `GitLab CI/configs/` — browse the folder._
 - **docs** (1): [GitLab CI/CD with Kubernetes, end to end](../GitLab CI/docs/gitlab-ci-cd-with-kubernetes.md) — the setup around the deploy pipeline: a runner that can reach the cluster, the variable that hands the job a kubeconfig, and the gate that blocks an unapproved rollout
-- **scripts** (4): [dynamic child pipeline scaffold](../GitLab CI/scripts/dynamic-child-pipeline.sh) — a parent pipeline that writes its child config at job time, hands it forward as an artifact, then triggers it — plus [local pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install a runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh)
+- **scripts** (5): [dynamic child pipeline scaffold](../GitLab CI/scripts/dynamic-child-pipeline.sh) — a parent pipeline that writes its child config at job time, hands it forward as an artifact, then triggers it — plus [local pipeline validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh), [install a runner and register](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh), [run a first local pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh), [gitlab pipeline helper](../GitLab CI/scripts/gitlab-pipeline-helper.py)
 - **snippets** (1): [trigger a pipeline via the API and poll jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
+- **dockerfiles** (1): [GitLab Runner with Docker-in-Docker and Kaniko](../GitLab CI/dockerfiles/gitlab-runner-dind-kaniko.Dockerfile) — Runner image that can build containers inside containers using Kaniko for rootless builds
 
 ## Grafana  ·  8 files
 
@@ -145,7 +146,7 @@ Folder on disk is `vlt/`.
 
 - **primer:** [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
 - **notes** (3): most recent → [dev-mode quickstart trip-ups](../vlt/notes/2026-10-07-vault-quickstart-trip-ups.md) — KV v2 versions instead of overwriting, `kv get` metadata wrapping, per-shell `VAULT_ADDR` — plus [exploring the Vault CLI](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md) and [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
-- **scripts** (3): most recent → [KV v2 write/read/list round-trip](../vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py) — hvac against a dev server, version 1 read back, version 2 created, versions listed — plus [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) and [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- **scripts** (4): most recent → [KV v2 write/read/list round-trip](../vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py) — hvac against a dev server, version 1 read back, version 2 created, versions listed — plus [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) and [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh), [dynamic database credentials with Vault engine](../vlt/scripts/dynamic-database-credentials.py)
 - **configs** (1): [least-privilege read-only policy bound to a group](../vlt/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl) — `read` on one KV v2 path and its metadata, with the group binding for token issuance
 - **docs** (1): [how `vlt/` is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
