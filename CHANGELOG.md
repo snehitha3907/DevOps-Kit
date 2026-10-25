@@ -5,6 +5,7 @@
 - Added Helm plugin for chart dependency validation and version constraint checking: validates Chart.yaml dependencies, checks version constraints against Helm and OCI repositories, outputs JSON results (hlm-029) (`hlm/scripts/helm-dep-validate.go`)
 - Added Vault dynamic database credential flow script: enables database secrets engine, configures PostgreSQL connection, creates a read-only role, generates dynamic credentials, and demonstrates lease renewal and revocation (vlt-017) (`vlt/scripts/dynamic-database-credentials.py`)
 - Passed ([x]) vlt-017 — HashiCorp Vault: script — Build a dynamic database credential flow with Vault database engine from scratch · Level: L3 · 2026-10-25
+- Added Helm plugin for chart dependency validation and version constraint checking (hlm-029) (`Helm/scripts/helm-dep-validate.go`)
 
 ## 2026-10-22
 

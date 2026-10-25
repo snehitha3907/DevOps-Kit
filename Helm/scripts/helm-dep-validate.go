@@ -1,4 +1,4 @@
-# last_verified: 2026-10-25 · helm 3.x
+// last_verified: 2026-10-25 · helm 3.15.0
 
 package main
 
@@ -22,10 +22,10 @@ import (
 )
 
 type ValidationResult struct {
-	ChartPath    string   `json:"chart_path"`
-	Valid        bool     `json:"valid"`
-	Errors       []string `json:"errors,omitempty"`
-	Warnings     []string `json:"warnings,omitempty"`
+	ChartPath    string           `json:"chart_path"`
+	Valid        bool             `json:"valid"`
+	Errors       []string         `json:"errors,omitempty"`
+	Warnings     []string         `json:"warnings,omitempty"`
 	Dependencies []DependencyInfo `json:"dependencies,omitempty"`
 }
 
@@ -38,12 +38,6 @@ type DependencyInfo struct {
 	Enabled    bool     `json:"enabled"`
 	Resolved   string   `json:"resolved,omitempty"`
 	Error      string   `json:"error,omitempty"`
-}
-
-type ChartMetadata struct {
-	Name       string            `yaml:"name"`
-	Version    string            `yaml:"version"`
-	Dependencies []chart.Dependency `yaml:"dependencies"`
 }
 
 func main() {
@@ -291,31 +285,4 @@ func outputResults(results []ValidationResult) {
 		fmt.Fprintf(os.Stderr, "Failed to encode output: %v\n", err)
 		os.Exit(1)
 	}
-}
-
-func readChartMetadata(chartPath string) (*ChartMetadata, error) {
-	data, err := os.ReadFile(chartPath)
-	if err != nil {
-		return nil, err
-	}
-
-	var meta ChartMetadata
-	if err := yaml.Unmarshal(data, &meta); err != nil {
-		return nil, err
-	}
-	return &meta, nil
-}
-
-func findChartYaml(dir string) (string, error) {
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		return "", err
-	}
-
-	for _, e := range entries {
-		if e.Name() == "Chart.yaml" || e.Name() == "Chart.yml" {
-			return filepath.Join(dir, e.Name()), nil
-		}
-	}
-	return "", fmt.Errorf("Chart.yaml not found in %s", dir)
 }
