@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# last_verified: 2026-10-25 · git n/a
 # commit-msg hook — validate commit message format
 #
 # Accepts conventional commits plus optional footer references:

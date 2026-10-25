@@ -1,3 +1,4 @@
+# last_verified: 2026-10-25 · git n/a
 # GitLab CI Build Stage
 # Place in .gitlab/ci/build.yml
 #
@@ -203,7 +204,8 @@ build:helm:
   before_script:
     - apk add --no-cache bash git curl
     - |
-      wget -qO- https://get.helm.sh/helm-v3.14.0-linux-amd64.tar.gz | tar xz -C /usr/local/bin --strip-components=1 linux-amd64/helm
+      HELM_VERSION="${HELM_VERSION:-v3.14.0}"
+      wget -qO- "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" | tar xz -C /usr/local/bin --strip-components=1 linux-amd64/helm
     - helm version
   script:
     - helm package charts/*

@@ -1,3 +1,4 @@
+# last_verified: 2026-10-25 · git n/a
 # GitLab CI Shared Library
 # Place in .gitlab/ci/lib.yml
 #
@@ -129,7 +130,7 @@
   before_script:
     - apk add --no-cache bash git curl
     - |
-      wget -qO- https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz | tar xz -C /usr/local/bin trivy
+      wget -qO- "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz" | tar xz -C /usr/local/bin trivy
     - trivy --version
   script:
     - trivy fs --format sarif --output trivy-results.sarif --severity HIGH,CRITICAL .
@@ -145,7 +146,8 @@
   stage: validate
   script:
     - |
-      wget -qO- https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 > /usr/local/bin/hadolint
+      HADOLINT_VERSION="${HADOLINT_VERSION:-v2.12.0}"
+      wget -qO- "https://github.com/hadolint/hadolint/releases/download/${HADOLINT_VERSION}/hadolint-Linux-x86_64" > /usr/local/bin/hadolint
       chmod +x /usr/local/bin/hadolint
     - find . -name "Dockerfile*" -o -name "*.dockerfile" | xargs -r hadolint
 
@@ -196,7 +198,7 @@
   before_script:
     - apk add --no-cache bash git curl
     - |
-      wget -qO- https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz | tar xz -C /usr/local/bin trivy
+      wget -qO- "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz" | tar xz -C /usr/local/bin trivy
   script:
     - trivy image --format sarif --output container-results.sarif --severity HIGH,CRITICAL $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
     - trivy image --format table --exit-code 1 --severity HIGH,CRITICAL $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA

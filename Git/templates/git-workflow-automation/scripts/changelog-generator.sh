@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# last_verified: 2026-10-25 · git n/a
 # changelog-generator.sh — generate changelog from conventional commits
 #
 # Generates a changelog in Markdown format based on conventional
@@ -158,7 +159,9 @@ while IFS='|' read -r hash subject body; do
     ENTRY="**$SCOPE:** $ENTRY"
   fi
   if [ -n "$hash" ]; then
-    ENTRY="$ENTRY ([\`${hash:0:7}\`](https://github.com/$(git remote get-url origin 2>/dev/null | sed -E 's/.*[:/]([^/]+\/[^/]+)(\.git)?$/\1/')/commit/$hash))"
+    REPO_URL=$(git remote get-url origin 2>/dev/null | sed -E 's/.*[:/]([^/]+\/[^/]+)(\.git)?$/\1/')
+    GITHUB_BASE="https://github.com"
+    ENTRY="$ENTRY ([\`${hash:0:7}\`](https://github.com/${REPO_URL}/commit/$hash))"
   fi
 
   case "$TYPE" in
