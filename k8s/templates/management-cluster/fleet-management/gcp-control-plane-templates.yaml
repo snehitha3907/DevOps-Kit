@@ -1,0 +1,95 @@
+# last_verified: 2026-10-25 · KubeadmControlPlane v1.7.0
+# Purpose: KubeadmControlPlaneTemplate for GCP managed cluster
+# When to use: Referenced by gcp-managed-cluster ClusterClass
+# Prerequisites: CAPG v1.7+, kubeadm bootstrap provider v1.7+
+# Verify: kubectl get kubeadmcontrolplanetemplate gcp-managed-control-plane -n capi-system -o yaml
+# Rollback: kubectl delete kubeadmcontrolplanetemplate gcp-managed-control-plane -n capi-system
+# Common errors: GCP cloud provider config missing; service account permissions
+---
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: KubeadmControlPlaneTemplate
+metadata:
+  name: gcp-managed-control-plane
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      replicas: "${controlPlaneReplicas}"
+      version: "${kubernetesVersion}"
+      machineTemplate:
+        infrastructureRef:
+          apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+          kind: GCPMachineTemplate
+          name: gcp-control-plane
+          namespace: capi-system
+      kubeadmConfigSpec:
+        clusterConfiguration:
+          apiServer:
+            extraArgs:
+              cloud-provider: external
+          controllerManager:
+            extraArgs:
+              cloud-provider: external
+              allocate-node-cidrs: "true"
+              configure-cloud-routes: "false"
+          dns:
+            type: CoreDNS
+          etcd:
+            local:
+              dataDir: /var/lib/etcd
+          networking:
+            dnsDomain: cluster.local
+            podSubnet: 10.244.0.0/16
+            serviceSubnet: 10.96.0.0/12
+        initConfiguration:
+          nodeRegistration:
+            name: "{{ ds.meta_data.hostname }}"
+            kubeletExtraArgs:
+              cloud-provider: external
+              node-labels: "node-role.kubernetes.io/control-plane="
+        joinConfiguration:
+          nodeRegistration:
+            name: "{{ ds.meta_data.hostname }}"
+            kubeletExtraArgs:
+              cloud-provider: external
+              node-labels: "node-role.kubernetes.io/control-plane="
+        files:
+          - path: /etc/kubernetes/gcp.conf
+            owner: "root:root"
+            permissions: "0644"
+            content: |
+              [Global]
+              project-id = ${project}
+              network-name = ${network}
+              subnetwork-name = ${controlPlaneSubnetwork}
+              region = ${GCP_REGION}
+              node-tags = gcp-control-plane
+              node-instance-prefix = ${clusterName}
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: GCPMachineTemplate
+metadata:
+  name: gcp-control-plane
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      machineType: "${controlPlaneMachineType}"
+      image: projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts
+      disk:
+        type: pd-ssd
+        sizeGB: 128
+      sshKeys:
+        - "capi-user:${GCP_SSH_PUBLIC_KEY}"
+      networkInterfaces:
+        - network: "${network}"
+          subnetwork: "${controlPlaneSubnetwork}"
+          accessConfigs:
+            - externalIP: EPHEMERAL
+      serviceAccounts:
+        - email: "${GCP_SERVICE_ACCOUNT_EMAIL}"
+          scopes:
+            - "https://www.googleapis.com/auth/cloud-platform"
+      tags:
+        - "gcp-control-plane"
+        - "${clusterName}-control-plane"

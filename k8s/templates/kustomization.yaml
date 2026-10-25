@@ -1,0 +1,14 @@
+# last_verified: 2026-10-25 · kustomize v5.4.0
+# Purpose: Top-level kustomization for the entire multi-cluster management scaffold
+# When to use: Apply all components in correct order (fleet-management first, then gitops-bootstrap)
+# Prerequisites: Management cluster running with CAPI providers and Flux CD installed
+# Usage: kubectl apply -k .
+# Verify: kubectl get clusterclass,clusterresourceset -n capi-system && flux get kustomizations -n flux-system
+# Rollback: kubectl delete -k .
+# Common errors: Dependency order violated; CRDs not ready; Flux not installed
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - management-cluster/fleet-management
+  - management-cluster/gitops-bootstrap

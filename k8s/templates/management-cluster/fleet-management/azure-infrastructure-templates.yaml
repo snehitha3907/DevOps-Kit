@@ -1,0 +1,46 @@
+# last_verified: 2026-10-25 · CAPZ v1.7.0
+# Purpose: AzureClusterTemplate for managed cluster ClusterClass
+# When to use: Referenced by azure-managed-cluster ClusterClass
+# Prerequisites: CAPZ v1.7+ installed, Azure credentials with VM/Network permissions
+# Verify: kubectl get azureclustertemplate azure-managed-cluster -n capi-system -o yaml
+# Rollback: kubectl delete azureclustertemplate azure-managed-cluster -n capi-system
+# Common errors: VNet/subnet not in same resource group; managed identity missing permissions
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureClusterTemplate
+metadata:
+  name: azure-managed-cluster
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      networkSpec:
+        vnet:
+          name: "${vnetName}"
+          resourceGroup: "${vnetResourceGroup}"
+        subnets:
+          - name: "${controlPlaneSubnetName}"
+            role: controlplane
+          - name: "${nodeSubnetName}"
+            role: node
+      controlPlaneEndpoint:
+        host: "${controlPlaneEndpointHost}"
+        port: 6443
+      identityRef:
+        name: "${azureClusterIdentity}"
+      subscriptionId: "${AZURE_SUBSCRIPTION_ID}"
+      resourceGroup: "${AZURE_RESOURCE_GROUP}"
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureClusterIdentity
+metadata:
+  name: default
+  namespace: capi-system
+spec:
+  type: ServicePrincipal
+  tenantId: "${AZURE_TENANT_ID}"
+  clientId: "${AZURE_CLIENT_ID}"
+  clientSecret:
+    name: azure-cluster-identity-secret
+    namespace: capi-system
+  allowedNamespaces: {}

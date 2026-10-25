@@ -1,0 +1,258 @@
+# last_verified: 2026-10-25 · Cluster API v1.7.0
+# Purpose: ClusterResourceSet for Calico CNI — applies to all clusters with label cni=calico
+# When to use: Deploy Calico as the default CNI across the fleet
+# Prerequisites: ClusterResourceSet controller running (part of CAPI addons)
+# Verify: kubectl get clusterresourceset calico-cni -n capi-system -o yaml
+# Rollback: kubectl delete clusterresourceset calico-cni -n capi-system
+# Common errors: Cluster labels don't match selector; Calico version incompatible with Kubernetes version
+---
+apiVersion: addons.cluster.x-k8s.io/v1beta1
+kind: ClusterResourceSet
+metadata:
+  name: calico-cni
+  namespace: capi-system
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-agnostic
+spec:
+  clusterSelector:
+    matchLabels:
+      cni: calico
+  resources:
+    - kind: ConfigMap
+      name: calico-config
+      apiVersion: v1
+    - kind: DaemonSet
+      name: calico-node
+      apiVersion: apps/v1
+    - kind: Deployment
+      name: calico-kube-controllers
+      apiVersion: apps/v1
+    - kind: ClusterRole
+      name: calico-node
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ClusterRoleBinding
+      name: calico-node
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ServiceAccount
+      name: calico-node
+      apiVersion: v1
+    - kind: CustomResourceDefinition
+      name: bgpconfigurations.crd.projectcalico.org
+      apiVersion: apiextensions.k8s.io/v1
+    - kind: CustomResourceDefinition
+      name: bgppeers.crd.projectcalico.org
+      apiVersion: apiextensions.k8s.io/v1
+    - kind: CustomResourceDefinition
+      name: ippools.crd.projectcalico.org
+      apiVersion: apiextensions.k8s.io/v1
+    - kind: CustomResourceDefinition
+      name: blockaffinities.crd.projectcalico.org
+      apiVersion: apiextensions.k8s.io/v1
+    - kind: CustomResourceDefinition
+      name: networkpolicies.crd.projectcalico.org
+      apiVersion: apiextensions.k8s.io/v1
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: calico-config
+  namespace: kube-system
+data:
+  calico_backend: "bird"
+  cni_network_config: |-
+    {
+      "name": "k8s-pod-network",
+      "cniVersion": "0.3.1",
+      "plugins": [
+        {
+          "type": "calico",
+          "log_level": "info",
+          "datastore_type": "kubernetes",
+          "nodename": "__KUBERNETES_NODE_NAME__",
+          "mtu": 1440,
+          "ipam": {
+            "type": "calico-ipam"
+          },
+          "policy": {
+            "type": "k8s"
+          },
+          "kubernetes": {
+            "kubeconfig": "/etc/cni/net.d/calico-kubeconfig"
+          }
+        },
+        {
+          "type": "portmap",
+          "snat": true,
+          "capabilities": {"portMappings": true}
+        },
+        {
+          "type": "bandwidth",
+          "capabilities": {"bandwidth": true}
+        }
+      ]
+    }
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: calico-node
+  namespace: kube-system
+  labels:
+    k8s-app: calico-node
+spec:
+  selector:
+    matchLabels:
+      k8s-app: calico-node
+  template:
+    metadata:
+      labels:
+        k8s-app: calico-node
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: calico-node
+      hostNetwork: true
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+        - key: CriticalAddonsOnly
+          operator: Exists
+      initContainers:
+        - name: install-cni
+          image: docker.io/calico/cni:v3.27.0
+          command: ["/install-cni.sh"]
+          env:
+            - name: CNI_NETWORK_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: calico-config
+                  key: cni_network_config
+            - name: CNI_CONF_NAME
+              value: "10-calico.conflist"
+          volumeMounts:
+            - name: cni-net-dir
+              mountPath: /host/etc/cni/net.d
+            - name: cni-bin-dir
+              mountPath: /host/opt/cni/bin
+      containers:
+        - name: calico-node
+          image: docker.io/calico/node:v3.27.0
+          env:
+            - name: DATASTORE_TYPE
+              value: "kubernetes"
+            - name: WAIT_FOR_DATASTORE
+              value: "true"
+            - name: NODENAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: CALICO_NETWORKING_BACKEND
+              valueFrom:
+                configMapKeyRef:
+                  name: calico-config
+                  key: calico_backend
+            - name: CLUSTER_TYPE
+              value: "k8s,bgp"
+            - name: IP
+              value: "autodetect"
+            - name: IP_AUTODETECTION_METHOD
+              value: "first-found"
+            - name: FELIX_IPV6SUPPORT
+              value: "false"
+            - name: FELIX_HEALTHENABLED
+              value: "true"
+          securityContext:
+            privileged: true
+          resources:
+            requests:
+              cpu: 250m
+          volumeMounts:
+            - name: lib-modules
+              mountPath: /lib/modules
+              readOnly: true
+            - name: run-xtables-lock
+              mountPath: /run/xtables.lock
+            - name: polkitd
+              mountPath: /var/run/polkitd
+              readOnly: true
+      volumes:
+        - name: lib-modules
+          hostPath:
+            path: /lib/modules
+        - name: run-xtables-lock
+          hostPath:
+            path: /run/xtables.lock
+            type: FileOrCreate
+        - name: polkitd
+          hostPath:
+            path: /var/run/polkitd
+        - name: cni-net-dir
+          hostPath:
+            path: /etc/cni/net.d
+        - name: cni-bin-dir
+          hostPath:
+            path: /opt/cni/bin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calico-kube-controllers
+  namespace: kube-system
+  labels:
+    k8s-app: calico-kube-controllers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: calico-kube-controllers
+  template:
+    metadata:
+      labels:
+        k8s-app: calico-kube-controllers
+    spec:
+      serviceAccountName: calico-kube-controllers
+      containers:
+        - name: calico-kube-controllers
+          image: docker.io/calico/kube-controllers:v3.27.0
+          env:
+            - name: DATASTORE_TYPE
+              value: "kubernetes"
+            - name: ENABLED_CONTROLLERS
+              value: "node,workloadendpoint,networkpolicy"
+          resources:
+            requests:
+              cpu: 50m
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: calico-node
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "nodes", "namespaces"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["networkpolicies"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["endpoints", "services"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: calico-node
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: calico-node
+subjects:
+  - kind: ServiceAccount
+    name: calico-node
+    namespace: kube-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: calico-node
+  namespace: kube-system

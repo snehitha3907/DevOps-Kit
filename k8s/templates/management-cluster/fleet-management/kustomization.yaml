@@ -1,0 +1,40 @@
+# last_verified: 2026-10-25 · kustomize v5.4.0
+# Purpose: Kustomization for fleet management components (ClusterClass, templates, ClusterResourceSets)
+# When to use: Apply all fleet management resources to management cluster
+# Prerequisites: CAPI providers installed, Flux CD installed
+# Usage: kubectl apply -k management-cluster/fleet-management/
+# Verify: kubectl get clusterclass,clusterresourceset -n capi-system
+# Rollback: kubectl delete -k management-cluster/fleet-management/
+# Common errors: CRDs not installed; namespace capi-system doesn't exist; version skew
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: capi-system
+resources:
+  - clusterclass-aws-managed.yaml
+  - clusterclass-azure-managed.yaml
+  - clusterclass-gcp-managed.yaml
+  - clusterclass-self-managed.yaml
+  - aws-infrastructure-templates.yaml
+  - azure-infrastructure-templates.yaml
+  - gcp-infrastructure-templates.yaml
+  - docker-infrastructure-templates.yaml
+  - aws-control-plane-templates.yaml
+  - azure-control-plane-templates.yaml
+  - gcp-control-plane-templates.yaml
+  - docker-control-plane-templates.yaml
+  - aws-worker-templates.yaml
+  - azure-worker-templates.yaml
+  - gcp-worker-templates.yaml
+  - docker-worker-templates.yaml
+  - ../../workload-clusters/cluster-resource-sets/cni-calico.yaml
+  - ../../workload-clusters/cluster-resource-sets/csi-aws-ebs.yaml
+  - ../../workload-clusters/cluster-resource-sets/csi-azure-disk.yaml
+  - ../../workload-clusters/cluster-resource-sets/csi-gcp-pd.yaml
+  - ../../workload-clusters/cluster-resource-sets/monitoring-prometheus.yaml
+  - ../../workload-clusters/cluster-resource-sets/logging-loki.yaml
+  - ../../workload-clusters/cluster-resource-sets/security-falco-kyverno.yaml
+  - ../../workload-clusters/cluster-resource-sets/ingress-nginx.yaml
+commonLabels:
+  managed-by: kustomize
+  component: fleet-management

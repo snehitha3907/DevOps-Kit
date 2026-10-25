@@ -1,0 +1,41 @@
+# last_verified: 2026-10-25 · CAPG v1.7.0
+# Purpose: GCPClusterTemplate for managed cluster ClusterClass
+# When to use: Referenced by gcp-managed-cluster ClusterClass
+# Prerequisites: CAPG v1.7+ installed, GCP credentials with Compute/Network permissions
+# Verify: kubectl get gcpclustertemplate gcp-managed-cluster -n capi-system -o yaml
+# Rollback: kubectl delete gcpclustertemplate gcp-managed-cluster -n capi-system
+# Common errors: Service account missing roles/compute.instanceAdmin; VPC peering not configured
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: GCPClusterTemplate
+metadata:
+  name: gcp-managed-cluster
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      network:
+        name: "${network}"
+        subnetworks:
+          - name: "${controlPlaneSubnetwork}"
+            region: "${GCP_REGION}"
+            purpose: CONTROL_PLANE
+          - name: "${nodeSubnetwork}"
+            region: "${GCP_REGION}"
+            purpose: NODE
+      controlPlaneEndpoint:
+        host: "${controlPlaneEndpointHost}"
+        port: 6443
+      identityRef:
+        kind: GCPClusterControllerIdentity
+        name: default
+      project: "${project}"
+      region: "${GCP_REGION}"
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: GCPClusterControllerIdentity
+metadata:
+  name: default
+  namespace: capi-system
+spec:
+  allowedNamespaces: {}

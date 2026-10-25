@@ -1,0 +1,121 @@
+# last_verified: 2026-10-25 · Cluster API v1.7.0, CAPA v1.7.0
+# Purpose: Example AWS production cluster generated from aws-managed-cluster ClusterClass
+# When to use: Reference for creating production AWS workload clusters
+# Prerequisites: AWS credentials, VPC/subnets, ClusterClass aws-managed-cluster applied
+# Usage: clusterctl generate cluster aws-prod --from clusterclass/aws-managed-cluster --kubernetes-version v1.29.4 > aws-prod.yaml
+# Verify: kubectl apply -f aws-prod.yaml && kubectl get cluster aws-prod -n capi-workloads -w
+# Rollback: kubectl delete cluster aws-prod -n capi-workloads
+# Common errors: Subnet tags missing kubernetes.io/cluster/<name>=owned; IAM roles not propagated
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: aws-prod
+  namespace: capi-workloads
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-aws
+    topology.cluster.x-k8s.io/managed: "true"
+    cni: calico
+    csi: aws-ebs
+    monitoring: enabled
+    logging: enabled
+    security: enabled
+    ingress: nginx
+    environment: production
+spec:
+  topology:
+    class: aws-managed-cluster
+    version: v1.29.4
+    controlPlane:
+      replicas: 3
+    workers:
+      machineDeployments:
+        - class: default-worker
+          failureDomain: us-east-1a
+          replicas: 3
+        - class: default-worker
+          failureDomain: us-east-1b
+          replicas: 3
+        - class: default-worker
+          failureDomain: us-east-1c
+          replicas: 3
+    variables:
+      - name: kubernetesVersion
+        value: v1.29.4
+      - name: controlPlaneReplicas
+        value: "3"
+      - name: workerReplicas
+        value: "9"
+      - name: controlPlaneMachineType
+        value: m6i.xlarge
+      - name: workerMachineType
+        value: m6i.large
+      - name: vpcId
+        value: vpc-0123456789abcdef0
+      - name: privateSubnetIds
+        value: subnet-0123456789abcdef0,subnet-0123456789abcdef1,subnet-0123456789abcdef2
+      - name: publicSubnetIds
+        value: subnet-0123456789abcdef3,subnet-0123456789abcdef4,subnet-0123456789abcdef5
+      - name: cni
+        value: calico
+      - name: enableMonitoring
+        value: "true"
+      - name: enableLogging
+        value: "true"
+      - name: enableSecurity
+        value: "true"
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: aws-staging
+  namespace: capi-workloads
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-aws
+    topology.cluster.x-k8s.io/managed: "true"
+    cni: calico
+    csi: aws-ebs
+    monitoring: enabled
+    logging: enabled
+    security: enabled
+    ingress: nginx
+    environment: staging
+spec:
+  topology:
+    class: aws-managed-cluster
+    version: v1.29.4
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+        - class: default-worker
+          failureDomain: us-east-1a
+          replicas: 2
+        - class: default-worker
+          failureDomain: us-east-1b
+          replicas: 2
+    variables:
+      - name: kubernetesVersion
+        value: v1.29.4
+      - name: controlPlaneReplicas
+        value: "1"
+      - name: workerReplicas
+        value: "4"
+      - name: controlPlaneMachineType
+        value: m6i.large
+      - name: workerMachineType
+        value: m6i.large
+      - name: vpcId
+        value: vpc-0123456789abcdef0
+      - name: privateSubnetIds
+        value: subnet-0123456789abcdef0,subnet-0123456789abcdef1
+      - name: publicSubnetIds
+        value: subnet-0123456789abcdef3,subnet-0123456789abcdef4
+      - name: cni
+        value: calico
+      - name: enableMonitoring
+        value: "true"
+      - name: enableLogging
+        value: "true"
+      - name: enableSecurity
+        value: "true"

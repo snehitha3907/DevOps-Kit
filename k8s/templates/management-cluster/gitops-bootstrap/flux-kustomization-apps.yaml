@@ -1,0 +1,39 @@
+# last_verified: 2026-10-25 · Flux CD v2.5.0
+# Purpose: Flux Kustomization for per-cluster application sync via Flux multi-tenancy
+# When to use: Each workload cluster has its own Flux instance syncing from Git
+# Prerequisites: Workload clusters have Flux installed; GitRepository configured per cluster
+# Verify: flux get kustomizations -n <cluster-namespace>
+# Rollback: kubectl delete kustomization apps -n <cluster-namespace>
+# Common errors: Workload cluster Flux not installed; kubeconfig secret not created; RBAC missing
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./apps
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: prometheus-stack
+      namespace: monitoring
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: loki-stack
+      namespace: logging
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: kyverno
+      namespace: kyverno
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: ingress-nginx
+      namespace: ingress-nginx
+  retryInterval: 2m0s
+  timeout: 10m0s

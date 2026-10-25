@@ -1,0 +1,41 @@
+# last_verified: 2026-10-25 · CAPA v1.7.0
+# Purpose: AWSClusterTemplate for managed cluster ClusterClass
+# When to use: Referenced by aws-managed-cluster ClusterClass
+# Prerequisites: CAPA v1.7+ installed, AWS credentials with EC2/VPC/IAM permissions
+# Verify: kubectl get awsclustertemplate aws-managed-cluster -n capi-system -o yaml
+# Rollback: kubectl delete awsclustertemplate aws-managed-cluster -n capi-system
+# Common errors: VPC/subnet tags missing required CAPA tags; IAM roles not created
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AWSClusterTemplate
+metadata:
+  name: aws-managed-cluster
+  namespace: capi-system
+spec:
+  template:
+    spec:
+      networkSpec:
+        vpc:
+          id: "${vpcId}"
+        subnets:
+          - id: "${privateSubnetIds}"
+            type: Private
+          - id: "${publicSubnetIds}"
+            type: Public
+        bastion:
+          enabled: false
+      controlPlaneEndpoint:
+        host: "${controlPlaneEndpointHost}"
+        port: 6443
+      identityRef:
+        kind: AWSClusterControllerIdentity
+        name: default
+      region: "${AWS_REGION}"
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AWSClusterControllerIdentity
+metadata:
+  name: default
+  namespace: capi-system
+spec:
+  allowedNamespaces: {}

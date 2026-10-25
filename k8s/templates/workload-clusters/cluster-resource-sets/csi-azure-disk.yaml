@@ -1,0 +1,202 @@
+# last_verified: 2026-10-25 · Azure Disk CSI Driver v1.30.0
+# Purpose: ClusterResourceSet for Azure Disk CSI Driver — applies to Azure clusters
+# When to use: Enable persistent volumes on Azure workload clusters
+# Prerequisites: Azure identity with Disk permissions; ClusterResourceSet controller running
+# Verify: kubectl get clusterresourceset azure-disk-csi -n capi-system -o yaml
+# Rollback: kubectl delete clusterresourceset azure-disk-csi -n capi-system
+# Common errors: Managed identity missing Microsoft.Compute/disks permissions; subscription not registered
+---
+apiVersion: addons.cluster.x-k8s.io/v1beta1
+kind: ClusterResourceSet
+metadata:
+  name: azure-disk-csi
+  namespace: capi-system
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+spec:
+  clusterSelector:
+    matchLabels:
+      provider: azure
+      csi: azure-disk
+  resources:
+    - kind: ServiceAccount
+      name: azuredisk-csi-controller-sa
+      apiVersion: v1
+    - kind: ClusterRole
+      name: azuredisk-csi-controller-role
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ClusterRoleBinding
+      name: azuredisk-csi-controller-binding
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: Deployment
+      name: azuredisk-csi-controller
+      apiVersion: apps/v1
+    - kind: DaemonSet
+      name: azuredisk-csi-node
+      apiVersion: apps/v1
+    - kind: CSIDriver
+      name: disk.csi.azure.com
+      apiVersion: storage.k8s.io/v1
+    - kind: StorageClass
+      name: managed-premium
+      apiVersion: storage.k8s.io/v1
+    - kind: StorageClass
+      name: managed-premium-retain
+      apiVersion: storage.k8s.io/v1
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: azuredisk-csi-controller-sa
+  namespace: kube-system
+  labels:
+    azure.workload.identity/use: "true"
+  annotations:
+    azure.workload.identity/client-id: ${AZURE_CLIENT_ID}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: azuredisk-csi-controller-role
+rules:
+  - apiGroups: [""]
+    resources: ["events", "persistentvolumes", "persistentvolumeclaims", "nodes"]
+    verbs: ["get", "list", "watch", "update", "create", "patch"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["volumeattachments", "storageclasses", "csidrivers", "csinodes"]
+    verbs: ["get", "list", "watch", "update", "create", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: azuredisk-csi-controller-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: azuredisk-csi-controller-role
+subjects:
+  - kind: ServiceAccount
+    name: azuredisk-csi-controller-sa
+    namespace: kube-system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azuredisk-csi-controller
+  namespace: kube-system
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: azuredisk-csi-controller
+  template:
+    metadata:
+      labels:
+        app: azuredisk-csi-controller
+    spec:
+      serviceAccountName: azuredisk-csi-controller-sa
+      containers:
+        - name: azuredisk-plugin
+          image: mcr.microsoft.com/oss/kubernetes-csi/azuredisk-csi:v1.30.0
+          args:
+            - "--endpoint=$(CSI_ENDPOINT)"
+            - "--logtostderr"
+            - "--v=5"
+            - "--default-fstype=ext4"
+          env:
+            - name: CSI_ENDPOINT
+              value: unix:///csi/csi.sock
+            - name: AZURE_SUBSCRIPTION_ID
+              value: ${AZURE_SUBSCRIPTION_ID}
+            - name: AZURE_RESOURCE_GROUP
+              value: ${AZURE_RESOURCE_GROUP}
+            - name: AZURE_LOCATION
+              value: ${AZURE_LOCATION}
+          volumeMounts:
+            - name: socket-dir
+              mountPath: /csi
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: azuredisk-csi-node
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: azuredisk-csi-node
+  template:
+    metadata:
+      labels:
+        app: azuredisk-csi-node
+    spec:
+      serviceAccountName: azuredisk-csi-controller-sa
+      containers:
+        - name: node-driver-registrar
+          image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.10.1
+          args:
+            - "--v=5"
+            - "--csi-address=/csi/csi.sock"
+        - name: azuredisk-plugin
+          image: mcr.microsoft.com/oss/kubernetes-csi/azuredisk-csi:v1.30.0
+          args:
+            - "--endpoint=$(CSI_ENDPOINT)"
+            - "--logtostderr"
+            - "--v=5"
+          env:
+            - name: CSI_ENDPOINT
+              value: unix:///csi/csi.sock
+            - name: AZURE_SUBSCRIPTION_ID
+              value: ${AZURE_SUBSCRIPTION_ID}
+            - name: AZURE_RESOURCE_GROUP
+              value: ${AZURE_RESOURCE_GROUP}
+            - name: AZURE_LOCATION
+              value: ${AZURE_LOCATION}
+          volumeMounts:
+            - name: socket-dir
+              mountPath: /csi
+            - name: kubelet-dir
+              mountPath: /var/lib/kubelet
+              mountPropagation: Bidirectional
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+        - name: kubelet-dir
+          hostPath:
+            path: /var/lib/kubelet
+---
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: disk.csi.azure.com
+spec:
+  attachRequired: true
+  podInfoOnMount: true
+  fsGroupPolicy: File
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: managed-premium
+provisioner: disk.csi.azure.com
+parameters:
+  skuname: Premium_LRS
+  cachingmode: ReadOnly
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: managed-premium-retain
+provisioner: disk.csi.azure.com
+parameters:
+  skuname: Premium_LRS
+  cachingmode: ReadOnly
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true

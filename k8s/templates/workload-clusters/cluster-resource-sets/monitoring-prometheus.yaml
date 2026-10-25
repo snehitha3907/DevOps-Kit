@@ -1,0 +1,303 @@
+# last_verified: 2026-10-25 · Prometheus Operator v0.76.0
+# Purpose: ClusterResourceSet for Prometheus monitoring stack — applies to clusters with enableMonitoring=true
+# When to use: Deploy full Prometheus Operator stack with ServiceMonitors across fleet
+# Prerequisites: ClusterResourceSet controller running; sufficient resources for Prometheus
+# Verify: kubectl get clusterresourceset monitoring-prometheus -n capi-system -o yaml
+# Rollback: kubectl delete clusterresourceset monitoring-prometheus -n capi-system
+# Common errors: PVC provisioning fails if CSI not ready; Prometheus retention fills disk
+---
+apiVersion: addons.cluster.x-k8s.io/v1beta1
+kind: ClusterResourceSet
+metadata:
+  name: monitoring-prometheus
+  namespace: capi-system
+spec:
+  clusterSelector:
+    matchLabels:
+      monitoring: enabled
+  resources:
+    - kind: Namespace
+      name: monitoring
+      apiVersion: v1
+    - kind: ServiceAccount
+      name: prometheus-operator
+      apiVersion: v1
+    - kind: ClusterRole
+      name: prometheus-operator
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ClusterRoleBinding
+      name: prometheus-operator
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: Deployment
+      name: prometheus-operator
+      apiVersion: apps/v1
+    - kind: ServiceMonitor
+      name: kubelet
+      apiVersion: monitoring.coreos.com/v1
+    - kind: ServiceMonitor
+      name: kube-apiserver
+      apiVersion: monitoring.coreos.com/v1
+    - kind: ServiceMonitor
+      name: kube-controller-manager
+      apiVersion: monitoring.coreos.com/v1
+    - kind: ServiceMonitor
+      name: kube-scheduler
+      apiVersion: monitoring.coreos.com/v1
+    - kind: ServiceMonitor
+      name: kube-proxy
+      apiVersion: monitoring.coreos.com/v1
+    - kind: Prometheus
+      name: cluster-prometheus
+      apiVersion: monitoring.coreos.com/v1
+    - kind: PrometheusRule
+      name: kubernetes-alerts
+      apiVersion: monitoring.coreos.com/v1
+    - kind: Service
+      name: prometheus-operated
+      apiVersion: v1
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus-operator
+  namespace: monitoring
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus-operator
+rules:
+  - apiGroups: [""]
+    resources: ["nodes", "services", "endpoints", "pods", "namespaces", "configmaps"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets", "statefulsets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions"]
+    resources: ["ingresses"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-operator
+subjects:
+  - kind: ServiceAccount
+    name: prometheus-operator
+    namespace: monitoring
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-operator
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-operator
+  template:
+    metadata:
+      labels:
+        app: prometheus-operator
+    spec:
+      serviceAccountName: prometheus-operator
+      containers:
+        - name: prometheus-operator
+          image: quay.io/prometheus-operator/prometheus-operator:v0.76.0
+          args:
+            - "--kubelet-service=kube-system/kubelet"
+            - "--config-reloader-image=quay.io/prometheus-operator/prometheus-config-reloader:v0.76.0"
+            - "--prometheus-image=quay.io/prometheus/prometheus:v2.54.0"
+            - "--alertmanager-image=quay.io/prometheus/alertmanager:v0.27.0"
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kubelet
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      k8s-app: kubelet
+  endpoints:
+    - port: https
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+  namespaceSelector:
+    matchNames:
+      - kube-system
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-apiserver
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      component: kube-apiserver
+  endpoints:
+    - port: https
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
+  namespaceSelector:
+    matchNames:
+      - kube-system
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-controller-manager
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      component: kube-controller-manager
+  endpoints:
+    - port: https
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
+  namespaceSelector:
+    matchNames:
+      - kube-system
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-scheduler
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      component: kube-scheduler
+  endpoints:
+    - port: https
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
+  namespaceSelector:
+    matchNames:
+      - kube-system
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-proxy
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      k8s-app: kube-proxy
+  endpoints:
+    - port: https
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
+  namespaceSelector:
+    matchNames:
+      - kube-system
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: cluster-prometheus
+  namespace: monitoring
+spec:
+  serviceAccountName: prometheus-operator
+  serviceMonitorSelector:
+    matchLabels: {}
+  ruleSelector:
+    matchLabels: {}
+  resources:
+    requests:
+      memory: 2Gi
+      cpu: 1000m
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: "${STORAGE_CLASS}"
+        resources:
+          requests:
+            storage: 50Gi
+  retention: 15d
+  retentionSize: 45Gi
+  enableRemoteWriteReceiver: true
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: kubernetes-alerts
+  namespace: monitoring
+spec:
+  groups:
+    - name: kubernetes.rules
+      rules:
+        - alert: KubePodNotReady
+          expr: |
+            sum by (namespace, pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"} > 0) > 0
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} not ready"
+        - alert: KubeNodeNotReady
+          expr: |
+            kube_node_status_condition{condition="Ready",status="true"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Node {{ $labels.node }} not ready"
+        - alert: KubeCPUOvercommit
+          expr: |
+            sum(kube_pod_container_resource_requests{resource="cpu"}) / sum(kube_node_status_capacity_cpu_cores) > 1.5
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Cluster CPU overcommitted"
+        - alert: KubeMemoryOvercommit
+          expr: |
+            sum(kube_pod_container_resource_requests{resource="memory"}) / sum(kube_node_status_capacity_memory_bytes) > 1.5
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Cluster memory overcommitted"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-operated
+  namespace: monitoring
+spec:
+  clusterIP: None
+  ports:
+    - name: web
+      port: 9090
+      targetPort: 9090
+  selector:
+    prometheus: cluster-prometheus

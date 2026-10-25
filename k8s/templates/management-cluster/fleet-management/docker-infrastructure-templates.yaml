@@ -1,0 +1,16 @@
+# last_verified: 2026-10-25 · CAPD v1.7.0
+# Purpose: DockerClusterTemplate for self-managed cluster ClusterClass (development)
+# When to use: Referenced by self-managed-cluster ClusterClass for local development
+# Prerequisites: CAPD v1.7+ installed, Docker daemon running
+# Verify: kubectl get dockerclustertemplate self-managed-cluster -n capi-system -o yaml
+# Rollback: kubectl delete dockerclustertemplate self-managed-cluster -n capi-system
+# Common errors: Docker daemon not accessible; port conflicts on host
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: DockerClusterTemplate
+metadata:
+  name: self-managed-cluster
+  namespace: capi-system
+spec:
+  template:
+    spec: {}

@@ -1,0 +1,394 @@
+# last_verified: 2026-10-25 · Falco v0.38.0, Kyverno v1.12.0
+# Purpose: ClusterResourceSet for runtime security (Falco) and policy engine (Kyverno) — applies to clusters with enableSecurity=true
+# When to use: Deploy Falco for runtime threat detection and Kyverno for admission control across fleet
+# Prerequisites: ClusterResourceSet controller running; Falco requires kernel headers/module or eBPF probe
+# Verify: kubectl get clusterresourceset security-falco-kyverno -n capi-system -o yaml
+# Rollback: kubectl delete clusterresourceset security-falco-kyverno -n capi-system
+# Common errors: Falco driver not loaded on custom kernels; Kyverno webhook timeout on large clusters
+---
+apiVersion: addons.cluster.x-k8s.io/v1beta1
+kind: ClusterResourceSet
+metadata:
+  name: security-falco-kyverno
+  namespace: capi-system
+spec:
+  clusterSelector:
+    matchLabels:
+      security: enabled
+  resources:
+    - kind: Namespace
+      name: falco
+      apiVersion: v1
+    - kind: ServiceAccount
+      name: falco
+      apiVersion: v1
+    - kind: ClusterRole
+      name: falco
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ClusterRoleBinding
+      name: falco
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ConfigMap
+      name: falco-config
+      apiVersion: v1
+    - kind: DaemonSet
+      name: falco
+      apiVersion: apps/v1
+    - kind: Namespace
+      name: kyverno
+      apiVersion: v1
+    - kind: ServiceAccount
+      name: kyverno
+      apiVersion: v1
+    - kind: ClusterRole
+      name: kyverno
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: ClusterRoleBinding
+      name: kyverno
+      apiVersion: rbac.authorization.k8s.io/v1
+    - kind: Deployment
+      name: kyverno
+      apiVersion: apps/v1
+    - kind: Service
+      name: kyverno
+      apiVersion: v1
+    - kind: MutatingWebhookConfiguration
+      name: kyverno
+      apiVersion: admissionregistration.k8s.io/v1
+    - kind: ValidatingWebhookConfiguration
+      name: kyverno
+      apiVersion: admissionregistration.k8s.io/v1
+    - kind: ClusterPolicy
+      name: disallow-privileged-containers
+      apiVersion: kyverno.io/v1
+    - kind: ClusterPolicy
+      name: require-resource-limits
+      apiVersion: kyverno.io/v1
+    - kind: ClusterPolicy
+      name: restrict-host-namespace
+      apiVersion: kyverno.io/v1
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: falco
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: falco
+  namespace: falco
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: falco
+rules:
+  - apiGroups: [""]
+    resources: ["nodes", "pods", "namespaces"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: falco
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: falco
+subjects:
+  - kind: ServiceAccount
+    name: falco
+    namespace: falco
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: falco-config
+  namespace: falco
+data:
+  falco.yaml: |
+    json_output: true
+    json_include_output_property: true
+    log_level: info
+    outputs:
+      - name: stdout
+        type: stdout
+      - name: falco-loki
+        type: loki
+        loki_url: http://loki.logging:3100/loki/api/v1/push
+        batch_wait: 1
+        batch_count: 100
+    rules_files:
+      - /etc/falco/falco_rules.yaml
+      - /etc/falco/falco_rules.local.yaml
+      - /etc/falco/k8s_audit_rules.yaml
+      - /etc/falco/rules.d/
+    websocket:
+      enabled: false
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: falco
+  namespace: falco
+spec:
+  selector:
+    matchLabels:
+      app: falco
+  template:
+    metadata:
+      labels:
+        app: falco
+    spec:
+      serviceAccountName: falco
+      hostNetwork: true
+      hostPID: true
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+      containers:
+        - name: falco
+          image: falcosecurity/falco:0.38.0
+          args:
+            - "--config=/etc/falco/falco.yaml"
+          env:
+            - name: FALCO_BPF_PROBE
+              value: ""
+            - name: FALCO_GRPC
+              value: "disabled"
+            - name: FALCO_GRPC_OUTPUT
+              value: "disabled"
+            - name: FALCO_WEBSOCKET
+              value: "disabled"
+            - name: CLUSTER_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: config
+              mountPath: /etc/falco
+            - name: modules
+              mountPath: /lib/modules
+              readOnly: true
+            - name: usr-src
+              mountPath: /usr/src
+              readOnly: true
+            - name: procfs
+              mountPath: /host/proc
+              readOnly: true
+            - name: sysfs
+              mountPath: /host/sys
+              readOnly: true
+            - name: etc
+              mountPath: /host/etc
+              readOnly: true
+            - name: var-log
+              mountPath: /var/log
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: falco-config
+        - name: modules
+          hostPath:
+            path: /lib/modules
+        - name: usr-src
+          hostPath:
+            path: /usr/src
+        - name: procfs
+          hostPath:
+            path: /proc
+        - name: sysfs
+          hostPath:
+            path: /sys
+        - name: etc
+          hostPath:
+            path: /etc
+        - name: var-log
+          hostPath:
+            path: /var/log
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kyverno
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kyverno
+  namespace: kyverno
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kyverno
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kyverno
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kyverno
+subjects:
+  - kind: ServiceAccount
+    name: kyverno
+    namespace: kyverno
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyverno
+  namespace: kyverno
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kyverno
+  template:
+    metadata:
+      labels:
+        app: kyverno
+    spec:
+      serviceAccountName: kyverno
+      containers:
+        - name: kyverno
+          image: ghcr.io/kyverno/kyverno:v1.12.0
+          args:
+            - "--webhook-timeout=30s"
+            - "--webhook-port=9443"
+            - "--health-port=8000"
+            - "--metrics-port=8001"
+          ports:
+            - containerPort: 9443
+              name: webhook
+            - containerPort: 8000
+              name: health
+            - containerPort: 8001
+              name: metrics
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          volumeMounts:
+            - name: tls
+              mountPath: /certs
+      volumes:
+        - name: tls
+          secret:
+            secretName: kyverno-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kyverno
+  namespace: kyverno
+spec:
+  ports:
+    - name: webhook
+      port: 443
+      targetPort: 9443
+    - name: health
+      port: 8000
+      targetPort: 8000
+    - name: metrics
+      port: 8001
+      targetPort: 8001
+  selector:
+    app: kyverno
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+    - name: disallow-privileged
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Privileged containers are not allowed"
+        pattern:
+          spec:
+            containers:
+              - =(securityContext):
+                  =(privileged): "false"
+            initContainers:
+              - =(securityContext):
+                  =(privileged): "false"
+            ephemeralContainers:
+              - =(securityContext):
+                  =(privileged): "false"
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-resource-limits
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+    - name: require-limits
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "CPU and memory limits are required for all containers"
+        pattern:
+          spec:
+            containers:
+              - =(resources):
+                  =(limits):
+                    cpu: "?*"
+                    memory: "?*"
+            initContainers:
+              - =(resources):
+                  =(limits):
+                    cpu: "?*"
+                    memory: "?*"
+            ephemeralContainers:
+              - =(resources):
+                  =(limits):
+                    cpu: "?*"
+                    memory: "?*"
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-host-namespace
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+    - name: restrict-host-network
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Host network, PID, and IPC namespaces are not allowed"
+        deny:
+          conditions:
+            - key: "{{ request.object.spec.hostNetwork }}"
+              operator: Equals
+              value: true
+            - key: "{{ request.object.spec.hostPID }}"
+              operator: Equals
+              value: true
+            - key: "{{ request.object.spec.hostIPC }}"
+              operator: Equals
+              value: true

@@ -1,0 +1,125 @@
+# last_verified: 2026-10-25 · Cluster API v1.7.0, CAPG v1.7.0
+# Purpose: Example GCP production cluster generated from gcp-managed-cluster ClusterClass
+# When to use: Reference for creating production GCP workload clusters
+# Prerequisites: GCP credentials, VPC/subnets, ClusterClass gcp-managed-cluster applied
+# Usage: clusterctl generate cluster gcp-prod --from clusterclass/gcp-managed-cluster --kubernetes-version v1.29.4 > gcp-prod.yaml
+# Verify: kubectl apply -f gcp-prod.yaml && kubectl get cluster gcp-prod -n capi-workloads -w
+# Rollback: kubectl delete cluster gcp-prod -n capi-workloads
+# Common errors: Service account missing compute.disks.* roles; subnetwork not in same region
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: gcp-prod
+  namespace: capi-workloads
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-gcp
+    topology.cluster.x-k8s.io/managed: "true"
+    cni: gcp-cni
+    csi: gcp-pd
+    monitoring: enabled
+    logging: enabled
+    security: enabled
+    ingress: nginx
+    environment: production
+spec:
+  topology:
+    class: gcp-managed-cluster
+    version: v1.29.4
+    controlPlane:
+      replicas: 3
+    workers:
+      machineDeployments:
+        - class: default-worker
+          failureDomain: us-central1-a
+          replicas: 3
+        - class: default-worker
+          failureDomain: us-central1-b
+          replicas: 3
+        - class: default-worker
+          failureDomain: us-central1-c
+          replicas: 3
+    variables:
+      - name: kubernetesVersion
+        value: v1.29.4
+      - name: controlPlaneReplicas
+        value: "3"
+      - name: workerReplicas
+        value: "9"
+      - name: controlPlaneMachineType
+        value: n2-standard-8
+      - name: workerMachineType
+        value: n2-standard-4
+      - name: project
+        value: my-gcp-project
+      - name: network
+        value: capi-network
+      - name: controlPlaneSubnetwork
+        value: controlplane-subnet
+      - name: nodeSubnetwork
+        value: node-subnet
+      - name: cni
+        value: gcp-cni
+      - name: enableMonitoring
+        value: "true"
+      - name: enableLogging
+        value: "true"
+      - name: enableSecurity
+        value: "true"
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: gcp-staging
+  namespace: capi-workloads
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-gcp
+    topology.cluster.x-k8s.io/managed: "true"
+    cni: gcp-cni
+    csi: gcp-pd
+    monitoring: enabled
+    logging: enabled
+    security: enabled
+    ingress: nginx
+    environment: staging
+spec:
+  topology:
+    class: gcp-managed-cluster
+    version: v1.29.4
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+        - class: default-worker
+          failureDomain: us-central1-a
+          replicas: 2
+        - class: default-worker
+          failureDomain: us-central1-b
+          replicas: 2
+    variables:
+      - name: kubernetesVersion
+        value: v1.29.4
+      - name: controlPlaneReplicas
+        value: "1"
+      - name: workerReplicas
+        value: "4"
+      - name: controlPlaneMachineType
+        value: n2-standard-4
+      - name: workerMachineType
+        value: n2-standard-4
+      - name: project
+        value: my-gcp-project
+      - name: network
+        value: capi-network
+      - name: controlPlaneSubnetwork
+        value: controlplane-subnet
+      - name: nodeSubnetwork
+        value: node-subnet
+      - name: cni
+        value: gcp-cni
+      - name: enableMonitoring
+        value: "true"
+      - name: enableLogging
+        value: "true"
+      - name: enableSecurity
+        value: "true"

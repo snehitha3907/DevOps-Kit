@@ -2,6 +2,8 @@
 
 ## 2026-10-25
 
+- Added Kubernetes multi-cluster management scaffold with Cluster API, fleet management, and GitOps bootstrap: ClusterClass definitions for AWS/Azure/GCP/Docker providers, ClusterResourceSets for CNI/CSI/monitoring/logging/security/ingress, Flux CD GitOps bootstrap, and example cluster manifests (k8s-027) (`k8s/templates/k8s-multi-cluster-management/`)
+
 - Added Git workflow automation script for semantic versioning and conventional changelog generation: inspects conventional commits since the latest semver tag, auto-determines bump level (major/minor/patch), writes a grouped changelog, and creates an annotated release tag (git-032) (`Git/scripts/semver-changelog-workflow.sh`)
 
 - Added Git workflow automation scaffold: Git hooks (pre-commit, commit-msg, pre-push, pre-rebase, post-commit, post-checkout, prepare-commit-msg, pre-merge-commit), Git aliases, GitHub Actions workflows (workflow-automation, dependabot, auto-merge), GitLab CI modular pipelines (validate, build, test, security, deploy), and automation scripts (install-hooks, setup-workflow, semantic-version, changelog-generator) (git-033) (`Git/templates/git-workflow-automation/`)
