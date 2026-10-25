@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# last_verified: 2026-10-25 · git n/a
 # install-hooks.sh — install Git workflow hooks
 #
 # Installs all hook scripts from the git-workflow-automation/hooks

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# last_verified: 2026-10-25 · git n/a
 # setup-workflow.sh — interactive Git workflow setup
 #
 # Guides the user through setting up the complete Git workflow

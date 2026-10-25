@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# last_verified: 2026-10-25 · git n/a
 # semantic-version.sh — calculate next semantic version from conventional commits
 #
 # Analyzes commit history since the last version tag and determines

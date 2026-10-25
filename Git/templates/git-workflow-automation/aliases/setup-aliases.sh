@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# last_verified: 2026-10-25 · git n/a
 # setup-aliases.sh — interactive Git alias installer
 #
 # Installs the Git workflow aliases from gitconfig into the user's
