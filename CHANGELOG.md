@@ -4,7 +4,11 @@
 
 - Added Helm plugin for chart dependency validation and version constraint checking: validates Chart.yaml dependencies, checks version constraints against Helm and OCI repositories, outputs JSON results (hlm-029) (`hlm/scripts/helm-dep-validate.go`)
 - Added Vault dynamic database credential flow script: enables database secrets engine, configures PostgreSQL connection, creates a read-only role, generates dynamic credentials, and demonstrates lease renewal and revocation (vlt-017) (`vlt/scripts/dynamic-database-credentials.py`)
+- Added Terraform vs OpenTofu migration guide: state compatibility, provider parity, CI/CD pipeline updates for GitHub Actions, GitLab CI, and Jenkins (tf-032) (`tf/docs/terraform-vs-opentofu-migration-guide.md`)
 - Passed ([x]) vlt-017 — HashiCorp Vault: script — Build a dynamic database credential flow with Vault database engine from scratch · Level: L3 · 2026-10-25
+- Passed ([x]) vlt-018 — HashiCorp Vault: docs — How I wired Vault Agent into a containerized app for secret injection · Level: L3 · 2026-10-25
+- Passed ([x]) vlt-019 — HashiCorp Vault: config — AppRole auth method with policy and token role configuration · Level: L3 · 2026-10-25
+- Passed ([x]) tf-032 — Terraform: docs — Terraform vs OpenTofu migration guide: state compatibility, provider parity, and CI/CD pipeline updates · Level: L5 · 2026-10-25
 - Added Helm plugin for chart dependency validation and version constraint checking (hlm-029) (`Helm/scripts/helm-dep-validate.go`)
 
 ## 2026-10-22
@@ -900,5 +904,3 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - 2026-10-21 hlm-026: Helm chart testing strategies doc
 - 2026-10-23 gl-021: GitLab CI/scripts/gitlab-pipeline-helper.py — reusable python-gitlab helper
 - merge-rebase-squash-comparison.ipynb
-2026-10-25: vlt/docs/vault-agent-secret-injection.md (vlt-018) — Vault Agent sidecar for container secret injection
-2026-10-25: vlt/configs/vault-approle.hcl (vlt-019) — AppRole auth method, policy, and token role
