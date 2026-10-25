@@ -1,0 +1,366 @@
+# last_verified: 2026-10-25 · Azure Container Apps (n/a)
+#
+# Purpose: Deploy a multi-service Azure Container Apps environment with
+# user-assigned managed identities, custom VNet integration, and ingress
+# configuration. Each service gets its own identity scoped to the resources
+# it needs (storage, key vault, database), and ingress is configured per
+# service with external/internal visibility and traffic splitting.
+#
+# When to use:
+#   - Microservice architectures needing isolated identities per service
+#   - Workloads requiring VNet integration for private endpoints
+#   - Teams wanting declarative, GitOps-ready Container Apps definitions
+#   - Scenarios where ingress routing and traffic splitting are needed
+#
+# Prerequisites:
+#   - Azure subscription with Container Apps resource provider registered
+#   - Existing resource group, VNet, and subnets (one for environment,
+#     one per service if using dedicated subnets)
+#   - User-assigned managed identities created (or created alongside)
+#   - Container registry accessible (ACR with admin enabled or identity-based pull)
+#   - Log Analytics workspace for environment diagnostics
+#
+# Steps:
+#   1. Review and customize the parameters section for your environment.
+#   2. Ensure referenced identities, VNet, and subnets exist or are created
+#      in a prior deployment step.
+#   3. Deploy via Bicep/ARM or use the YAML with `az containerapp env create`
+#      and `az containerapp create --yaml` for each service.
+#   4. Configure custom domains and certificates if using external ingress.
+#   5. Set up traffic splitting rules for canary/blue-green deployments.
+#
+# Verify:
+#   - All Container Apps show "Running" in the Azure portal or `az containerapp list`
+#   - Ingress FQDNs resolve and return healthy responses on the configured ports
+#   - Managed identities have the expected role assignments on target resources
+#   - VNet integration shows "Connected" for each app
+#   - Logs flow to the Log Analytics workspace
+#
+# Common errors:
+#   - "Subnet not found": Subnet must exist in the same region; check name and RG.
+#   - "Identity not authorized": Grant the identity the required RBAC roles
+#     (e.g., "AcrPull" on the registry, "Key Vault Secrets User" on the vault).
+#   - "Ingress certificate mismatch": Custom domain cert must match the FQDN
+#     and be uploaded to the Container Apps environment.
+#   - "Environment already exists": Environment name must be unique per region;
+#     use a unique suffix or check for existing deployments.
+#   - "Image pull failed": Verify registry credentials and that the identity
+#     has AcrPull on the registry (or admin credentials are correct).
+#
+# References:
+#   - Azure Container Apps documentation: networking, ingress, managed identities
+#   - Azure CLI reference: `az containerapp`, `az containerapp env`
+
+# Parameters (replace with your values or pass via deployment)
+parameters:
+  location: "eastus"
+  resourceGroup: "rg-container-apps-prod"
+  environmentName: "cae-prod"
+  logAnalyticsWorkspaceId: "/subscriptions/<sub-id>/resourceGroups/rg-monitoring/providers/Microsoft.OperationalInsights/workspaces/law-prod"
+  containerRegistry: "myregistry.azurecr.io"
+  vnetName: "vnet-prod"
+  environmentSubnetName: "snet-cae"
+  # Service-specific subnets (optional; can share environment subnet)
+  apiSubnetName: "snet-api"
+  workerSubnetName: "snet-worker"
+  webSubnetName: "snet-web"
+  # User-assigned managed identities (resource IDs)
+  apiIdentityId: "/subscriptions/<sub-id>/resourceGroups/rg-identities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-api"
+  workerIdentityId: "/subscriptions/<sub-id>/resourceGroups/rg-identities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-worker"
+  webIdentityId: "/subscriptions/<sub-id>/resourceGroups/rg-identities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-web"
+  # Key Vault and Storage for secrets/config
+  keyVaultName: "kv-prod"
+  storageAccountName: "stproddata"
+  # Custom domain (optional)
+  customDomain: "apps.example.com"
+  certificateName: "cert-prod-wildcard"
+
+# --- Container Apps Environment ---
+environment:
+  name: "${{ parameters.environmentName }}"
+  location: "${{ parameters.location }}"
+  resourceGroup: "${{ parameters.resourceGroup }}"
+  properties:
+    # VNet integration: environment subnet for internal traffic
+    vnetConfiguration:
+      subnetId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.Network/virtualNetworks/${{ parameters.vnetName }}/subnets/${{ parameters.environmentSubnetName }}"
+      infrastructureSubnetId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.Network/virtualNetworks/${{ parameters.vnetName }}/subnets/${{ parameters.environmentSubnetName }}"
+    # Internal load balancer for private-only environments; remove for public
+    internalLoadBalancerEnabled: false
+    # Log Analytics for diagnostics
+    logAnalytics:
+      destination: "log-analytics"
+      logAnalyticsConfiguration:
+        customerId: "<workspace-id-from-logAnalyticsWorkspaceId>"
+    # Custom domain configuration (optional)
+    customDomainConfiguration:
+      - name: "${{ parameters.customDomain }}"
+        bindingType: "SniEnabled"
+        certificateName: "${{ parameters.certificateName }}"
+    # Dapr configuration (optional, enable if services use Dapr)
+    dapr:
+      enabled: false
+    # KEDA autoscaling is available by default; configure per-service below
+    zoneRedundant: true
+
+# --- Service: API (public ingress, external traffic) ---
+apiService:
+  name: "api-service"
+  resourceGroup: "${{ parameters.resourceGroup }}"
+  environmentId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.App/managedEnvironments/${{ parameters.environmentName }}"
+  location: "${{ parameters.location }}"
+  identity:
+    type: "UserAssigned"
+    userAssignedIdentities:
+      "${{ parameters.apiIdentityId }}": {}
+  properties:
+    configuration:
+      # Ingress: public, HTTP/HTTPS, traffic splitting ready
+      ingress:
+        external: true
+        targetPort: 8080
+        transport: "http"
+        allowInsecure: false
+        traffic:
+          - weight: 100
+            latestRevision: true
+            label: "stable"
+        # Sticky sessions if needed
+        stickySessions:
+          affinity: "none"
+      # Registries for image pull
+      registries:
+        - server: "${{ parameters.containerRegistry }}"
+          identity: "${{ parameters.apiIdentityId }}"
+      # Secrets from Key Vault (referenced in env vars)
+      secrets:
+        - name: "db-connection-string"
+          keyVaultUrl: "https://${{ parameters.keyVaultName }}.vault.azure.net/secrets/db-connection-string"
+          identity: "${{ parameters.apiIdentityId }}"
+        - name: "api-key"
+          keyVaultUrl: "https://${{ parameters.keyVaultName }}.vault.azure.net/secrets/api-key"
+          identity: "${{ parameters.apiIdentityId }}"
+      # Dapr component subscriptions (if enabled)
+      dapr:
+        enabled: false
+    template:
+      revisionSuffix: "v1"
+      containers:
+        - name: "api"
+          image: "${{ parameters.containerRegistry }}/api-service:latest"
+          resources:
+            cpu: 1.0
+            memory: "2Gi"
+          ports:
+            - port: 8080
+          env:
+            - name: "ASPNETCORE_URLS"
+              value: "http://+:8080"
+            - name: "DB_CONNECTION_STRING"
+              secretRef: "db-connection-string"
+            - name: "API_KEY"
+              secretRef: "api-key"
+          probes:
+            - type: "liveness"
+              httpGet:
+                path: "/health/live"
+                port: 8080
+              initialDelaySeconds: 10
+              periodSeconds: 10
+            - type: "readiness"
+              httpGet:
+                path: "/health/ready"
+                port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+      # KEDA scaling rules
+      scale:
+        minReplicas: 2
+        maxReplicas: 20
+        rules:
+          - name: "http-scaling"
+            http:
+              metadata:
+                concurrentRequests: "50"
+          - name: "cpu-scaling"
+            custom:
+              type: "cpu"
+              metadata:
+                type: "Utilization"
+                value: "70"
+      # VNet integration: dedicated subnet for API
+      vnetConfiguration:
+        subnetId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.Network/virtualNetworks/${{ parameters.vnetName }}/subnets/${{ parameters.apiSubnetName }}"
+
+# --- Service: Worker (internal ingress, queue-triggered) ---
+workerService:
+  name: "worker-service"
+  resourceGroup: "${{ parameters.resourceGroup }}"
+  environmentId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.App/managedEnvironments/${{ parameters.environmentName }}"
+  location: "${{ parameters.location }}"
+  identity:
+    type: "UserAssigned"
+    userAssignedIdentities:
+      "${{ parameters.workerIdentityId }}": {}
+  properties:
+    configuration:
+      # Ingress: internal only (no external FQDN)
+      ingress:
+        external: false
+        targetPort: 8080
+        transport: "http"
+        traffic:
+          - weight: 100
+            latestRevision: true
+      registries:
+        - server: "${{ parameters.containerRegistry }}"
+          identity: "${{ parameters.workerIdentityId }}"
+      secrets:
+        - name: "storage-connection-string"
+          keyVaultUrl: "https://${{ parameters.keyVaultName }}.vault.azure.net/secrets/storage-connection-string"
+          identity: "${{ parameters.workerIdentityId }}"
+        - name: "service-bus-connection"
+          keyVaultUrl: "https://${{ parameters.keyVaultName }}.vault.azure.net/secrets/service-bus-connection"
+          identity: "${{ parameters.workerIdentityId }}"
+    template:
+      revisionSuffix: "v1"
+      containers:
+        - name: "worker"
+          image: "${{ parameters.containerRegistry }}/worker-service:latest"
+          resources:
+            cpu: 0.5
+            memory: "1Gi"
+          env:
+            - name: "STORAGE_CONNECTION_STRING"
+              secretRef: "storage-connection-string"
+            - name: "SERVICE_BUS_CONNECTION"
+              secretRef: "service-bus-connection"
+          probes:
+            - type: "liveness"
+              httpGet:
+                path: "/health/live"
+                port: 8080
+              initialDelaySeconds: 30
+              periodSeconds: 30
+      scale:
+        minReplicas: 0
+        maxReplicas: 50
+        rules:
+          - name: "queue-scaling"
+            custom:
+              type: "azure-servicebus"
+              metadata:
+                queueName: "jobs"
+                connection: "service-bus-connection"
+                messageCount: "10"
+      vnetConfiguration:
+        subnetId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.Network/virtualNetworks/${{ parameters.vnetName }}/subnets/${{ parameters.workerSubnetName }}"
+
+# --- Service: Web (public ingress, static assets + SSR) ---
+webService:
+  name: "web-service"
+  resourceGroup: "${{ parameters.resourceGroup }}"
+  environmentId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.App/managedEnvironments/${{ parameters.environmentName }}"
+  location: "${{ parameters.location }}"
+  identity:
+    type: "UserAssigned"
+    userAssignedIdentities:
+      "${{ parameters.webIdentityId }}": {}
+  properties:
+    configuration:
+      ingress:
+        external: true
+        targetPort: 3000
+        transport: "http"
+        allowInsecure: false
+        traffic:
+          - weight: 90
+            latestRevision: true
+            label: "stable"
+          - weight: 10
+            revisionName: "web-service-v2-canary"
+            label: "canary"
+        stickySessions:
+          affinity: "cookie"
+      registries:
+        - server: "${{ parameters.containerRegistry }}"
+          identity: "${{ parameters.webIdentityId }}"
+      secrets:
+        - name: "cdn-key"
+          keyVaultUrl: "https://${{ parameters.keyVaultName }}.vault.azure.net/secrets/cdn-key"
+          identity: "${{ parameters.webIdentityId }}"
+    template:
+      revisionSuffix: "v1"
+      containers:
+        - name: "web"
+          image: "${{ parameters.containerRegistry }}/web-service:latest"
+          resources:
+            cpu: 0.5
+            memory: "1Gi"
+          ports:
+            - port: 3000
+          env:
+            - name: "NEXT_PUBLIC_API_URL"
+              value: "https://${{ parameters.customDomain }}/api"
+            - name: "CDN_KEY"
+              secretRef: "cdn-key"
+          probes:
+            - type: "liveness"
+              httpGet:
+                path: "/api/health"
+                port: 3000
+              initialDelaySeconds: 10
+              periodSeconds: 10
+            - type: "readiness"
+              httpGet:
+                path: "/"
+                port: 3000
+              initialDelaySeconds: 5
+              periodSeconds: 5
+      scale:
+        minReplicas: 1
+        maxReplicas: 10
+        rules:
+          - name: "http-scaling"
+            http:
+              metadata:
+                concurrentRequests: "100"
+      vnetConfiguration:
+        subnetId: "/subscriptions/<sub-id>/resourceGroups/${{ parameters.resourceGroup }}/providers/Microsoft.Network/virtualNetworks/${{ parameters.vnetName }}/subnets/${{ parameters.webSubnetName }}"
+
+# --- Role Assignments (apply after deployment) ---
+# These are not part of the Container App manifest but are required for
+# the managed identities to access the referenced resources.
+# Apply via `az role assignment create` or include in a Bicep/ARM deployment.
+roleAssignments:
+  # API identity permissions
+  - scope: "${{ parameters.containerRegistry }}"
+    role: "AcrPull"
+    assigneeObjectId: "<api-identity-principal-id>"
+    assigneeType: "ServicePrincipal"
+  - scope: "/subscriptions/<sub-id>/resourceGroups/rg-kv/providers/Microsoft.KeyVault/vaults/${{ parameters.keyVaultName }}"
+    role: "Key Vault Secrets User"
+    assigneeObjectId: "<api-identity-principal-id>"
+    assigneeType: "ServicePrincipal"
+  # Worker identity permissions
+  - scope: "${{ parameters.containerRegistry }}"
+    role: "AcrPull"
+    assigneeObjectId: "<worker-identity-principal-id>"
+    assigneeType: "ServicePrincipal"
+  - scope: "/subscriptions/<sub-id>/resourceGroups/rg-kv/providers/Microsoft.KeyVault/vaults/${{ parameters.keyVaultName }}"
+    role: "Key Vault Secrets User"
+    assigneeObjectId: "<worker-identity-principal-id>"
+    assigneeType: "ServicePrincipal"
+  - scope: "/subscriptions/<sub-id>/resourceGroups/rg-storage/providers/Microsoft.Storage/storageAccounts/${{ parameters.storageAccountName }}"
+    role: "Storage Blob Data Contributor"
+    assigneeObjectId: "<worker-identity-principal-id>"
+    assigneeType: "ServicePrincipal"
+  # Web identity permissions
+  - scope: "${{ parameters.containerRegistry }}"
+    role: "AcrPull"
+    assigneeObjectId: "<web-identity-principal-id>"
+    assigneeType: "ServicePrincipal"
+  - scope: "/subscriptions/<sub-id>/resourceGroups/rg-kv/providers/Microsoft.KeyVault/vaults/${{ parameters.keyVaultName }}"
+    role: "Key Vault Secrets User"
+    assigneeObjectId: "<web-identity-principal-id>"
+    assigneeType: "ServicePrincipal"
