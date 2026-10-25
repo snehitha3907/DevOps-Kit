@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-25
+
+- Added Vault dynamic database credential flow script: enables database secrets engine, configures PostgreSQL connection, creates a read-only role, generates dynamic credentials, and demonstrates lease renewal and revocation (vlt-017) (`vlt/scripts/dynamic-database-credentials.py`)
+
 ## 2026-10-22
 
 - Added GitLab CI/CD self-hosted runner Dockerfile with Docker-in-Docker, kaniko, buildah, kubectl, and helm for in-job image builds and Kubernetes deployments (gl-020) (`GitLab CI/dockerfiles/gitlab-runner-dind-kaniko.Dockerfile`)
