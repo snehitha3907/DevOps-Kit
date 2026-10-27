@@ -911,3 +911,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - 2026-10-21 hlm-026: Helm chart testing strategies doc
 - 2026-10-23 gl-021: GitLab CI/scripts/gitlab-pipeline-helper.py — reusable python-gitlab helper
 - merge-rebase-squash-comparison.ipynb
+- ga-026: GitHub Actions docs — choosing between artifacts, cache, and external storage for build outputs
