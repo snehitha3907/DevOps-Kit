@@ -912,3 +912,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - 2026-10-23 gl-021: GitLab CI/scripts/gitlab-pipeline-helper.py — reusable python-gitlab helper
 - merge-rebase-squash-comparison.ipynb
 - ga-026: GitHub Actions docs — choosing between artifacts, cache, and external storage for build outputs
+- 2026-10-27: Added Jenkins CLI trigger script (jnk-003), Kubernetes kubectl notes (k8s-030), and first Nginx pod manifest (k8s-031).
