@@ -914,3 +914,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - ga-026: GitHub Actions docs — choosing between artifacts, cache, and external storage for build outputs
 - 2026-10-27: Added Jenkins CLI trigger script (jnk-003), Kubernetes kubectl notes (k8s-030), and first Nginx pod manifest (k8s-031).
 - tf-037 Terraform state locking and remote backend reference docs
+- tf-038: multi-environment Terraform project scaffold template
