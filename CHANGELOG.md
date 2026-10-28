@@ -916,3 +916,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - tf-038: multi-environment Terraform project scaffold template
 - 2026-10-28: ansible-project-scaffold template (ans-031)
 - 2026-10-28 Ansible/docs/integrating-ansible-with-network-devices.md (ans-032)
+- 2026-10-28: Ansible/manifests/ansible-playbook-migration.yaml (ans-033)

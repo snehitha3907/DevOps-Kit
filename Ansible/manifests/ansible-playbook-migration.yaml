@@ -1,0 +1,35 @@
+# last_verified: 2026-10-28 · ansible-core 2.21.5
+# Migration manifest: Ansible playbook migration target ansible-core 2.21.5
+# Source: https://github.com/ansible/ansible/releases/tag/v2.21.5
+
+version: "1.0"
+name: ansible-playbook-migration
+target:
+  ansible_package: "14.x"
+  ansible_core: "2.21.5"
+  source: "https://github.com/ansible/ansible/releases/tag/v2.21.5"
+stages:
+  - name: baseline
+    description: "Capture current control-node and target runtime versions before changing packages."
+    checks:
+      - control_node_python: "3.12-3.14"
+      - target_python: "3.9-3.14"
+  - name: compatibility
+    description: "Identify collections with incompatible requires_ansible metadata."
+    checks:
+      - collection_requires_ansible: ">=2.21"
+  - name: playbook-changes
+    description: "Apply targeted playbook changes for the target core runtime."
+    changes:
+      - remove_paramiko_connection: true
+      - set_interpreter_discovery: "auto_legacy_silent"
+  - name: verification
+    description: "Run playbook suite with deprecation warnings enabled."
+    checks:
+      - idempotency: true
+      - task_results_match_baseline: true
+rollback:
+  description: "Restore previous automation image or package environment on failure."
+  steps:
+    - restore_automation_image
+    - rerun_baseline_suite
