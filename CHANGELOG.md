@@ -926,3 +926,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added Prometheus recording rules and alert reference: recording rule syntax and the <job>:<metric>:<operation>:<duration> naming convention, alerting rules with for, severity labels, and annotations, rule file layout, and reload via /-/reload (pro-022) (`Prometheus/docs/prometheus-recording-rules-and-alert-reference.md`)
 - Passed ([x]) pro-022 — Prometheus: docs — Prometheus recording rules and alert reference · Level: L5 · 2026-10-28
 - Added Prometheus integrations doc: connecting to Grafana, Alertmanager, Kubernetes, Thanos/Cortex/Mimir, GitOps controllers, and OpenTelemetry Collector (pro-026) (`Prometheus/docs/prometheus-integrations-with-related-tools.md`)
+- pro-026 rework: fix unsourced Argo Rollouts citation

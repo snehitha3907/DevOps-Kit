@@ -2,7 +2,7 @@
 last_verified: 2026-10-28
 tool_version: n/a
 sources:
-  - https://www.devopsness.com/blog/gitops-with-argo-cd-best-practices-for-2025
+  - https://techoral.com/kubernetes/kubernetes-argocd-gitops.html
 ---
 
 # Integrating Prometheus with related tools
@@ -102,7 +102,7 @@ Common issue: Queries return partial data when a Prometheus instance is down and
 ### GitOps controllers (Argo CD / Flux)
 
 Prometheus metrics feed GitOps analysis and rollout decisions:
-- Argo Rollouts can use Prometheus AnalysisTemplates to gate canary/blue-green promotions. Per published guidance, Argo Rollouts v1.10 supports canary and blue-green strategies with Prometheus AnalysisTemplates [source: https://www.devopsness.com/blog/gitops-with-argo-cd-best-practices-for-2025].
+- Argo Rollouts can use Prometheus AnalysisTemplates to gate canary/blue-green promotions. Per published guidance, Argo Rollouts supports canary and blue-green strategies with Prometheus AnalysisTemplates [source: https://techoral.com/kubernetes/kubernetes-argocd-gitops.html].
 - Flux CD can use Prometheus metrics in its notification provider and health checks.
 
 Common issue: AnalysisTemplate queries use the wrong metric name or label selector, causing rollouts to fail promotion even when the service is healthy.
