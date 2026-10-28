@@ -1,0 +1,6 @@
+---
+- name: Configure webservers only
+  hosts: webservers
+  roles:
+    - common
+    - webserver

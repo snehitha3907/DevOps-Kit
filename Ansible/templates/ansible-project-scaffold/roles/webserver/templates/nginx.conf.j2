@@ -1,0 +1,9 @@
+user www-data;
+worker_processes {{ webserver_worker_processes }};
+events { worker_connections 1024; }
+http {
+  server {
+    listen {{ http_port }};
+    root {{ document_root }};
+  }
+}

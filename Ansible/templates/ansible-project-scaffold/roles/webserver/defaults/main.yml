@@ -1,0 +1,2 @@
+---
+webserver_worker_processes: auto
