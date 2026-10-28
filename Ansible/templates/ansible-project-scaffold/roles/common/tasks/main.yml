@@ -1,0 +1,12 @@
+---
+- name: Install base packages
+  apt:
+    name: "{{ base_packages }}"
+    state: present
+    update_cache: true
+
+- name: Ensure NTP service running
+  service:
+    name: chronyd
+    state: started
+    enabled: true

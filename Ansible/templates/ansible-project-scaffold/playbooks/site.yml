@@ -1,0 +1,15 @@
+---
+- name: Apply common role to all hosts
+  hosts: all
+  roles:
+    - common
+
+- name: Configure webservers
+  hosts: webservers
+  roles:
+    - webserver
+
+- name: Configure dbservers
+  hosts: dbservers
+  roles:
+    - database
