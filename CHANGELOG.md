@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-28
+
+- Added Prometheus PromQL query step-through notebook: instant and range queries via the HTTP API, rate and aggregation functions, recording and alerting rule checks, with runnable Python cells (pro-024) (`Prometheus/notebooks/querying-prometheus-with-promql-step-through.ipynb`)
+- Added Prometheus scrape config and remote write tuning reference: per-job scrape intervals and timeouts, pod discovery relabeling, metric drop rules, and queue tuning for remote write (pro-025) (`Prometheus/configs/prometheus-scrape-config-and-remote-write-tuning.yaml`)
+- Added Docker image hardening and vulnerability remediation runbook: scan baseline, pin dependencies, drop privileges, remove build-time secrets, trim layers, and re-scan diff (docker-001) (`Docker/docs/docker-image-hardening-and-vulnerability-remediation-runbook.md`)
+
 ## 2026-10-25
 
 - Added Kubernetes service mesh comparison documentation: Istio vs Linkerd vs Consul for enterprise traffic management covering architecture, feature matrix, operational complexity, ecosystem integration, TCO considerations, decision framework, common errors, and verification steps (k8s-028) (`k8s/docs/kubernetes-service-mesh-comparison.md`)
