@@ -1,0 +1,18 @@
+# last_verified: 2026-10-28 · Ansible n/a
+ Purpose: Migrate Ansible playbooks from version 2.21 to 2.22 with minimal syntax changes and enhanced features.
+ When to use: When upgrading Ansible installations and needing to adapt playbooks, roles, and inventory to the newer release series while preserving compatibility with existing infrastructure.
+ Prerequisites: Ansible 2.21 or later installed; administrative access to target hosts; inventory files reflecting current host groupings; backup of existing playbooks before migration.
+ Steps:
+   1. Run `ansible --version` to confirm the current Ansible release is 2.21.x.
+   2. Review the Ansible 2.22 changelog for deprecations, new modules, and behavioral changes affecting playbook logic.
+   3. Update the Ansible configuration if using `callback_plugins` or `module_utils` that changed between releases.
+   4. Convert any `loop` statements using the old `with_*` syntax to the new `loop` with `loop_control` as needed.
+   5. Validate playbook syntax with `ansible-playbook --syntax-check` on each migrated file.
+   6. Execute `ansible-playbook` in check mode (`--check`) against a staging environment to verify no runtime regressions.
+   7. Promote validated playbooks to production after confirming all hooks, handlers, and tags function as expected.
+ Verify: Playbook syntax check passes without errors. Ad-hoc `ansible-doc` lookups for any new modules referenced. Staging deployment produces identical resource state to the pre-migration baseline. No unexplained task failures in `ansible-playbook --step` mode.
+ Common errors:
+   - Forgetting to update `gather_facts` settings when module requirements change between releases.
+   - Incompatible `block/rescue/always` error handling patterns that shift behavior in 2.22.
+   - Unintentional overrides of `become` or `become_user` due to altered default timeout values.
+ References: Ansible official documentation on release notes for 2.22; community migration guides; #ansible IRC channel archives for upgrade discussions.
