@@ -927,3 +927,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Passed ([x]) pro-022 — Prometheus: docs — Prometheus recording rules and alert reference · Level: L5 · 2026-10-28
 - Added Prometheus integrations doc: connecting to Grafana, Alertmanager, Kubernetes, Thanos/Cortex/Mimir, GitOps controllers, and OpenTelemetry Collector (pro-026) (`Prometheus/docs/prometheus-integrations-with-related-tools.md`)
 - pro-026 rework: fix unsourced Argo Rollouts citation
+- Added Prometheus integration guide: how Prometheus connects to Grafana, Alertmanager, Kubernetes service discovery, application exporters, and remote-write stores (pro-026) (`Prometheus/docs/integrating-prometheus-with-related-tools.md`)
