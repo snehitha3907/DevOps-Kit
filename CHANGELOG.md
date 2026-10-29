@@ -3,6 +3,7 @@
 ## 2026-10-29
 
 - Added Docker multi-stage production Compose manifest: app image built from a multi-stage Dockerfile (builder compiles, runner ships the binary), nginx edge, Redis cache, PostgreSQL, with resource limits, healthchecks, restart policies, and verify/rollback/common-errors notes (docker-002) (`docker/manifests/docker-compose-multi-stage.yaml`)
+- Added Prometheus and Grafana stack deployment manifest: monitoring namespace, Prometheus ServiceAccount/ClusterRole/ClusterRoleBinding, scrape ConfigMap, Prometheus Deployment and Service, Grafana datasource ConfigMap, Deployment and Service, with apply and verify steps (pro-023) (`pro/manifests/prometheus-grafana-stack-deployment.yaml`)
 
 ## 2026-10-28
 
