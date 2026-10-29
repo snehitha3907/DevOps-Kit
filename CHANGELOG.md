@@ -2,6 +2,7 @@
 
 ## 2026-10-29
 
+- Added Docker production hardening runbook: baseline scan, binary validation and dry-run, dependency pinning, minimal base image, secret removal, privilege dropping, runtime constraints, re-scan diff, and rollback (docker-003) (`docker/docs/docker-production-hardening-runbook.md`)
 - Added Pulumi TypeScript script that provisions an AWS S3 bucket: one bucket with private ACL, KMS server-side encryption, and all four public-access blocks, with the real name, ARN, and regional domain exported (plm-016) (`plm/scripts/provision-s3-bucket-with-pulumi-ts.ts`)
 - Added Pulumi TypeScript project scaffold: project file, dev and prod stack configs, TypeScript entry point reading the bucket name from stack config, package.json, and tsconfig.json (plm-017) (`plm/templates/pulumi-typescript-project-scaffold/`)
 - Added Pulumi Pulumi.yaml and stack configuration reference: project file fields, per-stack config namespaces, secret storage, and self-hosted backend options (plm-018) (`plm/configs/pulumi-yaml-and-stack-config-reference.yaml`)
