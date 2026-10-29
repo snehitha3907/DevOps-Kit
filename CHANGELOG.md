@@ -925,3 +925,4 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - 2026-10-28: Ansible/manifests/ansible-playbook-migration.yaml (ans-033)
 - Added Prometheus recording rules and alert reference: recording rule syntax and the <job>:<metric>:<operation>:<duration> naming convention, alerting rules with for, severity labels, and annotations, rule file layout, and reload via /-/reload (pro-022) (`Prometheus/docs/prometheus-recording-rules-and-alert-reference.md`)
 - Passed ([x]) pro-022 — Prometheus: docs — Prometheus recording rules and alert reference · Level: L5 · 2026-10-28
+- 2026-10-29: Prometheus/docs/integrating-prometheus-with-related-tools.md (pro-027)
