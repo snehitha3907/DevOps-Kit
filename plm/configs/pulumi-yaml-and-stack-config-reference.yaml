@@ -1,0 +1,54 @@
+# last_verified: 2026-10-29 · pulumi n/a
+# Pulumi.yaml and stack configuration reference.
+#
+# A Pulumi project is two things: the project file (Pulumi.yaml) that says
+# "this repo is a Pulumi project, here is its name and runtime", and the stack
+# files (Pulumi.<stack>.yaml) that say "for this named stack, here are the
+# settings". The project file is shared by every stack; each stack gets its
+# own file. Config values are namespaced with dotted keys and read back with
+# `pulumi config get <namespace>:<key>`; secrets are stored encrypted and
+# read with the same command.
+---
+# Pulumi.yaml — the project definition. One of these per repo.
+# Required fields: name, runtime. Optional: description, main, backend.
+name: demo
+runtime:
+  name: nodejs                # one of nodejs, python, go, dotnet, java
+  options:
+    nodeVersion: "20"        # pin the Node major version the program runs on
+description: Reference project showing the Pulumi.yaml and stack config layout
+# main: ./index.ts             # entry point; defaults to index.<ext> in the runtime's language
+---
+# Pulumi.dev.yaml — the dev stack.
+# Every stack file has exactly one top-level key: `config`.
+# Namespaces are dotted keys; anything under `config` is a config value.
+config:
+  aws:region: us-west-2        # provider namespace, then key
+  app:
+    instance-type: t3.micro
+    owner: team-dev
+  db:
+    password: secure:AAABBBCCCDDD==   # encrypted secret; set with `pulumi config set --secret db:password`
+    # Reading it back in code: pulumi.Config.get("db:password")
+---
+# Pulumi.prod.yaml — the prod stack. Same namespaces, production values.
+# The project file is identical between stacks; only this file differs.
+config:
+  aws:region: us-east-1
+  app:
+    instance-type: m5.large
+    owner: team-prod
+  db:
+    password: secure:AAAABBBBCCCCDDDD==
+---
+# Backend configuration (optional, in the project file).
+# backend:
+#   type: cloud                # Pulumi Cloud (default when omitted)
+#   # type: s3                # self-hosted S3 backend
+#   # type: azureblob          # self-hosted Azure Blob backend
+#   # type: gcs                # self-hosted GCS backend
+#   url: s3://my-pulumi-state  # required for self-hosted backends
+---
+# Environment variables the program can read (not encrypted, not in state).
+# env:
+#   MY_API_KEY: secure:AAAA==   # only `secure:` values are encrypted at rest

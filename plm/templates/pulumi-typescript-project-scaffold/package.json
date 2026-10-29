@@ -1,0 +1,20 @@
+{
+  "_last_verified": "2026-10-29",
+  "_tool": "pulumi",
+  "_tool_version": "n/a",
+  "name": "pulumi-typescript-scaffold",
+  "description": "Minimal Pulumi TypeScript project scaffold — one S3 bucket",
+  "scripts": {
+    "up": "pulumi up",
+    "preview": "pulumi preview",
+    "destroy": "pulumi destroy"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6.0.0",
+    "@pulumi/pulumi": "^3.0.0"
+  }
+}

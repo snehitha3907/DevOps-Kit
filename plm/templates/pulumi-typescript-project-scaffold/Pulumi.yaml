@@ -1,0 +1,7 @@
+# last_verified: 2026-10-29 · pulumi n/a
+name: pulumi-typescript-scaffold
+runtime:
+  name: nodejs
+  options:
+    nodeVersion: "20"
+description: Minimal Pulumi TypeScript project scaffold — one S3 bucket

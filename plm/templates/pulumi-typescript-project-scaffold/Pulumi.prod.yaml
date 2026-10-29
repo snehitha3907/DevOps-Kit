@@ -1,0 +1,8 @@
+# last_verified: 2026-10-29 · pulumi n/a
+config:
+  aws:region: us-east-1
+  app:
+    instance-type: m5.large
+    owner: team-prod
+  s3:
+    bucket-name: my-first-pulumi-bucket-prod
