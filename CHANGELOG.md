@@ -926,3 +926,5 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - Added Prometheus recording rules and alert reference: recording rule syntax and the <job>:<metric>:<operation>:<duration> naming convention, alerting rules with for, severity labels, and annotations, rule file layout, and reload via /-/reload (pro-022) (`Prometheus/docs/prometheus-recording-rules-and-alert-reference.md`)
 - Passed ([x]) pro-022 — Prometheus: docs — Prometheus recording rules and alert reference · Level: L5 · 2026-10-28
 - 2026-10-29: Prometheus/docs/integrating-prometheus-with-related-tools.md (pro-027)
+- Added Prometheus HA deployment manifest for Kubernetes (pro-029) (pro/manifests/production-prometheus-ha.yaml)
+- Added Prometheus alerting rule validation script (pro-030) (pro/scripts/2026-10-29-prometheus-alerting-rule-validation.sh)
