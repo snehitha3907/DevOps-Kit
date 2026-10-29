@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-29
+
+- Added Terraform module version pinning and migration plan config: pinned `required_providers` and `version` constraints on every module, a migration checklist, and the apply/verify flow that moves an unpinned configuration to pinned references without losing state (tf-039) (`Terraform/configs/terraform-module-version-pinning-and-migration-plan.hcl`)
+- Added Azure Key Vault access policy configuration: sample policy bindings for a least-privilege service principal and a read-only principal, vault properties with RBAC authorization and network ACLs, and the RBAC role assignments that back them (az-023) (`az/configs/azure-key-vault-access-policy.json`)
+- Added Docker production hardening runbook: scan baseline, pin dependencies, drop privileges, remove build-time secrets, trim layers, harden the runtime, and re-scan diff (docker-006) (`Docker/docs/docker-production-hardening-runbook.md`)
+
 ## 2026-10-28
 
 - Added Prometheus PromQL query step-through notebook: instant and range queries via the HTTP API, rate and aggregation functions, recording and alerting rule checks, with runnable Python cells (pro-024) (`Prometheus/notebooks/querying-prometheus-with-promql-step-through.ipynb`)
