@@ -1,0 +1,154 @@
+# last_verified: 2026-10-29 · Prometheus n/a
+# Purpose: Production Prometheus HA deployment manifest for Kubernetes,
+#          running a pair of Prometheus replicas with Alertmanager HA,
+#          shared configuration, persistent storage, and service discovery.
+# When to use: Multi-AZ or HA environments where alerting and query
+#              continuity must survive a single node or zone failure.
+# Prerequisites: Prometheus Operator (or raw manifests), Alertmanager,
+#                metrics-server optional; ensure PVCs/backing storage
+#                available and RBAC configured for service discovery.
+# Apply: kubectl apply -f production-prometheus-ha.yaml
+# Verify: kubectl rollout status statefulset/prometheus-ha
+#         kubectl get pods -l app=prometheus,role=ha
+#         curl -s http://prometheus-ha-0:9090/-/ready
+#         curl -s http://prometheus-ha-1:9090/-/ready
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-ha-config
+  labels:
+    app: prometheus
+    role: ha
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+      external_labels:
+        cluster: prod-ha
+        replica: $(HOSTNAME)
+    alerting:
+      alertmanagers:
+        - kubernetes_sd_configs:
+            - role: pod
+          relabel_configs:
+            - source_labels: [__meta_kubernetes_pod_label_app]
+              regex: alertmanager
+              action: keep
+            - source_labels: [__meta_kubernetes_pod_container_port_number]
+              regex: "9093"
+              action: keep
+    rule_files:
+      - /etc/prometheus/rules/*.yml
+    scrape_configs:
+      - job_name: prometheus
+        static_configs:
+          - targets: ['localhost:9090']
+      - job_name: kubernetes-pods
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+            regex: "true"
+            action: keep
+          - source_labels: [__meta_kubernetes_pod_namespace]
+            target_label: namespace
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-ha
+  labels:
+    app: prometheus
+    role: ha
+spec:
+  clusterIP: None
+  ports:
+    - name: web
+      port: 9090
+      targetPort: web
+  selector:
+    app: prometheus
+    role: ha
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prometheus-ha
+  labels:
+    app: prometheus
+    role: ha
+spec:
+  serviceName: prometheus-ha
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prometheus
+      role: ha
+  template:
+    metadata:
+      labels:
+        app: prometheus
+        role: ha
+    spec:
+      serviceAccountName: prometheus
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v2.54.1
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+            - "--storage.tsdb.retention.time=15d"
+            - "--web.enable-lifecycle"
+            - "--web.enable-admin-api"
+          ports:
+            - name: web
+              containerPort: 9090
+          volumeMounts:
+            - name: config
+              mountPath: /etc/prometheus
+            - name: rules
+              mountPath: /etc/prometheus/rules
+            - name: storage
+              mountPath: /prometheus
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: 1000m
+              memory: 2Gi
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: web
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: web
+            initialDelaySeconds: 15
+            periodSeconds: 10
+      volumes:
+        - name: config
+          configMap:
+            name: prometheus-ha-config
+        - name: rules
+          configMap:
+            name: prometheus-ha-rules
+            optional: true
+  volumeClaimTemplates:
+    - metadata:
+        name: storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 50Gi
