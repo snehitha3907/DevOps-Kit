@@ -1,0 +1,210 @@
+# last_verified: 2026-10-29 · Docker n/a
+#
+# Purpose
+#   Run a small production-like stack in one Compose file. The application
+#   image is built from a multi-stage Dockerfile: a builder stage compiles
+#   the Go binary and a runner stage ships only that binary, so the runtime
+#   image never carries the Go toolchain. Nginx fronts the app, Redis caches
+#   responses, and PostgreSQL stores durable data. Networks, volumes,
+#   resource limits, healthchecks and restart policy are all declared here,
+#   so the stack is reviewable in Git and reproducible with one
+#   `docker compose up`.
+#
+# When to use
+#   - You build application images from Dockerfiles instead of pulling
+#     prebuilt images and want the build declared beside its consumers.
+#   - You need a production-like stack locally or in CI, with resource
+#     limits and healthchecks enforced centrally.
+#   - You want runtime images to contain only the compiled binary and its
+#     immediate dependencies (multi-stage build), not the full SDK toolchain.
+#
+# Prerequisites
+#   - Docker Engine with the Compose plugin (`docker compose` available;
+#     `docker compose version` reports it).
+#   - The multi-stage Dockerfile and its go.mod/main.go companions under
+#     ../Docker/dockerfiles/multi-stage-go-http-server/, relative to this
+#     Compose file.
+#   - Host ports 80, 8080, 5432 and 6379 free.
+#   - POSTGRES_PASSWORD set in the environment; Compose aborts if it is
+#     missing.
+#
+# Steps
+#   1. `docker compose -f docker-compose-multi-stage.yaml config` — validate
+#      the file without starting anything.
+#   2. `docker compose -f docker-compose-multi-stage.yaml build app` — build
+#      the multi-stage application image.
+#   3. `docker compose -f docker-compose-multi-stage.yaml up -d` — start the
+#      whole stack detached.
+#   4. `docker compose -f docker-compose-multi-stage.yaml ps` — confirm every
+#      service is running or healthy.
+#
+services:
+  app:
+    build:
+      context: ../../Docker/dockerfiles/multi-stage-go-http-server
+      dockerfile: multi-stage-go-http-server.Dockerfile
+      # No target: every stage builds and the last stage (the runner that
+      # holds only the compiled binary) becomes the image. The builder stage
+      # is discarded, which is what keeps the runtime image lean.
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+    networks:
+      - frontend
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "[ -x /server ] || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 256M
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+    depends_on:
+      app:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 128M
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Mount a custom /etc/nginx/nginx.conf here (proxy_pass to app:8080)
+    # when the edge should route traffic to the app:
+    #   volumes:
+    #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+  redis:
+    image: redis:alpine
+    command: ["redis-server", "--maxmemory", "64mb", "--maxmemory-policy", "allkeys-lru"]
+    networks:
+      - backend
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 128M
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  postgres:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-appuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD before starting}
+      POSTGRES_DB: ${POSTGRES_DB:-appdb}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-appuser} -d ${POSTGRES_DB:-appdb}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.00"
+          memory: 512M
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+    internal: true
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+
+#
+# Verify
+#   `docker compose -f docker-compose-multi-stage.yaml config`
+#     parses the file and prints the resolved model; exit code 0 means the
+#     manifest is valid Compose.
+#   `docker compose -f docker-compose-multi-stage.yaml ps`
+#     every service shows `running` or `healthy`; nothing is `restarting` or
+#     `exited`.
+#   `docker compose -f docker-compose-multi-stage.yaml logs app`
+#     the app logs show the server bound to port 8080 with no crash loop.
+#   `curl -fsS http://localhost:8080/` and `curl -fsS http://localhost/`
+#     both return successfully; nginx on 80 proxies to the app on 8080.
+#
+# Common errors
+#   - Build fails: the build context path or dockerfile name does not match
+#     what is on disk; correct `context`/`dockerfile` under
+#     `services.app.build`.
+#   - Port already in use: change the host side of a `ports` mapping (the
+#     left-hand value) to a free port.
+#   - Compose aborts on startup: POSTGRES_PASSWORD is unset; export it
+#     before `docker compose up`.
+#   - App stays unhealthy: the /server binary was not built into the image
+#     (wrong stage) or PORT does not match the application's listen port.
+#   - Volume permission errors on postgres-data: the volume was created by a
+#     previous run under a different user ID; remove the volume or fix
+#     ownership before restarting.
+#
+# Rollback
+#   - `docker compose -f docker-compose-multi-stage.yaml down` stops and
+#     removes the containers while keeping named volumes and images.
+#   - Reverting the commit that changed images, limits, or environment makes
+#     `docker compose -f docker-compose-multi-stage.yaml up -d` reapply the
+#     previous specification.
+#   - Do not `docker image prune` an image you might roll back to; previous
+#     image digests stay available locally until they are pruned.
+#   - `down -v` also removes the named volumes and destroys the data they
+#     hold; use it only when you intend to reset postgres-data and redis-data.
+#
+# References
+#   - ../Docker/dockerfiles/multi-stage-go-http-server.Dockerfile — the
+#     multi-stage Dockerfile (builder stage compiles, runner stage ships the
+#     binary) this manifest builds the app image from
+#   - ../Docker/docs/docker-build-cache-and-multi-stage-layering.md — notes on
+#     multi-stage layering and build caching
+#   - ../Docker/docs/docker-health-check-patterns.md — healthcheck patterns
+#     applied to the app, redis, and postgres services

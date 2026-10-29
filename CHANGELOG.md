@@ -5,6 +5,8 @@
 - Added Terraform module version pinning and migration plan config: pinned `required_providers` and `version` constraints on every module, a migration checklist, and the apply/verify flow that moves an unpinned configuration to pinned references without losing state (tf-039) (`Terraform/configs/terraform-module-version-pinning-and-migration-plan.hcl`)
 - Added Azure Key Vault access policy configuration: sample policy bindings for a least-privilege service principal and a read-only principal, vault properties with RBAC authorization and network ACLs, and the RBAC role assignments that back them (az-023) (`az/configs/azure-key-vault-access-policy.json`)
 - Added Docker production hardening runbook: scan baseline, pin dependencies, drop privileges, remove build-time secrets, trim layers, harden the runtime, and re-scan diff (docker-006) (`Docker/docs/docker-production-hardening-runbook.md`)
+- Added Docker multi-stage production Compose manifest: app image built from a multi-stage Dockerfile (builder compiles, runner ships the binary), nginx edge, Redis cache, PostgreSQL, with resource limits, healthchecks, restart policies, and verify/rollback/common-errors notes (docker-002) (`docker/manifests/docker-compose-multi-stage.yaml`)
+- Added Prometheus and Grafana stack deployment manifest: monitoring namespace, Prometheus ServiceAccount/ClusterRole/ClusterRoleBinding, scrape ConfigMap, Prometheus Deployment and Service, Grafana datasource ConfigMap, Deployment and Service, with apply and verify steps (pro-023) (`pro/manifests/prometheus-grafana-stack-deployment.yaml`)
 
 ## 2026-10-28
 
@@ -23,7 +25,7 @@
 - Added Git workflow automation scaffold: Git hooks (pre-commit, commit-msg, pre-push, pre-rebase, post-commit, post-checkout, prepare-commit-msg, pre-merge-commit), Git aliases, GitHub Actions workflows (workflow-automation, dependabot, auto-merge), GitLab CI modular pipelines (validate, build, test, security, deploy), and automation scripts (install-hooks, setup-workflow, semantic-version, changelog-generator) (git-033) (`Git/templates/git-workflow-automation/`)
 - Added Helm plugin for chart dependency validation and version constraint checking: validates Chart.yaml dependencies, checks version constraints against Helm and OCI repositories, outputs JSON results (hlm-029) (`hlm/scripts/helm-dep-validate.go`)
 - Added Vault dynamic database credential flow script: enables database secrets engine, configures PostgreSQL connection, creates a read-only role, generates dynamic credentials, and demonstrates lease renewal and revocation (vlt-017) (`vlt/scripts/dynamic-database-credentials.py`)
-- Added Terraform vs OpenTofu migration guide: state compatibility, provider parity, CI/CD pipeline updates for GitHub Actions, GitLab CI, and Jenkins (tf-032) (`tf/docs/terraform-vs-opentofu-migration-guide.md`)
+- Added Terraform vs OpenTofu migration guide: state compatibility, provider parity, CI/CD pipeline updates for GitHub Actions, GitLab CI, and Jenkins (tf-032) (`Terraform/docs/terraform-vs-opentofu-migration-guide.md`)
 - Passed ([x]) vlt-017 — HashiCorp Vault: script — Build a dynamic database credential flow with Vault database engine from scratch · Level: L3 · 2026-10-25
 - Passed ([x]) vlt-018 — HashiCorp Vault: docs — How I wired Vault Agent into a containerized app for secret injection · Level: L3 · 2026-10-25
 - Passed ([x]) vlt-019 — HashiCorp Vault: config — AppRole auth method with policy and token role configuration · Level: L3 · 2026-10-25
