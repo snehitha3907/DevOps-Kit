@@ -1,0 +1,5 @@
+groups:
+  - name: example-recording
+    rules:
+      - record: job:up:avg
+        expr: avg by (job) (up)
