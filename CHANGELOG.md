@@ -2,6 +2,9 @@
 
 ## 2026-10-29
 
+- Added Pulumi TypeScript script that provisions an AWS S3 bucket: one bucket with private ACL, KMS server-side encryption, and all four public-access blocks, with the real name, ARN, and regional domain exported (plm-016) (`plm/scripts/provision-s3-bucket-with-pulumi-ts.ts`)
+- Added Pulumi TypeScript project scaffold: project file, dev and prod stack configs, TypeScript entry point reading the bucket name from stack config, package.json, and tsconfig.json (plm-017) (`plm/templates/pulumi-typescript-project-scaffold/`)
+- Added Pulumi Pulumi.yaml and stack configuration reference: project file fields, per-stack config namespaces, secret storage, and self-hosted backend options (plm-018) (`plm/configs/pulumi-yaml-and-stack-config-reference.yaml`)
 - Added Terraform module version pinning and migration plan config: pinned `required_providers` and `version` constraints on every module, a migration checklist, and the apply/verify flow that moves an unpinned configuration to pinned references without losing state (tf-039) (`Terraform/configs/terraform-module-version-pinning-and-migration-plan.hcl`)
 - Added Azure Key Vault access policy configuration: sample policy bindings for a least-privilege service principal and a read-only principal, vault properties with RBAC authorization and network ACLs, and the RBAC role assignments that back them (az-023) (`az/configs/azure-key-vault-access-policy.json`)
 - Added Docker production hardening runbook: scan baseline, pin dependencies, drop privileges, remove build-time secrets, trim layers, harden the runtime, and re-scan diff (docker-006) (`Docker/docs/docker-production-hardening-runbook.md`)
