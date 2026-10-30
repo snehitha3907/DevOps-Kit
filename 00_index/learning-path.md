@@ -28,14 +28,14 @@ Intermediate tools that consolidate the foundational concepts. These deepen your
 
 - **Prometheus** — Monitoring and alerting. Primer: [`00_index/topics.md`](#) · [Prometheus primer](../Prometheus/notes/0000-primer-prometheus.md).
 - **Trivy** — Vulnerability scanner for containers and filesystems. Primer: [`00_index/topics.md`](#) · [Trivy primer](../Trivy/notes/0000-primer-trivy.md).
-- **Jenkins** — Automation server for CI/CD. Note: L1 level — primer only. Primer: [`00_index/topics.md`](#) · [Jenkins primer](../jnk/notes/0000-primer-jenkins.md).
-- **OpenTelemetry** — Observability framework for traces, metrics, and logs. Primer: [`00_index/topics.md`](#) · [OpenTelemetry primer](../otel/notes/0000-primer-opentelemetry.md).
+- **Jenkins** — Automation server for CI/CD. Note: L1 level — primer only. Primer: [`00_index/topics.md`](#) · [Jenkins primer](../Jenkins/notes/0000-primer-jenkins.md).
+- **OpenTelemetry** — Observability framework for traces, metrics, and logs. Primer: [`00_index/topics.md`](#) · [OpenTelemetry primer](../OpenTelemetry/notes/0000-primer-opentelemetry.md).
 
 ## Stage 4: Advanced Tools
 Tools that depend on foundational concepts being complete. These unlock after the Stage 2 tools are mastered.
 
 - **Helm** — Kubernetes package manager. Unlocked after Kubernetes L5. Primer: [`00_index/topics.md`](#) · [Helm primer](../Helm/notes/0000-primer-helm.md).
-- **HashiCorp Vault** — Secrets and identity management. Unlocked after Kubernetes L5. Primer: [`00_index/topics.md`](#) · [Vault primer](../vlt/notes/0000-primer-vlt.md).
+- **HashiCorp Vault** — Secrets and identity management. Unlocked after Kubernetes L5. Primer: [`00_index/topics.md`](#) · [Vault primer](../Vault/notes/0000-primer-vlt.md).
 - **AWS** — Amazon Web Services. Unlocked after Terraform L5. ⏳ Coming soon.
 - **Azure** — Microsoft Azure. Unlocked after Terraform L5. ⏳ Coming soon.
 - **GCP** — Google Cloud Platform. Unlocked after Terraform L5. ⏳ Coming soon.
@@ -48,9 +48,9 @@ Tools that depend on foundational concepts being complete. These unlock after th
 ## Stage 5: Mastery
 Expert-level tools and advanced concepts for sophisticated workflows.
 
-- **Pulumi** — Infrastructure as code using general-purpose programming. Primer: [`00_index/topics.md`](#) · [Pulumi primer](../plm/notes/0000-primer-plm.md).
-- **Grafana** — Dashboarding and observability visualization. Primer: [`00_index/topics.md`](#) · [Grafana primer](../graf/notes/0000-primer-grafana.md).
-- **Grafana Cloud** — Hosted observability platform. Primer: [`00_index/topics.md`](#) · [Grafana Cloud notes](../grafc/notes/2026-09-30-first-hosted-dashboard.md).
+- **Pulumi** — Infrastructure as code using general-purpose programming. Primer: [`00_index/topics.md`](#) · [Pulumi primer](../Pulumi/notes/0000-primer-plm.md).
+- **Grafana** — Dashboarding and observability visualization. Primer: [`00_index/topics.md`](#) · [Grafana primer](../Grafana/notes/0000-primer-grafana.md).
+- **Grafana Cloud** — Hosted observability platform. Primer: [`00_index/topics.md`](#) · [Grafana Cloud notes](../Grafana%20Cloud/notes/2026-09-30-first-hosted-dashboard.md).
 - **ArgoCD** — GitOps continuous delivery for Kubernetes. Primer: [`00_index/topics.md`](#) · [ArgoCD primer](../ArgoCD/notes/0000-primer-argocd.md).
 
 ## Progression Map
