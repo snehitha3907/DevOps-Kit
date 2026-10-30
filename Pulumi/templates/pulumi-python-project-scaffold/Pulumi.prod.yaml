@@ -1,0 +1,4 @@
+# last_verified: 2026-10-30 · Pulumi n/a
+config:
+  aws:region: us-west-2
+  app:name: prod-app

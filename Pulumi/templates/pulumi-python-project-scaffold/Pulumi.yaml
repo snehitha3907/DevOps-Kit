@@ -1,0 +1,4 @@
+# last_verified: 2026-10-30 · Pulumi n/a
+name: pulumi-python-project-scaffold
+runtime: python
+description: A starter Pulumi project in Python
