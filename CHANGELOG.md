@@ -940,3 +940,7 @@ Passed ([x]) ans-015 — Ansible: config — Ansible collection requirements and
 - 2026-10-29: Prometheus/docs/integrating-prometheus-with-related-tools.md (pro-027)
 - Added Prometheus HA deployment manifest for Kubernetes (pro-029) (pro/manifests/production-prometheus-ha.yaml)
 - Added Prometheus alerting rule validation script (pro-030) (pro/scripts/2026-10-29-prometheus-alerting-rule-validation.sh)
+Passed ([x]) docker-003 — Docker: docs — Docker production hardening runbook · Level: L7 · 2026-10-30
+## 2026-10-30
+- Added Docker production HA manifest with high-availability deployment configuration (docker-005) (`docker/manifests/production-docker-deployment-with-ha.yaml`)
+- Added GCP config for gcloud IAM policy bindings (gcp-021) (`gcp/configs/gcloud-iam-config.yaml`)

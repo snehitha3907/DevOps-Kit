@@ -1,0 +1,122 @@
+---
+last_verified: 2026-10-30
+tool_version: n/a
+sources: []
+---
+# Production Docker Deployment with HA
+
+## Purpose
+
+This manifest provides a high-availability Docker deployment configuration designed for production environments. It orchestrates multiple replica containers across distributed nodes with automated failover, health checking, and network segmentation to ensure service continuity even during node failures.
+
+## When to use
+
+Use this configuration when running Docker-based applications that require zero-downtime deployment, automatic recovery from container failures, and production-grade reliability. It is especially suitable for stateful services, API gateways, and database frontends where availability is critical. Avoid for simple static sites or development environments where resource overhead is a concern.
+
+## Prerequisites
+
+- Docker Engine 20.10 or later running on each node
+- Docker Compose v2 with Swarm mode enabled, or Docker Compose plugin
+- At least 3 manager nodes for Swarm cluster (for HA governance)
+- Static IP addresses or DNS entries for service endpoints
+- Network driver supporting overlay networking (e.g., `overlay` for swarm mode)
+- TLS certificates for secure communication between nodes (optional but recommended)
+- `htop`, `docker`, and `docker-compose` utilities installed on admin workstation
+
+## Steps
+
+1. **Initialize Swarm cluster**
+
+   ```bash
+   docker swarm init --advertise-addr <MANAGER_IP>
+   ```
+
+2. **Add worker nodes to the cluster**
+
+   ```bash
+   docker swarm join --token <WORKER_TOKEN> <MANAGER_IP>:2377
+   ```
+
+3. **Deploy the application stack**
+
+   ```bash
+   docker stack deploy -c docker-compose.yaml my-app
+   ```
+
+4. **Configure health checks for critical services**
+
+   ```yaml
+   services:
+     api:
+       image: myapi:latest
+       deploy:
+         replicas: 3
+         restart_policy:
+           condition: on-failure
+       healthcheck:
+         test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+         interval: 30s
+         timeout: 10s
+         retries: 3
+   ```
+
+5. **Enable automatic recovery and service placement**
+
+   ```bash
+   docker service update --with-registry-auth --rotate-myapi my_app_api
+   ```
+
+6. **Verify service health and accessibility**
+
+   ```bash
+   docker service ps my_app_api
+   docker stack ps my-app
+   ```
+
+7. **Test failover by removing a manager node**
+
+   ```bash
+   docker node update --availability drain <NODE_ID>
+   ```
+
+   Observe that services reschedule to remaining nodes without interruption.
+
+## Verify
+
+- All service replicas are running with `REPLICA` state (not `GLOBAL`)
+- Health check status shows `healthy` for all tasks
+- Service endpoints respond with HTTP 200 within expected timeframes
+- `docker stack ps my-app` shows desired state matches current state across all nodes
+- Overlay network traffic flows correctly between containers on different nodes
+
+## Rollback
+
+If a deployment introduces instability, roll back to the previous stack version:
+
+```bash
+docker stack rollback my-app
+```
+
+Or roll back to a specific version:
+
+```bash
+docker stack rollback my-app <VERSION>
+```
+
+Verify service health after rollback. To undo entirely, use `docker stack rm my-app` to remove the stack and redeploy from a known-good compose file.
+
+## Common errors
+
+| Error | Cause | Resolution |
+|---|---|---|
+| `docker swarm init` fails with "address already in use" | Swarm already initialized on this node | Run `docker swarm join` instead, or reset with `docker swarm leave --force` then re-initialize |
+| Services stuck in `FAILED` state | Insufficient resources on remaining nodes | Increase node resources or reduce replica count |
+| Health checks continuously failing | Application not responding on configured path | Verify application startup sequence and health endpoint |
+| Overlay network connectivity issues | Missing firewall rules or incorrect mesh configuration | Ensure port 4789 is open and kernel supports VXLAN |
+
+## References
+
+- Docker Swarm Mode Documentation: https://docs.docker.com/engine/swarm/
+- Docker Compose Specification: https://docs.docker.com/compose/
+- High-Availability Patterns for Containerized Workloads: https://www.docker.com/resources/ha-containers
+- Kubernetes vs. Swarm HA Comparison: https://kubernetes.io/docs/setup/production-environment/tools/
