@@ -13,16 +13,16 @@
 - [Install Ansible and run a first ad-hoc command](../Ansible/scripts/install-and-first-adhoc.sh)
 - [Install Docker and run a first container](../Docker/scripts/install-and-run-first-container.sh)
 - [Install Helm and explore the CLI](../Helm/scripts/2026-07-23-install-helm-and-explore-cli.sh)
-- [Install Jenkins and explore core concepts](../jnk/notes/0000-primer-jenkins.md)
+- [Install Jenkins and explore core concepts](../Jenkins/notes/0000-primer-jenkins.md)
 - [Install kind and create a first cluster](../Kubernetes/scripts/install-kind-and-first-cluster.sh)
 - [Install OpenTofu and verify](../OpenTofu/scripts/2026-07-18-install-opentofu-and-verify.sh)
 - [Install Prometheus and verify the metrics endpoint](../Prometheus/scripts/2026-07-23-install-prometheus-and-verify-metrics.sh)
 - [Install Terraform, init, and plan](../Terraform/scripts/install-and-init.sh)
 - [Install Git and make a first commit](../Git/scripts/install-and-first-commit.sh)
 - [Install Trivy and scan a filesystem](../Trivy/scripts/2026-07-12-install-trivy-and-scan-filesystem.sh)
-- [Install the Vault CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
-- [Install the Pulumi CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
-- [Install Grafana and open the login page](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
+- [Install the Vault CLI and start a dev server](../Vault/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- [Install the Pulumi CLI and init a project](../Pulumi/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- [Install Grafana and open the login page](../Grafana/scripts/2026-09-25-install-grafana-with-docker.sh)
 - [Install a GitLab runner and register it](../GitLab CI/scripts/2026-06-22-install-runner-and-register.sh)
 - [Install the Flux CLI and run a pre-flight check](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 - [Install the ArgoCD CLI and reach the UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
@@ -52,15 +52,15 @@
 - [GitHub](../GitHub/notes/0000-primer-github.md)
 - [GitHub Actions](../GitHub Actions/notes/0000-primer-github-actions.md)
 - [GitLab CI/CD](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
-- [Grafana](../graf/notes/0000-primer-grafana.md)
-- [HashiCorp Vault](../vlt/notes/0000-primer-vlt.md)
+- [Grafana](../Grafana/notes/0000-primer-grafana.md)
+- [HashiCorp Vault](../Vault/notes/0000-primer-vlt.md)
 - [Helm](../Helm/notes/0000-primer-helm.md)
-- [Jenkins](../jnk/notes/0000-primer-jenkins.md)
+- [Jenkins](../Jenkins/notes/0000-primer-jenkins.md)
 - [Kubernetes](../Kubernetes/notes/0000-primer-kubernetes.md)
-- [OpenTelemetry](../otel/notes/0000-primer-opentelemetry.md)
+- [OpenTelemetry](../OpenTelemetry/notes/0000-primer-opentelemetry.md)
 - [OpenTofu](../OpenTofu/notes/0000-primer-opentofu.md)
 - [Prometheus](../Prometheus/notes/0000-primer-prometheus.md)
-- [Pulumi](../plm/notes/0000-primer-plm.md)
+- [Pulumi](../Pulumi/notes/0000-primer-plm.md)
 - [Terraform](../Terraform/notes/0000-primer-terraform.md)
 - [Trivy](../Trivy/notes/0000-primer-trivy.md)
 
@@ -127,26 +127,26 @@
 
 ### Provision with Pulumi
 
-- [Pulumi primer](../plm/notes/0000-primer-plm.md)
-- [Install the CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
-- [Quickstart trip-ups — plugins, stack config, state, destroy](../plm/notes/2026-09-30-pulumi-quickstart-trip-ups.md)
-- [Minimal project and dev stack config](../plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml)
-- [Create an S3 bucket with Pulumi Python](../plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py)
-- [Minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
-- [Minimal project and stack config with an encrypted secret](../plm/configs/minimal-project-and-stack-config.yaml)
-- [Multi-stack project structure: dev/staging/prod, StackReference, cross-stack wiring](../plm/docs/multi-stack-project-structure.md)
-- [Reusable Network component: VPC, subnets, IGW, NAT gateway](../plm/scripts/network-component-vpc-subnets.py)
+- [Pulumi primer](../Pulumi/notes/0000-primer-plm.md)
+- [Install the CLI and init a project](../Pulumi/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- [Quickstart trip-ups — plugins, stack config, state, destroy](../Pulumi/notes/2026-09-30-pulumi-quickstart-trip-ups.md)
+- [Minimal project and dev stack config](../Pulumi/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml)
+- [Create an S3 bucket with Pulumi Python](../Pulumi/scripts/2026-09-30-create-s3-bucket-with-pulumi.py)
+- [Minimal bucket with Pulumi Python](../Pulumi/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
+- [Minimal project and stack config with an encrypted secret](../Pulumi/configs/minimal-project-and-stack-config.yaml)
+- [Multi-stack project structure: dev/staging/prod, StackReference, cross-stack wiring](../Pulumi/docs/multi-stack-project-structure.md)
+- [Reusable Network component: VPC, subnets, IGW, NAT gateway](../Pulumi/scripts/network-component-vpc-subnets.py)
 
 ### Manage secrets with Vault
 
-- [HashiCorp Vault primer](../vlt/notes/0000-primer-vlt.md)
-- [Install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
-- [Install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh)
-- [Explore the Vault CLI — secrets and policies](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md)
-- [Vault dev-mode quickstart trip-ups](../vlt/notes/2026-10-07-vault-quickstart-trip-ups.md)
-- [KV v2 write/read/list round-trip in Python](../vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py)
-- [Dynamic database credentials with Vault engine](../vlt/scripts/dynamic-database-credentials.py) — Enables the database secrets engine, configures a PostgreSQL connection, creates a role, and generates/revokes dynamic credentials using hvac.
-- [Least-privilege read-only policy bound to a group](../vlt/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl)
+- [HashiCorp Vault primer](../Vault/notes/0000-primer-vlt.md)
+- [Install the CLI and start a dev server](../Vault/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh)
+- [Install Vault and mount a first secrets engine](../Vault/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh)
+- [Explore the Vault CLI — secrets and policies](../Vault/notes/2026-09-19-explore-vault-cli-secrets-policies.md)
+- [Vault dev-mode quickstart trip-ups](../Vault/notes/2026-10-07-vault-quickstart-trip-ups.md)
+- [KV v2 write/read/list round-trip in Python](../Vault/scripts/2026-10-07-write-read-list-kv-v2-secret.py)
+- [Dynamic database credentials with Vault engine](../Vault/scripts/dynamic-database-credentials.py) — Enables the database secrets engine, configures a PostgreSQL connection, creates a role, and generates/revokes dynamic credentials using hvac.
+- [Least-privilege read-only policy bound to a group](../Vault/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl)
 
 ### Rotate a credential across many repositories
 
@@ -361,34 +361,34 @@
 
 ### Trace a request
 
-- [OpenTelemetry primer](../otel/notes/0000-primer-opentelemetry.md)
-- [Install a collector and run the OTLP pipeline](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh)
-- [First trace span with the Python SDK](../otel/snippets/2026-09-26-first-trace-span.py)
-- [Quickstart trip-ups — ports, pipeline order, noisy log output](../otel/notes/2026-09-30-quickstart-trip-ups.md)
-- [Minimal Collector OTLP export config](../otel/configs/2026-09-30-collector-otlp-export.yaml)
-- [Instrumented Go HTTP server — a span and a counter per request](../otel/snippets/2026-09-30-instrumented-http-server.go)
-- [Real Collector pipeline: OTLP in, memory_limiter and batch, Prometheus and OTLP out](../otel/configs/collector-otlp-real-pipeline.yaml)
-- [Context propagation: W3C tracecontext vs B3](../otel/docs/context-propagation-w3c-vs-b3.md) — what breaks when the format is mismatched or dropped between hops
-- [Custom span processor and resource detector](../otel/scripts/custom-span-processor-resource-detector.py) — stamps app attributes onto every span and batch-exports to an OTLP endpoint
+- [OpenTelemetry primer](../OpenTelemetry/notes/0000-primer-opentelemetry.md)
+- [Install a collector and run the OTLP pipeline](../OpenTelemetry/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh)
+- [First trace span with the Python SDK](../OpenTelemetry/snippets/2026-09-26-first-trace-span.py)
+- [Quickstart trip-ups — ports, pipeline order, noisy log output](../OpenTelemetry/notes/2026-09-30-quickstart-trip-ups.md)
+- [Minimal Collector OTLP export config](../OpenTelemetry/configs/2026-09-30-collector-otlp-export.yaml)
+- [Instrumented Go HTTP server — a span and a counter per request](../OpenTelemetry/snippets/2026-09-30-instrumented-http-server.go)
+- [Real Collector pipeline: OTLP in, memory_limiter and batch, Prometheus and OTLP out](../OpenTelemetry/configs/collector-otlp-real-pipeline.yaml)
+- [Context propagation: W3C tracecontext vs B3](../OpenTelemetry/docs/context-propagation-w3c-vs-b3.md) — what breaks when the format is mismatched or dropped between hops
+- [Custom span processor and resource detector](../OpenTelemetry/scripts/custom-span-processor-resource-detector.py) — stamps app attributes onto every span and batch-exports to an OTLP endpoint
 
 ### Visualize metrics
 
-- [Grafana primer](../graf/notes/0000-primer-grafana.md)
-- [Grafana quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md)
-- [Poking around the Grafana UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
-- [Install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh)
-- [Grafana quickstart trip-ups, second pass](../graf/notes/2026-10-13-grafana-quickstart-trip-ups.md)
-- [Provision a Prometheus datasource and dashboard as files](../graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml)
-- [Build a multi-panel service dashboard via Grafana HTTP API](../graf/scripts/build-multi-panel-service-dashboard-via-http-api.py)
+- [Grafana primer](../Grafana/notes/0000-primer-grafana.md)
+- [Grafana quickstart trip-ups](../Grafana/notes/2026-09-29-grafana-quickstart-trip-ups.md)
+- [Poking around the Grafana UI](../Grafana/notes/2026-09-25-explore-grafana-ui.md)
+- [Install Grafana with Docker](../Grafana/scripts/2026-09-25-install-grafana-with-docker.sh)
+- [Grafana quickstart trip-ups, second pass](../Grafana/notes/2026-10-13-grafana-quickstart-trip-ups.md)
+- [Provision a Prometheus datasource and dashboard as files](../Grafana/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml)
+- [Build a multi-panel service dashboard via Grafana HTTP API](../Grafana/scripts/build-multi-panel-service-dashboard-via-http-api.py)
 
 ### Ship metrics to Grafana Cloud
 
-- [First hosted dashboard in Grafana Cloud](../grafc/notes/2026-09-30-first-hosted-dashboard.md)
-- [Agent scrape config — unix exporter on a 15s interval](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
-- [Create a dashboard over the Grafana HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js)
-- [Grafana Cloud quickstart trip-ups](../grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md)
-- [Prometheus remote-write config for Grafana Cloud](../grafc/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml)
-- [Create Grafana Cloud stack and send metrics](../grafc/scripts/2026-10-19-create-stack-and-send-metrics.py)
+- [First hosted dashboard in Grafana Cloud](../Grafana%20Cloud/notes/2026-09-30-first-hosted-dashboard.md)
+- [Agent scrape config — unix exporter on a 15s interval](../Grafana%20Cloud/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
+- [Create a dashboard over the Grafana HTTP API](../Grafana%20Cloud/snippets/2026-09-30-first-dashboard-over-http.js)
+- [Grafana Cloud quickstart trip-ups](../Grafana%20Cloud/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md)
+- [Prometheus remote-write config for Grafana Cloud](../Grafana%20Cloud/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml)
+- [Create Grafana Cloud stack and send metrics](../Grafana%20Cloud/scripts/2026-10-19-create-stack-and-send-metrics.py)
 
 ### Check a target is actually up
 

@@ -124,31 +124,31 @@
 
 Folder on disk is `graf/`.
 
-- **primer:** [0000-primer-grafana.md](../graf/notes/0000-primer-grafana.md)
-- **notes** (4): most recent → [quickstart trip-ups, second pass](../graf/notes/2026-10-13-grafana-quickstart-trip-ups.md) — Docker localhost gotcha, legacy alerting page, first-evaluation delay — plus [quickstart trip-ups](../graf/notes/2026-09-29-grafana-quickstart-trip-ups.md) and [poking around the UI](../graf/notes/2026-09-25-explore-grafana-ui.md)
-- **configs** (1): [minimal datasource and dashboard provisioning](../graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml) — one Prometheus datasource plus one graph panel as files, picked up on start
-- **scripts** (1): [install Grafana with Docker](../graf/scripts/2026-09-25-install-grafana-with-docker.sh) — runs `grafana/grafana` on port 3000 and waits for the login page
-- **docs** (2): [navigation dedup note](../graf/docs/2026-09-25-grafana-navigation-dedup.md), [coverage and topics note](../graf/docs/2026-09-25-grafana-coverage-and-topics.md)
+- **primer:** [0000-primer-grafana.md](../Grafana/notes/0000-primer-grafana.md)
+- **notes** (4): most recent → [quickstart trip-ups, second pass](../Grafana/notes/2026-10-13-grafana-quickstart-trip-ups.md) — Docker localhost gotcha, legacy alerting page, first-evaluation delay — plus [quickstart trip-ups](../Grafana/notes/2026-09-29-grafana-quickstart-trip-ups.md) and [poking around the UI](../Grafana/notes/2026-09-25-explore-grafana-ui.md)
+- **configs** (1): [minimal datasource and dashboard provisioning](../Grafana/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml) — one Prometheus datasource plus one graph panel as files, picked up on start
+- **scripts** (1): [install Grafana with Docker](../Grafana/scripts/2026-09-25-install-grafana-with-docker.sh) — runs `grafana/grafana` on port 3000 and waits for the login page
+- **docs** (2): [navigation dedup note](../Grafana/docs/2026-09-25-grafana-navigation-dedup.md), [coverage and topics note](../Grafana/docs/2026-09-25-grafana-coverage-and-topics.md)
 
 ## Grafana Cloud  ·  6 files
 
 Folder on disk is `grafc/`. First contact only — no primer yet.
 
-- **notes** (2): most recent → [quickstart trip-ups](../grafc/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md) — where the stack endpoint and agent token live, scrape interval ownership, remote-write path — plus [first hosted dashboard](../grafc/notes/2026-09-30-first-hosted-dashboard.md)
-- **configs** (2): most recent → [Prometheus remote-write config for Grafana Cloud](../grafc/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml) — minimal scrape config with a pass-through relabel rule forwarding metrics to Grafana Cloud via remote_write — plus [minimal metrics scrape config](../grafc/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
-- **scripts** (1): [create Grafana Cloud stack and send metrics](../grafc/scripts/2026-10-19-create-stack-and-send-metrics.py) — scripts the stack creation, grabs the endpoint and token, writes the agent config, and verifies metrics arrive
-- **snippets** (1): [create a dashboard over the HTTP API](../grafc/snippets/2026-09-30-first-dashboard-over-http.js) — posts a minimal dashboard JSON with a bearer token so a dashboard is defined as data rather than clicks
+- **notes** (2): most recent → [quickstart trip-ups](../Grafana%20Cloud/notes/2026-10-13-grafana-cloud-quickstart-trip-ups.md) — where the stack endpoint and agent token live, scrape interval ownership, remote-write path — plus [first hosted dashboard](../Grafana%20Cloud/notes/2026-09-30-first-hosted-dashboard.md)
+- **configs** (2): most recent → [Prometheus remote-write config for Grafana Cloud](../Grafana%20Cloud/configs/2026-10-19-prometheus-remote-write-grafana-cloud.yaml) — minimal scrape config with a pass-through relabel rule forwarding metrics to Grafana Cloud via remote_write — plus [minimal metrics scrape config](../Grafana%20Cloud/configs/2026-09-30-minimal-metrics-scrape-config.yaml)
+- **scripts** (1): [create Grafana Cloud stack and send metrics](../Grafana%20Cloud/scripts/2026-10-19-create-stack-and-send-metrics.py) — scripts the stack creation, grabs the endpoint and token, writes the agent config, and verifies metrics arrive
+- **snippets** (1): [create a dashboard over the HTTP API](../Grafana%20Cloud/snippets/2026-09-30-first-dashboard-over-http.js) — posts a minimal dashboard JSON with a bearer token so a dashboard is defined as data rather than clicks
 - _Remote write wiring, alerting rules, and a stack config in version control are ⏳._
 
 ## HashiCorp Vault  ·  8 files
 
 Folder on disk is `vlt/`.
 
-- **primer:** [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
-- **notes** (3): most recent → [dev-mode quickstart trip-ups](../vlt/notes/2026-10-07-vault-quickstart-trip-ups.md) — KV v2 versions instead of overwriting, `kv get` metadata wrapping, per-shell `VAULT_ADDR` — plus [exploring the Vault CLI](../vlt/notes/2026-09-19-explore-vault-cli-secrets-policies.md) and [0000-primer-vlt.md](../vlt/notes/0000-primer-vlt.md)
-- **scripts** (4): most recent → [KV v2 write/read/list round-trip](../vlt/scripts/2026-10-07-write-read-list-kv-v2-secret.py) — hvac against a dev server, version 1 read back, version 2 created, versions listed — plus [install Vault and mount a first secrets engine](../vlt/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) and [install the CLI and start a dev server](../vlt/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh), [dynamic database credentials with Vault engine](../vlt/scripts/dynamic-database-credentials.py)
-- **configs** (1): [least-privilege read-only policy bound to a group](../vlt/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl) — `read` on one KV v2 path and its metadata, with the group binding for token issuance
-- **docs** (1): [how `vlt/` is reflected in the README and topic map](../vlt/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
+- **primer:** [0000-primer-vlt.md](../Vault/notes/0000-primer-vlt.md)
+- **notes** (3): most recent → [dev-mode quickstart trip-ups](../Vault/notes/2026-10-07-vault-quickstart-trip-ups.md) — KV v2 versions instead of overwriting, `kv get` metadata wrapping, per-shell `VAULT_ADDR` — plus [exploring the Vault CLI](../Vault/notes/2026-09-19-explore-vault-cli-secrets-policies.md) and [0000-primer-vlt.md](../Vault/notes/0000-primer-vlt.md)
+- **scripts** (4): most recent → [KV v2 write/read/list round-trip](../Vault/scripts/2026-10-07-write-read-list-kv-v2-secret.py) — hvac against a dev server, version 1 read back, version 2 created, versions listed — plus [install Vault and mount a first secrets engine](../Vault/scripts/2026-09-30-install-vault-and-first-secrets-engine.sh) and [install the CLI and start a dev server](../Vault/scripts/2026-09-19-install-vault-cli-and-start-dev-server.sh), [dynamic database credentials with Vault engine](../Vault/scripts/dynamic-database-credentials.py)
+- **configs** (1): [least-privilege read-only policy bound to a group](../Vault/configs/2026-10-07-minimal-read-only-policy-bound-to-group.hcl) — `read` on one KV v2 path and its metadata, with the group binding for token issuance
+- **docs** (1): [how `vlt/` is reflected in the README and topic map](../Vault/docs/2026-09-19-vlt-readme-layout-and-coverage.md)
 
 ## Helm  ·  55 files
 
@@ -185,12 +185,12 @@ Folder on disk is `vlt/`.
 
 Folder on disk is `otel/`.
 
-- **primer:** [0000-primer-opentelemetry.md](../otel/notes/0000-primer-opentelemetry.md) — traces, spans, context propagation, exporters, and where the collector sits
-- **notes** (2): [quickstart trip-ups](../otel/notes/2026-09-30-quickstart-trip-ups.md) — the 4317-vs-4318 mix-up, pipeline order, reading the noisy log output — plus [0000-primer-opentelemetry.md](../otel/notes/0000-primer-opentelemetry.md)
-- **docs** (2): most recent → [context propagation: W3C tracecontext vs B3](../otel/docs/context-propagation-w3c-vs-b3.md) — what breaks when the format is mismatched or dropped between hops — plus [how `otel/` is reflected in the README and topic map](../otel/docs/2026-09-25-opentelemetry-readme-coverage.md)
-- **configs** (2): most recent → [real Collector pipeline](../otel/configs/collector-otlp-real-pipeline.yaml) — OTLP in, memory_limiter and batch processors, Prometheus and OTLP out — plus [minimal OTLP export config](../otel/configs/2026-09-30-collector-otlp-export.yaml) — OTLP in, one batch step, log out
-- **scripts** (2): most recent → [custom span processor and resource detector](../otel/scripts/custom-span-processor-resource-detector.py) — stamps app attributes onto every span and batch-exports to an OTLP endpoint — plus [install a collector and run the OTLP pipeline](../otel/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) — brings up `otel/opentelemetry-collector-contrib` on 4317/4318, emits one span, and tails the collector log
-- **snippets** (2): [instrumented Go HTTP server](../otel/snippets/2026-09-30-instrumented-http-server.go) — one span per request plus a per-path counter — plus [first trace span](../otel/snippets/2026-09-26-first-trace-span.py)
+- **primer:** [0000-primer-opentelemetry.md](../OpenTelemetry/notes/0000-primer-opentelemetry.md) — traces, spans, context propagation, exporters, and where the collector sits
+- **notes** (2): [quickstart trip-ups](../OpenTelemetry/notes/2026-09-30-quickstart-trip-ups.md) — the 4317-vs-4318 mix-up, pipeline order, reading the noisy log output — plus [0000-primer-opentelemetry.md](../OpenTelemetry/notes/0000-primer-opentelemetry.md)
+- **docs** (2): most recent → [context propagation: W3C tracecontext vs B3](../OpenTelemetry/docs/context-propagation-w3c-vs-b3.md) — what breaks when the format is mismatched or dropped between hops — plus [how `otel/` is reflected in the README and topic map](../OpenTelemetry/docs/2026-09-25-opentelemetry-readme-coverage.md)
+- **configs** (2): most recent → [real Collector pipeline](../OpenTelemetry/configs/collector-otlp-real-pipeline.yaml) — OTLP in, memory_limiter and batch processors, Prometheus and OTLP out — plus [minimal OTLP export config](../OpenTelemetry/configs/2026-09-30-collector-otlp-export.yaml) — OTLP in, one batch step, log out
+- **scripts** (2): most recent → [custom span processor and resource detector](../OpenTelemetry/scripts/custom-span-processor-resource-detector.py) — stamps app attributes onto every span and batch-exports to an OTLP endpoint — plus [install a collector and run the OTLP pipeline](../OpenTelemetry/scripts/2026-09-26-install-collector-and-run-otlp-pipeline.sh) — brings up `otel/opentelemetry-collector-contrib` on 4317/4318, emits one span, and tails the collector log
+- **snippets** (2): [instrumented Go HTTP server](../OpenTelemetry/snippets/2026-09-30-instrumented-http-server.go) — one span per request plus a per-path counter — plus [first trace span](../OpenTelemetry/snippets/2026-09-26-first-trace-span.py)
 
 ## OpenTofu  ·  19 files
 
@@ -216,12 +216,12 @@ Folder on disk is `otel/`.
 
 Folder on disk is `plm/`.
 
-- **primer:** [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
-- **notes** (2): [quickstart trip-ups](../plm/notes/2026-09-30-pulumi-quickstart-trip-ups.md) — provider plugins, stack config files, local state defaults, and destroy semantics — plus [0000-primer-plm.md](../plm/notes/0000-primer-plm.md)
-- **docs** (2): most recent → [multi-stack project structure](../plm/docs/multi-stack-project-structure.md) — dev/staging/prod stacks under `stacks/`, a shared Network component, and cross-stack wiring with StackReference — plus [how `plm/` is reflected in the README and topic map](../plm/docs/2026-09-20-plm-readme-layout-and-coverage.md)
-- **configs** (2): most recent → [minimal project and stack config](../plm/configs/minimal-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus dev and prod stack configs with config namespaces and an encrypted secret — plus [minimal project and dev stack config](../plm/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus a `Pulumi.dev.yaml` with region and bucket name
-- **scripts** (3): most recent → [reusable Network component](../plm/scripts/network-component-vpc-subnets.py) — a VPC with public and private subnets, an Internet Gateway, and a NAT Gateway, exported as a runnable Python stack — plus [create an S3 bucket with Pulumi Python](../plm/scripts/2026-09-30-create-s3-bucket-with-pulumi.py) — the runnable one-bucket program with name and ARN exports — plus [install the CLI and init a project](../plm/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
-- **snippets** (1): [minimal bucket with Pulumi Python](../plm/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
+- **primer:** [0000-primer-plm.md](../Pulumi/notes/0000-primer-plm.md)
+- **notes** (2): [quickstart trip-ups](../Pulumi/notes/2026-09-30-pulumi-quickstart-trip-ups.md) — provider plugins, stack config files, local state defaults, and destroy semantics — plus [0000-primer-plm.md](../Pulumi/notes/0000-primer-plm.md)
+- **docs** (2): most recent → [multi-stack project structure](../Pulumi/docs/multi-stack-project-structure.md) — dev/staging/prod stacks under `stacks/`, a shared Network component, and cross-stack wiring with StackReference — plus [how `plm/` is reflected in the README and topic map](../Pulumi/docs/2026-09-20-plm-readme-layout-and-coverage.md)
+- **configs** (2): most recent → [minimal project and stack config](../Pulumi/configs/minimal-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus dev and prod stack configs with config namespaces and an encrypted secret — plus [minimal project and dev stack config](../Pulumi/configs/2026-09-30-minimal-pulumi-project-and-stack-config.yaml) — the `Pulumi.yaml` shape plus a `Pulumi.dev.yaml` with region and bucket name
+- **scripts** (3): most recent → [reusable Network component](../Pulumi/scripts/network-component-vpc-subnets.py) — a VPC with public and private subnets, an Internet Gateway, and a NAT Gateway, exported as a runnable Python stack — plus [create an S3 bucket with Pulumi Python](../Pulumi/scripts/2026-09-30-create-s3-bucket-with-pulumi.py) — the runnable one-bucket program with name and ARN exports — plus [install the CLI and init a project](../Pulumi/scripts/2026-09-19-install-pulumi-cli-and-init-project.sh)
+- **snippets** (1): [minimal bucket with Pulumi Python](../Pulumi/snippets/2026-09-19-minimal-bucket-with-pulumi-python.py)
 
 ## Terraform  ·  56 files
 
@@ -253,7 +253,7 @@ Folder on disk is `plm/`.
 
 Folder on disk is `jnk/`.
 
-- **primer:** [0000-primer-jenkins.md](../jnk/notes/0000-primer-jenkins.md) — core concepts, pipeline syntax, agents, and common patterns
+- **primer:** [0000-primer-jenkins.md](../Jenkins/notes/0000-primer-jenkins.md) — core concepts, pipeline syntax, agents, and common patterns
 
 ## Foundational Concepts  ·  71 files
 
