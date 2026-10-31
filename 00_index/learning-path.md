@@ -1,95 +1,137 @@
-# Learning Path — devops
+# Learning path — devops
 
-> A suggested progression from beginner to confident practitioner. Each stage builds on the previous one. If a topic is listed but has no content yet, it's marked as ⏳ (coming soon).
+Work through the stages in order. Each lesson says what it expects you to know already, ends with an exercise you can check, and links to the next lesson.
 
-## Stage 1: Foundations
-These core concepts have no prerequisites and form the base for everything else. All are at level L3 and complete.
+## Stage 1: Orientation, Linux and scripting
 
-- **Version Control Concepts** — Branching, merge strategies, release automation. Unlocks Git and Jenkins.
-- **Containerization Concepts** — Image layers, runtimes, caching, signing. Unlocks Docker, Kubernetes, and Trivy.
-- **Infrastructure as Code Concepts** — Declarative vs imperative, Terraform and Ansible roles, state workflows. Unlocks Terraform and Ansible.
-- **Linux & System Administration** — Processes, permissions, systemd, journald. Unlocks Jenkins, Docker, Kubernetes, Ansible, Prometheus, and Trivy.
-- **CI/CD Concepts** — Pipelines, gates, rollbacks, artifact promotion. Unlocks Jenkins.
-- **Monitoring & Observability Concepts** — Metrics, logs, traces, scraping. Unlocks Prometheus.
-- **Networking Fundamentals** — DNS, TLS, TCP probes, load balancing. Unlocks Docker, Kubernetes, Prometheus, and Trivy.
-- **Scripting & Automation (Bash/Python)** — Glue scripts, `jq`, retry and backoff. Unlocks Jenkins and Ansible.
+1. [Linux and system administration — the basics](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
+2. Find your way around the lab shell — *not written yet* · needs: Linux and system administration — the basics
+3. Manage processes and services with systemd — *not written yet* · needs: Find your way around the lab shell
+4. [Scripting and automation — the basics](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
+5. Read and write YAML that validates — *not written yet* · needs: Find your way around the lab shell
+6. Write a safe Bash health-check script — *not written yet* · needs: Manage processes and services with systemd, Scripting and automation — the basics
 
-## Stage 2: Core Tools
-The 5 foundational tools unlocked from the start. Each is immediately usable once the Stage 1 concepts are familiar.
+## Stage 2: Networking
 
-- **Git** — Distributed version control. Primer: [`00_index/topics.md`](#) · [Git primer](../Git/notes/0000-primer-git.md).
-- **Docker** — Containerization platform. Primer: [`00_index/topics.md`](#) · [Docker primer](../Docker/notes/0000-primer-docker.md).
-- **Terraform** — Infrastructure as code tool. Primer: [`00_index/topics.md`](#) · [Terraform primer](../Terraform/notes/0000-primer-terraform.md).
-- **Kubernetes** — Container orchestration. Primer: [`00_index/topics.md`](#) · [Kubernetes primer](../Kubernetes/notes/0000-primer-kubernetes.md).
-- **Ansible** — Configuration management and automation. Primer: [`00_index/topics.md`](#) · [Ansible primer](../Ansible/notes/0000-primer-ansible.md).
+1. [Networking fundamentals](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
+2. Diagnose "I can't reach it" — IPs, ports and DNS — *not written yet* · needs: Networking fundamentals, Find your way around the lab shell
+3. Probe HTTP and TLS endpoints — *not written yet* · needs: Diagnose "I can't reach it" — IPs, ports and DNS, Write a safe Bash health-check script
 
-## Stage 3: Building Skills
-Intermediate tools that consolidate the foundational concepts. These deepen your capabilities across monitoring, scanning, and automation.
+## Stage 3: Version control
 
-- **Prometheus** — Monitoring and alerting. Primer: [`00_index/topics.md`](#) · [Prometheus primer](../Prometheus/notes/0000-primer-prometheus.md).
-- **Trivy** — Vulnerability scanner for containers and filesystems. Primer: [`00_index/topics.md`](#) · [Trivy primer](../Trivy/notes/0000-primer-trivy.md).
-- **Jenkins** — Automation server for CI/CD. Note: L1 level — primer only. Primer: [`00_index/topics.md`](#) · [Jenkins primer](../jnk/notes/0000-primer-jenkins.md).
-- **OpenTelemetry** — Observability framework for traces, metrics, and logs. Primer: [`00_index/topics.md`](#) · [OpenTelemetry primer](../otel/notes/0000-primer-opentelemetry.md).
+1. [Version control concepts](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
+2. [Git — quick primer](../Git/notes/0000-primer-git.md)
+3. Put the sample app under version control — *not written yet* · needs: Git — quick primer, Version control concepts, Find your way around the lab shell
+4. Branch, merge and rebase — *not written yet* · needs: Put the sample app under version control
+5. Undo mistakes and recover lost work — *not written yet* · needs: Branch, merge and rebase
+6. Pull requests and branch protection on GitHub — *not written yet* · needs: Branch, merge and rebase
 
-## Stage 4: Advanced Tools
-Tools that depend on foundational concepts being complete. These unlock after the Stage 2 tools are mastered.
+## Stage 4: Containers
 
-- **Helm** — Kubernetes package manager. Unlocked after Kubernetes L5. Primer: [`00_index/topics.md`](#) · [Helm primer](../Helm/notes/0000-primer-helm.md).
-- **HashiCorp Vault** — Secrets and identity management. Unlocked after Kubernetes L5. Primer: [`00_index/topics.md`](#) · [Vault primer](../vlt/notes/0000-primer-vlt.md).
-- **AWS** — Amazon Web Services. Unlocked after Terraform L5. ⏳ Coming soon.
-- **Azure** — Microsoft Azure. Unlocked after Terraform L5. ⏳ Coming soon.
-- **GCP** — Google Cloud Platform. Unlocked after Terraform L5. ⏳ Coming soon.
-- **OpenTofu** — OpenTofu infrastructure tool. Unlocked after Terraform L5. ⏳ Coming soon.
-- **GitHub** — GitHub platform and API. Unlocked after Git L6. ⏳ Coming soon.
-- **GitHub Actions** — CI/CD inside GitHub. Unlocked after GitHub L4. ⏳ Coming soon.
-- **GitLab CI** — GitLab pipeline automation. Unlocked after Git L6. ⏳ Coming soon.
-- **Flux CD** — GitOps operator for Kubernetes. Unlocked after Kubernetes L5. ⏳ Coming soon.
+1. [Containerization concepts](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
+2. [Docker — quick primer](../Docker/notes/0000-primer-docker.md)
+3. Package the sample app as an image — *not written yet* · needs: Docker — quick primer, Containerization concepts, Put the sample app under version control, Diagnose "I can't reach it" — IPs, ports and DNS
+4. Smaller, faster images with multi-stage builds — *not written yet* · needs: Package the sample app as an image
+5. Run the app and Postgres with Docker Compose — *not written yet* · needs: Smaller, faster images with multi-stage builds, Read and write YAML that validates
+6. [Trivy — quick primer](../Trivy/notes/0000-primer-trivy.md)
+7. Scan the sample app image with Trivy — *not written yet* · needs: Trivy — quick primer, Smaller, faster images with multi-stage builds
 
-## Stage 5: Mastery
-Expert-level tools and advanced concepts for sophisticated workflows.
+## Stage 5: Continuous integration and delivery
 
-- **Pulumi** — Infrastructure as code using general-purpose programming. Primer: [`00_index/topics.md`](#) · [Pulumi primer](../plm/notes/0000-primer-plm.md).
-- **Grafana** — Dashboarding and observability visualization. Primer: [`00_index/topics.md`](#) · [Grafana primer](../graf/notes/0000-primer-grafana.md).
-- **Grafana Cloud** — Hosted observability platform. Primer: [`00_index/topics.md`](#) · [Grafana Cloud notes](../grafc/notes/2026-09-30-first-hosted-dashboard.md).
-- **ArgoCD** — GitOps continuous delivery for Kubernetes. Primer: [`00_index/topics.md`](#) · [ArgoCD primer](../ArgoCD/notes/0000-primer-argocd.md).
+1. [CI/CD concepts](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
+2. [GitHub Actions — quick primer](../GitHub Actions/notes/0000-primer-github-actions.md)
+3. Build and test the sample app on every pull request — *not written yet* · needs: GitHub Actions — quick primer, CI/CD concepts, Pull requests and branch protection on GitHub, Run the app and Postgres with Docker Compose
+4. Scan and publish the image from CI — *not written yet* · needs: Build and test the sample app on every pull request, Scan the sample app image with Trivy
+5. Reuse pipeline steps across repositories — *not written yet* · needs: Scan and publish the image from CI
 
-## Progression Map
+## Stage 6: Infrastructure as code and cloud
 
-```mermaid
-flowchart TD
-    VC[Version Control Concepts] --> Git[Git]
-    VC --> Jenkins[Jenkins]
-    CC[CI/CD Concepts] --> Jenkins
-    CC[CI/CD Concepts] --> Prometheus[Prometheus]
-    CC[CI/CD Concepts] --> Trivy[Trivy]
-    IC[Infrastructure as Code Concepts] --> Terraform[Terraform]
-    IC[Infrastructure as Code Concepts] --> Ansible[Ansible]
-    LC[Linux & System Administration] --> Jenkins
-    LC --> Docker[Docker]
-    LC --> Kubernetes[Kubernetes]
-    LC --> Prometheus[Prometheus]
-    LC --> Trivy[Trivy]
-    NC[Networking Fundamentals] --> Docker
-    NC --> Kubernetes
-    NC --> Prometheus
-    NC --> Trivy
-    SA[Scripting & Automation] --> Jenkins
-    SA --> Ansible
-    DT[Docker] --> Kubernetes
-    DT --> Prometheus
-    DT --> Trivy
-    K8s[Kubernetes] --> Helm[Helm]
-    K8s[Kubernetes] --> Vault[Vault]
-    K8s[K8s] --> Flux[Flux CD]
-    TF[Terraform] --> OpenTofu[OpenTofu]
-    TF[Terraform] --> AWS[AWS]
-    TF[Terraform] --> Azure[Azure]
-    TF[Terraform] --> GCP[GCP]
-    Git --> GitHub[GitHub]
-    Git --> GitLab[GitLab CI]
-    GitHub --> GHActions[GitHub Actions]
-    Grafana[Grafana] --> GC[Grafana Cloud]
-    Pulumi[Pulumi]:::expert
-    ArgoCD[ArgoCD]:::expert
-    classDef expert fill:#e8f5e9,stroke:#4caf50;
-```
+1. [Infrastructure as code concepts](../docs/concepts/infrastructure-as-code-concepts/0000-primer-infrastructure-as-code-concepts.md)
+2. [AWS — quick primer](../AWS/notes/0000-primer-aws.md)
+3. AWS identity and networking basics — *not written yet* · needs: AWS — quick primer, Probe HTTP and TLS endpoints
+4. [Terraform — quick primer](../Terraform/notes/0000-primer-terraform.md)
+5. Provision and destroy your first infrastructure — *not written yet* · needs: Terraform — quick primer, Infrastructure as code concepts, AWS identity and networking basics
+6. Keep Terraform state remote and locked — *not written yet* · needs: Provision and destroy your first infrastructure
+7. Reusable Terraform modules — *not written yet* · needs: Keep Terraform state remote and locked
+8. Plan and apply Terraform from CI with OIDC — *not written yet* · needs: Reusable Terraform modules, Reuse pipeline steps across repositories
+9. [Ansible — quick primer](../Ansible/notes/0000-primer-ansible.md)
+10. Configure a host with an Ansible playbook — *not written yet* · needs: Ansible — quick primer, Manage processes and services with systemd, Read and write YAML that validates
+
+## Stage 7: Kubernetes
+
+1. [Kubernetes — quick primer](../Kubernetes/notes/0000-primer-kubernetes.md)
+2. Run the sample app on a local cluster — *not written yet* · needs: Kubernetes — quick primer, Run the app and Postgres with Docker Compose
+3. Configuration, secrets and ingress — *not written yet* · needs: Run the sample app on a local cluster
+4. Probes, resource limits and autoscaling — *not written yet* · needs: Configuration, secrets and ingress
+5. [Helm — quick primer](../Helm/notes/0000-primer-helm.md)
+6. Package the sample app as a Helm chart — *not written yet* · needs: Helm — quick primer, Probes, resource limits and autoscaling
+
+## Stage 8: GitOps
+
+1. [ArgoCD — quick primer](../ArgoCD/notes/0000-primer-argocd.md)
+2. Deploy from Git with ArgoCD and roll back — *not written yet* · needs: ArgoCD — quick primer, Package the sample app as a Helm chart, Undo mistakes and recover lost work
+
+## Stage 9: Observability
+
+1. [Monitoring and observability concepts](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
+2. [Prometheus — quick primer](../Prometheus/notes/0000-primer-prometheus.md)
+3. Scrape the sample app and alert on errors — *not written yet* · needs: Prometheus — quick primer, Monitoring and observability concepts, Probes, resource limits and autoscaling
+4. A Grafana dashboard kept in Git — *not written yet* · needs: Scrape the sample app and alert on errors
+5. Define an SLO and alert on its burn rate — *not written yet* · needs: A Grafana dashboard kept in Git
+6. Trace one request with OpenTelemetry — *not written yet* · needs: Scrape the sample app and alert on errors
+
+## Stage 10: Security and secrets
+
+1. SBOMs and image policy in the pipeline — *not written yet* · needs: Scan and publish the image from CI, Deploy from Git with ArgoCD and roll back
+2. Store and read secrets with Vault — *not written yet* · needs: Configuration, secrets and ingress
+3. Remove static secrets from the cluster — *not written yet* · needs: Store and read secrets with Vault, Deploy from Git with ArgoCD and roll back
+
+## Stage 11: Operations and capstone
+
+1. Run an incident drill with a runbook — *not written yet* · needs: Define an SLO and alert on its burn rate, Remove static secrets from the cluster
+2. Capstone: ship the sample app end to end — *not written yet* · needs: Run an incident drill with a runbook, Plan and apply Terraform from CI with OIDC, SBOMs and image policy in the pipeline, Trace one request with OpenTelemetry
+
+## Stage 12: Electives
+
+1. [Azure — quick primer](../Azure/notes/0000-primer-azure.md)
+2. [GCP — quick primer](../GCP/notes/0000-primer-gcp.md)
+3. [GitLab CI — quick primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
+4. Rebuild the sample app pipeline in GitLab CI — *not written yet* · needs: GitLab CI — quick primer, Scan and publish the image from CI
+5. Rebuild the sample app pipeline in Jenkins — *not written yet* · needs: Scan and publish the image from CI
+6. [OpenTofu — quick primer](../OpenTofu/notes/0000-primer-opentofu.md)
+7. The network module again, in Pulumi — *not written yet* · needs: Reusable Terraform modules
+8. The GitOps setup again, with Flux — *not written yet* · needs: Deploy from Git with ArgoCD and roll back
+9. Ship metrics to Grafana Cloud — *not written yet* · needs: A Grafana dashboard kept in Git
+
+## Reference shelf
+
+Background material per tool, for looking things up after the lesson.
+
+| Tool | Folder |
+|---|---|
+| Linux & System Administration | [docs/concepts/linux-system-administration/](../docs/concepts/linux-system-administration/) |
+| Scripting & Automation (Bash/Python) | [docs/concepts/scripting-automation-bash-python/](../docs/concepts/scripting-automation-bash-python/) |
+| Networking Fundamentals | [docs/concepts/networking-fundamentals/](../docs/concepts/networking-fundamentals/) |
+| Version Control Concepts | [docs/concepts/version-control-concepts/](../docs/concepts/version-control-concepts/) |
+| Containerization Concepts | [docs/concepts/containerization-concepts/](../docs/concepts/containerization-concepts/) |
+| CI/CD Concepts | [docs/concepts/ci-cd-concepts/](../docs/concepts/ci-cd-concepts/) |
+| Infrastructure as Code Concepts | [docs/concepts/infrastructure-as-code-concepts/](../docs/concepts/infrastructure-as-code-concepts/) |
+| Monitoring & Observability Concepts | [docs/concepts/monitoring-observability-concepts/](../docs/concepts/monitoring-observability-concepts/) |
+| Git | [Git/](../Git/) |
+| GitHub | [GitHub/](../GitHub/) |
+| Docker | [Docker/](../Docker/) |
+| Trivy | [Trivy/](../Trivy/) |
+| GitHub Actions | [GitHub Actions/](../GitHub Actions/) |
+| AWS | [AWS/](../AWS/) |
+| Terraform | [Terraform/](../Terraform/) |
+| Ansible | [Ansible/](../Ansible/) |
+| Kubernetes | [Kubernetes/](../Kubernetes/) |
+| Helm | [Helm/](../Helm/) |
+| ArgoCD | [ArgoCD/](../ArgoCD/) |
+| Prometheus | [Prometheus/](../Prometheus/) |
+| Azure | [Azure/](../Azure/) |
+| GCP | [GCP/](../GCP/) |
+| GitLab CI | [GitLab CI/](../GitLab CI/) |
+| OpenTofu | [OpenTofu/](../OpenTofu/) |
+| Pulumi | [Pulumi/](../Pulumi/) |
+| Flux CD | [FluxCD/](../FluxCD/) |
