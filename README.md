@@ -17,11 +17,11 @@ A working engineer's quick-reference: first-contact notes, runnable snippets, an
 A DevOps engineer's collection of first-contact notes, runnable snippets, and configs for cloud CLIs, containers, orchestration, and infrastructure as code tools. Most tool folders pair a primer with notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, or templates.
 
 ## Quick links
-- [Integrating Ansible with network devices](Ansible/docs/integrating-ansible-with-network-devices.md) — Notes on integrating Ansible with network device management
-- [Ansible project scaffold](Ansible/templates/ansible-project-scaffold/README.md) — Scaffold for new Ansible projects
-- [Ansible project configuration](Ansible/templates/ansible-project-scaffold/ansible.cfg) — Ansible project configuration file
-- [Ansible group variables](Ansible/templates/ansible-project-scaffold/group_vars/all.yml) — Group variables for all hosts
-- [Ansible DB server variables](Ansible/templates/ansible-project-scaffold/group_vars/dbservers.yml) — Group variables for database servers
+- [Pulumi Python project scaffold](Pulumi/templates/pulumi-python-project-scaffold/README.md) — Starter Pulumi project in Python with project file, two stack configs, and a minimal bucket
+- [Pulumi project definition](Pulumi/templates/pulumi-python-project-scaffold/Pulumi.yaml) — Project metadata and runtime
+- [Pulumi dev stack config](Pulumi/templates/pulumi-python-project-scaffold/Pulumi.dev.yaml) — Dev stack configuration
+- [Pulumi prod stack config](Pulumi/templates/pulumi-python-project-scaffold/Pulumi.prod.yaml) — Production stack configuration
+- [Pulumi entry point](Pulumi/templates/pulumi-python-project-scaffold/__init__.py) — Python entry point for the scaffold
 
 ## Layout
 - **00_index/** — Topics map, quick links, glossary, and learning path.
@@ -87,4 +87,4 @@ A DevOps engineer's collection of first-contact notes, runnable snippets, and co
 Currently working through L1 first-contact notes for Flux CD and expanding template scaffolds for Ansible, Helm, and Terraform. New this cycle: Jenkins primer, ArgoCD Vault integration, and a Kubernetes multi-cluster management template library (Cluster API + Flux GitOps + cluster resource sets).
 
 ---
-_Last updated: 2026-10-28_
+_Last updated: 2026-11-01_
