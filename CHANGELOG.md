@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-31
+
+- Added Linux shell navigation lesson: pwd, cd, ls, cat/less/nano, exit codes, chmod and chown with verification (linux-system-administration-001) (`learn/01-orientation/02-shell-navigation.md`)
 ## 2026-10-29
 
 - Added Docker production hardening runbook: baseline scan, binary validation and dry-run, dependency pinning, minimal base image, secret removal, privilege dropping, runtime constraints, re-scan diff, and rollback (docker-003) (`docker/docs/docker-production-hardening-runbook.md`)
