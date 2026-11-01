@@ -1,94 +1,128 @@
 ---
 last_verified: 2026-11-01
-tool_version: "systemd 262.1"
-sources:
-  - https://github.com/systemd/systemd/releases/tag/v262.1
+tool_version: n/a
 ---
 
 # Manage processes and services with systemd
 
-You have already learned your way around the lab shell. Now you will manage processes and services with systemd, the standard init system on modern Linux distributions. This lesson builds on your shell navigation skills and introduces you to the tool that powers most Linux service management.
+The previous lesson got you moving around the filesystem, reading files, and checking exit codes. Now you will look at what the machine is actually doing: which programs are running, how to signal and stop them, and how to manage the long-running services that systemd starts and keeps running on boot.
 
 ## What you'll learn
 
-- List, signal and stop processes using `ps`, `kill`, `pkill`, and `killall`
-- Start, stop and enable a systemd service and read its logs with `journalctl`
+- List running processes, find a process by name, and signal or stop it.
+- Start, stop, and enable a systemd service, and read its logs with journalctl.
 
 ## Before you start
 
-- [Linux and system administration — the basics](../../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md) — what the filesystem, users and permissions are.
-- [Find your way around the lab shell](02-shell-navigation.md) — basic shell navigation skills.
-- A Linux shell with Bash and GNU coreutils (preinstalled on most distros). Confirm with `bash --version` and `ls --version`.
-- `systemd` is installed and running. Confirm with `systemctl --version`.
-- `journalctl` is available for reading service logs.
+- [Find your way around the lab shell](02-shell-navigation.md) — navigating the filesystem, reading exit codes, and fixing permissions.
+- A Linux host where systemd is the init system (PID 1). Confirm with `ps -p 1 -o comm=`, which prints `systemd`.
+- `sudo` access for starting, stopping, and enabling services.
 
 ## Walkthrough
 
-1. List running processes.
+1. List the running processes.
 
    ```bash
    ps aux
    ```
 
-   You should see: a table of all processes running on the system, with columns for user, PID, CPU usage, memory, and command.
+   You should see: a table with one line per process showing the owner, PID, CPU and memory use, and the command. The PID column is what you use to signal or stop a process.
 
-2. Stop a process using `kill`.
-
-   ```bash
-   pkill -f "sleep 9999"
-   ```
-
-   You should see: the process is terminated; verify with `ps aux | grep sleep`.
-
-3. Start a systemd service.
+2. Find the PID of a process by name.
 
    ```bash
-   systemctl start sshd
+   ps aux | grep sleep
    ```
 
-   You should see: `Active: active (running)` when you query the service status.
+   You should see: lines whose command contains `sleep`, each with a PID. The `grep sleep` line itself also matches — ignore it.
 
-4. Enable a systemd service so it starts at boot.
+3. Stop a process with its PID. Start a short-lived process first so you have a safe target:
 
    ```bash
-   systemctl enable sshd
+   sleep 300 &
+   SLEEP_PID=$!
+   echo $SLEEP_PID
+   kill $SLEEP_PID
+   ps -p $SLEEP_PID
    ```
 
-   You should see: a symlink created under `/etc/systemd/system/multi-user.wants/`.
+   You should see: `echo $SLEEP_PID` prints the background job's PID; after `kill`, `ps -p $SLEEP_PID` prints an error such as "No such process" because the process has stopped.
 
-5. Read logs for a systemd service with `journalctl`.
+   `kill` without a flag sends the default TERM signal, asking the process to shut down cleanly. Use `kill -9 <pid>` only as a last resort when a process ignores TERM.
+
+4. Confirm systemd is running and list its services.
 
    ```bash
-   journalctl -u sshd
+   ps -p 1 -o comm=
+   systemctl list-units --type=service --no-pager | head -20
    ```
 
-   You should see: recent log lines from the `sshd` service.
+   You should see: `systemd` from the first command, and a list of loaded services from the second.
+
+5. Start, stop, and enable a service. Pick a service installed on your host (for example `ssh` or `cron`), then check it first:
+
+   ```bash
+   systemctl status ssh --no-pager
+   ```
+
+   If the service exists, manage it:
+
+   ```bash
+   sudo systemctl start ssh
+   sudo systemctl stop ssh
+   sudo systemctl enable ssh
+   ```
+
+   You should see: `start` and `stop` run without error; `enable` prints a symlink message such as "Created symlink .../ssh.service → .../systemd/multi-user.target.wants/ssh.service", meaning the service will start on boot.
+
+   `enable` only arranges boot-time startup; it does not start the service right now. Use `sudo systemctl enable --now ssh` to enable and start in one step.
+
+6. Read a service's logs with journalctl.
+
+   ```bash
+   sudo journalctl -u ssh -n 20 --no-pager
+   ```
+
+   You should see: the most recent 20 log lines for the `ssh` service, each with a timestamp, hostname, service name, and message. To follow logs live, add `-f`; to limit by time, add `--since "1 hour ago"`.
 
 ## Exercise
 
-Working with systemd:
+Working on your lab host:
 
-1. List the processes owned by the current user using `ps`.
-2. Find the PID of a long-running process (such as `bash` or `sleep`) and use `kill` to terminate it.
-3. Use `systemctl` to check the status of the `cron` service.
-4. Enable the `cron` service so it starts on boot.
-5. Use `journalctl -u cron` to read the last 10 log entries from the cron service.
+1. Start a background process you fully control, for example `sleep 600 &`, and note its PID.
+2. Confirm it is running with `ps`, then stop it with `kill <pid>`.
+3. Confirm it is gone with `ps -p <pid>`.
+4. Pick a service installed on your host (suggest `ssh` or `cron`; confirm with `systemctl status <service>` first).
+5. Start it with `sudo systemctl start <service>`, stop it with `sudo systemctl stop <service>`, and enable it for boot with `sudo systemctl enable <service>`.
+6. Read its latest logs with `sudo journalctl -u <service> -n 10 --no-pager`.
+
+Do not paste the solution here; the point is the practice.
 
 ## Check your work
 
 ```bash
-ps -u "$USER" | head -n 5
-systemctl status cron
-journalctl -u cron --no-pager | tail -n 10
+ps -p 1 -o comm=
+pgrep sleep; echo "exit=$?"
+systemctl is-active ssh; systemctl is-enabled ssh
+sudo journalctl -u ssh -n 5 --no-pager
 ```
 
-You should see: a list of your user's processes; the cron service status showing `active (running)` or `inactive`; the last 10 log lines from cron.
+You should see:
+
+- `systemd` (PID 1 is systemd).
+- `exit=1` from `pgrep sleep` after you killed it (the process no longer exists).
+- `active` or `inactive` from `systemctl is-active ssh` reflecting the last `start`/`stop` you ran, and `enabled` from `systemctl is-enabled ssh`.
+- Recent log lines for the `ssh` service from `journalctl`.
+
+Substitute your chosen service name for `ssh` throughout.
 
 ## Common mistakes
 
-- `ps aux` showing no processes — ensure you are not in a restricted container without a full init system.
-- `systemctl start sshd` failing with "Unit not found" — the service name may be different (e.g., `httpd` or `apache2`) or the unit file is not installed.
-- `journalctl -u sshd` showing no entries — verify the service has actually run and produced logs, or check with `journalctl --since "5 minutes ago"`.
+- `kill` without a flag sends TERM. Some processes ignore it; if the process is still alive afterward, use `kill -9 <pid>` as a last resort.
+- `ps aux | grep <name>` also matches the `grep` process itself. Prefer `pgrep <name>` or `grep [s]leep`.
+- `systemctl start/stop/enable` requires `sudo`; without it you get "Authentication required" or "Access denied".
+- `systemctl enable <service>` starts the service on boot only; it does not start it now. Pair it with `start`, or use `enable --now`.
+- `journalctl -u <service>` prints nothing if the service has never written to the journal or the name is wrong — double-check with `systemctl status <service>`.
 
 ## Next
 
