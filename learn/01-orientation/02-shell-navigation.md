@@ -137,4 +137,4 @@ You should see `secret.txt` as `-rw-------` owned by you, and `shared` as `drwxr
 
 ## Next
 
-[Manage processes and services with systemd](../../00_index/learning-path.md)
+[Manage processes and services with systemd](./03-processes-and-services.md)
