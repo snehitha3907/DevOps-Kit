@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-01
+
+- Added Linux system administration lesson: list, signal and stop processes, and start/stop/enable a systemd service with journalctl logs (linux-system-administration-002) (`learn/01-orientation/03-processes-and-services.md`)
+
 ## 2026-10-31
 
 - Added Linux shell navigation lesson: pwd, cd, ls, cat/less/nano, exit codes, chmod and chown with verification (linux-system-administration-001) (`learn/01-orientation/02-shell-navigation.md`)
