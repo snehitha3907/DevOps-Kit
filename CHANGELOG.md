@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-02
+
+- Added YAML basics lesson: mappings, lists, multi-line block scalars, and yamllint validation (scripting-automation-bash-python-001) (`learn/01-orientation/05-yaml-basics.md`)
+
 ## 2026-11-01
 
 - Added Linux system administration lesson: list, signal and stop processes, and start/stop/enable a systemd service with journalctl logs (linux-system-administration-002) (`learn/01-orientation/03-processes-and-services.md`)
