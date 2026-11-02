@@ -3,6 +3,7 @@
 ## 2026-11-02
 
 - Added YAML basics lesson: mappings, lists, multi-line block scalars, and yamllint validation (scripting-automation-bash-python-001) (`learn/01-orientation/05-yaml-basics.md`)
+- Added Bash health-check lesson: strict-mode script with functions, curl --fail, exit codes, and ShellCheck validation (scripting-automation-bash-python-002) (`learn/01-orientation/06-bash-health-check.md`) plus companion script (`docs/concepts/scripting-automation-bash-python/scripts/service-health-check.sh`)
 
 ## 2026-11-01
 
