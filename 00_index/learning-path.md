@@ -5,7 +5,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 ## Stage 1: Orientation, Linux and scripting
 
 1. [Linux and system administration — the basics](../docs/concepts/linux-system-administration/0000-primer-linux-system-administration.md)
-2. Find your way around the lab shell — *not written yet* · needs: Linux and system administration — the basics
+2. [Find your way around the lab shell](../learn/01-orientation/02-shell-navigation.md) · needs: Linux and system administration — the basics
 3. Manage processes and services with systemd — *not written yet* · needs: Find your way around the lab shell
 4. [Scripting and automation — the basics](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 5. Read and write YAML that validates — *not written yet* · needs: Find your way around the lab shell
