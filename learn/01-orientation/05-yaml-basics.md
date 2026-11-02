@@ -104,4 +104,4 @@ You should see: the parsed mapping printed back, with `description` as a single 
 
 ## Next
 
-[Write a safe Bash health-check script](../../00_index/learning-path.md)
+[Write a safe Bash health-check script](06-bash-health-check.md)
