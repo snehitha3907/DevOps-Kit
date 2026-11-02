@@ -1,5 +1,5 @@
 ---
-last_verified: 2026-10-31
+last_verified: 2026-11-01
 tool_version: "Bash 5.3, GNU Coreutils 9.12, GNU nano 9.3"
 sources:
   - https://www.redhat.com/en/blog/navigating-linux-filesystem
@@ -137,4 +137,4 @@ You should see `secret.txt` as `-rw-------` owned by you, and `shared` as `drwxr
 
 ## Next
 
-[Manage processes and services with systemd](../../00_index/learning-path.md)
+[Manage processes and services with systemd](03-processes-and-services.md)
