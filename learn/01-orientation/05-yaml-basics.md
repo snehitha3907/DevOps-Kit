@@ -19,6 +19,7 @@ YAML is the format your tools read: Ansible playbooks, Kubernetes manifests, Doc
 ## Before you start
 
 - [Find your way around the lab shell](02-shell-navigation.md) — how to create, edit and inspect files from the command line
+- [Scripting and automation — the basics](../../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md) — what scripting, Bash and Python are and why you need them before writing YAML tooling
 - A Linux shell with Python 3 and pip. Confirm with `python3 --version` and `pip --version`.
 - Install yamllint: `pip install --user yamllint` (or `sudo apt install yamllint` on Debian/Ubuntu).
 
