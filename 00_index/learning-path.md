@@ -9,7 +9,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 3. [Manage processes and services with systemd](../learn/01-orientation/03-processes-and-services.md) · needs: Find your way around the lab shell
 4. [Scripting and automation — the basics](../docs/concepts/scripting-automation-bash-python/0000-primer-scripting-automation-bash-python.md)
 5. [Read and write YAML that validates](../learn/01-orientation/05-yaml-basics.md) · needs: Find your way around the lab shell
-6. Write a safe Bash health-check script — *not written yet* · needs: Manage processes and services with systemd, Scripting and automation — the basics
+6. [Write a safe Bash health-check script](../learn/01-orientation/06-bash-health-check.md) · needs: Manage processes and services with systemd, Scripting and automation — the basics
 
 ## Stage 2: Networking
 
