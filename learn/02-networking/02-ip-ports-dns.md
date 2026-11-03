@@ -81,4 +81,4 @@ In /tmp/net-lab:
 
 ## Next
 
-[Probe HTTP and TLS endpoints](../../00_index/learning-path.md)
+[Probe HTTP and TLS endpoints](03-http-tls-probes.md)
