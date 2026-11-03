@@ -957,3 +957,4 @@ Passed ([x]) docker-003 — Docker: docs — Docker production hardening runbook
 - Added Docker production HA manifest with high-availability deployment configuration (docker-005) (`docker/manifests/production-docker-deployment-with-ha.yaml`)
 - Added GCP config for gcloud IAM policy bindings (gcp-021) (`gcp/configs/gcloud-iam-config.yaml`)
 - 2026-11-02: Added learn/02-networking/02-ip-ports-dns.md (networking-fundamentals-001)
+feat: networking-fundamentals-002 Probe HTTP and TLS endpoints
