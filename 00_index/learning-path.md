@@ -15,7 +15,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 
 1. [Networking fundamentals](../docs/concepts/networking-fundamentals/0000-primer-networking-fundamentals.md)
 2. [Diagnose "I can't reach it" — IPs, ports and DNS](../learn/02-networking/02-ip-ports-dns.md) · needs: Networking fundamentals, Find your way around the lab shell
-3. Probe HTTP and TLS endpoints — *not written yet* · needs: Diagnose "I can't reach it" — IPs, ports and DNS, Write a safe Bash health-check script
+3. [Probe HTTP and TLS endpoints](../learn/02-networking/03-http-tls-probes.md) · needs: Diagnose "I can't reach it" — IPs, ports and DNS, Write a safe Bash health-check script
 
 ## Stage 3: Version control
 
