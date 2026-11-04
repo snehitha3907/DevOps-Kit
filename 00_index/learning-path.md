@@ -22,7 +22,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 1. [Version control concepts](../docs/concepts/version-control-concepts/0000-primer-version-control-concepts.md)
 2. [Git — quick primer](../Git/notes/0000-primer-git.md)
 3. [Put the sample app under version control](../learn/03-version-control/03-git-sample-app-repo.md) · needs: Git — quick primer, Version control concepts, Find your way around the lab shell
-4. Branch, merge and rebase — *not written yet* · needs: Put the sample app under version control
+4. [Branch, merge and rebase](../learn/03-version-control/04-git-branch-merge-rebase.md) · needs: Put the sample app under version control
 5. Undo mistakes and recover lost work — *not written yet* · needs: Branch, merge and rebase
 6. Pull requests and branch protection on GitHub — *not written yet* · needs: Branch, merge and rebase
 
