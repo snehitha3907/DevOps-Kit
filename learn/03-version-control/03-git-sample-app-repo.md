@@ -133,4 +133,4 @@ You should see three (or more) commits in `git log --oneline`, newest first, and
 
 ## Next
 
-[Branch, merge and rebase](../../00_index/learning-path.md)
+[Branch, merge and rebase](04-git-branch-merge-rebase.md)

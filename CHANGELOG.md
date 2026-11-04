@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-04
+
+- Added Git lesson: feature branches, merge, rebase, and merge conflict resolution (git-037) (`learn/03-version-control/04-git-branch-merge-rebase.md`)
+
 ## 2026-11-02
 
 - Added YAML basics lesson: mappings, lists, multi-line block scalars, and yamllint validation (scripting-automation-bash-python-001) (`learn/01-orientation/05-yaml-basics.md`)
