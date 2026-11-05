@@ -144,4 +144,4 @@ You should see: all feature branches merged into `main`, a history graph that sh
 
 ## Next
 
-[Undo mistakes and recover lost work](../../00_index/learning-path.md)
+[Undo mistakes and recover lost work](05-git-recover-reflog.md)
