@@ -84,4 +84,4 @@ The container should be running with `0.0.0.0:8080->8000/tcp` published, and the
 
 ## Next
 
-[Smaller, faster images with multi-stage builds](../../00_index/learning-path.md)
+[Smaller, faster images with multi-stage builds](04-docker-multistage.md)
