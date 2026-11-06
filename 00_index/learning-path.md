@@ -24,7 +24,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 3. [Put the sample app under version control](../learn/03-version-control/03-git-sample-app-repo.md) · needs: Git — quick primer, Version control concepts, Find your way around the lab shell
 4. [Branch, merge and rebase](../learn/03-version-control/04-git-branch-merge-rebase.md) · needs: Put the sample app under version control
 5. [Undo mistakes and recover lost work](../learn/03-version-control/05-git-recover-reflog.md) · needs: Branch, merge and rebase
-6. Pull requests and branch protection on GitHub — *not written yet* · needs: Branch, merge and rebase
+6. [Pull requests and branch protection on GitHub](../learn/03-version-control/06-github-pr-flow.md) · needs: Branch, merge and rebase
 
 ## Stage 4: Containers
 
