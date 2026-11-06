@@ -104,4 +104,4 @@ Run `git log --oneline experiment` in `git-recover-lab`. You should see exactly 
 - `reflog` entries expire (default 90 days for reachable commits, 30 for unreachable), so recover promptly.
 
 ## Next
-[Pull requests and branch protection on GitHub](../../00_index/learning-path.md)
+[Pull requests and branch protection on GitHub](06-github-pr-flow.md)
