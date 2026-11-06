@@ -963,3 +963,4 @@ Passed ([x]) docker-003 — Docker: docs — Docker production hardening runbook
 - 2026-11-02: Added learn/02-networking/02-ip-ports-dns.md (networking-fundamentals-001)
 feat: networking-fundamentals-002 Probe HTTP and TLS endpoints
 ## [2026-11-05] git-016: Undo mistakes and recover lost work lesson
+2026-11-06 - Add learn/03-version-control/06-github-pr-flow.md lesson (GitHub PRs and branch protection)
