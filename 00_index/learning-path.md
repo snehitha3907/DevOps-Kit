@@ -30,7 +30,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 
 1. [Containerization concepts](../docs/concepts/containerization-concepts/0000-primer-containerization-concepts.md)
 2. [Docker — quick primer](../Docker/notes/0000-primer-docker.md)
-3. Package the sample app as an image — *not written yet* · needs: Docker — quick primer, Containerization concepts, Put the sample app under version control, Diagnose "I can't reach it" — IPs, ports and DNS
+3. [Package the sample app as an image](../learn/04-containers/03-docker-first-image.md) · needs: Docker — quick primer, Containerization concepts, Put the sample app under version control, Diagnose "I can't reach it" — IPs, ports and DNS
 4. Smaller, faster images with multi-stage builds — *not written yet* · needs: Package the sample app as an image
 5. Run the app and Postgres with Docker Compose — *not written yet* · needs: Smaller, faster images with multi-stage builds, Read and write YAML that validates
 6. [Trivy — quick primer](../Trivy/notes/0000-primer-trivy.md)
