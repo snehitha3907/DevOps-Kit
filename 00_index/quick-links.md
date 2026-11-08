@@ -430,3 +430,13 @@
 - [Network troubleshooting patterns](../docs/concepts/networking-fundamentals/notes/2026-08-07-network-troubleshooting-patterns.md)
 - [Kubernetes pod troubleshooting shell](../Kubernetes/snippets/pod-troubleshoot-shell.sh)
 - [Ansible playbook troubleshooting](../Ansible/notes/2026-06-13-ansible-playbook-troubleshooting.md)
+
+
+### Work through the learning track
+
+- [Learning path](../00_index/learning-path.md) — Guided reading order from first contact to confident.
+- [Package the sample app as an image](../learn/04-containers/03-docker-first-image.md)
+- [Smaller, faster images with multi-stage builds](../learn/04-containers/04-docker-multistage.md)
+- [Scan the sample app image with Trivy](../learn/04-containers/07-trivy-scan-image.md)
+- [GitHub PR flow](../learn/03-version-control/06-github-pr-flow.md)
+- [Recover work with reflog](../learn/03-version-control/05-git-recover-reflog.md)
