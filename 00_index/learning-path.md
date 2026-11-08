@@ -34,7 +34,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 4. [Smaller, faster images with multi-stage builds](../learn/04-containers/04-docker-multistage.md) · needs: Package the sample app as an image
 5. Run the app and Postgres with Docker Compose — *not written yet* · needs: Smaller, faster images with multi-stage builds, Read and write YAML that validates
 6. [Trivy — quick primer](../Trivy/notes/0000-primer-trivy.md)
-7. Scan the sample app image with Trivy — *not written yet* · needs: Trivy — quick primer, Smaller, faster images with multi-stage builds
+7. [Scan the sample app image with Trivy](../learn/04-containers/07-trivy-scan-image.md) · needs: Trivy — quick primer, Smaller, faster images with multi-stage builds
 
 ## Stage 5: Continuous integration and delivery
 
