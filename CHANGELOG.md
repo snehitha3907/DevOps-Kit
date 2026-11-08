@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-08
+
+- Added Trivy lesson: scan the sample app image with Trivy, read the findings table, and fail the scan on CRITICAL findings with --exit-code 1 (trivy-001) (`learn/04-containers/07-trivy-scan-image.md`)
+
 ## 2026-11-04
 
 - Added Git lesson: feature branches, merge, rebase, and merge conflict resolution (git-037) (`learn/03-version-control/04-git-branch-merge-rebase.md`)
