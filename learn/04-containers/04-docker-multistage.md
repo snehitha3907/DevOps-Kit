@@ -111,4 +111,4 @@ You should see: `sample-app:exercise-ms` listed with a size, the container runni
 
 ## Next
 
-[Run the app and Postgres with Docker Compose](../../00_index/learning-path.md)
+[Run the app and Postgres with Docker Compose](05-compose-app-db.md)
