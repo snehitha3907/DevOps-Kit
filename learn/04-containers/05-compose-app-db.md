@@ -44,6 +44,7 @@ In [Smaller, faster images with multi-stage builds](04-docker-multistage.md), yo
          timeout: 5s
          retries: 5
          start_period: 15s
+       restart: unless-stopped
 
      db:
        image: postgres:16-alpine
@@ -51,6 +52,8 @@ In [Smaller, faster images with multi-stage builds](04-docker-multistage.md), yo
          POSTGRES_DB: appdb
          POSTGRES_USER: appuser
          POSTGRES_PASSWORD: apppass
+       ports:
+         - "5432:5432"
        volumes:
          - postgres-data:/var/lib/postgresql/data
        healthcheck:
@@ -59,6 +62,7 @@ In [Smaller, faster images with multi-stage builds](04-docker-multistage.md), yo
          timeout: 5s
          retries: 5
          start_period: 10s
+       restart: unless-stopped
 
    volumes:
      postgres-data:
