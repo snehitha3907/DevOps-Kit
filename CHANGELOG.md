@@ -971,3 +971,4 @@ feat: networking-fundamentals-002 Probe HTTP and TLS endpoints
 feat: docker-004
 
 - 2026-11-06: Add Docker multi-stage build lesson (docker-007).
+- 2026-11-08: Add Docker Compose app+Postgres lesson (docker-008) and healthcheck manifest.
