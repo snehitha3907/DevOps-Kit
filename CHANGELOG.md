@@ -972,3 +972,5 @@ feat: docker-004
 
 - 2026-11-06: Add Docker multi-stage build lesson (docker-007).
 - 2026-11-08: Add Docker Compose app+Postgres lesson (docker-008) and healthcheck manifest.
+
+- Added GitHub Actions build-and-test lesson: workflow runs tests on every pull request and a required status check gates merging (github-actions-001) (`learn/05-ci-cd/03-gha-build-test.md`)
