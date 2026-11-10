@@ -40,7 +40,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 
 1. [CI/CD concepts](../docs/concepts/ci-cd-concepts/0000-primer-ci-cd-concepts.md)
 2. [GitHub Actions — quick primer](../GitHub Actions/notes/0000-primer-github-actions.md)
-3. Build and test the sample app on every pull request — *not written yet* · needs: GitHub Actions — quick primer, CI/CD concepts, Pull requests and branch protection on GitHub, Run the app and Postgres with Docker Compose
+3. [Build and test the sample app on every pull request](../learn/05-ci-cd/03-gha-build-test.md) · needs: GitHub Actions — quick primer, CI/CD concepts, Pull requests and branch protection on GitHub, Run the app and Postgres with Docker Compose
 4. Scan and publish the image from CI — *not written yet* · needs: Build and test the sample app on every pull request, Scan the sample app image with Trivy
 5. Reuse pipeline steps across repositories — *not written yet* · needs: Scan and publish the image from CI
 
