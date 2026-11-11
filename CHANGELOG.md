@@ -2,7 +2,7 @@
 
 ## 2026-11-11
 
-- Added GitHub Actions lesson: build the image in CI, scan it with Trivy and stop on CRITICAL findings, then push it to a registry tagged with the commit SHA (github-actions-002) (`learn/05-ci-cd/04-gha-scan-push.md`)
+- Added GitHub Actions lesson: build the image in CI, scan it with Trivy and stop on CRITICAL findings, then push the image tagged with the commit SHA (github-actions-002) (`learn/05-ci-cd/04-gha-scan-push.md`)
 
 ## 2026-11-08
 

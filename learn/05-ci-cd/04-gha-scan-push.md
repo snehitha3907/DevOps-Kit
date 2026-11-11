@@ -1,126 +1,98 @@
 ---
 last_verified: 2026-11-11
-tool_version: "Trivy v0.76.2 · docker/login-action v4.8.0 · docker/build-push-action v7.4.0 · aquasecurity/trivy-action v0.36.0"
-sources:
-  - https://docs.github.com/en/actions/learn-github-actions/contexts
-  - https://github.com/docker/login-action/releases/tag/v4.8.0
-  - https://github.com/docker/build-push-action/releases/tag/v7.4.0
-  - https://github.com/aquasecurity/trivy/releases/tag/v0.76.2
+tool_version: n/a
+sources: []
 ---
 
 # Scan and publish the image from CI
 
-In [Build and test the sample app on every pull request](03-gha-build-test.md) you added a `test` job that runs on pull requests and blocks merges until it passes. Now you extend that pipeline so every build also produces a container image, scans it with Trivy, and — only when the scan is clean — publishes the image to a registry tagged with the commit that triggered the run. This turns CI from "tests pass" into "a verified, publishable image exists."
+In [Build and test the sample app on every pull request](03-gha-build-test.md) you added a CI workflow that runs the test suite on every pull request and blocks merges until it passes. In [Scan the sample app image with Trivy](../04-containers/07-trivy-scan-image.md) you learned how to point Trivy at an image and make the scan fail on CRITICAL findings. Now you combine the two: every push to `main` builds the image, scans it with Trivy, and only publishes it to a registry when the scan is clean — so an image with CRITICAL findings never leaves CI.
 
 ## What you'll learn
 
-- Build the image in CI, scan it with Trivy, and stop the build on CRITICAL findings.
-- Push the image to a registry tagged with the commit SHA.
+- Build the image in CI, scan it with Trivy, and stop on CRITICAL findings
+- Push the image to a registry tagged with the commit SHA
 
 ## Before you start
 
-- [Build and test the sample app on every pull request](03-gha-build-test.md) — the `test` job and `.github/workflows/ci.yml` you extend here.
-- [Scan the sample app image with Trivy](../04-containers/07-trivy-scan-image.md) — how `trivy image --severity CRITICAL --exit-code 1` fails a build on critical findings.
-- Docker installed and running. Confirm with `docker --version`.
-- A GitHub repository whose sample app builds as a container image.
-- A container registry (Docker Hub or GHCR) with the registry username and a personal access token stored as repository secrets (`REGISTRY_USER`, `REGISTRY_PASSWORD`) and the registry host stored as a variable (`REGISTRY`).
+- [Build and test the sample app on every pull request](03-gha-build-test.md) — the CI workflow and branch protection you extend here; your sample app repo with a Dockerfile and a passing `npm test`.
+- [Scan the sample app image with Trivy](../04-containers/07-trivy-scan-image.md) — how `trivy image --severity CRITICAL --exit-code 1` becomes a non-zero gate, and that Trivy downloads its vulnerability database on the first run.
+- Docker installed (`docker --version`) and a GitHub repository for the sample app.
+- Registry credentials stored as GitHub secrets (`REGISTRY_USER`, `REGISTRY_PASSWORD`) with `REGISTRY` set as an environment variable or secret, so the workflow can authenticate.
 
 ## Walkthrough
 
-1. Add a `build-scan-publish` job to `.github/workflows/ci.yml` that builds the image tagged with the commit SHA, scans it with Trivy, and pushes it only when the scan passes.
+1. Create a new workflow file `.github/workflows/publish.yml` that builds the image, scans it, and publishes it.
 
    ```yaml
-   name: CI
+   name: Build, scan, publish
    on:
      push:
        branches: [main]
-     pull_request:
-
    jobs:
-     test:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v7.0.1
-         - uses: actions/setup-node@v7.1.0
-           with:
-             node-version: "20"
-             cache: "npm"
-         - run: npm ci
-         - run: npm test
-
      build-scan-publish:
-       needs: test
-       if: github.event_name == 'push'
        runs-on: ubuntu-latest
        steps:
-         - uses: actions/checkout@v7.0.1
-         - name: Build and tag the image
-           uses: docker/build-push-action@v7.4.0
-           with:
-             context: .
-             load: true
-             tags: sample-app:${{ github.sha }}
+         - uses: actions/checkout@v4
+         - name: Build the image tagged with the commit SHA
+           run: |
+             docker build -t ${{ env.REGISTRY }}/sample-app:${{ github.sha }} .
          - name: Scan the image with Trivy
-           uses: aquasecurity/trivy-action@v0.36.0
-           with:
-             image-ref: sample-app:${{ github.sha }}
-             severity: 'CRITICAL'
-             exit-code: '1'
-         - name: Log in to the registry
-           uses: docker/login-action@v4.8.0
-           with:
-             registry: ${{ vars.REGISTRY }}
-             username: ${{ secrets.REGISTRY_USER }}
-             password: ${{ secrets.REGISTRY_PASSWORD }}
-         - name: Push the image
-           uses: docker/build-push-action@v7.4.0
-           with:
-             context: .
-             push: true
-             tags: ${{ vars.REGISTRY }}/sample-app:${{ github.sha }}
+           run: |
+             docker run --rm \
+               -v /var/run/docker.sock:/var/run/docker.sock \
+               aquasec/trivy image --severity CRITICAL --exit-code 1 \
+               ${{ env.REGISTRY }}/sample-app:${{ github.sha }}
+         - name: Publish the image to the registry
+           run: |
+             echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ env.REGISTRY }} \
+               -u ${{ env.REGISTRY_USER }} --password-stdin
+             docker push ${{ env.REGISTRY }}/sample-app:${{ github.sha }}
    ```
 
-   You should see: the `build-scan-publish` job runs after `test` passes, builds `sample-app:<commit-sha>` into the runner's Docker daemon, runs `trivy image` filtered to CRITICAL findings and fails the step (`exit-code: 1`) if any exist, then logs in and pushes `${{ vars.REGISTRY }}/sample-app:<commit-sha>` to the registry. `github.sha` is the commit SHA that triggered the workflow.
+   You should see: a workflow triggered on pushes to `main` that builds `sample-app:${{ github.sha }}`, runs Trivy against it and fails the run on any CRITICAL finding, then logs in and pushes the image tagged with the commit SHA.
 
-   `load: true` loads the image into the runner's Docker daemon so Trivy can scan it locally. The final `push: true` build streams layers straight to the registry instead of building only into BuildKit's cache — without it, a later `docker push` reports "no such image".
+   The build step tags the image with `${{ github.sha }}`, the commit SHA that triggered the run, so every published image is traceable to exactly one commit. The Trivy step runs before the publish step, so a scan that finds CRITICAL vulnerabilities exits non-zero and stops the job before anything is pushed. Trivy downloads its vulnerability database on the first run, so the initial scan takes longer — do not interrupt it.
 
-2. Commit and push the workflow.
+2. Commit and push the workflow, then push a commit to `main`.
 
    ```bash
-   git add .github/workflows/ci.yml
-   git commit -m "build, trivy-scan, and publish the image on push"
-   git push -u origin main
+   git add .github/workflows/publish.yml
+   git commit -m "add build-scan-publish workflow"
+   git push origin main
    ```
 
-   You should see: GitHub starts a workflow run. On a pull request, only `test` runs; on a push to `main`, `build-scan-publish` runs after `test` and either publishes `sample-app:<sha>` or stops at the Trivy step when CRITICAL findings exist.
+   You should see: GitHub starts the `build-scan-publish` job, and the Actions tab shows the build, Trivy scan, and publish steps running in order.
 
 ## Exercise
 
 In your own repository:
 
-1. Add the `build-scan-publish` job to `.github/workflows/ci.yml` (adapt the registry and image name to yours).
-2. Store your registry credentials as repository secrets (`REGISTRY_USER`, `REGISTRY_PASSWORD`) and the registry host as a variable (`REGISTRY`).
-3. Push to `main` and confirm the workflow builds the image tagged with the commit SHA, runs the Trivy scan, and publishes the image.
-4. Temporarily change `severity` to include a finding that exists, push again, and confirm the job stops at the Trivy step with a non-zero exit code — then restore `severity: 'CRITICAL'`.
+1. Add the `publish.yml` workflow from the walkthrough, setting `REGISTRY` to your registry and storing `REGISTRY_USER` and `REGISTRY_PASSWORD` as repository secrets.
+2. Push a commit to `main` and watch the run in the Actions tab.
+3. Confirm the build and publish steps complete and the image appears in your registry tagged with the commit SHA.
+4. Introduce a CRITICAL-level finding and confirm the Trivy step fails the run before the publish step runs.
+
+Do not paste the run output inline — run the commands yourself and record the result.
 
 ## Check your work
 
 ```bash
-# on the latest push to main, inspect the workflow run
-gh run list --limit 1
-gh run view <run-id> --job build-scan-publish
+git log --oneline -1                                                    # latest commit on main
+gh run list --limit 1 --json status,conclusion                          # latest workflow run
+docker run --rm aquasec/trivy image --severity CRITICAL --exit-code 1 \
+  REGISTRY/sample-app:SHA                                               # scan the published image
 ```
+Replace `REGISTRY/sample-app:SHA` with the image you published.
 
-You should see: the `build-scan-publish` job succeeded and its Trivy step reported exit code 0 with no CRITICAL findings, and the registry now holds `<registry>/sample-app:<commit-sha>` (confirm in the registry UI or with `docker manifest inspect <registry>/sample-app:<sha>`).
-
-If the job never starts, confirm `if: github.event_name == 'push'` — pull requests skip it, which is why `test` carries the PR gate from the previous lesson.
+You should see: the latest commit is on `main`, the latest workflow run concluded successfully, and the Trivy scan of the published image exits zero when no CRITICAL findings exist.
 
 ## Common mistakes
 
-- Scanning an image that was only built into BuildKit's cache — `docker push` later reports "no such image". Use `load: true` for the scan build, or `push: true` to stream straight to the registry.
-- Passing `--skip-db-update` on Trivy's first run — Trivy refuses it ("--skip-db-update cannot be specified on the first run"). Let it download the vulnerability database once.
-- Assuming Trivy fails by default — it exits 0 even when it finds vulnerabilities unless you set `exit-code: '1'` (or pass `--exit-code 1` to the CLI).
-- Hard-coding registry credentials in the workflow — always read them from `${{ secrets.* }}`.
+- Publishing before scanning — if the publish step runs before the Trivy step, an image with CRITICAL findings reaches the registry; keep Trivy ahead of publish in the step order.
+- Forgetting `--exit-code 1` — Trivy exits 0 even when it finds vulnerabilities unless you pass `--exit-code 1`, so the gate would never fail.
+- Tagging with a fixed tag such as `latest` instead of `${{ github.sha }}` — then you cannot tell which commit an image came from, and old images get overwritten on every push.
+- Hard-coding registry credentials in the workflow — store them as encrypted GitHub secrets and reference them with `${{ secrets.NAME }}`.
 
 ## Next
 
