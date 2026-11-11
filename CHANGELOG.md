@@ -3,6 +3,7 @@
 ## 2026-11-11
 
 - Added GitHub Actions lesson: build the image in CI, scan it with Trivy and stop on CRITICAL findings, then push the image tagged with the commit SHA (github-actions-002) (`learn/05-ci-cd/04-gha-scan-push.md`)
+- Passed ([x]) github-actions-002 — GitHub Actions: lesson — Scan and publish the image from CI · Level: L2 · 2026-11-11
 
 ## 2026-11-08
 
