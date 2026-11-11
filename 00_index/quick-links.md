@@ -212,6 +212,9 @@
 - [Health check and cleanup script](../Docker/scripts/docker-health-check-and-cleanup.sh)
 - [Image layer analyzer](../Docker/snippets/analyze-image-layers.py)
 - [Networking drivers notebook](../Docker/notebooks/comparing-docker-networking-drivers.ipynb)
+- [Build the sample app as a multi-stage image](../learn/04-containers/04-docker-multistage.md) — multi-stage Dockerfile walkthrough for smaller, faster images
+- [Run the app and Postgres with Docker Compose](../learn/04-containers/05-compose-app-db.md) — compose file with healthchecks for both services
+- [Docker Compose app with Postgres and health checks](../Docker/manifests/app-postgres-healthchecks.compose.yaml) — Compose stack for the sample app and Postgres with startup health checks
 
 ### Ship with GitHub Actions
 
@@ -339,6 +342,7 @@
 - [Batch image scanning from a file](../Trivy/scripts/scan-images-from-file-consolidated-sarif.sh)
 - [Policy-as-code with OPA/Rego](../Trivy/scripts/trivy-policy-as-code-opa-rego.sh) — write custom Rego policies, bundle them, and scan images and manifests against them with a severity-filtered summary
 - [SBOM generation and vulnerability reporting](../Trivy/docs/trivy-sbom-generation-and-vulnerability-reporting.md) — Generate SBOMs in CycloneDX/SPDX and produce vulnerability reports for compliance and audit workflows
+- [Scan the sample app image with Trivy](../learn/04-containers/07-trivy-scan-image.md) — Trivy image-scan quickstart for the sample application image
 
 ### Collect metrics
 
@@ -418,6 +422,7 @@
 - [Common patterns](../docs/concepts/ci-cd-concepts/snippets/2026-08-04-cicd-common-patterns.sh)
 - [Parallelized CI stage runner](../docs/concepts/ci-cd-concepts/snippets/2026-08-08-parallelized-ci-stage-runner.sh)
 - [Branch protection, merge strategies, and release automation](../docs/concepts/version-control-concepts/docs/branch-protection-merge-strategies-release-automation.md)
+- [Build and test on every pull request](../learn/05-ci-cd/03-gha-build-test.md) — GitHub Actions workflow that runs the app's tests on each PR
 
 ### Troubleshoot a host
 
