@@ -102,4 +102,4 @@ If the check is missing or pending, confirm the workflow file lives in `.github/
 
 ## Next
 
-[Scan and publish the image from CI](../../00_index/learning-path.md)
+[Scan and publish the image from CI](04-gha-scan-push.md)
