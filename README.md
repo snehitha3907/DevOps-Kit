@@ -49,16 +49,16 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 
 ## Coverage
 <details>
-<summary>Coverage table (22 tools × 9 categories)</summary>
+<summary>Coverage table (24 tools × 9 categories)</summary>
 
 | Tool | Notes | Docs | Snippets | Scripts | Configs | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
 |------|-------|------|----------|---------|---------|-----------|-----------|-------------|-----------|---------------|
+| AWS | 2 | 2 | 3 | 7 | 3 | 0 | 1 | 0 | 7 | 2026-10-26 |
 | Ansible | 10 | 7 | 2 | 4 | 8 | 10 | 2 | 1 | 68 | 2026-10-28 |
 | ArgoCD | 3 | 2 | 1 | 3 | 3 | 2 | 0 | 0 | 13 | 2026-10-20 |
-| AWS | 2 | 2 | 3 | 7 | 3 | 0 | 1 | 0 | 7 | 2026-10-26 |
 | Azure | 4 | 2 | 3 | 5 | 2 | 2 | 0 | 0 | 10 | 2026-10-08 |
 | Docker | 6 | 11 | 2 | 5 | 1 | 9 | 3 | 9 | 12 | 2026-10-29 |
-| FluxCD | 2 | 2 | 0 | 2 | 2 | 0 | 0 | 0 | 0 | 2026-10-20 |
+| Flux CD | 2 | 2 | 0 | 2 | 2 | 0 | 0 | 0 | 0 | 2026-10-20 |
 | GCP | 2 | 1 | 2 | 6 | 4 | 0 | 0 | 0 | 0 | 2026-09-28 |
 | Git | 6 | 15 | 1 | 14 | 0 | 0 | 3 | 0 | 46 | 2026-10-27 |
 | GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-14 |
@@ -77,10 +77,11 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 | Terraform | 6 | 8 | 3 | 4 | 10 | 2 | 2 | 0 | 39 | 2026-10-27 |
 | Trivy | 5 | 2 | 2 | 5 | 3 | 0 | 0 | 0 | 0 | 2026-10-19 |
 
+
 </details>
 
 ## Status
 Currently adding first-contact notes and templates across the tool set, with recent work on GitHub Actions CI gating, Docker Compose healthchecks, and Trivy image scanning.
 
 ---
-_Last updated: 2026-11-11_
+_Last updated: 2026-11-12_
