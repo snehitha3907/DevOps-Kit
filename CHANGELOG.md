@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-12
+
+- Added GitHub Actions lesson: extract the build-scan-push job into a reusable workflow and call it with inputs and secrets from another workflow (github-actions-003) (`learn/05-ci-cd/05-gha-reusable-workflows.md`)
+
 ## 2026-11-11
 
 - Added GitHub Actions lesson: build the image in CI, scan it with Trivy and stop on CRITICAL findings, then push the image tagged with the commit SHA (github-actions-002) (`learn/05-ci-cd/04-gha-scan-push.md`)

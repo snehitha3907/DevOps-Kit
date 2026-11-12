@@ -96,4 +96,4 @@ You should see: the latest commit is on `main`, the latest workflow run conclude
 
 ## Next
 
-[Reuse pipeline steps across repositories](../../00_index/learning-path.md)
+[Reuse pipeline steps across repositories](05-gha-reusable-workflows.md)
