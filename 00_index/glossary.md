@@ -493,3 +493,36 @@
 - **Credentials Binding** — The mechanism that injects secrets (username/password, SSH key, secret text) into a Pipeline as environment variables without writing them to the console log.
 - **Pipeline Agent** — Where the Pipeline runs. `agent any` picks any available executor; `agent { docker { image '...' } }` runs inside a container; `agent { kubernetes { yaml '...' } }` runs on a cluster pod.
 - **Post Section** — A block in a Declarative Pipeline that runs after the main stages (`always`, `success`, `failure`, `unstable`, `changed`, `fixed`) — useful for cleanup, notifications, or artifact archival.
+
+## Ansible
+
+- **Playbook** — A YAML file that defines a list of tasks to run on managed hosts, executed by Ansible in order.
+- **Inventory** — A file (INI or YAML) listing the managed hosts and groups Ansible targets.
+- **Role** — A reusable bundle of tasks, variables, templates, and handlers organized in a standard directory structure.
+- **Module** — A unit of work Ansible executes on a target host (e.g. `apt`, `copy`, `template`, `service`).
+- **Ad-hoc command** — A single Ansible module run directly from the CLI against one or more hosts, without a playbook.
+- **Ansible Vault** — Encryption for sensitive files and variables so secrets can be stored in version control.
+
+## AWS
+
+- **IAM role** — An identity with permissions that can be assumed by a user, service, or application, instead of using long-lived access keys.
+- **Least privilege** — Granting only the permissions a principal needs to perform its task, nothing more.
+- **StackSet** — A CloudFormation mechanism that provisions the same stack across multiple accounts and regions from one template.
+
+## Azure
+
+- **Resource group** — A container that holds related resources for an Azure solution, managed and deleted together.
+- **Bicep** — A domain-specific language for deploying Azure resources, simpler and more readable than ARM JSON templates.
+- **AKS** — Azure Kubernetes Service, a managed Kubernetes control plane.
+
+## ArgoCD
+
+- **Application** — An ArgoCD custom resource that declares the desired state of a set of Kubernetes manifests and where to sync them from.
+- **ApplicationSet** — A generator-driven controller that creates and manages multiple ArgoCD Applications from templates.
+- **GitOps** — Managing cluster state by declaring desired resources in Git and using an operator (such as ArgoCD) to converge the cluster to that state.
+
+## FluxCD
+
+- **GitRepository** — A Flux custom resource that points at a Git repository and revision containing Kubernetes manifests.
+- **Kustomization** — A Flux custom resource that applies kustomize overlays from a GitRepository to the cluster.
+- **HelmRelease** — A Flux custom resource that manages Helm chart releases from Git or an OCI repository.
