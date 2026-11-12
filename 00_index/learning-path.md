@@ -42,7 +42,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 2. [GitHub Actions — quick primer](../GitHub Actions/notes/0000-primer-github-actions.md)
 3. [Build and test the sample app on every pull request](../learn/05-ci-cd/03-gha-build-test.md) · needs: GitHub Actions — quick primer, CI/CD concepts, Pull requests and branch protection on GitHub, Run the app and Postgres with Docker Compose
 4. [Scan and publish the image from CI](../learn/05-ci-cd/04-gha-scan-push.md) · needs: Build and test the sample app on every pull request, Scan the sample app image with Trivy
-5. Reuse pipeline steps across repositories — *not written yet* · needs: Scan and publish the image from CI
+5. [Reuse pipeline steps across repositories](../learn/05-ci-cd/05-gha-reusable-workflows.md) · needs: Scan and publish the image from CI
 
 ## Stage 6: Infrastructure as code and cloud
 
