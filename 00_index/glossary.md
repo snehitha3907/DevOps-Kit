@@ -502,6 +502,7 @@
 - **Module** — A unit of work Ansible executes on a target host (e.g. `apt`, `copy`, `template`, `service`).
 - **Ad-hoc command** — A single Ansible module run directly from the CLI against one or more hosts, without a playbook.
 - **Ansible Vault** — Encryption for sensitive files and variables so secrets can be stored in version control.
+- **Idempotency** — Running the same operation multiple times produces the same result without extra changes; Ansible playbooks are written to be idempotent, so a second run reports nothing changed.
 
 ## AWS
 

@@ -69,9 +69,14 @@
 - [Ansible nginx playbook](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker and Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
 - [Collection requirements and a Docker lifecycle playbook](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
+- [Configure a host with an Ansible playbook](../learn/06-iac-and-cloud/10-ansible-host-config.md) — install a package, start its service, and verify idempotency on a second run.
+- [Ansible playbook that installs and starts nginx](../Ansible/configs/configure-webserver.yml) — idempotent apt and service tasks for the webservers group.
+- [Ansible inventory for a local webserver host](../Ansible/configs/lab-inventory.ini) — names localhost in the webservers group, told to connect locally.
 - [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
 - [GitHub Actions CI workflow with env and secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
+- [Build, scan, and publish an image from CI](../learn/05-ci-cd/04-gha-scan-push.md) — builds, Trivy-scans, and publishes only when the scan is clean.
+- [Reuse pipeline steps across repositories](../learn/05-ci-cd/05-gha-reusable-workflows.md) — extract a build-scan-publish job into a reusable GitHub Actions workflow.
 - [Reusable deployment workflow with environment gates](../GitHub Actions/configs/reusable-deployment-workflow-environment-gates-approval.yaml)
 - [Multi-environment caller plus reusable deploy template](../GitHub Actions/templates/multi-env-deploy/README.md)
 - [GitLab CI first pipeline](../GitLab CI/configs/2026-06-22-first-pipeline.yaml)
