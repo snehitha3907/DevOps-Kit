@@ -3,6 +3,7 @@
 ## 2026-11-13
 
 - Added AWS lesson: AWS identity and networking basics — least-privilege IAM role, public/private VPC subnets, CloudWatch billing alarm (aws-019) (`learn/06-iac-and-cloud/03-aws-iam-vpc-basics.md`)
+- Added Terraform lesson: provision and destroy your first infrastructure — write, plan, apply, and destroy a small network, confirm no changes on the second plan (terraform-001) (`learn/06-iac-and-cloud/05-terraform-first-apply.md`)
 
 ## 2026-11-12
 
