@@ -1,0 +1,17 @@
+# last_verified: 2026-11-13 · Ansible 14.6.0
+---
+- name: Install and start nginx
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Ensure nginx is installed
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure nginx is started and enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
