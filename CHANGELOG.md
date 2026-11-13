@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-13
+
+- Added AWS lesson: AWS identity and networking basics — least-privilege IAM role, public/private VPC subnets, CloudWatch billing alarm (aws-019) (`learn/06-iac-and-cloud/03-aws-iam-vpc-basics.md`)
+
 ## 2026-11-12
 
 - Added GitHub Actions lesson: extract the build-scan-push job into a reusable workflow and call it with inputs and secrets from another workflow (github-actions-003) (`learn/05-ci-cd/05-gha-reusable-workflows.md`)
