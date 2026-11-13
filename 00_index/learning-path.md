@@ -55,7 +55,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 7. Reusable Terraform modules — *not written yet* · needs: Keep Terraform state remote and locked
 8. Plan and apply Terraform from CI with OIDC — *not written yet* · needs: Reusable Terraform modules, Reuse pipeline steps across repositories
 9. [Ansible — quick primer](../Ansible/notes/0000-primer-ansible.md)
-10. Configure a host with an Ansible playbook — *not written yet* · needs: Ansible — quick primer, Manage processes and services with systemd, Read and write YAML that validates
+10. [Configure a host with an Ansible playbook](../learn/06-iac-and-cloud/10-ansible-host-config.md) · needs: Ansible — quick primer, Manage processes and services with systemd, Read and write YAML that validates
 
 ## Stage 7: Kubernetes
 
