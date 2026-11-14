@@ -50,7 +50,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 2. [AWS — quick primer](../AWS/notes/0000-primer-aws.md)
 3. [AWS identity and networking basics](../learn/06-iac-and-cloud/03-aws-iam-vpc-basics.md) · needs: AWS — quick primer, Probe HTTP and TLS endpoints
 4. [Terraform — quick primer](../Terraform/notes/0000-primer-terraform.md)
-5. Provision and destroy your first infrastructure — *not written yet* · needs: Terraform — quick primer, Infrastructure as code concepts, AWS identity and networking basics
+5. [Provision and destroy your first infrastructure](../learn/06-iac-and-cloud/05-terraform-first-apply.md) · needs: Terraform — quick primer, Infrastructure as code concepts, AWS identity and networking basics
 6. Keep Terraform state remote and locked — *not written yet* · needs: Provision and destroy your first infrastructure
 7. Reusable Terraform modules — *not written yet* · needs: Keep Terraform state remote and locked
 8. Plan and apply Terraform from CI with OIDC — *not written yet* · needs: Reusable Terraform modules, Reuse pipeline steps across repositories
