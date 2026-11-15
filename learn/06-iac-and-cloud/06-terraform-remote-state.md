@@ -104,4 +104,4 @@ The previous lesson ran the plan/apply/destroy cycle against local files, with s
 
 ## Next
 
-[Reusable Terraform modules](../../00_index/learning-path.md)
+[Reusable Terraform modules](./07-terraform-modules.md)
