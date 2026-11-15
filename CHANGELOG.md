@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-15
+
+- Added Terraform lesson: keep state remote and locked — configure an S3 backend with `use_lockfile = true`, migrate state with `terraform init`, explain concurrent apply locking and `terraform force-unlock <LOCK_ID>` recovery (tf-040) (`learn/06-iac-and-cloud/06-terraform-remote-state.md`)
+- Updated `learn/06-iac-and-cloud/05-terraform-first-apply.md` `## Next` to link to the new remote-state lesson.
+
 ## 2026-11-13
 
 - Added AWS lesson: AWS identity and networking basics — least-privilege IAM role, public/private VPC subnets, CloudWatch billing alarm (aws-019) (`learn/06-iac-and-cloud/03-aws-iam-vpc-basics.md`)
