@@ -301,6 +301,9 @@
 - **Provider schema** — The structured description of every resource type and data source a provider exposes, including required and optional arguments and attribute types; emitted as JSON by `terraform providers schema -json`, it is the authoritative source of what a provider accepts.
 - **Schema contract** — A hand-written JSON file declaring the arguments and attributes a module requires from a provider, checked against the live schema export before CI merges, so a provider-version drift that silently drops a required field fails the build instead of surfacing at apply time.
 - **Module Registry** — The public (or private) catalog where versioned Terraform modules are published for others to consume; a module published with a version tag becomes selectable by `terraform init` and `source = "terraform-aws-modules/vpc/aws"`.
+- **`use_lockfile`** — Terraform backend setting (`use_lockfile = true`) that turns on native state locking for backends that support it (e.g. S3); generally available in Terraform 1.11+, it writes a lock object alongside the state file instead of relying on DynamoDB.
+- **`terraform force-unlock`** — Manually releases a stuck state lock by lock ID; only run it after confirming the lock-holding apply has finished, otherwise you risk corrupting state.
+- **`terraform init -reconfigure`** — Re-initializes a working directory when the backend block (bucket, key, or region) changes on an already-initialized backend; Terraform refuses to re-initialize without this flag.
 
 ## Trivy
 
@@ -508,6 +511,13 @@
 - **IAM role** — An identity with permissions that can be assumed by a user, service, or application, instead of using long-lived access keys.
 - **Least privilege** — Granting only the permissions a principal needs to perform its task, nothing more.
 - **StackSet** — A CloudFormation mechanism that provisions the same stack across multiple accounts and regions from one template.
+- **VPC** — A logically isolated virtual network in AWS; subnets live in a single Availability Zone and route tables direct traffic between them.
+- **Public subnet** — A subnet whose route table sends `0.0.0.0/0` to an internet gateway, so instances there can reach the internet and be reached from it.
+- **Private subnet** — A subnet whose route table sends `0.0.0.0/0` to a NAT gateway; instances can reach the internet for updates but cannot be reached directly from the internet.
+- **NAT gateway** — A managed AWS gateway in a public subnet (with an Elastic IP) that lets private-subnet instances reach the internet through the VPC's internet gateway.
+- **Internet gateway** — An AWS gateway that routes traffic between a VPC and the internet; public subnets route `0.0.0.0/0` to it.
+- **CloudWatch billing alarm** — An alarm on the `AWS/Billing` `EstimatedCharges` metric (in `us-east-1`) that notifies via SNS when estimated spend crosses a threshold; billing alerts must be enabled in the Billing console first.
+- **`sts:AssumeRole`** — The STS action a principal uses to assume an IAM role, declared in the role's trust policy as the `sts:AssumeRole` action on the service principal.
 
 ## Azure
 

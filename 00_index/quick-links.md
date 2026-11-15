@@ -69,6 +69,8 @@
 - [Ansible nginx playbook](../Ansible/snippets/nginx-playbook.yaml)
 - [Ansible Docker and Python setup playbook](../Ansible/configs/docker-python-setup.yaml)
 - [Collection requirements and a Docker lifecycle playbook](../Ansible/configs/ansible-collection-requirements-and-docker-lifecycle-playbook.yaml)
+- [Ansible webserver config](../Ansible/configs/configure-webserver.yml) — Newly added playbook config for a webserver.
+- [Ansible lab inventory](../Ansible/configs/lab-inventory.ini) — Newly added lab inventory file.
 - [Scan Ansible for antipatterns](../Ansible/scripts/scan-ansible-antipatterns.py)
 - [GitHub Actions CI workflow with env and secrets](../GitHub Actions/configs/2026-06-23-first-ci-workflow-with-env-and-secrets.yaml)
 - [GitHub Actions matrix node workflow](../GitHub Actions/configs/2026-08-07-matrix-node-workflow.yaml)
@@ -108,6 +110,8 @@
 - [Module registry publishing workflow template](../Terraform/templates/terraform-module-registry-publishing/README.md)
 - [Validate a Terraform provider schema against a contract](../Terraform/scripts/validate-provider-schema.go)
 - [Bootstrap a structured Terraform project](../Terraform/scripts/2026-06-12-bootstrap-terraform-project.sh)
+- [First Terraform apply](../learn/06-iac-and-cloud/05-terraform-first-apply.md) — Provision and destroy your first infrastructure.
+- [Terraform remote state with locking](../learn/06-iac-and-cloud/06-terraform-remote-state.md) — Remote Terraform state with locking.
 - [Generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 - [local_file and random_pet across two providers](../Terraform/configs/2026-09-19-local-file-random-provider.hcl)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
@@ -288,6 +292,7 @@
 - [Multi-account baseline with a CloudFormation StackSet](../AWS/templates/cloudformation-multi-account-stack-set/README.md)
 - [Scope least-privilege IAM policies](../AWS/docs/iam-policy-least-privilege-walkthrough.md)
 - [boto3 vs CloudFormation vs CDK on the same stack](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb)
+- [AWS IAM and VPC basics](../learn/06-iac-and-cloud/03-aws-iam-vpc-basics.md) — Least-privilege IAM role and a VPC with public and private subnets.
 
 ### Work with Azure
 
