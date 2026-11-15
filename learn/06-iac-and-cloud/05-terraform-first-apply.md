@@ -120,4 +120,4 @@ The Terraform primer showed you the plan/apply/destroy cycle in theory. This les
 
 ## Next
 
-[Keep Terraform state remote and locked](../../00_index/learning-path.md)
+[Keep Terraform state remote and locked](06-terraform-remote-state.md)
