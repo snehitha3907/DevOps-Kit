@@ -4,6 +4,7 @@
 
 - Added Terraform lesson: plan and apply Terraform from CI with OIDC — authenticate with an IAM OIDC provider instead of stored keys, post the plan to the PR, and apply only after merge (terraform-003) (`learn/06-iac-and-cloud/08-terraform-in-ci.md`)
 - Updated `learn/06-iac-and-cloud/07-terraform-modules.md` `## Next` to link to the new CI-with-OIDC lesson.
+- Added Kubernetes lesson: run the sample app on a local cluster — start a kind cluster, deploy a Deployment, expose it with a Service, and roll out a new image watching rollout status (kubernetes-001) (`learn/07-kubernetes/02-k8s-deploy-app.md`)
 
 ## 2026-11-15
 
