@@ -508,6 +508,7 @@
 - **IAM role** — An identity with permissions that can be assumed by a user, service, or application, instead of using long-lived access keys.
 - **Least privilege** — Granting only the permissions a principal needs to perform its task, nothing more.
 - **StackSet** — A CloudFormation mechanism that provisions the same stack across multiple accounts and regions from one template.
+- **VPC** — A virtual private cloud: a logically isolated virtual network in AWS where you launch resources, controlling IP ranges, subnets, route tables, and gateways.
 
 ## Azure
 

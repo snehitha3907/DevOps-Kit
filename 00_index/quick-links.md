@@ -111,6 +111,10 @@
 - [Generate an Ansible inventory from Terraform state](../Terraform/scripts/generate-ansible-inventory-from-terraform-state.py)
 - [local_file and random_pet across two providers](../Terraform/configs/2026-09-19-local-file-random-provider.hcl)
 - [for_each vs count notebook](../Terraform/notebooks/2026-07-02-comparing-for-each-vs-count.ipynb)
+- [Provision and destroy your first infrastructure](../learn/06-iac-and-cloud/05-terraform-first-apply.md) — Run the Terraform plan/apply/destroy cycle against local files.
+- [Keep Terraform state remote and locked](../learn/06-iac-and-cloud/06-terraform-remote-state.md) — Move state to an S3 backend with DynamoDB locking.
+- [Reusable Terraform modules](../learn/06-iac-and-cloud/07-terraform-modules.md) — Turn a network config into a reusable module with per-environment state.
+- [Plan and apply Terraform from CI with OIDC](../learn/06-iac-and-cloud/08-terraform-in-ci.md) — Terraform plan/apply in GitHub Actions authenticated to AWS with OIDC.
 
 ### Work with OpenTofu
 
@@ -288,6 +292,7 @@
 - [Multi-account baseline with a CloudFormation StackSet](../AWS/templates/cloudformation-multi-account-stack-set/README.md)
 - [Scope least-privilege IAM policies](../AWS/docs/iam-policy-least-privilege-walkthrough.md)
 - [boto3 vs CloudFormation vs CDK on the same stack](../AWS/notebooks/comparing-deployment-approaches-boto3-cloudformation-cdk.ipynb)
+- [AWS identity and networking basics](../learn/06-iac-and-cloud/03-aws-iam-vpc-basics.md) — Least-privilege IAM roles and a VPC with public and private subnets.
 
 ### Work with Azure
 
