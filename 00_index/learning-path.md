@@ -60,7 +60,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 ## Stage 7: Kubernetes
 
 1. [Kubernetes — quick primer](../Kubernetes/notes/0000-primer-kubernetes.md)
-2. Run the sample app on a local cluster — *not written yet* · needs: Kubernetes — quick primer, Run the app and Postgres with Docker Compose
+2. [Run the sample app on a local cluster](../learn/07-kubernetes/02-k8s-deploy-app.md) · needs: Kubernetes — quick primer, Run the app and Postgres with Docker Compose
 3. Configuration, secrets and ingress — *not written yet* · needs: Run the sample app on a local cluster
 4. Probes, resource limits and autoscaling — *not written yet* · needs: Configuration, secrets and ingress
 5. [Helm — quick primer](../Helm/notes/0000-primer-helm.md)
