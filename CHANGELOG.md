@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-16
+
+- Added Terraform lesson: plan and apply Terraform from CI with OIDC — authenticate with an IAM OIDC provider instead of stored keys, post the plan to the PR, and apply only after merge (terraform-003) (`learn/06-iac-and-cloud/08-terraform-in-ci.md`)
+- Updated `learn/06-iac-and-cloud/07-terraform-modules.md` `## Next` to link to the new CI-with-OIDC lesson.
+
 ## 2026-11-15
 
 - Added Terraform lesson: keep state remote and locked — configure an S3 backend with `use_lockfile = true`, migrate state with `terraform init`, explain concurrent apply locking and `terraform force-unlock <LOCK_ID>` recovery (tf-040) (`learn/06-iac-and-cloud/06-terraform-remote-state.md`)

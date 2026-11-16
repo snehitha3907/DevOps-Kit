@@ -180,4 +180,4 @@ From `environments/staging`:
 
 ## Next
 
-[Plan and apply Terraform from CI with OIDC](../../00_index/learning-path.md)
+[Plan and apply Terraform from CI with OIDC](./08-terraform-in-ci.md)
