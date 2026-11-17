@@ -15,11 +15,11 @@ A working devops engineer's quick-reference: first-contact notes, runnable snipp
 First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, and templates for devops tools across cloud (AWS, Azure, GCP), containers (Docker, Kubernetes), GitOps (ArgoCD, FluxCD), configuration management (Ansible, Terraform, OpenTofu, Pulumi), CI/CD (GitHub, GitHub Actions, GitLab CI, Jenkins), and observability (Prometheus, Grafana, OpenTelemetry, Trivy). Most tool folders pair a primer with runnable material you can copy and adapt.
 
 ## Quick links
-- [Build, scan, and publish an image from CI](learn/05-ci-cd/04-gha-scan-push.md) — GitHub Actions workflow that builds an image, scans it with Trivy, and publishes only when the scan is clean.
-- [Run tests on every pull request with GitHub Actions](learn/05-ci-cd/03-gha-build-test.md) — CI workflow plus a branch ruleset that blocks merges until the test check passes.
-- [Sample app and Postgres with Docker Compose healthchecks](Docker/manifests/app-postgres-healthchecks.compose.yaml) — Compose stack where the app waits for a healthy database before starting.
-- [Run the app and Postgres with Docker Compose](learn/04-containers/05-compose-app-db.md) — Compose file with healthchecks, and how to confirm both services report healthy.
-- [Scan a Docker image with Trivy](learn/04-containers/07-trivy-scan-image.md) — image vulnerability scan, severity filtering, and making the scan fail on CRITICAL findings.
+- [Configuration, secrets and ingress](learn/07-kubernetes/03-k8s-config-and-ingress.md) — Configure the sample app's secrets, config maps, and ingress on a local cluster.
+- [Run the sample app on a local cluster](learn/07-kubernetes/02-k8s-deploy-app.md) — Deploy the sample app to a local Kubernetes cluster.
+- [Plan and apply Terraform from CI with OIDC](learn/06-iac-and-cloud/08-terraform-in-ci.md) — Run Terraform plan and apply from GitHub Actions using OIDC.
+- [Reusable Terraform modules](learn/06-iac-and-cloud/07-terraform-modules.md) — Structure and reuse Terraform modules.
+- [Keep Terraform state remote and locked](learn/06-iac-and-cloud/06-terraform-remote-state.md) — Move Terraform state to a remote backend with locking.
 
 ## Layout
 - **00_index/** — Topics map, quick links, glossary, and learning path.
@@ -49,31 +49,31 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 
 ## Coverage
 <details>
-<summary>Coverage table (22 tools × 9 categories)</summary>
+<summary>Coverage table (23 tools × 9 categories)</summary>
 
 | Tool | Notes | Docs | Snippets | Scripts | Configs | Manifests | Notebooks | Dockerfiles | Templates | Last verified |
 |------|-------|------|----------|---------|---------|-----------|-----------|-------------|-----------|---------------|
-| Ansible | 10 | 7 | 2 | 4 | 8 | 10 | 2 | 1 | 68 | 2026-10-28 |
+| Ansible | 10 | 7 | 2 | 4 | 10 | 10 | 2 | 1 | 68 | 2026-10-28 |
 | ArgoCD | 3 | 2 | 1 | 3 | 3 | 2 | 0 | 0 | 13 | 2026-10-20 |
-| AWS | 2 | 2 | 3 | 7 | 3 | 0 | 1 | 0 | 7 | 2026-10-26 |
+| AWS | 2 | 2 | 3 | 7 | 3 | 0 | 1 | 0 | 7 | 2026-10-07 |
 | Azure | 4 | 2 | 3 | 5 | 2 | 2 | 0 | 0 | 10 | 2026-10-08 |
 | Docker | 6 | 11 | 2 | 5 | 1 | 9 | 3 | 9 | 12 | 2026-10-29 |
-| FluxCD | 2 | 2 | 0 | 2 | 2 | 0 | 0 | 0 | 0 | 2026-10-20 |
+| Flux CD | 2 | 2 | 0 | 2 | 2 | 0 | 0 | 0 | 0 | 2026-10-20 |
 | GCP | 2 | 1 | 2 | 6 | 4 | 0 | 0 | 0 | 0 | 2026-09-28 |
 | Git | 6 | 15 | 1 | 14 | 0 | 0 | 3 | 0 | 46 | 2026-10-27 |
-| GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-14 |
+| GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-10 |
 | GitHub Actions | 5 | 7 | 1 | 4 | 5 | 0 | 0 | 1 | 3 | 2026-10-27 |
-| GitLab CI | 4 | 2 | 1 | 5 | 4 | 0 | 0 | 1 | 8 | 2026-10-22 |
+| GitLab CI | 8 | 4 | 2 | 10 | 8 | 0 | 0 | 2 | 16 | 2026-10-22 |
 | Grafana | 4 | 3 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 2026-10-20 |
-| Grafana Cloud | 2 | 0 | 1 | 1 | 2 | 0 | 0 | 0 | 0 | 2026-10-13 |
+| Grafana Cloud | 2 | 0 | 1 | 1 | 2 | 0 | 0 | 0 | 0 | — |
 | HashiCorp Vault | 3 | 2 | 0 | 4 | 2 | 0 | 0 | 0 | 0 | 2026-10-25 |
 | Helm | 3 | 6 | 1 | 5 | 5 | 15 | 1 | 0 | 27 | 2026-10-21 |
-| Jenkins | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 2026-10-27 |
-| Kubernetes | 10 | 6 | 2 | 4 | 1 | 7 | 2 | 0 | 70 | 2026-10-27 |
+| Jenkins | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | — |
+| Kubernetes | 10 | 6 | 2 | 4 | 1 | 7 | 2 | 0 | 70 | 2026-10-25 |
 | OpenTelemetry | 2 | 2 | 2 | 2 | 2 | 0 | 0 | 0 | 0 | 2026-10-14 |
 | OpenTofu | 2 | 4 | 0 | 3 | 2 | 0 | 2 | 0 | 6 | 2026-10-10 |
 | Prometheus | 2 | 4 | 1 | 6 | 5 | 3 | 1 | 0 | 18 | 2026-10-29 |
-| Pulumi | 2 | 2 | 1 | 4 | 3 | 0 | 0 | 0 | 13 | 2026-10-30 |
+| Pulumi | 2 | 2 | 1 | 4 | 3 | 0 | 0 | 0 | 13 | 2026-10-14 |
 | Terraform | 6 | 8 | 3 | 4 | 10 | 2 | 2 | 0 | 39 | 2026-10-27 |
 | Trivy | 5 | 2 | 2 | 5 | 3 | 0 | 0 | 0 | 0 | 2026-10-19 |
 
@@ -83,4 +83,4 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 Currently adding first-contact notes and templates across the tool set, with recent work on GitHub Actions CI gating, Docker Compose healthchecks, and Trivy image scanning.
 
 ---
-_Last updated: 2026-11-11_
+_Last updated: 2026-11-17_
