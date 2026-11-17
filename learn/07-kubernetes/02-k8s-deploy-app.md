@@ -154,4 +154,4 @@ You should see: one deployment with 2 desired replicas, two Running pods, one se
 
 ## Next
 
-[Configuration, secrets and ingress](../../00_index/learning-path.md)
+[Configuration, secrets and ingress](03-k8s-config-and-ingress.md)
