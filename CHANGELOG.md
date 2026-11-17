@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-17
+
+- Added Kubernetes lesson: Probes, resource limits and autoscaling — liveness/readiness probes on /health, CPU/memory requests and limits, HorizontalPodAutoscaler scaling (kubernetes-003) (`learn/07-kubernetes/04-k8s-probes-limits-hpa.md`)
+- Updated `learn/07-kubernetes/03-k8s-config-and-ingress.md` `## Next` to link to the new probes/limits/HPA lesson (kubernetes-003)
+
 ## 2026-11-16
 
 - Added Terraform lesson: plan and apply Terraform from CI with OIDC — authenticate with an IAM OIDC provider instead of stored keys, post the plan to the PR, and apply only after merge (terraform-003) (`learn/06-iac-and-cloud/08-terraform-in-ci.md`)

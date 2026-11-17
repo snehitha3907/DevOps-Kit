@@ -172,4 +172,4 @@ You should see: the ConfigMap and Secret listed, one Deployment with 2 desired r
 
 ## Next
 
-[Probes, resource limits and autoscaling](../../00_index/learning-path.md)
+[Probes, resource limits and autoscaling](04-k8s-probes-limits-hpa.md)
