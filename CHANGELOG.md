@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-18
+
+- Added Helm lesson: Package the sample app as a Helm chart — turn the app's manifests into a chart with staging and production values, upgrade a release, and roll it back (helm-001) (`learn/07-kubernetes/06-helm-package-app.md`)
+
 ## 2026-11-17
 
 - Added Kubernetes lesson: Probes, resource limits and autoscaling — liveness/readiness probes on /health, CPU/memory requests and limits, HorizontalPodAutoscaler scaling (kubernetes-003) (`learn/07-kubernetes/04-k8s-probes-limits-hpa.md`)
