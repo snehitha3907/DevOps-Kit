@@ -259,6 +259,10 @@
 - [Migrate a path-based Ingress to Gateway API](../Kubernetes/docs/gateway-api-migration-from-ingress.md)
 - [Reusable custom-resource reconciliation core](../Kubernetes/scripts/custom-resource-reconciliation-controller.go)
 - [Kubebuilder operator scaffold](../Kubernetes/templates/kubebuilder-operator-scaffold/README.md)
+- [Run the sample app on a local cluster](../learn/07-kubernetes/02-k8s-deploy-app.md) — deploy the sample app to a local Kubernetes cluster
+- [Configuration, secrets, and ingress](../learn/07-kubernetes/03-k8s-config-and-ingress.md) — configure secrets, config maps, and ingress for the sample app
+- [Probes, limits, and HPA](../learn/07-kubernetes/04-k8s-probes-limits-hpa.md) — add liveness/readiness probes, limits, and autoscaling
+- [Package the sample app with Helm](../learn/07-kubernetes/06-helm-package-app.md) — build and install a Helm chart for the sample app
 
 ### Sync a GitOps app
 
@@ -327,6 +331,7 @@
 - [Reusable microservice chart](../Helm/templates/microservice-chart/README.md)
 - [Microservice chart defaults](../Helm/templates/microservice-chart/values.yaml)
 - [Shared base values for multi-cluster GitOps](../Helm/configs/multi-cluster-gitops-values.yaml)
+- [Package the sample app with Helm](../learn/07-kubernetes/06-helm-package-app.md) — build and install a Helm chart for the sample app
 - [Chart testing with `ct lint`](../Helm/docs/chart-testing-ct-lint.md)
 - [Validate chart values across envs](../Helm/scripts/validate-chart-values-across-environments.sh)
 

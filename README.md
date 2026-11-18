@@ -15,6 +15,8 @@ A working devops engineer's quick-reference: first-contact notes, runnable snipp
 First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, and templates for devops tools across cloud (AWS, Azure, GCP), containers (Docker, Kubernetes), GitOps (ArgoCD, FluxCD), configuration management (Ansible, Terraform, OpenTofu, Pulumi), CI/CD (GitHub, GitHub Actions, GitLab CI, Jenkins), and observability (Prometheus, Grafana, OpenTelemetry, Trivy). Most tool folders pair a primer with runnable material you can copy and adapt.
 
 ## Quick links
+- [Package the sample app with Helm](learn/07-kubernetes/06-helm-package-app.md) — Build a Helm chart for the sample app and install it.
+- [Probes, limits, and horizontal pod autoscaling](learn/07-kubernetes/04-k8s-probes-limits-hpa.md) — Add liveness/readiness probes, resource limits, and HPA to the sample app.
 - [Configuration, secrets and ingress](learn/07-kubernetes/03-k8s-config-and-ingress.md) — Configure the sample app's secrets, config maps, and ingress on a local cluster.
 - [Run the sample app on a local cluster](learn/07-kubernetes/02-k8s-deploy-app.md) — Deploy the sample app to a local Kubernetes cluster.
 - [Plan and apply Terraform from CI with OIDC](learn/06-iac-and-cloud/08-terraform-in-ci.md) — Run Terraform plan and apply from GitHub Actions using OIDC.
@@ -83,4 +85,4 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 Currently adding first-contact notes and templates across the tool set, with recent work on GitHub Actions CI gating, Docker Compose healthchecks, and Trivy image scanning.
 
 ---
-_Last updated: 2026-11-17_
+_Last updated: 2026-11-18_
