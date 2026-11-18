@@ -64,7 +64,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 3. [Configuration, secrets and ingress](../learn/07-kubernetes/03-k8s-config-and-ingress.md) · needs: Run the sample app on a local cluster
 4. [Probes, resource limits and autoscaling](../learn/07-kubernetes/04-k8s-probes-limits-hpa.md) · needs: Configuration, secrets and ingress
 5. [Helm — quick primer](../Helm/notes/0000-primer-helm.md)
-6. Package the sample app as a Helm chart — *not written yet* · needs: Helm — quick primer, Probes, resource limits and autoscaling
+6. [Package the sample app as a Helm chart](../learn/07-kubernetes/06-helm-package-app.md) · needs: Helm — quick primer, Probes, resource limits and autoscaling
 
 ## Stage 8: GitOps
 
