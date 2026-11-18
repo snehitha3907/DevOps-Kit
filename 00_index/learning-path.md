@@ -69,7 +69,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 ## Stage 8: GitOps
 
 1. [ArgoCD — quick primer](../ArgoCD/notes/0000-primer-argocd.md)
-2. Deploy from Git with ArgoCD and roll back — *not written yet* · needs: ArgoCD — quick primer, Package the sample app as a Helm chart, Undo mistakes and recover lost work
+2. [Deploy from Git with ArgoCD and roll back](../learn/08-gitops/02-argocd-deploy-and-rollback.md) · needs: ArgoCD — quick primer, Package the sample app as a Helm chart, Undo mistakes and recover lost work
 
 ## Stage 9: Observability
 
