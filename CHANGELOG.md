@@ -2,6 +2,7 @@
 
 ## 2026-11-18
 
+- Added ArgoCD lesson: Deploy from Git with ArgoCD and roll back — point an ArgoCD Application at the app's manifests in Git, change the image tag and watch the cluster follow, then roll back by reverting the commit (argocd-001) (`learn/08-gitops/02-argocd-deploy-and-rollback.md`)
 - Added Helm lesson: Package the sample app as a Helm chart — turn the app's manifests into a chart with staging and production values, upgrade a release, and roll it back (helm-001) (`learn/07-kubernetes/06-helm-package-app.md`)
 
 ## 2026-11-17
