@@ -75,7 +75,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 
 1. [Monitoring and observability concepts](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 2. [Prometheus — quick primer](../Prometheus/notes/0000-primer-prometheus.md)
-3. Scrape the sample app and alert on errors — *not written yet* · needs: Prometheus — quick primer, Monitoring and observability concepts, Probes, resource limits and autoscaling
+3. [Scrape the sample app and alert on errors](../learn/09-observability/03-prometheus-scrape-and-alert.md) · needs: Prometheus — quick primer, Monitoring and observability concepts, Probes, resource limits and autoscaling
 4. A Grafana dashboard kept in Git — *not written yet* · needs: Scrape the sample app and alert on errors
 5. Define an SLO and alert on its burn rate — *not written yet* · needs: A Grafana dashboard kept in Git
 6. Trace one request with OpenTelemetry — *not written yet* · needs: Scrape the sample app and alert on errors
