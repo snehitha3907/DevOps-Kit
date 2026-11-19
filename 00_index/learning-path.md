@@ -76,7 +76,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 1. [Monitoring and observability concepts](../docs/concepts/monitoring-observability-concepts/0000-primer-monitoring-observability-concepts.md)
 2. [Prometheus — quick primer](../Prometheus/notes/0000-primer-prometheus.md)
 3. [Scrape the sample app and alert on errors](../learn/09-observability/03-prometheus-scrape-and-alert.md) · needs: Prometheus — quick primer, Monitoring and observability concepts, Probes, resource limits and autoscaling
-4. A Grafana dashboard kept in Git — *not written yet* · needs: Scrape the sample app and alert on errors
+4. [A Grafana dashboard kept in Git](../learn/09-observability/04-grafana-dashboard-as-code.md) · needs: Scrape the sample app and alert on errors
 5. Define an SLO and alert on its burn rate — *not written yet* · needs: A Grafana dashboard kept in Git
 6. Trace one request with OpenTelemetry — *not written yet* · needs: Scrape the sample app and alert on errors
 
@@ -129,6 +129,7 @@ Background material per tool, for looking things up after the lesson.
 | Helm | [Helm/](../Helm/) |
 | ArgoCD | [ArgoCD/](../ArgoCD/) |
 | Prometheus | [Prometheus/](../Prometheus/) |
+| Grafana | [Grafana/](../Grafana/) |
 | Azure | [Azure/](../Azure/) |
 | GCP | [GCP/](../GCP/) |
 | GitLab CI | [GitLab CI/](../GitLab CI/) |
