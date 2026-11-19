@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-19
+
+- Added Prometheus lesson: Scrape the sample app and alert on errors — point Prometheus at the app's /metrics endpoint, confirm up == 1, then write an error-rate alert that fires on injected failures (prometheus-001) (`learn/09-observability/03-prometheus-scrape-and-alert.md`)
+
 ## 2026-11-18
 
 - Added ArgoCD lesson: Deploy from Git with ArgoCD and roll back — point an ArgoCD Application at the app's manifests in Git, change the image tag and watch the cluster follow, then roll back by reverting the commit (argocd-001) (`learn/08-gitops/02-argocd-deploy-and-rollback.md`)
