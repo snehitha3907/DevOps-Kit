@@ -390,6 +390,8 @@
 - [Provision a Prometheus datasource and dashboard as files](../graf/configs/2026-10-13-minimal-datasource-dashboard-provisioning.yaml)
 - [Build a multi-panel service dashboard via Grafana HTTP API](../graf/scripts/build-multi-panel-service-dashboard-via-http-api.py)
 
+- [App overview dashboard](../Grafana/configs/app-overview-dashboard.json) — Grafana dashboard for request rate, error rate, and latency.
+- [Dashboard provisioning config](../Grafana/configs/dashboards-provider.yaml) — File-based Grafana dashboard provisioning.
 ### Ship metrics to Grafana Cloud
 
 - [First hosted dashboard in Grafana Cloud](../grafc/notes/2026-09-30-first-hosted-dashboard.md)
