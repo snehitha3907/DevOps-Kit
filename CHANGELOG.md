@@ -2,6 +2,8 @@
 
 ## 2026-11-19
 
+- Added Grafana lesson: A Grafana dashboard kept in Git — provision a Prometheus data source and a dashboard from files and show the app's request rate, error rate, and latency (grafana-001) (`learn/09-observability/04-grafana-dashboard-as-code.md`) plus companion `Grafana/configs/prometheus-datasource.yaml`, `Grafana/configs/dashboards-provider.yaml`, and `Grafana/configs/app-overview-dashboard.json`
+- Updated `learn/09-observability/03-prometheus-scrape-and-alert.md` `## Next` to link to the new Grafana dashboard lesson (grafana-001)
 - Added Prometheus lesson: Scrape the sample app and alert on errors — point Prometheus at the app's /metrics endpoint, confirm up == 1, then write an error-rate alert that fires on injected failures (prometheus-001) (`learn/09-observability/03-prometheus-scrape-and-alert.md`)
 
 ## 2026-11-18

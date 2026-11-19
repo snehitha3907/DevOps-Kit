@@ -189,4 +189,4 @@ You should see: the `/metrics` endpoint returns `HELP`/`TYPE` lines, both `promt
 
 ## Next
 
-[A Grafana dashboard kept in Git](../../00_index/learning-path.md)
+[A Grafana dashboard kept in Git](04-grafana-dashboard-as-code.md)

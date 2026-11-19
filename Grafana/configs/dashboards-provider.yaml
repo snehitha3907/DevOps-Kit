@@ -1,0 +1,16 @@
+# last_verified: 2026-11-19 · Grafana 13.3.1
+# Provision dashboards from a folder of JSON files. Drop this under
+# /etc/grafana/provisioning/dashboards/ (or point GF_DASHBOARDS_PATH at the
+# folder). Grafana polls the path every updateIntervalSeconds (>10s on bind
+# mounts) and overwrites UI edits unless allowUiUpdates is true.
+apiVersion: 1
+providers:
+  - name: 'App dashboards'
+    orgId: 1
+    type: file
+    disableDeletion: true
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards
+      foldersFromFilesStructure: true
