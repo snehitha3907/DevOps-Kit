@@ -1,0 +1,17 @@
+# last_verified: 2026-11-19 · OpenTelemetry n/a
+# Collector config for this lesson: OTLP receiver (gRPC 4317 + HTTP 4318) and a
+# debug exporter that logs every span to stdout so you can inspect trace IDs.
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+exporters:
+  debug: {}
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
