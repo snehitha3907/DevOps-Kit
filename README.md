@@ -15,13 +15,11 @@ A working devops engineer's quick-reference: first-contact notes, runnable snipp
 First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, and templates for devops tools across cloud (AWS, Azure, GCP), containers (Docker, Kubernetes), GitOps (ArgoCD, FluxCD), configuration management (Ansible, Terraform, OpenTofu, Pulumi), CI/CD (GitHub, GitHub Actions, GitLab CI, Jenkins), and observability (Prometheus, Grafana, OpenTelemetry, Trivy). Most tool folders pair a primer with runnable material you can copy and adapt.
 
 ## Quick links
-- [Package the sample app with Helm](learn/07-kubernetes/06-helm-package-app.md) — Build a Helm chart for the sample app and install it.
-- [Probes, limits, and horizontal pod autoscaling](learn/07-kubernetes/04-k8s-probes-limits-hpa.md) — Add liveness/readiness probes, resource limits, and HPA to the sample app.
-- [Configuration, secrets and ingress](learn/07-kubernetes/03-k8s-config-and-ingress.md) — Configure the sample app's secrets, config maps, and ingress on a local cluster.
-- [Run the sample app on a local cluster](learn/07-kubernetes/02-k8s-deploy-app.md) — Deploy the sample app to a local Kubernetes cluster.
-- [Plan and apply Terraform from CI with OIDC](learn/06-iac-and-cloud/08-terraform-in-ci.md) — Run Terraform plan and apply from GitHub Actions using OIDC.
-- [Reusable Terraform modules](learn/06-iac-and-cloud/07-terraform-modules.md) — Structure and reuse Terraform modules.
-- [Keep Terraform state remote and locked](learn/06-iac-and-cloud/06-terraform-remote-state.md) — Move Terraform state to a remote backend with locking.
+- [Deploy from Git with ArgoCD and roll back](learn/08-gitops/02-argocd-deploy-and-rollback.md) — Point an ArgoCD Application at a Git repo, sync the cluster, and roll back by reverting the commit.
+- [Package the sample app as a Helm chart](learn/07-kubernetes/06-helm-package-app.md) — Turn the app's manifests into a chart with per-environment values, then install, upgrade, and roll back releases.
+- [Probes, resource limits and autoscaling](learn/07-kubernetes/04-k8s-probes-limits-hpa.md) — Add liveness and readiness probes, set CPU and memory requests and limits, and scale with a HorizontalPodAutoscaler.
+- [Configuration, secrets and ingress](learn/07-kubernetes/03-k8s-config-and-ingress.md) — Pass settings through a ConfigMap, inject a database password as a Secret, and expose the app with an Ingress.
+- [Run the sample app on a local cluster](learn/07-kubernetes/02-k8s-deploy-app.md) — Start a local cluster, deploy the app as a Deployment and Service, and roll out a new image.
 
 ## Layout
 - **00_index/** — Topics map, quick links, glossary, and learning path.
@@ -65,7 +63,7 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 | Git | 6 | 15 | 1 | 14 | 0 | 0 | 3 | 0 | 46 | 2026-10-27 |
 | GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-10 |
 | GitHub Actions | 5 | 7 | 1 | 4 | 5 | 0 | 0 | 1 | 3 | 2026-10-27 |
-| GitLab CI | 8 | 4 | 2 | 10 | 8 | 0 | 0 | 2 | 16 | 2026-10-22 |
+| GitLab CI | 4 | 2 | 1 | 5 | 4 | 0 | 0 | 1 | 8 | 2026-10-22 |
 | Grafana | 4 | 3 | 0 | 2 | 1 | 0 | 0 | 0 | 0 | 2026-10-20 |
 | Grafana Cloud | 2 | 0 | 1 | 1 | 2 | 0 | 0 | 0 | 0 | — |
 | HashiCorp Vault | 3 | 2 | 0 | 4 | 2 | 0 | 0 | 0 | 0 | 2026-10-25 |
@@ -85,4 +83,4 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 Currently adding first-contact notes and templates across the tool set, with recent work on GitHub Actions CI gating, Docker Compose healthchecks, and Trivy image scanning.
 
 ---
-_Last updated: 2026-11-18_
+_Last updated: 2026-11-19_

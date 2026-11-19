@@ -267,6 +267,7 @@
 ### Sync a GitOps app
 
 - [ArgoCD quickstart](../ArgoCD/notes/2026-08-11-argocd-quickstart.md)
+- [Deploy from Git with ArgoCD and roll back](../learn/08-gitops/02-argocd-deploy-and-rollback.md) — Point an ArgoCD Application at a Git repo, sync the cluster, and roll back by reverting the commit.
 - [Wire ArgoCD to a private GitHub repo](../ArgoCD/docs/how-i-wired-argocd-with-github-for-gitops-deployment.md)
 - [ArgoCD + Vault + External Secrets integration](../ArgoCD/docs/argocd-vault-external-secrets.md)
 - [Build an Application and drive a sync to health](../ArgoCD/scripts/build-argocd-application-from-scratch.sh)
