@@ -131,6 +131,7 @@ Background material per tool, for looking things up after the lesson.
 | Prometheus | [Prometheus/](../Prometheus/) |
 | Grafana | [Grafana/](../Grafana/) |
 | OpenTelemetry | [OpenTelemetry/](../OpenTelemetry/) |
+| HashiCorp Vault | [Vault/](../Vault/) |
 | Azure | [Azure/](../Azure/) |
 | GCP | [GCP/](../GCP/) |
 | GitLab CI | [GitLab CI/](../GitLab CI/) |
