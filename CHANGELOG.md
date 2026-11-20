@@ -6,6 +6,8 @@
 - Updated `learn/09-observability/03-prometheus-scrape-and-alert.md` `## Next` to link to the new Grafana dashboard lesson (grafana-001)
 - Added Prometheus lesson: Scrape the sample app and alert on errors — point Prometheus at the app's /metrics endpoint, confirm up == 1, then write an error-rate alert that fires on injected failures (prometheus-001) (`learn/09-observability/03-prometheus-scrape-and-alert.md`)
 - Added OpenTelemetry lesson: Trace one request with OpenTelemetry — instrument a Python app, run a local Collector, and follow one request from the app into a database call by propagating the W3C traceparent header (opentelemetry-001) (`learn/09-observability/06-otel-trace-request.md`) plus companion `OpenTelemetry/configs/collector-debug.yaml` and `OpenTelemetry/scripts/demo-app.py`
+- Added Prometheus lesson: Define an SLO and alert on its burn rate — write an availability SLO recording rule and fast/slow burn-rate alerts that fire on injected failures (prometheus-002) (`learn/09-observability/05-slo-and-burn-rate.md`)
+- Updated `learn/09-observability/04-grafana-dashboard-as-code.md` `## Next` to link to the new SLO/burn-rate lesson (prometheus-002)
 
 ## 2026-11-18
 

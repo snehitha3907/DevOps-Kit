@@ -189,4 +189,4 @@ You should see: the JSON parses with no error, `prometheus-main` appears in both
 
 ## Next
 
-[Continue the learning path](../../00_index/learning-path.md)
+[Define an SLO and alert on its burn rate](05-slo-and-burn-rate.md)
