@@ -77,7 +77,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 2. [Prometheus — quick primer](../Prometheus/notes/0000-primer-prometheus.md)
 3. [Scrape the sample app and alert on errors](../learn/09-observability/03-prometheus-scrape-and-alert.md) · needs: Prometheus — quick primer, Monitoring and observability concepts, Probes, resource limits and autoscaling
 4. [A Grafana dashboard kept in Git](../learn/09-observability/04-grafana-dashboard-as-code.md) · needs: Scrape the sample app and alert on errors
-5. Define an SLO and alert on its burn rate — *not written yet* · needs: A Grafana dashboard kept in Git
+5. [Define an SLO and alert on its burn rate](../learn/09-observability/05-slo-and-burn-rate.md) · needs: A Grafana dashboard kept in Git
 6. [Trace one request with OpenTelemetry](../learn/09-observability/06-otel-trace-request.md) · needs: Scrape the sample app and alert on errors
 
 ## Stage 10: Security and secrets
