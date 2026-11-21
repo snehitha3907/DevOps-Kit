@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-21
+
+- Added HashiCorp Vault lesson: Remove static secrets from the cluster — write a database password into Vault KV v2, guard it with a read-only policy, issue a scoped token, and run an app that fetches the password from Vault at runtime with no secret value in Git (hashicorp-vault-002) (`learn/10-security/03-vault-secrets-in-kubernetes.md`)
+- Updated `learn/10-security/02-vault-kv-basics.md` `## Next` to link to the new Vault secrets lesson (hashicorp-vault-002)
+
 ## 2026-11-19
 
 - Added Grafana lesson: A Grafana dashboard kept in Git — provision a Prometheus data source and a dashboard from files and show the app's request rate, error rate, and latency (grafana-001) (`learn/09-observability/04-grafana-dashboard-as-code.md`) plus companion `Grafana/configs/prometheus-datasource.yaml`, `Grafana/configs/dashboards-provider.yaml`, and `Grafana/configs/app-overview-dashboard.json`
