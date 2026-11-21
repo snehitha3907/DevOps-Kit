@@ -161,4 +161,4 @@ Expected: `Error making API request: ... Code: 403; permission denied` (or equiv
 
 ## Next
 
-[Continue the learning path](../../00_index/learning-path.md)
+[Remove static secrets from the cluster](03-vault-secrets-in-kubernetes.md)
