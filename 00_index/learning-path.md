@@ -82,7 +82,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 
 ## Stage 10: Security and secrets
 
-1. SBOMs and image policy in the pipeline — *not written yet* · needs: Scan and publish the image from CI, Deploy from Git with ArgoCD and roll back
+1. [SBOMs and image policy in the pipeline](../learn/10-security/01-supply-chain-in-ci.md) · needs: Scan and publish the image from CI, Deploy from Git with ArgoCD and roll back
 2. [Store and read secrets with Vault](../learn/10-security/02-vault-kv-basics.md) · needs: Configuration, secrets and ingress
 3. Remove static secrets from the cluster — *not written yet* · needs: Store and read secrets with Vault, Deploy from Git with ArgoCD and roll back
 
