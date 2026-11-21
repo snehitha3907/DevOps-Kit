@@ -139,4 +139,4 @@ If you commented out `propagate.inject` in step 3 of the Exercise, the `db-query
 
 ## Next
 
-[Continue the learning path](../../00_index/learning-path.md)
+[SBOMs and image policy in the pipeline](../10-security/01-supply-chain-in-ci.md)
