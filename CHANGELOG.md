@@ -1025,3 +1025,7 @@ feat: docker-004
 - Added Kubernetes lesson: Configuration, secrets and ingress — ConfigMap, Secret, and Ingress for exposing and configuring the sample app on a local cluster (kubernetes-002) (`learn/07-kubernetes/03-k8s-config-and-ingress.md`)
 - Updated the previous Kubernetes lesson's ## Next to link the new Configuration, secrets and ingress lesson (kubernetes-002) (`learn/07-kubernetes/02-k8s-deploy-app.md`)
 - Added Vault lesson: Store and read secrets with Vault — dev mode, KV v2 read/write/versioning, and a read-only policy plus scoped token (hashicorp-vault-001) (`learn/10-security/02-vault-kv-basics.md`) plus companion `Vault/configs/app-read-only-policy.hcl`.
+
+## 2026-11-21
+Passed ([x]) hashicorp-vault-001 — HashiCorp Vault: lesson — Store and read secrets with Vault · Level: L3 · 2026-11-21
+Passed ([x]) trivy-002 — Trivy: lesson — SBOMs and image policy in the pipeline · Level: L4 · 2026-11-21
