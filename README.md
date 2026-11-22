@@ -85,4 +85,4 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 Currently adding first-contact notes and templates across the tool set, with recent work on GitHub Actions CI gating, Docker Compose healthchecks, and Trivy image scanning.
 
 ---
-_Last updated: 2026-11-18_
+_Last updated: 2026-11-21_
