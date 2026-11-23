@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-22
+
+- Added Kubernetes lesson: Run an incident drill with a runbook — follow a runbook to diagnose a failing deployment from its alert, use kubectl to identify root cause (ImagePullBackOff, CrashLoopBackOff, OOMKilled, probe failures), roll back with kubectl rollout undo, confirm recovery, and write a post-incident note (kubernetes-004) (`learn/11-operations/01-incident-drill.md`) plus companion `Kubernetes/configs/incident-runbook.yaml` and `Kubernetes/scripts/inject-failure.sh`
+- Updated `learn/10-security/03-vault-secrets-in-kubernetes.md` `## Next` to link to the new incident drill lesson (kubernetes-004)
+
 ## 2026-11-21
 
 - Added HashiCorp Vault lesson: Remove static secrets from the cluster — write a database password into Vault KV v2, guard it with a read-only policy, issue a scoped token, and run an app that fetches the password from Vault at runtime with no secret value in Git (hashicorp-vault-002) (`learn/10-security/03-vault-secrets-in-kubernetes.md`)

@@ -1,0 +1,194 @@
+# last_verified: 2026-11-22 · Kubernetes n/a
+# Incident Runbook Template for Kubernetes Deployment Failures
+#
+# Usage:
+#   1. When an alert fires (e.g., fast burn rate, high error rate, Deployment unavailable),
+#      open this runbook and follow the steps in order.
+#   2. Fill in the incident details at the top.
+#   3. Execute each diagnosis command, record the output.
+#   4. Once root cause is identified, execute the rollback procedure.
+#   5. Verify recovery, then write the post-incident note.
+#
+# This template covers the four most common failure modes practiced in the
+# "Run an incident drill with a runbook" lesson:
+#   - ImagePullBackOff (bad image tag/registry auth)
+#   - CrashLoopBackOff (application crashes on start)
+#   - OOMKilled (memory limit too low)
+#   - Readiness/Liveness probe failure (wrong path/port, app not ready)
+#
+# Save a filled copy as: incidents/INC-<YYYYMMDD>-<sequence>.yaml
+
+---
+# INCIDENT METADATA (fill in when alert fires)
+incident_id: "INC-YYYYMMDD-XXX"
+title: "Deployment failure on <deployment-name>"
+severity: "P2"  # P1=critical outage, P2=degraded, P3=minor
+status: "investigating"  # investigating, mitigated, resolved
+alert_source: "Prometheus Alertmanager / Grafana / PagerDuty"
+alert_name: "DemoAppFastBurn"  # or other alert that triggered
+alert_time: "YYYY-MM-DDTHH:MM:SSZ"
+on_call: "<engineer-name>"
+namespace: "default"
+deployment: "web-app"
+
+# DIAGNOSIS COMMANDS (run in order, record output)
+diagnosis:
+  step_1_events:
+    description: "Check recent events for the Deployment's pods"
+    command: "kubectl get events -n {{namespace}} --sort-by='.lastTimestamp' | grep -E '{{deployment}}|Warning'"
+    expected: "Look for Failed/Warning events: FailedPullImage, BackOffPullImage, Killing, OOMKilling, ProbeWarning"
+    output: ""
+
+  step_2_pod_status:
+    description: "Get pod status and readiness"
+    command: "kubectl get pods -n {{namespace}} -l app={{deployment}} -o wide"
+    expected: "Check STATUS (Running, CrashLoopBackOff, ImagePullBackOff, Pending), READY column, RESTARTS"
+    output: ""
+
+  step_3_describe_pod:
+    description: "Describe a failing pod for detailed events and state"
+    command: "POD=$(kubectl get pods -n {{namespace}} -l app={{deployment}} -o jsonpath='{.items[0].metadata.name}'); kubectl describe pod $POD -n {{namespace}}"
+    expected: "State section shows reason (ImagePullBackOff, CrashLoopBackOff, OOMKilled, Terminated); Events at bottom show chronological failures"
+    output: ""
+
+  step_4_logs:
+    description: "Check container logs (use --previous for CrashLoopBackOff)"
+    command: "POD=$(kubectl get pods -n {{namespace}} -l app={{deployment}} -o jsonpath='{.items[0].metadata.name}'); kubectl logs $POD -n {{namespace}} --previous"
+    expected: "Application error messages, stack traces, or 'exited with code X'"
+    output: ""
+
+  step_5_rollout_history:
+    description: "Check Deployment rollout history to see revisions"
+    command: "kubectl rollout history deployment/{{deployment}} -n {{namespace}}"
+    expected: "List of revisions with CHANGE-CAUSE; latest revision should correspond to the breaking change"
+    output: ""
+
+  step_6_rollout_status:
+    description: "Check current rollout status"
+    command: "kubectl rollout status deployment/{{deployment}} -n {{namespace}} --timeout=30s"
+    expected: "Either 'successfully rolled out' or timeout with error indicating rollout stalled"
+    output: ""
+
+# FAILURE MODE IDENTIFICATION (match your observations)
+failure_modes:
+  - name: "ImagePullBackOff"
+    indicators:
+      - "Events: Failed to pull image, Back-off pulling image"
+      - "Pod status: ImagePullBackOff"
+      - "Describe: Image field shows non-existent tag or private registry without credentials"
+    root_cause: "Image tag does not exist in registry, or registry auth missing/expired"
+    rollback_works: true
+
+  - name: "CrashLoopBackOff"
+    indicators:
+      - "Pod status: CrashLoopBackOff"
+      - "Describe: State: Waiting, Reason: CrashLoopBackOff, Restart Count incrementing"
+      - "Logs (--previous): Application exits with non-zero code immediately"
+    root_cause: "Application crashes on startup (config error, missing dependency, code bug)"
+    rollback_works: true
+
+  - name: "OOMKilled"
+    indicators:
+      - "Pod status: OOMKilled (or Terminated with Exit Code 137)"
+      - "Describe: State: Terminated, Reason: OOMKilled, Exit Code: 137"
+      - "Events: Killed process, OOMKilling"
+    root_cause: "Container memory limit too low for the workload"
+    rollback_works: true
+
+  - name: "ReadinessProbeFailure"
+    indicators:
+      - "Pod status: Running but READY 0/1"
+      - "Describe: Readiness probe failed: HTTP probe failed with statuscode: 404 (or connection refused)"
+      - "Rollout status: stalls, new ReplicaSet never becomes Available"
+    root_cause: "Probe path/port wrong, or app not serving on that endpoint yet"
+    rollback_works: true
+
+  - name: "LivenessProbeFailure"
+    indicators:
+      - "Pod status: Running but RESTARTS incrementing"
+      - "Describe: Liveness probe failed, container restarted"
+      - "Events: Killing container, BackOff"
+    root_cause: "App deadlocked or unhealthy; liveness probe correctly detects and restarts"
+    rollback_works: true
+
+# ROLLBACK PROCEDURE
+rollback:
+  step_1_identify_target_revision:
+    description: "Identify the revision to roll back to (usually the previous one)"
+    command: "kubectl rollout history deployment/{{deployment}} -n {{namespace}}"
+    action: "Note the revision number before the breaking change (e.g., if latest is 3 and it broke, target is 2)"
+
+  step_2_execute_rollback:
+    description: "Roll back to the previous revision (or specific revision)"
+    command: "kubectl rollout undo deployment/{{deployment}} -n {{namespace}}"
+    alternative: "kubectl rollout undo deployment/{{deployment}} -n {{namespace}} --to-revision=<N>"
+    expected: "deployment.apps/{{deployment}} rolled back"
+
+  step_3_wait_for_rollout:
+    description: "Wait for the rollback rollout to complete"
+    command: "kubectl rollout status deployment/{{deployment}} -n {{namespace}}"
+    expected: "deployment.apps/{{deployment}} successfully rolled out"
+
+  step_4_verify_pods:
+    description: "Confirm all pods are Running and Ready"
+    command: "kubectl get pods -n {{namespace}} -l app={{deployment}}"
+    expected: "All pods show STATUS=Running, READY=<containers>/<containers>"
+
+# VERIFICATION
+verification:
+  step_1_health_endpoints:
+    description: "Check application health endpoints"
+    commands:
+      - "kubectl port-forward -n {{namespace}} svc/{{deployment}}-service 8080:80 &"
+      - "sleep 2"
+      - "curl -sf http://localhost:8080/healthz"
+      - "curl -sf http://localhost:8080/ready"
+      - "kill %1"
+    expected: "Both endpoints return HTTP 200"
+
+  step_2_prometheus_metrics:
+    description: "Confirm error rate returns to baseline"
+    commands:
+      - "curl -s 'http://localhost:9090/api/v1/query?query=job:demo_http_error_ratio:5m' | python3 -m json.tool"
+      - "curl -s 'http://localhost:9090/api/v1/query?query=ALERTS{alertname=\"DemoAppFastBurn\"}' | python3 -m json.tool"
+    expected: "Error ratio near 0; DemoAppFastBurn not firing (state=inactive)"
+
+  step_3_alert_resolution:
+    description: "Confirm the original alert has resolved"
+    command: "curl -s 'http://localhost:9090/api/v1/alerts' | python3 -m json.tool | grep -A5 'DemoAppFastBurn'"
+    expected: "Alert state is 'inactive' or 'resolved'"
+
+# POST-INCIDENT NOTE TEMPLATE
+post_incident_note: |
+  # Incident: {{incident_id}} - {{title}}
+
+  **Date:** {{alert_time}}
+  **Duration:** <minutes/hours>
+  **Severity:** {{severity}}
+  **On-call:** {{on_call}}
+
+  ## Timeline
+  - T+00:00 — {{alert_name}} alert fires
+  - T+XX:XX — On-call opens runbook, begins diagnosis
+  - T+XX:XX — Root cause identified: <failure mode>
+  - T+XX:XX — Rollback executed
+  - T+XX:XX — Recovery confirmed, alert resolved
+  - T+XX:XX — Post-incident note written
+
+  ## Root Cause
+  <Describe the failure mode and why it happened. Reference the failure_modes section above.>
+
+  ## Action Taken
+  <Describe the rollback command used and any other mitigation steps.>
+
+  ## Prevention
+  - <Specific action to prevent recurrence, e.g., "Pin exact image tags in Deployment manifests">
+  - <Specific action, e.g., "Add pre-deployment image existence check in CI">
+  - <Specific action, e.g., "Set resource requests/limits based on load test data">
+  - <Specific action, e.g., "Annotate all Deployments with kubernetes.io/change-cause">
+
+  ## References
+  - Runbook: this document
+  - Deployment: {{namespace}}/{{deployment}}
+  - Rollout history: `kubectl rollout history deployment/{{deployment}} -n {{namespace}}`
+  - Prometheus alerts: http://localhost:9090/alerts

@@ -1,5 +1,5 @@
 ---
-last_verified: 2026-11-21
+last_verified: 2026-11-22
 tool_version: 2.2.2
 sources:
   - https://developer.hashicorp.com/vault/docs/concepts/dev-server
@@ -284,4 +284,4 @@ You should see: the scoped token reads the password; the Deployment env includes
 
 ## Next
 
-[Run an incident drill with a runbook](../../00_index/learning-path.md)
+[Run an incident drill with a runbook](../11-operations/01-incident-drill.md)
