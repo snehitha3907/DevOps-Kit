@@ -89,7 +89,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 ## Stage 11: Operations and capstone
 
 1. [Run an incident drill with a runbook](../learn/11-operations/01-incident-drill.md) · needs: Define an SLO and alert on its burn rate, Remove static secrets from the cluster
-2. Capstone: ship the sample app end to end — *not written yet* · needs: Run an incident drill with a runbook, Plan and apply Terraform from CI with OIDC, SBOMs and image policy in the pipeline, Trace one request with OpenTelemetry
+2. [Capstone: ship the sample app end to end](../learn/11-operations/02-capstone.md) · needs: Run an incident drill with a runbook, Plan and apply Terraform from CI with OIDC, SBOMs and image policy in the pipeline, Trace one request with OpenTelemetry
 
 ## Stage 12: Electives
 
