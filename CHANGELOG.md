@@ -1039,3 +1039,4 @@ feat: docker-004
 ## 2026-11-21
 Passed ([x]) hashicorp-vault-001 — HashiCorp Vault: lesson — Store and read secrets with Vault · Level: L3 · 2026-11-21
 Passed ([x]) trivy-002 — Trivy: lesson — SBOMs and image policy in the pipeline · Level: L4 · 2026-11-21
+- Added Kubernetes lesson: Capstone ship the sample app end to end (kubernetes-005) (`learn/11-operations/02-capstone.md`)
