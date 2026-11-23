@@ -1,5 +1,5 @@
 ---
-last_verified: 2026-11-22
+last_verified: 2026-11-23
 tool_version: 1.37.2
 sources:
   - https://kubernetes.io/docs/tasks/debug/debug-application/
@@ -317,4 +317,4 @@ You should see: `rollout undo` + `rollout status` succeed; all pods show `Runnin
 
 ## Next
 
-[Capstone: ship the sample app end to end](../../00_index/learning-path.md)
+[Capstone: ship the sample app end to end](02-capstone.md)
