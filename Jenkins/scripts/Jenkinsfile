@@ -1,0 +1,67 @@
+// last_verified: 2026-11-23 · Jenkins 2.580.2
+// Companion Jenkinsfile for learn/12-electives/05-jenkins-pipeline.md
+// Declarative pipeline: build, test, scan (Trivy), push the sample app image.
+
+pipeline {
+    agent none
+
+    environment {
+        REGISTRY      = 'registry.example.com'
+        IMAGE         = "${REGISTRY}/sample-app:${BUILD_NUMBER}"
+        REGISTRY_CREDS = credentials('registry-creds')
+    }
+
+    stages {
+        stage('Build') {
+            agent { label 'docker' }
+            steps {
+                checkout scm
+                sh 'docker build -t $IMAGE .'
+            }
+        }
+
+        stage('Test') {
+            agent {
+                docker {
+                    image 'node:20-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'npm ci'
+                sh 'npm test'
+            }
+        }
+
+        stage('Scan') {
+            agent { label 'docker' }
+            steps {
+                sh '''
+                    docker run --rm \
+                      -v /var/run/docker.sock:/var/run/docker.sock \
+                      aquasec/trivy:0.76.2 image \
+                      --severity HIGH,CRITICAL --exit-code 1 \
+                      $IMAGE
+                '''
+            }
+        }
+
+        stage('Push') {
+            agent { label 'docker' }
+            steps {
+                sh 'echo $REGISTRY_CREDS_PSW | docker login $REGISTRY -u $REGISTRY_CREDS_USR --password-stdin'
+                sh 'docker push $IMAGE'
+            }
+        }
+    }
+
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
+            archiveArtifacts artifacts: 'trivy-report.json', allowEmptyArchive: true
+        }
+        failure {
+            echo 'Pipeline failed — check the stage that turned red.'
+        }
+    }
+}
