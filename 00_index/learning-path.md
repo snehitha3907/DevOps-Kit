@@ -101,7 +101,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 6. [OpenTofu — quick primer](../OpenTofu/notes/0000-primer-opentofu.md)
 7. The network module again, in Pulumi — *not written yet* · needs: Reusable Terraform modules
 8. The GitOps setup again, with Flux — *not written yet* · needs: Deploy from Git with ArgoCD and roll back
-9. Ship metrics to Grafana Cloud — *not written yet* · needs: A Grafana dashboard kept in Git
+9. [Ship metrics to Grafana Cloud](../learn/12-electives/09-grafana-cloud-shipping.md) · needs: A Grafana dashboard kept in Git
 
 ## Reference shelf
 
@@ -139,3 +139,4 @@ Background material per tool, for looking things up after the lesson.
 | OpenTofu | [OpenTofu/](../OpenTofu/) |
 | Pulumi | [Pulumi/](../Pulumi/) |
 | Flux CD | [FluxCD/](../FluxCD/) |
+| Grafana Cloud | [Grafana Cloud/](../Grafana Cloud/) |
