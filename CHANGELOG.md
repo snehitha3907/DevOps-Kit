@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-24
+
+- Added Jenkins lesson: Rebuild the sample app pipeline in Jenkins — write a declarative Jenkinsfile with Build, Test (`npm test`), and Scan (Trivy `--severity CRITICAL --exit-code 1`) stages, create a Pipeline job, and run it (jenkins-001) (`learn/12-electives/05-jenkins-pipeline.md`)
+
 ## 2026-11-22
 
 - Added Kubernetes lesson: Run an incident drill with a runbook — follow a runbook to diagnose a failing deployment from its alert, use kubectl to identify root cause (ImagePullBackOff, CrashLoopBackOff, OOMKilled, probe failures), roll back with kubectl rollout undo, confirm recovery, and write a post-incident note (kubernetes-004) (`learn/11-operations/01-incident-drill.md`) plus companion `Kubernetes/configs/incident-runbook.yaml` and `Kubernetes/scripts/inject-failure.sh`
