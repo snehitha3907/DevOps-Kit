@@ -97,7 +97,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 2. [GCP — quick primer](../GCP/notes/0000-primer-gcp.md)
 3. [GitLab CI — quick primer](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 4. Rebuild the sample app pipeline in GitLab CI — *not written yet* · needs: GitLab CI — quick primer, Scan and publish the image from CI
-5. Rebuild the sample app pipeline in Jenkins — *not written yet* · needs: Scan and publish the image from CI
+5. [Rebuild the sample app pipeline in Jenkins](../learn/12-electives/05-jenkins-pipeline.md) · needs: Scan and publish the image from CI
 6. [OpenTofu — quick primer](../OpenTofu/notes/0000-primer-opentofu.md)
 7. The network module again, in Pulumi — *not written yet* · needs: Reusable Terraform modules
 8. The GitOps setup again, with Flux — *not written yet* · needs: Deploy from Git with ArgoCD and roll back
@@ -135,6 +135,7 @@ Background material per tool, for looking things up after the lesson.
 | Azure | [Azure/](../Azure/) |
 | GCP | [GCP/](../GCP/) |
 | GitLab CI | [GitLab CI/](../GitLab CI/) |
+| Jenkins | [Jenkins/](../Jenkins/) |
 | OpenTofu | [OpenTofu/](../OpenTofu/) |
 | Pulumi | [Pulumi/](../Pulumi/) |
 | Flux CD | [FluxCD/](../FluxCD/) |
