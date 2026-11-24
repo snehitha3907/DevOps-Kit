@@ -1,0 +1,16 @@
+# last_verified: 2026-11-24 · Grafana Cloud · n/a
+# Provision a Grafana data source that points at your Grafana Cloud Prometheus
+# stack. Drop this under /etc/grafana/provisioning/datasources/ and restart Grafana.
+# Replace <METRICS_INSTANCE_ID> and <CLOUD_ACCESS_POLICY_TOKEN> with the values from
+# your Grafana Cloud stack's Details page (Prometheus card).
+apiVersion: 1
+datasources:
+  - name: Grafana Cloud (Prometheus)
+    type: prometheus
+    access: proxy
+    url: https://<METRICS_INSTANCE_ID>.grafana.net/api/prom
+    basicAuth: true
+    basicAuthUser: <METRICS_INSTANCE_ID>
+    secureJsonData:
+      basicAuthPassword: <CLOUD_ACCESS_POLICY_TOKEN>
+    editable: false
