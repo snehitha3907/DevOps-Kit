@@ -1,0 +1,14 @@
+# last_verified: 2026-11-24 · Grafana Cloud · n/a
+# Add this `remote_write` block to your prometheus.yml under the `remote_write:` key.
+# Replace <METRICS_INSTANCE_ID> and <CLOUD_ACCESS_POLICY_TOKEN> with the values from
+# your Grafana Cloud stack's Details page (Prometheus card). The token needs the
+# `metrics:write` scope and is shown only once.
+remote_write:
+  - url: https://<METRICS_INSTANCE_ID>.grafana.net/api/prom/push
+    basic_auth:
+      username: <METRICS_INSTANCE_ID>
+      password: <CLOUD_ACCESS_POLICY_TOKEN>
+    write_relabel_configs:
+      - source_labels: [__name__]
+        regex: 'demo_http.*'
+        action: keep

@@ -3,6 +3,7 @@
 ## 2026-11-24
 
 - Added Jenkins lesson: Rebuild the sample app pipeline in Jenkins — write a declarative Jenkinsfile with Build, Test (`npm test`), and Scan (Trivy `--severity CRITICAL --exit-code 1`) stages, create a Pipeline job, and run it (jenkins-001) (`learn/12-electives/05-jenkins-pipeline.md`)
+- Added Grafana Cloud lesson: Ship metrics to Grafana Cloud — add a `remote_write` block to `prometheus.yml` that ships the app's metrics to a Grafana Cloud stack, then provision a Grafana data source from a file and reuse the existing dashboard against the Cloud stack (grafana-cloud-001) (`learn/12-electives/09-grafana-cloud-shipping.md`) plus companion `Grafana Cloud/configs/prometheus-remote-write-grafana-cloud.yaml` and `Grafana Cloud/configs/grafana-cloud-datasource.yaml`
 
 ## 2026-11-22
 
