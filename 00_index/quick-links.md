@@ -27,6 +27,12 @@
 - [Install the Flux CLI and run a pre-flight check](../FluxCD/scripts/2026-09-19-install-flux-cli-and-run-flux-check-pre.sh)
 - [Install the ArgoCD CLI and reach the UI](../ArgoCD/scripts/2026-07-23-install-argocd-and-access-ui.sh)
 
+
+
+### Work with Jenkins
+
+- [Jenkinsfile](../Jenkins/scripts/Jenkinsfile) — A Jenkins pipeline definition file.
+- [Jenkins pipeline quickstart (elective)](../learn/12-electives/05-jenkins-pipeline.md) — Jenkins pipeline lesson in the learning-path electives.
 ### Read a primer first
 
 **Foundational concepts**
@@ -263,6 +269,10 @@
 - [Configuration, secrets, and ingress](../learn/07-kubernetes/03-k8s-config-and-ingress.md) — configure secrets, config maps, and ingress for the sample app
 - [Probes, limits, and HPA](../learn/07-kubernetes/04-k8s-probes-limits-hpa.md) — add liveness/readiness probes, limits, and autoscaling
 - [Package the sample app with Helm](../learn/07-kubernetes/06-helm-package-app.md) — build and install a Helm chart for the sample app
+
+- [Incident runbook](../Kubernetes/configs/incident-runbook.yaml) — Incident runbook manifest for Kubernetes.
+- [Inject failure](../Kubernetes/scripts/inject-failure.sh) — Failure-injection script for Kubernetes chaos testing.
+- [Capstone: ship the sample app end to end](../learn/11-operations/02-capstone.md) — Learning-path capstone lesson.
 
 ### Sync a GitOps app
 

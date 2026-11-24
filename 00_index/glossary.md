@@ -246,6 +246,7 @@
 - **Custom resource** — An API object defined by a CustomResourceDefinition (CRD) rather than built into Kubernetes; the extension point operators use to model app-specific desired state (replicas, image, config) as native YAML.
 - **Reconciliation** — The controller loop that converges observed state toward the desired state declared in a custom resource: read both, apply the diff idempotently, and stop applying once they match. Terminal validation failures return without requeueing; only conflicts and transient errors back off and retry.
 - **Finalizer** — A string key on an object that blocks its deletion until the controller removes it. The controller sets it before creating external state, then honours it on delete by tearing that state down first — without it, deleting the custom resource orphans whatever it provisioned.
+- **Runbook** — A documented, step-by-step procedure for diagnosing and resolving a specific class of incident (for example, a failing Deployment), used during incident drills so the response is repeatable and nothing is forgotten under pressure.
 
 ## OpenTofu
 
