@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-25
+
+- Added Flux CD lesson: The GitOps setup again, with Flux — bootstrap Flux on a local cluster, point it at a sample app in Git, watch it converge the cluster, and compare the pull-based flow with ArgoCD (flux-cd-001) (`learn/12-electives/08-flux-gitops-alternative.md`)
+
 ## 2026-11-24
 
 - Added Jenkins lesson: Rebuild the sample app pipeline in Jenkins — write a declarative Jenkinsfile with Build, Test (`npm test`), and Scan (Trivy `--severity CRITICAL --exit-code 1`) stages, create a Pipeline job, and run it (jenkins-001) (`learn/12-electives/05-jenkins-pipeline.md`)
