@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-25
+
+- Added Pulumi lesson: The network module again, in Pulumi — recreate a VPC with public/private subnets using `awsx.ec2.Vpc` in Python, compare its single-component declaration to Terraform's ~34 explicit resource blocks, and run `pulumi up`/`pulumi destroy` (pulumi-001) (`learn/12-electives/07-pulumi-first-stack.md`)
+
 ## 2026-11-24
 
 - Added Jenkins lesson: Rebuild the sample app pipeline in Jenkins — write a declarative Jenkinsfile with Build, Test (`npm test`), and Scan (Trivy `--severity CRITICAL --exit-code 1`) stages, create a Pipeline job, and run it (jenkins-001) (`learn/12-electives/05-jenkins-pipeline.md`)
