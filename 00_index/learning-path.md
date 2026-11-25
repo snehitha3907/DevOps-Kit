@@ -100,7 +100,7 @@ Work through the stages in order. Each lesson says what it expects you to know a
 5. [Rebuild the sample app pipeline in Jenkins](../learn/12-electives/05-jenkins-pipeline.md) · needs: Scan and publish the image from CI
 6. [OpenTofu — quick primer](../OpenTofu/notes/0000-primer-opentofu.md)
 7. The network module again, in Pulumi — *not written yet* · needs: Reusable Terraform modules
-8. The GitOps setup again, with Flux — *not written yet* · needs: Deploy from Git with ArgoCD and roll back
+8. [The GitOps setup again, with Flux](../learn/12-electives/08-flux-gitops-alternative.md) · needs: Deploy from Git with ArgoCD and roll back
 9. [Ship metrics to Grafana Cloud](../learn/12-electives/09-grafana-cloud-shipping.md) · needs: A Grafana dashboard kept in Git
 
 ## Reference shelf
