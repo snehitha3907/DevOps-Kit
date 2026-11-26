@@ -1,151 +1,161 @@
 ---
-last_verified: 2026-11-25
-tool_version: Pulumi CLI 3.277.0 · Pulumi Python SDK 3.277.0 · pulumi-awsx 3.15.0 · pulumi-aws 7.55.0
+last_verified: 2026-11-26
+tool_version: 3.277.0
 sources:
-  - https://pulumi.com/dev/tutorials/aws-vpc/
   - https://github.com/pulumi/pulumi/releases/tag/v3.277.0
-  - https://pypi.org/pypi/pulumi/json
-  - https://pypi.org/pypi/pulumi-awsx/json
-  - https://pypi.org/pypi/pulumi-aws/json
-  - https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/awsx/ec2/vpc.ts
-  - https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/awsx/schema-types.ts
-  - https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/README.md
+  - https://www.pulumi.com/docs/iac/languages-sdks/python/
 ---
 
 # The network module again, in Pulumi
 
-In the Terraform modules lesson you built a reusable network module — a VPC with public and private subnets — and called it once per environment. This lesson recreates that same network in Pulumi using Python, and shows how Pulumi's `awsx.ec2.Vpc` component packs a VPC, subnets, route tables, NAT gateways and an internet gateway into a single declaration that Terraform would express as dozens of separate `aws_vpc`/`aws_subnet` resources.
+In [Reusable Terraform modules](../06-iac-and-cloud/07-terraform-modules.md) you turned a small network into a reusable module of `local_file` resources and called it once for dev and once for prod. This lesson recreates that same network as a Pulumi program in Python, so you can compare Pulumi's general-purpose-language approach with the declarative HCL you wrote there — same resources, same outputs, different authoring model.
 
 ## What you'll learn
 
-- Stand up a Pulumi Python project and add the `pulumi-awsx` package.
-- Create a VPC with public and private subnets using `awsx.ec2.Vpc` and export its IDs.
-- Compare Pulumi's component-based network with Terraform's resource-by-resource network by counting what each one creates.
-- Run `pulumi up` to preview and deploy, then `pulumi destroy` to tear it down.
+- Bootstrap a Pulumi Python project with `pulumi new python` and read the files it creates.
+- Declare VPC and subnet resources in `__main__.py` with `pulumi_aws`, wiring one resource to another with `.id`.
+- Preview, apply, and tear down a stack with `pulumi preview`, `pulumi up`, and `pulumi destroy`, and export values with `pulumi.export`.
+- Compare Pulumi's Python program model with the Terraform module from the previous lesson.
 
 ## Before you start
 
-- [Reusable Terraform modules](../06-iac-and-cloud/07-terraform-modules.md) — the network layout (VPC, public/private subnets per environment) you're recreating here, and the module-inputs/outputs pattern this lesson mirrors.
-- [OpenTofu — quick primer](../../OpenTofu/notes/0000-primer-opentofu.md) — the init/plan/apply/destroy IaC workflow; Pulumi uses the same plan-then-apply cycle via `pulumi up` and `pulumi destroy`.
-- The Pulumi Python project scaffold — see its layout in [Pulumi/templates/pulumi-python-project-scaffold/README.md](../../Pulumi/templates/pulumi-python-project-scaffold/README.md), which shows `Pulumi.yaml`, stack configs, `__init__.py`, and `requirements.txt` together.
-- Pulumi CLI installed; confirm with `pulumi version` (expect 3.277.0, released 2026-11-18).
-- Python 3.10 or newer; confirm with `python3 --version`.
-- AWS credentials configured so Pulumi can create real VPC resources in your account.
+- [Reusable Terraform modules](../06-iac-and-cloud/07-terraform-modules.md) — the network (VPC plus public and private subnets) you are recreating; you need its variable and output shape.
+- Pulumi CLI installed; confirm with `pulumi version` (this lesson targets 3.277.0).
+- Python 3 installed; confirm with `python3 --version`.
+- AWS credentials configured if you deploy the real resources below; confirm with `aws sts get-caller-identity`. If you have no AWS account, you can still run `pulumi preview`, which plans without creating anything.
+- Companion scaffold you can copy instead of bootstrapping from scratch: [Pulumi Python project scaffold](../../Pulumi/templates/pulumi-python-project-scaffold/README.md).
 
 ## Walkthrough
 
-1. Scaffold a Pulumi Python project.
+1. Bootstrap a new project.
 
-   Create a folder, then a `Pulumi.yaml` project file:
-
-   ```yaml
-   name: pulumi-network
-   runtime: python
-   description: A VPC with public and private subnets, built with Pulumi and Python
-   ```
-
-   Add a stack config for `dev`:
-
-   ```yaml
-   config:
-     aws:region: us-west-2
-   ```
-
-   Create `requirements.txt` declaring the Pulumi SDK, the AWS provider, and the AWSX component library:
-
-   ```
-   pulumi
-   pulumi-aws==7.55.0
-   pulumi-awsx==3.15.0
-   ```
-
-   Install the packages:
+   Create a directory and run the Python template:
 
    ```bash
-   pip install -r requirements.txt
+   mkdir pulumi-network && cd pulumi-network
+   pulumi new python
    ```
 
-   You should see: `pulumi`, `pulumi-aws`, and `pulumi-awsx` installed without a `ModuleNotFoundError`. (`pulumi-awsx` is not installed by default — the scaffold's `requirements.txt` only declares `pulumi` and `pulumi-aws`, so you must add it yourself.) [source: https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/README.md]
+   Accept the defaults for project name and stack name. Pulumi scaffolds the project and installs dependencies.
 
-2. Write the network program.
+   You should see: `Your new project is ready to go!` and three files appear — `Pulumi.yaml`, `__main__.py`, and `requirements.txt`.
 
-   Create `__main__.py` and declare the VPC with the `awsx.ec2.Vpc` component:
+2. Read what the bootstrap created.
+
+   `Pulumi.yaml` declares the project name and the `python` runtime. `requirements.txt` pins `pulumi` and `pulumi-aws`. `__main__.py` is the program Pulumi runs; the starter version creates one S3 bucket, which you will replace.
+
+   You should see: `Pulumi.yaml` contains `runtime: python`.
+
+3. Configure the AWS region for the stack.
+
+   ```bash
+   pulumi config set aws:region us-west-2
+   ```
+
+   This writes the value into `Pulumi.dev.yaml` so the program can read it at run time.
+
+   You should see: `Config key 'aws:region' set to 'us-west-2'`.
+
+4. Replace `__main__.py` with the network.
 
    ```python
    import pulumi
    import pulumi_aws as aws
-   import pulumi_awsx as awsx
 
-   # One component provisions a VPC, public and private subnets in the first
-   # three availability zones, route tables, NAT gateways, and an internet
-   # gateway — everything a Terraform network would declare resource by resource.
-   vpc = awsx.ec2.Vpc("app-vpc")
+   # VPC
+   vpc = aws.ec2.Vpc(
+       "network-vpc",
+       cidr_block="10.0.0.0/16",
+       tags={"Name": "pulumi-network-vpc"},
+   )
 
-   # Hand the real, assigned values back to the stack.
-   pulumi.export("vpc_id", vpc.vpc_id)
-   pulumi.export("public_subnet_ids", vpc.public_subnet_ids)
-   pulumi.export("private_subnet_ids", vpc.private_subnet_ids)
+   # Public subnet — vpc_id takes the VPC's .id (an Output[str]), not the object.
+   public_subnet = aws.ec2.Subnet(
+       "network-public-subnet",
+       vpc_id=vpc.id,
+       cidr_block="10.0.1.0/24",
+       map_public_ip_on_launch=True,
+       tags={"Name": "pulumi-network-public"},
+   )
+
+   # Private subnet.
+   private_subnet = aws.ec2.Subnet(
+       "network-private-subnet",
+       vpc_id=vpc.id,
+       cidr_block="10.0.2.0/24",
+       tags={"Name": "pulumi-network-private"},
+   )
+
+   pulumi.export("vpc_id", vpc.id)
+   pulumi.export("public_subnet_id", public_subnet.id)
+   pulumi.export("private_subnet_id", private_subnet.id)
    ```
 
-   You should see: a `__main__.py` that declares one `awsx.ec2.Vpc` and exports `vpc_id`, `public_subnet_ids`, and `private_subnet_ids`.
+   The key detail: `vpc_id=vpc.id` passes the VPC's assigned ID, while `parent` and `depends_on` take the resource object itself. Mixing the two forms is the most common type error.
 
-   The component defaults to CIDR `10.0.0.0/16`, the first three availability zones, one public and one private subnet per AZ, one NAT gateway plus an Elastic IP per public subnet, and one internet gateway [source: https://pulumi.com/dev/tutorials/aws-vpc/]. Its configurable fields include `cidrBlock`, `numberOfAvailabilityZones`, `availabilityZoneNames`, `subnetSpecs`, `natGateways`, `tags`, and `subnetStrategy` [source: https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/awsx/schema-types.ts]. Never pass both `availabilityZoneNames` and `numberOfAvailabilityZones` — only one is allowed [source: https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/awsx/ec2/vpc.ts].
+   You should see: three resources declared and three `pulumi.export` calls.
 
-3. Preview and deploy.
-
-   Initialize the stack and run Pulumi:
+5. Preview the change.
 
    ```bash
-   pulumi stack init dev
+   pulumi preview
+   ```
+
+   Pulumi runs the Python program, builds the dependency graph, and shows the plan without touching AWS.
+
+   You should see: `3 to create` (one VPC and two subnets) and no errors.
+
+6. Apply the stack.
+
+   ```bash
    pulumi up
    ```
 
-   You should see: `pulumi up` previews the resources to create (a default `awsx.ec2.Vpc` provisions about 34 underlying resources) and, after you confirm, creates them. Expect the first `pulumi up` of a new VPC to take 2–3 minutes, largely because of NAT gateway creation [source: https://pulumi.com/dev/tutorials/aws-vpc/].
+   Review the preview, then confirm. Pulumi creates the resources and records them in state.
 
-   In Terraform you would declare each of those ~34 resources explicitly — `aws_vpc`, `aws_subnet`, `aws_internet_gateway`, `aws_nat_gateway`, `aws_route_table`, `aws_eip`, and more — each with its own `resource` block. Pulumi hides that boilerplate behind the `awsx.ec2.Vpc` component; Terraform requires the explicit declarations [source: https://pulumi.com/dev/tutorials/aws-vpc/ ; https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/awsx/ec2/vpc.ts].
-
-4. Read the outputs and clean up.
+   You should see: `3 created` and the three exported outputs printed at the end.
+7. Read back an exported value.
 
    ```bash
    pulumi stack output vpc_id
-   pulumi stack output public_subnet_ids
-   pulumi stack output private_subnet_ids
    ```
 
-   Then destroy everything so you don't leave running NAT gateways (which accrue charges) in your account:
+   You should see: a VPC ID such as `vpc-0123456789abcdef0`.
+
+8. Tear down when you are done.
 
    ```bash
    pulumi destroy
+   pulumi stack rm dev
    ```
 
-   You should see: the three exports return real AWS IDs, and `pulumi destroy` removes every resource the component created.
+   `destroy` removes the cloud resources; `stack rm` removes the stack's state history. Run both so you do not leave resources or state behind.
+
+   You should see: `3 destroyed` and the stack removed.
 
 ## Exercise
 
-On your own, resize the network and compare it with Terraform:
+On your own, make the program reusable the way the Terraform module was:
 
-1. Edit `__main__.py`: change the VPC to use only two availability zones (`number_of_availability_zones=2`) and add tags (`tags={"Environment": "dev", "ManagedBy": "pulumi"}`).
-2. Run `pulumi up` and confirm the plan shows two public and two private subnets with the tags applied.
-3. Run `pulumi stack output vpc_id public_subnet_ids private_subnet_ids` and record the values.
-4. Now write the Terraform equivalent for a two-AZ VPC: list the `resource` blocks you would need (`aws_vpc`, two `aws_subnet` for public, two `aws_subnet` for private, `aws_internet_gateway`, `aws_route_table`, `aws_route_table_association`…). Count them.
-5. Compare: one `awsx.ec2.Vpc` call in Pulumi versus your list of explicit Terraform `resource` blocks.
+1. Wrap the three resources in a Python function `make_network(name_prefix, vpc_cidr)` that declares a VPC plus public and private subnets and returns their IDs.
+2. Call it twice in the same program — once for `dev` and once for `prod` — and export both sets of IDs.
+3. Run `pulumi preview` and confirm it plans 6 resources (two VPCs, four subnets) with no errors.
 
-Do not paste the run output inline — run the commands yourself and record the result.
+No solution is provided — write the code yourself and verify with the check below.
 
 ## Check your work
 
-- `pip install -r requirements.txt` exits 0 and installs `pulumi`, `pulumi-aws`, and `pulumi-awsx`.
-- `pulumi up` completes without errors and creates the VPC and subnets.
-- `pulumi stack output vpc_id` returns a real VPC ID; `public_subnet_ids` and `private_subnet_ids` each return two subnet IDs after your Exercise change.
-- Your Terraform equivalent lists multiple explicit `resource` blocks where Pulumi used a single `awsx.ec2.Vpc` component.
+- `pulumi preview` reports 6 resources to create and no errors.
+- `pulumi up` succeeds and `pulumi stack output` lists both dev and prod VPC and subnet IDs.
+- `pulumi destroy` removes all 6 resources.
 
 ## Common mistakes
 
-- Passing both `availabilityZoneNames` and `numberOfAvailabilityZones` to `awsx.ec2.Vpc` — the component rejects it ("Only one of [availabilityZoneNames] and [numberOfAvailabilityZones] can be specified"); pick one [source: https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/awsx/ec2/vpc.ts].
-- Forgetting `pulumi-awsx` in `requirements.txt` — you get `ModuleNotFoundError: No module named 'pulumi_awsx'`; add it and run `pip install -r requirements.txt` [source: https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/README.md].
-- The AWS provider plugin missing — `pulumi up` fails with "No plugin found for package aws"; run `pulumi plugin install resource aws 7.55.0` (or let the CLI auto-install on first run) [source: https://pypi.org/pypi/pulumi/json].
-- Not pinning the AWS Classic Provider version — pin it explicitly with `pulumi.ResourceOptions(version="7.55.0")` on a custom `aws.Provider` and pass it to the component via `opts=pulumi.ResourceOptions(providers={"aws": awsp})` to avoid version-drift warnings [source: https://raw.githubusercontent.com/pulumi/pulumi-awsx/master/README.md].
+- Running `pulumi` commands outside the directory containing `Pulumi.yaml` — you get `no Pulumi.yaml project file found`.
+- Passing the resource object to `vpc_id` instead of `vpc.id` — a type error at preview time.
+- Forgetting `pulumi.export` — the values are created but never surfaced to `pulumi stack output`.
+- Leaving a stack and its resources after experimenting — run `pulumi destroy` and `pulumi stack rm` to clean up.
 
 ## Next
 
-[The GitOps setup again, with Flux](../../00_index/learning-path.md)
+[The GitOps setup again, with Flux](./08-flux-gitops-alternative.md)
