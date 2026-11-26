@@ -3,6 +3,8 @@
 ## 2026-11-25
 
 - Added Pulumi lesson: The network module again, in Pulumi — recreate a VPC with public/private subnets using `awsx.ec2.Vpc` in Python, compare its single-component declaration to Terraform's ~34 explicit resource blocks, and run `pulumi up`/`pulumi destroy` (pulumi-001) (`learn/12-electives/07-pulumi-first-stack.md`)
+- Added Flux CD lesson: The GitOps setup again, with Flux — bootstrap Flux on a local cluster, point it at a sample app in Git, watch it converge the cluster, and compare the pull-based flow with ArgoCD (flux-cd-001) (`learn/12-electives/08-flux-gitops-alternative.md`)
+- Added GitLab CI lesson: Rebuild the sample app pipeline in GitLab CI — write a `.gitlab-ci.yml` with build and scan stages, build and push the sample app image tagged with the commit SHA, and scan with Trivy gating on CRITICAL findings (gitlab-ci-001) (`learn/12-electives/04-gitlab-ci-pipeline.md`) plus companion `GitLab CI/configs/gitlab-ci-sample-app-build-scan-push.yml`
 
 ## 2026-11-24
 

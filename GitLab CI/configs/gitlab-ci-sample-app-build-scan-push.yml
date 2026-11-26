@@ -1,0 +1,37 @@
+# last_verified: 2026-11-25 · GitLab CI (n/a)
+# Companion to learn/12-electives/04-gitlab-ci-pipeline.md.
+# Single-file pipeline: build the sample app image tagged with the commit SHA,
+# push it to the GitLab container registry, then scan it with Trivy so a
+# CRITICAL finding fails the pipeline. Copy into your sample app repo as
+# .gitlab-ci.yml and set CI_REGISTRY_USER / CI_REGISTRY_PASSWORD as CI/CD variables.
+
+stages:
+  - build
+  - scan
+
+variables:
+  REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE"
+  IMAGE_TAG: "$REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+
+build:docker:
+  stage: build
+  image: docker:cli
+  services:
+    - docker:dind
+  before_script:
+    - |
+      if [ -n "$CI_REGISTRY_PASSWORD" ]; then
+        echo "$CI_REGISTRY_PASSWORD" \
+          | docker login --username "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+      fi
+  script:
+    - docker build --tag "$IMAGE_TAG" .
+    - docker push "$IMAGE_TAG"
+
+scan:image:
+  stage: scan
+  image: aquasec/trivy
+  needs:
+    - build:docker
+  script:
+    - trivy image --severity CRITICAL --exit-code 1 "$IMAGE_TAG"
