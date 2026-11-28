@@ -145,7 +145,7 @@
 - **Dockerfiles** (1): [Custom Runner](../GitHub Actions/dockerfiles/custom-runner.Dockerfile)
 - **Templates** (3): [Deploy Caller](../GitHub Actions/templates/multi-env-deploy/deploy-caller.yml), [Reusable Deploy](../GitHub Actions/templates/multi-env-deploy/reusable-deploy.yml), [Readme](../GitHub Actions/templates/multi-env-deploy/README.md)
 
-## GitLab CI  ·  25 files
+## GitLab CI  ·  26 files
 
 - **primer:** [Primer Gitlab Ci Cd](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md)
 - **Notes** (4): [Following Gitlab Ci Quickstart](../GitLab CI/notes/2026-06-24-following-gitlab-ci-quickstart.md), [Primer Gitlab Ci Cd](../GitLab CI/notes/0000-primer-gitlab-ci-cd.md), [Gitlab Ci Runner Variables Artifacts](../GitLab CI/notes/2026-09-19-gitlab-ci-runner-variables-artifacts.md)
@@ -154,8 +154,8 @@
 - **Snippets** (1): [Trigger Pipeline And Poll Jobs](../GitLab CI/snippets/2026-09-20-trigger-pipeline-and-poll-jobs.sh)
 - **Scripts** (5): [Dynamic Child Pipeline](../GitLab CI/scripts/dynamic-child-pipeline.sh), [Run First Local Pipeline](../GitLab CI/scripts/2026-06-24-run-first-local-pipeline.sh), [Local Ci Pipeline Validator](../GitLab CI/scripts/2026-09-21-local-ci-pipeline-validator.sh)
   - _…and 2 more under `GitLab CI/` — browse the folder._
-- **Configs** (4): [Multi Project Pipeline With Triggers](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml), [Minimal Gitlab Ci Docker Build Deploy Kubernetes](../GitLab CI/configs/minimal-gitlab-ci-docker-build-deploy-kubernetes.yaml), [Minimal Pipeline Stages Cache Artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
-  - _…and 1 more under `GitLab CI/` — browse the folder._
+- **Configs** (5): [Gitlab Ci Sample App Build Scan Push](../GitLab CI/configs/gitlab-ci-sample-app-build-scan-push.yml), [Multi Project Pipeline With Triggers](../GitLab CI/configs/2026-09-22-multi-project-pipeline-with-triggers.yaml), [Minimal Pipeline Stages Cache Artifacts](../GitLab CI/configs/2026-09-20-minimal-pipeline-stages-cache-artifacts.yaml)
+  - _…and 2 more under `GitLab CI/` — browse the folder._
 - **Dockerfiles** (1): [Gitlab Runner Dind Kaniko](../GitLab CI/dockerfiles/gitlab-runner-dind-kaniko.Dockerfile)
 - **Templates** (8): [Readme](../GitLab CI/templates/modular-pipeline-repo/README.md), [Lib](../GitLab CI/templates/modular-pipeline-repo/.gitlab/ci/lib.yml), [Helpers](../GitLab CI/templates/modular-pipeline-repo/.gitlab/ci/helpers.sh)
   - _…and 5 more under `GitLab CI/` — browse the folder._

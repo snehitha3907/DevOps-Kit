@@ -15,11 +15,11 @@ A working devops engineer's quick-reference: first-contact notes, runnable snipp
 First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, Dockerfiles, and templates for devops tools across cloud (AWS, Azure, GCP), containers (Docker, Kubernetes), GitOps (ArgoCD, FluxCD), configuration management (Ansible, Terraform, OpenTofu, Pulumi), CI/CD (GitHub, GitHub Actions, GitLab CI, Jenkins), and observability (Prometheus, Grafana, OpenTelemetry, Trivy). Most tool folders pair a primer with runnable material you can copy and adapt.
 
 ## Quick links
+- [Pulumi first stack](learn/12-electives/07-pulumi-first-stack.md) — Recreate a VPC in Pulumi and compare it to Terraform.
+- [GitLab CI sample app pipeline](GitLab CI/configs/gitlab-ci-sample-app-build-scan-push.yml) — Sample app build, scan, and push pipeline.
+- [GitLab CI pipeline notes](learn/12-electives/04-gitlab-ci-pipeline.md) — Elective notes on GitLab CI pipelines.
 - [Flux as a GitOps alternative](learn/12-electives/08-flux-gitops-alternative.md) — Elective notes comparing Flux to ArgoCD.
 - [Grafana Cloud datasource config](Grafana Cloud/configs/grafana-cloud-datasource.yaml) — Datasource provisioning for Grafana Cloud.
-- [Prometheus remote-write to Grafana Cloud](Grafana Cloud/configs/prometheus-remote-write-grafana-cloud.yaml) — Remote-write config to ship metrics to Grafana Cloud.
-- [Shipping metrics to Grafana Cloud](learn/12-electives/09-grafana-cloud-shipping.md) — Elective notes on shipping metrics to Grafana Cloud.
-- [Jenkins pipeline definition](Jenkins/scripts/Jenkinsfile) — A Jenkinsfile defining a pipeline as code.
 
 ## Layout
 - **00_index/** — Topics map, quick links, glossary, and learning path.
@@ -65,7 +65,7 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 | Git | 6 | 15 | 1 | 14 | 0 | 0 | 3 | 0 | 46 | 2026-09-25 |
 | GitHub | 11 | 7 | 3 | 7 | 7 | 1 | 2 | 1 | 17 | 2026-10-10 |
 | GitHub Actions | 5 | 7 | 1 | 4 | 5 | 0 | 0 | 1 | 3 | 2026-10-27 |
-| GitLab CI | 4 | 2 | 1 | 5 | 4 | 0 | 0 | 1 | 8 | 2026-10-22 |
+| GitLab CI | 4 | 2 | 1 | 5 | 5 | 0 | 0 | 1 | 8 | 2026-11-28 |
 | Grafana | 4 | 3 | 0 | 2 | 4 | 0 | 0 | 0 | 0 | 2026-10-20 |
 | Grafana Cloud | 2 | 0 | 1 | 1 | 4 | 0 | 0 | 0 | 0 | — |
 | Helm | 3 | 6 | 1 | 5 | 5 | 15 | 1 | 0 | 27 | 2026-10-21 |
@@ -85,4 +85,4 @@ First-contact primers, notes, scripts, configs, manifests, snippets, notebooks, 
 Currently keeping the navigation and coverage tables in sync with the tool folders on disk.
 
 ---
-_Last updated: 2026-11-25_
+_Last updated: 2026-11-28_
